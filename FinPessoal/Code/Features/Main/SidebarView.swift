@@ -1,0 +1,53 @@
+//
+//  SidebarView.swift
+//  FinPessoal
+//
+//  Created by Roberto Edgar Geiss on 03/08/25.
+//
+
+import SwiftUI
+
+struct SidebarView: View {
+  @EnvironmentObject var navigationState: NavigationState
+  @EnvironmentObject var authViewModel: AuthViewModel
+  @EnvironmentObject var financeViewModel: FinanceViewModel
+  
+  var body: some View {
+    List(selection: $navigationState.selectedSidebarItem) {
+      Section {
+        if let user = authViewModel.currentUser {
+          UserProfileRow(user: user)
+            .listRowInsets(EdgeInsets())
+        }
+      }
+      
+      Section("Menu Principal") {
+        ForEach(SidebarItem.allCases.prefix(4), id: \.self) { item in
+          SidebarRow(item: item)
+        }
+      }
+      
+      Section("Ferramentas") {
+        ForEach(Array(SidebarItem.allCases.dropFirst(4).dropLast(1)), id: \.self) { item in
+          SidebarRow(item: item)
+        }
+      }
+      
+      Section {
+        SidebarRow(item: .settings)
+      }
+    }
+    .listStyle(.sidebar)
+    .navigationTitle("Money Manager")
+  }
+}
+
+struct SidebarRow: View {
+  let item: SidebarItem
+  
+  var body: some View {
+    NavigationLink(value: item) {
+      Label(item.rawValue, systemImage: item.icon)
+    }
+  }
+}

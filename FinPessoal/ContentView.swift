@@ -8,17 +8,24 @@
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
-    }
-}
+  @StateObject private var authViewModel = AuthViewModel()
+  @StateObject private var financeViewModel = FinanceViewModel()
+  @StateObject private var navigationState = NavigationState()
 
-#Preview {
-    ContentView()
+  var body: some View {
+    Group {
+      if authViewModel.isAuthenticated {
+        if UIDevice.current.userInterfaceIdiom == .pad {
+          iPadMainView()
+        } else {
+          iPhoneMainView()
+        } 
+      } else {
+        LoginView()
+      }
+    }
+    .environmentObject(authViewModel)
+    .environmentObject(financeViewModel)
+    .environmentObject(navigationState)
+  }
 }
