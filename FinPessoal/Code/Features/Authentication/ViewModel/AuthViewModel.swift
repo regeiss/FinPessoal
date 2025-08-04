@@ -10,18 +10,25 @@ import AuthenticationServices
 import Combine
 
 @MainActor
-class AuthViewModel: ObservableObject {
+class AuthViewModel: NSObject, ObservableObject {
   @Published var isAuthenticated = false
   @Published var currentUser: User?
   @Published var isLoading = false
   @Published var errorMessage: String?
+  @Published var showError = false
   
-  private let authRepository: AuthRepositoryProtocol
+  internal let authRepository: AuthRepositoryProtocol
   
   init(authRepository: AuthRepositoryProtocol = MockAuthRepository()) {
     self.authRepository = authRepository
+    super.init()
     self.currentUser = authRepository.getCurrentUser()
     self.isAuthenticated = currentUser != nil
+  }
+  
+  func checkAuthenticationState() {
+    currentUser = authRepository.getCurrentUser()
+    isAuthenticated = currentUser != nil
   }
   
   func signInWithEmail(_ email: String, password: String) async {
@@ -34,6 +41,7 @@ class AuthViewModel: ObservableObject {
       isAuthenticated = true
     } catch {
       errorMessage = "Erro ao fazer login: \(error.localizedDescription)"
+      showError = true
     }
     
     isLoading = false
@@ -49,6 +57,7 @@ class AuthViewModel: ObservableObject {
       isAuthenticated = true
     } catch {
       errorMessage = "Erro ao fazer login com Google: \(error.localizedDescription)"
+      showError = true
     }
     
     isLoading = false
@@ -64,6 +73,7 @@ class AuthViewModel: ObservableObject {
       isAuthenticated = true
     } catch {
       errorMessage = "Erro ao fazer login com Apple: \(error.localizedDescription)"
+      showError = true
     }
     
     isLoading = false
@@ -76,6 +86,7 @@ class AuthViewModel: ObservableObject {
       isAuthenticated = false
     } catch {
       errorMessage = "Erro ao fazer logout: \(error.localizedDescription)"
+      showError = true
     }
   }
 }

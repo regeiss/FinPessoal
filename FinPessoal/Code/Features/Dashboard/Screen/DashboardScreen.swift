@@ -58,7 +58,7 @@ struct DashboardScreen: View {
               .fontWeight(.semibold)
             Spacer()
             NavigationLink("Ver Todos") {
-              BudgetsView()
+              BudgetsScreen()
                 .environmentObject(financeViewModel)
             }
             .font(.caption)
@@ -110,7 +110,7 @@ struct DashboardScreen: View {
               .font(.headline)
             Spacer()
             NavigationLink("Ver Todos") {
-              BudgetsView()
+              BudgetsScreen()
                 .environmentObject(financeViewModel)
             }
             .font(.caption)

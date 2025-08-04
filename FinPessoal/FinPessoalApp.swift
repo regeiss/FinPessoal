@@ -23,8 +23,8 @@ struct MoneyManagerApp: App {
     Database.database().isPersistenceEnabled = true
     
     // Configurar cache
-    let settings = Database.database().reference().database.app?.options
-    settings?.setCachePolicy(.cacheOnly)
+//    let settings = Database.database().reference().database.app?.options
+
   }
   
   var body: some Scene {

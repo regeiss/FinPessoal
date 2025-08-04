@@ -16,6 +16,11 @@ struct Account: Identifiable, Codable {
     formatter.locale = Locale(identifier: "pt_BR")
     return formatter.string(from: NSNumber(value: balance)) ?? "R$ 0,00"
   }
+  
+  static func fromDictionary<T: Decodable>(_ dictionary: [String: Any]) throws -> T {
+    let data = try JSONSerialization.data(withJSONObject: dictionary, options: [])
+    return try JSONDecoder().decode(T.self, from: data)
+  }
 }
 
 enum AccountType: String, CaseIterable, Codable {

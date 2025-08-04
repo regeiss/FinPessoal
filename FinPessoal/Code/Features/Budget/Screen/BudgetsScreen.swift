@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// Use BudgetsView instead of BudgetsScreen to avoid conflicts
 struct BudgetsScreen: View {
   @EnvironmentObject var financeViewModel: FinanceViewModel
   @StateObject private var budgetViewModel = BudgetViewModel()
