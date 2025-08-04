@@ -17,7 +17,7 @@ class AuthViewModel: NSObject, ObservableObject {
   @Published var errorMessage: String?
   @Published var showError = false
   
-  internal let authRepository: AuthRepositoryProtocol
+  let authRepository: AuthRepositoryProtocol
   
   init(authRepository: AuthRepositoryProtocol = MockAuthRepository()) {
     self.authRepository = authRepository
@@ -27,8 +27,8 @@ class AuthViewModel: NSObject, ObservableObject {
   }
   
   func checkAuthenticationState() {
-    currentUser = authRepository.getCurrentUser()
-    isAuthenticated = currentUser != nil
+    self.currentUser = authRepository.getCurrentUser()
+    self.isAuthenticated = currentUser != nil
   }
   
   func signInWithEmail(_ email: String, password: String) async {
@@ -36,7 +36,7 @@ class AuthViewModel: NSObject, ObservableObject {
     errorMessage = nil
     
     do {
-      let user = try await authRepository.signInWithEmail(email, password: password)
+      let user = try await authRepository.signIn(email: email, password: password)
       currentUser = user
       isAuthenticated = true
     } catch {
@@ -67,16 +67,18 @@ class AuthViewModel: NSObject, ObservableObject {
     isLoading = true
     errorMessage = nil
     
-    do {
-      let user = try await authRepository.signInWithApple()
-      currentUser = user
-      isAuthenticated = true
-    } catch {
-      errorMessage = "Erro ao fazer login com Apple: \(error.localizedDescription)"
-      showError = true
-    }
+    // Generate and store nonce for Apple Sign In
+    let nonce = NonceGenerator.randomNonceString()
+    NonceGenerator.currentNonce = nonce
     
-    isLoading = false
+    let request = ASAuthorizationAppleIDProvider().createRequest()
+    request.requestedScopes = [.fullName, .email]
+    request.nonce = NonceGenerator.sha256(nonce)
+    
+    let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+    authorizationController.delegate = self
+    authorizationController.presentationContextProvider = self
+    authorizationController.performRequests()
   }
   
   func signOut() async {
@@ -90,3 +92,4 @@ class AuthViewModel: NSObject, ObservableObject {
     }
   }
 }
+

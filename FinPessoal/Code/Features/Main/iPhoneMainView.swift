@@ -6,7 +6,7 @@
 //
 import SwiftUI
 
-struct iPhoneMainView: View {
+struct IPhoneMainView: View {
   @EnvironmentObject var navigationState: NavigationState
   @EnvironmentObject var financeViewModel: FinanceViewModel
   

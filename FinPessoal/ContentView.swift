@@ -16,9 +16,9 @@ struct ContentView: View {
     Group {
       if authViewModel.isAuthenticated {
         if UIDevice.current.userInterfaceIdiom == .pad {
-          iPadMainView()
+          IPadMainView()
         } else {
-          iPhoneMainView()
+          IPhoneMainView()
         } 
       } else {
         LoginView()

@@ -6,10 +6,10 @@
 //
 import SwiftUI
 
-struct iPadMainView: View {
+struct IPadMainView: View {
   @EnvironmentObject var navigationState: NavigationState
   @EnvironmentObject var financeViewModel: FinanceViewModel
-  
+
   var body: some View {
     NavigationSplitView {
       SidebarView()

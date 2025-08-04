@@ -129,21 +129,21 @@ class MockFinanceRepository: FinanceRepositoryProtocol {
   private func updateBudgetsWithNewTransaction(_ transaction: Transaction) async {
     guard transaction.type == .expense else { return }
     
-    for i in 0..<budgets.count {
-      if budgets[i].category == transaction.category &&
-          transaction.date >= budgets[i].startDate &&
-          transaction.date <= budgets[i].endDate {
-        budgets[i] = Budget(
-          id: budgets[i].id,
-          name: budgets[i].name,
-          category: budgets[i].category,
-          budgetAmount: budgets[i].budgetAmount,
-          spent: budgets[i].spent + transaction.amount,
-          period: budgets[i].period,
-          startDate: budgets[i].startDate,
-          endDate: budgets[i].endDate,
-          isActive: budgets[i].isActive,
-          alertThreshold: budgets[i].alertThreshold
+    for index in 0..<budgets.count {
+      if budgets[index].category == transaction.category &&
+          transaction.date >= budgets[index].startDate &&
+          transaction.date <= budgets[index].endDate {
+        budgets[index] = Budget(
+          id: budgets[index ].id,
+          name: budgets[index].name,
+          category: budgets[index].category,
+          budgetAmount: budgets[index].budgetAmount,
+          spent: budgets[index].spent + transaction.amount,
+          period: budgets[index].period,
+          startDate: budgets[index].startDate,
+          endDate: budgets[index].endDate,
+          isActive: budgets[index].isActive,
+          alertThreshold: budgets[index].alertThreshold
         )
       }
     }
