@@ -17,7 +17,7 @@ struct AccountCard: View {
         .foregroundColor(account.type.color)
         .frame(width: 40, height: 40)
         .background(account.type.color.opacity(0.1))
-        .cornerRadius(8)
+        .cornerRadius(6)
       
       VStack(alignment: .leading, spacing: 4) {
         Text(account.name)
@@ -36,7 +36,7 @@ struct AccountCard: View {
         .foregroundColor(account.balance >= 0 ? .green : .red)
     }
     .padding()
-    .background(Color(.systemGray6))
+    //.background(Color(.systemGray6))
     .cornerRadius(12)
   }
 }

@@ -20,15 +20,15 @@ enum TransactionType: String, CaseIterable, Codable {
 }
 
 enum TransactionCategory: String, CaseIterable, Codable, Comparable {
-  case food = "food"
-  case transport = "transport"
-  case entertainment = "entertainment"
-  case healthcare = "healthcare"
-  case shopping = "shopping"
-  case bills = "bills"
-  case salary = "salary"
-  case investment = "investment"
-  case other = "other"
+  case food = "alimentação"
+  case transport = "transporte"
+  case entertainment = "entreteinimento"
+  case healthcare = "saúde"
+  case shopping = "compras"
+  case bills = "contas"
+  case salary = "salario"
+  case investment = "investimentos"
+  case other = "outros"
   case housing = "housing"
   
   var displayName: String {
@@ -60,8 +60,6 @@ enum TransactionCategory: String, CaseIterable, Codable, Comparable {
     case .other: return "questionmark.circle"
     }
   }
-  
-  
 
   // MARK: - Comparable Implementation
   static func < (lhs: TransactionCategory, rhs: TransactionCategory) -> Bool {

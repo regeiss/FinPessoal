@@ -125,6 +125,11 @@ class MockFinanceRepository: FinanceRepositoryProtocol {
     return budget.percentageUsed
   }
   
+  func addAccount(_ account: Account) async throws {
+    try await Task.sleep(nanoseconds: 300_000_000)
+    accounts.append(account)
+  }
+  
   // Método privado para atualizar budgets quando uma nova transação é adicionada
   private func updateBudgetsWithNewTransaction(_ transaction: Transaction) async {
     guard transaction.type == .expense else { return }

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AccountsView: View {
   @EnvironmentObject var financeViewModel: FinanceViewModel
+  @State private var showAddAccountView = false
   
   var body: some View {
     NavigationView {
@@ -16,17 +17,26 @@ struct AccountsView: View {
         ForEach(financeViewModel.accounts) { account in
           AccountCard(account: account)
             .listRowInsets(EdgeInsets())
-            .listRowSeparator(.hidden)
+            //.listRowSeparator(.hidden)
+            .padding(.vertical, 2)
         }
       }
-      .listStyle(.plain)
+      //.listStyle(.plain)
       .navigationTitle("Contas")
       .toolbar {
         ToolbarItem(placement: .navigationBarTrailing) {
           Button("Adicionar") {
-            // Action to add new account
+            showAddAccountView = true
           }
+          .foregroundColor(.blue)
         }
+      }
+      .refreshable {
+        await financeViewModel.loadData()
+      }
+      .sheet(isPresented: $showAddAccountView) {
+        AddAccountView()
+          .environmentObject(financeViewModel)
       }
     }
   }

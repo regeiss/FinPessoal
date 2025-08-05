@@ -1,5 +1,3 @@
-
-
 import SwiftUI
 
 struct TransactionRow: View {
@@ -25,7 +23,7 @@ struct TransactionRow: View {
           
           Spacer()
           
-          Text(transaction.date, style: .date)
+          Text(dateFormatted(transaction.date))
             .font(.caption)
             .foregroundColor(.secondary)
         }
@@ -39,5 +37,9 @@ struct TransactionRow: View {
         .foregroundColor(transaction.type == .expense ? .red : .green)
     }
     .padding(.vertical, 4)
+  }
+  
+  private func dateFormatted(_ date: Date) -> String {
+    DateFormatter.transaction.string(from: date)
   }
 }

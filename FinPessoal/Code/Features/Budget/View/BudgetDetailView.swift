@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Foundation
 
 struct BudgetDetailView: View {
   let budget: Budget
@@ -133,8 +134,8 @@ struct BudgetDetailView: View {
       
       VStack(spacing: 8) {
         DetailRow(label: "Período", value: budget.period.rawValue)
-        DetailRow(label: "Início", value: budget.startDate.formatted(date: .abbreviated, time: .omitted))
-        DetailRow(label: "Fim", value: budget.endDate.formatted(date: .abbreviated, time: .omitted))
+        DetailRow(label: "Início", value: DateFormatter.transaction.string(from: budget.startDate))
+        DetailRow(label: "Fim", value: DateFormatter.transaction.string(from: budget.endDate))
         DetailRow(label: "Alerta em", value: "\(Int(budget.alertThreshold * 100))%")
       }
     }

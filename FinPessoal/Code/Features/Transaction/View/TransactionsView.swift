@@ -1,8 +1,15 @@
+//
+//  TransactionsScreen.swift
+//  FinPessoal
+//
+//  Created by Roberto Edgar Geiss on 03/08/25.
+//
 
-import SwiftUI 
+import SwiftUI
 
 struct TransactionsView: View {
   @EnvironmentObject var financeViewModel: FinanceViewModel
+  @State private var showingAddTransactionSheet = false
   
   var body: some View {
     NavigationView {
@@ -15,9 +22,16 @@ struct TransactionsView: View {
       .toolbar {
         ToolbarItem(placement: .navigationBarTrailing) {
           Button("Adicionar") {
-            // Action to add new transaction
+            showingAddTransactionSheet = true
           }
         }
+      }
+      .refreshable {
+        await financeViewModel.loadData()
+      }
+      .sheet(isPresented: $showingAddTransactionSheet) {
+        AddTransactionScreen()
+          .environmentObject(financeViewModel)
       }
     }
   }

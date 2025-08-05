@@ -75,6 +75,24 @@ class FinanceViewModel: ObservableObject {
     }
   }
   
+  func addAccount(_ account: Account) async throws {
+    do {
+      if let repo = financeRepository as? MockFinanceRepository {
+        try await repo.addAccount(account)
+        await loadData()
+      } else {
+        // Se o repositório for real, adicione um método saveAccount
+        // no protocolo e chame-o aqui:
+        // try await financeRepository.saveAccount(account)
+        // await loadData()
+        throw NSError(domain: "addAccount", code: 0, userInfo: [NSLocalizedDescriptionKey: "Implementação do repositório necessária"])
+      }
+    } catch {
+      errorMessage = "Erro ao adicionar conta: \(error.localizedDescription)"
+      throw error
+    }
+  }
+  
   func addBudget(_ budget: Budget) async {
     do {
       try await financeRepository.addBudget(budget)
@@ -110,3 +128,4 @@ class FinanceViewModel: ObservableObject {
     }
   }
 }
+
