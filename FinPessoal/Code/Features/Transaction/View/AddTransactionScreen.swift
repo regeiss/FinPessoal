@@ -65,6 +65,8 @@ struct AddTransactionScreen: View {
           }
           .disabled(!isValid)
           .frame(maxWidth: .infinity)
+          .foregroundColor(.white)
+          .listRowBackground(isValid ? Color.blue : Color.gray)
         }
       }
       .navigationTitle("Nova Transação")

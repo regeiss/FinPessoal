@@ -77,12 +77,7 @@ class FirebaseService {
       throw AuthError.invalidAppleCredential
     }
     
-    // Use the correct method for Apple Sign In
-    let credential = OAuthProvider.appleCredential(
-      withIDToken: idTokenString,
-      rawNonce: nonce,
-      fullName: appleIDCredential.fullName
-    )
+    let credential = OAuthProvider.appleCredential(withIDToken: idTokenString, rawNonce: nonce, fullName: appleIDCredential.fullName)
     
     let authResult = try await auth.signIn(with: credential)
     let user = User(from: authResult.user)
@@ -172,3 +167,4 @@ class FirebaseService {
     }.sorted { $0.date > $1.date }
   }
 }
+

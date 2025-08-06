@@ -111,8 +111,3 @@ struct AddAccountView: View {
     }
   }
 }
-
-#Preview {
-  AddAccountView()
-    .environmentObject(FinanceViewModel())
-}

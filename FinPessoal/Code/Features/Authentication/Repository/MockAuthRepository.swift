@@ -39,6 +39,28 @@ class MockAuthRepository: AuthRepositoryProtocol {
     return user
   }
   
+  func signInWithApple(authorization: ASAuthorization) async throws -> User {
+    try await Task.sleep(nanoseconds: 1_500_000_000)
+    
+    let user = User(
+      id: UUID().uuidString,
+      name: "João Silva",
+      email: "joao@icloud.com",
+      profileImageURL: nil,
+      createdAt: Date()
+    )
+    currentUser = user
+    return user
+  }
+  
+  func isUserSignedIn() -> Bool {
+    return currentUser != nil
+  }
+  
+  func signInWithEmail(_ email: String, password: String) async throws -> User {
+    return try await signIn(email: email, password: password)
+  }
+  
   func signInWithGoogle() async throws -> User {
     try await Task.sleep(nanoseconds: 1_500_000_000)
     
@@ -53,7 +75,7 @@ class MockAuthRepository: AuthRepositoryProtocol {
     return user
   }
   
-  func signInWithApple(authorization: ASAuthorization) async throws -> User {
+  func signInWithApple() async throws -> User {
     try await Task.sleep(nanoseconds: 1_500_000_000)
     
     let user = User(
@@ -73,9 +95,5 @@ class MockAuthRepository: AuthRepositoryProtocol {
   
   func getCurrentUser() -> User? {
     return currentUser
-  }
-  
-  func isUserSignedIn() -> Bool {
-    return currentUser != nil
   }
 }

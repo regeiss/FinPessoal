@@ -1,4 +1,10 @@
-import Foundation
+//
+//  User.swift
+//  FinPessoal
+//
+//  Created by Roberto Edgar Geiss on 04/08/25.
+//
+
 import FirebaseAuth
 
 struct User: Identifiable, Codable {
@@ -33,4 +39,14 @@ struct UserSettings: Codable {
   var language: String = "pt-BR"
   var notifications: Bool = true
   var biometricAuth: Bool = false
+  var theme: String = AppTheme.system.rawValue
+  
+  var appTheme: AppTheme {
+    get {
+      return AppTheme(rawValue: theme) ?? .system
+    }
+    set {
+      theme = newValue.rawValue
+    }
+  }
 }

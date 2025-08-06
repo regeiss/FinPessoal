@@ -22,8 +22,7 @@ class AuthViewModel: NSObject, ObservableObject {
   init(authRepository: AuthRepositoryProtocol = MockAuthRepository()) {
     self.authRepository = authRepository
     super.init()
-    self.currentUser = authRepository.getCurrentUser()
-    self.isAuthenticated = currentUser != nil
+    checkAuthenticationState()
   }
   
   func checkAuthenticationState() {
@@ -36,7 +35,7 @@ class AuthViewModel: NSObject, ObservableObject {
     errorMessage = nil
     
     do {
-      let user = try await authRepository.signIn(email: email, password: password)
+      let user = try await authRepository.signInWithEmail(email, password: password)
       currentUser = user
       isAuthenticated = true
     } catch {
@@ -67,18 +66,16 @@ class AuthViewModel: NSObject, ObservableObject {
     isLoading = true
     errorMessage = nil
     
-    // Generate and store nonce for Apple Sign In
-    let nonce = NonceGenerator.randomNonceString()
-    NonceGenerator.currentNonce = nonce
+    do {
+      let user = try await authRepository.signInWithApple()
+      currentUser = user
+      isAuthenticated = true
+    } catch {
+      errorMessage = "Erro ao fazer login com Apple: \(error.localizedDescription)"
+      showError = true
+    }
     
-    let request = ASAuthorizationAppleIDProvider().createRequest()
-    request.requestedScopes = [.fullName, .email]
-    request.nonce = NonceGenerator.sha256(nonce)
-    
-    let authorizationController = ASAuthorizationController(authorizationRequests: [request])
-    authorizationController.delegate = self
-    authorizationController.presentationContextProvider = self
-    authorizationController.performRequests()
+    isLoading = false
   }
   
   func signOut() async {

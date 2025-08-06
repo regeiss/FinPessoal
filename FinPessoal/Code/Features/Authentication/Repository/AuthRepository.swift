@@ -11,9 +11,11 @@ import AuthenticationServices
 
 protocol AuthRepositoryProtocol {
   func signIn(email: String, password: String) async throws -> User
+  func signInWithEmail(_ email: String, password: String) async throws -> User
   func signUp(email: String, password: String, name: String) async throws -> User
   func signInWithGoogle() async throws -> User
   func signInWithApple(authorization: ASAuthorization) async throws -> User
+  func signInWithApple() async throws -> User
   func signOut() async throws
   func getCurrentUser() -> User?
   func isUserSignedIn() -> Bool
@@ -26,6 +28,10 @@ class AuthRepository: AuthRepositoryProtocol {
     return try await firebaseService.signIn(email: email, password: password)
   }
   
+  func signInWithEmail(_ email: String, password: String) async throws -> User {
+    return try await signIn(email: email, password: password)
+  }
+  
   func signUp(email: String, password: String, name: String) async throws -> User {
     return try await firebaseService.signUp(email: email, password: password, name: name)
   }
@@ -36,6 +42,12 @@ class AuthRepository: AuthRepositoryProtocol {
   
   func signInWithApple(authorization: ASAuthorization) async throws -> User {
     return try await firebaseService.signInWithApple(authorization: authorization)
+  }
+  
+  func signInWithApple() async throws -> User {
+    // Implementação para iniciar o fluxo do Apple Sign In
+    // Esta seria uma implementação mais complexa que iniciaria o ASAuthorizationController
+    throw AuthError.invalidAppleCredential
   }
   
   func signOut() async throws {
