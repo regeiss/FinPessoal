@@ -6,21 +6,34 @@
 //
 
 import SwiftUI
+#if canImport(UIKit)
+import UIKit
+#endif
 
 // Helpers para layout responsivo
+#if canImport(UIKit)
 struct DeviceInfo {
   static var isIPad: Bool {
-    UIDevice.current.userInterfaceIdiom == .pad
+    UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad
   }
   
   static var isIPhone: Bool {
-    UIDevice.current.userInterfaceIdiom == .phone
+    UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.phone
   }
   
   static var isCompact: Bool {
     UIScreen.main.bounds.width < 768
   }
 }
+#endif
+
+#if !canImport(UIKit)
+struct DeviceInfo {
+  static var isIPad: Bool { false }
+  static var isIPhone: Bool { false }
+  static var isCompact: Bool { true }
+}
+#endif
 
 // Modificador para aplicar estilos responsivos
 struct ResponsiveModifier: ViewModifier {
@@ -224,3 +237,4 @@ extension View {
     modifier(SafePresentationModifier())
   }
 }
+

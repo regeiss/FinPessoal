@@ -1,5 +1,5 @@
 //
-//  DashboardScreen.swift (iPad Otimizado)
+//  DashboardScreen.swift (Cross-Platform)
 //  FinPessoal
 //
 //  Created by Roberto Edgar Geiss on 03/08/25.
@@ -10,13 +10,12 @@ import SwiftUI
 struct DashboardScreen: View {
   @EnvironmentObject var financeViewModel: FinanceViewModel
   @EnvironmentObject var themeManager: ThemeManager
-  @EnvironmentObject var navigationState: NavigationState
   @Environment(\.colorScheme) var colorScheme
   @StateObject private var coordinator = NavigationCoordinator()
   
   var body: some View {
     SafeContentContainer {
-      LazyVStack(spacing: DeviceInfo.isIPad ? 32 : 20) {
+      LazyVStack(spacing: PlatformInfo.isIPad ? 32 : 20) {
         balanceSection
         
         if !financeViewModel.budgetsNeedingAttention.isEmpty {
@@ -33,19 +32,19 @@ struct DashboardScreen: View {
         accountsOverviewSection
       }
     }
-    .modernNavigationStyle()
+    .crossPlatformNavigation()
+    .navigationTitle("Dashboard")
     .refreshable {
       await financeViewModel.loadData()
     }
     .toolbar {
-      ResponsiveToolbar(actions: [
-        ToolbarAction(title: "Adicionar", icon: "plus", action: {
+      CrossPlatformToolbarContent(
+        leadingTitle: "Menu",
+        trailingTitle: "Adicionar",
+        trailingAction: {
           coordinator.presentSheet()
-        }),
-        ToolbarAction(title: "Filtrar", icon: "line.3.horizontal.decrease.circle", action: {
-          // Ação de filtro
-        })
-      ])
+        }
+      )
     }
     .sheet(isPresented: $coordinator.isShowingSheet) {
       AddTransactionSheet()
@@ -57,10 +56,10 @@ struct DashboardScreen: View {
   
   private var balanceSection: some View {
     ResponsiveCard {
-      VStack(spacing: DeviceInfo.isIPad ? 16 : 12) {
+      VStack(spacing: PlatformInfo.isIPad ? 16 : 12) {
         HStack {
           Text("Saldo Total")
-            .font(DeviceInfo.isIPad ? .title2 : .headline)
+            .font(PlatformInfo.isIPad ? .title2 : .headline)
             .foregroundColor(.adaptiveSecondaryLabel)
           
           Spacer()
@@ -76,14 +75,14 @@ struct DashboardScreen: View {
         
         Text(financeViewModel.formattedTotalBalance)
           .font(.system(
-            size: DeviceInfo.isIPad ? 48 : 36,
+            size: PlatformInfo.isIPad ? 48 : 36,
             weight: .bold,
             design: .rounded
           ))
           .foregroundColor(.adaptiveLabel)
           .multilineTextAlignment(.center)
         
-        if DeviceInfo.isIPad {
+        if PlatformInfo.isIPad {
           HStack(spacing: 24) {
             BalanceIndicator(
               title: "Este Mês",
@@ -107,27 +106,27 @@ struct DashboardScreen: View {
   
   private var budgetAlertsSection: some View {
     ResponsiveCard {
-      VStack(alignment: .leading, spacing: DeviceInfo.isIPad ? 20 : 16) {
+      VStack(alignment: .leading, spacing: PlatformInfo.isIPad ? 20 : 16) {
         HStack {
           Image(systemName: "exclamationmark.triangle.fill")
             .foregroundColor(.orange)
-            .font(DeviceInfo.isIPad ? .title2 : .headline)
+            .font(PlatformInfo.isIPad ? .title2 : .headline)
           
           Text("Alertas de Orçamento")
-            .font(DeviceInfo.isIPad ? .title2 : .headline)
+            .font(PlatformInfo.isIPad ? .title2 : .headline)
             .fontWeight(.semibold)
             .foregroundColor(.adaptiveLabel)
           
           Spacer()
           
           NavigationLink("Ver Todos") {
-            BudgetsScreen()
+            BudgetsView()
           }
           .font(.callout)
           .foregroundColor(.blue)
         }
         
-        if DeviceInfo.isIPad {
+        if PlatformInfo.isIPad {
           LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 2), spacing: 16) {
             ForEach(financeViewModel.budgetsNeedingAttention.prefix(4)) { budget in
               CompactBudgetAlertCard(budget: budget)
@@ -158,7 +157,7 @@ struct DashboardScreen: View {
         color: .expense
       )
       
-      if DeviceInfo.isIPad {
+      if PlatformInfo.isIPad {
         ThemedStatCard(
           title: "Investimentos",
           value: "R$ 25.780,90",
@@ -171,23 +170,23 @@ struct DashboardScreen: View {
   
   private var budgetOverviewSection: some View {
     ResponsiveCard {
-      VStack(alignment: .leading, spacing: DeviceInfo.isIPad ? 20 : 16) {
+      VStack(alignment: .leading, spacing: PlatformInfo.isIPad ? 20 : 16) {
         HStack {
           Text("Orçamentos")
-            .font(DeviceInfo.isIPad ? .title2 : .headline)
+            .font(PlatformInfo.isIPad ? .title2 : .headline)
             .fontWeight(.semibold)
             .foregroundColor(.adaptiveLabel)
           
           Spacer()
           
           NavigationLink("Ver Todos") {
-            BudgetsScreen()
+            BudgetsView()
           }
           .font(.callout)
           .foregroundColor(.blue)
         }
         
-        if DeviceInfo.isIPad {
+        if PlatformInfo.isIPad {
           LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 3), spacing: 16) {
             ForEach(financeViewModel.budgets.prefix(6)) { budget in
               BudgetSummaryCard(budget: budget)
@@ -209,10 +208,10 @@ struct DashboardScreen: View {
   
   private var recentTransactionsSection: some View {
     ResponsiveCard {
-      VStack(alignment: .leading, spacing: DeviceInfo.isIPad ? 20 : 16) {
+      VStack(alignment: .leading, spacing: PlatformInfo.isIPad ? 20 : 16) {
         HStack {
           Text("Transações Recentes")
-            .font(DeviceInfo.isIPad ? .title2 : .headline)
+            .font(PlatformInfo.isIPad ? .title2 : .headline)
             .fontWeight(.semibold)
             .foregroundColor(.adaptiveLabel)
           
@@ -225,8 +224,8 @@ struct DashboardScreen: View {
           .foregroundColor(.blue)
         }
         
-        LazyVStack(spacing: DeviceInfo.isIPad ? 12 : 8) {
-          ForEach(financeViewModel.transactions.prefix(DeviceInfo.isIPad ? 8 : 5)) { transaction in
+        LazyVStack(spacing: PlatformInfo.isIPad ? 12 : 8) {
+          ForEach(financeViewModel.transactions.prefix(PlatformInfo.isIPad ? 8 : 5)) { transaction in
             ModernTransactionRow(transaction: transaction)
           }
         }
@@ -236,10 +235,10 @@ struct DashboardScreen: View {
   
   private var accountsOverviewSection: some View {
     ResponsiveCard {
-      VStack(alignment: .leading, spacing: DeviceInfo.isIPad ? 20 : 16) {
+      VStack(alignment: .leading, spacing: PlatformInfo.isIPad ? 20 : 16) {
         HStack {
           Text("Suas Contas")
-            .font(DeviceInfo.isIPad ? .title2 : .headline)
+            .font(PlatformInfo.isIPad ? .title2 : .headline)
             .fontWeight(.semibold)
             .foregroundColor(.adaptiveLabel)
           
@@ -252,7 +251,7 @@ struct DashboardScreen: View {
           .foregroundColor(.blue)
         }
         
-        if DeviceInfo.isIPad {
+        if PlatformInfo.isIPad {
           LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 2), spacing: 16) {
             ForEach(financeViewModel.accounts) { account in
               AccountCard(account: account)
@@ -291,52 +290,24 @@ struct BalanceIndicator: View {
   }
 }
 
-struct CompactBudgetAlertCard: View {
-  let budget: Budget
-  
-  var body: some View {
-    VStack(alignment: .leading, spacing: 8) {
-      HStack {
-        Image(systemName: budget.isOverBudget ? "exclamationmark.circle.fill" : "exclamationmark.triangle.fill")
-          .foregroundColor(budget.isOverBudget ? .red : .orange)
-          .font(.caption)
-        
-        Text(budget.name)
-          .font(.caption)
-          .fontWeight(.medium)
-          .lineLimit(1)
-        
-        Spacer()
-      }
-      
-      Text(budget.formattedSpent)
-        .font(.callout)
-        .fontWeight(.semibold)
-        .foregroundColor(budget.isOverBudget ? .red : .orange)
-    }
-    .padding(12)
-    .background(
-      RoundedRectangle(cornerRadius: 8)
-        .fill(budget.isOverBudget ? Color.red.opacity(0.1) : Color.orange.opacity(0.1))
-    )
-  }
-}
-
 struct ModernTransactionRow: View {
   let transaction: Transaction
   
   var body: some View {
-    HStack(spacing: DeviceInfo.isIPad ? 16 : 12) {
+    HStack(spacing: PlatformInfo.isIPad ? 16 : 12) {
       Image(systemName: transaction.category.icon)
-        .font(DeviceInfo.isIPad ? .title2 : .title3)
+        .font(PlatformInfo.isIPad ? .title2 : .title3)
         .foregroundColor(.blue)
-        .frame(width: DeviceInfo.isIPad ? 40 : 32, height: DeviceInfo.isIPad ? 40 : 32)
+        .frame(
+          width: PlatformInfo.isIPad ? 40 : 32,
+          height: PlatformInfo.isIPad ? 40 : 32
+        )
         .background(Color.blue.opacity(0.1))
-        .cornerRadius(DeviceInfo.isIPad ? 10 : 8)
+        .cornerRadius(PlatformInfo.isIPad ? 10 : 8)
       
       VStack(alignment: .leading, spacing: 4) {
         Text(transaction.description)
-          .font(DeviceInfo.isIPad ? .body : .headline)
+          .font(PlatformInfo.isIPad ? .body : .headline)
           .fontWeight(.medium)
         
         Text(transaction.category.displayName)
@@ -348,7 +319,7 @@ struct ModernTransactionRow: View {
       
       VStack(alignment: .trailing, spacing: 4) {
         Text(transaction.formattedAmount)
-          .font(DeviceInfo.isIPad ? .body : .headline)
+          .font(PlatformInfo.isIPad ? .body : .headline)
           .fontWeight(.semibold)
           .foregroundColor(transaction.type == .expense ? .red : .green)
         
@@ -379,13 +350,14 @@ struct AddTransactionSheet: View {
         .buttonStyle(.borderedProminent)
       }
       .navigationTitle("Nova Transação")
-      .navigationBarTitleDisplayMode(.inline)
       .toolbar {
-        ToolbarItem(placement: .navigationBarLeading) {
-          Button("Cancelar") {
+        CrossPlatformToolbarContent(
+          leadingTitle: "Cancelar",
+          trailingTitle: "Salvar",
+          leadingAction: {
             dismiss()
           }
-        }
+        )
       }
     }
   }

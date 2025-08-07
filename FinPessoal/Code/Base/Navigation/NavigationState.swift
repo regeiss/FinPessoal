@@ -1,5 +1,5 @@
 //
-//  NavigationState.swift
+//  NavigationState.swift (Cross-Platform)
 //  FinPessoal
 //
 //  Created by Roberto Edgar Geiss on 03/08/25.
@@ -35,6 +35,8 @@ class NavigationState: ObservableObject {
   }
 }
 
+// MARK: - Tab Items
+
 enum MainTab: String, CaseIterable {
   case dashboard = "Dashboard"
   case accounts = "Contas"
@@ -52,6 +54,8 @@ enum MainTab: String, CaseIterable {
     }
   }
 }
+
+// MARK: - Sidebar Items
 
 enum SidebarItem: String, CaseIterable, Hashable {
   case dashboard = "Dashboard"
@@ -79,7 +83,8 @@ enum SidebarItem: String, CaseIterable, Hashable {
   }
 }
 
-// Estrutura para navegação aninhada
+// MARK: - Navigation Destination
+
 struct NavigationDestination: Hashable {
   let screen: SidebarItem
   let id: String?

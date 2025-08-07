@@ -20,7 +20,7 @@ struct TransactionsView: View {
       }
       .navigationTitle("Transações")
       .toolbar {
-        ToolbarItem(placement: .navigationBarTrailing) {
+        ToolbarItem(placement: .primaryAction) {
           Button("Adicionar") {
             showingAddTransactionSheet = true
           }
@@ -36,3 +36,4 @@ struct TransactionsView: View {
     }
   }
 }
+

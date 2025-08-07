@@ -20,7 +20,8 @@ extension Color {
   static let expense = Color.red
   static let neutral = Color.blue
   
-  // Cores adaptáveis para modo escuro/claro
+#if canImport(UIKit)
+  // UIKit-specific adaptive colors
   static var adaptiveBackground: Color {
     Color(UIColor.systemBackground)
   }
@@ -44,29 +45,24 @@ extension Color {
   static var adaptiveTertiaryLabel: Color {
     Color(UIColor.tertiaryLabel)
   }
-}
-
-// Extensão para facilitar o uso de temas em ViewModifiers
-struct ThemedCardStyle: ViewModifier {
-  @Environment(\.colorScheme) var colorScheme
   
-  func body(content: Content) -> some View {
-    content
-      .background(Color.adaptiveSecondaryBackground)
-      .cornerRadius(12)
-      .shadow(
-        color: colorScheme == .dark ? .clear : .black.opacity(0.1),
-        radius: colorScheme == .dark ? 0 : 4,
-        x: 0,
-        y: colorScheme == .dark ? 0 : 2
-      )
+  // Extensão para facilitar o uso de temas em ViewModifiers
+  struct ThemedCardStyle: ViewModifier {
+    @Environment(\.colorScheme) var colorScheme
+    
+    func body(content: Content) -> some View {
+      content
+        .background(Color.adaptiveSecondaryBackground)
+        .cornerRadius(12)
+        .shadow(
+          color: colorScheme == .dark ? .clear : .black.opacity(0.1),
+          radius: colorScheme == .dark ? 0 : 4,
+          x: 0,
+          y: colorScheme == .dark ? 0 : 2
+        )
+    }
   }
-}
-
-extension View {
-  func themedCard() -> some View {
-    modifier(ThemedCardStyle())
-  }
+#endif
 }
 
 // Cores para status de orçamento que se adaptam ao tema
@@ -90,3 +86,11 @@ extension Color {
     }
   }
 }
+
+#if canImport(UIKit)
+extension View {
+  func themedCard() -> some View {
+    modifier(Color.ThemedCardStyle())
+  }
+}
+#endif
