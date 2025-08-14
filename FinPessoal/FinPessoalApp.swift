@@ -11,25 +11,61 @@ import FirebaseAuth
 import FirebaseAnalytics
 import FirebaseCrashlytics
 
+// MARK: - App Configuration
+struct AppConfiguration {
+  static let useMockAuth = true // ⚠️ Mude para false em produção
+  static let autoLogin = true
+  static let mockScenario: MockScenario = .loggedIn
+  
+  // Configurações de desenvolvimento
+  static let skipOnboarding = true
+  static let mockUserType: MockUserType = .regular
+}
+
 @main
-struct PersonalFinanceApp: App {
-  @StateObject private var appState = AppState()
-  @StateObject private var authViewModel = AuthenticationViewModel()
-  @StateObject private var themeManager = ThemeManager()
+struct MoneyManagerApp: App {
+  @StateObject private var authViewModel: AuthenticationViewModel
+  @StateObject private var financeViewModel = FinanceViewModel()
+  @StateObject private var navigationState = NavigationState()
   
   init() {
-    FirebaseApp.configure()
-    Analytics.setAnalyticsCollectionEnabled(true)
-    Crashlytics.crashlytics().setCrashlyticsCollectionEnabled(true)
+    // Configurar Firebase apenas se não estiver usando mock completo
+    if !AppConfiguration.useMockAuth {
+      FirebaseApp.configure()
+      
+      // Configurar persistência offline
+      Database.database().isPersistenceEnabled = true
+      
+      // Configurar cache
+      let settings = Database.database().reference().database.app?.options
+      settings?.setCachePolicy(.cacheOnly)
+    }
+    
+    // Inicializar AuthViewModel baseado na configuração
+    if AppConfiguration.useMockAuth {
+      if AppConfiguration.autoLogin {
+        _authViewModel = StateObject(wrappedValue: AuthenticationViewModel(enableAutoLogin: true))
+      } else {
+        _authViewModel = StateObject(wrappedValue: AuthenticationViewModel(mockScenario: AppConfiguration.mockScenario))
+      }
+    } else {
+      _authViewModel = StateObject(wrappedValue: AuthenticationViewModel())
+    }
   }
   
   var body: some Scene {
     WindowGroup {
       ContentView()
-        .environmentObject(appState)
         .environmentObject(authViewModel)
-        .environmentObject(themeManager)
-        .preferredColorScheme(themeManager.colorScheme)
+        .environmentObject(financeViewModel)
+        .environmentObject(navigationState)
+        .onAppear {
+          authViewModel.checkAuthenticationState()
+        }
+        .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
+          // Verificar autenticação quando o app volta ao foreground
+          authViewModel.checkAuthenticationState()
+        }
     }
   }
 }

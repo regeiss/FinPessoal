@@ -8,28 +8,102 @@
 import SwiftUI
 
 struct ContentView: View {
-  @EnvironmentObject var appState: AppState
   @EnvironmentObject var authViewModel: AuthenticationViewModel
+  @EnvironmentObject var financeViewModel: FinanceViewModel
+  @EnvironmentObject var navigationState: NavigationState
   
   var body: some View {
-    Group {
-      if !appState.hasCompletedOnboarding {
-        OnboardingView()
-      } else if authViewModel.isAuthenticated {
-        MainTabView()
-      } else {
-        AuthenticationView()
+    ZStack {
+      // Conteúdo principal
+      mainContent
+      
+      // Overlay de desenvolvimento (apenas em modo mock)
+      if AppConfiguration.useMockAuth {
+        developmentOverlay
       }
     }
-    .alert(item: $appState.errorToShow) { error in
-      Alert(
-        title: Text("error.title"),
-        message: Text(error.errorDescription ?? ""),
-        primaryButton: .default(Text("error.retry")) {
-          // Retry logic
-        },
-        secondaryButton: .cancel()
-      )
+  }
+  
+  @ViewBuilder
+  private var mainContent: some View {
+    Group {
+      if authViewModel.isAuthenticated {
+        if UIDevice.current.userInterfaceIdiom == .pad {
+          iPadMainView()
+        } else {
+          iPhoneMainView()
+        }
+      } else {
+        LoginView()
+      }
+    }
+  }
+  
+  @ViewBuilder
+  private var developmentOverlay: some View {
+    VStack {
+      Spacer()
+      HStack {
+        Spacer()
+        
+        // Botão flutuante para ações de desenvolvimento
+        Menu {
+          developmentMenuItems
+        } label: {
+          Image(systemName: "hammer.fill")
+            .foregroundColor(.white)
+            .frame(width: 20, height: 20)
+        }
+        .frame(width: 50, height: 50)
+        .background(Color.orange)
+        .clipShape(Circle())
+        .shadow(radius: 4)
+        .padding(.trailing, 20)
+        .padding(.bottom, 100)
+      }
+    }
+  }
+  
+  @ViewBuilder
+  private var developmentMenuItems: some View {
+    Button("Quick Login - Regular") {
+      Task {
+        await authViewModel.quickMockLogin(userType: .regular)
+      }
+    }
+    
+    Button("Quick Login - Premium") {
+      Task {
+        await authViewModel.quickMockLogin(userType: .premium)
+      }
+    }
+    
+    Button("Quick Login - New User") {
+      Task {
+        await authViewModel.quickMockLogin(userType: .newUser)
+      }
+    }
+    
+    Divider()
+    
+    Button("Force Logout") {
+      authViewModel.forceLogout()
+    }
+    
+    Button("Simulate Network Error") {
+      authViewModel.simulateAuthError(.networkError)
+    }
+    
+    Button("Simulate Invalid Credentials") {
+      authViewModel.simulateAuthError(.invalidCredentials)
+    }
+    
+    Divider()
+    
+    Button("Debug Info") {
+      print("=== Auth Debug Info ===")
+      print(authViewModel.debugInfo)
+      print("=====================")
     }
   }
 }

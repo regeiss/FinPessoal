@@ -33,11 +33,13 @@
 		E1776A212E3E51BE0028E21B /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = E1776A202E3E51BE0028E21B /* .swiftlint.yml */; };
 		E17E72992E3EE128003A7FF0 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = E17E72982E3EE128003A7FF0 /* GoogleSignIn */; };
 		E17E729B2E3EE128003A7FF0 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E17E729A2E3EE128003A7FF0 /* GoogleSignInSwift */; };
+		E1E8F1D02E4D609B00FFD30F /* MockLogin.md in Resources */ = {isa = PBXBuildFile; fileRef = E1E8F1CF2E4D609B00FFD30F /* MockLogin.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E177697D2E3E4AFF0028E21B /* FinPessoal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinPessoal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1776A202E3E51BE0028E21B /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		E1E8F1CF2E4D609B00FFD30F /* MockLogin.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = MockLogin.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -87,6 +89,7 @@
 		E17769742E3E4AFF0028E21B = {
 			isa = PBXGroup;
 			children = (
+				E1E8F1CF2E4D609B00FFD30F /* MockLogin.md */,
 				E177697F2E3E4AFF0028E21B /* FinPessoal */,
 				E177697E2E3E4AFF0028E21B /* Products */,
 				E1776A202E3E51BE0028E21B /* .swiftlint.yml */,
@@ -196,6 +199,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1776A212E3E51BE0028E21B /* .swiftlint.yml in Resources */,
+				E1E8F1D02E4D609B00FFD30F /* MockLogin.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
