@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
-  @EnvironmentObject var authViewModel: AuthenticationViewModel
-  @EnvironmentObject var financeViewModel: FinanceViewModel
-  @EnvironmentObject var navigationState: NavigationState
+  @EnvironmentObject var authViewModel: AuthViewModel
+//  @EnvironmentObject var financeViewModel: FinanceViewModel
+//  @EnvironmentObject var navigationState: NavigationState
   
   var body: some View {
     ZStack {

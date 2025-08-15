@@ -1,5 +1,5 @@
 //
-//  AuthenticantionScreen.swift
+//  AuthScreen.swift
 //  FinPessoal
 //
 //  Created by Roberto Edgar Geiss on 11/08/25.
@@ -8,8 +8,8 @@
 import Foundation
 import SwiftUI
 
-struct AuthenticationView: View {
-  @EnvironmentObject var authViewModel: AuthenticationViewModel
+struct AuthView: View {
+  @EnvironmentObject var authViewModel: AuthViewModel
   @State private var email = ""
   @State private var password = ""
   @State private var name = ""

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SettingsView: View {
   @EnvironmentObject var themeManager: ThemeManager
-  @EnvironmentObject var authViewModel: AuthenticationViewModel
+  @EnvironmentObject var authViewModel: AuthViewModel
   
   var body: some View {
     NavigationView {

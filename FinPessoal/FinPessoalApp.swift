@@ -24,7 +24,7 @@ struct AppConfiguration {
 
 @main
 struct MoneyManagerApp: App {
-  @StateObject private var authViewModel: AuthenticationViewModel
+  @StateObject private var authViewModel: AuthViewModel
   @StateObject private var financeViewModel = FinanceViewModel()
   @StateObject private var navigationState = NavigationState()
   
@@ -43,13 +43,9 @@ struct MoneyManagerApp: App {
     
     // Inicializar AuthViewModel baseado na configuração
     if AppConfiguration.useMockAuth {
-      if AppConfiguration.autoLogin {
-        _authViewModel = StateObject(wrappedValue: AuthenticationViewModel(enableAutoLogin: true))
-      } else {
-        _authViewModel = StateObject(wrappedValue: AuthenticationViewModel(mockScenario: AppConfiguration.mockScenario))
-      }
+      _authViewModel = StateObject(wrappedValue: AuthViewModel(authRepository: MockAuthRepository(shouldAutoLogin: AppConfiguration.autoLogin)))
     } else {
-      _authViewModel = StateObject(wrappedValue: AuthenticationViewModel())
+      _authViewModel = StateObject(wrappedValue: AuthViewModel())
     }
   }
   
@@ -60,10 +56,6 @@ struct MoneyManagerApp: App {
         .environmentObject(financeViewModel)
         .environmentObject(navigationState)
         .onAppear {
-          authViewModel.checkAuthenticationState()
-        }
-        .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
-          // Verificar autenticação quando o app volta ao foreground
           authViewModel.checkAuthenticationState()
         }
     }

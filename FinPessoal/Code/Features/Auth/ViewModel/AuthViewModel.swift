@@ -10,7 +10,7 @@ import Combine
 import FirebaseAuth
 import Firebase
 
-class AuthenticationViewModel: ObservableObject {
+class AuthViewModel: ObservableObject {
   @Published var isAuthenticated = false
   @Published var currentUser: User?
   @Published var isLoading = false
