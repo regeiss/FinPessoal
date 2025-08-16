@@ -1,17 +1,17 @@
 //
-//  TransactionsScreen.swift
+//  AccountsView.swift
 //  FinPessoal
 //
-//  Created by Roberto Edgar Geiss on 13/08/25.
+//  Created by Roberto Edgar Geiss on 16/08/25.
 //
 
 import SwiftUI
 
-struct TransactionsScreen: View {
+struct AccountsView: View {
   @EnvironmentObject var financeViewModel: FinanceViewModel
   @State private var showingAddTransaction = false
   @State private var selectedTransaction: Transaction?
-  
+
   var body: some View {
     NavigationView {
       VStack {
@@ -42,7 +42,7 @@ struct TransactionsScreen: View {
       }
     }
   }
-  
+
   private var transactionsList: some View {
     List {
       ForEach(financeViewModel.transactions) { transaction in
@@ -55,22 +55,24 @@ struct TransactionsScreen: View {
       }
     }
   }
-  
+
   private var emptyStateView: some View {
     VStack(spacing: 20) {
       Image(systemName: "list.bullet")
         .font(.system(size: 60))
         .foregroundColor(.secondary)
-      
+
       Text("Nenhuma transação")
         .font(.title2)
         .fontWeight(.semibold)
-      
-      Text("Adicione sua primeira transação para começar a controlar suas finanças")
-        .multilineTextAlignment(.center)
-        .foregroundColor(.secondary)
-        .padding(.horizontal)
-      
+
+      Text(
+        "Adicione sua primeira transação para começar a controlar suas finanças"
+      )
+      .multilineTextAlignment(.center)
+      .foregroundColor(.secondary)
+      .padding(.horizontal)
+
       Button("Adicionar Transação") {
         showingAddTransaction = true
       }
