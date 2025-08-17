@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct Account: Identifiable, Codable {
   let id: String
@@ -14,6 +15,22 @@ struct Account: Identifiable, Codable {
   let balance: Double
   let currency: String
   let isActive: Bool
+  let userId: String
+  let createdAt: Date
+  let updatedAt: Date
+  
+  // Convenience initializer for backward compatibility
+  init(id: String, name: String, type: AccountType, balance: Double, currency: String, isActive: Bool, userId: String, createdAt: Date, updatedAt: Date) {
+    self.id = id
+    self.name = name
+    self.type = type
+    self.balance = balance
+    self.currency = currency
+    self.isActive = isActive
+    self.userId = userId
+    self.createdAt = createdAt
+    self.updatedAt = updatedAt
+  }
   
   var formattedBalance: String {
     let formatter = NumberFormatter()

@@ -6,9 +6,8 @@
 //
 
 import Foundation
-import SwiftUI
 
-struct Transaction: Codable, Identifiable {
+struct Transaction: Identifiable, Codable {
   let id: String
   let accountId: String
   let amount: Double
@@ -17,32 +16,31 @@ struct Transaction: Codable, Identifiable {
   let type: TransactionType
   let date: Date
   let isRecurring: Bool
+  let userId: String
+  let createdAt: Date
+  let updatedAt: Date
   
-  enum TransactionType: String, Codable, CaseIterable {
-    case income = "income"
-    case expense = "expense"
-    case transfer = "transfer"
-    
-    var localizedName: String {
-      switch self {
-      case .income:
-        return NSLocalizedString("transaction.type.income", comment: "Income")
-      case .expense:
-        return NSLocalizedString("transaction.type.expense", comment: "Expense")
-      case .transfer:
-        return NSLocalizedString("transaction.type.transfer", comment: "Transfer")
-      }
-    }
-    
-    var color: Color {
-      switch self {
-      case .income:
-        return .green
-      case .expense:
-        return .red
-      case .transfer:
-        return .blue
-      }
-    }
+  // Convenience initializer for backward compatibility
+  init(id: String, accountId: String, amount: Double, description: String, category: TransactionCategory, type: TransactionType, date: Date, isRecurring: Bool, userId: String, createdAt: Date, updatedAt: Date) {
+    self.id = id
+    self.accountId = accountId
+    self.amount = amount
+    self.description = description
+    self.category = category
+    self.type = type
+    self.date = date
+    self.isRecurring = isRecurring
+    self.userId = userId
+    self.createdAt = createdAt
+    self.updatedAt = updatedAt
+  }
+  
+  var formattedAmount: String {
+    let formatter = NumberFormatter()
+    formatter.numberStyle = .currency
+    formatter.currencyCode = "BRL"
+    formatter.locale = Locale(identifier: "pt_BR")
+    let prefix = type == .expense ? "-" : "+"
+    return prefix + (formatter.string(from: NSNumber(value: abs(amount))) ?? "R$ 0,00")
   }
 }
