@@ -13,7 +13,7 @@ struct Transaction: Codable, Identifiable {
   let accountId: String
   let amount: Double
   let description: String
-  let category: String
+  let category: TransactionCategory
   let type: TransactionType
   let date: Date
   let isRecurring: Bool

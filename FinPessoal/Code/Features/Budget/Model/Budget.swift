@@ -40,22 +40,3 @@ struct Budget: Codable, Identifiable {
   }
 }
 
-enum BudgetPeriod: String, Codable, CaseIterable {
-  case weekly = "weekly"
-  case monthly = "monthly"
-  case quarterly = "quarterly"
-  case yearly = "yearly"
-  
-  var localizedName: String {
-    switch self {
-    case .weekly:
-      return NSLocalizedString("budget.period.weekly", comment: "Weekly")
-    case .monthly:
-      return NSLocalizedString("budget.period.monthly", comment: "Monthly")
-    case .quarterly:
-      return NSLocalizedString("budget.period.quarterly", comment: "Quarterly")
-    case .yearly:
-      return NSLocalizedString("budget.period.yearly", comment: "Yearly")
-    }
-  }
-}

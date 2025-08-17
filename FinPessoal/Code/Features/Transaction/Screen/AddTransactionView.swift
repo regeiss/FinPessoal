@@ -5,6 +5,7 @@
 //  Created by Roberto Edgar Geiss on 16/08/25.
 //
 
+import Foundation
 import SwiftUI
 
 struct AddTransactionView: View {
@@ -111,8 +112,8 @@ struct AddTransactionView: View {
       accountId: account.id,
       amount: amountValue,
       description: description,
-      category: selectedCategory,
-      type: selectedType,
+      category: selectedCategory.rawValue,
+      type: Transaction.TransactionType(rawValue: selectedType.rawValue) ?? .expense,
       date: date,
       isRecurring: isRecurring
     )
@@ -123,3 +124,4 @@ struct AddTransactionView: View {
     }
   }
 }
+

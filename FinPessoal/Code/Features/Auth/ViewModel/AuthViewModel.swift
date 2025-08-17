@@ -94,8 +94,7 @@ class AuthViewModel: ObservableObject {
             id: user.uid,
             name: name,
             email: email,
-            createdAt: Date(),
-            isActive: true
+            createdAt: Date()
           )
           self?.createUserProfile(newUser)
           Analytics.logEvent("sign_up_success", parameters: nil)
@@ -129,3 +128,4 @@ class AuthViewModel: ObservableObject {
     }
   }
 }
+

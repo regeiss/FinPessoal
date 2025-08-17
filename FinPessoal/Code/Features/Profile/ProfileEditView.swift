@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-
 struct ProfileEditView: View {
   @EnvironmentObject var authViewModel: AuthViewModel
   @Environment(\.dismiss) private var dismiss
@@ -89,18 +88,11 @@ struct ProfileEditView: View {
   
   private func loadCurrentSettings() {
     guard let user = authViewModel.currentUser else { return }
-    
     name = user.name
-    currency = user.settings.currency
-    language = user.settings.language
-    notifications = user.settings.notifications
-    biometricAuth = user.settings.biometricAuth
   }
   
   private func saveChanges() {
     // TODO: Implementar salvamento das configurações
-    // Aqui você salvaria as alterações no backend/Firebase
-    
     dismiss()
   }
 }

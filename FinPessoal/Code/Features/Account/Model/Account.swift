@@ -7,25 +7,19 @@
 
 import Foundation
 
-struct Account: Codable, Identifiable {
+struct Account: Identifiable, Codable {
   let id: String
-  let userId: String
   let name: String
   let type: AccountType
   let balance: Double
   let currency: String
+  let isActive: Bool
   
-  enum AccountType: String, Codable, CaseIterable {
-    case checking = "checking"
-    case savings = "savings"
-    
-    var localizedName: String {
-      switch self {
-      case .checking:
-        return NSLocalizedString("account.type.checking", comment: "Checking account")
-      case .savings:
-        return NSLocalizedString("account.type.savings", comment: "Savings account")
-      }
-    }
+  var formattedBalance: String {
+    let formatter = NumberFormatter()
+    formatter.numberStyle = .currency
+    formatter.currencyCode = currency
+    formatter.locale = Locale(identifier: "pt_BR")
+    return formatter.string(from: NSNumber(value: balance)) ?? "R$ 0,00"
   }
 }

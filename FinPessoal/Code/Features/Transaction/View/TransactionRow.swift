@@ -12,29 +12,37 @@ struct TransactionRow: View {
   
   var body: some View {
     HStack {
-      Circle()
-        .fill(transaction.type.color)
-        .frame(width: 8, height: 8)
+      Image(systemName: transaction.category.icon)
+        .font(.title3)
+        .foregroundColor(.blue)
+        .frame(width: 32, height: 32)
+        .background(Color.blue.opacity(0.1))
+        .cornerRadius(6)
       
       VStack(alignment: .leading, spacing: 2) {
         Text(transaction.description)
-          .font(.subheadline)
-          .fontWeight(.medium)
+          .font(.headline)
         
-        Text(transaction.category)
-          .font(.caption)
-          .foregroundColor(.secondary)
+        HStack {
+          Text(transaction.category.displayName)
+            .font(.caption)
+            .foregroundColor(.secondary)
+          
+          Spacer()
+          
+          Text(transaction.date, style: .date)
+            .font(.caption)
+            .foregroundColor(.secondary)
+        }
       }
       
       Spacer()
       
-      Text(transaction.amount.formatted(.currency(code: "BRL")))
-        .font(.subheadline)
-        .fontWeight(.medium)
-        .foregroundColor(transaction.type == .income ? .green : .primary)
+      Text(transaction.formattedAmount)
+        .font(.headline)
+        .fontWeight(.semibold)
+        .foregroundColor(transaction.type == .expense ? .red : .green)
     }
     .padding(.vertical, 4)
-    .accessibilityElement(children: .combine)
-    .accessibilityLabel("\(transaction.description), \(transaction.amount.formatted(.currency(code: "BRL")))")
   }
 }

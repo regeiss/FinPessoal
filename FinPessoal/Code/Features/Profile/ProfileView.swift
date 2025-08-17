@@ -40,17 +40,9 @@ struct ProfileView: View {
   private var profileHeaderSection: some View {
     VStack(spacing: 16) {
       // Avatar
-      AsyncImage(url: URL(string: authViewModel.currentUser?.profileImageURL ?? "")) { image in
-        image
-          .resizable()
-          .aspectRatio(contentMode: .fill)
-      } placeholder: {
-        Image(systemName: "person.circle.fill")
-          .font(.system(size: 80))
-          .foregroundColor(.gray)
-      }
-      .frame(width: 100, height: 100)
-      .clipShape(Circle())
+      Image(systemName: "person.circle.fill")
+        .font(.system(size: 80))
+        .foregroundColor(.blue)
       
       // Informações básicas
       VStack(spacing: 4) {
@@ -111,25 +103,25 @@ struct ProfileView: View {
       VStack(spacing: 12) {
         ProfileSettingRow(
           title: "Moeda",
-          value: authViewModel.currentUser?.settings.currency ?? "BRL",
+          value: "BRL",
           icon: "dollarsign.circle"
         )
         
         ProfileSettingRow(
           title: "Idioma",
-          value: authViewModel.currentUser?.settings.language ?? "pt-BR",
+          value: "pt-BR",
           icon: "globe"
         )
         
         ProfileSettingRow(
           title: "Notificações",
-          value: authViewModel.currentUser?.settings.notifications == true ? "Ativadas" : "Desativadas",
+          value: "Ativadas",
           icon: "bell"
         )
         
         ProfileSettingRow(
           title: "Autenticação Biométrica",
-          value: authViewModel.currentUser?.settings.biometricAuth == true ? "Ativada" : "Desativada",
+          value: "Desativada",
           icon: "faceid"
         )
       }
@@ -179,6 +171,7 @@ struct ProfileView: View {
     return Calendar.current.dateComponents([.day], from: createdAt, to: Date()).day ?? 0
   }
 }
+
 
 struct ProfileSettingRow: View {
   let title: String
