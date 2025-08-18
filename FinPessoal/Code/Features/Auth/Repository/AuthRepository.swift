@@ -115,7 +115,8 @@ class AuthRepository: AuthRepositoryProtocol {
       throw AuthError.noCurrentUser
     }
     
-    try await currentUser.updateEmail(to: email)
+    // Use sendEmailVerification(beforeUpdatingEmail:) as a replacement for deprecated updateEmail(to:)
+    try await currentUser.sendEmailVerification(beforeUpdatingEmail: email)
   }
   
   func updatePassword(_ password: String) async throws {

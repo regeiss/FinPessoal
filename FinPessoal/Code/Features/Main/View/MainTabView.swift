@@ -16,11 +16,11 @@ struct MainTabView: View {
       NavigationSplitView {
         SidebarView()
       } detail: {
-        DashboardView()
+        DashboardScreen()
       }
     } else {
       TabView(selection: $appState.selectedTab) {
-        DashboardView()
+        DashboardScreen()
           .tabItem {
             Image(systemName: "house.fill")
             Text("tab.dashboard")

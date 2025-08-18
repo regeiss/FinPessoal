@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import Firebase
 
-struct DashboardView: View {
+struct DashboardScreen: View {
   @StateObject private var viewModel = DashboardViewModel()
   
   var body: some View {

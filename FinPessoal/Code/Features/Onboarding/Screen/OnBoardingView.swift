@@ -1,5 +1,5 @@
 //
-//  OnBoardingView.swift
+//  OnBoardingScreen.swift
 //  FinPessoal
 //
 //  Created by Roberto Edgar Geiss on 11/08/25.
@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct OnboardingView: View {
+struct OnboardingScreen: View {
   @EnvironmentObject var appState: AppState
   @State private var currentPage = 0
   
