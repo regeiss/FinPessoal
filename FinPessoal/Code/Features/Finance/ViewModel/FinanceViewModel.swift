@@ -289,7 +289,7 @@ class FinanceViewModel: ObservableObject {
   }
   
   func getTransactions(for category: TransactionCategory) -> [Transaction] {
-    return transactions.filter { $0.category == category.rawValue }
+    return transactions.filter { $0.category.rawValue == category.rawValue }
   }
   
   func getTransactions(for type: TransactionType) -> [Transaction] {
@@ -304,7 +304,7 @@ class FinanceViewModel: ObservableObject {
   }
   
   func getBudget(for category: TransactionCategory) -> Budget? {
-    return budgets.first { $0.category == category.rawValue && $0.isActive }
+    return budgets.first { $0.category.rawValue == category.rawValue && $0.isActive }
   }
   
   func clearError() {
@@ -320,7 +320,7 @@ class FinanceViewModel: ObservableObject {
     var categoryTotals: [TransactionCategory: Double] = [:]
     
     for expense in expenses {
-      if let category = TransactionCategory(rawValue: expense.category) {
+      if let category = TransactionCategory(rawValue: expense.category.rawValue) {
         categoryTotals[category, default: 0] += expense.amount
       }
     }
@@ -335,7 +335,7 @@ class FinanceViewModel: ObservableObject {
     var categoryTotals: [TransactionCategory: Double] = [:]
     
     for income in incomes {
-      if let category = TransactionCategory(rawValue: income.category) {
+      if let category = TransactionCategory(rawValue: income.category.rawValue) {
         categoryTotals[category, default: 0] += income.amount
       }
     }

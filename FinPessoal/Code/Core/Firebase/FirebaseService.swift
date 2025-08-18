@@ -84,11 +84,7 @@ class FirebaseService {
       throw AuthError.invalidAppleCredential
     }
     
-    let credential = OAuthProvider.credential(
-      withProviderID: "apple.com",
-      idToken: idTokenString,
-      rawNonce: nonce
-    )
+    let credential = OAuthProvider.appleCredential(withIDToken: idTokenString, rawNonce: nonce, fullName: appleIDCredential.fullName)
     
     let authResult = try await auth.signIn(with: credential)
     let user = User(from: authResult.user)
@@ -568,3 +564,4 @@ enum FirebaseError: LocalizedError {
     }
   }
 }
+
