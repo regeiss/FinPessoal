@@ -33,7 +33,7 @@ struct SidebarView: View {
         Label("tab.reports", systemImage: "chart.bar.fill")
       }
       
-      NavigationLink(destination: SettingsView()) {
+      NavigationLink(destination: SettingsScreen()) {
         Label("tab.settings", systemImage: "gearshape.fill")
       }
     }

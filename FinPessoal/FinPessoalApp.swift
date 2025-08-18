@@ -11,17 +11,6 @@ import FirebaseAuth
 import FirebaseAnalytics
 import FirebaseCrashlytics
 
-// MARK: - App Configuration
-struct AppConfiguration {
-  static let useMockAuth = true // ⚠️ Mude para false em produção
-  static let autoLogin = true
-  static let mockScenario: MockScenario = .loggedIn
-  
-  // Configurações de desenvolvimento
-  static let skipOnboarding = true
-  static let mockUserType: MockUserType = .regular
-}
-
 @main
 struct MoneyManagerApp: App {
   @StateObject private var authViewModel: AuthViewModel
