@@ -20,7 +20,9 @@ class AuthViewModel: ObservableObject {
   
   init(authRepository: AuthRepositoryProtocol = MockAuthRepository()) {
     self.authRepository = authRepository
-    checkAuthenticationState()
+    Task { @MainActor in
+      self.checkAuthenticationState()
+    }
   }
   
   func checkAuthenticationState() {
@@ -87,3 +89,4 @@ class AuthViewModel: ObservableObject {
     }
   }
 }
+

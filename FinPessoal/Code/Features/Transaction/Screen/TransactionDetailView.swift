@@ -111,22 +111,22 @@ struct TransactionDetailView: View {
         .fontWeight(.semibold)
       
       VStack(spacing: 8) {
-        DetailRow(
+        TransactionDetailRow(
           label: "Data",
           value: transaction.date.formatted(date: .abbreviated, time: .shortened)
         )
         
-        DetailRow(
+        TransactionDetailRow(
           label: "Categoria",
           value: transaction.category.displayName
         )
         
-        DetailRow(
+        TransactionDetailRow(
           label: "Tipo",
           value: transaction.type.displayName
         )
         
-        DetailRow(
+        TransactionDetailRow(
           label: "Valor",
           value: String(format: "R$ %.2f", transaction.amount)
         )
@@ -278,5 +278,25 @@ struct EditTransactionView: View {
         }
       }
     }
+  }
+}
+
+// MARK: - Transaction Detail Row Component
+struct TransactionDetailRow: View {
+  let label: String
+  let value: String
+  
+  var body: some View {
+    HStack {
+      Text(label)
+        .foregroundColor(.secondary)
+      Spacer()
+      Text(value)
+        .fontWeight(.medium)
+    }
+    .padding(.horizontal)
+    .padding(.vertical, 8)
+    .background(Color(.systemGray6))
+    .cornerRadius(8)
   }
 }
