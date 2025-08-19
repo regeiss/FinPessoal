@@ -134,35 +134,16 @@ class FinanceViewModel: ObservableObject {
   }
   
   func updateTransaction(_ transaction: Transaction) async {
-    isLoading = true
-    errorMessage = nil
-    
-    do {
-      // TODO: Implementar no repository quando necessário
-      // try await financeRepository.updateTransaction(transaction)
-      await loadData()
-    } catch {
-      await MainActor.run {
-        self.errorMessage = "Erro ao atualizar transação: \(error.localizedDescription)"
-        self.isLoading = false
-      }
-    }
+    // TODO: Implementar no repository quando necessário
+    await loadData()
   }
   
   func deleteTransaction(_ transactionId: String) async {
     isLoading = true
     errorMessage = nil
-    
-    do {
-      // TODO: Implementar no repository quando necessário
-      // try await financeRepository.deleteTransaction(transactionId)
-      await loadData()
-    } catch {
-      await MainActor.run {
-        self.errorMessage = "Erro ao deletar transação: \(error.localizedDescription)"
-        self.isLoading = false
-      }
-    }
+    // TODO: Implementar no repository quando necessário
+    // try await financeRepository.deleteTransaction(transactionId)
+    await loadData()
   }
   
   // MARK: - Account Management
@@ -170,54 +151,29 @@ class FinanceViewModel: ObservableObject {
   func addAccount(_ account: Account) async {
     isLoading = true
     errorMessage = nil
-    
-    do {
-      // TODO: Implementar no repository quando necessário
-      // try await financeRepository.addAccount(account)
-      
-      // Por enquanto, adiciona localmente para demonstração
-      await MainActor.run {
-        self.accounts.append(account)
-        self.isLoading = false
-      }
-    } catch {
-      await MainActor.run {
-        self.errorMessage = "Erro ao adicionar conta: \(error.localizedDescription)"
-        self.isLoading = false
-      }
+    // TODO: Implementar no repository quando necessário
+    // try await financeRepository.addAccount(account)
+    // Por enquanto, adiciona localmente para demonstração
+    await MainActor.run {
+      self.accounts.append(account)
+      self.isLoading = false
     }
   }
   
   func updateAccount(_ account: Account) async {
     isLoading = true
     errorMessage = nil
-    
-    do {
-      // TODO: Implementar no repository quando necessário
-      // try await financeRepository.updateAccount(account)
-      await loadData()
-    } catch {
-      await MainActor.run {
-        self.errorMessage = "Erro ao atualizar conta: \(error.localizedDescription)"
-        self.isLoading = false
-      }
-    }
+    // TODO: Implementar no repository quando necessário
+    // try await financeRepository.updateAccount(account)
+    await loadData()
   }
   
   func deleteAccount(_ accountId: String) async {
     isLoading = true
     errorMessage = nil
-    
-    do {
-      // TODO: Implementar no repository quando necessário
-      // try await financeRepository.deleteAccount(accountId)
-      await loadData()
-    } catch {
-      await MainActor.run {
-        self.errorMessage = "Erro ao deletar conta: \(error.localizedDescription)"
-        self.isLoading = false
-      }
-    }
+    // TODO: Implementar no repository quando necessário
+    // try await financeRepository.deleteAccount(accountId)
+    await loadData()
   }
   
   // MARK: - Budget Management
