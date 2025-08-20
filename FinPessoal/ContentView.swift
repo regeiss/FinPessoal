@@ -8,28 +8,34 @@
 import SwiftUI
 
 struct ContentView: View {
-  @EnvironmentObject var authViewModel: AuthViewModel
-  @EnvironmentObject var financeViewModel: FinanceViewModel
-  @EnvironmentObject var navigationState: NavigationState
+  @StateObject private var authViewModel = AuthViewModel()
+  @StateObject private var financeViewModel = FinanceViewModel()
+  @StateObject private var navigationState = NavigationState()
+  @StateObject private var onboardingManager = OnboardingManager()
   
   var body: some View {
     Group {
-      if authViewModel.isAuthenticated {
+      if !onboardingManager.hasCompletedOnboarding {
+        // Primeiro: Mostra o onboarding
+        OnboardingScreen()
+      } else if authViewModel.isAuthenticated {
+        // Segundo: Se completou onboarding E está autenticado → Dashboard
         if UIDevice.current.userInterfaceIdiom == .pad {
           iPadMainView()
         } else {
           iPhoneMainView()
         }
       } else {
+        // Terceiro: Se completou onboarding mas NÃO está autenticado → Login
         LoginView()
       }
     }
     .environmentObject(authViewModel)
     .environmentObject(financeViewModel)
     .environmentObject(navigationState)
-    .onAppear {
-      authViewModel.checkAuthenticationState()
-    }
+    .environmentObject(onboardingManager)
+    .animation(.easeInOut(duration: 0.3), value: onboardingManager.hasCompletedOnboarding)
+    .animation(.easeInOut(duration: 0.3), value: authViewModel.isAuthenticated)
   }
 }
 

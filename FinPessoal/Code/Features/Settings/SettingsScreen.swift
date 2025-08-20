@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SettingsScreen: View {
   @EnvironmentObject var authViewModel: AuthViewModel
+  @EnvironmentObject var onboardingManager: OnboardingManager
   @State private var showingProfile = false
   
   var body: some View {
@@ -70,6 +71,13 @@ struct SettingsScreen: View {
           SettingsRow(title: "Ajuda", icon: "questionmark.circle", action: {})
           SettingsRow(title: "Contato", icon: "envelope", action: {})
           SettingsRow(title: "Avalie o App", icon: "star", action: {})
+        }
+        
+        Section("Desenvolvimento") {
+          Button("Resetar Onboarding") {
+            onboardingManager.resetOnboarding()
+          }
+          .foregroundColor(.orange)
         }
         
         Section("Conta") {
