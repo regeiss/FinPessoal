@@ -7,15 +7,11 @@
     "%.0f%% used" : {
 
     },
-    "%@, %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$@, %2$@"
-          }
-        }
-      }
+    "%lld%%" : {
+
+    },
+    "0,00" : {
+
     },
     "account.type.checking" : {
       "extractionState" : "manual",
@@ -51,6 +47,18 @@
         }
       }
     },
+    "Adicionar" : {
+
+    },
+    "Adicionar Transação" : {
+
+    },
+    "Adicione sua primeira transação ou ajuste os filtros de busca" : {
+
+    },
+    "Adicione sua primeira transação para começar a controlar suas finanças" : {
+
+    },
     "app.name" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -67,6 +75,15 @@
           }
         }
       }
+    },
+    "As transações desta conta aparecerão aqui" : {
+
+    },
+    "Ativa" : {
+
+    },
+    "Autenticação Biométrica" : {
+
     },
     "auth.email.label" : {
       "extractionState" : "manual",
@@ -391,6 +408,51 @@
         }
       }
     },
+    "Buscar transações..." : {
+
+    },
+    "Cancelar" : {
+
+    },
+    "Categoria" : {
+
+    },
+    "Configurações" : {
+
+    },
+    "Configurações Financeiras" : {
+
+    },
+    "Conta" : {
+
+    },
+    "Conta Associada" : {
+
+    },
+    "Conta Ativa" : {
+
+    },
+    "Contas inativas não aparecem nos relatórios e estatísticas" : {
+
+    },
+    "Continuar com Apple" : {
+
+    },
+    "Continuar com Google" : {
+
+    },
+    "Criar Conta" : {
+
+    },
+    "Criar Orçamento" : {
+
+    },
+    "Crie seu primeiro orçamento para começar a controlar seus gastos" : {
+
+    },
+    "Dados" : {
+
+    },
     "dashboard.add_transaction" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -594,6 +656,66 @@
           }
         }
       }
+    },
+    "Data" : {
+
+    },
+    "Data e Opções" : {
+
+    },
+    "de %@" : {
+
+    },
+    "Deletar" : {
+
+    },
+    "Deletar Transação" : {
+
+    },
+    "Desativar" : {
+
+    },
+    "Desativar Conta" : {
+
+    },
+    "Descrição" : {
+
+    },
+    "Despesas" : {
+
+    },
+    "Detalhes da Transação" : {
+
+    },
+    "e mais %lld transações..." : {
+
+    },
+    "Editar" : {
+
+    },
+    "Editar Conta" : {
+
+    },
+    "Editar Perfil" : {
+
+    },
+    "Editar Transação" : {
+
+    },
+    "Email" : {
+
+    },
+    "English (US)" : {
+
+    },
+    "Entrando..." : {
+
+    },
+    "Entrar" : {
+
+    },
+    "Erro" : {
+
     },
     "error.auth.failed" : {
       "extractionState" : "manual",
@@ -816,6 +938,42 @@
         }
       }
     },
+    "Español" : {
+
+    },
+    "Esta transação se repete automaticamente" : {
+
+    },
+    "Estatísticas" : {
+
+    },
+    "Estatísticas do Mês" : {
+
+    },
+    "Este Mês" : {
+
+    },
+    "Evolução do Saldo" : {
+
+    },
+    "Exportar Dados" : {
+
+    },
+    "Fechar" : {
+
+    },
+    "Ferramentas" : {
+
+    },
+    "FinPessoal" : {
+
+    },
+    "Funcionalidade em desenvolvimento" : {
+
+    },
+    "Gerencie suas finanças de forma inteligente" : {
+
+    },
     "goals.empty.subtitle" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -866,6 +1024,78 @@
           }
         }
       }
+    },
+    "Gráfico em desenvolvimento" : {
+
+    },
+    "Idioma" : {
+
+    },
+    "Inativa" : {
+
+    },
+    "Informações Básicas" : {
+
+    },
+    "Informações da Transação" : {
+
+    },
+    "Informações Pessoais" : {
+
+    },
+    "Maior Valor" : {
+
+    },
+    "Mais Antigas" : {
+
+    },
+    "Mais Recentes" : {
+
+    },
+    "Membro desde %@" : {
+
+    },
+    "Menor Valor" : {
+
+    },
+    "Menu Principal" : {
+
+    },
+    "Moeda" : {
+
+    },
+    "Money Manager" : {
+
+    },
+    "Nenhum Orçamento" : {
+
+    },
+    "Nenhuma transação" : {
+
+    },
+    "Nenhuma transação encontrada" : {
+
+    },
+    "Nome" : {
+
+    },
+    "Nome da Conta" : {
+
+    },
+    "Notificações" : {
+
+    },
+    "Notificações e Segurança" : {
+
+    },
+    "Nova Conta" : {
+
+    },
+    "Nova Transação" : {
+
+    },
+    "OK" : {
+
     },
     "onboarding.budget.subtitle" : {
       "extractionState" : "manual",
@@ -1020,6 +1250,45 @@
         }
       }
     },
+    "Opções" : {
+
+    },
+    "Orçamento ultrapassado!" : {
+
+    },
+    "Orçamentos" : {
+
+    },
+    "ou continue com" : {
+
+    },
+    "Perfil" : {
+
+    },
+    "Política de Privacidade" : {
+
+    },
+    "Português (Brasil)" : {
+
+    },
+    "Preferências" : {
+
+    },
+    "Prévia" : {
+
+    },
+    "Próximo ao limite (%lld%%)" : {
+
+    },
+    "R$" : {
+
+    },
+    "Receitas" : {
+
+    },
+    "Repetição Automática" : {
+
+    },
     "reports.empty.subtitle" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1070,6 +1339,33 @@
           }
         }
       }
+    },
+    "Restante: %@" : {
+
+    },
+    "Sair" : {
+
+    },
+    "Sair da Conta" : {
+
+    },
+    "Saldo Inicial" : {
+
+    },
+    "Salvar" : {
+
+    },
+    "Salvar Alterações" : {
+
+    },
+    "Salvar Transação" : {
+
+    },
+    "Selecione uma conta" : {
+
+    },
+    "Senha" : {
+
     },
     "settings.account" : {
       "extractionState" : "manual",
@@ -1155,6 +1451,12 @@
           }
         }
       }
+    },
+    "Status" : {
+
+    },
+    "Suporte" : {
+
     },
     "tab.budgets" : {
       "extractionState" : "manual",
@@ -1258,6 +1560,39 @@
         }
       }
     },
+    "Tem certeza que deseja deletar esta transação? Esta ação não pode ser desfeita." : {
+
+    },
+    "Tem certeza que deseja desativar esta conta? As transações serão mantidas, mas a conta não aparecerá nos relatórios." : {
+
+    },
+    "Termos de Uso" : {
+
+    },
+    "Tipo" : {
+
+    },
+    "Tipo de Conta" : {
+
+    },
+    "Todas" : {
+
+    },
+    "Todos os Orçamentos" : {
+
+    },
+    "Transação recorrente" : {
+
+    },
+    "Transação Recorrente" : {
+
+    },
+    "Transações" : {
+
+    },
+    "Transações Recentes" : {
+
+    },
     "transaction.type.expense" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1359,6 +1694,12 @@
           }
         }
       }
+    },
+    "Use Face ID ou Touch ID para acessar o app" : {
+
+    },
+    "Ver Todas" : {
+
     }
   },
   "version" : "1.0"

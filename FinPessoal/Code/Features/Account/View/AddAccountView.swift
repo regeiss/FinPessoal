@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AddAccountView: View {
   @EnvironmentObject var financeViewModel: FinanceViewModel
+  @EnvironmentObject var authViewModel: AuthViewModel
   @Environment(\.dismiss) private var dismiss
   
   @State private var name = ""
@@ -162,7 +163,10 @@ struct AddAccountView: View {
       type: selectedType,
       balance: balance,
       currency: currency,
-      isActive: isActive
+      isActive: isActive,
+      userId: authViewModel.currentUser?.id ?? "unknown",
+      createdAt: Date(),
+      updatedAt: Date()
     )
     
     // TODO: Implementar adição de conta no FinanceViewModel

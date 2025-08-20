@@ -15,7 +15,7 @@ struct LoginView: View {
   
   var body: some View {
     if showOnboarding {
-      OnboardingScreen(showOnboarding: $showOnboarding)
+      OnboardingScreen()
     } else {
       loginContent
     }

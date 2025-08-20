@@ -112,10 +112,13 @@ struct AddTransactionView: View {
       accountId: account.id,
       amount: amountValue,
       description: description,
-      category: selectedCategory.rawValue,
-      type: Transaction.TransactionType(rawValue: selectedType.rawValue) ?? .expense,
+      category: TransactionCategory(rawValue: selectedCategory.rawValue) ?? .food,
+      type: TransactionType(rawValue: selectedType.rawValue) ?? .expense,
       date: date,
-      isRecurring: isRecurring
+      isRecurring: isRecurring,
+      userId: "",
+      createdAt: Date(),
+      updatedAt: Date()
     )
     
     Task {

@@ -88,5 +88,9 @@ class AuthViewModel: ObservableObject {
       showError = true
     }
   }
+  
+  public func clearError() {
+    self.errorMessage = nil
+    self.showError = false
+  }
 }
-

@@ -12,9 +12,7 @@ struct AuthView: View {
   @EnvironmentObject var authViewModel: AuthViewModel
   @State private var email = ""
   @State private var password = ""
-  @State private var name = ""
-  @State private var isSignUp = false
-  
+
   var body: some View {
     NavigationView {
       VStack(spacing: 30) {
@@ -32,12 +30,6 @@ struct AuthView: View {
         
         // Form
         VStack(spacing: 16) {
-          if isSignUp {
-            TextField("auth.name.placeholder", text: $name)
-              .textFieldStyle(RoundedBorderTextFieldStyle())
-              .accessibilityLabel("auth.name.label")
-          }
-          
           TextField("auth.email.placeholder", text: $email)
             .textFieldStyle(RoundedBorderTextFieldStyle())
             .keyboardType(.emailAddress)
@@ -52,17 +44,15 @@ struct AuthView: View {
         // Buttons
         VStack(spacing: 16) {
           Button(action: {
-            if isSignUp {
-              authViewModel.signUp(name: name, email: email, password: password)
-            } else {
-              authViewModel.signInWithEmail(email: email, password: password)
+            Task {
+              await authViewModel.signInWithEmail(email, password: password)
             }
           }) {
             if authViewModel.isLoading {
               ProgressView()
                 .progressViewStyle(CircularProgressViewStyle(tint: .white))
             } else {
-              Text(isSignUp ? "auth.sign_up" : "auth.sign_in")
+              Text("auth.sign_in")
             }
           }
           .frame(maxWidth: .infinity)
@@ -76,7 +66,11 @@ struct AuthView: View {
           
           // Social login buttons
           VStack(spacing: 12) {
-            Button(action: authViewModel.signInWithApple) {
+            Button(action: {
+              Task {
+                await authViewModel.signInWithApple()
+              }
+            }) {
               HStack {
                 Image(systemName: "applelogo")
                 Text("auth.sign_in_apple")
@@ -88,7 +82,11 @@ struct AuthView: View {
               .cornerRadius(12)
             }
             
-            Button(action: authViewModel.signInWithGoogle) {
+            Button(action: {
+              Task {
+                await authViewModel.signInWithGoogle()
+              }
+            }) {
               HStack {
                 Image(systemName: "globe")
                 Text("auth.sign_in_google")
@@ -102,26 +100,19 @@ struct AuthView: View {
           }
         }
         
-        // Toggle sign up/sign in
-        Button(action: {
-          isSignUp.toggle()
-        }) {
-          Text(isSignUp ? "auth.have_account" : "auth.no_account")
-            .foregroundColor(.blue)
-        }
-        
         Spacer()
       }
       .padding()
       .navigationTitle("")
       .navigationBarHidden(true)
     }
-    .alert(item: $authViewModel.error) { error in
-      Alert(
-        title: Text("error.title"),
-        message: Text(error.errorDescription ?? ""),
-        dismissButton: .default(Text("error.ok"))
-      )
-    }
+    .alert("error.title", isPresented: $authViewModel.showError, actions: {
+      Button("error.ok") {
+        authViewModel.clearError()
+      }
+    }, message: {
+      Text(authViewModel.errorMessage ?? "")
+    })
   }
 }
+
