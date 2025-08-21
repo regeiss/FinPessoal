@@ -681,6 +681,9 @@
     "Descrição" : {
 
     },
+    "Desenvolvimento" : {
+
+    },
     "Despesas" : {
 
     },
@@ -1339,6 +1342,9 @@
           }
         }
       }
+    },
+    "Resetar Onboarding" : {
+
     },
     "Restante: %@" : {
 

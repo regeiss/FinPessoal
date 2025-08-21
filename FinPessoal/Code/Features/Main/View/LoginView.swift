@@ -14,11 +14,11 @@ struct LoginView: View {
   @State private var showOnboarding = !UserDefaults.standard.hasShownOnboarding
   
   var body: some View {
-    if showOnboarding {
-      OnboardingScreen()
-    } else {
+//    if showOnboarding {
+//      OnboardingScreen()
+//    } else {
       loginContent
-    }
+//    }
   }
   
   private var loginContent: some View {
