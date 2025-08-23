@@ -16,11 +16,15 @@ struct BudgetAlertsView: View {
         .font(.headline)
       
       ForEach(budgets) { budget in
-        BudgetAlertRow(budget: budget)
+        BudgetAlertRowView(budget: budget)
       }
     }
     .padding()
     .background(Color(.systemGray6))
     .cornerRadius(12)
   }
+}
+
+#Preview {
+  BudgetAlertsView(budgets: [])
 }

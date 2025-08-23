@@ -1,5 +1,5 @@
 //
-//  BudgetRowView.swift
+//  BudgetAlertCard.swift
 //  FinPessoal
 //
 //  Created by Roberto Edgar Geiss on 23/08/25.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct BudgetRowView: View {
+struct BudgetAlertCard: View {
   let budget: Budget
   
     var body: some View {

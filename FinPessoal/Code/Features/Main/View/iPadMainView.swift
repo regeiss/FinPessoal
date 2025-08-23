@@ -51,7 +51,7 @@ struct DetailView: View {
       case .reports:
         ReportsScreen()
       case .budgets:
-        BudgetScreen()
+        BudgetsScreen()
       case .goals:
         GoalScreen()
       case .settings:

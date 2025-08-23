@@ -11,14 +11,39 @@ import Combine
 class NavigationState: ObservableObject {
   @Published var selectedTab: MainTab = .dashboard
   @Published var selectedSidebarItem: SidebarItem? = .dashboard
+  
+  func selectTab(_ tab: MainTab) {
+    selectedTab = tab
+  }
+  
+  func selectSidebarItem(_ item: SidebarItem) {
+    selectedSidebarItem = item
+  }
+  
+  func resetNavigation() {
+    selectedTab = .dashboard
+    selectedSidebarItem = .dashboard
+  }
 }
 
-enum MainTab: String, CaseIterable {
-  case dashboard = "Dashboard"
-  case accounts = "Contas"
-  case transactions = "Transações"
-  case reports = "Relatórios"
-  case settings = "Configurações"
+enum MainTab: String, CaseIterable, Identifiable {
+  case dashboard = "dashboard"
+  case accounts = "accounts"
+  case transactions = "transactions"
+  case reports = "reports"
+  case settings = "settings"
+  
+  var id: String { rawValue }
+  
+  var displayName: String {
+    switch self {
+    case .dashboard: return String(localized: "tab.dashboard")
+    case .accounts: return String(localized: "tab.accounts")
+    case .transactions: return String(localized: "tab.transactions")
+    case .reports: return String(localized: "tab.reports")
+    case .settings: return String(localized: "tab.settings")
+    }
+  }
   
   var icon: String {
     switch self {
@@ -29,16 +54,40 @@ enum MainTab: String, CaseIterable {
     case .settings: return "gear"
     }
   }
+  
+  var description: String {
+    switch self {
+    case .dashboard: return String(localized: "tab.dashboard.description")
+    case .accounts: return String(localized: "tab.accounts.description")
+    case .transactions: return String(localized: "tab.transactions.description")
+    case .reports: return String(localized: "tab.reports.description")
+    case .settings: return String(localized: "tab.settings.description")
+    }
+  }
 }
 
-enum SidebarItem: String, CaseIterable {
-  case dashboard = "Dashboard"
-  case accounts = "Contas"
-  case transactions = "Transações"
-  case reports = "Relatórios"
-  case budgets = "Orçamentos"
-  case goals = "Metas"
-  case settings = "Configurações"
+enum SidebarItem: String, CaseIterable, Identifiable {
+  case dashboard = "dashboard"
+  case accounts = "accounts"
+  case transactions = "transactions"
+  case reports = "reports"
+  case budgets = "budgets"
+  case goals = "goals"
+  case settings = "settings"
+  
+  var id: String { rawValue }
+  
+  var displayName: String {
+    switch self {
+    case .dashboard: return String(localized: "sidebar.dashboard")
+    case .accounts: return String(localized: "sidebar.accounts")
+    case .transactions: return String(localized: "sidebar.transactions")
+    case .reports: return String(localized: "sidebar.reports")
+    case .budgets: return String(localized: "sidebar.budgets")
+    case .goals: return String(localized: "sidebar.goals")
+    case .settings: return String(localized: "sidebar.settings")
+    }
+  }
   
   var icon: String {
     switch self {
@@ -49,6 +98,18 @@ enum SidebarItem: String, CaseIterable {
     case .budgets: return "chart.pie.fill"
     case .goals: return "target"
     case .settings: return "gear"
+    }
+  }
+  
+  var description: String {
+    switch self {
+    case .dashboard: return String(localized: "sidebar.dashboard.description")
+    case .accounts: return String(localized: "sidebar.accounts.description")
+    case .transactions: return String(localized: "sidebar.transactions.description")
+    case .reports: return String(localized: "sidebar.reports.description")
+    case .budgets: return String(localized: "sidebar.budgets.description")
+    case .goals: return String(localized: "sidebar.goals.description")
+    case .settings: return String(localized: "sidebar.settings.description")
     }
   }
 }

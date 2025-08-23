@@ -34,7 +34,7 @@ struct MainTabView: View {
           }
           .tag(1)
         
-        BudgetScreen()
+        BudgetsScreen()
           .tabItem {
             Image(systemName: "chart.pie.fill")
             Text("tab.budgets")

@@ -9,31 +9,17 @@ import SwiftUI
 
 struct AccountDetailView: View {
   let account: Account
-  @EnvironmentObject var financeViewModel: FinanceViewModel
   @Environment(\.dismiss) private var dismiss
-  @State private var showingDeleteAlert = false
-  @State private var selectedTransaction: Transaction?
+  @EnvironmentObject var financeViewModel: FinanceViewModel
   
-  var accountTransactions: [Transaction] {
+  private var accountTransactions: [Transaction] {
     financeViewModel.transactions.filter { $0.accountId == account.id }
-  }
-  
-  var totalIncome: Double {
-    accountTransactions
-      .filter { $0.type == .income }
-      .reduce(0) { $0 + $1.amount }
-  }
-  
-  var totalExpenses: Double {
-    accountTransactions
-      .filter { $0.type == .expense }
-      .reduce(0) { $0 + $1.amount }
   }
   
   var body: some View {
     NavigationView {
       ScrollView {
-        VStack(spacing: 24) {
+        VStack(spacing: 20) {
           accountHeaderSection
           accountStatsSection
           recentTransactionsSection
@@ -41,40 +27,30 @@ struct AccountDetailView: View {
         .padding()
       }
       .navigationTitle(account.name)
-      .navigationBarTitleDisplayMode(.large)
+      .navigationBarTitleDisplayMode(.inline)
       .toolbar {
         ToolbarItem(placement: .navigationBarLeading) {
-          Button("Fechar") {
+          Button(String(localized: "common.close")) {
             dismiss()
           }
         }
         
         ToolbarItem(placement: .navigationBarTrailing) {
           Menu {
-            Button("Editar Conta") {
-              // TODO: Implementar edição de conta
+            Button(String(localized: "accounts.edit.button")) {
+              // Ação para editar
             }
-            
-            Button("Desativar Conta", role: .destructive) {
-              showingDeleteAlert = true
+            Button(String(localized: "accounts.view.statement")) {
+              // Ação para ver todas as transações
+            }
+            Divider()
+            Button(String(localized: "accounts.deactivate"), role: .destructive) {
+              // Ação para desativar
             }
           } label: {
             Image(systemName: "ellipsis.circle")
           }
         }
-      }
-      .sheet(item: $selectedTransaction) { transaction in
-        TransactionDetailView(transaction: transaction)
-          .environmentObject(financeViewModel)
-      }
-      .alert("Desativar Conta", isPresented: $showingDeleteAlert) {
-        Button("Cancelar", role: .cancel) { }
-        Button("Desativar", role: .destructive) {
-          // TODO: Implementar desativação de conta
-          dismiss()
-        }
-      } message: {
-        Text("Tem certeza que deseja desativar esta conta? As transações serão mantidas, mas a conta não aparecerá nos relatórios.")
       }
     }
   }
@@ -85,146 +61,88 @@ struct AccountDetailView: View {
         .font(.system(size: 60))
         .foregroundColor(account.type.color)
         .frame(width: 80, height: 80)
-        .background(account.type.color.opacity(0.1))
+        .background(account.type.color.opacity(0.15))
         .cornerRadius(20)
       
-      Text(account.type.rawValue)
-        .font(.headline)
-        .foregroundColor(.secondary)
-      
-      Text(account.formattedBalance)
-        .font(.system(size: 36, weight: .bold, design: .rounded))
-        .foregroundColor(account.balance >= 0 ? .green : .red)
-      
-      HStack {
-        VStack {
-          Text("Status")
-            .font(.caption)
-            .foregroundColor(.secondary)
-          
-          HStack {
-            Circle()
-              .fill(account.isActive ? .green : .red)
-              .frame(width: 8, height: 8)
-            Text(account.isActive ? "Ativa" : "Inativa")
-              .font(.caption)
-              .fontWeight(.medium)
-          }
-        }
+      VStack(spacing: 4) {
+        Text(LocalizedStringKey(account.type.rawValue))
+          .font(.headline)
+          .foregroundColor(.secondary)
         
-        Spacer()
-        
-        VStack {
-          Text("Moeda")
-            .font(.caption)
-            .foregroundColor(.secondary)
-          
-          Text(account.currency)
-            .font(.caption)
-            .fontWeight(.medium)
-        }
+        Text(account.formattedBalance)
+          .font(.system(size: 32, weight: .bold, design: .rounded))
+          .foregroundColor(account.balance >= 0 ? .green : .red)
       }
-      .padding(.horizontal)
     }
     .frame(maxWidth: .infinity)
-    .padding(.vertical, 24)
+    .padding(.vertical, 20)
     .background(Color(.systemGray6))
     .cornerRadius(16)
   }
   
   private var accountStatsSection: some View {
-    VStack(alignment: .leading, spacing: 16) {
-      Text("Estatísticas do Mês")
-        .font(.headline)
-        .fontWeight(.semibold)
+    LazyVGrid(columns: [
+      GridItem(.flexible()),
+      GridItem(.flexible())
+    ], spacing: 12) {
+      StatCard(
+        title: String(localized: "transactions.title"),
+        value: "\(accountTransactions.count)",
+        icon: "list.bullet",
+        color: .blue
+      )
       
-      LazyVGrid(columns: [
-        GridItem(.flexible()),
-        GridItem(.flexible())
-      ], spacing: 16) {
-        StatCard(
-          title: "Receitas",
-          value: CurrencyFormatter.shared.string(from: totalIncome),
-          icon: "arrow.up.circle.fill",
-          color: .green
-        )
-        
-        StatCard(
-          title: "Despesas",
-          value: CurrencyFormatter.shared.string(from: totalExpenses),
-          icon: "arrow.down.circle.fill",
-          color: .red
-        )
-      }
-      
-      // Gráfico de evolução (placeholder)
-      VStack(alignment: .leading, spacing: 8) {
-        Text("Evolução do Saldo")
-          .font(.subheadline)
-          .fontWeight(.medium)
-        
-        RoundedRectangle(cornerRadius: 8)
-          .fill(Color(.systemGray5))
-          .frame(height: 120)
-          .overlay(
-            Text("Gráfico em desenvolvimento")
-              .foregroundColor(.secondary)
-              .font(.caption)
-          )
-      }
+      StatCard(
+        title: String(localized: "common.status"),
+        value: String(localized: account.isActive ? "common.active" : "common.inactive"),
+        icon: account.isActive ? "checkmark.circle" : "pause.circle",
+        color: account.isActive ? .green : .orange
+      )
     }
   }
   
   private var recentTransactionsSection: some View {
     VStack(alignment: .leading, spacing: 12) {
       HStack {
-        Text("Transações Recentes")
+        Text(String(localized: "transactions.recent"))
           .font(.headline)
           .fontWeight(.semibold)
-        
         Spacer()
-        
-        if accountTransactions.count > 5 {
-          Button("Ver Todas") {
-            // TODO: Navegar para lista completa de transações da conta
-          }
-          .font(.caption)
-          .foregroundColor(.blue)
+        if !accountTransactions.isEmpty {
+          Text(String(localized: "transactions.total.count", defaultValue: "\(accountTransactions.count) total"))
+            .font(.caption)
+            .foregroundColor(.secondary)
         }
       }
       
       if accountTransactions.isEmpty {
         VStack(spacing: 12) {
-          Image(systemName: "list.bullet")
+          Image(systemName: "tray")
             .font(.system(size: 40))
             .foregroundColor(.secondary)
           
-          Text("Nenhuma transação")
-            .font(.headline)
+          Text(String(localized: "transactions.empty.title"))
+            .font(.subheadline)
             .foregroundColor(.secondary)
           
-          Text("As transações desta conta aparecerão aqui")
+          Text(String(localized: "transactions.empty.account.description"))
             .font(.caption)
             .foregroundColor(.secondary)
-            .multilineTextAlignment(.center)
         }
         .frame(maxWidth: .infinity)
         .padding(.vertical, 40)
       } else {
         ForEach(accountTransactions.prefix(5)) { transaction in
-          Button {
-            selectedTransaction = transaction
-          } label: {
-            TransactionRow(transaction: transaction)
-          }
-          .buttonStyle(.plain)
+          TransactionRow(transaction: transaction)
         }
         
         if accountTransactions.count > 5 {
-          Text("e mais \(accountTransactions.count - 5) transações...")
-            .font(.caption)
-            .foregroundColor(.secondary)
-            .padding(.top, 8)
+          Button(String(localized: "transactions.view.all.count", defaultValue: "Ver todas as \(accountTransactions.count) transações")) {
+            // Navegar para lista completa de transações
+          }
+          .font(.caption)
+          .foregroundColor(.blue)
+          .padding(.top, 8)
         }
       }
     }

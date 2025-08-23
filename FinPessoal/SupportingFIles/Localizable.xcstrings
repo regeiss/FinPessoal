@@ -10,9 +10,6 @@
     "%lld%%" : {
 
     },
-    "0,00" : {
-
-    },
     "account.type.checking" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -47,6 +44,62 @@
         }
       }
     },
+    "accounts.add.coming.soon" : {
+
+    },
+    "accounts.add.first.button" : {
+
+    },
+    "accounts.add.title" : {
+
+    },
+    "accounts.balance.label" : {
+
+    },
+    "accounts.count.label" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%lld conta(s)"
+          }
+        }
+      }
+    },
+    "accounts.deactivate" : {
+
+    },
+    "accounts.edit.button" : {
+
+    },
+    "accounts.empty.description" : {
+
+    },
+    "accounts.empty.title" : {
+
+    },
+    "accounts.new.title" : {
+
+    },
+    "accounts.summary.title" : {
+
+    },
+    "accounts.title" : {
+
+    },
+    "accounts.total.balance" : {
+
+    },
+    "accounts.total.count" : {
+
+    },
+    "accounts.view.statement" : {
+
+    },
+    "accounts.your.accounts" : {
+
+    },
     "Adicionar" : {
 
     },
@@ -54,9 +107,6 @@
 
     },
     "Adicione sua primeira transação ou ajuste os filtros de busca" : {
-
-    },
-    "Adicione sua primeira transação para começar a controlar suas finanças" : {
 
     },
     "app.name" : {
@@ -76,10 +126,7 @@
         }
       }
     },
-    "As transações desta conta aparecerão aqui" : {
-
-    },
-    "Ativa" : {
+    "app.tagline" : {
 
     },
     "Autenticação Biométrica" : {
@@ -357,6 +404,21 @@
         }
       }
     },
+    "budgets.add.button" : {
+
+    },
+    "budgets.alerts.title" : {
+
+    },
+    "budgets.all.title" : {
+
+    },
+    "budgets.create.first" : {
+
+    },
+    "budgets.empty.description" : {
+
+    },
     "budgets.empty.subtitle" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -391,6 +453,17 @@
         }
       }
     },
+    "budgets.remaining" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Restante: %@"
+          }
+        }
+      }
+    },
     "budgets.title" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -408,6 +481,23 @@
         }
       }
     },
+    "budgets.total.budgeted" : {
+
+    },
+    "budgets.total.spent" : {
+
+    },
+    "budgets.used.percentage" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%lld%% usado"
+          }
+        }
+      }
+    },
     "Buscar transações..." : {
 
     },
@@ -417,37 +507,25 @@
     "Categoria" : {
 
     },
-    "Configurações" : {
+    "common.all" : {
 
     },
-    "Configurações Financeiras" : {
+    "common.cancel" : {
+
+    },
+    "common.close" : {
+
+    },
+    "common.status" : {
+
+    },
+    "Configurações" : {
 
     },
     "Conta" : {
 
     },
     "Conta Associada" : {
-
-    },
-    "Conta Ativa" : {
-
-    },
-    "Contas inativas não aparecem nos relatórios e estatísticas" : {
-
-    },
-    "Continuar com Apple" : {
-
-    },
-    "Continuar com Google" : {
-
-    },
-    "Criar Conta" : {
-
-    },
-    "Criar Orçamento" : {
-
-    },
-    "Crie seu primeiro orçamento para começar a controlar seus gastos" : {
 
     },
     "Dados" : {
@@ -657,12 +735,6 @@
         }
       }
     },
-    "Data" : {
-
-    },
-    "Data e Opções" : {
-
-    },
     "de %@" : {
 
     },
@@ -670,15 +742,6 @@
 
     },
     "Deletar Transação" : {
-
-    },
-    "Desativar" : {
-
-    },
-    "Desativar Conta" : {
-
-    },
-    "Descrição" : {
 
     },
     "Desenvolvimento" : {
@@ -690,13 +753,7 @@
     "Detalhes da Transação" : {
 
     },
-    "e mais %lld transações..." : {
-
-    },
     "Editar" : {
-
-    },
-    "Editar Conta" : {
 
     },
     "Editar Perfil" : {
@@ -709,15 +766,6 @@
 
     },
     "English (US)" : {
-
-    },
-    "Entrando..." : {
-
-    },
-    "Entrar" : {
-
-    },
-    "Erro" : {
 
     },
     "error.auth.failed" : {
@@ -950,13 +998,7 @@
     "Estatísticas" : {
 
     },
-    "Estatísticas do Mês" : {
-
-    },
     "Este Mês" : {
-
-    },
-    "Evolução do Saldo" : {
 
     },
     "Exportar Dados" : {
@@ -968,13 +1010,7 @@
     "Ferramentas" : {
 
     },
-    "FinPessoal" : {
-
-    },
     "Funcionalidade em desenvolvimento" : {
-
-    },
-    "Gerencie suas finanças de forma inteligente" : {
 
     },
     "goals.empty.subtitle" : {
@@ -1028,22 +1064,40 @@
         }
       }
     },
-    "Gráfico em desenvolvimento" : {
+    "Hello, World!" : {
 
     },
     "Idioma" : {
-
-    },
-    "Inativa" : {
-
-    },
-    "Informações Básicas" : {
 
     },
     "Informações da Transação" : {
 
     },
     "Informações Pessoais" : {
+
+    },
+    "login.continue.apple" : {
+
+    },
+    "login.continue.google" : {
+
+    },
+    "login.email.placeholder" : {
+
+    },
+    "login.or.continue.with" : {
+
+    },
+    "login.password.placeholder" : {
+
+    },
+    "login.signin.button" : {
+
+    },
+    "login.signing.in" : {
+
+    },
+    "login.title" : {
 
     },
     "Maior Valor" : {
@@ -1070,34 +1124,16 @@
     "Money Manager" : {
 
     },
-    "Nenhum Orçamento" : {
-
-    },
-    "Nenhuma transação" : {
-
-    },
     "Nenhuma transação encontrada" : {
 
     },
     "Nome" : {
 
     },
-    "Nome da Conta" : {
-
-    },
     "Notificações" : {
 
     },
     "Notificações e Segurança" : {
-
-    },
-    "Nova Conta" : {
-
-    },
-    "Nova Transação" : {
-
-    },
-    "OK" : {
 
     },
     "onboarding.budget.subtitle" : {
@@ -1253,16 +1289,7 @@
         }
       }
     },
-    "Opções" : {
-
-    },
     "Orçamento ultrapassado!" : {
-
-    },
-    "Orçamentos" : {
-
-    },
-    "ou continue com" : {
 
     },
     "Perfil" : {
@@ -1277,13 +1304,7 @@
     "Preferências" : {
 
     },
-    "Prévia" : {
-
-    },
     "Próximo ao limite (%lld%%)" : {
-
-    },
-    "R$" : {
 
     },
     "Receitas" : {
@@ -1355,22 +1376,10 @@
     "Sair da Conta" : {
 
     },
-    "Saldo Inicial" : {
-
-    },
     "Salvar" : {
 
     },
     "Salvar Alterações" : {
-
-    },
-    "Salvar Transação" : {
-
-    },
-    "Selecione uma conta" : {
-
-    },
-    "Senha" : {
 
     },
     "settings.account" : {
@@ -1458,10 +1467,55 @@
         }
       }
     },
-    "Status" : {
+    "sidebar.accounts" : {
+
+    },
+    "sidebar.accounts.description" : {
+
+    },
+    "sidebar.budgets" : {
+
+    },
+    "sidebar.budgets.description" : {
+
+    },
+    "sidebar.dashboard" : {
+
+    },
+    "sidebar.dashboard.description" : {
+
+    },
+    "sidebar.goals" : {
+
+    },
+    "sidebar.goals.description" : {
+
+    },
+    "sidebar.reports" : {
+
+    },
+    "sidebar.reports.description" : {
+
+    },
+    "sidebar.settings" : {
+
+    },
+    "sidebar.settings.description" : {
+
+    },
+    "sidebar.transactions" : {
+
+    },
+    "sidebar.transactions.description" : {
 
     },
     "Suporte" : {
+
+    },
+    "tab.accounts" : {
+
+    },
+    "tab.accounts.description" : {
 
     },
     "tab.budgets" : {
@@ -1498,6 +1552,9 @@
         }
       }
     },
+    "tab.dashboard.description" : {
+
+    },
     "tab.goals" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1532,6 +1589,9 @@
         }
       }
     },
+    "tab.reports.description" : {
+
+    },
     "tab.settings" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1548,6 +1608,9 @@
           }
         }
       }
+    },
+    "tab.settings.description" : {
+
     },
     "tab.transactions" : {
       "extractionState" : "manual",
@@ -1566,28 +1629,16 @@
         }
       }
     },
-    "Tem certeza que deseja deletar esta transação? Esta ação não pode ser desfeita." : {
+    "tab.transactions.description" : {
 
     },
-    "Tem certeza que deseja desativar esta conta? As transações serão mantidas, mas a conta não aparecerá nos relatórios." : {
+    "Tem certeza que deseja deletar esta transação? Esta ação não pode ser desfeita." : {
 
     },
     "Termos de Uso" : {
 
     },
-    "Tipo" : {
-
-    },
-    "Tipo de Conta" : {
-
-    },
     "Todas" : {
-
-    },
-    "Todos os Orçamentos" : {
-
-    },
-    "Transação recorrente" : {
 
     },
     "Transação Recorrente" : {
@@ -1596,7 +1647,34 @@
     "Transações" : {
 
     },
-    "Transações Recentes" : {
+    "transaction.category.bills" : {
+
+    },
+    "transaction.category.entertainment" : {
+
+    },
+    "transaction.category.food" : {
+
+    },
+    "transaction.category.healthcare" : {
+
+    },
+    "transaction.category.housing" : {
+
+    },
+    "transaction.category.investment" : {
+
+    },
+    "transaction.category.other" : {
+
+    },
+    "transaction.category.salary" : {
+
+    },
+    "transaction.category.shopping" : {
+
+    },
+    "transaction.category.transport" : {
 
     },
     "transaction.type.expense" : {
@@ -1650,6 +1728,21 @@
         }
       }
     },
+    "transactions.add.button" : {
+
+    },
+    "transactions.add.coming.soon" : {
+
+    },
+    "transactions.add.title" : {
+
+    },
+    "transactions.empty.account.description" : {
+
+    },
+    "transactions.empty.description" : {
+
+    },
     "transactions.empty.subtitle" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1684,6 +1777,38 @@
         }
       }
     },
+    "transactions.filter.all" : {
+
+    },
+    "transactions.filter.month" : {
+
+    },
+    "transactions.filter.showing.count" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Mostrando %1$lld de %2$lld transações"
+          }
+        }
+      }
+    },
+    "transactions.filter.today" : {
+
+    },
+    "transactions.filter.week" : {
+
+    },
+    "transactions.new.title" : {
+
+    },
+    "transactions.recent" : {
+
+    },
+    "transactions.search.prompt" : {
+
+    },
     "transactions.title" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1701,10 +1826,29 @@
         }
       }
     },
-    "Use Face ID ou Touch ID para acessar o app" : {
-
+    "transactions.total.count" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%lld total"
+          }
+        }
+      }
     },
-    "Ver Todas" : {
+    "transactions.view.all.count" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Ver todas as %lld transações"
+          }
+        }
+      }
+    },
+    "Use Face ID ou Touch ID para acessar o app" : {
 
     }
   },

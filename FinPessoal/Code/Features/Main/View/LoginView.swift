@@ -11,17 +11,8 @@ struct LoginView: View {
   @EnvironmentObject var authViewModel: AuthViewModel
   @State private var email = ""
   @State private var password = ""
-  @State private var showOnboarding = !UserDefaults.standard.hasShownOnboarding
   
   var body: some View {
-//    if showOnboarding {
-//      OnboardingScreen()
-//    } else {
-      loginContent
-//    }
-  }
-  
-  private var loginContent: some View {
     NavigationView {
       ScrollView {
         VStack(spacing: 32) {
@@ -33,7 +24,7 @@ struct LoginView: View {
         .padding(.horizontal, 24)
         .padding(.vertical, 40)
       }
-      .navigationTitle("Entrar")
+      .navigationTitle(String(localized: "login.title"))
       .navigationBarTitleDisplayMode(.large)
     }
   }
@@ -44,11 +35,11 @@ struct LoginView: View {
         .font(.system(size: 80))
         .foregroundColor(.green)
       
-      Text("FinPessoal")
+      Text(String(localized: "app.name"))
         .font(.largeTitle)
         .fontWeight(.bold)
       
-      Text("Gerencie suas finanças de forma inteligente")
+      Text(String(localized: "app.tagline"))
         .font(.subheadline)
         .foregroundColor(.secondary)
         .multilineTextAlignment(.center)
@@ -57,17 +48,15 @@ struct LoginView: View {
   
   private var loginForm: some View {
     VStack(spacing: 16) {
-      TextField("Email", text: $email)
+      TextField(String(localized: "login.email.placeholder"), text: $email)
         .textFieldStyle(.roundedBorder)
         .keyboardType(.emailAddress)
         .autocapitalization(.none)
-        .textContentType(.emailAddress)
       
-      SecureField("Senha", text: $password)
+      SecureField(String(localized: "login.password.placeholder"), text: $password)
         .textFieldStyle(.roundedBorder)
-        .textContentType(.password)
       
-      Button("Entrar") {
+      Button(String(localized: "login.signin.button")) {
         Task {
           await authViewModel.signInWithEmail(email, password: password)
         }
@@ -80,12 +69,12 @@ struct LoginView: View {
   
   private var socialLoginButtons: some View {
     VStack(spacing: 12) {
-      Text("ou continue com")
+      Text(String(localized: "login.or.continue.with"))
         .font(.caption)
         .foregroundColor(.secondary)
       
       VStack(spacing: 12) {
-        Button("Continuar com Google") {
+        Button(String(localized: "login.continue.google")) {
           Task {
             await authViewModel.signInWithGoogle()
           }
@@ -93,7 +82,7 @@ struct LoginView: View {
         .buttonStyle(.bordered)
         .frame(maxWidth: .infinity)
         
-        Button("Continuar com Apple") {
+        Button(String(localized: "login.continue.apple")) {
           Task {
             await authViewModel.signInWithApple()
           }
@@ -106,28 +95,17 @@ struct LoginView: View {
   }
   
   private var errorSection: some View {
-    VStack(spacing: 16) {
+    Group {
       if authViewModel.isLoading {
-        ProgressView("Entrando...")
+        ProgressView(String(localized: "login.signing.in"))
           .progressViewStyle(CircularProgressViewStyle())
       }
       
       if let errorMessage = authViewModel.errorMessage {
-        VStack(spacing: 8) {
-          Text(errorMessage)
-            .foregroundColor(.red)
-            .font(.caption)
-            .multilineTextAlignment(.center)
-          
-          Button("OK") {
-            authViewModel.clearError()
-          }
-          .buttonStyle(.bordered)
-          .controlSize(.small)
-        }
-        .padding()
-        .background(Color.red.opacity(0.1))
-        .cornerRadius(8)
+        Text(errorMessage)
+          .foregroundColor(.red)
+          .font(.caption)
+          .multilineTextAlignment(.center)
       }
     }
   }
