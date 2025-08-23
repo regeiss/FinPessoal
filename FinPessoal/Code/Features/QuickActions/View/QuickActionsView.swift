@@ -10,13 +10,13 @@ import SwiftUI
 struct QuickActionsView: View {
   var body: some View {
     VStack(alignment: .leading, spacing: 12) {
-      Text("dashboard.quick_actions")
+      Text("dashboard.quick.actions")
         .font(.headline)
       
       LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 2), spacing: 12) {
         QuickActionButton(
           icon: "plus.circle.fill",
-          title: "dashboard.add_transaction",
+          title: "dashboard.add.transaction",
           color: .blue
         ) {
           // Add transaction action
@@ -24,7 +24,7 @@ struct QuickActionsView: View {
         
         QuickActionButton(
           icon: "chart.pie.fill",
-          title: "dashboard.create_budget",
+          title: "dashboard.create.budget",
           color: .green
         ) {
           // Create budget action
@@ -32,7 +32,7 @@ struct QuickActionsView: View {
         
         QuickActionButton(
           icon: "target",
-          title: "dashboard.set_goal",
+          title: "dashboard.set.goal",
           color: .purple
         ) {
           // Set goal action
@@ -40,7 +40,7 @@ struct QuickActionsView: View {
         
         QuickActionButton(
           icon: "chart.bar.fill",
-          title: "dashboard.view_reports",
+          title: "dashboard.view.reports",
           color: .orange
         ) {
           // View reports action

@@ -14,7 +14,7 @@ struct BalanceCardView: View {
   var body: some View {
     VStack(alignment: .leading, spacing: 16) {
       HStack {
-        Text("dashboard.total_balance")
+        Text("dashboard.total.balance")
           .font(.headline)
           .foregroundColor(.secondary)
         Spacer()
@@ -28,7 +28,7 @@ struct BalanceCardView: View {
       
       HStack {
         VStack(alignment: .leading) {
-          Text("dashboard.monthly_expenses")
+          Text("dashboard.monthly.expenses")
             .font(.caption)
             .foregroundColor(.secondary)
           Text(monthlyExpenses.formatted(.currency(code: "BRL")))
@@ -42,6 +42,6 @@ struct BalanceCardView: View {
     .background(Color(.systemGray6))
     .cornerRadius(12)
     .accessibilityElement(children: .combine)
-    .accessibilityLabel("dashboard.balance_card.accessibility")
+    .accessibilityLabel("dashboard.balance.card.accessibility")
   }
 }

@@ -39,22 +39,3 @@ struct StatCard: View {
     .cornerRadius(12)
   }
 }
-
-#Preview {
-  HStack {
-    StatCard(
-      title: "Receitas",
-      value: "R$ 3.500,00",
-      icon: "arrow.up.circle.fill",
-      color: .green
-    )
-    
-    StatCard(
-      title: "Despesas",
-      value: "R$ 1.530,50",
-      icon: "arrow.down.circle.fill",
-      color: .red
-    )
-  }
-  .padding()
-}
