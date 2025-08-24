@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct OnboardingScreen: View {
-  @EnvironmentObject var appState: AppState
+  @EnvironmentObject var onboardingManager: OnboardingManager
   @State private var currentPage = 0
   
   private let pages = [
@@ -46,7 +46,7 @@ struct OnboardingScreen: View {
       VStack(spacing: 20) {
         if currentPage == pages.count - 1 {
           Button(action: {
-            appState.completeOnboarding()
+            onboardingManager.completeOnboarding()
           }) {
             Text("onboarding.get_started")
               .font(.headline)
@@ -75,7 +75,7 @@ struct OnboardingScreen: View {
         }
         
         Button(action: {
-          appState.completeOnboarding()
+          onboardingManager.completeOnboarding()
         }) {
           Text("onboarding.skip")
             .foregroundColor(.secondary)

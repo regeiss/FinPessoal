@@ -16,35 +16,35 @@ struct iPhoneMainView: View {
       DashboardScreen()
         .tabItem {
           Image(systemName: MainTab.dashboard.icon)
-          Text(MainTab.dashboard.rawValue)
+          Text(MainTab.dashboard.displayName)
         }
         .tag(MainTab.dashboard)
       
       AccountsView()
         .tabItem {
           Image(systemName: MainTab.accounts.icon)
-          Text(MainTab.accounts.rawValue)
+          Text(MainTab.accounts.displayName)
         }
         .tag(MainTab.accounts)
       
       TransactionsScreen()
         .tabItem {
           Image(systemName: MainTab.transactions.icon)
-          Text(MainTab.transactions.rawValue)
+          Text(MainTab.transactions.displayName)
         }
         .tag(MainTab.transactions)
       
       ReportsScreen()
         .tabItem {
           Image(systemName: MainTab.reports.icon)
-          Text(MainTab.reports.rawValue)
+          Text(MainTab.reports.displayName)
         }
         .tag(MainTab.reports)
       
       SettingsScreen()
         .tabItem {
           Image(systemName: MainTab.settings.icon)
-          Text(MainTab.settings.rawValue)
+          Text(MainTab.settings.displayName)
         }
         .tag(MainTab.settings)
     }

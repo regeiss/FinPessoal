@@ -13,7 +13,7 @@ struct RecentTransactionScreen: View {
   var body: some View {
     VStack(alignment: .leading, spacing: 12) {
       HStack {
-        Text("dashboard.recent_transactions")
+        Text("dashboard.recent.transactions")
           .font(.headline)
         Spacer()
         NavigationLink(destination: TransactionsScreen()) {

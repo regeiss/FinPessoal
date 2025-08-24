@@ -1169,6 +1169,17 @@
     "Dados" : {
 
     },
+    "dashboard.add.transaction" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Criar transação"
+          }
+        }
+      }
+    },
     "dashboard.balance.card.accessibility" : {
 
     },
@@ -1205,6 +1216,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Orçamentos"
+          }
+        }
+      }
+    },
+    "dashboard.create.budget" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create Budget"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Criar Orçamento"
           }
         }
       }
@@ -1280,11 +1308,22 @@
         }
       }
     },
-    "dashboard.quick_actions" : {
-
-    },
-    "dashboard.recent_transactions" : {
-
+    "dashboard.quick.actions" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quick Actions"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ações Rápidas"
+          }
+        }
+      }
     },
     "dashboard.recent.transactions" : {
       "extractionState" : "manual",
@@ -1305,6 +1344,23 @@
     },
     "dashboard.see_all" : {
 
+    },
+    "dashboard.set.goal" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Set Goal"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Definir Meta"
+          }
+        }
+      }
     },
     "dashboard.title" : {
       "extractionState" : "manual",
@@ -1353,6 +1409,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ver Todos"
+          }
+        }
+      }
+    },
+    "dashboard.view.reports" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "View Reports"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ver Relatórios"
           }
         }
       }

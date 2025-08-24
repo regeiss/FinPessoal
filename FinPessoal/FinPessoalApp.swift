@@ -17,6 +17,7 @@ struct MoneyManagerApp: App {
   @StateObject private var financeViewModel: FinanceViewModel
   @StateObject private var navigationState = NavigationState()
   @StateObject private var appState = AppState()
+  @StateObject private var onboardingManager = OnboardingManager()
   
   init() {
     // Configure Firebase only if not using mocks
@@ -45,6 +46,7 @@ struct MoneyManagerApp: App {
         .environmentObject(financeViewModel)
         .environmentObject(navigationState)
         .environmentObject(appState)
+        .environmentObject(onboardingManager)
         .onAppear {
           authViewModel.checkAuthenticationState()
         }
