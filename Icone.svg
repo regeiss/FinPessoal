@@ -1,0 +1,113 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2865
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 <svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">\
+  <defs>\
+    <!-- Gradiente principal -->\
+    <linearGradient id="mainGradient" x1="0%" y1="0%" x2="100%" y2="100%">\
+      <stop offset="0%" style="stop-color:#4F80FF;stop-opacity:1" />\
+      <stop offset="50%" style="stop-color:#2E68F7;stop-opacity:1" />\
+      <stop offset="100%" style="stop-color:#1B4AEF;stop-opacity:1" />\
+    </linearGradient>\
+    \
+    <!-- Gradiente para o s\'edmbolo $ -->\
+    <linearGradient id="dollarGradient" x1="0%" y1="0%" x2="100%" y2="100%">\
+      <stop offset="0%" style="stop-color:#34D399;stop-opacity:1" />\
+      <stop offset="100%" style="stop-color:#10B981;stop-opacity:1" />\
+    </linearGradient>\
+    \
+    <!-- Gradiente para gr\'e1fico -->\
+    <linearGradient id="chartGradient" x1="0%" y1="0%" x2="100%" y2="100%">\
+      <stop offset="0%" style="stop-color:#FBBF24;stop-opacity:1" />\
+      <stop offset="100%" style="stop-color:#F59E0B;stop-opacity:1" />\
+    </linearGradient>\
+    \
+    <!-- Sombra -->\
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">\
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-opacity="0.15"/>\
+    </filter>\
+  </defs>\
+  \
+  <!-- Background com bordas arredondadas -->\
+  <rect width="1024" height="1024" rx="180" ry="180" fill="url(#mainGradient)" filter="url(#shadow)"/>\
+  \
+  <!-- C\'edrculo decorativo de fundo -->\
+  <circle cx="512" cy="400" r="280" fill="rgba(255,255,255,0.1)" />\
+  \
+  <!-- Gr\'e1fico de barras (parte inferior) -->\
+  <g transform="translate(200, 600)">\
+    <!-- Barra 1 -->\
+    <rect x="0" y="80" width="80" height="120" rx="8" fill="rgba(255,255,255,0.3)"/>\
+    <!-- Barra 2 -->\
+    <rect x="120" y="40" width="80" height="160" rx="8" fill="rgba(255,255,255,0.4)"/>\
+    <!-- Barra 3 -->\
+    <rect x="240" y="0" width="80" height="200" rx="8" fill="url(#chartGradient)"/>\
+    <!-- Barra 4 -->\
+    <rect x="360" y="60" width="80" height="140" rx="8" fill="rgba(255,255,255,0.35)"/>\
+    <!-- Barra 5 -->\
+    <rect x="480" y="100" width="80" height="100" rx="8" fill="rgba(255,255,255,0.25)"/>\
+  </g>\
+  \
+  <!-- Container principal para o s\'edmbolo $ -->\
+  <g transform="translate(512, 350)">\
+    <!-- C\'edrculo de fundo para o $ -->\
+    <circle cx="0" cy="0" r="140" fill="rgba(255,255,255,0.95)" filter="url(#shadow)"/>\
+    \
+    <!-- S\'edmbolo $ -->\
+    <g transform="scale(1.2, 1.2)">\
+      <!-- Linha vertical do $ -->\
+      <rect x="-8" y="-80" width="16" height="160" rx="8" fill="url(#dollarGradient)"/>\
+      \
+      <!-- Parte superior do S -->\
+      <path d="M -60 -40 \
+               Q -60 -65, -35 -65\
+               L 35 -65\
+               Q 60 -65, 60 -40\
+               Q 60 -15, 35 -15\
+               L -10 -15\
+               Q -25 -15, -25 -5\
+               Q -25 5, -10 5\
+               L 35 5" \
+            stroke="url(#dollarGradient)" \
+            stroke-width="22" \
+            stroke-linecap="round" \
+            fill="none"/>\
+      \
+      <!-- Parte inferior do S -->\
+      <path d="M -35 5\
+               L 10 5\
+               Q 25 5, 25 15\
+               Q 25 25, 10 25\
+               L -35 25\
+               Q -60 25, -60 50\
+               Q -60 75, -35 75\
+               L 35 75" \
+            stroke="url(#dollarGradient)" \
+            stroke-width="22" \
+            stroke-linecap="round" \
+            fill="none"/>\
+    </g>\
+  </g>\
+  \
+  <!-- Elementos decorativos - pontos pequenos -->\
+  <circle cx="180" cy="200" r="12" fill="rgba(255,255,255,0.4)"/>\
+  <circle cx="844" cy="180" r="8" fill="rgba(255,255,255,0.3)"/>\
+  <circle cx="160" cy="400" r="6" fill="rgba(255,255,255,0.2)"/>\
+  <circle cx="864" cy="380" r="10" fill="rgba(255,255,255,0.35)"/>\
+  \
+  <!-- Linha crescente sugerindo crescimento financeiro -->\
+  <path d="M 150 850 Q 300 800, 450 750 Q 600 700, 750 650 Q 850 600, 874 580" \
+        stroke="rgba(255,255,255,0.4)" \
+        stroke-width="6" \
+        stroke-linecap="round" \
+        fill="none"/>\
+  \
+  <!-- Pontos na linha de crescimento -->\
+  <circle cx="300" cy="800" r="8" fill="rgba(52,211,153,0.8)"/>\
+  <circle cx="600" cy="700" r="8" fill="rgba(52,211,153,0.8)"/>\
+  <circle cx="850" cy="600" r="8" fill="rgba(52,211,153,0.8)"/>\
+</svg>}

@@ -17,7 +17,7 @@ struct RecentTransactionScreen: View {
           .font(.headline)
         Spacer()
         NavigationLink(destination: TransactionsScreen()) {
-          Text("dashboard.see_all")
+          Text("dashboard.view.all")
             .font(.caption)
             .foregroundColor(.blue)
         }

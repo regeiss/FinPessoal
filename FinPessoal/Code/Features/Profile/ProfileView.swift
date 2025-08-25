@@ -22,10 +22,10 @@ struct ProfileView: View {
         }
         .padding()
       }
-      .navigationTitle("Perfil")
+      .navigationTitle(String(localized: "profile.title", defaultValue: "Perfil"))
       .toolbar {
         ToolbarItem(placement: .navigationBarTrailing) {
-          Button("Editar") {
+          Button(String(localized: "common.edit")) {
             showingEditProfile = true
           }
         }
@@ -46,7 +46,7 @@ struct ProfileView: View {
       
       // Informações básicas
       VStack(spacing: 4) {
-        Text(authViewModel.currentUser?.name ?? "Usuário")
+        Text(authViewModel.currentUser?.name ?? String(localized: "profile.default.user", defaultValue: "Usuário"))
           .font(.title2)
           .fontWeight(.bold)
         
@@ -55,7 +55,7 @@ struct ProfileView: View {
           .foregroundColor(.secondary)
         
         if let createdAt = authViewModel.currentUser?.createdAt {
-          Text("Membro desde \(createdAt.formatted(date: .abbreviated, time: .omitted))")
+          Text(String(localized: "profile.member.since", defaultValue: "Membro desde \(createdAt.formatted(date: .abbreviated, time: .omitted))"))
             .font(.caption)
             .foregroundColor(.secondary)
         }
@@ -69,7 +69,7 @@ struct ProfileView: View {
   
   private var profileStatsSection: some View {
     VStack(alignment: .leading, spacing: 16) {
-      Text("Estatísticas")
+      Text(String(localized: "profile.stats.title", defaultValue: "Estatísticas"))
         .font(.headline)
         .fontWeight(.semibold)
       
@@ -78,15 +78,15 @@ struct ProfileView: View {
         GridItem(.flexible())
       ], spacing: 16) {
         StatCard(
-          title: "Dias de Uso",
+          title: String(localized: "profile.stats.days.used", defaultValue: "Dias de Uso"),
           value: "\(daysSinceCreation)",
           icon: "calendar",
           color: .blue
         )
         
         StatCard(
-          title: "Meta do Mês",
-          value: "Em breve",
+          title: String(localized: "profile.stats.monthly.goal", defaultValue: "Meta do Mês"),
+          value: String(localized: "common.coming.soon.short", defaultValue: "Em breve"),
           icon: "target",
           color: .orange
         )
@@ -96,32 +96,32 @@ struct ProfileView: View {
   
   private var profileSettingsSection: some View {
     VStack(alignment: .leading, spacing: 16) {
-      Text("Configurações")
+      Text(String(localized: "settings.title"))
         .font(.headline)
         .fontWeight(.semibold)
       
       VStack(spacing: 12) {
         ProfileSettingRow(
-          title: "Moeda",
+          title: String(localized: "settings.currency"),
           value: "BRL",
           icon: "dollarsign.circle"
         )
         
         ProfileSettingRow(
-          title: "Idioma",
+          title: String(localized: "settings.language"),
           value: "pt-BR",
           icon: "globe"
         )
         
         ProfileSettingRow(
-          title: "Notificações",
-          value: "Ativadas",
+          title: String(localized: "settings.notifications"),
+          value: String(localized: "settings.notifications.enabled", defaultValue: "Ativadas"),
           icon: "bell"
         )
         
         ProfileSettingRow(
-          title: "Autenticação Biométrica",
-          value: "Desativada",
+          title: String(localized: "settings.biometric.auth", defaultValue: "Autenticação Biométrica"),
+          value: String(localized: "settings.biometric.disabled", defaultValue: "Desativada"),
           icon: "faceid"
         )
       }
@@ -130,24 +130,24 @@ struct ProfileView: View {
   
   private var accountActionsSection: some View {
     VStack(alignment: .leading, spacing: 16) {
-      Text("Conta")
+      Text(String(localized: "settings.account.section"))
         .font(.headline)
         .fontWeight(.semibold)
       
       VStack(spacing: 12) {
-        Button("Exportar Dados") {
+        Button(String(localized: "profile.export.data", defaultValue: "Exportar Dados")) {
           // TODO: Implementar exportação de dados
         }
         .foregroundColor(.blue)
         .frame(maxWidth: .infinity, alignment: .leading)
         
-        Button("Política de Privacidade") {
+        Button(String(localized: "profile.privacy.policy", defaultValue: "Política de Privacidade")) {
           // TODO: Mostrar política de privacidade
         }
         .foregroundColor(.blue)
         .frame(maxWidth: .infinity, alignment: .leading)
         
-        Button("Termos de Uso") {
+        Button(String(localized: "profile.terms.of.use", defaultValue: "Termos de Uso")) {
           // TODO: Mostrar termos de uso
         }
         .foregroundColor(.blue)
@@ -155,7 +155,7 @@ struct ProfileView: View {
         
         Divider()
         
-        Button("Sair da Conta") {
+        Button(String(localized: "profile.sign.out", defaultValue: "Sair da Conta")) {
           Task {
             await authViewModel.signOut()
           }

@@ -32,24 +32,24 @@ struct TransactionDetailView: View {
         }
         .padding()
       }
-      .navigationTitle("Detalhes da Transação")
+      .navigationTitle(String(localized: "transaction.detail.title", defaultValue: "Detalhes da Transação"))
       .navigationBarTitleDisplayMode(.large)
       .toolbar {
         ToolbarItem(placement: .navigationBarLeading) {
-          Button("Fechar") {
+          Button(String(localized: "common.close")) {
             dismiss()
           }
         }
         
         ToolbarItem(placement: .navigationBarTrailing) {
           Menu {
-            Button("Editar") {
+            Button(String(localized: "common.edit")) {
               showingEditView = true
             }
             
             Divider()
             
-            Button("Deletar", role: .destructive) {
+            Button(String(localized: "common.delete"), role: .destructive) {
               showingDeleteAlert = true
             }
           } label: {
@@ -57,13 +57,13 @@ struct TransactionDetailView: View {
           }
         }
       }
-      .alert("Deletar Transação", isPresented: $showingDeleteAlert) {
-        Button("Cancelar", role: .cancel) { }
-        Button("Deletar", role: .destructive) {
+      .alert(String(localized: "transaction.delete.title", defaultValue: "Deletar Transação"), isPresented: $showingDeleteAlert) {
+        Button(String(localized: "common.cancel"), role: .cancel) { }
+        Button(String(localized: "common.delete"), role: .destructive) {
           deleteTransaction()
         }
       } message: {
-        Text("Tem certeza que deseja deletar esta transação? Esta ação não pode ser desfeita.")
+        Text(String(localized: "transaction.delete.confirmation", defaultValue: "Tem certeza que deseja deletar esta transação? Esta ação não pode ser desfeita."))
       }
       .sheet(isPresented: $showingEditView) {
         EditTransactionView(transaction: transaction)
@@ -106,28 +106,28 @@ struct TransactionDetailView: View {
   
   private var transactionDetailsSection: some View {
     VStack(alignment: .leading, spacing: 12) {
-      Text("Informações da Transação")
+      Text(String(localized: "transaction.info.title", defaultValue: "Informações da Transação"))
         .font(.headline)
         .fontWeight(.semibold)
       
       VStack(spacing: 8) {
         TransactionDetailRow(
-          label: "Data",
+          label: String(localized: "transaction.info.date", defaultValue: "Data"),
           value: transaction.date.formatted(date: .abbreviated, time: .shortened)
         )
         
         TransactionDetailRow(
-          label: "Categoria",
+          label: String(localized: "transaction.info.category", defaultValue: "Categoria"),
           value: transaction.category.displayName
         )
         
         TransactionDetailRow(
-          label: "Tipo",
+          label: String(localized: "transaction.info.type", defaultValue: "Tipo"),
           value: transaction.type.displayName
         )
         
         TransactionDetailRow(
-          label: "Valor",
+          label: String(localized: "transaction.info.amount", defaultValue: "Valor"),
           value: String(format: "R$ %.2f", transaction.amount)
         )
       }
@@ -138,7 +138,7 @@ struct TransactionDetailView: View {
     Group {
       if let account = relatedAccount {
         VStack(alignment: .leading, spacing: 12) {
-          Text("Conta Associada")
+          Text(String(localized: "transaction.account.title", defaultValue: "Conta Associada"))
             .font(.headline)
             .fontWeight(.semibold)
           
@@ -176,7 +176,7 @@ struct TransactionDetailView: View {
   
   private var categoryInfoSection: some View {
     VStack(alignment: .leading, spacing: 12) {
-      Text("Categoria")
+      Text(String(localized: "transaction.category.title", defaultValue: "Categoria"))
         .font(.headline)
         .fontWeight(.semibold)
       
@@ -192,9 +192,15 @@ struct TransactionDetailView: View {
           Text(transaction.category.displayName)
             .font(.headline)
           
-          Text("Categoria de " + (transaction.type == .expense ? "gasto" : "receita"))
-            .font(.caption)
-            .foregroundColor(.secondary)
+          if transaction.type == .expense {
+            Text(String(localized: "transaction.category.expense.description", defaultValue: "Categoria de gasto"))
+              .font(.caption)
+              .foregroundColor(.secondary)
+          } else {
+            Text(String(localized: "transaction.category.income.description", defaultValue: "Categoria de receita"))
+              .font(.caption)
+              .foregroundColor(.secondary)
+          }
         }
         
         Spacer()
@@ -207,7 +213,7 @@ struct TransactionDetailView: View {
   
   private var recurringInfoSection: some View {
     VStack(alignment: .leading, spacing: 12) {
-      Text("Transação Recorrente")
+      Text(String(localized: "transaction.recurring.title", defaultValue: "Transação Recorrente"))
         .font(.headline)
         .fontWeight(.semibold)
       
@@ -220,10 +226,10 @@ struct TransactionDetailView: View {
           .cornerRadius(8)
         
         VStack(alignment: .leading, spacing: 4) {
-          Text("Repetição Automática")
+          Text(String(localized: "transaction.recurring.label", defaultValue: "Repetição Automática"))
             .font(.headline)
           
-          Text("Esta transação se repete automaticamente")
+          Text(String(localized: "transaction.recurring.description", defaultValue: "Esta transação se repete automaticamente"))
             .font(.caption)
             .foregroundColor(.secondary)
         }
@@ -255,23 +261,23 @@ struct EditTransactionView: View {
   var body: some View {
     NavigationView {
       VStack {
-        Text("Editar Transação")
+        Text(String(localized: "transaction.edit.title", defaultValue: "Editar Transação"))
           .font(.title)
         
-        Text("Funcionalidade em desenvolvimento")
+        Text(String(localized: "common.coming.soon", defaultValue: "Funcionalidade em desenvolvimento"))
           .foregroundColor(.secondary)
       }
-      .navigationTitle("Editar")
+      .navigationTitle(String(localized: "common.edit"))
       .navigationBarTitleDisplayMode(.inline)
       .toolbar {
         ToolbarItem(placement: .navigationBarLeading) {
-          Button("Cancelar") {
+          Button(String(localized: "common.cancel")) {
             dismiss()
           }
         }
         
         ToolbarItem(placement: .navigationBarTrailing) {
-          Button("Salvar") {
+          Button(String(localized: "common.save")) {
             // TODO: Implementar edição
             dismiss()
           }
@@ -300,3 +306,4 @@ struct TransactionDetailRow: View {
     .cornerRadius(8)
   }
 }
+

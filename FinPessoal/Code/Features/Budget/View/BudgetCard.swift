@@ -36,7 +36,7 @@ struct BudgetCard: View {
             .fontWeight(.semibold)
             .foregroundColor(budget.isOverBudget ? .red : .primary)
           
-          Text("de \(budget.formattedBudgetAmount)")
+          Text(String(localized: "budget.card.of.amount", defaultValue: "de \(budget.formattedBudgetAmount)"))
             .font(.caption)
             .foregroundColor(.secondary)
         }
@@ -48,7 +48,7 @@ struct BudgetCard: View {
                   budget.shouldAlert ? .orange : .green)
         
         HStack {
-          Text("Restante: \(budget.formattedRemaining)")
+          Text(String(localized: "budget.card.remaining", defaultValue: "Restante: \(budget.formattedRemaining)"))
             .font(.caption)
             .foregroundColor(.secondary)
           
@@ -68,7 +68,7 @@ struct BudgetCard: View {
             .foregroundColor(.red)
             .font(.caption)
           
-          Text("Orçamento ultrapassado!")
+          Text(String(localized: "budget.alert.over.budget"))
             .font(.caption)
             .foregroundColor(.red)
             .fontWeight(.medium)
@@ -81,7 +81,7 @@ struct BudgetCard: View {
             .foregroundColor(.orange)
             .font(.caption)
           
-          Text("Próximo ao limite (\(Int(budget.alertThreshold * 100))%)")
+          Text(String(localized: "budget.alert.near.limit.percent", defaultValue: "Próximo ao limite (\(Int(budget.alertThreshold * 100))%)"))
             .font(.caption)
             .foregroundColor(.orange)
             .fontWeight(.medium)

@@ -350,15 +350,6 @@
         }
       }
     },
-    "Adicionar" : {
-
-    },
-    "Adicionar Transação" : {
-
-    },
-    "Adicione sua primeira transação ou ajuste os filtros de busca" : {
-
-    },
     "app.name" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -392,9 +383,6 @@
           }
         }
       }
-    },
-    "Autenticação Biométrica" : {
-
     },
     "auth.email.label" : {
 
@@ -434,6 +422,23 @@
         }
       }
     },
+    "budget.alert.near.limit.percent" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Near limit (%lld%%)"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Próximo ao limite (%lld%%)"
+          }
+        }
+      }
+    },
     "budget.alert.over.budget" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -447,6 +452,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ultrapassou o orçamento"
+          }
+        }
+      }
+    },
+    "budget.card.of.amount" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "of %@"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "de %@"
+          }
+        }
+      }
+    },
+    "budget.card.remaining" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remaining: %@"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restante: %@"
           }
         }
       }
@@ -893,15 +932,6 @@
         }
       }
     },
-    "Buscar transações..." : {
-
-    },
-    "Cancelar" : {
-
-    },
-    "Categoria" : {
-
-    },
     "common.active" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -983,6 +1013,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Fechar"
+          }
+        }
+      }
+    },
+    "common.coming.soon" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Feature under development"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Funcionalidade em desenvolvimento"
+          }
+        }
+      }
+    },
+    "common.coming.soon.short" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Coming Soon"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Em breve"
           }
         }
       }
@@ -1157,18 +1221,6 @@
         }
       }
     },
-    "Configurações" : {
-
-    },
-    "Conta" : {
-
-    },
-    "Conta Associada" : {
-
-    },
-    "Dados" : {
-
-    },
     "dashboard.add.transaction" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1272,7 +1324,21 @@
       }
     },
     "dashboard.monthly.expenses" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Montly expenses"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Despesas mensais"
+          }
+        }
+      }
     },
     "dashboard.no.accounts" : {
       "extractionState" : "manual",
@@ -1341,9 +1407,6 @@
           }
         }
       }
-    },
-    "dashboard.see_all" : {
-
     },
     "dashboard.set.goal" : {
       "extractionState" : "manual",
@@ -1446,39 +1509,6 @@
           }
         }
       }
-    },
-    "de %@" : {
-
-    },
-    "Deletar" : {
-
-    },
-    "Deletar Transação" : {
-
-    },
-    "Desenvolvimento" : {
-
-    },
-    "Despesas" : {
-
-    },
-    "Detalhes da Transação" : {
-
-    },
-    "Editar" : {
-
-    },
-    "Editar Perfil" : {
-
-    },
-    "Editar Transação" : {
-
-    },
-    "Email" : {
-
-    },
-    "English (US)" : {
-
     },
     "error.adding.budget" : {
       "extractionState" : "manual",
@@ -1686,28 +1716,7 @@
     "error.validation.recovery" : {
       "comment" : "Please check your input and try again"
     },
-    "Español" : {
-
-    },
-    "Esta transação se repete automaticamente" : {
-
-    },
-    "Estatísticas" : {
-
-    },
-    "Este Mês" : {
-
-    },
-    "Exportar Dados" : {
-
-    },
-    "Fechar" : {
-
-    },
     "Ferramentas" : {
-
-    },
-    "Funcionalidade em desenvolvimento" : {
 
     },
     "goals.title" : {
@@ -1716,14 +1725,56 @@
     "Hello, World!" : {
 
     },
-    "Idioma" : {
-
+    "language.english.us" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "English (US)"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "English (US)"
+          }
+        }
+      }
     },
-    "Informações da Transação" : {
-
+    "language.portuguese.brazil" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Portuguese (Brazil)"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Português (Brasil)"
+          }
+        }
+      }
     },
-    "Informações Pessoais" : {
-
+    "language.spanish" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spanish"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Español"
+          }
+        }
+      }
     },
     "login.continue.apple" : {
       "extractionState" : "manual",
@@ -1861,40 +1912,10 @@
         }
       }
     },
-    "Maior Valor" : {
-
-    },
-    "Mais Antigas" : {
-
-    },
-    "Mais Recentes" : {
-
-    },
-    "Membro desde %@" : {
-
-    },
-    "Menor Valor" : {
-
-    },
     "Menu Principal" : {
 
     },
-    "Moeda" : {
-
-    },
     "Money Manager" : {
-
-    },
-    "Nenhuma transação encontrada" : {
-
-    },
-    "Nome" : {
-
-    },
-    "Notificações" : {
-
-    },
-    "Notificações e Segurança" : {
 
     },
     "onboarding.accounts.description" : {
@@ -1931,11 +1952,105 @@
         }
       }
     },
+    "onboarding.budget.subtitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create budgets and track your spending to stay on top of your finances"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crie orçamentos e acompanhe seus gastos para manter suas finanças em dia"
+          }
+        }
+      }
+    },
+    "onboarding.budget.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Smart Budgeting"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Orçamento Inteligente"
+          }
+        }
+      }
+    },
     "onboarding.get_started" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Begin"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Começar"
+          }
+        }
+      }
+    },
+    "onboarding.goals.subtitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Set financial goals and track your progress towards a better financial future"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Defina metas financeiras e acompanhe seu progresso rumo a um futuro financeiro melhor"
+          }
+        }
+      }
+    },
+    "onboarding.goals.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Achieve Your Goals"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conquiste Seus Objetivos"
+          }
+        }
+      }
     },
     "onboarding.next" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Próximo"
+          }
+        }
+      }
     },
     "onboarding.next.button" : {
       "extractionState" : "manual",
@@ -1989,7 +2104,20 @@
       }
     },
     "onboarding.skip" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skip"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pular"
+          }
+        }
+      }
     },
     "onboarding.skip.button" : {
       "extractionState" : "manual",
@@ -2076,6 +2204,23 @@
         }
       }
     },
+    "onboarding.welcome.subtitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Take control of your finances with our comprehensive personal finance management app"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tenha controle total das suas finanças com nosso app completo de gestão financeira pessoal"
+          }
+        }
+      }
+    },
     "onboarding.welcome.title" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2093,49 +2238,942 @@
         }
       }
     },
-    "Orçamento ultrapassado!" : {
-
+    "profile.default.user" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "User"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usuário"
+          }
+        }
+      }
     },
-    "Perfil" : {
-
+    "profile.edit.email" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Email"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Email"
+          }
+        }
+      }
     },
-    "Política de Privacidade" : {
-
+    "profile.edit.name" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Name"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nome"
+          }
+        }
+      }
     },
-    "Português (Brasil)" : {
-
+    "profile.edit.notifications.security" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notifications and Security"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notificações e Segurança"
+          }
+        }
+      }
     },
-    "Preferências" : {
-
+    "profile.edit.personal.info" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Personal Information"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informações Pessoais"
+          }
+        }
+      }
     },
-    "Próximo ao limite (%lld%%)" : {
-
+    "profile.edit.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit Profile"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Editar Perfil"
+          }
+        }
+      }
     },
-    "Receitas" : {
-
+    "profile.export.data" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Export Data"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exportar Dados"
+          }
+        }
+      }
     },
-    "Repetição Automática" : {
-
+    "profile.member.since" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Member since %@"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Membro desde %@"
+          }
+        }
+      }
+    },
+    "profile.privacy.policy" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Privacy Policy"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Política de Privacidade"
+          }
+        }
+      }
+    },
+    "profile.save.changes" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save Changes"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salvar Alterações"
+          }
+        }
+      }
+    },
+    "profile.sign.out" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign Out"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sair da Conta"
+          }
+        }
+      }
+    },
+    "profile.stats.days.used" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Days of Use"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dias de Uso"
+          }
+        }
+      }
+    },
+    "profile.stats.monthly.goal" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Monthly Goal"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meta do Mês"
+          }
+        }
+      }
+    },
+    "profile.stats.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Statistics"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estatísticas"
+          }
+        }
+      }
+    },
+    "profile.terms.of.use" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Terms of Use"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Termos de Uso"
+          }
+        }
+      }
+    },
+    "profile.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profile"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Perfil"
+          }
+        }
+      }
+    },
+    "quickaction.create.budget" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create Budget"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Criar Orçamento"
+          }
+        }
+      }
+    },
+    "quickaction.create.transaction" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create Transaction"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Criar transação"
+          }
+        }
+      }
+    },
+    "quickaction.set.goal" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Set Goal"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Definir Meta"
+          }
+        }
+      }
+    },
+    "quickaction.view.reports" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "View Reports"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ver Relatórios"
+          }
+        }
+      }
+    },
+    "reports.account.balance.history" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Account Balance History"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Histórico de Saldo da Conta"
+          }
+        }
+      }
+    },
+    "reports.average.daily.spending" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Average Daily Spending"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gasto Médio Diário"
+          }
+        }
+      }
+    },
+    "reports.budget.performance" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Budget Performance"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desempenho do Orçamento"
+          }
+        }
+      }
+    },
+    "reports.cash.flow" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cash Flow"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fluxo de Caixa"
+          }
+        }
+      }
+    },
+    "reports.coming.soon.message" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Soon you'll have access to detailed reports about your finances"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Em breve você terá acesso a relatórios detalhados sobre suas finanças"
+          }
+        }
+      }
+    },
+    "reports.empty.subtitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add transactions to generate financial reports"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adicione transações para gerar relatórios financeiros"
+          }
+        }
+      }
+    },
+    "reports.empty.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Reports Available"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nenhum Relatório Disponível"
+          }
+        }
+      }
+    },
+    "reports.error.message" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please check your internet connection and try again"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verifique sua conexão com a internet e tente novamente"
+          }
+        }
+      }
+    },
+    "reports.error.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to Generate Report"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Não foi Possível Gerar Relatório"
+          }
+        }
+      }
+    },
+    "reports.export.csv" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Export as CSV"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exportar como CSV"
+          }
+        }
+      }
+    },
+    "reports.export.pdf" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Export as PDF"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exportar como PDF"
+          }
+        }
+      }
+    },
+    "reports.filter.by.account" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filter by Account"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtrar por Conta"
+          }
+        }
+      }
+    },
+    "reports.filter.by.category" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filter by Category"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtrar por Categoria"
+          }
+        }
+      }
+    },
+    "reports.highest.expense.category" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Highest Expense Category"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Categoria de Maior Gasto"
+          }
+        }
+      }
+    },
+    "reports.income.vs.expenses" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Income vs Expenses"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Receitas vs Despesas"
+          }
+        }
+      }
+    },
+    "reports.loading" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loading Reports..."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Carregando Relatórios..."
+          }
+        }
+      }
+    },
+    "reports.monthly.trends" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Monthly Trends"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tendências Mensais"
+          }
+        }
+      }
+    },
+    "reports.net.income" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Net Income"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Renda Líquida"
+          }
+        }
+      }
+    },
+    "reports.overview" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Overview"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Visão Geral"
+          }
+        }
+      }
+    },
+    "reports.period.custom" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Custom Period"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Período Personalizado"
+          }
+        }
+      }
+    },
+    "reports.period.last.3.months" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Last 3 Months"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Últimos 3 Meses"
+          }
+        }
+      }
+    },
+    "reports.period.last.6.months" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Last 6 Months"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Últimos 6 Meses"
+          }
+        }
+      }
+    },
+    "reports.period.last.month" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Last Month"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mês Passado"
+          }
+        }
+      }
+    },
+    "reports.period.selector" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Period"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Período"
+          }
+        }
+      }
+    },
+    "reports.period.this.month" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This Month"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Este Mês"
+          }
+        }
+      }
+    },
+    "reports.period.this.year" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This Year"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Este Ano"
+          }
+        }
+      }
+    },
+    "reports.savings.rate" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Savings Rate"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Taxa de Poupança"
+          }
+        }
+      }
+    },
+    "reports.share" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Share Report"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compartilhar Relatório"
+          }
+        }
+      }
+    },
+    "reports.show.chart" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chart View"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Visualização em Gráfico"
+          }
+        }
+      }
+    },
+    "reports.show.table" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Table View"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Visualização em Tabela"
+          }
+        }
+      }
+    },
+    "reports.spending.by.category" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spending by Category"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gastos por Categoria"
+          }
+        }
+      }
     },
     "reports.title" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reports"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Relatórios"
+          }
+        }
+      }
     },
-    "Resetar Onboarding" : {
-
+    "reports.total.expenses" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total Expenses"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Despesas Totais"
+          }
+        }
+      }
     },
-    "Restante: %@" : {
-
+    "reports.total.income" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total Income"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Receita Total"
+          }
+        }
+      }
+    },
+    "reports.transaction.count" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total Transactions"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total de Transações"
+          }
+        }
+      }
     },
     "Sair" : {
-
-    },
-    "Sair da Conta" : {
-
-    },
-    "Salvar" : {
-
-    },
-    "Salvar Alterações" : {
 
     },
     "settings.account.section" : {
@@ -2151,6 +3189,74 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Conta"
+          }
+        }
+      }
+    },
+    "settings.backup" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Backup"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Backup"
+          }
+        }
+      }
+    },
+    "settings.biometric.auth" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Biometric Authentication"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autenticação Biométrica"
+          }
+        }
+      }
+    },
+    "settings.biometric.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use Face ID or Touch ID to access the app"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use Face ID ou Touch ID para acessar o app"
+          }
+        }
+      }
+    },
+    "settings.biometric.disabled" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disabled"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desativada"
           }
         }
       }
@@ -2189,6 +3295,40 @@
         }
       }
     },
+    "settings.data.section" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dados"
+          }
+        }
+      }
+    },
+    "settings.development.section" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Development"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desenvolvimento"
+          }
+        }
+      }
+    },
     "settings.help" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2202,6 +3342,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ajuda"
+          }
+        }
+      }
+    },
+    "settings.import.data" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Import Data"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importar Dados"
           }
         }
       }
@@ -2240,6 +3397,23 @@
         }
       }
     },
+    "settings.notifications.enabled" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enabled"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ativadas"
+          }
+        }
+      }
+    },
     "settings.preferences.section" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2274,6 +3448,23 @@
         }
       }
     },
+    "settings.reset.onboarding" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset Onboarding"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resetar Onboarding"
+          }
+        }
+      }
+    },
     "settings.signout.button" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2304,6 +3495,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Suporte"
+          }
+        }
+      }
+    },
+    "settings.theme" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Theme"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tema"
           }
         }
       }
@@ -2563,9 +3771,6 @@
         }
       }
     },
-    "Suporte" : {
-
-    },
     "tab.accounts" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2742,20 +3947,22 @@
         }
       }
     },
-    "Tem certeza que deseja deletar esta transação? Esta ação não pode ser desfeita." : {
-
-    },
-    "Termos de Uso" : {
-
-    },
-    "Todas" : {
-
-    },
-    "Transação Recorrente" : {
-
-    },
-    "Transações" : {
-
+    "transaction.account.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Associated Account"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conta Associada"
+          }
+        }
+      }
     },
     "transaction.category.bills" : {
       "extractionState" : "manual",
@@ -2787,6 +3994,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Entretenimento"
+          }
+        }
+      }
+    },
+    "transaction.category.expense.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Expense category"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Categoria de gasto"
           }
         }
       }
@@ -2838,6 +4062,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Moradia"
+          }
+        }
+      }
+    },
+    "transaction.category.income.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Income category"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Categoria de receita"
           }
         }
       }
@@ -2910,6 +4151,23 @@
         }
       }
     },
+    "transaction.category.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Category"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Categoria"
+          }
+        }
+      }
+    },
     "transaction.category.transport" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2923,6 +4181,210 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Transporte"
+          }
+        }
+      }
+    },
+    "transaction.delete.confirmation" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Are you sure you want to delete this transaction? This action cannot be undone."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tem certeza que deseja deletar esta transação? Esta ação não pode ser desfeita."
+          }
+        }
+      }
+    },
+    "transaction.delete.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete Transaction"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deletar Transação"
+          }
+        }
+      }
+    },
+    "transaction.detail.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transaction Details"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Detalhes da Transação"
+          }
+        }
+      }
+    },
+    "transaction.edit.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit Transaction"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Editar Transação"
+          }
+        }
+      }
+    },
+    "transaction.info.amount" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Amount"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Valor"
+          }
+        }
+      }
+    },
+    "transaction.info.category" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Category"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Categoria"
+          }
+        }
+      }
+    },
+    "transaction.info.date" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Date"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data"
+          }
+        }
+      }
+    },
+    "transaction.info.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transaction Information"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informações da Transação"
+          }
+        }
+      }
+    },
+    "transaction.info.type" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Type"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tipo"
+          }
+        }
+      }
+    },
+    "transaction.recurring.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This transaction repeats automatically"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esta transação se repete automaticamente"
+          }
+        }
+      }
+    },
+    "transaction.recurring.label" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Auto Repeat"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Repetição Automática"
+          }
+        }
+      }
+    },
+    "transaction.recurring.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recurring Transaction"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transação Recorrente"
           }
         }
       }
@@ -3046,6 +4508,23 @@
         }
       }
     },
+    "transactions.empty.subtitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start adding your first transaction"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comece adicionando sua primeira transação"
+          }
+        }
+      }
+    },
     "transactions.empty.title" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3110,6 +4589,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mostrando %lld de %lld transações"
+          }
+        }
+      }
+    },
+    "transactions.filter.this.month" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This Month"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Este Mês"
           }
         }
       }
@@ -3199,6 +4695,74 @@
         }
       }
     },
+    "transactions.sort.highest" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Highest Amount"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maior Valor"
+          }
+        }
+      }
+    },
+    "transactions.sort.lowest" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lowest Amount"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Menor Valor"
+          }
+        }
+      }
+    },
+    "transactions.sort.newest" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Newest First"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mais Recentes"
+          }
+        }
+      }
+    },
+    "transactions.sort.oldest" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oldest First"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mais Antigas"
+          }
+        }
+      }
+    },
     "transactions.title" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3249,9 +4813,6 @@
           }
         }
       }
-    },
-    "Use Face ID ou Touch ID para acessar o app" : {
-
     },
     "validation.amount.positive" : {
       "extractionState" : "manual",

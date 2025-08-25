@@ -69,11 +69,11 @@ struct TransactionsContentView: View {
           transactionsList
         }
       }
-      .navigationTitle("Transações")
-      .searchable(text: $searchText, prompt: "Buscar transações...")
+      .navigationTitle(String(localized: "transactions.title"))
+      .searchable(text: $searchText, prompt: String(localized: "transactions.search.prompt"))
       .toolbar {
         ToolbarItem(placement: .navigationBarTrailing) {
-          Button("Adicionar") {
+          Button(String(localized: "transactions.add.button")) {
             showingAddTransaction = true
           }
         }
@@ -97,10 +97,10 @@ struct TransactionsContentView: View {
       HStack(spacing: 12) {
         // Filtros
         Menu {
-          Button("Todas") { selectedFilter = .all }
-          Button("Receitas") { selectedFilter = .income }
-          Button("Despesas") { selectedFilter = .expense }
-          Button("Este Mês") { selectedFilter = .thisMonth }
+          Button(String(localized: "transactions.filter.all")) { selectedFilter = .all }
+          Button(String(localized: "transaction.type.income")) { selectedFilter = .income }
+          Button(String(localized: "transaction.type.expense")) { selectedFilter = .expense }
+          Button(String(localized: "transactions.filter.this.month", defaultValue: "Este Mês")) { selectedFilter = .thisMonth }
         } label: {
           HStack {
             Text(selectedFilter.title)
@@ -114,10 +114,10 @@ struct TransactionsContentView: View {
         
         // Ordenação
         Menu {
-          Button("Mais Recentes") { selectedSort = .dateDesc }
-          Button("Mais Antigas") { selectedSort = .dateAsc }
-          Button("Maior Valor") { selectedSort = .amountDesc }
-          Button("Menor Valor") { selectedSort = .amountAsc }
+          Button(String(localized: "transactions.sort.newest", defaultValue: "Mais Recentes")) { selectedSort = .dateDesc }
+          Button(String(localized: "transactions.sort.oldest", defaultValue: "Mais Antigas")) { selectedSort = .dateAsc }
+          Button(String(localized: "transactions.sort.highest", defaultValue: "Maior Valor")) { selectedSort = .amountDesc }
+          Button(String(localized: "transactions.sort.lowest", defaultValue: "Menor Valor")) { selectedSort = .amountAsc }
         } label: {
           HStack {
             Image(systemName: "arrow.up.arrow.down")
@@ -164,16 +164,16 @@ struct TransactionsContentView: View {
         .font(.system(size: 60))
         .foregroundColor(.secondary)
       
-      Text("Nenhuma transação encontrada")
+      Text(String(localized: "transactions.empty.title"))
         .font(.title2)
         .fontWeight(.semibold)
       
-      Text("Adicione sua primeira transação ou ajuste os filtros de busca")
+      Text(String(localized: "transactions.empty.description"))
         .multilineTextAlignment(.center)
         .foregroundColor(.secondary)
         .padding(.horizontal)
       
-      Button("Adicionar Transação") {
+      Button(String(localized: "transactions.add.button")) {
         showingAddTransaction = true
       }
       .buttonStyle(.borderedProminent)
@@ -187,10 +187,10 @@ enum TransactionFilter: CaseIterable {
   
   var title: String {
     switch self {
-    case .all: return "Todas"
-    case .income: return "Receitas"
-    case .expense: return "Despesas"
-    case .thisMonth: return "Este Mês"
+    case .all: return String(localized: "transactions.filter.all")
+    case .income: return String(localized: "transaction.type.income")
+    case .expense: return String(localized: "transaction.type.expense")
+    case .thisMonth: return String(localized: "transactions.filter.this.month", defaultValue: "Este Mês")
     }
   }
 }
@@ -200,10 +200,10 @@ enum TransactionSort: CaseIterable {
   
   var title: String {
     switch self {
-    case .dateDesc: return "Mais Recentes"
-    case .dateAsc: return "Mais Antigas"
-    case .amountDesc: return "Maior Valor"
-    case .amountAsc: return "Menor Valor"
+    case .dateDesc: return String(localized: "transactions.sort.newest", defaultValue: "Mais Recentes")
+    case .dateAsc: return String(localized: "transactions.sort.oldest", defaultValue: "Mais Antigas")
+    case .amountDesc: return String(localized: "transactions.sort.highest", defaultValue: "Maior Valor")
+    case .amountAsc: return String(localized: "transactions.sort.lowest", defaultValue: "Menor Valor")
     }
   }
 }

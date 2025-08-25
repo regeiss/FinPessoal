@@ -22,60 +22,60 @@ struct ProfileEditView: View {
   var body: some View {
     NavigationView {
       Form {
-        Section("Informações Pessoais") {
+        Section(String(localized: "profile.edit.personal.info", defaultValue: "Informações Pessoais")) {
           HStack {
-            Text("Nome")
+            Text(String(localized: "profile.edit.name", defaultValue: "Nome"))
             Spacer()
-            TextField("Nome", text: $name)
+            TextField(String(localized: "profile.edit.name", defaultValue: "Nome"), text: $name)
               .multilineTextAlignment(.trailing)
           }
           
           HStack {
-            Text("Email")
+            Text(String(localized: "profile.edit.email", defaultValue: "Email"))
             Spacer()
             Text(authViewModel.currentUser?.email ?? "")
               .foregroundColor(.secondary)
           }
         }
         
-        Section("Preferências") {
-          Picker("Moeda", selection: $currency) {
+        Section(String(localized: "settings.preferences.section")) {
+          Picker(String(localized: "settings.currency"), selection: $currency) {
             ForEach(currencies, id: \.self) { currency in
               Text(currency).tag(currency)
             }
           }
           
-          Picker("Idioma", selection: $language) {
-            Text("Português (Brasil)").tag("pt-BR")
-            Text("English (US)").tag("en-US")
-            Text("Español").tag("es-ES")
+          Picker(String(localized: "settings.language"), selection: $language) {
+            Text(String(localized: "language.portuguese.brazil", defaultValue: "Português (Brasil)")).tag("pt-BR")
+            Text(String(localized: "language.english.us", defaultValue: "English (US)")).tag("en-US")
+            Text(String(localized: "language.spanish", defaultValue: "Español")).tag("es-ES")
           }
         }
         
-        Section("Notificações e Segurança") {
-          Toggle("Notificações", isOn: $notifications)
+        Section(String(localized: "profile.edit.notifications.security", defaultValue: "Notificações e Segurança")) {
+          Toggle(String(localized: "settings.notifications"), isOn: $notifications)
           
-          Toggle("Autenticação Biométrica", isOn: $biometricAuth)
+          Toggle(String(localized: "settings.biometric.auth", defaultValue: "Autenticação Biométrica"), isOn: $biometricAuth)
           
           if biometricAuth {
-            Text("Use Face ID ou Touch ID para acessar o app")
+            Text(String(localized: "settings.biometric.description", defaultValue: "Use Face ID ou Touch ID para acessar o app"))
               .font(.caption)
               .foregroundColor(.secondary)
           }
         }
         
         Section {
-          Button("Salvar Alterações") {
+          Button(String(localized: "profile.save.changes", defaultValue: "Salvar Alterações")) {
             saveChanges()
           }
           .frame(maxWidth: .infinity)
         }
       }
-      .navigationTitle("Editar Perfil")
+      .navigationTitle(String(localized: "profile.edit.title", defaultValue: "Editar Perfil"))
       .navigationBarTitleDisplayMode(.inline)
       .toolbar {
         ToolbarItem(placement: .navigationBarLeading) {
-          Button("Cancelar") {
+          Button(String(localized: "common.cancel")) {
             dismiss()
           }
         }

@@ -15,7 +15,7 @@ struct SettingsScreen: View {
   var body: some View {
     NavigationView {
       List {
-        Section("Perfil") {
+        Section(String(localized: "profile.title", defaultValue: "Perfil")) {
           if let user = authViewModel.currentUser {
             Button {
               showingProfile = true
@@ -54,34 +54,34 @@ struct SettingsScreen: View {
           }
         }
         
-        Section("Preferências") {
-          SettingsRow(title: "Notificações", icon: "bell", action: {})
-          SettingsRow(title: "Moeda", icon: "dollarsign.circle", action: {})
-          SettingsRow(title: "Idioma", icon: "globe", action: {})
-          SettingsRow(title: "Tema", icon: "paintbrush", action: {})
+        Section(String(localized: "settings.preferences.section")) {
+          SettingsRow(title: String(localized: "settings.notifications"), icon: "bell", action: {})
+          SettingsRow(title: String(localized: "settings.currency"), icon: "dollarsign.circle", action: {})
+          SettingsRow(title: String(localized: "settings.language"), icon: "globe", action: {})
+          SettingsRow(title: String(localized: "settings.theme", defaultValue: "Tema"), icon: "paintbrush", action: {})
         }
         
-        Section("Dados") {
-          SettingsRow(title: "Exportar Dados", icon: "square.and.arrow.up", action: {})
-          SettingsRow(title: "Importar Dados", icon: "square.and.arrow.down", action: {})
-          SettingsRow(title: "Backup", icon: "icloud", action: {})
+        Section(String(localized: "settings.data.section", defaultValue: "Dados")) {
+          SettingsRow(title: String(localized: "profile.export.data", defaultValue: "Exportar Dados"), icon: "square.and.arrow.up", action: {})
+          SettingsRow(title: String(localized: "settings.import.data", defaultValue: "Importar Dados"), icon: "square.and.arrow.down", action: {})
+          SettingsRow(title: String(localized: "settings.backup", defaultValue: "Backup"), icon: "icloud", action: {})
         }
         
-        Section("Suporte") {
-          SettingsRow(title: "Ajuda", icon: "questionmark.circle", action: {})
-          SettingsRow(title: "Contato", icon: "envelope", action: {})
-          SettingsRow(title: "Avalie o App", icon: "star", action: {})
+        Section(String(localized: "settings.support.section")) {
+          SettingsRow(title: String(localized: "settings.help"), icon: "questionmark.circle", action: {})
+          SettingsRow(title: String(localized: "settings.contact"), icon: "envelope", action: {})
+          SettingsRow(title: String(localized: "settings.rate.app"), icon: "star", action: {})
         }
         
-        Section("Desenvolvimento") {
-          Button("Resetar Onboarding") {
+        Section(String(localized: "settings.development.section", defaultValue: "Desenvolvimento")) {
+          Button(String(localized: "settings.reset.onboarding", defaultValue: "Resetar Onboarding")) {
             onboardingManager.resetOnboarding()
           }
           .foregroundColor(.orange)
         }
         
-        Section("Conta") {
-          Button("Sair") {
+        Section(String(localized: "settings.account.section")) {
+          Button(String(localized: "settings.signout.button")) {
             Task {
               await authViewModel.signOut()
             }
@@ -89,7 +89,7 @@ struct SettingsScreen: View {
           .foregroundColor(.red)
         }
       }
-      .navigationTitle("Configurações")
+      .navigationTitle(String(localized: "settings.title"))
       .sheet(isPresented: $showingProfile) {
         ProfileView()
           .environmentObject(authViewModel)
