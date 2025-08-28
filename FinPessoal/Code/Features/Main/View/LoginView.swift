@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AuthenticationServices
 
 struct LoginView: View {
   @EnvironmentObject var authViewModel: AuthViewModel
@@ -56,14 +57,20 @@ struct LoginView: View {
       SecureField(String(localized: "login.password.placeholder"), text: $password)
         .textFieldStyle(.roundedBorder)
       
-      Button(String(localized: "login.signin.button")) {
+      Button(action: {
         Task {
           await authViewModel.signInWithEmail(email, password: password)
         }
+      }) {
+        Text(String(localized: "login.signin.button"))
+          .foregroundColor(.white)
+          .fontWeight(.medium)
+          .frame(maxWidth: .infinity)
+          .frame(height: 50)
+          .background(Color.accentColor)
+          .cornerRadius(8)
       }
-      .buttonStyle(.borderedProminent)
       .disabled(authViewModel.isLoading || email.isEmpty || password.isEmpty)
-      .frame(maxWidth: .infinity)
     }
   }
   
@@ -74,23 +81,42 @@ struct LoginView: View {
         .foregroundColor(.secondary)
       
       VStack(spacing: 12) {
-        Button(String(localized: "login.continue.google")) {
+        // Google Sign-In Button
+        Button(action: {
           Task {
             await authViewModel.signInWithGoogle()
           }
-        }
-        .buttonStyle(.bordered)
-        .frame(maxWidth: .infinity)
-        
-        Button(String(localized: "login.continue.apple")) {
-          Task {
-            await authViewModel.signInWithApple()
+        }) {
+          HStack {
+            Image(systemName: "globe")
+              .foregroundColor(.white)
+            Text(String(localized: "login.continue.google"))
+              .foregroundColor(.white)
+              .fontWeight(.medium)
           }
+          .frame(maxWidth: .infinity)
+          .frame(height: 50)
+          .background(Color(red: 0.26, green: 0.52, blue: 0.96))
+          .cornerRadius(8)
         }
-        .buttonStyle(.bordered)
-        .frame(maxWidth: .infinity)
+        .disabled(authViewModel.isLoading)
+        
+        // Apple Sign-In Button
+        SignInWithAppleButton(
+          onRequest: { request in
+            // Configure the request here if needed
+          },
+          onCompletion: { result in
+            Task {
+              await authViewModel.signInWithApple()
+            }
+          }
+        )
+        .signInWithAppleButtonStyle(.black)
+        .frame(height: 50)
+        .cornerRadius(8)
+        .disabled(authViewModel.isLoading)
       }
-      .disabled(authViewModel.isLoading)
     }
   }
   

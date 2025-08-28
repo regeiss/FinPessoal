@@ -42,9 +42,22 @@
 		E1E8F1CF2E4D609B00FFD30F /* MockLogin.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = MockLogin.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		E1BE50762E5E89DE00AD2171 /* Exceptions for "FinPessoal" folder in "FinPessoal" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = E177697C2E3E4AFF0028E21B /* FinPessoal */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		E177697F2E3E4AFF0028E21B /* FinPessoal */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				E1BE50762E5E89DE00AD2171 /* Exceptions for "FinPessoal" folder in "FinPessoal" target */,
+			);
 			path = FinPessoal;
 			sourceTree = "<group>";
 		};
@@ -347,6 +360,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FinPessoal/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -393,6 +407,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FinPessoal/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;

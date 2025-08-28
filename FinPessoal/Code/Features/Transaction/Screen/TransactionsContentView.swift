@@ -210,5 +210,5 @@ enum TransactionSort: CaseIterable {
 
 #Preview {
   TransactionsContentView()
-    .environmentObject(FinanceViewModel())
+    .environmentObject(FinanceViewModel(financeRepository: MockFinanceRepository()))
 }

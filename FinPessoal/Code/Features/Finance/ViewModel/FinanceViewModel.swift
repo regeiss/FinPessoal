@@ -77,7 +77,7 @@ class FinanceViewModel: ObservableObject {
   
   // MARK: - Initialization
   
-  init(financeRepository: FinanceRepositoryProtocol = MockFinanceRepository()) {
+  init(financeRepository: FinanceRepositoryProtocol) {
     self.financeRepository = financeRepository
   }
   

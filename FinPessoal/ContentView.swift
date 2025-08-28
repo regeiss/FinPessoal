@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
-  @StateObject private var authViewModel = AuthViewModel()
-  @StateObject private var financeViewModel = FinanceViewModel()
-  @StateObject private var navigationState = NavigationState()
-  @StateObject private var onboardingManager = OnboardingManager()
+  @EnvironmentObject var authViewModel: AuthViewModel
+  @EnvironmentObject var financeViewModel: FinanceViewModel
+  @EnvironmentObject var navigationState: NavigationState
+  @EnvironmentObject var onboardingManager: OnboardingManager
 
   var body: some View {
     Group {

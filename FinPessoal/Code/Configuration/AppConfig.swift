@@ -29,9 +29,16 @@ class AppConfiguration {
   private init() {}
   
   var useMockData: Bool {
+#if DEBUG
+    // Override with UserDefaults for testing if available
+    if UserDefaults.standard.object(forKey: "use_mock_data") != nil {
+      return UserDefaults.standard.bool(forKey: "use_mock_data")
+    }
+#endif
+    
     switch AppEnvironment.current {
     case .development:
-      return true  // Use mocks for development
+      return false  // Use real Firebase for development to test Google Sign-In
     case .staging:
       return false // Use real Firebase for staging
     case .production:

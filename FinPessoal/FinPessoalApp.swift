@@ -10,6 +10,7 @@ import Firebase
 import FirebaseAuth
 import FirebaseAnalytics
 import FirebaseCrashlytics
+import GoogleSignIn
 
 @main
 struct MoneyManagerApp: App {
@@ -23,6 +24,12 @@ struct MoneyManagerApp: App {
     // Configure Firebase only if not using mocks
     if !AppConfiguration.shared.useMockData {
       FirebaseApp.configure()
+      
+      // Configure Google Sign-In
+      guard let clientID = FirebaseApp.app()?.options.clientID else {
+        fatalError("No client ID found in Firebase configuration")
+      }
+      GIDSignIn.sharedInstance.configuration = GIDConfiguration(clientID: clientID)
       
       // Configure offline persistence
       if AppConfiguration.shared.shouldUsePersistence {
@@ -49,6 +56,9 @@ struct MoneyManagerApp: App {
         .environmentObject(onboardingManager)
         .onAppear {
           authViewModel.checkAuthenticationState()
+        }
+        .onOpenURL { url in
+          GIDSignIn.sharedInstance.handle(url)
         }
     }
   }

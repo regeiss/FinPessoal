@@ -18,7 +18,7 @@ class AuthViewModel: ObservableObject {
   
   private let authRepository: AuthRepositoryProtocol
   
-  init(authRepository: AuthRepositoryProtocol = MockAuthRepository()) {
+  init(authRepository: AuthRepositoryProtocol) {
     self.authRepository = authRepository
     Task { @MainActor in
       self.checkAuthenticationState()
