@@ -19,7 +19,7 @@ struct iPadMainView: View {
         .navigationSplitViewColumnWidth(min: 200, ideal: 250, max: 300)
     } content: {
       // Column 2: Content Lists
-      ContentView()
+      iPadContentView()
         .navigationSplitViewColumnWidth(min: 300, ideal: 400, max: 500)
     } detail: {
       // Column 3: Detail Views
@@ -44,7 +44,7 @@ struct SidebarRow: View {
 }
 
 // Column 2: Content Lists
-struct ContentView: View {
+struct iPadContentView: View {
   @EnvironmentObject var navigationState: NavigationState
   
   var body: some View {
@@ -97,6 +97,12 @@ struct DetailView: View {
         }
       }
       .navigationBarTitleDisplayMode(.large)
+      .onAppear {
+        print("DetailView onAppear - selectedAccount: \(navigationState.selectedAccount?.name ?? "nil"), isShowingAddAccount: \(navigationState.isShowingAddAccount)")
+      }
+      .onChange(of: navigationState.selectedAccount) { _, account in
+        print("DetailView: selectedAccount changed to: \(account?.name ?? "nil")")
+      }
     }
   }
 }
@@ -137,19 +143,21 @@ struct iPadTransactionsView: View {
   }
   
   var body: some View {
-    TransactionsScreen()
-      .environmentObject(transactionViewModel)
-      .onReceive(transactionViewModel.$selectedTransaction) { transaction in
-        if let transaction = transaction {
-          navigationState.selectTransaction(transaction)
-        }
+    ZStack {
+      TransactionsScreen()
+    }
+    .onReceive(transactionViewModel.$selectedTransaction) { transaction in
+      if let transaction = transaction {
+        navigationState.selectTransaction(transaction)
       }
-      .onChange(of: transactionViewModel.showingAddTransaction) { _, showing in
-        if showing {
-          navigationState.showAddTransaction()
-          transactionViewModel.dismissAddTransaction()
-        }
+    }
+    .onChange(of: transactionViewModel.showingAddTransaction) { _, showing in
+      if showing {
+        navigationState.showAddTransaction()
+        transactionViewModel.dismissAddTransaction()
       }
+    }
+    .environmentObject(transactionViewModel)
   }
 }
 
@@ -160,7 +168,9 @@ struct iPadAccountsView: View {
   var body: some View {
     AccountsView()
       .onReceive(accountViewModel.$selectedAccount) { account in
+        print("iPadAccountsView: received selectedAccount: \(account?.name ?? "nil")")
         if let account = account {
+          print("iPadAccountsView: calling navigationState.selectAccount")
           navigationState.selectAccount(account)
         }
       }

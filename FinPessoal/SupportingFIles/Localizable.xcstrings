@@ -1213,6 +1213,9 @@
     "Cancel" : {
 
     },
+    "Choose an item from the list to view its details here" : {
+
+    },
     "common.active" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3482,6 +3485,9 @@
       }
     },
     "Sair" : {
+
+    },
+    "Select an item" : {
 
     },
     "settings.account.section" : {

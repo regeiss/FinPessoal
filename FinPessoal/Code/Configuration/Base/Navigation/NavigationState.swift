@@ -30,18 +30,36 @@ class NavigationState: ObservableObject {
   
   func selectTransaction(_ transaction: Transaction) {
     selectedTransaction = transaction
+    // Clear other detail selections when selecting a transaction
+    selectedAccount = nil
+    isShowingAddTransaction = false
+    isShowingAddAccount = false
   }
   
   func selectAccount(_ account: Account) {
+    print("NavigationState: selectAccount called with account: \(account.name)")
     selectedAccount = account
+    // Clear other detail selections when selecting an account
+    selectedTransaction = nil
+    isShowingAddTransaction = false
+    isShowingAddAccount = false
+    print("NavigationState: selectedAccount set to: \(selectedAccount?.name ?? "nil")")
   }
   
   func showAddTransaction() {
     isShowingAddTransaction = true
+    // Clear other detail selections when showing add transaction
+    selectedTransaction = nil
+    selectedAccount = nil
+    isShowingAddAccount = false
   }
   
   func showAddAccount() {
     isShowingAddAccount = true
+    // Clear other detail selections when showing add account
+    selectedTransaction = nil
+    selectedAccount = nil
+    isShowingAddTransaction = false
   }
   
   func clearDetailSelection() {

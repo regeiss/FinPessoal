@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import UIKit
 
 @MainActor
 class AccountViewModel: ObservableObject {
@@ -166,11 +167,21 @@ class AccountViewModel: ObservableObject {
     
     func selectAccount(_ account: Account) {
         selectedAccount = account
-        showingAccountDetail = true
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            // On iPad, NavigationState will handle detail view presentation
+            print("AccountViewModel: iPad - selected account \(account.name)")
+        } else {
+            showingAccountDetail = true
+        }
     }
     
     func showAddAccount() {
-        showingAddAccount = true
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            // On iPad, NavigationState will handle detail view presentation
+            print("AccountViewModel: iPad - showing add account")
+        } else {
+            showingAddAccount = true
+        }
     }
     
     func dismissAddAccount() {
