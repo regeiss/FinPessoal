@@ -1,0 +1,102 @@
+{
+  "rules": {
+    "users": {
+      "$userId": {
+        ".read": "$userId === auth.uid",
+        ".write": "$userId === auth.uid"
+      }
+    },
+    "accounts": {
+      "$userId": {
+        ".read": "$userId === auth.uid",
+        ".write": "$userId === auth.uid",
+        "$accountId": {
+          ".validate": "newData.hasChildren(['id', 'name', 'type', 'balance', 'currency', 'isActive', 'userId', 'createdAt', 'updatedAt'])",
+          "id": {
+            ".validate": "newData.isString() && newData.val() === $accountId"
+          },
+          "name": {
+            ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 50"
+          },
+          "type": {
+            ".validate": "newData.isString() && (newData.val() === 'checking' || newData.val() === 'savings' || newData.val() === 'credit' || newData.val() === 'investment')"
+          },
+          "balance": {
+            ".validate": "newData.isNumber()"
+          },
+          "currency": {
+            ".validate": "newData.isString() && newData.val().length === 3"
+          },
+          "isActive": {
+            ".validate": "newData.isBoolean()"
+          },
+          "userId": {
+            ".validate": "newData.isString() && newData.val() === auth.uid"
+          },
+          "createdAt": {
+            ".validate": "newData.isNumber()"
+          },
+          "updatedAt": {
+            ".validate": "newData.isNumber()"
+          }
+        }
+      }
+    },
+    "transactions": {
+      "$userId": {
+        ".read": "$userId === auth.uid",
+        ".write": "$userId === auth.uid",
+        "$transactionId": {
+          ".validate": "newData.hasChildren(['id', 'accountId', 'amount', 'description', 'category', 'type', 'date', 'isRecurring', 'userId', 'createdAt', 'updatedAt'])",
+          "id": {
+            ".validate": "newData.isString() && newData.val() === $transactionId"
+          },
+          "accountId": {
+            ".validate": "newData.isString() && newData.val().length > 0"
+          },
+          "amount": {
+            ".validate": "newData.isNumber()"
+          },
+          "description": {
+            ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 200"
+          },
+          "category": {
+            ".validate": "newData.isString() && newData.val().length > 0"
+          },
+          "type": {
+            ".validate": "newData.isString() && (newData.val() === 'income' || newData.val() === 'expense')"
+          },
+          "date": {
+            ".validate": "newData.isNumber()"
+          },
+          "isRecurring": {
+            ".validate": "newData.isBoolean()"
+          },
+          "userId": {
+            ".validate": "newData.isString() && newData.val() === auth.uid"
+          },
+          "createdAt": {
+            ".validate": "newData.isNumber()"
+          },
+          "updatedAt": {
+            ".validate": "newData.isNumber()"
+          }
+        }
+      }
+    },
+    "budgets": {
+      "$userId": {
+        ".read": "$userId === auth.uid",
+        ".write": "$userId === auth.uid",
+        "$budgetId": {
+          ".validate": "newData.hasChildren(['id', 'name', 'category', 'budgetAmount', 'spent', 'period', 'startDate', 'endDate', 'isActive', 'userId'])",
+          "userId": {
+            ".validate": "newData.val() === auth.uid"
+          }
+        }
+      }
+    },
+    ".read": false,
+    ".write": false
+  }
+}

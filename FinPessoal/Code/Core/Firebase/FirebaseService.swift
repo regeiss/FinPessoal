@@ -21,6 +21,44 @@ class FirebaseService {
   
   private init() {}
   
+  // MARK: - Debug/Test Methods
+  
+  func testFirebaseConnection() async -> Bool {
+    do {
+      let snapshot = try await database.child(".info/connected").getData()
+      let isConnected = snapshot.value as? Bool ?? false
+      print("FirebaseService: Connection test result: \(isConnected)")
+      return isConnected
+    } catch {
+      print("FirebaseService: Connection test failed: \(error)")
+      return false
+    }
+  }
+  
+  func initializeUserTransactionsNode(for userID: String) async throws {
+    print("FirebaseService: Initializing transactions node for user: \(userID)")
+    let userTransactionsRef = database
+      .child(FirebaseConstants.transactionsCollection)
+      .child(userID)
+    
+    // Check if node already exists
+    let snapshot = try await withCheckedThrowingContinuation { continuation in
+      userTransactionsRef.observeSingleEvent(of: .value) { snapshot in
+        continuation.resume(returning: snapshot)
+      } withCancel: { error in
+        continuation.resume(throwing: error)
+      }
+    }
+    
+    if !snapshot.exists() {
+      // Create empty node to establish the path
+      try await userTransactionsRef.setValue([String: Any]())
+      print("FirebaseService: Created empty transactions node for user")
+    } else {
+      print("FirebaseService: Transactions node already exists for user")
+    }
+  }
+  
   // MARK: - Authentication
   
   func signIn(email: String, password: String) async throws -> User {
@@ -193,26 +231,77 @@ class FirebaseService {
   }
   
   func getTransactions(for userID: String, limit: Int? = nil) async throws -> [Transaction] {
-    var query = database
+    print("FirebaseService: Starting to fetch transactions for user: \(userID)")
+    
+    // Try a simpler approach first - just get the user's transactions node without complex queries
+    let userTransactionsRef = database
       .child(FirebaseConstants.transactionsCollection)
       .child(userID)
-      .queryOrdered(byChild: "date")
     
-    if let limit = limit {
-      query = query.queryLimited(toLast: UInt(limit))
+    print("FirebaseService: Querying simple path: /\(FirebaseConstants.transactionsCollection)/\(userID)")
+    
+    do {
+      // Use observeSingleEvent instead of getData() which might be more reliable
+      let snapshot = try await withCheckedThrowingContinuation { continuation in
+        userTransactionsRef.observeSingleEvent(of: .value) { snapshot in
+          continuation.resume(returning: snapshot)
+        } withCancel: { error in
+          continuation.resume(throwing: error)
+        }
+      }
+      
+      print("FirebaseService: Got snapshot via observeSingleEvent, exists: \(snapshot.exists()), childrenCount: \(snapshot.childrenCount)")
+      
+      // If no data exists, return empty array (this is normal for new users)
+      guard snapshot.exists(), let data = snapshot.value as? [String: Any] else {
+        print("FirebaseService: No transactions found for user, returning empty array")
+        return []
+      }
+      
+      print("FirebaseService: Found \(data.count) transactions in database")
+      
+      // Parse transactions without complex queries first
+      var transactions: [Transaction] = []
+      for (key, value) in data {
+        guard let transactionDict = value as? [String: Any] else {
+          print("FirebaseService: Skipping invalid transaction data for key: \(key)")
+          continue
+        }
+        
+        do {
+          var transactionData = transactionDict
+          transactionData["id"] = key
+          let transaction = try Transaction.fromDictionary(transactionData)
+          transactions.append(transaction)
+        } catch {
+          print("FirebaseService: Error parsing transaction \(key): \(error)")
+        }
+      }
+      
+      // Sort by date descending
+      transactions.sort { $0.date > $1.date }
+      
+      // Apply limit if needed
+      if let limit = limit {
+        transactions = Array(transactions.prefix(limit))
+      }
+      
+      print("FirebaseService: Successfully parsed \(transactions.count) transactions")
+      return transactions
+      
+    } catch {
+      print("FirebaseService: Error fetching transactions: \(error)")
+      print("FirebaseService: Error type: \(type(of: error))")
+      
+      // If it's a specific Firebase offline error, return empty array instead of throwing
+      let errorMessage = error.localizedDescription.lowercased()
+      if errorMessage.contains("offline") || errorMessage.contains("no active listeners") {
+        print("FirebaseService: Treating offline error as empty state for new user")
+        return []
+      }
+      
+      throw error
     }
-    
-    let snapshot = try await query.getData()
-    
-    guard let data = snapshot.value as? [String: [String: Any]] else {
-      return []
-    }
-    
-    return try data.compactMap { (key, value) in
-      var transactionData = value
-      transactionData["id"] = key
-      return try Transaction.fromDictionary(transactionData)
-    }.sorted { $0.date > $1.date }
   }
   
   func getTransactionsByAccount(_ accountID: String, for userID: String) async throws -> [Transaction] {
@@ -544,6 +633,9 @@ enum FirebaseError: LocalizedError {
   case insufficientPermissions
   case networkError
   case invalidData
+  case offlineError
+  case permissionDenied
+  case databaseUnavailable
   
   var errorDescription: String? {
     switch self {
@@ -555,12 +647,36 @@ enum FirebaseError: LocalizedError {
       return "Transação não encontrada"
     case .budgetNotFound:
       return "Orçamento não encontrado"
-    case .insufficientPermissions:
-      return "Permissões insuficientes"
+    case .insufficientPermissions, .permissionDenied:
+      return "Permissões insuficientes. Verifique se você está autenticado."
     case .networkError:
       return "Erro de conexão"
     case .invalidData:
       return "Dados inválidos"
+    case .offlineError:
+      return "Aplicativo está offline. Verifique sua conexão com a internet."
+    case .databaseUnavailable:
+      return "Banco de dados indisponível. Tente novamente mais tarde."
+    }
+  }
+  
+  static func from(_ error: Error) -> FirebaseError {
+    let errorMessage = error.localizedDescription.lowercased()
+    
+    if errorMessage.contains("permission denied") {
+      return .permissionDenied
+    } else if errorMessage.contains("offline") || errorMessage.contains("no active listeners") {
+      return .offlineError
+    } else if errorMessage.contains("network") || errorMessage.contains("connection") {
+      return .networkError
+    } else if errorMessage.contains("user") && errorMessage.contains("not found") {
+      return .userNotFound
+    } else if errorMessage.contains("account") && errorMessage.contains("not found") {
+      return .accountNotFound
+    } else if errorMessage.contains("invalid") {
+      return .invalidData
+    } else {
+      return .databaseUnavailable
     }
   }
 }

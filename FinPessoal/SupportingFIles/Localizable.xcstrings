@@ -10,6 +10,9 @@
     "%lld%%" : {
 
     },
+    "Account Details" : {
+
+    },
     "account.type.checking" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -78,6 +81,23 @@
         }
       }
     },
+    "accounts.activate" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Activate Account"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ativar Conta"
+          }
+        }
+      }
+    },
     "accounts.add.coming.soon" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -129,6 +149,23 @@
         }
       }
     },
+    "accounts.balance.info" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Balance Information"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informações de Saldo"
+          }
+        }
+      }
+    },
     "accounts.balance.label" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -142,6 +179,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Saldo"
+          }
+        }
+      }
+    },
+    "accounts.basic.info" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Basic Information"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informações Básicas"
           }
         }
       }
@@ -163,6 +217,57 @@
         }
       }
     },
+    "accounts.created.at" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Created At"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Criado em"
+          }
+        }
+      }
+    },
+    "accounts.currency" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Currency"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Moeda"
+          }
+        }
+      }
+    },
+    "accounts.current.balance" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Current Balance"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saldo Atual"
+          }
+        }
+      }
+    },
     "accounts.deactivate" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -180,7 +285,58 @@
         }
       }
     },
+    "accounts.deactivate.confirm.message" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This action will deactivate the account. You can reactivate it later if needed."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esta ação irá desativar a conta. Você poderá reativá-la posteriormente se necessário."
+          }
+        }
+      }
+    },
+    "accounts.deactivate.confirm.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deactivate Account"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desativar Conta"
+          }
+        }
+      }
+    },
     "accounts.edit.button" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit Account"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Editar Conta"
+          }
+        }
+      }
+    },
+    "accounts.edit.title" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -231,6 +387,74 @@
         }
       }
     },
+    "accounts.initial.balance" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Initial Balance"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saldo Inicial"
+          }
+        }
+      }
+    },
+    "accounts.is.active" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Active Account"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conta Ativa"
+          }
+        }
+      }
+    },
+    "accounts.loading" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loading accounts..."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Carregando contas..."
+          }
+        }
+      }
+    },
+    "accounts.name.placeholder" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Account name"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nome da conta"
+          }
+        }
+      }
+    },
     "accounts.new.title" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -244,6 +468,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nova Conta"
+          }
+        }
+      }
+    },
+    "accounts.settings" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Settings"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configurações"
           }
         }
       }
@@ -312,6 +553,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Total de Contas"
+          }
+        }
+      }
+    },
+    "accounts.type" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Account Type"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tipo de Conta"
+          }
+        }
+      }
+    },
+    "accounts.updated.at" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Updated At"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Atualizado em"
           }
         }
       }
@@ -403,6 +678,9 @@
 
     },
     "auth.sign_in_google" : {
+
+    },
+    "Back" : {
 
     },
     "budget.alert.near.limit" : {
@@ -932,6 +1210,9 @@
         }
       }
     },
+    "Cancel" : {
+
+    },
     "common.active" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -999,6 +1280,9 @@
           }
         }
       }
+    },
+    "common.clear.filters" : {
+
     },
     "common.close" : {
       "extractionState" : "manual",
@@ -1510,6 +1794,12 @@
         }
       }
     },
+    "Dólar (USD)" : {
+
+    },
+    "Error" : {
+
+    },
     "error.adding.budget" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1716,6 +2006,9 @@
     "error.validation.recovery" : {
       "comment" : "Please check your input and try again"
     },
+    "Euro (EUR)" : {
+
+    },
     "Ferramentas" : {
 
     },
@@ -1916,6 +2209,18 @@
 
     },
     "Money Manager" : {
+
+    },
+    "New Account" : {
+
+    },
+    "New Transaction" : {
+
+    },
+    "Ocorreu um erro" : {
+
+    },
+    "OK" : {
 
     },
     "onboarding.accounts.description" : {
@@ -2577,6 +2882,9 @@
           }
         }
       }
+    },
+    "Real (BRL)" : {
+
     },
     "reports.account.balance.history" : {
       "extractionState" : "manual",
@@ -3806,7 +4114,21 @@
       }
     },
     "tab.budgets" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Budgets"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Orçamentos"
+          }
+        }
+      }
     },
     "tab.dashboard" : {
       "extractionState" : "manual",
@@ -3843,7 +4165,21 @@
       }
     },
     "tab.goals" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Goals"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Metas"
+          }
+        }
+      }
     },
     "tab.reports" : {
       "extractionState" : "manual",
@@ -3946,6 +4282,9 @@
           }
         }
       }
+    },
+    "Transaction Details" : {
+
     },
     "transaction.account.title" : {
       "extractionState" : "manual",
@@ -4423,6 +4762,23 @@
         }
       }
     },
+    "transactions.account" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Account"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conta"
+          }
+        }
+      }
+    },
     "transactions.add.button" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -4470,6 +4826,108 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Adicionar Transação"
+          }
+        }
+      }
+    },
+    "transactions.amount.placeholder" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Amount"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Valor"
+          }
+        }
+      }
+    },
+    "transactions.basic.info" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Basic Information"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informações Básicas"
+          }
+        }
+      }
+    },
+    "transactions.category" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Category"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Categoria"
+          }
+        }
+      }
+    },
+    "transactions.date" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Date"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data"
+          }
+        }
+      }
+    },
+    "transactions.description.placeholder" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Description"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Descrição"
+          }
+        }
+      }
+    },
+    "transactions.details" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Details"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Detalhes"
           }
         }
       }
@@ -4644,6 +5102,40 @@
         }
       }
     },
+    "transactions.is.recurring" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recurring Transaction"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transação Recorrente"
+          }
+        }
+      }
+    },
+    "transactions.loading" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loading transactions..."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Carregando transações..."
+          }
+        }
+      }
+    },
     "transactions.new.title" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -4793,6 +5285,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%lld total"
+          }
+        }
+      }
+    },
+    "transactions.type" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Type"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tipo"
           }
         }
       }

@@ -8,48 +8,17 @@
 import SwiftUI
 
 struct TransactionsScreen: View {
+  @StateObject private var transactionViewModel: TransactionViewModel
   @EnvironmentObject var financeViewModel: FinanceViewModel
-  @State private var showingAddTransaction = false
-  @State private var selectedCategory: TransactionCategory?
-  @State private var searchText = ""
-  @State private var selectedPeriod: TransactionPeriod = .all
+  @EnvironmentObject var authViewModel: AuthViewModel
   
-  private var filteredTransactions: [Transaction] {
-    var transactions = financeViewModel.transactions
-    
-    // Filtrar por categoria
-    if let category = selectedCategory {
-      transactions = transactions.filter { $0.category == category }
-    }
-    
-    // Filtrar por período
-    let now = Date()
-    switch selectedPeriod {
-    case .today:
-      transactions = transactions.filter { Calendar.current.isDate($0.date, inSameDayAs: now) }
-    case .thisWeek:
-      let weekAgo = Calendar.current.date(byAdding: .day, value: -7, to: now) ?? now
-      transactions = transactions.filter { $0.date >= weekAgo }
-    case .thisMonth:
-      let monthAgo = Calendar.current.date(byAdding: .month, value: -1, to: now) ?? now
-      transactions = transactions.filter { $0.date >= monthAgo }
-    case .all:
-      break
-    }
-    
-    // Filtrar por texto de busca
-    if !searchText.isEmpty {
-      transactions = transactions.filter {
-        $0.description.localizedCaseInsensitiveContains(searchText) ||
-        $0.category.displayName.localizedCaseInsensitiveContains(searchText)
-      }
-    }
-    
-    return transactions.sorted { $0.date > $1.date }
+  init() {
+    let repository = AppConfiguration.shared.createTransactionRepository()
+    self._transactionViewModel = StateObject(wrappedValue: TransactionViewModel(repository: repository))
   }
   
   private var groupedTransactions: [(String, [Transaction])] {
-    let grouped = Dictionary(grouping: filteredTransactions) { transaction in
+    let grouped = Dictionary(grouping: transactionViewModel.filteredTransactions) { transaction in
       DateFormatter.transactionGrouping.string(from: transaction.date)
     }
     
@@ -63,7 +32,10 @@ struct TransactionsScreen: View {
   var body: some View {
     NavigationView {
       VStack(spacing: 0) {
-        if financeViewModel.transactions.isEmpty {
+        if transactionViewModel.isLoading {
+          ProgressView(String(localized: "transactions.loading"))
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+        } else if !transactionViewModel.hasTransactions {
           emptyStateView
         } else {
           filtersSection
@@ -71,22 +43,51 @@ struct TransactionsScreen: View {
         }
       }
       .navigationTitle(String(localized: "transactions.title"))
-      .searchable(text: $searchText, prompt: String(localized: "transactions.search.prompt"))
+      .searchable(text: $transactionViewModel.searchQuery, prompt: String(localized: "transactions.search.prompt"))
       .toolbar {
         ToolbarItem(placement: .navigationBarTrailing) {
           Button {
-            showingAddTransaction = true
+            transactionViewModel.showAddTransaction()
           } label: {
             Image(systemName: "plus.circle.fill")
           }
         }
       }
-      .sheet(isPresented: $showingAddTransaction) {
-        AddTransactionView()
-          .environmentObject(financeViewModel)
+      .sheet(isPresented: $transactionViewModel.showingAddTransaction) {
+        if UIDevice.current.userInterfaceIdiom != .pad {
+          AddTransactionView(transactionViewModel: transactionViewModel)
+        }
+      }
+      .sheet(isPresented: $transactionViewModel.showingTransactionDetail) {
+        if UIDevice.current.userInterfaceIdiom != .pad {
+          if let selectedTransaction = transactionViewModel.selectedTransaction {
+            TransactionDetailView(transaction: selectedTransaction)
+          }
+        }
       }
       .refreshable {
-        await financeViewModel.loadData()
+        await transactionViewModel.fetchTransactions()
+      }
+      .onAppear {
+        if authViewModel.isAuthenticated {
+          transactionViewModel.loadTransactions()
+        }
+      }
+      .onChange(of: authViewModel.isAuthenticated) { _, newValue in
+        if newValue {
+          transactionViewModel.loadTransactions()
+        } else {
+          transactionViewModel.transactions = []
+        }
+      }
+      .alert("Ocorreu um erro", isPresented: .constant(transactionViewModel.errorMessage != nil)) {
+        Button("OK") {
+          transactionViewModel.clearError()
+        }
+      } message: {
+        if let errorMessage = transactionViewModel.errorMessage {
+          Text(errorMessage)
+        }
       }
     }
   }
@@ -107,7 +108,7 @@ struct TransactionsScreen: View {
         .padding(.horizontal)
       
       Button(String(localized: "transactions.add.button")) {
-        showingAddTransaction = true
+        transactionViewModel.showAddTransaction()
       }
       .buttonStyle(.borderedProminent)
     }
@@ -122,9 +123,9 @@ struct TransactionsScreen: View {
           ForEach(TransactionPeriod.allCases, id: \.self) { period in
             FilterChip(
               title: period.displayName,
-              isSelected: selectedPeriod == period
+              isSelected: transactionViewModel.selectedPeriod == period
             ) {
-              selectedPeriod = period
+              transactionViewModel.selectedPeriod = period
             }
           }
         }
@@ -137,18 +138,18 @@ struct TransactionsScreen: View {
           HStack(spacing: 12) {
             FilterChip(
               title: String(localized: "common.all"),
-              isSelected: selectedCategory == nil
+              isSelected: transactionViewModel.selectedCategory == nil
             ) {
-              selectedCategory = nil
+              transactionViewModel.selectedCategory = nil
             }
             
             ForEach(TransactionCategory.allCases.sorted(), id: \.self) { category in
               FilterChip(
                 title: category.displayName,
                 icon: category.icon,
-                isSelected: selectedCategory == category
+                isSelected: transactionViewModel.selectedCategory == category
               ) {
-                selectedCategory = category
+                transactionViewModel.selectedCategory = category
               }
             }
           }
@@ -157,10 +158,21 @@ struct TransactionsScreen: View {
       }
       
       // Resumo dos filtros
-      if filteredTransactions.count != financeViewModel.transactions.count {
-        Text(String(localized: "transactions.filter.showing.count", defaultValue: "Mostrando \(filteredTransactions.count) de \(financeViewModel.transactions.count) transações"))
-          .font(.caption)
-          .foregroundColor(.secondary)
+      if transactionViewModel.filteredTransactions.count != transactionViewModel.transactions.count {
+        HStack {
+          Text(String(localized: "transactions.filter.showing.count", defaultValue: "Mostrando \(transactionViewModel.filteredTransactions.count) de \(transactionViewModel.transactions.count) transações"))
+            .font(.caption)
+            .foregroundColor(.secondary)
+          
+          if transactionViewModel.isFiltered {
+            Button(String(localized: "common.clear.filters")) {
+              transactionViewModel.clearFilters()
+            }
+            .font(.caption)
+            .foregroundColor(.blue)
+          }
+        }
+        .padding(.horizontal)
       }
     }
     .padding(.vertical, 8)
@@ -173,6 +185,9 @@ struct TransactionsScreen: View {
         Section {
           ForEach(transactions) { transaction in
             TransactionRow(transaction: transaction)
+              .onTapGesture {
+                transactionViewModel.selectTransaction(transaction)
+              }
           }
         } header: {
           HStack {
@@ -206,3 +221,4 @@ struct TransactionsScreen: View {
     return prefix + (formatter.string(from: NSNumber(value: abs(amount))) ?? "R$ 0,00")
   }
 }
+

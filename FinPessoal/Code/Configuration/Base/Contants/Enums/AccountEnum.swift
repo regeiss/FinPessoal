@@ -17,7 +17,7 @@ enum AccountType: String, CaseIterable, Codable {
   var icon: String {
     switch self {
     case .checking: return "creditcard.fill"
-    case .savings: return "piggybank.fill"
+    case .savings: return "wallet.bifold.fill"
     case .credit: return "creditcard"
     case .investment: return "chart.line.uptrend.xyaxis"
     }

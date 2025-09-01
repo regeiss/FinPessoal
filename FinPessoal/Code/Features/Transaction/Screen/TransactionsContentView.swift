@@ -8,40 +8,19 @@
 import SwiftUI
 
 struct TransactionsContentView: View {
-  @EnvironmentObject var financeViewModel: FinanceViewModel
-  @State private var selectedTransaction: Transaction?
-  @State private var showingAddTransaction = false
-  @State private var searchText = ""
-  @State private var selectedFilter: TransactionFilter = .all
+  @StateObject private var transactionViewModel: TransactionViewModel
+  @EnvironmentObject var authViewModel: AuthViewModel
   @State private var selectedSort: TransactionSort = .dateDesc
   
-  var filteredTransactions: [Transaction] {
-    var transactions = financeViewModel.transactions
+  init() {
+    let repository = AppConfiguration.shared.createTransactionRepository()
+    self._transactionViewModel = StateObject(wrappedValue: TransactionViewModel(repository: repository))
+  }
+  
+  var sortedTransactions: [Transaction] {
+    var transactions = transactionViewModel.filteredTransactions
     
-    // Filtrar por texto de busca
-    if !searchText.isEmpty {
-      transactions = transactions.filter {
-        $0.description.localizedCaseInsensitiveContains(searchText) ||
-        $0.category.displayName.localizedCaseInsensitiveContains(searchText)
-      }
-    }
-    
-    // Filtrar por tipo
-    switch selectedFilter {
-    case .all:
-      break
-    case .income:
-      transactions = transactions.filter { $0.type == .income }
-    case .expense:
-      transactions = transactions.filter { $0.type == .expense }
-    case .thisMonth:
-      let calendar = Calendar.current
-      transactions = transactions.filter {
-        calendar.isDate($0.date, equalTo: Date(), toGranularity: .month)
-      }
-    }
-    
-    // Ordenar
+    // Apply sorting
     switch selectedSort {
     case .dateDesc:
       transactions.sort { $0.date > $1.date }
@@ -59,35 +38,61 @@ struct TransactionsContentView: View {
   var body: some View {
     NavigationView {
       VStack(spacing: 0) {
-        // Filtros e ordenação
-        filterSection
-        
-        // Lista de transações
-        if filteredTransactions.isEmpty {
-          emptyStateView
+        if transactionViewModel.isLoading {
+          ProgressView(String(localized: "transactions.loading"))
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         } else {
-          transactionsList
-        }
-      }
-      .navigationTitle(String(localized: "transactions.title"))
-      .searchable(text: $searchText, prompt: String(localized: "transactions.search.prompt"))
-      .toolbar {
-        ToolbarItem(placement: .navigationBarTrailing) {
-          Button(String(localized: "transactions.add.button")) {
-            showingAddTransaction = true
+          // Filtros e ordenação
+          filterSection
+          
+          // Lista de transações
+          if !transactionViewModel.hasFilteredTransactions {
+            emptyStateView
+          } else {
+            transactionsList
           }
         }
       }
-      .sheet(isPresented: $showingAddTransaction) {
-        AddTransactionView()
-          .environmentObject(financeViewModel)
+      .navigationTitle(String(localized: "transactions.title"))
+      .searchable(text: $transactionViewModel.searchQuery, prompt: String(localized: "transactions.search.prompt"))
+      .toolbar {
+        ToolbarItem(placement: .navigationBarTrailing) {
+          Button(String(localized: "transactions.add.button")) {
+            transactionViewModel.showAddTransaction()
+          }
+        }
       }
-      .sheet(item: $selectedTransaction) { transaction in
-        TransactionDetailView(transaction: transaction)
-          .environmentObject(financeViewModel)
+      .sheet(isPresented: $transactionViewModel.showingAddTransaction) {
+        AddTransactionView(transactionViewModel: transactionViewModel)
+      }
+      .sheet(isPresented: $transactionViewModel.showingTransactionDetail) {
+        if let selectedTransaction = transactionViewModel.selectedTransaction {
+          TransactionDetailView(transaction: selectedTransaction)
+        }
       }
       .refreshable {
-        await financeViewModel.loadData()
+        await transactionViewModel.fetchTransactions()
+      }
+      .onAppear {
+        if authViewModel.isAuthenticated {
+          transactionViewModel.loadTransactions()
+        }
+      }
+      .onChange(of: authViewModel.isAuthenticated) { oldValue, newValue in
+        if newValue {
+          transactionViewModel.loadTransactions()
+        } else {
+          transactionViewModel.transactions = []
+        }
+      }
+      .alert("Error", isPresented: .constant(transactionViewModel.errorMessage != nil)) {
+        Button("OK") {
+          transactionViewModel.clearError()
+        }
+      } message: {
+        if let errorMessage = transactionViewModel.errorMessage {
+          Text(errorMessage)
+        }
       }
     }
   }
@@ -95,15 +100,32 @@ struct TransactionsContentView: View {
   private var filterSection: some View {
     ScrollView(.horizontal, showsIndicators: false) {
       HStack(spacing: 12) {
-        // Filtros
+        // Period Filter
         Menu {
-          Button(String(localized: "transactions.filter.all")) { selectedFilter = .all }
-          Button(String(localized: "transaction.type.income")) { selectedFilter = .income }
-          Button(String(localized: "transaction.type.expense")) { selectedFilter = .expense }
-          Button(String(localized: "transactions.filter.this.month", defaultValue: "Este Mês")) { selectedFilter = .thisMonth }
+          ForEach(TransactionPeriod.allCases, id: \.self) { period in
+            Button(period.displayName) { 
+              transactionViewModel.selectedPeriod = period 
+            }
+          }
         } label: {
           HStack {
-            Text(selectedFilter.title)
+            Text(transactionViewModel.selectedPeriod.displayName)
+            Image(systemName: "chevron.down")
+          }
+          .padding(.horizontal, 12)
+          .padding(.vertical, 6)
+          .background(Color(.systemGray6))
+          .cornerRadius(8)
+        }
+        
+        // Type Filter  
+        Menu {
+          Button(String(localized: "common.all")) { transactionViewModel.selectedType = nil }
+          Button(String(localized: "transaction.type.income")) { transactionViewModel.selectedType = .income }
+          Button(String(localized: "transaction.type.expense")) { transactionViewModel.selectedType = .expense }
+        } label: {
+          HStack {
+            Text(transactionViewModel.selectedType?.displayName ?? String(localized: "common.all"))
             Image(systemName: "chevron.down")
           }
           .padding(.horizontal, 12)
@@ -140,7 +162,7 @@ struct TransactionsContentView: View {
         Section(header: Text(date, style: .date)) {
           ForEach(groupedTransactions[date] ?? []) { transaction in
             Button {
-              selectedTransaction = transaction
+              transactionViewModel.selectTransaction(transaction)
             } label: {
               TransactionRow(transaction: transaction)
             }
@@ -153,7 +175,7 @@ struct TransactionsContentView: View {
   }
   
   private var groupedTransactions: [Date: [Transaction]] {
-    Dictionary(grouping: filteredTransactions) { transaction in
+    Dictionary(grouping: sortedTransactions) { transaction in
       Calendar.current.startOfDay(for: transaction.date)
     }
   }
@@ -174,7 +196,7 @@ struct TransactionsContentView: View {
         .padding(.horizontal)
       
       Button(String(localized: "transactions.add.button")) {
-        showingAddTransaction = true
+        transactionViewModel.showAddTransaction()
       }
       .buttonStyle(.borderedProminent)
     }
@@ -210,5 +232,5 @@ enum TransactionSort: CaseIterable {
 
 #Preview {
   TransactionsContentView()
-    .environmentObject(FinanceViewModel(financeRepository: MockFinanceRepository()))
+    .environmentObject(AuthViewModel(authRepository: MockAuthRepository()))
 }

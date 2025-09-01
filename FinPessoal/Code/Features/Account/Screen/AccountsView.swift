@@ -8,15 +8,18 @@
 import SwiftUI
 
 struct AccountsView: View {
+  @EnvironmentObject var accountViewModel: AccountViewModel
   @EnvironmentObject var financeViewModel: FinanceViewModel
-  @State private var showingAddAccount = false
-  @State private var selectedAccount: Account?
+  @EnvironmentObject var authViewModel: AuthViewModel
   
   var body: some View {
     NavigationView {
       ScrollView {
         LazyVStack(spacing: 16) {
-          if financeViewModel.accounts.isEmpty {
+          if accountViewModel.isLoading {
+            ProgressView(String(localized: "accounts.loading"))
+              .padding(.vertical, 60)
+          } else if accountViewModel.accounts.isEmpty {
             emptyStateView
           } else {
             summarySection
@@ -29,22 +32,49 @@ struct AccountsView: View {
       .toolbar {
         ToolbarItem(placement: .navigationBarTrailing) {
           Button {
-            showingAddAccount = true
+            accountViewModel.showAddAccount()
           } label: {
             Image(systemName: "plus.circle.fill")
           }
         }
       }
-      .sheet(isPresented: $showingAddAccount) {
-        AddAccountView()
-          .environmentObject(financeViewModel)
+      .sheet(isPresented: $accountViewModel.showingAddAccount) {
+        if UIDevice.current.userInterfaceIdiom != .pad {
+          AddAccountView(accountViewModel: accountViewModel)
+        }
       }
-      .sheet(item: $selectedAccount) { account in
-        AccountDetailView(account: account)
-          .environmentObject(financeViewModel)
+      .sheet(isPresented: $accountViewModel.showingAccountDetail) {
+        if UIDevice.current.userInterfaceIdiom != .pad {
+          if let selectedAccount = accountViewModel.selectedAccount {
+            AccountDetailView(account: selectedAccount, accountViewModel: accountViewModel)
+          }
+        }
       }
       .refreshable {
-        await financeViewModel.loadData()
+        await accountViewModel.fetchAccounts()
+      }
+      .onAppear {
+        // Only load accounts if user is authenticated
+        if authViewModel.isAuthenticated {
+          accountViewModel.loadAccounts()
+        }
+      }
+      .onChange(of: authViewModel.isAuthenticated) { isAuthenticated in
+        if isAuthenticated {
+          accountViewModel.loadAccounts()
+        } else {
+          // Clear accounts when user logs out
+          accountViewModel.accounts = []
+        }
+      }
+      .alert("Error", isPresented: .constant(accountViewModel.errorMessage != nil)) {
+        Button("OK") {
+          accountViewModel.clearError()
+        }
+      } message: {
+        if let errorMessage = accountViewModel.errorMessage {
+          Text(errorMessage)
+        }
       }
     }
   }
@@ -65,7 +95,7 @@ struct AccountsView: View {
         .padding(.horizontal)
       
       Button(String(localized: "accounts.add.first.button")) {
-        showingAddAccount = true
+        accountViewModel.showAddAccount()
       }
       .buttonStyle(.borderedProminent)
     }
@@ -87,16 +117,16 @@ struct AccountsView: View {
       ], spacing: 12) {
         SummaryCard(
           title: String(localized: "accounts.total.count"),
-          value: "\(financeViewModel.accounts.count)",
+          value: "\(accountViewModel.accounts.count)",
           icon: "creditcard.fill",
           color: .blue
         )
         
         SummaryCard(
           title: String(localized: "accounts.total.balance"),
-          value: financeViewModel.formattedTotalBalance,
+          value: accountViewModel.formattedTotalBalance,
           icon: "dollarsign.circle.fill",
-          color: financeViewModel.totalBalance >= 0 ? .green : .red
+          color: accountViewModel.totalBalance >= 0 ? .green : .red
         )
       }
     }
@@ -112,14 +142,14 @@ struct AccountsView: View {
           .font(.headline)
           .fontWeight(.semibold)
         Spacer()
-        Text(String(localized: "accounts.count.label", defaultValue: "\(financeViewModel.accounts.count) conta(s)"))
+        Text(String(localized: "accounts.count.label", defaultValue: "\(accountViewModel.accounts.count) conta(s)"))
           .font(.caption)
           .foregroundColor(.secondary)
       }
       
-      ForEach(financeViewModel.accounts) { account in
+      ForEach(accountViewModel.accounts) { account in
         EnhancedAccountCard(account: account) {
-          selectedAccount = account
+          accountViewModel.selectAccount(account)
         }
       }
     }

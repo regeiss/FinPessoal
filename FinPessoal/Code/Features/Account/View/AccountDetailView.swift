@@ -9,8 +9,12 @@ import SwiftUI
 
 struct AccountDetailView: View {
   let account: Account
+  @ObservedObject var accountViewModel: AccountViewModel
   @Environment(\.dismiss) private var dismiss
   @EnvironmentObject var financeViewModel: FinanceViewModel
+  
+  @State private var showingEditAccount = false
+  @State private var showingConfirmation = false
   
   private var accountTransactions: [Transaction] {
     financeViewModel.transactions.filter { $0.accountId == account.id }
@@ -38,19 +42,45 @@ struct AccountDetailView: View {
         ToolbarItem(placement: .navigationBarTrailing) {
           Menu {
             Button(String(localized: "accounts.edit.button")) {
-              // Ação para editar
+              showingEditAccount = true
             }
             Button(String(localized: "accounts.view.statement")) {
-              // Ação para ver todas as transações
+              // Navigate to transactions screen for this account
             }
             Divider()
-            Button(String(localized: "accounts.deactivate"), role: .destructive) {
-              // Ação para desativar
+            if account.isActive {
+              Button(String(localized: "accounts.deactivate"), role: .destructive) {
+                showingConfirmation = true
+              }
+            } else {
+              Button(String(localized: "accounts.activate")) {
+                Task {
+                  await accountViewModel.activateAccount(account.id)
+                  dismiss()
+                }
+              }
             }
           } label: {
             Image(systemName: "ellipsis.circle")
           }
         }
+      }
+      .sheet(isPresented: $showingEditAccount) {
+        EditAccountView(account: account, accountViewModel: accountViewModel)
+      }
+      .confirmationDialog(
+        String(localized: "accounts.deactivate.confirm.title"),
+        isPresented: $showingConfirmation
+      ) {
+        Button(String(localized: "accounts.deactivate"), role: .destructive) {
+          Task {
+            await accountViewModel.deactivateAccount(account.id)
+            dismiss()
+          }
+        }
+        Button(String(localized: "common.cancel"), role: .cancel) { }
+      } message: {
+        Text(String(localized: "accounts.deactivate.confirm.message"))
       }
     }
   }

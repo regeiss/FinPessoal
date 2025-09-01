@@ -68,6 +68,22 @@ class AppConfiguration {
     }
   }
   
+  func createAccountRepository() -> AccountRepositoryProtocol {
+    if useMockData {
+      return MockAccountRepository()
+    } else {
+      return FirebaseAccountRepository()
+    }
+  }
+  
+  func createTransactionRepository() -> TransactionRepositoryProtocol {
+    if useMockData {
+      return MockTransactionRepository()
+    } else {
+      return FirebaseTransactionRepository()
+    }
+  }
+  
   // MARK: - Firebase Configuration
   
   var firebaseConfig: [String: Any] {

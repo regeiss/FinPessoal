@@ -12,17 +12,49 @@ class NavigationState: ObservableObject {
   @Published var selectedTab: MainTab = .dashboard
   @Published var selectedSidebarItem: SidebarItem? = .dashboard
   
+  // iPad detail navigation
+  @Published var selectedTransaction: Transaction?
+  @Published var selectedAccount: Account?
+  @Published var isShowingAddTransaction: Bool = false
+  @Published var isShowingAddAccount: Bool = false
+  
   func selectTab(_ tab: MainTab) {
     selectedTab = tab
   }
   
   func selectSidebarItem(_ item: SidebarItem) {
     selectedSidebarItem = item
+    // Clear any selected details when changing sidebar items
+    clearDetailSelection()
+  }
+  
+  func selectTransaction(_ transaction: Transaction) {
+    selectedTransaction = transaction
+  }
+  
+  func selectAccount(_ account: Account) {
+    selectedAccount = account
+  }
+  
+  func showAddTransaction() {
+    isShowingAddTransaction = true
+  }
+  
+  func showAddAccount() {
+    isShowingAddAccount = true
+  }
+  
+  func clearDetailSelection() {
+    selectedTransaction = nil
+    selectedAccount = nil
+    isShowingAddTransaction = false
+    isShowingAddAccount = false
   }
   
   func resetNavigation() {
     selectedTab = .dashboard
     selectedSidebarItem = .dashboard
+    clearDetailSelection()
   }
 }
 
