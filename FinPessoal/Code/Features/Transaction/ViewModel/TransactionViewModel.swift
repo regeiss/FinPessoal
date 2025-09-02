@@ -222,6 +222,9 @@ class TransactionViewModel: ObservableObject {
     // MARK: - Filter and Search
     
     private func applyFilters() {
+        print("TransactionViewModel: applyFilters() called with \(transactions.count) total transactions")
+        print("TransactionViewModel: Filters - search: '\(searchQuery)', period: \(selectedPeriod), category: \(selectedCategory?.rawValue ?? "nil"), type: \(selectedType?.rawValue ?? "nil"), accountId: \(selectedAccountId ?? "nil")")
+        
         var filtered = transactions
         
         // Apply search filter
@@ -231,32 +234,45 @@ class TransactionViewModel: ObservableObject {
                 transaction.description.lowercased().contains(lowercaseQuery) ||
                 transaction.category.displayName.lowercased().contains(lowercaseQuery)
             }
+            print("TransactionViewModel: After search filter: \(filtered.count) transactions")
         }
         
         // Apply period filter
         if selectedPeriod != .all {
             let dateRange = getDateRange(for: selectedPeriod)
+            print("TransactionViewModel: Period filter range: \(dateRange.start) to \(dateRange.end)")
             filtered = filtered.filter { transaction in
-                transaction.date >= dateRange.start && transaction.date <= dateRange.end
+                let inRange = transaction.date >= dateRange.start && transaction.date <= dateRange.end
+                print("TransactionViewModel: Transaction '\(transaction.description)' date \(transaction.date) in range: \(inRange)")
+                return inRange
             }
+            print("TransactionViewModel: After period filter: \(filtered.count) transactions")
         }
         
         // Apply category filter
         if let category = selectedCategory {
             filtered = filtered.filter { $0.category == category }
+            print("TransactionViewModel: After category filter: \(filtered.count) transactions")
         }
         
         // Apply type filter
         if let type = selectedType {
             filtered = filtered.filter { $0.type == type }
+            print("TransactionViewModel: After type filter: \(filtered.count) transactions")
         }
         
         // Apply account filter
         if let accountId = selectedAccountId {
             filtered = filtered.filter { $0.accountId == accountId }
+            print("TransactionViewModel: After account filter: \(filtered.count) transactions")
         }
         
         filteredTransactions = filtered.sorted { $0.date > $1.date }
+        print("TransactionViewModel: Final filtered transactions: \(filteredTransactions.count)")
+        
+        for (index, transaction) in filteredTransactions.enumerated() {
+            print("TransactionViewModel: [\(index)] \(transaction.description) - \(transaction.amount) - \(transaction.date)")
+        }
     }
     
     func clearFilters() {

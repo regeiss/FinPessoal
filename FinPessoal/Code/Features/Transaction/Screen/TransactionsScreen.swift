@@ -14,6 +14,8 @@ struct TransactionsScreen: View {
   
   init() {
     let repository = AppConfiguration.shared.createTransactionRepository()
+    print("TransactionsScreen: Using repository type: \(type(of: repository))")
+    print("TransactionsScreen: useMockData = \(AppConfiguration.shared.useMockData)")
     self._transactionViewModel = StateObject(wrappedValue: TransactionViewModel(repository: repository))
   }
   

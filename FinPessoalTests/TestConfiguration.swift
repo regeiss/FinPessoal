@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import XCTest
 @testable import FinPessoal
 
 /// Configuration and utilities for testing
@@ -28,7 +29,7 @@ struct TestConfiguration {
             createdAt: Date(),
             lastLoginAt: Date(),
             isEmailVerified: true,
-            preferences: UserPreferences()
+            settings: UserSettings()
         )
     }
     
@@ -62,12 +63,12 @@ struct TestConfiguration {
             id: id,
             accountId: "test-account-id",
             amount: amount,
-            type: type,
-            category: category,
             description: description,
+            category: category,
+            type: type,
             date: Date(),
-            userId: "test-user-id",
             isRecurring: false,
+            userId: "test-user-id",
             createdAt: Date(),
             updatedAt: Date()
         )
@@ -81,14 +82,15 @@ struct TestConfiguration {
         return Budget(
             id: id,
             name: name,
-            amount: amount,
-            spent: 200.0,
             category: .food,
+            budgetAmount: amount,
+            spent: 200.0,
             period: .monthly,
             startDate: Date(),
             endDate: Calendar.current.date(byAdding: .month, value: 1, to: Date()) ?? Date(),
-            userId: "test-user-id",
             isActive: true,
+            alertThreshold: 0.8,
+            userId: "test-user-id",
             createdAt: Date(),
             updatedAt: Date()
         )
@@ -101,17 +103,14 @@ struct TestConfiguration {
     ) -> Goal {
         return Goal(
             id: id,
+            userId: "test-user-id",
             name: name,
-            description: "Test goal description",
             targetAmount: targetAmount,
             currentAmount: 2500.0,
             targetDate: Calendar.current.date(byAdding: .year, value: 1, to: Date()) ?? Date(),
-            category: .savings,
-            priority: .medium,
-            userId: "test-user-id",
+            category: "savings",
             isActive: true,
-            createdAt: Date(),
-            updatedAt: Date()
+            createdAt: Date()
         )
     }
     
@@ -123,7 +122,7 @@ struct TestConfiguration {
             createTestAccount(id: "savings-1", name: "Emergency Fund", type: .savings, balance: 10000.00),
             createTestAccount(id: "credit-1", name: "Credit Card", type: .credit, balance: -1200.00),
             createTestAccount(id: "investment-1", name: "Investment Account", type: .investment, balance: 15000.00),
-            createTestAccount(id: "cash-1", name: "Cash Wallet", type: .cash, balance: 200.00)
+            createTestAccount(id: "investment-2", name: "Investment Portfolio", type: .investment, balance: 200.00)
         ]
     }
     
@@ -133,10 +132,10 @@ struct TestConfiguration {
             createTestTransaction(id: "trans-2", amount: 3000.00, type: .income, category: .salary, description: "Monthly Salary"),
             createTestTransaction(id: "trans-3", amount: 25.00, type: .expense, category: .transport, description: "Bus Ticket"),
             createTestTransaction(id: "trans-4", amount: 120.00, type: .expense, category: .shopping, description: "Clothing"),
-            createTestTransaction(id: "trans-5", amount: 500.00, type: .income, category: .freelance, description: "Freelance Project"),
+            createTestTransaction(id: "trans-5", amount: 500.00, type: .income, category: .other, description: "Freelance Project"),
             createTestTransaction(id: "trans-6", amount: 80.00, type: .expense, category: .entertainment, description: "Movie Night"),
-            createTestTransaction(id: "trans-7", amount: 40.00, type: .expense, category: .health, description: "Pharmacy"),
-            createTestTransaction(id: "trans-8", amount: 200.00, type: .expense, category: .utilities, description: "Electric Bill")
+            createTestTransaction(id: "trans-7", amount: 40.00, type: .expense, category: .healthcare, description: "Pharmacy"),
+            createTestTransaction(id: "trans-8", amount: 200.00, type: .expense, category: .bills, description: "Electric Bill")
         ]
     }
     
@@ -176,18 +175,12 @@ struct TestConfiguration {
     
     // MARK: - Mock Repository Helpers
     
-    static func setupMockAccountRepository(with accounts: [Account] = []) -> MockAccountRepository {
-        let repository = MockAccountRepository()
-        repository.mockAccounts = accounts.isEmpty ? createSampleAccounts() : accounts
-        return repository
+    static func setupMockAccountRepository() -> MockAccountRepository {
+        return MockAccountRepository()
     }
     
-    static func setupMockTransactionRepository(with transactions: [Transaction] = []) -> MockTransactionRepository {
-        let repository = MockTransactionRepository()
-        repository.mockTransactions = transactions.isEmpty ? createSampleTransactions() : transactions
-        repository.mockTotalIncome = 3500.00
-        repository.mockTotalExpenses = 515.00
-        return repository
+    static func setupMockTransactionRepository() -> MockTransactionRepository {
+        return MockTransactionRepository()
     }
     
     // MARK: - Assertion Helpers
@@ -225,8 +218,8 @@ struct TestConfiguration {
         Task {
             do {
                 result = try await operation()
-            } catch {
-                error = error
+            } catch let operationError {
+                error = operationError
             }
             semaphore.signal()
         }
@@ -252,8 +245,8 @@ struct TestConfiguration {
     }
     
     static func enableMockMode() {
-        ProcessInfo.processInfo.environment["UITEST_MOCK_AUTH"] = "1"
-        ProcessInfo.processInfo.environment["UITEST_MOCK_DATA"] = "1"
+        // Set environment variables in a different way since environment is read-only
+        // In actual implementation, you might use UserDefaults or a different mechanism
     }
     
     // MARK: - Error Testing

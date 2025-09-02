@@ -60,26 +60,24 @@ final class AccountTests: XCTestCase {
     
     func testAccountTypeProperties() throws {
         XCTAssertEqual(AccountType.checking.icon, "creditcard.fill")
-        XCTAssertEqual(AccountType.savings.icon, "banknote.fill")
+        XCTAssertEqual(AccountType.savings.icon, "wallet.bifold.fill")
         XCTAssertEqual(AccountType.investment.icon, "chart.line.uptrend.xyaxis")
-        XCTAssertEqual(AccountType.credit.icon, "creditcard.circle.fill")
-        XCTAssertEqual(AccountType.cash.icon, "banknote")
+        XCTAssertEqual(AccountType.credit.icon, "creditcard")
         
         XCTAssertNotNil(AccountType.checking.color)
         XCTAssertNotNil(AccountType.savings.color)
         XCTAssertNotNil(AccountType.investment.color)
         XCTAssertNotNil(AccountType.credit.color)
-        XCTAssertNotNil(AccountType.cash.color)
     }
     
     // MARK: - Dictionary Conversion Tests
     
     func testToDictionary() throws {
-        let dictionary = testAccount.toDictionary()
+        let dictionary = try testAccount.toDictionary()
         
         XCTAssertEqual(dictionary["id"] as? String, "test-account-id")
         XCTAssertEqual(dictionary["name"] as? String, "Test Checking Account")
-        XCTAssertEqual(dictionary["type"] as? String, "checking")
+        XCTAssertEqual(dictionary["type"] as? String, "Conta Corrente")
         XCTAssertEqual(dictionary["balance"] as? Double, 1500.00)
         XCTAssertEqual(dictionary["currency"] as? String, "BRL")
         XCTAssertEqual(dictionary["isActive"] as? Bool, true)
@@ -92,7 +90,7 @@ final class AccountTests: XCTestCase {
         let dictionary: [String: Any] = [
             "id": "dict-account-id",
             "name": "Dictionary Account",
-            "type": "savings",
+            "type": "Poupança",
             "balance": 2000.00,
             "currency": "BRL",
             "isActive": false,
@@ -101,7 +99,7 @@ final class AccountTests: XCTestCase {
             "updatedAt": Date().timeIntervalSince1970
         ]
         
-        let account = try XCTUnwrap(Account.fromDictionary(dictionary))
+        let account = try Account.fromDictionary(dictionary)
         
         XCTAssertEqual(account.id, "dict-account-id")
         XCTAssertEqual(account.name, "Dictionary Account")
@@ -119,7 +117,7 @@ final class AccountTests: XCTestCase {
             // Missing required fields
         ]
         
-        XCTAssertNil(Account.fromDictionary(invalidDictionary))
+        XCTAssertThrowsError(try Account.fromDictionary(invalidDictionary))
     }
     
     // MARK: - Edge Cases Tests
