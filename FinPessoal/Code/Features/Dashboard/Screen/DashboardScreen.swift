@@ -21,28 +21,57 @@ struct DashboardScreen: View {
             totalBalance: viewModel.totalBalance,
             monthlyExpenses: viewModel.monthlyExpenses
           )
+          .redacted(reason: viewModel.isLoading ? .placeholder : [])
           
-          // Budget Alerts
+          // Budget Alerts (only show if there are alerts)
           if !viewModel.budgetAlerts.isEmpty {
             BudgetAlertsView(budgets: viewModel.budgetAlerts)
           }
           
           // Recent Transactions
           RecentTransactionScreen(transactions: viewModel.recentTransactions)
+            .redacted(reason: viewModel.isLoading ? .placeholder : [])
           
           // Quick Actions
           QuickActionsView()
         }
         .padding()
       }
-      .navigationTitle("dashboard.title")
+      .navigationTitle(String(localized: "dashboard.title", defaultValue: "Painel"))
       .refreshable {
-        viewModel.loadDashboardData()
+        await MainActor.run {
+          viewModel.loadDashboardData()
+        }
+      }
+      .overlay {
+        if viewModel.isLoading && viewModel.recentTransactions.isEmpty {
+          ProgressView(String(localized: "dashboard.loading", defaultValue: "Carregando..."))
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color(.systemBackground))
+        }
+      }
+      .alert("Erro", isPresented: .constant(viewModel.error != nil)) {
+        Button("OK") {
+          viewModel.error = nil
+        }
+        Button(String(localized: "common.try.again", defaultValue: "Tentar Novamente")) {
+          viewModel.error = nil
+          viewModel.loadDashboardData()
+        }
+      } message: {
+        if let error = viewModel.error {
+          Text(error.localizedDescription)
+        }
       }
     }
     .onAppear {
+      print("DashboardScreen: onAppear called")
       viewModel.loadDashboardData()
-      Analytics.logEvent("dashboard_viewed", parameters: nil)
+      
+      // Only log analytics if not using mock data
+      if !AppConfiguration.shared.useMockData {
+        Analytics.logEvent("dashboard_viewed", parameters: nil)
+      }
     }
   }
 }

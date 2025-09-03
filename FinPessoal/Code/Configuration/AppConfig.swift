@@ -38,7 +38,7 @@ class AppConfiguration {
     
     switch AppEnvironment.current {
     case .development:
-      return false//true  // Use mock data for development to avoid empty transaction screen
+      return true  // Use mock data for development to avoid empty transaction screen
     case .staging:
       return false // Use real Firebase for staging
     case .production:

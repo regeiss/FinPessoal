@@ -10,7 +10,23 @@ import SwiftUI
 struct SettingsScreen: View {
   @EnvironmentObject var authViewModel: AuthViewModel
   @EnvironmentObject var onboardingManager: OnboardingManager
+  @EnvironmentObject var themeManager: ThemeManager
   @State private var showingProfile = false
+  @State private var showingThemeSettings = false
+  
+  private var currentThemeDescription: String {
+    let savedTheme = UserDefaults.standard.string(forKey: "selectedTheme") ?? "system"
+    switch savedTheme {
+    case "system":
+      return String(localized: "theme.system", defaultValue: "Automático")
+    case "light":
+      return String(localized: "theme.light", defaultValue: "Claro")
+    case "dark":
+      return String(localized: "theme.dark", defaultValue: "Escuro")
+    default:
+      return String(localized: "theme.system", defaultValue: "Automático")
+    }
+  }
   
   var body: some View {
     NavigationView {
@@ -54,11 +70,56 @@ struct SettingsScreen: View {
           }
         }
         
+        Section(String(localized: "settings.appearance.section", defaultValue: "Aparência")) {
+          // Theme settings row with current theme indicator
+          Button {
+            showingThemeSettings = true
+          } label: {
+            HStack {
+              Image(systemName: "paintbrush")
+                .foregroundColor(.blue)
+                .frame(width: 24)
+              
+              Text(String(localized: "settings.theme", defaultValue: "Tema"))
+                .foregroundColor(.primary)
+              
+              Spacer()
+              
+              Text(currentThemeDescription)
+                .font(.caption)
+                .foregroundColor(.secondary)
+              
+              Image(systemName: "chevron.right")
+                .font(.caption)
+                .foregroundColor(.secondary)
+            }
+          }
+          .buttonStyle(.plain)
+          
+          // Quick dark mode toggle (only show if not in system mode)
+          if UserDefaults.standard.string(forKey: "selectedTheme") != "system" {
+            HStack {
+              Image(systemName: "moon.fill")
+                .foregroundColor(.blue)
+                .frame(width: 24)
+              
+              Text(String(localized: "settings.dark.mode", defaultValue: "Modo Escuro"))
+                .foregroundColor(.primary)
+              
+              Spacer()
+              
+              Toggle("", isOn: $themeManager.isDarkMode)
+                .onChange(of: themeManager.isDarkMode) { _, newValue in
+                  themeManager.setTheme(newValue ? .dark : .light)
+                }
+            }
+          }
+        }
+        
         Section(String(localized: "settings.preferences.section")) {
           SettingsRow(title: String(localized: "settings.notifications"), icon: "bell", action: {})
           SettingsRow(title: String(localized: "settings.currency"), icon: "dollarsign.circle", action: {})
           SettingsRow(title: String(localized: "settings.language"), icon: "globe", action: {})
-          SettingsRow(title: String(localized: "settings.theme", defaultValue: "Tema"), icon: "paintbrush", action: {})
         }
         
         Section(String(localized: "settings.data.section", defaultValue: "Dados")) {
@@ -93,6 +154,10 @@ struct SettingsScreen: View {
       .sheet(isPresented: $showingProfile) {
         ProfileView()
           .environmentObject(authViewModel)
+      }
+      .sheet(isPresented: $showingThemeSettings) {
+        ThemeSettingsView()
+          .environmentObject(themeManager)
       }
     }
   }

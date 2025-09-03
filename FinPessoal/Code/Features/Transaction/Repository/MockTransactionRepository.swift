@@ -23,7 +23,7 @@ class MockTransactionRepository: TransactionRepositoryProtocol {
             Transaction(
                 id: "trans1",
                 accountId: "1", // Conta Principal
-                amount: 3500.00,
+                amount: 13500.00,
                 description: "Salário Mensal",
                 category: .salary,
                 type: .income,

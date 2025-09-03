@@ -21,12 +21,14 @@ struct MoneyManagerApp: App {
   @StateObject private var navigationState = NavigationState()
   @StateObject private var appState = AppState()
   @StateObject private var onboardingManager = OnboardingManager()
+  @StateObject private var themeManager = ThemeManager()
   
   init() {
-    // Configure Firebase only if not using mocks
+    // Always configure Firebase to prevent initialization warnings
+    FirebaseApp.configure()
+    
+    // Only configure additional Firebase features if not using mocks
     if !AppConfiguration.shared.useMockData {
-      FirebaseApp.configure()
-      
       // Configure Google Sign-In
       guard let clientID = FirebaseApp.app()?.options.clientID else {
         fatalError("No client ID found in Firebase configuration")
@@ -59,11 +61,15 @@ struct MoneyManagerApp: App {
         .environmentObject(navigationState)
         .environmentObject(appState)
         .environmentObject(onboardingManager)
+        .environmentObject(themeManager)
+        .preferredColorScheme(themeManager.colorScheme)
         .onAppear {
           authViewModel.checkAuthenticationState()
         }
         .onOpenURL { url in
-          GIDSignIn.sharedInstance.handle(url)
+          if !AppConfiguration.shared.useMockData {
+            GIDSignIn.sharedInstance.handle(url)
+          }
         }
     }
   }

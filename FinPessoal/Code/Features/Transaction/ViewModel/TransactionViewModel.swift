@@ -93,11 +93,13 @@ class TransactionViewModel: ObservableObject {
         isLoading = true
         errorMessage = nil
         
-        // Double-check authentication before making the call
-        guard Auth.auth().currentUser != nil else {
-            print("TransactionViewModel: No authenticated user, skipping fetch")
-            isLoading = false
-            return
+        // Double-check authentication before making the call (skip for mock data)
+        if !AppConfiguration.shared.useMockData {
+            guard Auth.auth().currentUser != nil else {
+                print("TransactionViewModel: No authenticated user, skipping fetch")
+                isLoading = false
+                return
+            }
         }
         
         do {

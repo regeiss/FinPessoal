@@ -26,8 +26,11 @@ class AuthViewModel: ObservableObject {
   }
   
   func checkAuthenticationState() {
+    print("AuthViewModel: checkAuthenticationState() called")
     self.currentUser = authRepository.getCurrentUser()
     self.isAuthenticated = currentUser != nil
+    print("AuthViewModel: currentUser = \(String(describing: currentUser))")
+    print("AuthViewModel: isAuthenticated = \(isAuthenticated)")
   }
   
   func signInWithEmail(_ email: String, password: String) async {

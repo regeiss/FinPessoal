@@ -11,6 +11,18 @@ import AuthenticationServices
 class MockAuthRepository: AuthRepositoryProtocol {
   private var currentUser: User?
   
+  init() {
+    // Start with a mock user already authenticated for better development experience
+    currentUser = User(
+      id: "mock-user-123",
+      name: "João Silva",
+      email: "joao.silva@mock.com",
+      profileImageURL: nil,
+      createdAt: Date(),
+      settings: UserSettings()
+    )
+  }
+  
   func signIn(email: String, password: String) async throws -> User {
     try await Task.sleep(nanoseconds: 1_000_000_000)
     

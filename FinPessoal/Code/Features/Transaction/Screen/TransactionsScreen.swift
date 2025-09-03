@@ -71,8 +71,14 @@ struct TransactionsScreen: View {
         await transactionViewModel.fetchTransactions()
       }
       .onAppear {
+        print("TransactionsScreen: onAppear called")
+        print("TransactionsScreen: authViewModel.isAuthenticated = \(authViewModel.isAuthenticated)")
+        print("TransactionsScreen: authViewModel.currentUser = \(String(describing: authViewModel.currentUser))")
         if authViewModel.isAuthenticated {
+          print("TransactionsScreen: User authenticated, loading transactions...")
           transactionViewModel.loadTransactions()
+        } else {
+          print("TransactionsScreen: User not authenticated, not loading transactions")
         }
       }
       .onChange(of: authViewModel.isAuthenticated) { _, newValue in
