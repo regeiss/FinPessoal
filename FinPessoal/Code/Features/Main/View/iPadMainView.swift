@@ -16,17 +16,17 @@ struct iPadMainView: View {
     NavigationSplitView(columnVisibility: .constant(.all)) {
       // Column 1: Sidebar Navigation
       SidebarView()
-        .navigationSplitViewColumnWidth(min: 200, ideal: 250, max: 300)
+        .navigationSplitViewColumnWidth(min: 180, ideal: 200, max: 250)
     } content: {
       // Column 2: Content Lists
       iPadContentView()
-        .navigationSplitViewColumnWidth(min: 300, ideal: 400, max: 500)
+        .navigationSplitViewColumnWidth(min: 280, ideal: 320, max: 380)
     } detail: {
       // Column 3: Detail Views
       DetailView()
-        .navigationSplitViewColumnWidth(min: 400, ideal: 500)
+        .navigationSplitViewColumnWidth(min: 500, ideal: .infinity, max: .infinity)
     }
-    .navigationSplitViewStyle(.balanced)
+    .navigationSplitViewStyle(.prominentDetail)
     .task {
       await financeViewModel.loadData()
     }
@@ -69,7 +69,7 @@ struct iPadContentView: View {
           DashboardScreen()
         }
       }
-      .navigationTitle(navigationState.selectedSidebarItem?.displayName ?? "Dashboard")
+      .navigationTitle(navigationState.selectedSidebarItem?.displayName ?? String(localized: "navigation.dashboard.title", defaultValue: "Dashboard"))
       .navigationBarTitleDisplayMode(.large)
     }
   }
@@ -117,12 +117,12 @@ struct EmptyDetailView: View {
         .font(.system(size: 64))
         .foregroundColor(.secondary)
       
-      Text("Select an item")
+      Text(String(localized: "detail.empty.select.title", defaultValue: "Select an item"))
         .font(.title2)
         .fontWeight(.semibold)
         .foregroundColor(.secondary)
       
-      Text("Choose an item from the list to view its details here")
+      Text(String(localized: "detail.empty.select.message", defaultValue: "Choose an item from the list to view its details here"))
         .multilineTextAlignment(.center)
         .foregroundColor(.secondary)
         .padding(.horizontal, 32)
@@ -188,16 +188,19 @@ struct iPadTransactionDetailView: View {
   @EnvironmentObject var navigationState: NavigationState
   
   var body: some View {
-    TransactionDetailView(transaction: transaction)
-      .toolbar {
-        ToolbarItem(placement: .navigationBarLeading) {
-          Button("Back") {
-            navigationState.clearDetailSelection()
-          }
+    VStack(spacing: 0) {
+      TransactionDetailView(transaction: transaction)
+    }
+    .frame(maxWidth: .infinity, maxHeight: .infinity)
+    .toolbar {
+      ToolbarItem(placement: .navigationBarLeading) {
+        Button(String(localized: "common.close", defaultValue: "Fechar")) {
+          navigationState.clearDetailSelection()
         }
       }
-      .navigationTitle("Transaction Details")
-      .navigationBarTitleDisplayMode(.inline)
+    }
+    .navigationTitle(String(localized: "transaction.detail.title", defaultValue: "Detalhes da Transação"))
+    .navigationBarTitleDisplayMode(.inline)
   }
 }
 
@@ -210,12 +213,12 @@ struct iPadAccountDetailView: View {
     AccountDetailView(account: account, accountViewModel: accountViewModel)
       .toolbar {
         ToolbarItem(placement: .navigationBarLeading) {
-          Button("Back") {
+          Button(String(localized: "common.back", defaultValue: "Back")) {
             navigationState.clearDetailSelection()
           }
         }
       }
-      .navigationTitle("Account Details")
+      .navigationTitle(String(localized: "account.detail.title", defaultValue: "Account Details"))
       .navigationBarTitleDisplayMode(.inline)
   }
 }
@@ -233,12 +236,12 @@ struct iPadAddTransactionView: View {
     AddTransactionView(transactionViewModel: transactionViewModel)
       .toolbar {
         ToolbarItem(placement: .navigationBarLeading) {
-          Button("Cancel") {
+          Button(String(localized: "common.cancel", defaultValue: "Cancel")) {
             navigationState.clearDetailSelection()
           }
         }
       }
-      .navigationTitle("New Transaction")
+      .navigationTitle(String(localized: "transaction.add.title", defaultValue: "New Transaction"))
       .navigationBarTitleDisplayMode(.inline)
   }
 }
@@ -251,12 +254,12 @@ struct iPadAddAccountView: View {
     AddAccountView(accountViewModel: accountViewModel)
       .toolbar {
         ToolbarItem(placement: .navigationBarLeading) {
-          Button("Cancel") {
+          Button(String(localized: "common.cancel", defaultValue: "Cancel")) {
             navigationState.clearDetailSelection()
           }
         }
       }
-      .navigationTitle("New Account")
+      .navigationTitle(String(localized: "account.add.title", defaultValue: "New Account"))
       .navigationBarTitleDisplayMode(.inline)
   }
 }
@@ -281,7 +284,7 @@ struct UserProfileRow: View {
           .foregroundColor(.secondary)
       }
       
-      Button("Sair") {
+      Button(String(localized: "auth.signout.button", defaultValue: "Sair")) {
         Task {
           await authViewModel.signOut()
         }
