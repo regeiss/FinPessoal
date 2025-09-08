@@ -21,31 +21,11 @@ class TransactionViewModel: ObservableObject {
     @Published var showingTransactionDetail: Bool = false
     
     // Filter and search properties
-    @Published var searchQuery: String = "" {
-        didSet {
-            applyFilters()
-        }
-    }
-    @Published var selectedPeriod: TransactionPeriod = .all {
-        didSet {
-            applyFilters()
-        }
-    }
-    @Published var selectedCategory: TransactionCategory? = nil {
-        didSet {
-            applyFilters()
-        }
-    }
-    @Published var selectedType: TransactionType? = nil {
-        didSet {
-            applyFilters()
-        }
-    }
-    @Published var selectedAccountId: String? = nil {
-        didSet {
-            applyFilters()
-        }
-    }
+    @Published var searchQuery: String = ""
+    @Published var selectedPeriod: TransactionPeriod = .all
+    @Published var selectedCategory: TransactionCategory? = nil
+    @Published var selectedType: TransactionType? = nil
+    @Published var selectedAccountId: String? = nil
     
     // Statistics properties
     @Published var totalIncome: Double = 0.0
@@ -59,25 +39,43 @@ class TransactionViewModel: ObservableObject {
     
     init(repository: TransactionRepositoryProtocol) {
         self.repository = repository
+        print("TransactionViewModel: Initializing with repository type: \(type(of: repository))")
+        print("TransactionViewModel: Initial selectedPeriod = \(selectedPeriod)")
+        print("TransactionViewModel: Initial transactions count = \(transactions.count)")
         setupBindings()
     }
     
     private func setupBindings() {
+        print("TransactionViewModel: Setting up bindings")
         // Update statistics when transactions change
         $transactions
-            .sink { [weak self] _ in
+            .sink { [weak self] transactions in
+                print("TransactionViewModel: $transactions publisher fired with \(transactions.count) transactions")
                 Task { @MainActor in
                     await self?.updateStatistics()
                 }
             }
             .store(in: &cancellables)
         
-        // Apply filters when transactions change
-        $transactions
-            .sink { [weak self] _ in
+        // Apply filters when transactions OR any filter property changes
+        Publishers.CombineLatest(
+            $transactions,
+            Publishers.CombineLatest4(
+                $searchQuery,
+                $selectedPeriod,
+                $selectedCategory,
+                $selectedType
+            )
+        )
+        .combineLatest($selectedAccountId)
+        .sink { [weak self] (transactionsAndFilters, accountId) in
+            let (transactions, (searchQuery, selectedPeriod, selectedCategory, selectedType)) = transactionsAndFilters
+            print("TransactionViewModel: Filter publisher fired - transactions: \(transactions.count), searchQuery: '\(searchQuery)', period: \(selectedPeriod)")
+            DispatchQueue.main.async {
                 self?.applyFilters()
             }
-            .store(in: &cancellables)
+        }
+        .store(in: &cancellables)
     }
     
     // MARK: - Data Loading
@@ -104,8 +102,12 @@ class TransactionViewModel: ObservableObject {
         
         do {
             let fetchedTransactions = try await repository.getTransactions()
+            print("TransactionViewModel: Fetched \(fetchedTransactions.count) transactions from repository")
+            for (index, transaction) in fetchedTransactions.enumerated() {
+                print("TransactionViewModel: [\(index)] \(transaction.description) - \(transaction.amount) - \(transaction.date)")
+            }
             transactions = fetchedTransactions
-            print("Successfully fetched \(fetchedTransactions.count) transactions")
+            print("TransactionViewModel: Set transactions array with \(transactions.count) items")
             
             // Clear any previous error since fetch was successful
             if errorMessage != nil {
@@ -224,8 +226,14 @@ class TransactionViewModel: ObservableObject {
     // MARK: - Filter and Search
     
     private func applyFilters() {
+        print("TransactionViewModel: ===== applyFilters() START =====")
         print("TransactionViewModel: applyFilters() called with \(transactions.count) total transactions")
         print("TransactionViewModel: Filters - search: '\(searchQuery)', period: \(selectedPeriod), category: \(selectedCategory?.rawValue ?? "nil"), type: \(selectedType?.rawValue ?? "nil"), accountId: \(selectedAccountId ?? "nil")")
+        
+        // Debug: print first few transactions
+        for (index, transaction) in transactions.prefix(3).enumerated() {
+            print("TransactionViewModel: Input transaction[\(index)]: \(transaction.description) - \(transaction.date)")
+        }
         
         var filtered = transactions
         
@@ -249,6 +257,8 @@ class TransactionViewModel: ObservableObject {
                 return inRange
             }
             print("TransactionViewModel: After period filter: \(filtered.count) transactions")
+        } else {
+            print("TransactionViewModel: Skipping period filter (selectedPeriod is .all)")
         }
         
         // Apply category filter
@@ -271,9 +281,15 @@ class TransactionViewModel: ObservableObject {
         
         filteredTransactions = filtered.sorted { $0.date > $1.date }
         print("TransactionViewModel: Final filtered transactions: \(filteredTransactions.count)")
+        print("TransactionViewModel: ===== applyFilters() END =====")
         
-        for (index, transaction) in filteredTransactions.enumerated() {
-            print("TransactionViewModel: [\(index)] \(transaction.description) - \(transaction.amount) - \(transaction.date)")
+        // Only print if we have results, to avoid spam
+        if !filteredTransactions.isEmpty {
+            for (index, transaction) in filteredTransactions.prefix(5).enumerated() {
+                print("TransactionViewModel: [\(index)] \(transaction.description) - \(transaction.amount) - \(transaction.date)")
+            }
+        } else {
+            print("TransactionViewModel: NO FILTERED TRANSACTIONS - all were filtered out!")
         }
     }
     

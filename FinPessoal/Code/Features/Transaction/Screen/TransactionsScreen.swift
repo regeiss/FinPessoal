@@ -11,12 +11,17 @@ struct TransactionsScreen: View {
   @StateObject private var transactionViewModel: TransactionViewModel
   @EnvironmentObject var financeViewModel: FinanceViewModel
   @EnvironmentObject var authViewModel: AuthViewModel
+  @State private var showingSettings = false
   
-  init() {
-    let repository = AppConfiguration.shared.createTransactionRepository()
-    print("TransactionsScreen: Using repository type: \(type(of: repository))")
-    print("TransactionsScreen: useMockData = \(AppConfiguration.shared.useMockData)")
-    self._transactionViewModel = StateObject(wrappedValue: TransactionViewModel(repository: repository))
+  init(transactionViewModel: TransactionViewModel? = nil) {
+    if let existingViewModel = transactionViewModel {
+      self._transactionViewModel = StateObject(wrappedValue: existingViewModel)
+    } else {
+      let repository = AppConfiguration.shared.createTransactionRepository()
+      print("TransactionsScreen: Using repository type: \(type(of: repository))")
+      print("TransactionsScreen: useMockData = \(AppConfiguration.shared.useMockData)")
+      self._transactionViewModel = StateObject(wrappedValue: TransactionViewModel(repository: repository))
+    }
   }
   
   private var groupedTransactions: [(String, [Transaction])] {
@@ -47,6 +52,14 @@ struct TransactionsScreen: View {
       .navigationTitle(String(localized: "transactions.title"))
       .searchable(text: $transactionViewModel.searchQuery, prompt: String(localized: "transactions.search.prompt"))
       .toolbar {
+        ToolbarItem(placement: .navigationBarLeading) {
+          Button {
+            showingSettings = true
+          } label: {
+            Image(systemName: "gear")
+          }
+        }
+        
         ToolbarItem(placement: .navigationBarTrailing) {
           Button {
             transactionViewModel.showAddTransaction()
@@ -97,6 +110,9 @@ struct TransactionsScreen: View {
           Text(errorMessage)
         }
       }
+    }
+    .sheet(isPresented: $showingSettings) {
+      SettingsScreen()
     }
   }
   
@@ -206,7 +222,11 @@ struct TransactionsScreen: View {
             Spacer()
             
             let dayTotal = transactions.reduce(0) { total, transaction in
-              total + (transaction.type == .income ? transaction.amount : -transaction.amount)
+              switch transaction.type {
+              case .income: return total + transaction.amount
+              case .expense: return total - transaction.amount
+              case .transfer: return total // transfers don't affect balance
+              }
             }
             
             Text(formatCurrency(dayTotal))

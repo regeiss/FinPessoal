@@ -80,8 +80,8 @@ enum MainTab: String, CaseIterable, Identifiable {
   case dashboard = "dashboard"
   case accounts = "accounts"
   case transactions = "transactions"
-  case reports = "reports"
-  case settings = "settings"
+  case goals = "goals"
+  case more = "more"
   
   var id: String { rawValue }
   
@@ -90,8 +90,8 @@ enum MainTab: String, CaseIterable, Identifiable {
     case .dashboard: return String(localized: "tab.dashboard")
     case .accounts: return String(localized: "tab.accounts")
     case .transactions: return String(localized: "tab.transactions")
-    case .reports: return String(localized: "tab.reports")
-    case .settings: return String(localized: "tab.settings")
+    case .goals: return String(localized: "tab.goals")
+    case .more: return String(localized: "tab.more")
     }
   }
   
@@ -100,8 +100,8 @@ enum MainTab: String, CaseIterable, Identifiable {
     case .dashboard: return "house.fill"
     case .accounts: return "creditcard.fill"
     case .transactions: return "list.bullet"
-    case .reports: return "chart.bar.fill"
-    case .settings: return "gear"
+    case .goals: return "target"
+    case .more: return "ellipsis"
     }
   }
   
@@ -110,8 +110,8 @@ enum MainTab: String, CaseIterable, Identifiable {
     case .dashboard: return String(localized: "tab.dashboard.description")
     case .accounts: return String(localized: "tab.accounts.description")
     case .transactions: return String(localized: "tab.transactions.description")
-    case .reports: return String(localized: "tab.reports.description")
-    case .settings: return String(localized: "tab.settings.description")
+    case .goals: return String(localized: "tab.goals.description")
+    case .more: return String(localized: "tab.more.description")
     }
   }
 }

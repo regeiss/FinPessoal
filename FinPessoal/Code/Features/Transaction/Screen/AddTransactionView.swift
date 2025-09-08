@@ -18,6 +18,7 @@ struct AddTransactionView: View {
   @State private var selectedCategory: TransactionCategory = .other
   @State private var selectedType: TransactionType = .expense
   @State private var selectedAccountId: String = ""
+  @State private var selectedToAccountId: String = ""
   @State private var selectedDate = Date()
   @State private var isRecurring = false
   @State private var isLoading = false
@@ -35,6 +36,12 @@ struct AddTransactionView: View {
               }
             }
             .pickerStyle(SegmentedPickerStyle())
+            .onChange(of: selectedType) { _, newType in
+              // Initialize destination account when switching to transfer
+              if newType == .transfer && selectedToAccountId.isEmpty {
+                selectedToAccountId = accountViewModel.accounts.first(where: { $0.id != selectedAccountId })?.id ?? ""
+              }
+            }
           }
           
           TextField(String(localized: "transactions.amount.placeholder"), text: $amount)
@@ -67,6 +74,27 @@ struct AddTransactionView: View {
                 selectedAccountId = accountViewModel.accounts.first?.id ?? ""
               }
             }
+            .onChange(of: selectedAccountId) { _, newAccountId in
+              // Reset destination account if it's the same as source account
+              if selectedType == .transfer && selectedToAccountId == newAccountId {
+                selectedToAccountId = accountViewModel.accounts.first(where: { $0.id != newAccountId })?.id ?? ""
+              }
+            }
+            
+            // Transfer to account picker (only shown for transfers)
+            if selectedType == .transfer {
+              Picker(String(localized: "transactions.transfer.to.account"), selection: $selectedToAccountId) {
+                ForEach(accountViewModel.accounts.filter { $0.id != selectedAccountId }) { account in
+                  Text(account.name).tag(account.id)
+                }
+              }
+              .pickerStyle(MenuPickerStyle())
+              .onAppear {
+                if selectedToAccountId.isEmpty {
+                  selectedToAccountId = accountViewModel.accounts.first(where: { $0.id != selectedAccountId })?.id ?? ""
+                }
+              }
+            }
           }
           
           DatePicker(String(localized: "transactions.date"), selection: $selectedDate, displayedComponents: .date)
@@ -89,7 +117,7 @@ struct AddTransactionView: View {
               await saveTransaction()
             }
           }
-          .disabled(isLoading || amount.isEmpty || description.isEmpty || selectedAccountId.isEmpty)
+          .disabled(isLoading || amount.isEmpty || description.isEmpty || selectedAccountId.isEmpty || (selectedType == .transfer && selectedToAccountId.isEmpty))
         }
       }
       .disabled(isLoading)
@@ -109,11 +137,21 @@ struct AddTransactionView: View {
       return
     }
     
+    // For transfers, append destination account info to description
+    let finalDescription: String
+    if selectedType == .transfer {
+      let destinationAccount = accountViewModel.accounts.first { $0.id == selectedToAccountId }
+      let destinationName = destinationAccount?.name ?? "Unknown Account"
+      finalDescription = "\(description) → \(destinationName)"
+    } else {
+      finalDescription = description
+    }
+    
     let newTransaction = Transaction(
       id: UUID().uuidString,
       accountId: selectedAccountId,
       amount: amountValue,
-      description: description,
+      description: finalDescription,
       category: selectedCategory,
       type: selectedType,
       date: selectedDate,

@@ -8,14 +8,28 @@
 import SwiftUI
 
 struct GoalScreen: View {
-    var body: some View {
-      NavigationView {
-        EmptyStateView(
-          icon: "target",
-          title: "goals.empty.title",
-          subtitle: "goals.empty.subtitle"
-        )
-        .navigationTitle("goals.title")
+  @State private var showingSettings = false
+  
+  var body: some View {
+    NavigationView {
+      EmptyStateView(
+        icon: "target",
+        title: "goals.empty.title",
+        subtitle: "goals.empty.subtitle"
+      )
+      .navigationTitle("goals.title")
+      .toolbar {
+        ToolbarItem(placement: .navigationBarLeading) {
+          Button {
+            showingSettings = true
+          } label: {
+            Image(systemName: "gear")
+          }
+        }
       }
     }
+    .sheet(isPresented: $showingSettings) {
+      SettingsScreen()
+    }
   }
+}

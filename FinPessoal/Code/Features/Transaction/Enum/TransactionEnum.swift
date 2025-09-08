@@ -26,11 +26,21 @@ enum TransactionPeriod: CaseIterable {
 enum TransactionType: String, CaseIterable, Codable {
   case income = "income"
   case expense = "expense"
+  case transfer = "transfer"
   
   var displayName: String {
     switch self {
     case .income: return String(localized: "transaction.type.income")
     case .expense: return String(localized: "transaction.type.expense")
+    case .transfer: return String(localized: "transaction.type.transfer")
+    }
+  }
+  
+  var icon: String {
+    switch self {
+    case .income: return "plus.circle"
+    case .expense: return "minus.circle"
+    case .transfer: return "arrow.left.arrow.right.circle"
     }
   }
 }

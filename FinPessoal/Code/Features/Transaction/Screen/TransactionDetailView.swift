@@ -74,11 +74,11 @@ struct TransactionDetailView: View {
   
   private var transactionHeaderSection: some View {
     VStack(spacing: 16) {
-      Image(systemName: transaction.category.icon)
+      Image(systemName: transaction.type == .transfer ? transaction.type.icon : transaction.category.icon)
         .font(.system(size: 60))
-        .foregroundColor(transaction.type == .expense ? .red : .green)
+        .foregroundColor(transaction.type == .income ? .green : transaction.type == .expense ? .red : .blue)
         .frame(width: 100, height: 100)
-        .background((transaction.type == .expense ? Color.red : Color.green).opacity(0.1))
+        .background((transaction.type == .income ? Color.green : transaction.type == .expense ? Color.red : Color.blue).opacity(0.1))
         .cornerRadius(20)
       
       Text(transaction.description)
@@ -88,14 +88,14 @@ struct TransactionDetailView: View {
       
       Text(transaction.formattedAmount)
         .font(.system(size: 36, weight: .bold, design: .rounded))
-        .foregroundColor(transaction.type == .expense ? .red : .green)
+        .foregroundColor(transaction.type == .income ? .green : transaction.type == .expense ? .red : .blue)
       
       Text(transaction.type.displayName)
         .font(.caption)
         .padding(.horizontal, 12)
         .padding(.vertical, 4)
-        .background((transaction.type == .expense ? Color.red : Color.green).opacity(0.2))
-        .foregroundColor(transaction.type == .expense ? .red : .green)
+        .background((transaction.type == .income ? Color.green : transaction.type == .expense ? Color.red : Color.blue).opacity(0.2))
+        .foregroundColor(transaction.type == .income ? .green : transaction.type == .expense ? .red : .blue)
         .cornerRadius(8)
     }
     .frame(maxWidth: .infinity)

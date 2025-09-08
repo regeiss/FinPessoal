@@ -13,6 +13,8 @@ struct SettingsScreen: View {
   @EnvironmentObject var themeManager: ThemeManager
   @State private var showingProfile = false
   @State private var showingThemeSettings = false
+  @State private var showingCurrencySettings = false
+  @State private var showingLanguageSettings = false
   
   private var currentThemeDescription: String {
     let savedTheme = UserDefaults.standard.string(forKey: "selectedTheme") ?? "system"
@@ -25,6 +27,25 @@ struct SettingsScreen: View {
       return String(localized: "theme.dark", defaultValue: "Escuro")
     default:
       return String(localized: "theme.system", defaultValue: "Automático")
+    }
+  }
+  
+  private var currentCurrencyDescription: String {
+    let savedCurrency = UserDefaults.standard.string(forKey: "selectedCurrency") ?? "BRL"
+    return CurrencyHelper.supportedCurrencies.first { $0.code == savedCurrency }?.displayName ?? "Real Brasileiro"
+  }
+  
+  private var currentLanguageDescription: String {
+    let savedLanguage = UserDefaults.standard.string(forKey: "selectedLanguage") ?? "system"
+    switch savedLanguage {
+    case "system":
+      return String(localized: "language.system", defaultValue: "Automático")
+    case "pt-BR":
+      return String(localized: "language.portuguese", defaultValue: "Português")
+    case "en":
+      return String(localized: "language.english", defaultValue: "English")
+    default:
+      return String(localized: "language.system", defaultValue: "Automático")
     }
   }
   
@@ -118,8 +139,56 @@ struct SettingsScreen: View {
         
         Section(String(localized: "settings.preferences.section")) {
           SettingsRow(title: String(localized: "settings.notifications"), icon: "bell", action: {})
-          SettingsRow(title: String(localized: "settings.currency"), icon: "dollarsign.circle", action: {})
-          SettingsRow(title: String(localized: "settings.language"), icon: "globe", action: {})
+          
+          // Currency settings row with current currency indicator
+          Button {
+            showingCurrencySettings = true
+          } label: {
+            HStack {
+              Image(systemName: "dollarsign.circle")
+                .foregroundColor(.blue)
+                .frame(width: 24)
+              
+              Text(String(localized: "settings.currency"))
+                .foregroundColor(.primary)
+              
+              Spacer()
+              
+              Text(currentCurrencyDescription)
+                .font(.caption)
+                .foregroundColor(.secondary)
+              
+              Image(systemName: "chevron.right")
+                .font(.caption)
+                .foregroundColor(.secondary)
+            }
+          }
+          .buttonStyle(.plain)
+          
+          // Language settings row with current language indicator
+          Button {
+            showingLanguageSettings = true
+          } label: {
+            HStack {
+              Image(systemName: "globe")
+                .foregroundColor(.blue)
+                .frame(width: 24)
+              
+              Text(String(localized: "settings.language"))
+                .foregroundColor(.primary)
+              
+              Spacer()
+              
+              Text(currentLanguageDescription)
+                .font(.caption)
+                .foregroundColor(.secondary)
+              
+              Image(systemName: "chevron.right")
+                .font(.caption)
+                .foregroundColor(.secondary)
+            }
+          }
+          .buttonStyle(.plain)
         }
         
         Section(String(localized: "settings.data.section", defaultValue: "Dados")) {
@@ -159,6 +228,12 @@ struct SettingsScreen: View {
         ThemeSettingsView()
           .environmentObject(themeManager)
       }
+      .sheet(isPresented: $showingCurrencySettings) {
+        CurrencySettingsView()
+      }
+      .sheet(isPresented: $showingLanguageSettings) {
+        LanguageSettingsView()
+      }
     }
   }
 }
@@ -186,5 +261,169 @@ struct SettingsRow: View {
       }
     }
     .buttonStyle(.plain)
+  }
+}
+
+// MARK: - Currency Models and Extensions
+struct CurrencyInfo {
+  let code: String
+  let displayName: String
+  let symbol: String
+}
+
+extension CurrencyHelper {
+  static let supportedCurrencies: [CurrencyInfo] = [
+    CurrencyInfo(code: "BRL", displayName: "Real Brasileiro", symbol: "R$"),
+    CurrencyInfo(code: "USD", displayName: "US Dollar", symbol: "$"),
+    CurrencyInfo(code: "EUR", displayName: "Euro", symbol: "€"),
+    CurrencyInfo(code: "GBP", displayName: "British Pound", symbol: "£"),
+    CurrencyInfo(code: "JPY", displayName: "Japanese Yen", symbol: "¥"),
+    CurrencyInfo(code: "CAD", displayName: "Canadian Dollar", symbol: "C$"),
+    CurrencyInfo(code: "AUD", displayName: "Australian Dollar", symbol: "A$"),
+    CurrencyInfo(code: "CHF", displayName: "Swiss Franc", symbol: "CHF"),
+    CurrencyInfo(code: "CNY", displayName: "Chinese Yuan", symbol: "¥"),
+    CurrencyInfo(code: "MXN", displayName: "Mexican Peso", symbol: "$"),
+    CurrencyInfo(code: "ARS", displayName: "Argentine Peso", symbol: "$")
+  ]
+  
+  static func setCurrency(_ code: String) {
+    UserDefaults.standard.set(code, forKey: "selectedCurrency")
+  }
+  
+  static func getCurrentCurrency() -> CurrencyInfo {
+    let savedCode = UserDefaults.standard.string(forKey: "selectedCurrency") ?? "BRL"
+    return supportedCurrencies.first { $0.code == savedCode } ?? supportedCurrencies[0]
+  }
+}
+
+// MARK: - Currency Settings View
+struct CurrencySettingsView: View {
+  @Environment(\.dismiss) private var dismiss
+  @State private var selectedCurrency = CurrencyHelper.getCurrentCurrency().code
+  
+  var body: some View {
+    NavigationView {
+      List {
+        Section(String(localized: "settings.currency.choose", defaultValue: "Escolha a moeda")) {
+          ForEach(CurrencyHelper.supportedCurrencies, id: \.code) { currency in
+            Button {
+              selectedCurrency = currency.code
+              CurrencyHelper.setCurrency(currency.code)
+            } label: {
+              HStack {
+                VStack(alignment: .leading, spacing: 2) {
+                  Text(currency.displayName)
+                    .font(.headline)
+                    .foregroundColor(.primary)
+                  
+                  Text("\(currency.code) • \(currency.symbol)")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+                }
+                
+                Spacer()
+                
+                if selectedCurrency == currency.code {
+                  Image(systemName: "checkmark")
+                    .foregroundColor(.blue)
+                    .font(.headline)
+                }
+              }
+              .contentShape(Rectangle())
+            }
+            .buttonStyle(.plain)
+          }
+        }
+        
+        Section {
+          Text(String(localized: "settings.currency.note", defaultValue: "A mudança de moeda será aplicada imediatamente em todo o aplicativo."))
+            .font(.caption)
+            .foregroundColor(.secondary)
+        }
+      }
+      .navigationTitle(String(localized: "settings.currency"))
+      .navigationBarTitleDisplayMode(.inline)
+      .toolbar {
+        ToolbarItem(placement: .navigationBarTrailing) {
+          Button(String(localized: "common.done", defaultValue: "Concluído")) {
+            dismiss()
+          }
+        }
+      }
+    }
+  }
+}
+
+// MARK: - Language Settings View
+struct LanguageSettingsView: View {
+  @Environment(\.dismiss) private var dismiss
+  @State private var selectedLanguage = UserDefaults.standard.string(forKey: "selectedLanguage") ?? "system"
+  
+  private let languages = [
+    (code: "system", name: String(localized: "language.system", defaultValue: "Automático"), flag: "🌍"),
+    (code: "pt-BR", name: String(localized: "language.portuguese", defaultValue: "Português"), flag: "🇧🇷"),
+    (code: "en", name: String(localized: "language.english", defaultValue: "English"), flag: "🇺🇸")
+  ]
+  
+  var body: some View {
+    NavigationView {
+      List {
+        Section(String(localized: "settings.language.choose", defaultValue: "Escolha o idioma")) {
+          ForEach(languages, id: \.code) { language in
+            Button {
+              selectedLanguage = language.code
+              UserDefaults.standard.set(language.code, forKey: "selectedLanguage")
+              
+              // Apply language change if not system
+              if language.code != "system" {
+                // Note: Full app restart may be required for complete language change
+              }
+            } label: {
+              HStack {
+                Text(language.flag)
+                  .font(.title2)
+                
+                Text(language.name)
+                  .font(.headline)
+                  .foregroundColor(.primary)
+                
+                Spacer()
+                
+                if selectedLanguage == language.code {
+                  Image(systemName: "checkmark")
+                    .foregroundColor(.blue)
+                    .font(.headline)
+                }
+              }
+              .contentShape(Rectangle())
+            }
+            .buttonStyle(.plain)
+          }
+        }
+        
+        Section {
+          VStack(alignment: .leading, spacing: 8) {
+            Text(String(localized: "settings.language.note", defaultValue: "Algumas mudanças de idioma podem exigir o reinício do aplicativo."))
+              .font(.caption)
+              .foregroundColor(.secondary)
+            
+            if selectedLanguage == "system" {
+              Text(String(localized: "settings.language.system.note", defaultValue: "O idioma automático usa a configuração do sistema do seu dispositivo."))
+                .font(.caption)
+                .foregroundColor(.secondary)
+            }
+          }
+        }
+      }
+      .navigationTitle(String(localized: "settings.language"))
+      .navigationBarTitleDisplayMode(.inline)
+      .toolbar {
+        ToolbarItem(placement: .navigationBarTrailing) {
+          Button(String(localized: "common.done", defaultValue: "Concluído")) {
+            dismiss()
+          }
+        }
+      }
+    }
   }
 }

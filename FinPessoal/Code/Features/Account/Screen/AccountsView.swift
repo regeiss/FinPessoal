@@ -11,11 +11,12 @@ struct AccountsView: View {
   @EnvironmentObject var accountViewModel: AccountViewModel
   @EnvironmentObject var financeViewModel: FinanceViewModel
   @EnvironmentObject var authViewModel: AuthViewModel
+  @State private var showingSettings = false
   
   var body: some View {
     NavigationView {
       ScrollView {
-        LazyVStack(spacing: 16) {
+        LazyVStack(spacing: 20) {
           if accountViewModel.isLoading {
             ProgressView(String(localized: "accounts.loading"))
               .padding(.vertical, 60)
@@ -26,10 +27,19 @@ struct AccountsView: View {
             accountsListSection
           }
         }
-        .padding(.horizontal)
+        .padding(.horizontal, 20)
+        .padding(.top, 8)
       }
       .navigationTitle(String(localized: "accounts.title"))
       .toolbar {
+        ToolbarItem(placement: .navigationBarLeading) {
+          Button {
+            showingSettings = true
+          } label: {
+            Image(systemName: "gear")
+          }
+        }
+        
         ToolbarItem(placement: .navigationBarTrailing) {
           Button {
             accountViewModel.showAddAccount()
@@ -77,10 +87,13 @@ struct AccountsView: View {
         }
       }
     }
+    .sheet(isPresented: $showingSettings) {
+      SettingsScreen()
+    }
   }
   
   private var emptyStateView: some View {
-    VStack(spacing: 20) {
+    VStack(spacing: 24) {
       Image(systemName: "creditcard")
         .font(.system(size: 60))
         .foregroundColor(.blue)
@@ -92,18 +105,18 @@ struct AccountsView: View {
       Text(String(localized: "accounts.empty.description"))
         .multilineTextAlignment(.center)
         .foregroundColor(.secondary)
-        .padding(.horizontal)
+        .padding(.horizontal, 24)
       
       Button(String(localized: "accounts.add.first.button")) {
         accountViewModel.showAddAccount()
       }
       .buttonStyle(.borderedProminent)
     }
-    .padding(.vertical, 60)
+    .padding(.vertical, 80)
   }
   
   private var summarySection: some View {
-    VStack(spacing: 16) {
+    VStack(spacing: 20) {
       HStack {
         Text(String(localized: "accounts.summary.title"))
           .font(.headline)
@@ -114,7 +127,7 @@ struct AccountsView: View {
       LazyVGrid(columns: [
         GridItem(.flexible()),
         GridItem(.flexible())
-      ], spacing: 12) {
+      ], spacing: 16) {
         SummaryCard(
           title: String(localized: "accounts.total.count"),
           value: "\(accountViewModel.accounts.count)",
@@ -130,13 +143,13 @@ struct AccountsView: View {
         )
       }
     }
-    .padding()
+    .padding(20)
     .background(Color(.systemGray6))
-    .cornerRadius(12)
+    .cornerRadius(16)
   }
   
   private var accountsListSection: some View {
-    VStack(alignment: .leading, spacing: 12) {
+    VStack(alignment: .leading, spacing: 16) {
       HStack {
         Text(String(localized: "accounts.your.accounts"))
           .font(.headline)
@@ -151,6 +164,7 @@ struct AccountsView: View {
         EnhancedAccountCard(account: account) {
           accountViewModel.selectAccount(account)
         }
+        .padding(.bottom, 4)
       }
     }
   }
@@ -165,11 +179,11 @@ struct EnhancedAccountCard: View {
       HStack(spacing: 16) {
         // Ícone da conta
         Image(systemName: account.type.icon)
-          .font(.title2)
+          .font(.title)
           .foregroundColor(account.type.color)
-          .frame(width: 48, height: 48)
+          .frame(width: 52, height: 52)
           .background(account.type.color.opacity(0.15))
-          .cornerRadius(12)
+          .cornerRadius(14)
         
         // Informações da conta
         VStack(alignment: .leading, spacing: 4) {
@@ -209,13 +223,14 @@ struct EnhancedAccountCard: View {
           .font(.caption)
           .foregroundColor(.secondary)
       }
-      .padding()
+      .padding(16)
       .background(Color(.systemBackground))
-      .cornerRadius(12)
+      .cornerRadius(16)
       .overlay(
-        RoundedRectangle(cornerRadius: 12)
+        RoundedRectangle(cornerRadius: 16)
           .stroke(Color(.systemGray5), lineWidth: 1)
       )
+      .shadow(color: Color.black.opacity(0.05), radius: 2, x: 0, y: 1)
     }
     .buttonStyle(.plain)
   }
@@ -245,9 +260,10 @@ struct SummaryCard: View {
         .fontWeight(.semibold)
         .foregroundColor(.primary)
     }
-    .padding()
+    .padding(16)
     .background(Color(.systemBackground))
-    .cornerRadius(8)
+    .cornerRadius(12)
+    .shadow(color: Color.black.opacity(0.05), radius: 2, x: 0, y: 1)
   }
 }
 

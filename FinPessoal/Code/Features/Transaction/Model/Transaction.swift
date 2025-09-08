@@ -40,7 +40,7 @@ struct Transaction: Identifiable, Codable {
     formatter.numberStyle = .currency
     formatter.currencyCode = "BRL"
     formatter.locale = Locale(identifier: "pt_BR")
-    let prefix = type == .expense ? "-" : "+"
+    let prefix = type == .expense ? "-" : type == .income ? "+" : ""
     return prefix + (formatter.string(from: NSNumber(value: abs(amount))) ?? "R$ 0,00")
   }
 }

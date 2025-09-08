@@ -12,12 +12,12 @@ struct TransactionRow: View {
   
   var body: some View {
     HStack(spacing: 16) {
-      // Ícone da categoria
-      Image(systemName: transaction.category.icon)
+      // Ícone da categoria ou tipo (para transferências)
+      Image(systemName: transaction.type == .transfer ? transaction.type.icon : transaction.category.icon)
         .font(.title3)
         .foregroundColor(.white)
         .frame(width: 40, height: 40)
-        .background(transaction.type == .income ? Color.green : Color.red)
+        .background(transaction.type == .income ? Color.green : transaction.type == .expense ? Color.red : Color.blue)
         .cornerRadius(10)
       
       // Informações da transação
@@ -47,7 +47,7 @@ struct TransactionRow: View {
         Text(transaction.formattedAmount)
           .font(.headline)
           .fontWeight(.semibold)
-          .foregroundColor(transaction.type == .expense ? .red : .green)
+          .foregroundColor(transaction.type == .income ? .green : transaction.type == .expense ? .red : .blue)
         
         Text(transaction.date, format: .dateTime.hour().minute())
           .font(.caption2)

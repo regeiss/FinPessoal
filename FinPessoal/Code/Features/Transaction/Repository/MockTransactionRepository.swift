@@ -175,6 +175,32 @@ class MockTransactionRepository: TransactionRepositoryProtocol {
                 userId: mockUserId,
                 createdAt: calendar.date(byAdding: .day, value: -8, to: baseDate) ?? baseDate,
                 updatedAt: calendar.date(byAdding: .day, value: -8, to: baseDate) ?? baseDate
+            ),
+            Transaction(
+                id: "trans13",
+                accountId: "1",
+                amount: 500.00,
+                description: "Transferência para Poupança",
+                category: .other,
+                type: .transfer,
+                date: calendar.date(byAdding: .day, value: -1, to: baseDate) ?? baseDate,
+                isRecurring: false,
+                userId: mockUserId,
+                createdAt: calendar.date(byAdding: .day, value: -1, to: baseDate) ?? baseDate,
+                updatedAt: calendar.date(byAdding: .day, value: -1, to: baseDate) ?? baseDate
+            ),
+            Transaction(
+                id: "trans14",
+                accountId: "2",
+                amount: 200.00,
+                description: "Transferência entre Contas",
+                category: .other,
+                type: .transfer,
+                date: calendar.date(byAdding: .day, value: -4, to: baseDate) ?? baseDate,
+                isRecurring: false,
+                userId: mockUserId,
+                createdAt: calendar.date(byAdding: .day, value: -4, to: baseDate) ?? baseDate,
+                updatedAt: calendar.date(byAdding: .day, value: -4, to: baseDate) ?? baseDate
             )
         ]
     }

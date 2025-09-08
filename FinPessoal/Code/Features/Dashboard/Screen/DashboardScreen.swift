@@ -11,6 +11,7 @@ import Firebase
 
 struct DashboardScreen: View {
   @StateObject private var viewModel = DashboardViewModel()
+  @State private var showingSettings = false
   
   var body: some View {
     NavigationView {
@@ -38,6 +39,15 @@ struct DashboardScreen: View {
         .padding()
       }
       .navigationTitle(String(localized: "dashboard.title", defaultValue: "Painel"))
+      .toolbar {
+        ToolbarItem(placement: .navigationBarTrailing) {
+          Button {
+            showingSettings = true
+          } label: {
+            Image(systemName: "gear")
+          }
+        }
+      }
       .refreshable {
         await MainActor.run {
           viewModel.loadDashboardData()
@@ -63,6 +73,9 @@ struct DashboardScreen: View {
           Text(error.localizedDescription)
         }
       }
+    }
+    .sheet(isPresented: $showingSettings) {
+      SettingsScreen()
     }
     .onAppear {
       print("DashboardScreen: onAppear called")

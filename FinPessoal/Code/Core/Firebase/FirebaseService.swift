@@ -366,13 +366,16 @@ class FirebaseService {
     }
     
     // Reverse the balance change
-    let reverseAmount = transaction.type == .income ? -transaction.amount : transaction.amount
-    try await updateAccountBalance(
-      accountID: transaction.accountId,
-      amount: reverseAmount,
-      type: transaction.type == .income ? .expense : .income,
-      userID: userID
-    )
+    if transaction.type != .transfer {
+      let reverseAmount = transaction.type == .income ? -transaction.amount : transaction.amount
+      try await updateAccountBalance(
+        accountID: transaction.accountId,
+        amount: reverseAmount,
+        type: transaction.type == .income ? .expense : .income,
+        userID: userID
+      )
+    }
+    // Transfers don't affect account balance, so no need to reverse
     
     // Delete the transaction
     let transactionRef = database
@@ -489,6 +492,12 @@ class FirebaseService {
         currentBalance += amount
       case .expense:
         currentBalance -= amount
+      case .transfer:
+        // Transfers don't change the account balance in this context
+        // as they represent movement between accounts, not net gain/loss
+        break
+      @unknown default:
+        break
       }
       
       currentData.value = currentBalance
@@ -570,6 +579,10 @@ class FirebaseService {
         runningBalance += transaction.amount
       case .expense:
         runningBalance -= transaction.amount
+      case .transfer:
+        // Transfers don't affect the total balance history
+        // as they represent movement between accounts
+        break
       }
       
       history.append((transaction.date, runningBalance))

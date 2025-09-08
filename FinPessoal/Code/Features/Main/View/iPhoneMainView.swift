@@ -10,6 +10,7 @@ import SwiftUI
 struct iPhoneMainView: View {
   @EnvironmentObject var navigationState: NavigationState
   @EnvironmentObject var financeViewModel: FinanceViewModel
+  @State private var showingSettings = false
   
   var body: some View {
     TabView(selection: $navigationState.selectedTab) {
@@ -34,19 +35,19 @@ struct iPhoneMainView: View {
         }
         .tag(MainTab.transactions)
       
-      ReportsScreen()
+      GoalScreen()
         .tabItem {
-          Image(systemName: MainTab.reports.icon)
-          Text(MainTab.reports.displayName)
+          Image(systemName: MainTab.goals.icon)
+          Text(MainTab.goals.displayName)
         }
-        .tag(MainTab.reports)
+        .tag(MainTab.goals)
       
-      SettingsScreen()
+      MoreScreen()
         .tabItem {
-          Image(systemName: MainTab.settings.icon)
-          Text(MainTab.settings.displayName)
+          Image(systemName: MainTab.more.icon)
+          Text(MainTab.more.displayName)
         }
-        .tag(MainTab.settings)
+        .tag(MainTab.more)
     }
     .task {
       await financeViewModel.loadData()

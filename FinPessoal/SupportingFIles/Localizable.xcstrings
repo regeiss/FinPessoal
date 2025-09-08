@@ -7,6 +7,16 @@
     "%.0f%% used" : {
 
     },
+    "%@ • %@" : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ • %2$@"
+          }
+        }
+      }
+    },
     "%lld%%" : {
 
     },
@@ -40,6 +50,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Detalhes da Conta"
+          }
+        }
+      }
+    },
+    "account.type" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Type"
           }
         }
       }
@@ -111,6 +132,9 @@
           }
         }
       }
+    },
+    "Accounts" : {
+
     },
     "accounts.activate" : {
       "extractionState" : "manual",
@@ -656,6 +680,9 @@
         }
       }
     },
+    "Active" : {
+
+    },
     "app.name" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1067,6 +1094,9 @@
           }
         }
       }
+    },
+    "Budgets" : {
+
     },
     "budgets.add.button" : {
       "extractionState" : "manual",
@@ -1585,6 +1615,15 @@
           }
         }
       }
+    },
+    "Configure your app preferences and account settings." : {
+
+    },
+    "Create and manage your budgets to track your spending." : {
+
+    },
+    "Dashboard Overview" : {
+
     },
     "dashboard.add.transaction" : {
       "extractionState" : "manual",
@@ -2152,11 +2191,31 @@
     "Ferramentas" : {
 
     },
+    "Financial reports and analytics will be displayed here." : {
+
+    },
+    "Goals" : {
+
+    },
     "goals.title" : {
 
     },
     "Hello, World!" : {
 
+    },
+    "Inactive" : {
+
+    },
+    "language.english" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "English"
+          }
+        }
+      }
     },
     "language.english.us" : {
       "extractionState" : "manual",
@@ -2171,6 +2230,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "English (US)"
+          }
+        }
+      }
+    },
+    "language.portuguese" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Português"
           }
         }
       }
@@ -2205,6 +2275,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Español"
+          }
+        }
+      }
+    },
+    "language.system" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Automático"
           }
         }
       }
@@ -3037,6 +3118,9 @@
     "Real (BRL)" : {
 
     },
+    "Reports" : {
+
+    },
     "reports.account.balance.history" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3632,6 +3716,18 @@
         }
       }
     },
+    "Select a transaction from the list to view its details." : {
+
+    },
+    "Select an account from the list to view its details and transactions." : {
+
+    },
+    "Set and track your financial goals." : {
+
+    },
+    "Settings" : {
+
+    },
     "settings.account.section" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3762,6 +3858,28 @@
         }
       }
     },
+    "settings.currency.choose" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Escolha a moeda"
+          }
+        }
+      }
+    },
+    "settings.currency.note" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "A mudança de moeda será aplicada imediatamente em todo o aplicativo."
+          }
+        }
+      }
+    },
     "settings.dark.mode" : {
       "extractionState" : "extracted_with_value",
       "localizations" : {
@@ -3854,6 +3972,39 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Idioma"
+          }
+        }
+      }
+    },
+    "settings.language.choose" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Escolha o idioma"
+          }
+        }
+      }
+    },
+    "settings.language.note" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Algumas mudanças de idioma podem exigir o reinício do aplicativo."
+          }
+        }
+      }
+    },
+    "settings.language.system.note" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "O idioma automático usa a configuração do sistema do seu dispositivo."
           }
         }
       }
@@ -4300,6 +4451,23 @@
         }
       }
     },
+    "tab.budgets.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Manage your spending budgets"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gerencie seus orçamentos de gastos"
+          }
+        }
+      }
+    },
     "tab.dashboard" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -4347,6 +4515,74 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Metas"
+          }
+        }
+      }
+    },
+    "tab.goals.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Set and track your financial goals"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Defina e acompanhe suas metas financeiras"
+          }
+        }
+      }
+    },
+    "tab.more" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "More"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mais"
+          }
+        }
+      }
+    },
+    "tab.more.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Additional features and tools"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recursos e ferramentas adicionais"
+          }
+        }
+      }
+    },
+    "more.features.header" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Features"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recursos"
           }
         }
       }
@@ -5022,6 +5258,43 @@
           }
         }
       }
+    },
+    "transaction.type.transfer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transfer"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transferência"
+          }
+        }
+      }
+    },
+    "transactions.transfer.to.account" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transfer to Account"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transferir para Conta"
+          }
+        }
+      }
+    },
+    "Transactions" : {
+
     },
     "transactions.account" : {
       "extractionState" : "manual",
@@ -5719,6 +5992,9 @@
           }
         }
       }
+    },
+    "Your financial overview and key metrics will be displayed here." : {
+
     }
   },
   "version" : "1.0"

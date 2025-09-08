@@ -16,17 +16,17 @@ struct iPadMainView: View {
     NavigationSplitView(columnVisibility: .constant(.all)) {
       // Column 1: Sidebar Navigation
       SidebarView()
-        .navigationSplitViewColumnWidth(min: 180, ideal: 200, max: 250)
+        .navigationSplitViewColumnWidth(min: 200, ideal: 250, max: 300)
     } content: {
       // Column 2: Content Lists
       iPadContentView()
-        .navigationSplitViewColumnWidth(min: 280, ideal: 320, max: 380)
+        .navigationSplitViewColumnWidth(min: 300, ideal: 350, max: 400)
     } detail: {
       // Column 3: Detail Views
       DetailView()
-        .navigationSplitViewColumnWidth(min: 500, ideal: .infinity, max: .infinity)
+        .navigationSplitViewColumnWidth(min: 400, ideal: 600, max: .infinity)
     }
-    .navigationSplitViewStyle(.prominentDetail)
+    .navigationSplitViewStyle(.automatic)
     .task {
       await financeViewModel.loadData()
     }
@@ -77,222 +77,653 @@ struct iPadContentView: View {
 
 // Column 3: Detail Views
 struct DetailView: View {
-  @EnvironmentObject var navigationState: NavigationState
-  
-  var body: some View {
-    NavigationStack {
-      Group {
-        // Show detail screens if any are selected
-        if navigationState.isShowingAddTransaction {
-          iPadAddTransactionView()
-        } else if navigationState.isShowingAddAccount {
-          iPadAddAccountView()
-        } else if let transaction = navigationState.selectedTransaction {
-          iPadTransactionDetailView(transaction: transaction)
-        } else if let account = navigationState.selectedAccount {
-          iPadAccountDetailView(account: account)
-        } else {
-          // Default empty detail state
-          EmptyDetailView()
+    @EnvironmentObject var navigationState: NavigationState
+    
+    var body: some View {
+      NavigationStack {
+        Group {
+          // Show detail screens if any are selected
+          if navigationState.isShowingAddTransaction {
+            iPadAddTransactionView()
+          } else if navigationState.isShowingAddAccount {
+            iPadAddAccountView()
+          } else if let transaction = navigationState.selectedTransaction {
+            iPadTransactionDetailView(transaction: transaction)
+          } else if let account = navigationState.selectedAccount {
+            iPadAccountDetailView(account: account)
+          } else {
+            // Default content based on selected sidebar item, like Settings app
+            DefaultDetailView()
+          }
+        }
+        .navigationBarTitleDisplayMode(.large)
+        .onAppear {
+          print("DetailView onAppear - selectedAccount: \(navigationState.selectedAccount?.name ?? "nil"), isShowingAddAccount: \(navigationState.isShowingAddAccount)")
+        }
+        .onChange(of: navigationState.selectedAccount) { _, account in
+          print("DetailView: selectedAccount changed to: \(account?.name ?? "nil")")
         }
       }
+    }
+  }
+  
+  // Default detail view that shows contextual content like Apple Settings
+  struct DefaultDetailView: View {
+    @EnvironmentObject var navigationState: NavigationState
+    @EnvironmentObject var financeViewModel: FinanceViewModel
+    
+    var body: some View {
+      ScrollView {
+        LazyVStack(spacing: 0) {
+          switch navigationState.selectedSidebarItem {
+          case .dashboard:
+            DashboardDetailView()
+          case .accounts:
+            AccountsDetailView()
+          case .transactions:
+            TransactionsDetailView()
+          case .reports:
+            ReportsDetailView()
+          case .budgets:
+            BudgetsDetailView()
+          case .goals:
+            GoalsDetailView()
+          case .settings:
+            SettingsDetailView()
+          case .none:
+            DashboardDetailView()
+          }
+        }
+      }
+      .background(Color(.systemGroupedBackground))
+      .navigationTitle(navigationState.selectedSidebarItem?.displayName ?? String(localized: "navigation.dashboard.title", defaultValue: "Dashboard"))
       .navigationBarTitleDisplayMode(.large)
-      .onAppear {
-        print("DetailView onAppear - selectedAccount: \(navigationState.selectedAccount?.name ?? "nil"), isShowingAddAccount: \(navigationState.isShowingAddAccount)")
-      }
-      .onChange(of: navigationState.selectedAccount) { _, account in
-        print("DetailView: selectedAccount changed to: \(account?.name ?? "nil")")
-      }
     }
   }
-}
-
-// Empty state for detail column when no item is selected
-struct EmptyDetailView: View {
-  @EnvironmentObject var navigationState: NavigationState
   
-  var body: some View {
-    VStack(spacing: 24) {
-      Image(systemName: "sidebar.right")
-        .font(.system(size: 64))
-        .foregroundColor(.secondary)
-      
-      Text(String(localized: "detail.empty.select.title", defaultValue: "Select an item"))
-        .font(.title2)
-        .fontWeight(.semibold)
-        .foregroundColor(.secondary)
-      
-      Text(String(localized: "detail.empty.select.message", defaultValue: "Choose an item from the list to view its details here"))
-        .multilineTextAlignment(.center)
-        .foregroundColor(.secondary)
-        .padding(.horizontal, 32)
-    }
-    .frame(maxWidth: .infinity, maxHeight: .infinity)
-    .background(Color(.systemGroupedBackground))
-  }
-}
-
-// iPad-specific wrapper views that coordinate with NavigationState
-struct iPadTransactionsView: View {
-  @EnvironmentObject var navigationState: NavigationState
-  @StateObject private var transactionViewModel: TransactionViewModel
-  
-  init() {
-    let repository = AppConfiguration.shared.createTransactionRepository()
-    self._transactionViewModel = StateObject(wrappedValue: TransactionViewModel(repository: repository))
-  }
-  
-  var body: some View {
-    ZStack {
-      TransactionsScreen()
-    }
-    .onReceive(transactionViewModel.$selectedTransaction) { transaction in
-      if let transaction = transaction {
-        navigationState.selectTransaction(transaction)
+  // Default detail views for each section
+  struct DashboardDetailView: View {
+    var body: some View {
+      VStack(spacing: 24) {
+        Image(systemName: "chart.line.uptrend.xyaxis")
+          .font(.system(size: 64))
+          .foregroundColor(.blue)
+        
+        Text("Dashboard Overview")
+          .font(.title2)
+          .fontWeight(.semibold)
+        
+        Text("Your financial overview and key metrics will be displayed here.")
+          .multilineTextAlignment(.center)
+          .foregroundColor(.secondary)
+          .padding(.horizontal, 32)
+        
+        // TODO: Add finance stats when data is available
       }
+      .frame(maxWidth: .infinity, maxHeight: .infinity)
+      .padding(.vertical, 40)
     }
-    .onChange(of: transactionViewModel.showingAddTransaction) { _, showing in
-      if showing {
-        navigationState.showAddTransaction()
-        transactionViewModel.dismissAddTransaction()
-      }
-    }
-    .environmentObject(transactionViewModel)
   }
-}
-
-struct iPadAccountsView: View {
-  @EnvironmentObject var navigationState: NavigationState
-  @EnvironmentObject var accountViewModel: AccountViewModel
   
-  var body: some View {
-    AccountsView()
-      .onReceive(accountViewModel.$selectedAccount) { account in
-        print("iPadAccountsView: received selectedAccount: \(account?.name ?? "nil")")
-        if let account = account {
-          print("iPadAccountsView: calling navigationState.selectAccount")
-          navigationState.selectAccount(account)
+  struct AccountsDetailView: View {
+    var body: some View {
+      VStack(spacing: 24) {
+        Image(systemName: "creditcard")
+          .font(.system(size: 64))
+          .foregroundColor(.green)
+        
+        Text("Accounts")
+          .font(.title2)
+          .fontWeight(.semibold)
+        
+        Text("Select an account from the list to view its details and transactions.")
+          .multilineTextAlignment(.center)
+          .foregroundColor(.secondary)
+          .padding(.horizontal, 32)
+      }
+      .frame(maxWidth: .infinity, maxHeight: .infinity)
+      .padding(.vertical, 40)
+    }
+  }
+  
+  struct TransactionsDetailView: View {
+    var body: some View {
+      VStack(spacing: 24) {
+        Image(systemName: "list.bullet.rectangle")
+          .font(.system(size: 64))
+          .foregroundColor(.orange)
+        
+        Text("Transactions")
+          .font(.title2)
+          .fontWeight(.semibold)
+        
+        Text("Select a transaction from the list to view its details.")
+          .multilineTextAlignment(.center)
+          .foregroundColor(.secondary)
+          .padding(.horizontal, 32)
+      }
+      .frame(maxWidth: .infinity, maxHeight: .infinity)
+      .padding(.vertical, 40)
+    }
+  }
+  
+  struct ReportsDetailView: View {
+    var body: some View {
+      VStack(spacing: 24) {
+        Image(systemName: "chart.bar.doc.horizontal")
+          .font(.system(size: 64))
+          .foregroundColor(.purple)
+        
+        Text("Reports")
+          .font(.title2)
+          .fontWeight(.semibold)
+        
+        Text("Financial reports and analytics will be displayed here.")
+          .multilineTextAlignment(.center)
+          .foregroundColor(.secondary)
+          .padding(.horizontal, 32)
+      }
+      .frame(maxWidth: .infinity, maxHeight: .infinity)
+      .padding(.vertical, 40)
+    }
+  }
+  
+  struct BudgetsDetailView: View {
+    var body: some View {
+      VStack(spacing: 24) {
+        Image(systemName: "target")
+          .font(.system(size: 64))
+          .foregroundColor(.red)
+        
+        Text("Budgets")
+          .font(.title2)
+          .fontWeight(.semibold)
+        
+        Text("Create and manage your budgets to track your spending.")
+          .multilineTextAlignment(.center)
+          .foregroundColor(.secondary)
+          .padding(.horizontal, 32)
+      }
+      .frame(maxWidth: .infinity, maxHeight: .infinity)
+      .padding(.vertical, 40)
+    }
+  }
+  
+  struct GoalsDetailView: View {
+    var body: some View {
+      VStack(spacing: 24) {
+        Image(systemName: "flag.checkered")
+          .font(.system(size: 64))
+          .foregroundColor(.indigo)
+        
+        Text("Goals")
+          .font(.title2)
+          .fontWeight(.semibold)
+        
+        Text("Set and track your financial goals.")
+          .multilineTextAlignment(.center)
+          .foregroundColor(.secondary)
+          .padding(.horizontal, 32)
+      }
+      .frame(maxWidth: .infinity, maxHeight: .infinity)
+      .padding(.vertical, 40)
+    }
+  }
+  
+  struct SettingsDetailView: View {
+    var body: some View {
+      VStack(spacing: 24) {
+        Image(systemName: "gear")
+          .font(.system(size: 64))
+          .foregroundColor(.gray)
+        
+        Text("Settings")
+          .font(.title2)
+          .fontWeight(.semibold)
+        
+        Text("Configure your app preferences and account settings.")
+          .multilineTextAlignment(.center)
+          .foregroundColor(.secondary)
+          .padding(.horizontal, 32)
+      }
+      .frame(maxWidth: .infinity, maxHeight: .infinity)
+      .padding(.vertical, 40)
+    }
+  }
+  
+//  struct StatCard: View {
+//    let title: String
+//    let value: String
+//    let color: Color
+//    
+//    var body: some View {
+//      VStack(spacing: 8) {
+//        Text(value)
+//          .font(.title2)
+//          .fontWeight(.bold)
+//          .foregroundColor(color)
+//        
+//        Text(title)
+//          .font(.caption)
+//          .foregroundColor(.secondary)
+//      }
+//      .frame(maxWidth: .infinity)
+//      .padding()
+//      .background(Color(.systemGray6))
+//      .cornerRadius(12)
+//    }
+//  }
+  
+  // Legacy empty detail view - kept for compatibility
+  struct EmptyDetailView: View {
+    @EnvironmentObject var navigationState: NavigationState
+    
+    var body: some View {
+      DefaultDetailView()
+    }
+  }
+  
+  // iPad-specific wrapper views that coordinate with NavigationState
+  struct iPadTransactionsView: View {
+    @EnvironmentObject var navigationState: NavigationState
+    @StateObject private var transactionViewModel: TransactionViewModel
+    
+    init() {
+      let repository = AppConfiguration.shared.createTransactionRepository()
+      self._transactionViewModel = StateObject(wrappedValue: TransactionViewModel(repository: repository))
+    }
+    
+    var body: some View {
+      ZStack {
+        TransactionsScreen(transactionViewModel: transactionViewModel)
+      }
+      .onReceive(transactionViewModel.$selectedTransaction) { transaction in
+        if let transaction = transaction {
+          navigationState.selectTransaction(transaction)
         }
       }
-      .onChange(of: accountViewModel.showingAddAccount) { _, showing in
+      .onChange(of: transactionViewModel.showingAddTransaction) { _, showing in
         if showing {
-          navigationState.showAddAccount()
-          accountViewModel.showingAddAccount = false
+          navigationState.showAddTransaction()
+          transactionViewModel.dismissAddTransaction()
         }
       }
-  }
-}
-
-struct iPadTransactionDetailView: View {
-  let transaction: Transaction
-  @EnvironmentObject var navigationState: NavigationState
-  
-  var body: some View {
-    VStack(spacing: 0) {
-      TransactionDetailView(transaction: transaction)
+      .environmentObject(transactionViewModel)
     }
-    .frame(maxWidth: .infinity, maxHeight: .infinity)
-    .toolbar {
-      ToolbarItem(placement: .navigationBarLeading) {
-        Button(String(localized: "common.close", defaultValue: "Fechar")) {
-          navigationState.clearDetailSelection()
+  }
+  
+  struct iPadAccountsView: View {
+    @EnvironmentObject var navigationState: NavigationState
+    @EnvironmentObject var accountViewModel: AccountViewModel
+    
+    var body: some View {
+      AccountsView()
+        .onReceive(accountViewModel.$selectedAccount) { account in
+          print("iPadAccountsView: received selectedAccount: \(account?.name ?? "nil")")
+          if let account = account {
+            print("iPadAccountsView: calling navigationState.selectAccount")
+            navigationState.selectAccount(account)
+          }
+        }
+        .onChange(of: accountViewModel.showingAddAccount) { _, showing in
+          if showing {
+            navigationState.showAddAccount()
+            accountViewModel.showingAddAccount = false
+          }
+        }
+    }
+  }
+  
+  struct iPadTransactionDetailView: View {
+    let transaction: Transaction
+    @EnvironmentObject var navigationState: NavigationState
+    
+    var body: some View {
+      VStack(spacing: 0) {
+        TransactionDetailView(transaction: transaction)
+      }
+      .frame(maxWidth: .infinity, maxHeight: .infinity)
+      .toolbar {
+        ToolbarItem(placement: .navigationBarLeading) {
+          Button(String(localized: "common.close", defaultValue: "Fechar")) {
+            navigationState.clearDetailSelection()
+          }
         }
       }
+      .navigationTitle(String(localized: "transaction.detail.title", defaultValue: "Detalhes da Transação"))
+      .navigationBarTitleDisplayMode(.inline)
     }
-    .navigationTitle(String(localized: "transaction.detail.title", defaultValue: "Detalhes da Transação"))
-    .navigationBarTitleDisplayMode(.inline)
   }
-}
-
-struct iPadAccountDetailView: View {
-  let account: Account
-  @EnvironmentObject var navigationState: NavigationState
-  @EnvironmentObject var accountViewModel: AccountViewModel
   
-  var body: some View {
-    AccountDetailView(account: account, accountViewModel: accountViewModel)
+  struct iPadAccountDetailView: View {
+    let account: Account
+    @EnvironmentObject var navigationState: NavigationState
+    @EnvironmentObject var accountViewModel: AccountViewModel
+    @EnvironmentObject var financeViewModel: FinanceViewModel
+    @State private var showingEditAccount = false
+    @State private var showingConfirmation = false
+    
+    private var accountTransactions: [Transaction] {
+      financeViewModel.transactions.filter { $0.accountId == account.id }
+    }
+    
+    var body: some View {
+      ScrollView {
+        VStack(spacing: 24) {
+          accountHeaderSection
+          accountStatsSection
+          recentTransactionsSection
+        }
+        .padding(.top)
+      }
+      .frame(maxWidth: .infinity, maxHeight: .infinity)
+      .background(Color(.systemGroupedBackground))
       .toolbar {
         ToolbarItem(placement: .navigationBarLeading) {
           Button(String(localized: "common.back", defaultValue: "Back")) {
             navigationState.clearDetailSelection()
           }
         }
-      }
-      .navigationTitle(String(localized: "account.detail.title", defaultValue: "Account Details"))
-      .navigationBarTitleDisplayMode(.inline)
-  }
-}
-
-struct iPadAddTransactionView: View {
-  @EnvironmentObject var navigationState: NavigationState
-  @StateObject private var transactionViewModel: TransactionViewModel
-  
-  init() {
-    let repository = AppConfiguration.shared.createTransactionRepository()
-    self._transactionViewModel = StateObject(wrappedValue: TransactionViewModel(repository: repository))
-  }
-  
-  var body: some View {
-    AddTransactionView(transactionViewModel: transactionViewModel)
-      .toolbar {
-        ToolbarItem(placement: .navigationBarLeading) {
-          Button(String(localized: "common.cancel", defaultValue: "Cancel")) {
-            navigationState.clearDetailSelection()
+        
+        ToolbarItem(placement: .navigationBarTrailing) {
+          Menu {
+            Button(String(localized: "accounts.edit.button", defaultValue: "Edit")) {
+              showingEditAccount = true
+            }
+            Button(String(localized: "accounts.view.statement", defaultValue: "View Statement")) {
+              // Navigate to transactions screen for this account
+            }
+            Divider()
+            if account.isActive {
+              Button(String(localized: "accounts.deactivate", defaultValue: "Deactivate"), role: .destructive) {
+                showingConfirmation = true
+              }
+            } else {
+              Button(String(localized: "accounts.activate", defaultValue: "Activate")) {
+                Task {
+                  await accountViewModel.activateAccount(account.id)
+                  navigationState.clearDetailSelection()
+                }
+              }
+            }
+          } label: {
+            Image(systemName: "ellipsis.circle")
           }
         }
       }
-      .navigationTitle(String(localized: "transaction.add.title", defaultValue: "New Transaction"))
+      .navigationTitle(account.name)
       .navigationBarTitleDisplayMode(.inline)
-  }
-}
-
-struct iPadAddAccountView: View {
-  @EnvironmentObject var navigationState: NavigationState
-  @EnvironmentObject var accountViewModel: AccountViewModel
-  
-  var body: some View {
-    AddAccountView(accountViewModel: accountViewModel)
-      .toolbar {
-        ToolbarItem(placement: .navigationBarLeading) {
-          Button(String(localized: "common.cancel", defaultValue: "Cancel")) {
+      .sheet(isPresented: $showingEditAccount) {
+        EditAccountView(account: account, accountViewModel: accountViewModel)
+      }
+      .confirmationDialog(
+        String(localized: "accounts.deactivate.confirm.title", defaultValue: "Deactivate Account"),
+        isPresented: $showingConfirmation
+      ) {
+        Button(String(localized: "accounts.deactivate", defaultValue: "Deactivate"), role: .destructive) {
+          Task {
+            await accountViewModel.deactivateAccount(account.id)
             navigationState.clearDetailSelection()
           }
         }
+        Button(String(localized: "common.cancel", defaultValue: "Cancel"), role: .cancel) { }
+      } message: {
+        Text(String(localized: "accounts.deactivate.confirm.message", defaultValue: "Are you sure you want to deactivate this account?"))
       }
-      .navigationTitle(String(localized: "account.add.title", defaultValue: "New Account"))
-      .navigationBarTitleDisplayMode(.inline)
+    }
+    
+    private var accountHeaderSection: some View {
+      VStack(spacing: 20) {
+        Image(systemName: account.type.icon)
+          .font(.system(size: 80))
+          .foregroundColor(account.type.color)
+          .frame(width: 120, height: 120)
+          .background(account.type.color.opacity(0.15))
+          .cornerRadius(30)
+        
+        VStack(spacing: 6) {
+          Text(LocalizedStringKey(account.type.rawValue))
+            .font(.title3)
+            .foregroundColor(.secondary)
+          
+          Text(account.formattedBalance)
+            .font(.system(size: 42, weight: .bold, design: .rounded))
+            .foregroundColor(account.balance >= 0 ? .green : .red)
+        }
+      }
+      .frame(maxWidth: .infinity)
+      .padding(.vertical, 30)
+      .background(Color(.systemGray6))
+      .cornerRadius(20)
+    }
+    
+    private var accountStatsSection: some View {
+      LazyVGrid(columns: [
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+        GridItem(.flexible())
+      ], spacing: 16) {
+        DetailStatCard(
+          title: String(localized: "transactions.title", defaultValue: "Transactions"),
+          value: "\(accountTransactions.count)",
+          icon: "list.bullet",
+          color: .blue
+        )
+        
+        DetailStatCard(
+          title: String(localized: "common.status", defaultValue: "Status"),
+          value: String(localized: account.isActive ? "common.active" : "common.inactive", defaultValue: account.isActive ? "Active" : "Inactive"),
+          icon: account.isActive ? "checkmark.circle.fill" : "pause.circle.fill",
+          color: account.isActive ? .green : .orange
+        )
+        
+        DetailStatCard(
+          title: String(localized: "account.type", defaultValue: "Type"),
+          value: account.type.rawValue,
+          icon: account.type.icon,
+          color: account.type.color
+        )
+      }
+    }
+    
+    private var recentTransactionsSection: some View {
+      VStack(alignment: .leading, spacing: 16) {
+        HStack {
+          Text(String(localized: "transactions.recent", defaultValue: "Recent Transactions"))
+            .font(.title2)
+            .fontWeight(.semibold)
+          Spacer()
+          if !accountTransactions.isEmpty {
+            Text(String(localized: "transactions.total.count", defaultValue: "\(accountTransactions.count) total"))
+              .font(.caption)
+              .foregroundColor(.secondary)
+          }
+        }
+        
+        if accountTransactions.isEmpty {
+          VStack(spacing: 16) {
+            Image(systemName: "tray")
+              .font(.system(size: 50))
+              .foregroundColor(.secondary)
+            
+            Text(String(localized: "transactions.empty.title", defaultValue: "No Transactions"))
+              .font(.title3)
+              .fontWeight(.medium)
+              .foregroundColor(.secondary)
+            
+            Text(String(localized: "transactions.empty.account.description", defaultValue: "This account has no transactions yet."))
+              .font(.body)
+              .foregroundColor(.secondary)
+              .multilineTextAlignment(.center)
+          }
+          .frame(maxWidth: .infinity)
+          .padding(.vertical, 60)
+        } else {
+          LazyVStack(spacing: 12) {
+            ForEach(accountTransactions.prefix(10)) { transaction in
+              EnhancedTransactionRow(transaction: transaction)
+            }
+          }
+          
+          if accountTransactions.count > 10 {
+            Button(String(localized: "transactions.view.all.count", defaultValue: "View all \(accountTransactions.count) transactions")) {
+              // Navigate to full transactions list
+            }
+            .font(.body)
+            .foregroundColor(.blue)
+            .padding(.top, 16)
+            .frame(maxWidth: .infinity)
+          }
+        }
+      }
+    }
   }
-}
 
-struct UserProfileRow: View {
-  let user: User
-  @EnvironmentObject var authViewModel: AuthViewModel
+struct DetailStatCard: View {
+  let title: String
+  let value: String
+  let icon: String
+  let color: Color
   
   var body: some View {
     VStack(spacing: 12) {
-      Image(systemName: "person.circle.fill")
-        .font(.system(size: 50))
-        .foregroundColor(.blue)
+      Image(systemName: icon)
+        .font(.title2)
+        .foregroundColor(color)
       
-      VStack(spacing: 4) {
-        Text(user.name)
-          .font(.headline)
-          .fontWeight(.medium)
-        
-        Text(user.email)
-          .font(.caption)
-          .foregroundColor(.secondary)
-      }
+      Text(title)
+        .font(.caption)
+        .foregroundColor(.secondary)
       
-      Button(String(localized: "auth.signout.button", defaultValue: "Sair")) {
-        Task {
-          await authViewModel.signOut()
-        }
-      }
-      .buttonStyle(.bordered)
-      .controlSize(.small)
+      Text(value)
+        .font(.headline)
+        .fontWeight(.semibold)
+        .foregroundColor(.primary)
+        .multilineTextAlignment(.center)
     }
-    .padding(.vertical, 16)
-    .frame(maxWidth: .infinity)
+    .frame(maxWidth: .infinity, minHeight: 100)
+    .padding()
+    .background(Color(.systemBackground))
+    .cornerRadius(16)
+    .shadow(color: Color.black.opacity(0.05), radius: 2, x: 0, y: 1)
   }
 }
+
+struct EnhancedTransactionRow: View {
+  let transaction: Transaction
+  
+  var body: some View {
+    HStack(spacing: 16) {
+      Image(systemName: transaction.category.icon)
+        .font(.title2)
+        .foregroundColor(transaction.type == .expense ? .red : .green)
+        .frame(width: 44, height: 44)
+        .background((transaction.type == .expense ? Color.red : Color.green).opacity(0.15))
+        .cornerRadius(12)
+      
+      VStack(alignment: .leading, spacing: 4) {
+        Text(transaction.description)
+          .font(.headline)
+          .fontWeight(.medium)
+          .foregroundColor(.primary)
+        
+        HStack {
+          Text(transaction.category.displayName)
+            .font(.caption)
+            .foregroundColor(.secondary)
+          
+          Spacer()
+          
+          Text(transaction.date.formatted(date: .abbreviated, time: .omitted))
+            .font(.caption)
+            .foregroundColor(.secondary)
+        }
+      }
+      
+      Spacer()
+      
+      Text(transaction.formattedAmount)
+        .font(.headline)
+        .fontWeight(.semibold)
+        .foregroundColor(transaction.type == .expense ? .red : .green)
+    }
+    .padding(16)
+    .background(Color(.systemBackground))
+    .cornerRadius(16)
+    .shadow(color: Color.black.opacity(0.05), radius: 2, x: 0, y: 1)
+  }
+}
+
+  struct iPadAddTransactionView: View {
+    @EnvironmentObject var navigationState: NavigationState
+    @StateObject private var transactionViewModel: TransactionViewModel
+    
+    init() {
+      let repository = AppConfiguration.shared.createTransactionRepository()
+      self._transactionViewModel = StateObject(wrappedValue: TransactionViewModel(repository: repository))
+    }
+    
+    var body: some View {
+      AddTransactionView(transactionViewModel: transactionViewModel)
+        .toolbar {
+          ToolbarItem(placement: .navigationBarLeading) {
+            Button(String(localized: "common.cancel", defaultValue: "Cancel")) {
+              navigationState.clearDetailSelection()
+            }
+          }
+        }
+        .navigationTitle(String(localized: "transaction.add.title", defaultValue: "New Transaction"))
+        .navigationBarTitleDisplayMode(.inline)
+    }
+  }
+  
+  struct iPadAddAccountView: View {
+    @EnvironmentObject var navigationState: NavigationState
+    @EnvironmentObject var accountViewModel: AccountViewModel
+    
+    var body: some View {
+      AddAccountView(accountViewModel: accountViewModel)
+        .toolbar {
+          ToolbarItem(placement: .navigationBarLeading) {
+            Button(String(localized: "common.cancel", defaultValue: "Cancel")) {
+              navigationState.clearDetailSelection()
+            }
+          }
+        }
+        .navigationTitle(String(localized: "account.add.title", defaultValue: "New Account"))
+        .navigationBarTitleDisplayMode(.inline)
+    }
+  }
+  
+  struct UserProfileRow: View {
+    let user: User
+    @EnvironmentObject var authViewModel: AuthViewModel
+    
+    var body: some View {
+      VStack(spacing: 12) {
+        Image(systemName: "person.circle.fill")
+          .font(.system(size: 50))
+          .foregroundColor(.blue)
+        
+        VStack(spacing: 4) {
+          Text(user.name)
+            .font(.headline)
+            .fontWeight(.medium)
+          
+          Text(user.email)
+            .font(.caption)
+            .foregroundColor(.secondary)
+        }
+        
+        Button(String(localized: "auth.signout.button", defaultValue: "Sair")) {
+          Task {
+            await authViewModel.signOut()
+          }
+        }
+        .buttonStyle(.bordered)
+        .controlSize(.small)
+      }
+      .padding(.vertical, 16)
+      .frame(maxWidth: .infinity)
+    }
+  }
