@@ -8,24 +8,23 @@
 import SwiftUI
 
 struct MoreScreen: View {
-  @State private var showingSettings = false
   
   var body: some View {
     NavigationView {
       List {
         Section {
           NavigationLink {
-            BudgetsScreen()
+            GoalScreen()
           } label: {
             HStack {
-              Image(systemName: "chart.pie.fill")
-                .foregroundColor(.blue)
+              Image(systemName: "target")
+                .foregroundColor(.purple)
                 .frame(width: 32, height: 32)
               
               VStack(alignment: .leading, spacing: 4) {
-                Text(String(localized: "sidebar.budgets"))
+                Text(String(localized: "sidebar.goals"))
                   .font(.headline)
-                Text(String(localized: "sidebar.budgets.description"))
+                Text(String(localized: "sidebar.goals.description"))
                   .font(.caption)
                   .foregroundColor(.secondary)
               }
@@ -56,18 +55,6 @@ struct MoreScreen: View {
         }
       }
       .navigationTitle(String(localized: "tab.more"))
-      .toolbar {
-        ToolbarItem(placement: .navigationBarTrailing) {
-          Button {
-            showingSettings = true
-          } label: {
-            Image(systemName: "gear")
-          }
-        }
-      }
-    }
-    .sheet(isPresented: $showingSettings) {
-      SettingsScreen()
     }
   }
 }

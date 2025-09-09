@@ -18,15 +18,6 @@ struct ReportsScreen: View {
         subtitle: "reports.empty.subtitle"
       )
       .navigationTitle("reports.title")
-      .toolbar {
-        ToolbarItem(placement: .navigationBarLeading) {
-          Button {
-            showingSettings = true
-          } label: {
-            Image(systemName: "gear")
-          }
-        }
-      }
     }
     .sheet(isPresented: $showingSettings) {
       SettingsScreen()

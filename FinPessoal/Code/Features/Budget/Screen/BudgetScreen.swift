@@ -12,7 +12,6 @@ struct BudgetsScreen: View {
   @StateObject private var budgetViewModel = BudgetViewModel()
   @State private var showingAddBudget = false
   @State private var selectedBudget: Budget?
-  @State private var showingSettings = false
   
   var body: some View {
     NavigationView {
@@ -30,14 +29,6 @@ struct BudgetsScreen: View {
       }
       .navigationTitle(String(localized: "budgets.title"))
       .toolbar {
-        ToolbarItem(placement: .navigationBarLeading) {
-          Button {
-            showingSettings = true
-          } label: {
-            Image(systemName: "gear")
-          }
-        }
-        
         ToolbarItem(placement: .navigationBarTrailing) {
           Button(String(localized: "budgets.add.button")) {
             showingAddBudget = true
@@ -56,9 +47,6 @@ struct BudgetsScreen: View {
       .refreshable {
         await financeViewModel.loadData()
       }
-    }
-    .sheet(isPresented: $showingSettings) {
-      SettingsScreen()
     }
   }
   

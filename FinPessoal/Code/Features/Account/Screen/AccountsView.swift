@@ -11,7 +11,6 @@ struct AccountsView: View {
   @EnvironmentObject var accountViewModel: AccountViewModel
   @EnvironmentObject var financeViewModel: FinanceViewModel
   @EnvironmentObject var authViewModel: AuthViewModel
-  @State private var showingSettings = false
   
   var body: some View {
     NavigationView {
@@ -32,14 +31,6 @@ struct AccountsView: View {
       }
       .navigationTitle(String(localized: "accounts.title"))
       .toolbar {
-        ToolbarItem(placement: .navigationBarLeading) {
-          Button {
-            showingSettings = true
-          } label: {
-            Image(systemName: "gear")
-          }
-        }
-        
         ToolbarItem(placement: .navigationBarTrailing) {
           Button {
             accountViewModel.showAddAccount()
@@ -86,9 +77,6 @@ struct AccountsView: View {
           Text(errorMessage)
         }
       }
-    }
-    .sheet(isPresented: $showingSettings) {
-      SettingsScreen()
     }
   }
   

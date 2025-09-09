@@ -54,6 +54,6 @@ struct TransactionRow: View {
           .foregroundColor(.secondary)
       }
     }
-    .padding(.vertical, 4)
+    .padding(.vertical, 12)
   }
 }

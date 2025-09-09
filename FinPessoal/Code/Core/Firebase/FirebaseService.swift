@@ -123,7 +123,7 @@ class FirebaseService {
     }
     
     let credential = OAuthProvider.appleCredential(withIDToken: idTokenString, rawNonce: nonce, fullName: appleIDCredential.fullName)
-    
+     
     let authResult = try await auth.signIn(with: credential)
     let user = User(from: authResult.user)
     try await saveUserToDatabase(user)

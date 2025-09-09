@@ -11,7 +11,6 @@ struct TransactionsScreen: View {
   @StateObject private var transactionViewModel: TransactionViewModel
   @EnvironmentObject var financeViewModel: FinanceViewModel
   @EnvironmentObject var authViewModel: AuthViewModel
-  @State private var showingSettings = false
   
   init(transactionViewModel: TransactionViewModel? = nil) {
     if let existingViewModel = transactionViewModel {
@@ -52,14 +51,6 @@ struct TransactionsScreen: View {
       .navigationTitle(String(localized: "transactions.title"))
       .searchable(text: $transactionViewModel.searchQuery, prompt: String(localized: "transactions.search.prompt"))
       .toolbar {
-        ToolbarItem(placement: .navigationBarLeading) {
-          Button {
-            showingSettings = true
-          } label: {
-            Image(systemName: "gear")
-          }
-        }
-        
         ToolbarItem(placement: .navigationBarTrailing) {
           Button {
             transactionViewModel.showAddTransaction()
@@ -110,9 +101,6 @@ struct TransactionsScreen: View {
           Text(errorMessage)
         }
       }
-    }
-    .sheet(isPresented: $showingSettings) {
-      SettingsScreen()
     }
   }
   

@@ -35,12 +35,12 @@ struct iPhoneMainView: View {
         }
         .tag(MainTab.transactions)
       
-      GoalScreen()
+      BudgetsScreen()
         .tabItem {
-          Image(systemName: MainTab.goals.icon)
-          Text(MainTab.goals.displayName)
+          Image(systemName: MainTab.budgets.icon)
+          Text(MainTab.budgets.displayName)
         }
-        .tag(MainTab.goals)
+        .tag(MainTab.budgets)
       
       MoreScreen()
         .tabItem {
