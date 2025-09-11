@@ -169,6 +169,28 @@ class FinanceRepository: FinanceRepositoryProtocol {
     return try await firebaseService.getBudgetProgress(budgetId, for: currentUserID)
   }
   
+  // MARK: - Goal Operations
+  
+  func getGoals() async throws -> [Goal] {
+    // TODO: Implement Firebase goal operations
+    return []
+  }
+  
+  func addGoal(_ goal: Goal) async throws {
+    // TODO: Implement Firebase goal operations
+    try await Task.sleep(nanoseconds: 300_000_000)
+  }
+  
+  func updateGoal(_ goal: Goal) async throws {
+    // TODO: Implement Firebase goal operations
+    try await Task.sleep(nanoseconds: 300_000_000)
+  }
+  
+  func deleteGoal(_ goalId: String) async throws {
+    // TODO: Implement Firebase goal operations
+    try await Task.sleep(nanoseconds: 300_000_000)
+  }
+  
   // MARK: - Analytics and Reporting
   
   func getMonthlyExpensesByCategory(month: Date) async throws -> [TransactionCategory: Double] {

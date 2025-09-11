@@ -21,6 +21,7 @@ class MockFinanceRepository: FinanceRepositoryProtocol {
   private var accounts: [Account] = []
   private var transactions: [Transaction] = []
   private var budgets: [Budget] = []
+  private var goals: [Goal] = []
   
   init() {
     setupMockData()
@@ -246,6 +247,75 @@ class MockFinanceRepository: FinanceRepositoryProtocol {
         updatedAt: baseDate.addingTimeInterval(-86400 * 1)
       )
     ]
+    
+    // Setup mock goals
+    goals = [
+      Goal(
+        id: "goal-1",
+        userId: mockUserId,
+        name: "Fundo de Emergência",
+        description: "6 meses de gastos para emergências",
+        targetAmount: 30000.00,
+        currentAmount: 12500.00,
+        targetDate: Calendar.current.date(byAdding: .month, value: 8, to: baseDate) ?? baseDate,
+        category: .emergency,
+        isActive: true,
+        createdAt: baseDate.addingTimeInterval(-86400 * 60),
+        updatedAt: baseDate.addingTimeInterval(-86400 * 5)
+      ),
+      Goal(
+        id: "goal-2",
+        userId: mockUserId,
+        name: "Viagem para Europa",
+        description: "Férias de 15 dias pela Europa",
+        targetAmount: 15000.00,
+        currentAmount: 8200.00,
+        targetDate: Calendar.current.date(byAdding: .month, value: 10, to: baseDate) ?? baseDate,
+        category: .vacation,
+        isActive: true,
+        createdAt: baseDate.addingTimeInterval(-86400 * 90),
+        updatedAt: baseDate.addingTimeInterval(-86400 * 2)
+      ),
+      Goal(
+        id: "goal-3",
+        userId: mockUserId,
+        name: "Entrada do Apartamento",
+        description: "20% do valor do imóvel para financiamento",
+        targetAmount: 80000.00,
+        currentAmount: 25000.00,
+        targetDate: Calendar.current.date(byAdding: .year, value: 2, to: baseDate) ?? baseDate,
+        category: .house,
+        isActive: true,
+        createdAt: baseDate.addingTimeInterval(-86400 * 180),
+        updatedAt: baseDate.addingTimeInterval(-86400 * 7)
+      ),
+      Goal(
+        id: "goal-4",
+        userId: mockUserId,
+        name: "Carro Novo",
+        description: "Substituir o carro atual",
+        targetAmount: 45000.00,
+        currentAmount: 45000.00,
+        targetDate: Calendar.current.date(byAdding: .month, value: 6, to: baseDate) ?? baseDate,
+        category: .car,
+        isActive: true,
+        createdAt: baseDate.addingTimeInterval(-86400 * 120),
+        updatedAt: baseDate.addingTimeInterval(-86400 * 1)
+      ),
+      Goal(
+        id: "goal-5",
+        userId: mockUserId,
+        name: "MBA Executivo",
+        description: "Investimento em educação e carreira",
+        targetAmount: 35000.00,
+        currentAmount: 18500.00,
+        targetDate: Calendar.current.date(byAdding: .month, value: 18, to: baseDate) ?? baseDate,
+        category: .education,
+        isActive: true,
+        createdAt: baseDate.addingTimeInterval(-86400 * 200),
+        updatedAt: baseDate.addingTimeInterval(-86400 * 10)
+      )
+    ]
   }
   
   func getAccounts() async throws -> [Account] {
@@ -285,6 +355,11 @@ class MockFinanceRepository: FinanceRepositoryProtocol {
   func getBudgets() async throws -> [Budget] {
     try await Task.sleep(nanoseconds: 500_000_000)
     return budgets.filter { $0.isActive }
+  }
+  
+  func getGoals() async throws -> [Goal] {
+    try await Task.sleep(nanoseconds: 500_000_000)
+    return goals.filter { $0.isActive }
   }
   
   func addBudget(_ budget: Budget) async throws {
@@ -374,5 +449,52 @@ class MockFinanceRepository: FinanceRepositoryProtocol {
         budgets[i] = updatedBudget
       }
     }
+  }
+  
+  func addGoal(_ goal: Goal) async throws {
+    try await Task.sleep(nanoseconds: 300_000_000)
+    
+    // Create goal with current timestamp
+    let updatedGoal = Goal(
+      id: goal.id,
+      userId: goal.userId,
+      name: goal.name,
+      description: goal.description,
+      targetAmount: goal.targetAmount,
+      currentAmount: goal.currentAmount,
+      targetDate: goal.targetDate,
+      category: goal.category,
+      isActive: true,
+      createdAt: Date(),
+      updatedAt: Date()
+    )
+    
+    goals.append(updatedGoal)
+  }
+  
+  func updateGoal(_ goal: Goal) async throws {
+    try await Task.sleep(nanoseconds: 300_000_000)
+    
+    if let index = goals.firstIndex(where: { $0.id == goal.id }) {
+      let updatedGoal = Goal(
+        id: goal.id,
+        userId: goal.userId,
+        name: goal.name,
+        description: goal.description,
+        targetAmount: goal.targetAmount,
+        currentAmount: goal.currentAmount,
+        targetDate: goal.targetDate,
+        category: goal.category,
+        isActive: goal.isActive,
+        createdAt: goal.createdAt,
+        updatedAt: Date()
+      )
+      goals[index] = updatedGoal
+    }
+  }
+  
+  func deleteGoal(_ goalId: String) async throws {
+    try await Task.sleep(nanoseconds: 300_000_000)
+    goals.removeAll { $0.id == goalId }
   }
 }

@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct QuickActionsView: View {
+  @State private var showingAddTransaction = false
+  @State private var showingAddBudget = false
+  @State private var showingAddGoal = false
+  
   var body: some View {
     VStack(alignment: .leading, spacing: 12) {
       Text("dashboard.quick.actions")
@@ -19,7 +23,7 @@ struct QuickActionsView: View {
           title: "dashboard.add.transaction",
           color: .blue
         ) {
-          // Add transaction action
+          showingAddTransaction = true
         }
         
         QuickActionButton(
@@ -27,7 +31,7 @@ struct QuickActionsView: View {
           title: "dashboard.create.budget",
           color: .green
         ) {
-          // Create budget action
+          showingAddBudget = true
         }
         
         QuickActionButton(
@@ -35,20 +39,43 @@ struct QuickActionsView: View {
           title: "dashboard.set.goal",
           color: .purple
         ) {
-          // Set goal action
+          showingAddGoal = true
         }
         
-        QuickActionButton(
-          icon: "chart.bar.fill",
-          title: "dashboard.view.reports",
-          color: .orange
-        ) {
-          // View reports action
+        NavigationLink(destination: ReportsScreen()) {
+          VStack(spacing: 8) {
+            Image(systemName: "chart.bar.fill")
+              .font(.title2)
+              .foregroundColor(.orange)
+            
+            Text(LocalizedStringKey("dashboard.view.reports"))
+              .font(.caption)
+              .multilineTextAlignment(.center)
+              .foregroundColor(.primary)
+          }
+          .frame(maxWidth: .infinity)
+          .padding()
+          .background(Color(.systemBackground))
+          .cornerRadius(8)
         }
       }
     }
     .padding()
     .background(Color(.systemGray6))
     .cornerRadius(12)
+    .sheet(isPresented: $showingAddTransaction) {
+      AddTransactionView(transactionViewModel: TransactionViewModel(repository: AppConfiguration.shared.createTransactionRepository()))
+    }
+    .sheet(isPresented: $showingAddBudget) {
+      AddBudgetScreen()
+        .environmentObject(BudgetViewModel())
+        .environmentObject(FinanceViewModel(financeRepository: AppConfiguration.shared.createFinanceRepository()))
+    }
+    .sheet(isPresented: $showingAddGoal) {
+      // Placeholder for Add Goal Screen - to be implemented
+      Text(String(localized: "goals.add.coming.soon"))
+        .font(.title2)
+        .padding()
+    }
   }
 }

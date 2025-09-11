@@ -16,4 +16,8 @@ protocol FinanceRepositoryProtocol {
   func updateBudget(_ budget: Budget) async throws
   func deleteBudget(_ budgetId: String) async throws
   func getBudgetProgress(_ budgetId: String) async throws -> Double
+  func getGoals() async throws -> [Goal]
+  func addGoal(_ goal: Goal) async throws
+  func updateGoal(_ goal: Goal) async throws
+  func deleteGoal(_ goalId: String) async throws
 }

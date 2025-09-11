@@ -13,6 +13,7 @@ class FinanceViewModel: ObservableObject {
   @Published var accounts: [Account] = []
   @Published var transactions: [Transaction] = []
   @Published var budgets: [Budget] = []
+  @Published var goals: [Goal] = []
   @Published var isLoading = false
   @Published var errorMessage: String?
   
@@ -91,15 +92,18 @@ class FinanceViewModel: ObservableObject {
       async let accountsData = financeRepository.getAccounts()
       async let transactionsData = financeRepository.getTransactions()
       async let budgetsData = financeRepository.getBudgets()
+      async let goalsData = financeRepository.getGoals()
       
       let loadedAccounts = try await accountsData
       let loadedTransactions = try await transactionsData
       let loadedBudgets = try await budgetsData
+      let loadedGoals = try await goalsData
       
       await MainActor.run {
         self.accounts = loadedAccounts
         self.transactions = loadedTransactions.sorted { $0.date > $1.date }
         self.budgets = loadedBudgets
+        self.goals = loadedGoals
       }
     } catch {
       await MainActor.run {
@@ -231,6 +235,53 @@ class FinanceViewModel: ObservableObject {
         self.errorMessage = "Erro ao obter progresso do orçamento: \(error.localizedDescription)"
       }
       return 0.0
+    }
+  }
+  
+  // MARK: - Goal Management
+  
+  func addGoal(_ goal: Goal) async {
+    isLoading = true
+    errorMessage = nil
+    
+    do {
+      try await financeRepository.addGoal(goal)
+      await loadData() // Reload all data to maintain synchronization
+    } catch {
+      await MainActor.run {
+        self.errorMessage = "Erro ao adicionar meta: \(error.localizedDescription)"
+        self.isLoading = false
+      }
+    }
+  }
+  
+  func updateGoal(_ goal: Goal) async {
+    isLoading = true
+    errorMessage = nil
+    
+    do {
+      try await financeRepository.updateGoal(goal)
+      await loadData()
+    } catch {
+      await MainActor.run {
+        self.errorMessage = "Erro ao atualizar meta: \(error.localizedDescription)"
+        self.isLoading = false
+      }
+    }
+  }
+  
+  func deleteGoal(_ goalId: String) async {
+    isLoading = true
+    errorMessage = nil
+    
+    do {
+      try await financeRepository.deleteGoal(goalId)
+      await loadData()
+    } catch {
+      await MainActor.run {
+        self.errorMessage = "Erro ao deletar meta: \(error.localizedDescription)"
+        self.isLoading = false
+      }
     }
   }
   

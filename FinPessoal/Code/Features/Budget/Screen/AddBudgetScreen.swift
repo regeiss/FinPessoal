@@ -69,7 +69,7 @@ struct AddBudgetScreen: View {
               .tag(period)
             }
           }
-          .pickerStyle(.segmented)
+          .pickerStyle(.navigationLink)
         } header: {
           Text(String(localized: "budget.period.section"))
         }
