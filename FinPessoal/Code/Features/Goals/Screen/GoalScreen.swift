@@ -49,8 +49,8 @@ struct GoalScreen: View {
                 Section {
                   if selectedViewMode == .cards {
                     LazyVGrid(columns: [
-                      GridItem(.flexible()),
-                      GridItem(.flexible())
+                      GridItem(.flexible(minimum: 160)),
+                      GridItem(.flexible(minimum: 160))
                     ], spacing: 12) {
                       ForEach(activeGoals) { goal in
                         GoalCard(goal: goal)
@@ -111,10 +111,13 @@ struct GoalScreen: View {
             Picker("View Mode", selection: $selectedViewMode) {
               ForEach(ViewMode.allCases, id: \.self) { mode in
                 Image(systemName: mode.icon)
+                  .font(.system(size: 16, weight: .medium))
                   .tag(mode)
               }
             }
             .pickerStyle(.segmented)
+            .frame(width: 120)
+            .scaleEffect(1.1)
           }
         }
         

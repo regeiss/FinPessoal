@@ -45,19 +45,26 @@ struct GoalCard: View {
       
       // Progress
       VStack(alignment: .leading, spacing: 8) {
-        HStack {
-          Text(CurrencyFormatter.shared.string(from: goal.currentAmount))
-            .font(.title2)
-            .fontWeight(.semibold)
-            .foregroundColor(.primary)
-          
-          Text("de")
-            .font(.body)
-            .foregroundColor(.secondary)
-          
-          Text(CurrencyFormatter.shared.string(from: goal.targetAmount))
-            .font(.title3)
-            .foregroundColor(.secondary)
+        HStack(spacing: 4) {
+          VStack(alignment: .leading, spacing: 2) {
+            Text(CurrencyFormatter.shared.string(from: goal.currentAmount))
+              .font(.headline)
+              .fontWeight(.semibold)
+              .foregroundColor(.primary)
+              .lineLimit(1)
+              .minimumScaleFactor(0.7)
+            
+            HStack(spacing: 2) {
+              Text("de")
+                .font(.caption)
+                .foregroundColor(.secondary)
+              Text(CurrencyFormatter.shared.string(from: goal.targetAmount))
+                .font(.caption)
+                .foregroundColor(.secondary)
+                .lineLimit(1)
+                .minimumScaleFactor(0.8)
+            }
+          }
           
           Spacer()
           
@@ -73,47 +80,51 @@ struct GoalCard: View {
       }
       
       // Stats
-      HStack(spacing: 16) {
+      HStack(spacing: 8) {
         VStack(alignment: .leading, spacing: 2) {
           Text(String(localized: "goal.remaining"))
-            .font(.caption)
+            .font(.caption2)
             .foregroundColor(.secondary)
           Text(CurrencyFormatter.shared.string(from: goal.remainingAmount))
             .font(.caption)
             .fontWeight(.medium)
+            .lineLimit(1)
+            .minimumScaleFactor(0.8)
         }
-        
-        Spacer()
+        .frame(maxWidth: .infinity, alignment: .leading)
         
         VStack(alignment: .trailing, spacing: 2) {
           Text(String(localized: "goal.days.left"))
-            .font(.caption)
+            .font(.caption2)
             .foregroundColor(.secondary)
           Text("\(goal.daysRemaining) dias")
             .font(.caption)
             .fontWeight(.medium)
         }
+        .frame(maxWidth: .infinity, alignment: .trailing)
       }
       
       // Monthly contribution needed
       if !goal.isCompleted {
-        HStack {
+        HStack(spacing: 4) {
           Image(systemName: "calendar")
             .foregroundColor(.blue)
-            .font(.caption)
+            .font(.caption2)
           Text(String(localized: "goal.monthly.needed"))
-            .font(.caption)
+            .font(.caption2)
             .foregroundColor(.secondary)
           Spacer()
           Text(CurrencyFormatter.shared.string(from: goal.monthlyContributionNeeded))
             .font(.caption)
             .fontWeight(.medium)
             .foregroundColor(.blue)
+            .lineLimit(1)
+            .minimumScaleFactor(0.7)
         }
-        .padding(.horizontal, 8)
+        .padding(.horizontal, 6)
         .padding(.vertical, 4)
         .background(Color.blue.opacity(0.1))
-        .clipShape(RoundedRectangle(cornerRadius: 6))
+        .clipShape(RoundedRectangle(cornerRadius: 4))
       }
     }
     .padding()
