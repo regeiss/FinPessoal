@@ -10,7 +10,7 @@ import SwiftUI
 struct QuickActionsView: View {
   @State private var showingAddTransaction = false
   @State private var showingAddBudget = false
-  @State private var showingAddGoal = false
+  @State private var showingGoalScreen = false
   
   var body: some View {
     VStack(alignment: .leading, spacing: 12) {
@@ -39,7 +39,7 @@ struct QuickActionsView: View {
           title: "dashboard.set.goal",
           color: .purple
         ) {
-          showingAddGoal = true
+          showingGoalScreen = true
         }
         
         NavigationLink(destination: ReportsScreen()) {
@@ -71,11 +71,8 @@ struct QuickActionsView: View {
         .environmentObject(BudgetViewModel())
         .environmentObject(FinanceViewModel(financeRepository: AppConfiguration.shared.createFinanceRepository()))
     }
-    .sheet(isPresented: $showingAddGoal) {
-      // Placeholder for Add Goal Screen - to be implemented
-      Text(String(localized: "goals.add.coming.soon"))
-        .font(.title2)
-        .padding()
+    .sheet(isPresented: $showingGoalScreen) {
+      GoalScreen()
     }
   }
 }
