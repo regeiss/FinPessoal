@@ -53,6 +53,29 @@ struct MoreScreen: View {
         } header: {
           Text(String(localized: "more.features.header"))
         }
+        
+        Section {
+          NavigationLink {
+            BudgetCategoriesScreen()
+          } label: {
+            HStack {
+              Image(systemName: "tag.fill")
+                .foregroundColor(.orange)
+                .frame(width: 32, height: 32)
+              
+              VStack(alignment: .leading, spacing: 4) {
+                Text(String(localized: "categories.management.title"))
+                  .font(.headline)
+                Text(String(localized: "categories.management.description"))
+                  .font(.caption)
+                  .foregroundColor(.secondary)
+              }
+            }
+            .padding(.vertical, 4)
+          }
+        } header: {
+          Text(String(localized: "more.settings.header"))
+        }
       }
       .navigationTitle(String(localized: "tab.more"))
     }
