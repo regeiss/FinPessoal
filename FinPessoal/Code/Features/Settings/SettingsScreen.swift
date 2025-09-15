@@ -15,6 +15,7 @@ struct SettingsScreen: View {
   @State private var showingThemeSettings = false
   @State private var showingCurrencySettings = false
   @State private var showingLanguageSettings = false
+  @State private var showingHelp = false
   
   private var currentThemeDescription: String {
     let savedTheme = UserDefaults.standard.string(forKey: "selectedTheme") ?? "system"
@@ -198,7 +199,9 @@ struct SettingsScreen: View {
         }
         
         Section(String(localized: "settings.support.section")) {
-          SettingsRow(title: String(localized: "settings.help"), icon: "questionmark.circle", action: {})
+          SettingsRow(title: String(localized: "settings.help"), icon: "questionmark.circle", action: {
+            showingHelp = true
+          })
           SettingsRow(title: String(localized: "settings.contact"), icon: "envelope", action: {})
           SettingsRow(title: String(localized: "settings.rate.app"), icon: "star", action: {})
         }
@@ -233,6 +236,9 @@ struct SettingsScreen: View {
       }
       .sheet(isPresented: $showingLanguageSettings) {
         LanguageSettingsView()
+      }
+      .sheet(isPresented: $showingHelp) {
+        HelpScreen()
       }
     }
   }

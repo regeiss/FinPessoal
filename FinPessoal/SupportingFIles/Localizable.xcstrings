@@ -26,10 +26,23 @@
     "%lld" : {
 
     },
+    "%lld %@" : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld %2$@"
+          }
+        }
+      }
+    },
     "%lld dias" : {
 
     },
     "%lld transações" : {
+
+    },
+    "%lld." : {
 
     },
     "%lld/%lld" : {
@@ -2829,6 +2842,17 @@
         }
       }
     },
+    "common.send" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enviar"
+          }
+        }
+      }
+    },
     "common.status" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -4134,6 +4158,945 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Metas"
+          }
+        }
+      }
+    },
+    "help.account.security.content" : {
+
+    },
+    "help.account.security.title" : {
+
+    },
+    "help.add.transaction.content" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Para adicionar uma nova transação, acesse a aba Transações e toque no botão '+'. Preencha os dados da transação e salve."
+          }
+        }
+      }
+    },
+    "help.add.transaction.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Como adicionar uma transação"
+          }
+        }
+      }
+    },
+    "help.app.crashes.content" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se o aplicativo está travando frequentemente, tente reiniciar o dispositivo, verificar se há atualizações disponíveis e liberar espaço de armazenamento. Se o problema persistir, entre em contato com o suporte."
+          }
+        }
+      }
+    },
+    "help.app.crashes.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App travando ou fechando inesperadamente"
+          }
+        }
+      }
+    },
+    "help.budget.alerts.content" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configure alertas para ser notificado quando seus gastos se aproximarem ou ultrapassarem os limites do orçamento. Mantenha suas finanças sob controle."
+          }
+        }
+      }
+    },
+    "help.budget.alerts.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alertas de orçamento"
+          }
+        }
+      }
+    },
+    "help.budget.step1.desc" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toque na aba 'Orçamentos' na parte inferior da tela"
+          }
+        }
+      }
+    },
+    "help.budget.step1.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acesse a aba Orçamentos"
+          }
+        }
+      }
+    },
+    "help.budget.step2.desc" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pressione o botão '+' no canto superior direito para adicionar um novo orçamento"
+          }
+        }
+      }
+    },
+    "help.budget.step2.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toque em '+' para criar orçamento"
+          }
+        }
+      }
+    },
+    "help.budget.step3.desc" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Escolha a categoria, defina o valor limite mensal e confirme para salvar seu novo orçamento"
+          }
+        }
+      }
+    },
+    "help.budget.step3.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configure os detalhes do orçamento"
+          }
+        }
+      }
+    },
+    "help.categories" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Categorias"
+          }
+        }
+      }
+    },
+    "help.category.accounts" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contas"
+          }
+        }
+      }
+    },
+    "help.category.budgets" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Orçamentos"
+          }
+        }
+      }
+    },
+    "help.category.description.%@" : {
+
+    },
+    "help.category.empty.subtitle" : {
+
+    },
+    "help.category.empty.title" : {
+
+    },
+    "help.category.getting.started" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Primeiros Passos"
+          }
+        }
+      }
+    },
+    "help.category.goals" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Metas"
+          }
+        }
+      }
+    },
+    "help.category.reports" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Relatórios"
+          }
+        }
+      }
+    },
+    "help.category.security" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Segurança"
+          }
+        }
+      }
+    },
+    "help.category.transactions" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transações"
+          }
+        }
+      }
+    },
+    "help.category.troubleshooting" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Solução de Problemas"
+          }
+        }
+      }
+    },
+    "help.clear.search" : {
+
+    },
+    "help.contact.support" : {
+
+    },
+    "help.contact.support.content" : {
+
+    },
+    "help.create.budget.content" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crie orçamentos para controlar seus gastos por categoria. Defina limites mensais e receba alertas quando estiver próximo do limite."
+          }
+        }
+      }
+    },
+    "help.create.budget.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Como criar um orçamento"
+          }
+        }
+      }
+    },
+    "help.data.missing.content" : {
+
+    },
+    "help.data.missing.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dados perdidos ou não aparecem"
+          }
+        }
+      }
+    },
+    "help.data.privacy.content" : {
+
+    },
+    "help.data.privacy.title" : {
+
+    },
+    "help.delete.transaction.content" : {
+
+    },
+    "help.delete.transaction.title" : {
+
+    },
+    "help.edit.transaction.content" : {
+
+    },
+    "help.edit.transaction.title" : {
+
+    },
+    "help.export.data.content" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exporte seus dados financeiros em diferentes formatos como PDF e CSV. Compartilhe relatórios ou faça backup de suas informações financeiras."
+          }
+        }
+      }
+    },
+    "help.export.data.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Como exportar dados financeiros"
+          }
+        }
+      }
+    },
+    "help.faq.badge" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FAQ"
+          }
+        }
+      }
+    },
+    "help.faq.empty.subtitle" : {
+
+    },
+    "help.faq.empty.title" : {
+
+    },
+    "help.faq.header.subtitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Encontre respostas para as dúvidas mais comuns sobre o FinPessoal"
+          }
+        }
+      }
+    },
+    "help.faq.header.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Perguntas Frequentes"
+          }
+        }
+      }
+    },
+    "help.faq.search.no.results" : {
+
+    },
+    "help.faq.search.prompt" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buscar nas FAQs..."
+          }
+        }
+      }
+    },
+    "help.faq.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Perguntas Frequentes"
+          }
+        }
+      }
+    },
+    "help.faq.try.different.search" : {
+
+    },
+    "help.feedback.description" : {
+
+    },
+    "help.feedback.improve" : {
+
+    },
+    "help.feedback.thanks" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obrigado pelo seu feedback!"
+          }
+        }
+      }
+    },
+    "help.feedback.title" : {
+
+    },
+    "help.first.transaction.content" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comece sua jornada financeira adicionando sua primeira transação. Registre receitas e despesas para ter controle total sobre suas finanças."
+          }
+        }
+      }
+    },
+    "help.first.transaction.step1.desc" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abra o aplicativo FinPessoal no seu dispositivo"
+          }
+        }
+      }
+    },
+    "help.first.transaction.step1.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abra o aplicativo"
+          }
+        }
+      }
+    },
+    "help.first.transaction.step2.desc" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toque no botão '+' no canto inferior direito da tela principal"
+          }
+        }
+      }
+    },
+    "help.first.transaction.step2.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toque em '+'"
+          }
+        }
+      }
+    },
+    "help.first.transaction.step3.desc" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preencha os detalhes da transação: valor, descrição, categoria e tipo (receita ou despesa)"
+          }
+        }
+      }
+    },
+    "help.first.transaction.step3.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preencha os dados"
+          }
+        }
+      }
+    },
+    "help.first.transaction.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Como adicionar sua primeira transação"
+          }
+        }
+      }
+    },
+    "help.helpful.no" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Não"
+          }
+        }
+      }
+    },
+    "help.helpful.yes" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sim"
+          }
+        }
+      }
+    },
+    "help.manage.profile.content" : {
+
+    },
+    "help.manage.profile.title" : {
+
+    },
+    "help.question.available" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "pergunta disponível"
+          }
+        }
+      }
+    },
+    "help.questions.available" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "perguntas disponíveis"
+          }
+        }
+      }
+    },
+    "help.quick.access" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acesso Rápido"
+          }
+        }
+      }
+    },
+    "help.quick.add.transaction" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adicionar Transação"
+          }
+        }
+      }
+    },
+    "help.quick.create.budget" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Criar Orçamento"
+          }
+        }
+      }
+    },
+    "help.quick.set.goals" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Definir Metas"
+          }
+        }
+      }
+    },
+    "help.quick.steps" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Passos rápidos"
+          }
+        }
+      }
+    },
+    "help.quick.view.reports" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ver Relatórios"
+          }
+        }
+      }
+    },
+    "help.recurring.content" : {
+
+    },
+    "help.recurring.title" : {
+
+    },
+    "help.related.categories" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Categorias relacionadas"
+          }
+        }
+      }
+    },
+    "help.related.topics" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tópicos relacionados"
+          }
+        }
+      }
+    },
+    "help.search.no.results" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nenhum resultado encontrado"
+          }
+        }
+      }
+    },
+    "help.search.prompt" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buscar na ajuda..."
+          }
+        }
+      }
+    },
+    "help.search.results" : {
+
+    },
+    "help.search.try.different.terms" : {
+
+    },
+    "help.section.all.categories" : {
+
+    },
+    "help.section.faq" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Perguntas Frequentes"
+          }
+        }
+      }
+    },
+    "help.section.quick.start" : {
+
+    },
+    "help.set.goals.content" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Defina metas de economia para seus objetivos. Acompanhe seu progresso e mantenha-se motivado para alcançar seus sonhos financeiros."
+          }
+        }
+      }
+    },
+    "help.set.goals.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Como definir metas financeiras"
+          }
+        }
+      }
+    },
+    "help.share.topic" : {
+
+    },
+    "help.step.by.step" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Passo a passo"
+          }
+        }
+      }
+    },
+    "help.sync.data.content" : {
+
+    },
+    "help.sync.data.title" : {
+
+    },
+    "help.sync.issues.content" : {
+
+    },
+    "help.sync.issues.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Problemas de sincronização"
+          }
+        }
+      }
+    },
+    "help.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajuda"
+          }
+        }
+      }
+    },
+    "help.topic" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "tópico"
+          }
+        }
+      }
+    },
+    "help.topic.available" : {
+
+    },
+    "help.topic.content" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conteúdo"
+          }
+        }
+      }
+    },
+    "help.topic.detail" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Detalhes da Ajuda"
+          }
+        }
+      }
+    },
+    "help.topics" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "tópicos"
+          }
+        }
+      }
+    },
+    "help.topics.available" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "tópicos disponíveis"
+          }
+        }
+      }
+    },
+    "help.topics.in.category" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tópicos nesta categoria"
+          }
+        }
+      }
+    },
+    "help.track.goals.content" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Monitore o progresso das suas metas financeiras em tempo real. Veja quanto já economizou, quanto falta para alcançar seu objetivo e receba dicas para acelerar seus resultados."
+          }
+        }
+      }
+    },
+    "help.track.goals.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Como acompanhar o progresso das suas metas"
+          }
+        }
+      }
+    },
+    "help.video.duration" : {
+
+    },
+    "help.video.tutorial" : {
+
+    },
+    "help.view.all.faqs" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ver todas as FAQs"
+          }
+        }
+      }
+    },
+    "help.view.details" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ver detalhes"
+          }
+        }
+      }
+    },
+    "help.view.reports.content" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acesse relatórios detalhados sobre suas finanças, incluindo gráficos de gastos por categoria e tendências mensais."
+          }
+        }
+      }
+    },
+    "help.view.reports.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Como visualizar relatórios"
+          }
+        }
+      }
+    },
+    "help.was.helpful" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esta informação foi útil?"
+          }
+        }
+      }
+    },
+    "help.watch.video" : {
+
+    },
+    "help.welcome.content" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O FinPessoal é seu companheiro para gestão financeira pessoal. Organize suas transações, controle seu orçamento, defina metas e acompanhe seu progresso financeiro de forma simples e eficiente."
+          }
+        }
+      }
+    },
+    "help.welcome.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bem-vindo ao FinPessoal"
           }
         }
       }
@@ -8650,6 +9613,952 @@
     },
     "Your financial overview and key metrics will be displayed here." : {
 
+    },
+    "help.topics.in.category" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tópicos desta Categoria"
+          }
+        }
+      }
+    },
+    "help.related.categories" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Categorias Relacionadas"
+          }
+        }
+      }
+    },
+    "help.topic.available" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "tópico disponível"
+          }
+        }
+      }
+    },
+    "help.topics.available" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "tópicos disponíveis"
+          }
+        }
+      }
+    },
+    "help.category.empty.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Categoria Vazia"
+          }
+        }
+      }
+    },
+    "help.category.empty.subtitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ainda não há conteúdo de ajuda para esta categoria."
+          }
+        }
+      }
+    },
+    "help.first.transaction.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Como adicionar sua primeira transação"
+          }
+        }
+      }
+    },
+    "help.first.transaction.content" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adicionar transações é o primeiro passo para organizar suas finanças. Registre suas receitas e despesas para ter uma visão clara de seu dinheiro."
+          }
+        }
+      }
+    },
+    "help.first.transaction.step1.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acesse a aba Transações"
+          }
+        }
+      }
+    },
+    "help.first.transaction.step1.desc" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toque na aba 'Transações' na barra inferior do aplicativo"
+          }
+        }
+      }
+    },
+    "help.first.transaction.step2.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toque no botão +"
+          }
+        }
+      }
+    },
+    "help.first.transaction.step2.desc" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pressione o botão '+' no canto superior direito para adicionar uma nova transação"
+          }
+        }
+      }
+    },
+    "help.first.transaction.step3.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preencha os dados"
+          }
+        }
+      }
+    },
+    "help.first.transaction.step3.desc" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informe o valor, categoria, descrição e data da transação, depois toque em 'Salvar'"
+          }
+        }
+      }
+    },
+    "help.edit.transaction.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Como editar uma transação"
+          }
+        }
+      }
+    },
+    "help.edit.transaction.content" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Para editar uma transação existente, toque na transação na lista e selecione 'Editar'. Faça as alterações necessárias e salve."
+          }
+        }
+      }
+    },
+    "help.delete.transaction.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Como excluir uma transação"
+          }
+        }
+      }
+    },
+    "help.delete.transaction.content" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Para excluir uma transação, deslize para a esquerda na lista de transações ou toque na transação e selecione 'Excluir'."
+          }
+        }
+      }
+    },
+    "help.recurring.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transações Recorrentes"
+          }
+        }
+      }
+    },
+    "help.recurring.content" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configure transações que se repetem automaticamente, como salário, aluguel ou contas mensais. Isso economiza tempo no registro de gastos regulares."
+          }
+        }
+      }
+    },
+    "help.budget.step1.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acesse Orçamentos"
+          }
+        }
+      }
+    },
+    "help.budget.step1.desc" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toque na aba 'Orçamentos' no menu principal"
+          }
+        }
+      }
+    },
+    "help.budget.step2.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Escolha uma categoria"
+          }
+        }
+      }
+    },
+    "help.budget.step2.desc" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selecione a categoria de gastos para a qual deseja criar um orçamento"
+          }
+        }
+      }
+    },
+    "help.budget.step3.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Defina o limite"
+          }
+        }
+      }
+    },
+    "help.budget.step3.desc" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Insira o valor máximo que deseja gastar nesta categoria por mês"
+          }
+        }
+      }
+    },
+    "help.budget.alerts.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alertas de Orçamento"
+          }
+        }
+      }
+    },
+    "help.budget.alerts.content" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configure alertas para ser notificado quando seus gastos se aproximarem do limite do orçamento. Isso ajuda a manter o controle financeiro."
+          }
+        }
+      }
+    },
+    "help.track.goals.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Como acompanhar suas metas"
+          }
+        }
+      }
+    },
+    "help.track.goals.content" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acompanhe o progresso de suas metas de economia visualizando gráficos de progresso e recebendo atualizações regulares sobre seu desempenho."
+          }
+        }
+      }
+    },
+    "help.export.data.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Como exportar seus dados"
+          }
+        }
+      }
+    },
+    "help.export.data.content" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exporte seus dados financeiros em formato PDF ou CSV para uso em outros aplicativos ou para backup de suas informações."
+          }
+        }
+      }
+    },
+    "help.manage.profile.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Como gerenciar seu perfil"
+          }
+        }
+      }
+    },
+    "help.manage.profile.content" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Atualize suas informações pessoais, altere sua senha e configure suas preferências de conta nas configurações do perfil."
+          }
+        }
+      }
+    },
+    "help.sync.data.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Como sincronizar seus dados"
+          }
+        }
+      }
+    },
+    "help.sync.data.content" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seus dados são automaticamente sincronizados na nuvem quando você está conectado à internet. Isso garante que suas informações estejam sempre atualizadas."
+          }
+        }
+      }
+    },
+    "help.app.crashes.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O aplicativo está travando"
+          }
+        }
+      }
+    },
+    "help.app.crashes.content" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se o aplicativo estiver travando, tente reiniciá-lo ou reiniciar seu dispositivo. Se o problema persistir, entre em contato com o suporte."
+          }
+        }
+      }
+    },
+    "help.data.missing.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meus dados sumiram"
+          }
+        }
+      }
+    },
+    "help.data.missing.content" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verifique sua conexão com a internet e tente sincronizar novamente. Seus dados podem estar sendo carregados da nuvem. Se não funcionar, entre em contato conosco."
+          }
+        }
+      }
+    },
+    "help.sync.issues.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Problemas de sincronização"
+          }
+        }
+      }
+    },
+    "help.sync.issues.content" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Problemas de sincronização geralmente são causados por conexão de internet instável. Verifique sua conexão e tente novamente em alguns minutos."
+          }
+        }
+      }
+    },
+    "help.data.privacy.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Privacidade dos seus dados"
+          }
+        }
+      }
+    },
+    "help.data.privacy.content" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seus dados financeiros são criptografados e protegidos. Nunca compartilhamos suas informações pessoais com terceiros. Leia nossa política de privacidade para mais detalhes."
+          }
+        }
+      }
+    },
+    "help.account.security.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Segurança da conta"
+          }
+        }
+      }
+    },
+    "help.account.security.content" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use uma senha forte e única para sua conta. Recomendamos habilitar a autenticação de dois fatores quando disponível para maior segurança."
+          }
+        }
+      }
+    },
+    "help.section.quick.start" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Início Rápido"
+          }
+        }
+      }
+    },
+    "help.section.all.categories" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Todas as Categorias"
+          }
+        }
+      }
+    },
+    "help.view.all.faqs" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ver Todas as FAQs"
+          }
+        }
+      }
+    },
+    "help.search.results" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resultados da Busca"
+          }
+        }
+      }
+    },
+    "help.search.no.results" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nenhum resultado encontrado"
+          }
+        }
+      }
+    },
+    "help.search.try.different.terms" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tente usar palavras-chave diferentes"
+          }
+        }
+      }
+    },
+    "help.topic.content" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conteúdo"
+          }
+        }
+      }
+    },
+    "help.step.by.step" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Passo a Passo"
+          }
+        }
+      }
+    },
+    "help.video.tutorial" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tutorial em Vídeo"
+          }
+        }
+      }
+    },
+    "help.watch.video" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Assistir Vídeo"
+          }
+        }
+      }
+    },
+    "help.video.duration" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Duração aproximada: 2 minutos"
+          }
+        }
+      }
+    },
+    "help.related.topics" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tópicos Relacionados"
+          }
+        }
+      }
+    },
+    "help.view.details" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ver Detalhes"
+          }
+        }
+      }
+    },
+    "help.feedback.thanks" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obrigado pelo seu feedback!"
+          }
+        }
+      }
+    },
+    "help.feedback.improve" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Como podemos melhorar?"
+          }
+        }
+      }
+    },
+    "help.feedback.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conte-nos o que não funcionou ou como podemos tornar esta informação mais útil."
+          }
+        }
+      }
+    },
+    "help.feedback.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enviar Feedback"
+          }
+        }
+      }
+    },
+    "help.share.topic" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compartilhar Tópico"
+          }
+        }
+      }
+    },
+    "help.faq.badge" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FAQ"
+          }
+        }
+      }
+    },
+    "help.faq.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Perguntas Frequentes"
+          }
+        }
+      }
+    },
+    "help.faq.search.prompt" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buscar nas FAQs..."
+          }
+        }
+      }
+    },
+    "help.faq.header.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Perguntas Frequentes"
+          }
+        }
+      }
+    },
+    "help.faq.header.subtitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Encontre respostas rápidas para as dúvidas mais comuns"
+          }
+        }
+      }
+    },
+    "help.question.available" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "pergunta disponível"
+          }
+        }
+      }
+    },
+    "help.questions.available" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "perguntas disponíveis"
+          }
+        }
+      }
+    },
+    "help.quick.steps" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Passos rápidos:"
+          }
+        }
+      }
+    },
+    "help.faq.empty.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nenhuma FAQ encontrada"
+          }
+        }
+      }
+    },
+    "help.faq.empty.subtitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "As perguntas frequentes ainda não foram criadas."
+          }
+        }
+      }
+    },
+    "help.faq.search.no.results" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nenhuma FAQ encontrada"
+          }
+        }
+      }
+    },
+    "help.faq.try.different.search" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tente uma busca diferente ou explore as categorias"
+          }
+        }
+      }
+    },
+    "help.clear.search" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Limpar Busca"
+          }
+        }
+      }
+    },
+    "common.done" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Concluído"
+          }
+        }
+      }
+    },
+    "help.category.description.getting_started" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aprenda os conceitos básicos e dê os primeiros passos no FinPessoal"
+          }
+        }
+      }
+    },
+    "help.category.description.transactions" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gerencie suas receitas e despesas com facilidade"
+          }
+        }
+      }
+    },
+    "help.category.description.budgets" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Controle seus gastos criando e monitorando orçamentos"
+          }
+        }
+      }
+    },
+    "help.category.description.goals" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Defina e acompanhe suas metas financeiras"
+          }
+        }
+      }
+    },
+    "help.category.description.reports" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Analise seus dados financeiros com relatórios detalhados"
+          }
+        }
+      }
+    },
+    "help.category.description.accounts" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gerencie seu perfil e configurações de conta"
+          }
+        }
+      }
+    },
+    "help.category.description.troubleshooting" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resolva problemas comuns e obtenha suporte"
+          }
+        }
+      }
+    },
+    "help.category.description.security" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Proteja sua conta e mantenha seus dados seguros"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"
