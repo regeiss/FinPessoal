@@ -4460,16 +4460,48 @@
 
     },
     "help.delete.transaction.content" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Para excluir uma transação, deslize para a esquerda na transação desejada e toque em 'Excluir', ou toque na transação e selecione a opção de exclusão. Esta ação não pode ser desfeita."
+          }
+        }
+      }
     },
     "help.delete.transaction.title" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Como excluir uma transação"
+          }
+        }
+      }
     },
     "help.edit.transaction.content" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Para editar uma transação existente, toque na transação na lista, selecione 'Editar' e modifique os campos desejados. Confirme as alterações para salvar."
+          }
+        }
+      }
     },
     "help.edit.transaction.title" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Como editar uma transação"
+          }
+        }
+      }
     },
     "help.export.data.content" : {
       "extractionState" : "manual",
@@ -4785,10 +4817,26 @@
       }
     },
     "help.recurring.content" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configure transações que se repetem automaticamente, como salário, aluguel ou assinaturas mensais. Economize tempo criando transações recorrentes que serão adicionadas automaticamente no período definido."
+          }
+        }
+      }
     },
     "help.recurring.title" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transações recorrentes"
+          }
+        }
+      }
     },
     "help.related.categories" : {
       "extractionState" : "manual",
