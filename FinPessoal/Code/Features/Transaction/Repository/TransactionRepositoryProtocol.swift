@@ -48,4 +48,9 @@ protocol TransactionRepositoryProtocol {
     // MARK: - Recurring Transactions
     func getRecurringTransactions() async throws -> [Transaction]
     func markAsRecurring(_ transactionId: String, isRecurring: Bool) async throws
+    
+    // MARK: - Import Operations
+    func importTransactions(_ transactions: [Transaction]) async throws
+    func checkDuplicateTransactions(_ transactions: [Transaction]) async throws -> [Transaction]
+    func bulkAddTransactions(_ transactions: [Transaction]) async throws -> (successful: [Transaction], failed: [ImportError])
 }

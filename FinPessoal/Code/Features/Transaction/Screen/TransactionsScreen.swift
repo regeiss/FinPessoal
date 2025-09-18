@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UniformTypeIdentifiers
 
 struct TransactionsScreen: View {
   @StateObject private var transactionViewModel: TransactionViewModel
@@ -51,7 +52,13 @@ struct TransactionsScreen: View {
       .navigationTitle(String(localized: "transactions.title"))
       .searchable(text: $transactionViewModel.searchQuery, prompt: String(localized: "transactions.search.prompt"))
       .toolbar {
-        ToolbarItem(placement: .navigationBarTrailing) {
+        ToolbarItemGroup(placement: .navigationBarTrailing) {
+          Button {
+            transactionViewModel.showImportPicker()
+          } label: {
+            Image(systemName: "square.and.arrow.down")
+          }
+          
           Button {
             transactionViewModel.showAddTransaction()
           } label: {
@@ -70,6 +77,16 @@ struct TransactionsScreen: View {
             TransactionDetailView(transaction: selectedTransaction)
           }
         }
+      }
+      .fileImporter(
+        isPresented: $transactionViewModel.showingFilePicker,
+        allowedContentTypes: [UTType(filenameExtension: "ofx") ?? UTType.data],
+        allowsMultipleSelection: false
+      ) { result in
+        transactionViewModel.handleFileImport(result)
+      }
+      .sheet(isPresented: $transactionViewModel.showingImportResult) {
+        ImportResultView(result: transactionViewModel.importResult)
       }
       .refreshable {
         await transactionViewModel.fetchTransactions()

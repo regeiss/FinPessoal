@@ -10,7 +10,6 @@ import SwiftUI
 
 struct MainTabView: View {
   @EnvironmentObject var appState: AppState
-  
   @EnvironmentObject var navigationState: NavigationState
   
   var body: some View {

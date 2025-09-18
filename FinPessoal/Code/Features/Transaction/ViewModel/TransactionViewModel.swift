@@ -20,6 +20,12 @@ class TransactionViewModel: ObservableObject {
     @Published var selectedTransaction: Transaction?
     @Published var showingTransactionDetail: Bool = false
     
+    // Import properties
+    @Published var showingFilePicker: Bool = false
+    @Published var showingImportResult: Bool = false
+    @Published var isImporting: Bool = false
+    @Published var importResult: ImportResult?
+    
     // Filter and search properties
     @Published var searchQuery: String = ""
     @Published var selectedPeriod: TransactionPeriod = .all
@@ -35,10 +41,12 @@ class TransactionViewModel: ObservableObject {
     @Published var incomeByCategory: [TransactionCategory: Double] = [:]
     
     private let repository: TransactionRepositoryProtocol
+    private let importService: TransactionImportService
     private var cancellables = Set<AnyCancellable>()
     
     init(repository: TransactionRepositoryProtocol) {
         self.repository = repository
+        self.importService = TransactionImportService(repository: repository)
         print("TransactionViewModel: Initializing with repository type: \(type(of: repository))")
         print("TransactionViewModel: Initial selectedPeriod = \(selectedPeriod)")
         print("TransactionViewModel: Initial transactions count = \(transactions.count)")
@@ -365,6 +373,70 @@ class TransactionViewModel: ObservableObject {
     
     func clearError() {
         errorMessage = nil
+    }
+    
+    // MARK: - Import Actions
+    
+    func showImportPicker() {
+        showingFilePicker = true
+    }
+    
+    func handleFileImport(_ result: Result<[URL], Error>) {
+        switch result {
+        case .success(let urls):
+            guard let url = urls.first else { return }
+            importOFXFile(from: url)
+        case .failure(let error):
+            errorMessage = error.localizedDescription
+        }
+    }
+    
+    private func importOFXFile(from url: URL) {
+        Task {
+            do {
+                isImporting = true
+                
+                // For demo purposes, we'll import to the first available account
+                // In a real app, you might want to show an account picker
+                let accounts = try await getAvailableAccounts()
+                guard let accountId = accounts.first?.id else {
+                    throw ImportServiceError.noAccountsAvailable
+                }
+                
+                let result = try await importService.importOFXFile(from: url, toAccountId: accountId)
+                
+                await MainActor.run {
+                    importResult = result
+                    showingImportResult = true
+                    isImporting = false
+                    
+                    // Refresh transactions to show imported ones
+                    loadTransactions()
+                }
+                
+            } catch {
+                await MainActor.run {
+                    errorMessage = error.localizedDescription
+                    isImporting = false
+                }
+            }
+        }
+    }
+    
+    private func getAvailableAccounts() async throws -> [Account] {
+        // This is a placeholder - you'll need to implement account fetching
+        // For now, create a default account
+        return [Account(
+            id: "default-account-id",
+            name: "Imported Transactions",
+            type: .checking,
+            balance: 0.0,
+            currency: "BRL",
+            isActive: true,
+            userId: "",
+            createdAt: Date(),
+            updatedAt: Date()
+        )]
     }
     
     // MARK: - Computed Properties

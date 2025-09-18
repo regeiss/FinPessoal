@@ -437,6 +437,55 @@ class MockTransactionRepository: TransactionRepositoryProtocol {
         transactions[index] = updatedTransaction
     }
     
+    // MARK: - Import Operations
+    
+    func importTransactions(_ transactions: [Transaction]) async throws {
+        try await Task.sleep(nanoseconds: 500_000_000)
+        
+        for transaction in transactions {
+            try await addTransaction(transaction)
+        }
+    }
+    
+    func checkDuplicateTransactions(_ transactions: [Transaction]) async throws -> [Transaction] {
+        try await Task.sleep(nanoseconds: 300_000_000)
+        
+        var duplicates: [Transaction] = []
+        
+        for transaction in transactions {
+            let isDuplicate = self.transactions.contains { existing in
+                existing.accountId == transaction.accountId &&
+                abs(existing.amount - transaction.amount) < 0.01 &&
+                Calendar.current.isDate(existing.date, inSameDayAs: transaction.date) &&
+                existing.description.lowercased().contains(transaction.description.lowercased().prefix(10))
+            }
+            
+            if isDuplicate {
+                duplicates.append(transaction)
+            }
+        }
+        
+        return duplicates
+    }
+    
+    func bulkAddTransactions(_ transactions: [Transaction]) async throws -> (successful: [Transaction], failed: [ImportError]) {
+        try await Task.sleep(nanoseconds: 400_000_000)
+        
+        var successful: [Transaction] = []
+        var failed: [ImportError] = []
+        
+        for transaction in transactions {
+            do {
+                try await addTransaction(transaction)
+                successful.append(transaction)
+            } catch {
+                failed.append(ImportError(transaction: transaction, error: error))
+            }
+        }
+        
+        return (successful, failed)
+    }
+    
     // MARK: - Helper Methods
     
     private func getDateRange(for period: TransactionPeriod) -> (start: Date, end: Date) {

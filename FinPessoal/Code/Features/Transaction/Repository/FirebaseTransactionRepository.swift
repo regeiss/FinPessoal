@@ -300,6 +300,66 @@ class FirebaseTransactionRepository: TransactionRepositoryProtocol {
         try await updateTransaction(updatedTransaction)
     }
     
+    // MARK: - Import Operations
+    
+    func importTransactions(_ transactions: [Transaction]) async throws {
+        let userID = try getCurrentUserID()
+        
+        for transaction in transactions {
+            let newTransaction = Transaction(
+                id: transaction.id,
+                accountId: transaction.accountId,
+                amount: transaction.amount,
+                description: transaction.description,
+                category: transaction.category,
+                type: transaction.type,
+                date: transaction.date,
+                isRecurring: transaction.isRecurring,
+                userId: userID,
+                createdAt: Date(),
+                updatedAt: Date()
+            )
+            
+            try await firebaseService.saveTransaction(newTransaction, for: userID)
+        }
+    }
+    
+    func checkDuplicateTransactions(_ transactions: [Transaction]) async throws -> [Transaction] {
+        let existingTransactions = try await getTransactions()
+        var duplicates: [Transaction] = []
+        
+        for transaction in transactions {
+            let isDuplicate = existingTransactions.contains { existing in
+                existing.accountId == transaction.accountId &&
+                abs(existing.amount - transaction.amount) < 0.01 &&
+                Calendar.current.isDate(existing.date, inSameDayAs: transaction.date) &&
+                existing.description.lowercased().contains(transaction.description.lowercased().prefix(10))
+            }
+            
+            if isDuplicate {
+                duplicates.append(transaction)
+            }
+        }
+        
+        return duplicates
+    }
+    
+    func bulkAddTransactions(_ transactions: [Transaction]) async throws -> (successful: [Transaction], failed: [ImportError]) {
+        var successful: [Transaction] = []
+        var failed: [ImportError] = []
+        
+        for transaction in transactions {
+            do {
+                try await addTransaction(transaction)
+                successful.append(transaction)
+            } catch {
+                failed.append(ImportError(transaction: transaction, error: error))
+            }
+        }
+        
+        return (successful, failed)
+    }
+    
     // MARK: - Helper Methods
     
     private func getDateRange(for period: TransactionPeriod) -> (start: Date, end: Date) {
