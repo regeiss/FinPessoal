@@ -31,7 +31,8 @@ class MockTransactionRepository: TransactionRepositoryProtocol {
                 isRecurring: true,
                 userId: mockUserId,
                 createdAt: calendar.date(byAdding: .day, value: -2, to: baseDate) ?? baseDate,
-                updatedAt: calendar.date(byAdding: .day, value: -2, to: baseDate) ?? baseDate
+                updatedAt: calendar.date(byAdding: .day, value: -2, to: baseDate) ?? baseDate,
+                subcategory: .primaryJob
             ),
             Transaction(
                 id: "trans2",
@@ -44,7 +45,8 @@ class MockTransactionRepository: TransactionRepositoryProtocol {
                 isRecurring: false,
                 userId: mockUserId,
                 createdAt: calendar.date(byAdding: .day, value: -1, to: baseDate) ?? baseDate,
-                updatedAt: calendar.date(byAdding: .day, value: -1, to: baseDate) ?? baseDate
+                updatedAt: calendar.date(byAdding: .day, value: -1, to: baseDate) ?? baseDate,
+                subcategory: .groceries
             ),
             Transaction(
                 id: "trans3",
@@ -57,7 +59,8 @@ class MockTransactionRepository: TransactionRepositoryProtocol {
                 isRecurring: false,
                 userId: mockUserId,
                 createdAt: baseDate,
-                updatedAt: baseDate
+                updatedAt: baseDate,
+                subcategory: .fuel
             ),
             Transaction(
                 id: "trans4",
@@ -70,7 +73,8 @@ class MockTransactionRepository: TransactionRepositoryProtocol {
                 isRecurring: true,
                 userId: mockUserId,
                 createdAt: calendar.date(byAdding: .day, value: -3, to: baseDate) ?? baseDate,
-                updatedAt: calendar.date(byAdding: .day, value: -3, to: baseDate) ?? baseDate
+                updatedAt: calendar.date(byAdding: .day, value: -3, to: baseDate) ?? baseDate,
+                subcategory: .rent
             ),
             Transaction(
                 id: "trans5",
@@ -96,7 +100,8 @@ class MockTransactionRepository: TransactionRepositoryProtocol {
                 isRecurring: false,
                 userId: mockUserId,
                 createdAt: calendar.date(byAdding: .day, value: -1, to: baseDate) ?? baseDate,
-                updatedAt: calendar.date(byAdding: .day, value: -1, to: baseDate) ?? baseDate
+                updatedAt: calendar.date(byAdding: .day, value: -1, to: baseDate) ?? baseDate,
+                subcategory: .restaurants
             ),
             Transaction(
                 id: "trans7",
@@ -109,7 +114,8 @@ class MockTransactionRepository: TransactionRepositoryProtocol {
                 isRecurring: false,
                 userId: mockUserId,
                 createdAt: calendar.date(byAdding: .day, value: -2, to: baseDate) ?? baseDate,
-                updatedAt: calendar.date(byAdding: .day, value: -2, to: baseDate) ?? baseDate
+                updatedAt: calendar.date(byAdding: .day, value: -2, to: baseDate) ?? baseDate,
+                subcategory: .taxi
             ),
             Transaction(
                 id: "trans8",
@@ -122,7 +128,8 @@ class MockTransactionRepository: TransactionRepositoryProtocol {
                 isRecurring: false,
                 userId: mockUserId,
                 createdAt: calendar.date(byAdding: .day, value: -4, to: baseDate) ?? baseDate,
-                updatedAt: calendar.date(byAdding: .day, value: -4, to: baseDate) ?? baseDate
+                updatedAt: calendar.date(byAdding: .day, value: -4, to: baseDate) ?? baseDate,
+                subcategory: .movies
             ),
             Transaction(
                 id: "trans9",
@@ -135,7 +142,8 @@ class MockTransactionRepository: TransactionRepositoryProtocol {
                 isRecurring: true,
                 userId: mockUserId,
                 createdAt: calendar.date(byAdding: .day, value: -6, to: baseDate) ?? baseDate,
-                updatedAt: calendar.date(byAdding: .day, value: -6, to: baseDate) ?? baseDate
+                updatedAt: calendar.date(byAdding: .day, value: -6, to: baseDate) ?? baseDate,
+                subcategory: .electricity
             ),
             Transaction(
                 id: "trans10",

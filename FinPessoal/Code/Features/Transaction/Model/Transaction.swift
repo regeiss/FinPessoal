@@ -13,6 +13,7 @@ struct Transaction: Identifiable, Codable, Hashable {
   let amount: Double
   let description: String
   let category: TransactionCategory
+  let subcategory: TransactionSubcategory?
   let type: TransactionType
   let date: Date
   let isRecurring: Bool
@@ -21,12 +22,13 @@ struct Transaction: Identifiable, Codable, Hashable {
   let updatedAt: Date
   
   // Convenience initializer for backward compatibility
-  init(id: String, accountId: String, amount: Double, description: String, category: TransactionCategory, type: TransactionType, date: Date, isRecurring: Bool, userId: String, createdAt: Date, updatedAt: Date) {
+  init(id: String, accountId: String, amount: Double, description: String, category: TransactionCategory, type: TransactionType, date: Date, isRecurring: Bool, userId: String, createdAt: Date, updatedAt: Date, subcategory: TransactionSubcategory? = nil) {
     self.id = id
     self.accountId = accountId
     self.amount = amount
     self.description = description
     self.category = category
+    self.subcategory = subcategory
     self.type = type
     self.date = date
     self.isRecurring = isRecurring

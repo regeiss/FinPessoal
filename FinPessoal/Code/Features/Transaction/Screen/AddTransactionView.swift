@@ -16,6 +16,7 @@ struct AddTransactionView: View {
   @State private var amount: String = ""
   @State private var description: String = ""
   @State private var selectedCategory: TransactionCategory = .other
+  @State private var selectedSubcategory: TransactionSubcategory?
   @State private var selectedType: TransactionType = .expense
   @State private var selectedAccountId: String = ""
   @State private var selectedToAccountId: String = ""
@@ -51,16 +52,10 @@ struct AddTransactionView: View {
         }
         
         Section(header: Text(String(localized: "transactions.details"))) {
-          Picker(String(localized: "transactions.category"), selection: $selectedCategory) {
-            ForEach(TransactionCategory.allCases.sorted(), id: \.self) { category in
-              HStack {
-                Image(systemName: category.icon)
-                Text(category.displayName)
-              }
-              .tag(category)
-            }
-          }
-          .pickerStyle(MenuPickerStyle())
+          CategorySubcategoryPicker(
+            selectedCategory: $selectedCategory,
+            selectedSubcategory: $selectedSubcategory
+          )
           
           if !accountViewModel.accounts.isEmpty {
             Picker(String(localized: "transactions.account"), selection: $selectedAccountId) {
@@ -158,7 +153,8 @@ struct AddTransactionView: View {
       isRecurring: isRecurring,
       userId: "", // Will be set in repository
       createdAt: Date(),
-      updatedAt: Date()
+      updatedAt: Date(),
+      subcategory: selectedSubcategory
     )
     
     let success = await transactionViewModel.addTransaction(newTransaction)

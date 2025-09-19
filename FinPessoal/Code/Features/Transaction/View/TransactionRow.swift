@@ -13,12 +13,12 @@ struct TransactionRow: View {
   var body: some View {
     HStack(spacing: 16) {
       // Ícone da categoria ou tipo (para transferências)
-      Image(systemName: transaction.type == .transfer ? transaction.type.icon : transaction.category.icon)
-        .font(.title3)
-        .foregroundColor(.white)
+      Image(systemName: transaction.type == .transfer ? transaction.type.icon : (transaction.subcategory?.icon ?? transaction.category.icon))
+        .font(.title2)
+        .foregroundColor(transaction.type == .income ? Color.green : transaction.type == .expense ? Color.red : Color.blue)
         .frame(width: 40, height: 40)
-        .background(transaction.type == .income ? Color.green : transaction.type == .expense ? Color.red : Color.blue)
-        .cornerRadius(10)
+        .background((transaction.type == .income ? Color.green : transaction.type == .expense ? Color.red : Color.blue).opacity(0.1))
+        .cornerRadius(8)
       
       // Informações da transação
       VStack(alignment: .leading, spacing: 4) {
@@ -28,9 +28,15 @@ struct TransactionRow: View {
           .lineLimit(1)
         
         HStack {
-          Text(LocalizedStringKey(transaction.category.displayName))
-            .font(.caption)
-            .foregroundColor(.secondary)
+          if let subcategory = transaction.subcategory {
+            Text(LocalizedStringKey(subcategory.displayName))
+              .font(.caption)
+              .foregroundColor(.secondary)
+          } else {
+            Text(LocalizedStringKey(transaction.category.displayName))
+              .font(.caption)
+              .foregroundColor(.secondary)
+          }
           
           if transaction.isRecurring {
             Image(systemName: "repeat")
@@ -54,6 +60,8 @@ struct TransactionRow: View {
           .foregroundColor(.secondary)
       }
     }
-    .padding(.vertical, 12)
+    .padding()
+    .background(Color(.systemGray6))
+    .cornerRadius(12)
   }
 }

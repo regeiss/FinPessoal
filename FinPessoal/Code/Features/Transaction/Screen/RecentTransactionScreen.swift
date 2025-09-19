@@ -65,10 +65,6 @@ struct RecentTransactionScreen: View {
               TransactionRow(transaction: transaction)
             }
             .buttonStyle(.plain)
-            .padding(.horizontal, 4)
-            .background(Color(.systemBackground))
-            .cornerRadius(8)
-            .shadow(color: .black.opacity(0.05), radius: 2, x: 0, y: 1)
           }
         }
         
