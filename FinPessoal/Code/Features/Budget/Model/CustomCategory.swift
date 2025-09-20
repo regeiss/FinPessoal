@@ -70,7 +70,7 @@ protocol CategoryProtocol {
 }
 
 // Wrapper for TransactionCategory to conform to CategoryProtocol
-struct BuiltInCategory: CategoryProtocol {
+struct BuiltInCategory: CategoryProtocol, Identifiable {
   let transactionCategory: TransactionCategory
   
   var id: String { transactionCategory.rawValue }

@@ -16,6 +16,7 @@ struct SettingsScreen: View {
   @State private var showingCurrencySettings = false
   @State private var showingLanguageSettings = false
   @State private var showingHelp = false
+  @State private var showingCategoryManagement = false
   
   private var currentThemeDescription: String {
     let savedTheme = UserDefaults.standard.string(forKey: "selectedTheme") ?? "system"
@@ -139,6 +140,28 @@ struct SettingsScreen: View {
         }
         
         Section(String(localized: "settings.preferences.section")) {
+          // Category management
+          Button {
+            print("🔧 Category management button tapped")
+            showingCategoryManagement = true
+          } label: {
+            HStack {
+              Image(systemName: "tag.circle")
+                .foregroundColor(.blue)
+                .frame(width: 24)
+              
+              Text(String(localized: "settings.categories.title"))
+                .foregroundColor(.primary)
+              
+              Spacer()
+              
+              Image(systemName: "chevron.right")
+                .font(.caption)
+                .foregroundColor(.secondary)
+            }
+          }
+          .buttonStyle(.plain)
+          
           SettingsRow(title: String(localized: "settings.notifications"), icon: "bell", action: {})
           
           // Currency settings row with current currency indicator
@@ -239,6 +262,10 @@ struct SettingsScreen: View {
       }
       .sheet(isPresented: $showingHelp) {
         HelpScreen()
+      }
+      .sheet(isPresented: $showingCategoryManagement) {
+        CategoryManagementView(transactionRepository: MockTransactionRepository())
+          .environmentObject(authViewModel)
       }
     }
   }
