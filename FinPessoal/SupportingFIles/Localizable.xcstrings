@@ -39,6 +39,9 @@
     "%lld dias" : {
 
     },
+    "%lld subcategorias" : {
+
+    },
     "%lld transações" : {
 
     },
@@ -1646,6 +1649,12 @@
         }
       }
     },
+    "Categorias" : {
+
+    },
+    "Categories" : {
+
+    },
     "categories.actions.header" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1697,6 +1706,142 @@
         }
       }
     },
+    "categories.baseCategory" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Base Category"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Categoria Base"
+          }
+        }
+      }
+    },
+    "categories.baseCategory.footer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The base category this custom category will be grouped under"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A categoria base sob a qual esta categoria personalizada será agrupada"
+          }
+        }
+      }
+    },
+    "categories.color" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Color"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cor"
+          }
+        }
+      }
+    },
+    "categories.create.save" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Criar"
+          }
+        }
+      }
+    },
+    "categories.create.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New Category"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nova Categoria"
+          }
+        }
+      }
+    },
+    "categories.custom" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Custom"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Personalizada"
+          }
+        }
+      }
+    },
+    "categories.delete.message" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Are you sure you want to delete this category? This action cannot be undone."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tem certeza de que deseja excluir esta categoria? Esta ação não pode ser desfeita."
+          }
+        }
+      }
+    },
+    "categories.delete.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete Category"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Excluir Categoria"
+          }
+        }
+      }
+    },
     "categories.deselect.all" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1710,6 +1855,57 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Desmarcar Todas"
+          }
+        }
+      }
+    },
+    "categories.edit.save" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salvar"
+          }
+        }
+      }
+    },
+    "categories.edit.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit Category"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Editar Categoria"
+          }
+        }
+      }
+    },
+    "categories.icon" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Icon"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ícone"
           }
         }
       }
@@ -1731,6 +1927,23 @@
         }
       }
     },
+    "categories.management.footer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Custom categories can be edited and deleted when not in use"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Categorias personalizadas podem ser editadas e excluídas quando não estão em uso"
+          }
+        }
+      }
+    },
     "categories.management.title" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1744,6 +1957,91 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Categorias"
+          }
+        }
+      }
+    },
+    "categories.name" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Name"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nome"
+          }
+        }
+      }
+    },
+    "categories.name.placeholder" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Category name"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nome da categoria"
+          }
+        }
+      }
+    },
+    "categories.preview" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preview"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Visualização"
+          }
+        }
+      }
+    },
+    "categories.preview.placeholder" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Category Name"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nome da Categoria"
+          }
+        }
+      }
+    },
+    "categories.preview.subtitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Custom category"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Categoria personalizada"
           }
         }
       }
@@ -1829,6 +2127,142 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Selecionar Todas"
+          }
+        }
+      }
+    },
+    "categories.subcategories.footer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add custom subcategories to better organize your transactions. You can only delete unused custom subcategories."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adicione subcategorias personalizadas para organizar melhor suas transações. Você só pode excluir subcategorias personalizadas não utilizadas."
+          }
+        }
+      }
+    },
+    "categories.subcategories.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Subcategories"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Subcategorias"
+          }
+        }
+      }
+    },
+    "categories.subcategory.add" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add Subcategory"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adicionar Subcategoria"
+          }
+        }
+      }
+    },
+    "categories.subcategory.add.message" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter a name for the new subcategory"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Digite um nome para a nova subcategoria"
+          }
+        }
+      }
+    },
+    "categories.subcategory.name.placeholder" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Subcategory name"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nome da subcategoria"
+          }
+        }
+      }
+    },
+    "categories.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Categories"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Categorias"
+          }
+        }
+      }
+    },
+    "categories.usage.count" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld transactions"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld transações"
+          }
+        }
+      }
+    },
+    "categories.usage.unused" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not used"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Não utilizada"
           }
         }
       }
@@ -2067,6 +2501,142 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Filmes, jogos, livros e atividades de lazer"
+          }
+        }
+      }
+    },
+    "category.error.duplicateName" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Category name already exists"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nome da categoria já existe"
+          }
+        }
+      }
+    },
+    "category.error.duplicateName.suggestion" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please choose a different name for this category"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Por favor, escolha um nome diferente para esta categoria"
+          }
+        }
+      }
+    },
+    "category.error.inUse" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Category is in use"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Categoria está em uso"
+          }
+        }
+      }
+    },
+    "category.error.inUse.suggestion" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Categories with transactions cannot be modified or deleted"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Categorias com transações não podem ser modificadas ou excluídas"
+          }
+        }
+      }
+    },
+    "category.error.invalidName" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalid category name"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nome da categoria inválido"
+          }
+        }
+      }
+    },
+    "category.error.invalidName.suggestion" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please enter a valid category name"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Por favor, insira um nome válido para a categoria"
+          }
+        }
+      }
+    },
+    "category.error.unauthorized" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not authorized to modify this category"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Não autorizado a modificar esta categoria"
+          }
+        }
+      }
+    },
+    "category.error.unauthorized.suggestion" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please sign in to manage categories"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Por favor, faça login para gerenciar categorias"
           }
         }
       }
@@ -2880,6 +3450,9 @@
           }
         }
       }
+    },
+    "Configurações" : {
+
     },
     "Configure your app preferences and account settings." : {
 
@@ -4336,6 +4909,94 @@
     "help.category.description.%@" : {
 
     },
+    "help.category.description.accounts" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gerencie seu perfil e configurações de conta"
+          }
+        }
+      }
+    },
+    "help.category.description.budgets" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Controle seus gastos criando e monitorando orçamentos"
+          }
+        }
+      }
+    },
+    "help.category.description.getting_started" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aprenda os conceitos básicos e dê os primeiros passos no FinPessoal"
+          }
+        }
+      }
+    },
+    "help.category.description.goals" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Defina e acompanhe suas metas financeiras"
+          }
+        }
+      }
+    },
+    "help.category.description.reports" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Analise seus dados financeiros com relatórios detalhados"
+          }
+        }
+      }
+    },
+    "help.category.description.security" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Proteja sua conta e mantenha seus dados seguros"
+          }
+        }
+      }
+    },
+    "help.category.description.transactions" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gerencie suas receitas e despesas com facilidade"
+          }
+        }
+      }
+    },
+    "help.category.description.troubleshooting" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resolva problemas comuns e obtenha suporte"
+          }
+        }
+      }
+    },
     "help.category.empty.subtitle" : {
 
     },
@@ -5642,6 +6303,116 @@
         }
       }
     },
+    "import.result.and.more" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "e mais %lld..."
+          }
+        }
+      }
+    },
+    "import.result.duplicates" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Duplicadas"
+          }
+        }
+      }
+    },
+    "import.result.duplicates.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estas transações já existem e foram ignoradas"
+          }
+        }
+      }
+    },
+    "import.result.duplicates.section" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transações Duplicadas"
+          }
+        }
+      }
+    },
+    "import.result.failed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Falharam"
+          }
+        }
+      }
+    },
+    "import.result.failed.section" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Falhas na Importação"
+          }
+        }
+      }
+    },
+    "import.result.imported" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importadas"
+          }
+        }
+      }
+    },
+    "import.result.imported.transactions" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transações Importadas"
+          }
+        }
+      }
+    },
+    "import.result.success" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importação Concluída"
+          }
+        }
+      }
+    },
+    "import.result.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resultado da Importação"
+          }
+        }
+      }
+    },
     "Inactive" : {
 
     },
@@ -5864,6 +6635,9 @@
           }
         }
       }
+    },
+    "Manage your transaction categories and subcategories" : {
+
     },
     "Menu Principal" : {
 
@@ -7396,6 +8170,9 @@
         }
       }
     },
+    "Selecione uma categoria para gerenciar suas subcategorias" : {
+
+    },
     "Select a transaction from the list to view its details." : {
 
     },
@@ -7500,6 +8277,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Desativada"
+          }
+        }
+      }
+    },
+    "settings.categories.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Manage Categories"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gerenciar Categorias"
           }
         }
       }
@@ -7910,6 +8704,40 @@
         }
       }
     },
+    "sidebar.categories" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Categories"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Categorias"
+          }
+        }
+      }
+    },
+    "sidebar.categories.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Manage categories and subcategories"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gerenciar categorias e subcategorias"
+          }
+        }
+      }
+    },
     "sidebar.dashboard" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -8080,6 +8908,40 @@
         }
       }
     },
+    "subcategory.error.duplicate" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A subcategory with this name already exists"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uma subcategoria com este nome já existe"
+          }
+        }
+      }
+    },
+    "subcategory.error.inUse" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cannot delete subcategory because it has associated transactions"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Não é possível excluir a subcategoria pois ela possui transações associadas"
+          }
+        }
+      }
+    },
     "tab.accounts" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -8144,6 +9006,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Gerencie seus orçamentos de gastos"
+          }
+        }
+      }
+    },
+    "tab.categories" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Categories"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Categorias"
           }
         }
       }
@@ -8888,6 +9767,655 @@
         }
       }
     },
+    "transaction.subcategory.accessories" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acessórios"
+          }
+        }
+      }
+    },
+    "transaction.subcategory.alcohol" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bebidas Alcoólicas"
+          }
+        }
+      }
+    },
+    "transaction.subcategory.beauty" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beleza"
+          }
+        }
+      }
+    },
+    "transaction.subcategory.benefits" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Benefícios"
+          }
+        }
+      }
+    },
+    "transaction.subcategory.bonds" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Títulos"
+          }
+        }
+      }
+    },
+    "transaction.subcategory.bonus" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bônus"
+          }
+        }
+      }
+    },
+    "transaction.subcategory.books" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Livros"
+          }
+        }
+      }
+    },
+    "transaction.subcategory.cleaning" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Limpeza"
+          }
+        }
+      }
+    },
+    "transaction.subcategory.clothing" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Roupas"
+          }
+        }
+      }
+    },
+    "transaction.subcategory.coffee" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Café"
+          }
+        }
+      }
+    },
+    "transaction.subcategory.commission" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comissão"
+          }
+        }
+      }
+    },
+    "transaction.subcategory.concerts" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shows/Concertos"
+          }
+        }
+      }
+    },
+    "transaction.subcategory.cryptocurrency" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Criptomoedas"
+          }
+        }
+      }
+    },
+    "transaction.subcategory.delivery" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delivery"
+          }
+        }
+      }
+    },
+    "transaction.subcategory.dental" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dentista"
+          }
+        }
+      }
+    },
+    "transaction.subcategory.doctor" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Médico"
+          }
+        }
+      }
+    },
+    "transaction.subcategory.donations" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Doações"
+          }
+        }
+      }
+    },
+    "transaction.subcategory.education" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Educação"
+          }
+        }
+      }
+    },
+    "transaction.subcategory.electricity" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Energia Elétrica"
+          }
+        }
+      }
+    },
+    "transaction.subcategory.electronics" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eletrônicos"
+          }
+        }
+      }
+    },
+    "transaction.subcategory.fastFood" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fast Food"
+          }
+        }
+      }
+    },
+    "transaction.subcategory.fees" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Taxas"
+          }
+        }
+      }
+    },
+    "transaction.subcategory.freelance" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Freelance"
+          }
+        }
+      }
+    },
+    "transaction.subcategory.fuel" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Combustível"
+          }
+        }
+      }
+    },
+    "transaction.subcategory.furniture" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Móveis"
+          }
+        }
+      }
+    },
+    "transaction.subcategory.games" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jogos"
+          }
+        }
+      }
+    },
+    "transaction.subcategory.gifts" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Presentes"
+          }
+        }
+      }
+    },
+    "transaction.subcategory.groceries" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supermercado"
+          }
+        }
+      }
+    },
+    "transaction.subcategory.homeGoods" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Casa e Decoração"
+          }
+        }
+      }
+    },
+    "transaction.subcategory.hospital" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hospital"
+          }
+        }
+      }
+    },
+    "transaction.subcategory.insurance" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seguro"
+          }
+        }
+      }
+    },
+    "transaction.subcategory.internet" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Internet"
+          }
+        }
+      }
+    },
+    "transaction.subcategory.maintenance" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Manutenção"
+          }
+        }
+      }
+    },
+    "transaction.subcategory.miscellaneous" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diversos"
+          }
+        }
+      }
+    },
+    "transaction.subcategory.mortgage" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Financiamento"
+          }
+        }
+      }
+    },
+    "transaction.subcategory.movies" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cinema"
+          }
+        }
+      }
+    },
+    "transaction.subcategory.parking" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estacionamento"
+          }
+        }
+      }
+    },
+    "transaction.subcategory.pets" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pets"
+          }
+        }
+      }
+    },
+    "transaction.subcategory.pharmacy" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Farmácia"
+          }
+        }
+      }
+    },
+    "transaction.subcategory.phone" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Telefone"
+          }
+        }
+      }
+    },
+    "transaction.subcategory.primaryJob" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trabalho Principal"
+          }
+        }
+      }
+    },
+    "transaction.subcategory.publicTransport" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transporte Público"
+          }
+        }
+      }
+    },
+    "transaction.subcategory.realEstate" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imóveis"
+          }
+        }
+      }
+    },
+    "transaction.subcategory.rent" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aluguel"
+          }
+        }
+      }
+    },
+    "transaction.subcategory.repairs" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reparos"
+          }
+        }
+      }
+    },
+    "transaction.subcategory.restaurants" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restaurantes"
+          }
+        }
+      }
+    },
+    "transaction.subcategory.retirement" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aposentadoria"
+          }
+        }
+      }
+    },
+    "transaction.subcategory.savings" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Poupança"
+          }
+        }
+      }
+    },
+    "transaction.subcategory.secondaryJob" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trabalho Secundário"
+          }
+        }
+      }
+    },
+    "transaction.subcategory.sports" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esportes"
+          }
+        }
+      }
+    },
+    "transaction.subcategory.stocks" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ações"
+          }
+        }
+      }
+    },
+    "transaction.subcategory.streaming" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Streaming"
+          }
+        }
+      }
+    },
+    "transaction.subcategory.subscription" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Assinaturas"
+          }
+        }
+      }
+    },
+    "transaction.subcategory.supplements" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suplementos"
+          }
+        }
+      }
+    },
+    "transaction.subcategory.taxes" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impostos"
+          }
+        }
+      }
+    },
+    "transaction.subcategory.taxi" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Táxi/Uber"
+          }
+        }
+      }
+    },
+    "transaction.subcategory.therapy" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Terapia"
+          }
+        }
+      }
+    },
+    "transaction.subcategory.utilities" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Utilidades"
+          }
+        }
+      }
+    },
+    "transaction.subcategory.water" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Água"
+          }
+        }
+      }
+    },
     "transaction.type.expense" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -9367,6 +10895,28 @@
         }
       }
     },
+    "transactions.select.category" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selecionar Categoria"
+          }
+        }
+      }
+    },
+    "transactions.select.subcategory" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selecionar Subcategoria"
+          }
+        }
+      }
+    },
     "transactions.sort.highest" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -9431,6 +10981,39 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mais Antigas"
+          }
+        }
+      }
+    },
+    "transactions.subcategory" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Subcategoria"
+          }
+        }
+      }
+    },
+    "transactions.subcategory.none" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nenhuma subcategoria"
+          }
+        }
+      }
+    },
+    "transactions.subcategory.select" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selecionar subcategoria"
           }
         }
       }
@@ -9661,2270 +11244,6 @@
     },
     "Your financial overview and key metrics will be displayed here." : {
 
-    },
-    "help.topics.in.category" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tópicos desta Categoria"
-          }
-        }
-      }
-    },
-    "help.related.categories" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Categorias Relacionadas"
-          }
-        }
-      }
-    },
-    "help.topic.available" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "tópico disponível"
-          }
-        }
-      }
-    },
-    "help.topics.available" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "tópicos disponíveis"
-          }
-        }
-      }
-    },
-    "help.category.empty.title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Categoria Vazia"
-          }
-        }
-      }
-    },
-    "help.category.empty.subtitle" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ainda não há conteúdo de ajuda para esta categoria."
-          }
-        }
-      }
-    },
-    "help.first.transaction.title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Como adicionar sua primeira transação"
-          }
-        }
-      }
-    },
-    "help.first.transaction.content" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Adicionar transações é o primeiro passo para organizar suas finanças. Registre suas receitas e despesas para ter uma visão clara de seu dinheiro."
-          }
-        }
-      }
-    },
-    "help.first.transaction.step1.title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Acesse a aba Transações"
-          }
-        }
-      }
-    },
-    "help.first.transaction.step1.desc" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Toque na aba 'Transações' na barra inferior do aplicativo"
-          }
-        }
-      }
-    },
-    "help.first.transaction.step2.title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Toque no botão +"
-          }
-        }
-      }
-    },
-    "help.first.transaction.step2.desc" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pressione o botão '+' no canto superior direito para adicionar uma nova transação"
-          }
-        }
-      }
-    },
-    "help.first.transaction.step3.title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Preencha os dados"
-          }
-        }
-      }
-    },
-    "help.first.transaction.step3.desc" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Informe o valor, categoria, descrição e data da transação, depois toque em 'Salvar'"
-          }
-        }
-      }
-    },
-    "help.edit.transaction.title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Como editar uma transação"
-          }
-        }
-      }
-    },
-    "help.edit.transaction.content" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Para editar uma transação existente, toque na transação na lista e selecione 'Editar'. Faça as alterações necessárias e salve."
-          }
-        }
-      }
-    },
-    "help.delete.transaction.title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Como excluir uma transação"
-          }
-        }
-      }
-    },
-    "help.delete.transaction.content" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Para excluir uma transação, deslize para a esquerda na lista de transações ou toque na transação e selecione 'Excluir'."
-          }
-        }
-      }
-    },
-    "help.recurring.title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Transações Recorrentes"
-          }
-        }
-      }
-    },
-    "help.recurring.content" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Configure transações que se repetem automaticamente, como salário, aluguel ou contas mensais. Isso economiza tempo no registro de gastos regulares."
-          }
-        }
-      }
-    },
-    "help.budget.step1.title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Acesse Orçamentos"
-          }
-        }
-      }
-    },
-    "help.budget.step1.desc" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Toque na aba 'Orçamentos' no menu principal"
-          }
-        }
-      }
-    },
-    "help.budget.step2.title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Escolha uma categoria"
-          }
-        }
-      }
-    },
-    "help.budget.step2.desc" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Selecione a categoria de gastos para a qual deseja criar um orçamento"
-          }
-        }
-      }
-    },
-    "help.budget.step3.title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Defina o limite"
-          }
-        }
-      }
-    },
-    "help.budget.step3.desc" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Insira o valor máximo que deseja gastar nesta categoria por mês"
-          }
-        }
-      }
-    },
-    "help.budget.alerts.title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Alertas de Orçamento"
-          }
-        }
-      }
-    },
-    "help.budget.alerts.content" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Configure alertas para ser notificado quando seus gastos se aproximarem do limite do orçamento. Isso ajuda a manter o controle financeiro."
-          }
-        }
-      }
-    },
-    "help.track.goals.title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Como acompanhar suas metas"
-          }
-        }
-      }
-    },
-    "help.track.goals.content" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Acompanhe o progresso de suas metas de economia visualizando gráficos de progresso e recebendo atualizações regulares sobre seu desempenho."
-          }
-        }
-      }
-    },
-    "help.export.data.title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Como exportar seus dados"
-          }
-        }
-      }
-    },
-    "help.export.data.content" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Exporte seus dados financeiros em formato PDF ou CSV para uso em outros aplicativos ou para backup de suas informações."
-          }
-        }
-      }
-    },
-    "help.manage.profile.title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Como gerenciar seu perfil"
-          }
-        }
-      }
-    },
-    "help.manage.profile.content" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Atualize suas informações pessoais, altere sua senha e configure suas preferências de conta nas configurações do perfil."
-          }
-        }
-      }
-    },
-    "help.sync.data.title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Como sincronizar seus dados"
-          }
-        }
-      }
-    },
-    "help.sync.data.content" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Seus dados são automaticamente sincronizados na nuvem quando você está conectado à internet. Isso garante que suas informações estejam sempre atualizadas."
-          }
-        }
-      }
-    },
-    "help.app.crashes.title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "O aplicativo está travando"
-          }
-        }
-      }
-    },
-    "help.app.crashes.content" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Se o aplicativo estiver travando, tente reiniciá-lo ou reiniciar seu dispositivo. Se o problema persistir, entre em contato com o suporte."
-          }
-        }
-      }
-    },
-    "help.data.missing.title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Meus dados sumiram"
-          }
-        }
-      }
-    },
-    "help.data.missing.content" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Verifique sua conexão com a internet e tente sincronizar novamente. Seus dados podem estar sendo carregados da nuvem. Se não funcionar, entre em contato conosco."
-          }
-        }
-      }
-    },
-    "help.sync.issues.title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Problemas de sincronização"
-          }
-        }
-      }
-    },
-    "help.sync.issues.content" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Problemas de sincronização geralmente são causados por conexão de internet instável. Verifique sua conexão e tente novamente em alguns minutos."
-          }
-        }
-      }
-    },
-    "help.data.privacy.title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Privacidade dos seus dados"
-          }
-        }
-      }
-    },
-    "help.data.privacy.content" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Seus dados financeiros são criptografados e protegidos. Nunca compartilhamos suas informações pessoais com terceiros. Leia nossa política de privacidade para mais detalhes."
-          }
-        }
-      }
-    },
-    "help.account.security.title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Segurança da conta"
-          }
-        }
-      }
-    },
-    "help.account.security.content" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Use uma senha forte e única para sua conta. Recomendamos habilitar a autenticação de dois fatores quando disponível para maior segurança."
-          }
-        }
-      }
-    },
-    "help.section.quick.start" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Início Rápido"
-          }
-        }
-      }
-    },
-    "help.section.all.categories" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Todas as Categorias"
-          }
-        }
-      }
-    },
-    "help.view.all.faqs" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ver Todas as FAQs"
-          }
-        }
-      }
-    },
-    "help.search.results" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Resultados da Busca"
-          }
-        }
-      }
-    },
-    "help.search.no.results" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nenhum resultado encontrado"
-          }
-        }
-      }
-    },
-    "help.search.try.different.terms" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tente usar palavras-chave diferentes"
-          }
-        }
-      }
-    },
-    "help.topic.content" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Conteúdo"
-          }
-        }
-      }
-    },
-    "help.step.by.step" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Passo a Passo"
-          }
-        }
-      }
-    },
-    "help.video.tutorial" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tutorial em Vídeo"
-          }
-        }
-      }
-    },
-    "help.watch.video" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Assistir Vídeo"
-          }
-        }
-      }
-    },
-    "help.video.duration" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Duração aproximada: 2 minutos"
-          }
-        }
-      }
-    },
-    "help.related.topics" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tópicos Relacionados"
-          }
-        }
-      }
-    },
-    "help.view.details" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ver Detalhes"
-          }
-        }
-      }
-    },
-    "help.feedback.thanks" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Obrigado pelo seu feedback!"
-          }
-        }
-      }
-    },
-    "help.feedback.improve" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Como podemos melhorar?"
-          }
-        }
-      }
-    },
-    "help.feedback.description" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Conte-nos o que não funcionou ou como podemos tornar esta informação mais útil."
-          }
-        }
-      }
-    },
-    "help.feedback.title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Enviar Feedback"
-          }
-        }
-      }
-    },
-    "help.share.topic" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Compartilhar Tópico"
-          }
-        }
-      }
-    },
-    "help.faq.badge" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "FAQ"
-          }
-        }
-      }
-    },
-    "help.faq.title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Perguntas Frequentes"
-          }
-        }
-      }
-    },
-    "help.faq.search.prompt" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Buscar nas FAQs..."
-          }
-        }
-      }
-    },
-    "help.faq.header.title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Perguntas Frequentes"
-          }
-        }
-      }
-    },
-    "help.faq.header.subtitle" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Encontre respostas rápidas para as dúvidas mais comuns"
-          }
-        }
-      }
-    },
-    "help.question.available" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "pergunta disponível"
-          }
-        }
-      }
-    },
-    "help.questions.available" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "perguntas disponíveis"
-          }
-        }
-      }
-    },
-    "help.quick.steps" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Passos rápidos:"
-          }
-        }
-      }
-    },
-    "help.faq.empty.title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nenhuma FAQ encontrada"
-          }
-        }
-      }
-    },
-    "help.faq.empty.subtitle" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "As perguntas frequentes ainda não foram criadas."
-          }
-        }
-      }
-    },
-    "help.faq.search.no.results" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nenhuma FAQ encontrada"
-          }
-        }
-      }
-    },
-    "help.faq.try.different.search" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tente uma busca diferente ou explore as categorias"
-          }
-        }
-      }
-    },
-    "help.clear.search" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Limpar Busca"
-          }
-        }
-      }
-    },
-    "common.done" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Concluído"
-          }
-        }
-      }
-    },
-    "help.category.description.getting_started" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aprenda os conceitos básicos e dê os primeiros passos no FinPessoal"
-          }
-        }
-      }
-    },
-    "help.category.description.transactions" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gerencie suas receitas e despesas com facilidade"
-          }
-        }
-      }
-    },
-    "help.category.description.budgets" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Controle seus gastos criando e monitorando orçamentos"
-          }
-        }
-      }
-    },
-    "help.category.description.goals" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Defina e acompanhe suas metas financeiras"
-          }
-        }
-      }
-    },
-    "help.category.description.reports" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Analise seus dados financeiros com relatórios detalhados"
-          }
-        }
-      }
-    },
-    "help.category.description.accounts" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gerencie seu perfil e configurações de conta"
-          }
-        }
-      }
-    },
-    "help.category.description.troubleshooting" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Resolva problemas comuns e obtenha suporte"
-          }
-        }
-      }
-    },
-    "help.category.description.security" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Proteja sua conta e mantenha seus dados seguros"
-          }
-        }
-      }
-    },
-    "import.result.title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Resultado da Importação"
-          }
-        }
-      }
-    },
-    "import.result.success" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Importação Concluída"
-          }
-        }
-      }
-    },
-    "import.result.imported" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Importadas"
-          }
-        }
-      }
-    },
-    "import.result.duplicates" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Duplicadas"
-          }
-        }
-      }
-    },
-    "import.result.failed" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Falharam"
-          }
-        }
-      }
-    },
-    "import.result.imported.transactions" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Transações Importadas"
-          }
-        }
-      }
-    },
-    "import.result.duplicates.section" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Transações Duplicadas"
-          }
-        }
-      }
-    },
-    "import.result.duplicates.description" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Estas transações já existem e foram ignoradas"
-          }
-        }
-      }
-    },
-    "import.result.failed.section" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Falhas na Importação"
-          }
-        }
-      }
-    },
-    "import.result.and.more" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "e mais %lld..."
-          }
-        }
-      }
-    },
-    "common.done" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Concluído"
-          }
-        }
-      }
-    },
-    "transactions.subcategory" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Subcategoria"
-          }
-        }
-      }
-    },
-    "transactions.subcategory.select" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Selecionar subcategoria"
-          }
-        }
-      }
-    },
-    "transactions.select.category" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Selecionar Categoria"
-          }
-        }
-      }
-    },
-    "transactions.select.subcategory" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Selecionar Subcategoria"
-          }
-        }
-      }
-    },
-    "transactions.subcategory.none" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nenhuma subcategoria"
-          }
-        }
-      }
-    },
-    "transaction.subcategory.restaurants" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Restaurantes"
-          }
-        }
-      }
-    },
-    "transaction.subcategory.groceries" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Supermercado"
-          }
-        }
-      }
-    },
-    "transaction.subcategory.fastFood" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Fast Food"
-          }
-        }
-      }
-    },
-    "transaction.subcategory.delivery" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Delivery"
-          }
-        }
-      }
-    },
-    "transaction.subcategory.coffee" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Café"
-          }
-        }
-      }
-    },
-    "transaction.subcategory.alcohol" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bebidas Alcoólicas"
-          }
-        }
-      }
-    },
-    "transaction.subcategory.fuel" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Combustível"
-          }
-        }
-      }
-    },
-    "transaction.subcategory.publicTransport" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Transporte Público"
-          }
-        }
-      }
-    },
-    "transaction.subcategory.taxi" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Táxi/Uber"
-          }
-        }
-      }
-    },
-    "transaction.subcategory.parking" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Estacionamento"
-          }
-        }
-      }
-    },
-    "transaction.subcategory.maintenance" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Manutenção"
-          }
-        }
-      }
-    },
-    "transaction.subcategory.insurance" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Seguro"
-          }
-        }
-      }
-    },
-    "transaction.subcategory.movies" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cinema"
-          }
-        }
-      }
-    },
-    "transaction.subcategory.games" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Jogos"
-          }
-        }
-      }
-    },
-    "transaction.subcategory.concerts" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Shows/Concertos"
-          }
-        }
-      }
-    },
-    "transaction.subcategory.sports" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Esportes"
-          }
-        }
-      }
-    },
-    "transaction.subcategory.books" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Livros"
-          }
-        }
-      }
-    },
-    "transaction.subcategory.streaming" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Streaming"
-          }
-        }
-      }
-    },
-    "transaction.subcategory.doctor" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Médico"
-          }
-        }
-      }
-    },
-    "transaction.subcategory.pharmacy" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Farmácia"
-          }
-        }
-      }
-    },
-    "transaction.subcategory.dental" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dentista"
-          }
-        }
-      }
-    },
-    "transaction.subcategory.hospital" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hospital"
-          }
-        }
-      }
-    },
-    "transaction.subcategory.therapy" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Terapia"
-          }
-        }
-      }
-    },
-    "transaction.subcategory.supplements" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Suplementos"
-          }
-        }
-      }
-    },
-    "transaction.subcategory.clothing" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Roupas"
-          }
-        }
-      }
-    },
-    "transaction.subcategory.electronics" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Eletrônicos"
-          }
-        }
-      }
-    },
-    "transaction.subcategory.homeGoods" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Casa e Decoração"
-          }
-        }
-      }
-    },
-    "transaction.subcategory.beauty" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Beleza"
-          }
-        }
-      }
-    },
-    "transaction.subcategory.gifts" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Presentes"
-          }
-        }
-      }
-    },
-    "transaction.subcategory.accessories" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Acessórios"
-          }
-        }
-      }
-    },
-    "transaction.subcategory.electricity" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Energia Elétrica"
-          }
-        }
-      }
-    },
-    "transaction.subcategory.water" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Água"
-          }
-        }
-      }
-    },
-    "transaction.subcategory.internet" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Internet"
-          }
-        }
-      }
-    },
-    "transaction.subcategory.phone" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Telefone"
-          }
-        }
-      }
-    },
-    "transaction.subcategory.subscription" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Assinaturas"
-          }
-        }
-      }
-    },
-    "transaction.subcategory.taxes" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Impostos"
-          }
-        }
-      }
-    },
-    "transaction.subcategory.primaryJob" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Trabalho Principal"
-          }
-        }
-      }
-    },
-    "transaction.subcategory.secondaryJob" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Trabalho Secundário"
-          }
-        }
-      }
-    },
-    "transaction.subcategory.freelance" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Freelance"
-          }
-        }
-      }
-    },
-    "transaction.subcategory.bonus" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bônus"
-          }
-        }
-      }
-    },
-    "transaction.subcategory.commission" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Comissão"
-          }
-        }
-      }
-    },
-    "transaction.subcategory.benefits" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Benefícios"
-          }
-        }
-      }
-    },
-    "transaction.subcategory.stocks" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ações"
-          }
-        }
-      }
-    },
-    "transaction.subcategory.bonds" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Títulos"
-          }
-        }
-      }
-    },
-    "transaction.subcategory.realEstate" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Imóveis"
-          }
-        }
-      }
-    },
-    "transaction.subcategory.cryptocurrency" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Criptomoedas"
-          }
-        }
-      }
-    },
-    "transaction.subcategory.retirement" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aposentadoria"
-          }
-        }
-      }
-    },
-    "transaction.subcategory.savings" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Poupança"
-          }
-        }
-      }
-    },
-    "transaction.subcategory.rent" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aluguel"
-          }
-        }
-      }
-    },
-    "transaction.subcategory.mortgage" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Financiamento"
-          }
-        }
-      }
-    },
-    "transaction.subcategory.repairs" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Reparos"
-          }
-        }
-      }
-    },
-    "transaction.subcategory.furniture" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Móveis"
-          }
-        }
-      }
-    },
-    "transaction.subcategory.utilities" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Utilidades"
-          }
-        }
-      }
-    },
-    "transaction.subcategory.cleaning" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Limpeza"
-          }
-        }
-      }
-    },
-    "transaction.subcategory.fees" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Taxas"
-          }
-        }
-      }
-    },
-    "transaction.subcategory.donations" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Doações"
-          }
-        }
-      }
-    },
-    "transaction.subcategory.education" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Educação"
-          }
-        }
-      }
-    },
-    "transaction.subcategory.pets" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pets"
-          }
-        }
-      }
-    },
-    "transaction.subcategory.miscellaneous" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Diversos"
-          }
-        }
-      }
-    },
-    "settings.categories.title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Manage Categories"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gerenciar Categorias"
-          }
-        }
-      }
-    },
-    "categories.title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Categories"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Categorias"
-          }
-        }
-      }
-    },
-    "categories.management.footer" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Custom categories can be edited and deleted when not in use"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Categorias personalizadas podem ser editadas e excluídas quando não estão em uso"
-          }
-        }
-      }
-    },
-    "categories.create.title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "New Category"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nova Categoria"
-          }
-        }
-      }
-    },
-    "categories.edit.title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Edit Category"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Editar Categoria"
-          }
-        }
-      }
-    },
-    "categories.create.save" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Create"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Criar"
-          }
-        }
-      }
-    },
-    "categories.edit.save" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Save"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Salvar"
-          }
-        }
-      }
-    },
-    "categories.name" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Name"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nome"
-          }
-        }
-      }
-    },
-    "categories.name.placeholder" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Category name"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nome da categoria"
-          }
-        }
-      }
-    },
-    "categories.icon" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Icon"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ícone"
-          }
-        }
-      }
-    },
-    "categories.color" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Color"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cor"
-          }
-        }
-      }
-    },
-    "categories.baseCategory" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Base Category"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Categoria Base"
-          }
-        }
-      }
-    },
-    "categories.baseCategory.footer" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The base category this custom category will be grouped under"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "A categoria base sob a qual esta categoria personalizada será agrupada"
-          }
-        }
-      }
-    },
-    "categories.preview" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Preview"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Visualização"
-          }
-        }
-      }
-    },
-    "categories.preview.placeholder" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Category Name"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nome da Categoria"
-          }
-        }
-      }
-    },
-    "categories.preview.subtitle" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Custom category"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Categoria personalizada"
-          }
-        }
-      }
-    },
-    "categories.delete.title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Delete Category"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Excluir Categoria"
-          }
-        }
-      }
-    },
-    "categories.delete.message" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Are you sure you want to delete this category? This action cannot be undone."
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tem certeza de que deseja excluir esta categoria? Esta ação não pode ser desfeita."
-          }
-        }
-      }
-    },
-    "categories.usage.count" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld transactions"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld transações"
-          }
-        }
-      }
-    },
-    "categories.usage.unused" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Not used"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Não utilizada"
-          }
-        }
-      }
-    },
-    "categories.custom" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Custom"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Personalizada"
-          }
-        }
-      }
-    },
-    "category.error.inUse" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Category is in use"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Categoria está em uso"
-          }
-        }
-      }
-    },
-    "category.error.invalidName" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Invalid category name"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nome da categoria inválido"
-          }
-        }
-      }
-    },
-    "category.error.duplicateName" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Category name already exists"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nome da categoria já existe"
-          }
-        }
-      }
-    },
-    "category.error.unauthorized" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Not authorized to modify this category"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Não autorizado a modificar esta categoria"
-          }
-        }
-      }
-    },
-    "category.error.inUse.suggestion" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Categories with transactions cannot be modified or deleted"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Categorias com transações não podem ser modificadas ou excluídas"
-          }
-        }
-      }
-    },
-    "category.error.invalidName.suggestion" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Please enter a valid category name"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Por favor, insira um nome válido para a categoria"
-          }
-        }
-      }
-    },
-    "category.error.duplicateName.suggestion" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Please choose a different name for this category"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Por favor, escolha um nome diferente para esta categoria"
-          }
-        }
-      }
-    },
-    "category.error.unauthorized.suggestion" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Please sign in to manage categories"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Por favor, faça login para gerenciar categorias"
-          }
-        }
-      }
     }
   },
   "version" : "1.0"

@@ -123,6 +123,7 @@ enum SidebarItem: String, CaseIterable, Identifiable {
   case reports = "reports"
   case budgets = "budgets"
   case goals = "goals"
+  case categories = "categories"
   case settings = "settings"
   
   var id: String { rawValue }
@@ -135,6 +136,7 @@ enum SidebarItem: String, CaseIterable, Identifiable {
     case .reports: return String(localized: "sidebar.reports")
     case .budgets: return String(localized: "sidebar.budgets")
     case .goals: return String(localized: "sidebar.goals")
+    case .categories: return String(localized: "sidebar.categories")
     case .settings: return String(localized: "sidebar.settings")
     }
   }
@@ -147,6 +149,7 @@ enum SidebarItem: String, CaseIterable, Identifiable {
     case .reports: return "chart.bar.fill"
     case .budgets: return "chart.pie.fill"
     case .goals: return "target"
+    case .categories: return "tag.circle.fill"
     case .settings: return "gear"
     }
   }
@@ -159,6 +162,7 @@ enum SidebarItem: String, CaseIterable, Identifiable {
     case .reports: return String(localized: "sidebar.reports.description")
     case .budgets: return String(localized: "sidebar.budgets.description")
     case .goals: return String(localized: "sidebar.goals.description")
+    case .categories: return String(localized: "sidebar.categories.description")
     case .settings: return String(localized: "sidebar.settings.description")
     }
   }

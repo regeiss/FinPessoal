@@ -11,22 +11,43 @@ struct iPadMainView: View {
   @EnvironmentObject var navigationState: NavigationState
   @EnvironmentObject var financeViewModel: FinanceViewModel
   @EnvironmentObject var authViewModel: AuthViewModel
+  @State private var columnVisibility: NavigationSplitViewVisibility = .all
   
   var body: some View {
-    NavigationSplitView(columnVisibility: .constant(.all)) {
+    NavigationSplitView(columnVisibility: $columnVisibility) {
       // Column 1: Sidebar Navigation
       SidebarView()
         .navigationSplitViewColumnWidth(min: 200, ideal: 250, max: 300)
     } content: {
       // Column 2: Content Lists
       iPadContentView()
-        .navigationSplitViewColumnWidth(min: 300, ideal: 350, max: 400)
+        .navigationSplitViewColumnWidth(
+          min: navigationState.selectedSidebarItem == .categories ? 400 : 300,
+          ideal: navigationState.selectedSidebarItem == .categories ? 600 : 350,
+          max: navigationState.selectedSidebarItem == .categories ? .infinity : 400
+        )
     } detail: {
       // Column 3: Detail Views
       DetailView()
         .navigationSplitViewColumnWidth(min: 400, ideal: 600, max: .infinity)
     }
     .navigationSplitViewStyle(.automatic)
+    .onChange(of: navigationState.selectedSidebarItem) { _, newItem in
+      // Hide detail column for categories to create two-column layout
+      if newItem == .categories {
+        columnVisibility = .doubleColumn
+      } else {
+        columnVisibility = .all
+      }
+    }
+    .onAppear {
+      // Set initial column visibility based on current selection
+      if navigationState.selectedSidebarItem == .categories {
+        columnVisibility = .doubleColumn
+      } else {
+        columnVisibility = .all
+      }
+    }
     .task {
       await financeViewModel.loadData()
     }
@@ -63,6 +84,8 @@ struct iPadContentView: View {
           BudgetsScreen()
         case .goals:
           GoalScreen()
+        case .categories:
+          iPadCategoriesContent
         case .settings:
           SettingsScreen()
         case .none:
@@ -128,6 +151,8 @@ struct DetailView: View {
             BudgetsDetailView()
           case .goals:
             GoalsDetailView()
+          case .categories:
+            CategoriesDetailView()
           case .settings:
             SettingsDetailView()
           case .none:
@@ -726,4 +751,31 @@ struct EnhancedTransactionRow: View {
       .padding(.vertical, 16)
       .frame(maxWidth: .infinity)
     }
+  }
+
+struct CategoriesDetailView: View {
+    var body: some View {
+      VStack(spacing: 24) {
+        Image(systemName: "tag.circle.fill")
+          .font(.system(size: 64))
+          .foregroundColor(.gray)
+        
+        Text("Categories")
+          .font(.title2)
+          .fontWeight(.semibold)
+        
+        Text("Manage your transaction categories and subcategories")
+          .font(.body)
+          .foregroundColor(.secondary)
+          .multilineTextAlignment(.center)
+          .padding(.horizontal, 32)
+      }
+      .padding(.vertical, 16)
+      .frame(maxWidth: .infinity)
+    }
+  }
+  
+  @ViewBuilder
+  private var iPadCategoriesContent: some View {
+    CategoriesManagementScreen(transactionRepository: AppConfiguration.shared.createTransactionRepository(), forcePhoneLayout: true)
   }

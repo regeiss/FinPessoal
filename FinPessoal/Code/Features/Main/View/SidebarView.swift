@@ -29,9 +29,13 @@ struct SidebarView: View {
       }
       
       Section("Ferramentas") {
-        ForEach(Array(SidebarItem.allCases.dropFirst(4).dropLast(1)), id: \.self) { item in
+        ForEach(Array(SidebarItem.allCases.dropFirst(4).dropLast(2)), id: \.self) { item in
           SidebarRow(item: item)
         }
+      }
+      
+      Section("Configurações") {
+        SidebarRow(item: .categories)
       }
       
       Section {

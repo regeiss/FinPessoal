@@ -59,12 +59,19 @@ struct MainTabView: View {
           }
           .tag(4)
         
+        CategoriesManagementScreen(transactionRepository: AppConfiguration.shared.createTransactionRepository())
+          .tabItem {
+            Image(systemName: "tag.circle.fill")
+            Text("tab.categories")
+          }
+          .tag(5)
+        
         SettingsScreen()
           .tabItem {
             Image(systemName: "gearshape.fill")
             Text("tab.settings")
           }
-          .tag(5)
+          .tag(6)
       }
     }
   }
@@ -84,6 +91,8 @@ struct MainTabView: View {
       GoalScreen()
     case .reports:
       ReportsScreen()
+    case .categories:
+      CategoriesManagementScreen(transactionRepository: AppConfiguration.shared.createTransactionRepository())
     case .settings:
       SettingsScreen()
     case .none:
