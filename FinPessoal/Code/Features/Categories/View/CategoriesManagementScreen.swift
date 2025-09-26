@@ -295,6 +295,12 @@ struct CategoryScrollPickerView: View {
             }
             .padding(.horizontal)
         }
+        .onAppear {
+            print("CategoryScrollPickerView: Total categories available: \(TransactionCategory.allCases.count)")
+            for category in TransactionCategory.allCases.sorted() {
+                print("Category: \(category.rawValue) - \(category.displayName)")
+            }
+        }
     }
 }
 
