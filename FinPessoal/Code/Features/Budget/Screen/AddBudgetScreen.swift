@@ -147,22 +147,14 @@ struct AddBudgetScreen: View {
       return
     }
     
-    // Add budget to FinanceViewModel
     Task {
-      do {
-        budgetViewModel.isLoading = true
-        // In a real app, this would save to Firebase
-        await MainActor.run {
-          financeViewModel.budgets.append(newBudget)
-          budgetViewModel.reset()
-          dismiss()
-        }
-      } catch {
-        await MainActor.run {
-          alertMessage = String(localized: "budget.error.save.failed")
-          showingAlert = true
-          budgetViewModel.isLoading = false
-        }
+      budgetViewModel.isLoading = true
+      // In a real app, this would save to Firebase
+      await MainActor.run {
+        financeViewModel.budgets.append(newBudget)
+        budgetViewModel.reset()
+        budgetViewModel.isLoading = false
+        dismiss()
       }
     }
   }

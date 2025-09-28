@@ -102,6 +102,128 @@ class HelpDataProvider: ObservableObject {
         keywords: ["recorrente", "automática", "repetir", "mensal"]
       ),
       
+      // Credit Cards
+      HelpTopic(
+        id: "add_credit_card",
+        title: String(localized: "help.add.credit.card.title"),
+        content: String(localized: "help.add.credit.card.content"),
+        category: .creditCards,
+        keywords: ["cartão", "crédito", "adicionar", "novo", "bandeira"],
+        steps: [
+          HelpStep(id: "cc_step1", stepNumber: 1, title: String(localized: "help.add.credit.card.step1.title"), description: String(localized: "help.add.credit.card.step1.desc")),
+          HelpStep(id: "cc_step2", stepNumber: 2, title: String(localized: "help.add.credit.card.step2.title"), description: String(localized: "help.add.credit.card.step2.desc")),
+          HelpStep(id: "cc_step3", stepNumber: 3, title: String(localized: "help.add.credit.card.step3.title"), description: String(localized: "help.add.credit.card.step3.desc")),
+          HelpStep(id: "cc_step4", stepNumber: 4, title: String(localized: "help.add.credit.card.step4.title"), description: String(localized: "help.add.credit.card.step4.desc"))
+        ],
+        isFrequentlyAsked: true
+      ),
+      
+      HelpTopic(
+        id: "credit_card_transactions",
+        title: String(localized: "help.credit.card.transactions.title"),
+        content: String(localized: "help.credit.card.transactions.content"),
+        category: .creditCards,
+        keywords: ["transação", "compra", "parcelamento", "cartão"],
+        steps: [
+          HelpStep(id: "cct_step1", stepNumber: 1, title: String(localized: "help.credit.card.transactions.step1.title"), description: String(localized: "help.credit.card.transactions.step1.desc")),
+          HelpStep(id: "cct_step2", stepNumber: 2, title: String(localized: "help.credit.card.transactions.step2.title"), description: String(localized: "help.credit.card.transactions.step2.desc")),
+          HelpStep(id: "cct_step3", stepNumber: 3, title: String(localized: "help.credit.card.transactions.step3.title"), description: String(localized: "help.credit.card.transactions.step3.desc"))
+        ],
+        isFrequentlyAsked: true
+      ),
+      
+      HelpTopic(
+        id: "credit_card_payments",
+        title: String(localized: "help.credit.card.payments.title"),
+        content: String(localized: "help.credit.card.payments.content"),
+        category: .creditCards,
+        keywords: ["pagamento", "fatura", "mínimo", "total", "parcelamento"],
+        steps: [
+          HelpStep(id: "ccp_step1", stepNumber: 1, title: String(localized: "help.credit.card.payments.step1.title"), description: String(localized: "help.credit.card.payments.step1.desc")),
+          HelpStep(id: "ccp_step2", stepNumber: 2, title: String(localized: "help.credit.card.payments.step2.title"), description: String(localized: "help.credit.card.payments.step2.desc")),
+          HelpStep(id: "ccp_step3", stepNumber: 3, title: String(localized: "help.credit.card.payments.step3.title"), description: String(localized: "help.credit.card.payments.step3.desc"))
+        ],
+        isFrequentlyAsked: true
+      ),
+      
+      HelpTopic(
+        id: "credit_card_limits",
+        title: String(localized: "help.credit.card.limits.title"),
+        content: String(localized: "help.credit.card.limits.content"),
+        category: .creditCards,
+        keywords: ["limite", "crédito", "utilização", "disponível", "bloqueio"]
+      ),
+      
+      HelpTopic(
+        id: "credit_card_statements",
+        title: String(localized: "help.credit.card.statements.title"),
+        content: String(localized: "help.credit.card.statements.content"),
+        category: .creditCards,
+        keywords: ["fatura", "extrato", "período", "fechamento", "vencimento"]
+      ),
+      
+      HelpTopic(
+        id: "installment_purchases",
+        title: String(localized: "help.installment.purchases.title"),
+        content: String(localized: "help.installment.purchases.content"),
+        category: .creditCards,
+        keywords: ["parcelamento", "prestação", "dividir", "juros", "sem juros"]
+      ),
+      
+      // Loans
+      HelpTopic(
+        id: "add_loan",
+        title: String(localized: "help.add.loan.title"),
+        content: String(localized: "help.add.loan.content"),
+        category: .loans,
+        keywords: ["empréstimo", "adicionar", "novo", "financiamento"],
+        steps: [
+          HelpStep(id: "loan_step1", stepNumber: 1, title: String(localized: "help.add.loan.step1.title"), description: String(localized: "help.add.loan.step1.desc")),
+          HelpStep(id: "loan_step2", stepNumber: 2, title: String(localized: "help.add.loan.step2.title"), description: String(localized: "help.add.loan.step2.desc")),
+          HelpStep(id: "loan_step3", stepNumber: 3, title: String(localized: "help.add.loan.step3.title"), description: String(localized: "help.add.loan.step3.desc")),
+          HelpStep(id: "loan_step4", stepNumber: 4, title: String(localized: "help.add.loan.step4.title"), description: String(localized: "help.add.loan.step4.desc"))
+        ],
+        isFrequentlyAsked: true
+      ),
+      
+      HelpTopic(
+        id: "loan_payments",
+        title: String(localized: "help.loan.payments.title"),
+        content: String(localized: "help.loan.payments.content"),
+        category: .loans,
+        keywords: ["pagamento", "parcela", "amortização", "quitação"],
+        steps: [
+          HelpStep(id: "loan_payment_step1", stepNumber: 1, title: String(localized: "help.loan.payments.step1.title"), description: String(localized: "help.loan.payments.step1.desc")),
+          HelpStep(id: "loan_payment_step2", stepNumber: 2, title: String(localized: "help.loan.payments.step2.title"), description: String(localized: "help.loan.payments.step2.desc")),
+          HelpStep(id: "loan_payment_step3", stepNumber: 3, title: String(localized: "help.loan.payments.step3.title"), description: String(localized: "help.loan.payments.step3.desc"))
+        ],
+        isFrequentlyAsked: true
+      ),
+      
+      HelpTopic(
+        id: "loan_amortization",
+        title: String(localized: "help.loan.amortization.title"),
+        content: String(localized: "help.loan.amortization.content"),
+        category: .loans,
+        keywords: ["amortização", "cronograma", "tabela", "juros", "principal"]
+      ),
+      
+      HelpTopic(
+        id: "loan_types",
+        title: String(localized: "help.loan.types.title"),
+        content: String(localized: "help.loan.types.content"),
+        category: .loans,
+        keywords: ["tipo", "pessoal", "imobiliário", "veículo", "estudantil"]
+      ),
+      
+      HelpTopic(
+        id: "loan_interest_rates",
+        title: String(localized: "help.loan.interest.rates.title"),
+        content: String(localized: "help.loan.interest.rates.content"),
+        category: .loans,
+        keywords: ["juros", "taxa", "percentual", "cálculo", "simulação"]
+      ),
+      
       // Budgets
       HelpTopic(
         id: "create_budget",

@@ -61,6 +61,18 @@
     "%lld%%" : {
 
     },
+    "•" : {
+
+    },
+    "• %@" : {
+
+    },
+    "•••• %@" : {
+
+    },
+    "•••• •••• •••• %@" : {
+
+    },
     "account.add.title" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3451,6 +3463,9 @@
         }
       }
     },
+    "common.validation_error" : {
+
+    },
     "Configurações" : {
 
     },
@@ -3459,6 +3474,1438 @@
     },
     "Create and manage your budgets to track your spending." : {
 
+    },
+    "creditcard.active_status.footer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Only active cards will appear in transactions"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apenas cartões ativos aparecerão nas transações"
+          }
+        }
+      }
+    },
+    "creditcard.add_transaction" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add Transaction"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adicionar Transação"
+          }
+        }
+      }
+    },
+    "creditcard.add.button" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add Credit Card"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adicionar Cartão de Crédito"
+          }
+        }
+      }
+    },
+    "creditcard.add.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add Credit Card"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adicionar Cartão de Crédito"
+          }
+        }
+      }
+    },
+    "creditcard.amount.placeholder" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Amount"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Valor"
+          }
+        }
+      }
+    },
+    "creditcard.annual_fee" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annual Fee"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anuidade"
+          }
+        }
+      }
+    },
+    "creditcard.available_credit" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Available Credit"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crédito Disponível"
+          }
+        }
+      }
+    },
+    "creditcard.basic_info.footer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter your credit card basic information"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Digite as informações básicas do seu cartão de crédito"
+          }
+        }
+      }
+    },
+    "creditcard.basic_info.header" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Basic Information"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informações Básicas"
+          }
+        }
+      }
+    },
+    "creditcard.billing_info.footer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Due and closing dates as day of the month (1-31)"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datas de vencimento e fechamento como dia do mês (1-31)"
+          }
+        }
+      }
+    },
+    "creditcard.billing_info.header" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Billing Information"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informações de Faturamento"
+          }
+        }
+      }
+    },
+    "creditcard.brand" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Card Brand"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bandeira do Cartão"
+          }
+        }
+      }
+    },
+    "creditcard.brand.other" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Other"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Outro"
+          }
+        }
+      }
+    },
+    "creditcard.cards.footer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap a card to view details and manage transactions"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toque em um cartão para ver detalhes e gerenciar transações"
+          }
+        }
+      }
+    },
+    "creditcard.cards.header" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Credit Cards"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cartões de Crédito"
+          }
+        }
+      }
+    },
+    "creditcard.closing_date" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Closing Date"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data de Fechamento"
+          }
+        }
+      }
+    },
+    "creditcard.credit_limit" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Credit Limit"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Limite de Crédito"
+          }
+        }
+      }
+    },
+    "creditcard.credit_utilization" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Credit Utilization"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Utilização do Crédito"
+          }
+        }
+      }
+    },
+    "creditcard.current_balance" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Current Balance"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saldo Atual"
+          }
+        }
+      }
+    },
+    "creditcard.day_of_month" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Day %lld"
+          }
+        }
+      }
+    },
+    "creditcard.deactivate" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deactivate Card"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desativar Cartão"
+          }
+        }
+      }
+    },
+    "creditcard.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Manage your credit cards and track spending"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gerencie seus cartões de crédito e acompanhe gastos"
+          }
+        }
+      }
+    },
+    "creditcard.due_date" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Due Date"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data de Vencimento"
+          }
+        }
+      }
+    },
+    "creditcard.due_date_format" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Due: %@"
+          }
+        }
+      }
+    },
+    "creditcard.due_date_short" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Due"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vencimento"
+          }
+        }
+      }
+    },
+    "creditcard.due_soon.header" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Due Soon"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vencendo em Breve"
+          }
+        }
+      }
+    },
+    "creditcard.empty.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add your first credit card to start tracking expenses and managing payments."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adicione seu primeiro cartão de crédito para começar a acompanhar gastos e gerenciar pagamentos."
+          }
+        }
+      }
+    },
+    "creditcard.empty.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Credit Cards"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nenhum Cartão de Crédito"
+          }
+        }
+      }
+    },
+    "creditcard.error.invalid_data" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalid data"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dados inválidos"
+          }
+        }
+      }
+    },
+    "creditcard.error.network" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Network error"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erro de rede"
+          }
+        }
+      }
+    },
+    "creditcard.error.not_authenticated" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "User not authenticated"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usuário não autenticado"
+          }
+        }
+      }
+    },
+    "creditcard.error.not_found" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Credit card not found"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cartão de crédito não encontrado"
+          }
+        }
+      }
+    },
+    "creditcard.financial_info.footer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter the credit limit and other financial details"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Digite o limite de crédito e outros detalhes financeiros"
+          }
+        }
+      }
+    },
+    "creditcard.financial_info.header" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Financial Information"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informações Financeiras"
+          }
+        }
+      }
+    },
+    "creditcard.interest_rate" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Interest Rate"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Taxa de Juros"
+          }
+        }
+      }
+    },
+    "creditcard.is_active" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Active"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ativo"
+          }
+        }
+      }
+    },
+    "creditcard.last_four.placeholder" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Last 4 digits"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Últimos 4 dígitos"
+          }
+        }
+      }
+    },
+    "creditcard.loading" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loading credit cards..."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Carregando cartões de crédito..."
+          }
+        }
+      }
+    },
+    "creditcard.make_payment" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Make Payment"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fazer Pagamento"
+          }
+        }
+      }
+    },
+    "creditcard.minimum_payment" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Minimum Payment"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pagamento Mínimo"
+          }
+        }
+      }
+    },
+    "creditcard.name.placeholder" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Card Name"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nome do Cartão"
+          }
+        }
+      }
+    },
+    "creditcard.next_due_date" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next Due Date"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Próximo Vencimento"
+          }
+        }
+      }
+    },
+    "creditcard.no_transactions" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No transactions yet"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nenhuma transação ainda"
+          }
+        }
+      }
+    },
+    "creditcard.pay" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pay"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pagar"
+          }
+        }
+      }
+    },
+    "creditcard.payment.additional_info" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Additional Information"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informações Adicionais"
+          }
+        }
+      }
+    },
+    "creditcard.payment.after_payment" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "After Payment"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Após Pagamento"
+          }
+        }
+      }
+    },
+    "creditcard.payment.amount" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Payment Amount"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Valor do Pagamento"
+          }
+        }
+      }
+    },
+    "creditcard.payment.amount_exceeds_balance" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Payment amount exceeds current balance"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Valor do pagamento excede o saldo atual"
+          }
+        }
+      }
+    },
+    "creditcard.payment.card_info" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Card Information"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informações do Cartão"
+          }
+        }
+      }
+    },
+    "creditcard.payment.confirm" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Confirm Payment"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Confirmar Pagamento"
+          }
+        }
+      }
+    },
+    "creditcard.payment.custom_amount" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Custom Amount"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Valor Personalizado"
+          }
+        }
+      }
+    },
+    "creditcard.payment.date" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Payment Date"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data do Pagamento"
+          }
+        }
+      }
+    },
+    "creditcard.payment.details" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Payment Details"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Detalhes do Pagamento"
+          }
+        }
+      }
+    },
+    "creditcard.payment.full_balance" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Full Balance"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saldo Total"
+          }
+        }
+      }
+    },
+    "creditcard.payment.full_balance_info" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Full balance: %@"
+          }
+        }
+      }
+    },
+    "creditcard.payment.minimum" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Minimum Payment"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pagamento Mínimo"
+          }
+        }
+      }
+    },
+    "creditcard.payment.minimum_info" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Minimum payment: %@"
+          }
+        }
+      }
+    },
+    "creditcard.payment.new_balance" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New Balance"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Novo Saldo"
+          }
+        }
+      }
+    },
+    "creditcard.payment.notes.footer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Optional notes about this payment"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Observações opcionais sobre este pagamento"
+          }
+        }
+      }
+    },
+    "creditcard.payment.notes.placeholder" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Payment notes (optional)"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Observações do pagamento (opcional)"
+          }
+        }
+      }
+    },
+    "creditcard.payment.single" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Single Payment"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pagamento Único"
+          }
+        }
+      }
+    },
+    "creditcard.payment.summary.footer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Review your payment details before confirming"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Revise os detalhes do pagamento antes de confirmar"
+          }
+        }
+      }
+    },
+    "creditcard.payment.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Make Payment"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fazer Pagamento"
+          }
+        }
+      }
+    },
+    "creditcard.payment.type" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Payment Type"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tipo de Pagamento"
+          }
+        }
+      }
+    },
+    "creditcard.percentage.placeholder" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Percentage"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Porcentagem"
+          }
+        }
+      }
+    },
+    "creditcard.recent_transactions" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recent Transactions"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transações Recentes"
+          }
+        }
+      }
+    },
+    "creditcard.status.balance_due" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Balance Due"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saldo em Atraso"
+          }
+        }
+      }
+    },
+    "creditcard.status.current" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Current"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Atual"
+          }
+        }
+      }
+    },
+    "creditcard.status.due_soon" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Due Soon"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vence em Breve"
+          }
+        }
+      }
+    },
+    "creditcard.status.inactive" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inactive"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inativo"
+          }
+        }
+      }
+    },
+    "creditcard.summary.available" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Available"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disponível"
+          }
+        }
+      }
+    },
+    "creditcard.summary.current_balance" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Current Balance"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saldo Atual"
+          }
+        }
+      }
+    },
+    "creditcard.summary.minimum_payment" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Minimum Payment"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pagamento Mínimo"
+          }
+        }
+      }
+    },
+    "creditcard.summary.total_limit" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total Limit"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Limite Total"
+          }
+        }
+      }
+    },
+    "creditcard.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Credit Cards"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cartões de Crédito"
+          }
+        }
+      }
+    },
+    "creditcard.transaction.add.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add Transaction"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adicionar Transação"
+          }
+        }
+      }
+    },
+    "creditcard.transaction.basic_info" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transaction Details"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Detalhes da Transação"
+          }
+        }
+      }
+    },
+    "creditcard.transaction.card_info" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Card Information"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informações do Cartão"
+          }
+        }
+      }
+    },
+    "creditcard.transaction.exceeds_limit" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transaction exceeds credit limit"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transação excede o limite de crédito"
+          }
+        }
+      }
+    },
+    "creditcard.transaction.installment_amount" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Installment Amount"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Valor da Parcela"
+          }
+        }
+      }
+    },
+    "creditcard.transaction.installment_footer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Installments will be added as separate transactions"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Parcelas serão adicionadas como transações separadas"
+          }
+        }
+      }
+    },
+    "creditcard.transaction.installment_info" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Number of installments (1-60)"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Número de parcelas (1-60)"
+          }
+        }
+      }
+    },
+    "creditcard.transaction.installments_count" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Installments: %lld"
+          }
+        }
+      }
+    },
+    "creditcard.transaction.payment_info" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Payment Information"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informações de Pagamento"
+          }
+        }
+      }
+    },
+    "creditcard.utilization" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Utilization"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Utilização"
+          }
+        }
+      }
+    },
+    "creditcard.view_all_transactions" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "View All Transactions"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ver Todas as Transações"
+          }
+        }
+      }
     },
     "Dashboard Overview" : {
 
@@ -4741,6 +6188,234 @@
     "help.account.security.title" : {
 
     },
+    "help.add.credit.card.content" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Learn how to add and configure your credit cards in the app to track expenses and manage payments effectively."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aprenda como adicionar e configurar seus cartões de crédito no app para acompanhar gastos e gerenciar pagamentos de forma eficaz."
+          }
+        }
+      }
+    },
+    "help.add.credit.card.step1.desc" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open the More tab and select Credit Cards from the menu."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abra a aba Mais e selecione Cartões de Crédito no menu."
+          }
+        }
+      }
+    },
+    "help.add.credit.card.step1.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Go to Credit Cards"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acesse Cartões de Crédito"
+          }
+        }
+      }
+    },
+    "help.add.credit.card.step2.desc" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap the '+' button in the top right corner or the 'Add Credit Card' button if this is your first card."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toque no botão '+' no canto superior direito ou no botão 'Adicionar Cartão de Crédito' se este for seu primeiro cartão."
+          }
+        }
+      }
+    },
+    "help.add.credit.card.step2.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap Add Credit Card"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toque em Adicionar Cartão"
+          }
+        }
+      }
+    },
+    "help.add.credit.card.step3.desc" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter the card name, last 4 digits, brand (Visa, Mastercard, etc.), and financial details like credit limit and interest rate."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Digite o nome do cartão, últimos 4 dígitos, bandeira (Visa, Mastercard, etc.) e detalhes financeiros como limite de crédito e taxa de juros."
+          }
+        }
+      }
+    },
+    "help.add.credit.card.step3.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fill Basic Information"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preencha as Informações Básicas"
+          }
+        }
+      }
+    },
+    "help.add.credit.card.step4.desc" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Set the due date and closing date for your card. These dates help track payment deadlines and billing cycles."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configure a data de vencimento e data de fechamento do seu cartão. Essas datas ajudam a acompanhar prazos de pagamento e ciclos de faturamento."
+          }
+        }
+      }
+    },
+    "help.add.credit.card.step4.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Set Billing Dates"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configure as Datas de Faturamento"
+          }
+        }
+      }
+    },
+    "help.add.credit.card.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adding a Credit Card"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adicionando um Cartão de Crédito"
+          }
+        }
+      }
+    },
+    "help.add.loan.content" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Learn how to add and configure your loans in the app to track payments and manage your debt effectively."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aprenda como adicionar e configurar seus empréstimos no app para acompanhar pagamentos e gerenciar suas dívidas de forma eficaz."
+          }
+        }
+      }
+    },
+    "help.add.loan.step1.desc" : {
+
+    },
+    "help.add.loan.step1.title" : {
+
+    },
+    "help.add.loan.step2.desc" : {
+
+    },
+    "help.add.loan.step2.title" : {
+
+    },
+    "help.add.loan.step3.desc" : {
+
+    },
+    "help.add.loan.step3.title" : {
+
+    },
+    "help.add.loan.step4.desc" : {
+
+    },
+    "help.add.loan.step4.title" : {
+
+    },
+    "help.add.loan.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adding a Loan"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adicionando um Empréstimo"
+          }
+        }
+      }
+    },
     "help.add.transaction.content" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -4906,6 +6581,23 @@
         }
       }
     },
+    "help.category.credit.cards" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Credit Cards"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cartões de Crédito"
+          }
+        }
+      }
+    },
     "help.category.description.%@" : {
 
     },
@@ -5025,6 +6717,23 @@
         }
       }
     },
+    "help.category.loans" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loans"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Empréstimos"
+          }
+        }
+      }
+    },
     "help.category.reports" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -5039,6 +6748,12 @@
     "help.category.security" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Security"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5096,6 +6811,346 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Como criar um orçamento"
+          }
+        }
+      }
+    },
+    "help.credit.card.limits.content" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Learn about credit limits, utilization rates, and how to manage your available credit effectively to maintain good financial health."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aprenda sobre limites de crédito, taxas de utilização e como gerenciar seu crédito disponível de forma eficaz para manter boa saúde financeira."
+          }
+        }
+      }
+    },
+    "help.credit.card.limits.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Understanding Credit Limits"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Entendendo os Limites de Crédito"
+          }
+        }
+      }
+    },
+    "help.credit.card.payments.content" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Understand how to make payments on your credit cards, including minimum payments, full balance payments, and custom amounts."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Entenda como fazer pagamentos dos seus cartões de crédito, incluindo pagamento mínimo, pagamento total e valores personalizados."
+          }
+        }
+      }
+    },
+    "help.credit.card.payments.step1.desc" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "From the credit card detail screen, tap 'Make Payment' to start the payment process."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Na tela de detalhes do cartão de crédito, toque em 'Fazer Pagamento' para iniciar o processo de pagamento."
+          }
+        }
+      }
+    },
+    "help.credit.card.payments.step1.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose Payment Option"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Escolher Opção de Pagamento"
+          }
+        }
+      }
+    },
+    "help.credit.card.payments.step2.desc" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose between minimum payment, full balance, or custom amount based on your payment strategy."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Escolha entre pagamento mínimo, saldo total ou valor personalizado baseado na sua estratégia de pagamento."
+          }
+        }
+      }
+    },
+    "help.credit.card.payments.step2.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select Payment Type"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selecionar Tipo de Pagamento"
+          }
+        }
+      }
+    },
+    "help.credit.card.payments.step3.desc" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Review the payment details and confirm. This will update your card balance and payment history."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Revise os detalhes do pagamento e confirme. Isso atualizará o saldo do seu cartão e o histórico de pagamentos."
+          }
+        }
+      }
+    },
+    "help.credit.card.payments.step3.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Confirm Payment"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Confirmar Pagamento"
+          }
+        }
+      }
+    },
+    "help.credit.card.payments.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Credit Card Payments"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pagamentos do Cartão de Crédito"
+          }
+        }
+      }
+    },
+    "help.credit.card.statements.content" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Learn how credit card statements work, including billing cycles, due dates, and how to generate and manage monthly statements."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aprenda como funcionam as faturas do cartão de crédito, incluindo ciclos de faturamento, datas de vencimento e como gerar e gerenciar faturas mensais."
+          }
+        }
+      }
+    },
+    "help.credit.card.statements.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Credit Card Statements"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Faturas do Cartão de Crédito"
+          }
+        }
+      }
+    },
+    "help.credit.card.transactions.content" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Learn how to add and manage transactions for your credit cards, including installment purchases and recurring charges."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aprenda como adicionar e gerenciar transações dos seus cartões de crédito, incluindo compras parceladas e cobranças recorrentes."
+          }
+        }
+      }
+    },
+    "help.credit.card.transactions.step1.desc" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "From the credit cards screen, tap on the card you want to add a transaction to."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Na tela de cartões de crédito, toque no cartão ao qual deseja adicionar uma transação."
+          }
+        }
+      }
+    },
+    "help.credit.card.transactions.step1.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select Your Credit Card"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selecione seu Cartão de Crédito"
+          }
+        }
+      }
+    },
+    "help.credit.card.transactions.step2.desc" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap the 'Add Transaction' button to create a new purchase record."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toque no botão 'Adicionar Transação' para criar um novo registro de compra."
+          }
+        }
+      }
+    },
+    "help.credit.card.transactions.step2.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add Transaction"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adicionar Transação"
+          }
+        }
+      }
+    },
+    "help.credit.card.transactions.step3.desc" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter the amount, description, category, and if it's an installment purchase, specify the number of installments."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Digite o valor, descrição, categoria e, se for uma compra parcelada, especifique o número de parcelas."
+          }
+        }
+      }
+    },
+    "help.credit.card.transactions.step3.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fill Transaction Details"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Preencher Detalhes da Transação"
+          }
+        }
+      }
+    },
+    "help.credit.card.transactions.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Credit Card Transactions"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Transações do Cartão de Crédito"
           }
         }
       }
@@ -5382,6 +7437,138 @@
           }
         }
       }
+    },
+    "help.installment.purchases.content" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Learn how to track installment purchases on your credit cards, manage multiple installments, and understand how they affect your credit utilization."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aprenda como acompanhar compras parceladas nos seus cartões de crédito, gerenciar múltiplas parcelas e entender como elas afetam sua utilização de crédito."
+          }
+        }
+      }
+    },
+    "help.installment.purchases.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Installment Purchases"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Compras Parceladas"
+          }
+        }
+      }
+    },
+    "help.loan.amortization.content" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Learn how to view and understand your loan's amortization schedule, including principal and interest breakdown."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aprenda como visualizar e entender o cronograma de amortização do seu empréstimo, incluindo a divisão entre principal e juros."
+          }
+        }
+      }
+    },
+    "help.loan.amortization.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Amortization Schedule"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronograma de Amortização"
+          }
+        }
+      }
+    },
+    "help.loan.interest.rates.content" : {
+
+    },
+    "help.loan.interest.rates.title" : {
+
+    },
+    "help.loan.payments.content" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Understand how to make loan payments, track payment history, and view amortization schedules."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Entenda como fazer pagamentos de empréstimos, acompanhar histórico de pagamentos e visualizar cronogramas de amortização."
+          }
+        }
+      }
+    },
+    "help.loan.payments.step1.desc" : {
+
+    },
+    "help.loan.payments.step1.title" : {
+
+    },
+    "help.loan.payments.step2.desc" : {
+
+    },
+    "help.loan.payments.step2.title" : {
+
+    },
+    "help.loan.payments.step3.desc" : {
+
+    },
+    "help.loan.payments.step3.title" : {
+
+    },
+    "help.loan.payments.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loan Payments"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pagamentos de Empréstimo"
+          }
+        }
+      }
+    },
+    "help.loan.types.content" : {
+
+    },
+    "help.loan.types.title" : {
+
     },
     "help.manage.profile.content" : {
 
@@ -6499,6 +8686,1215 @@
           }
         }
       }
+    },
+    "loan.active_status.footer" : {
+
+    },
+    "loan.active.footer" : {
+
+    },
+    "loan.active.header" : {
+
+    },
+    "loan.add.button" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add Loan"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adicionar Empréstimo"
+          }
+        }
+      }
+    },
+    "loan.add.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add Loan"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adicionar Empréstimo"
+          }
+        }
+      }
+    },
+    "loan.amortization" : {
+
+    },
+    "loan.amortization.filter" : {
+
+    },
+    "loan.amortization.loan_paid_off" : {
+
+    },
+    "loan.amortization.loan_summary" : {
+
+    },
+    "loan.amortization.payment_number" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Payment #%lld"
+          }
+        }
+      }
+    },
+    "loan.amortization.show_all" : {
+
+    },
+    "loan.amortization.title" : {
+
+    },
+    "loan.amount.placeholder" : {
+
+    },
+    "loan.balance" : {
+
+    },
+    "loan.bank_name.placeholder" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bank Name"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nome do Banco"
+          }
+        }
+      }
+    },
+    "loan.basic_info.footer" : {
+
+    },
+    "loan.basic_info.header" : {
+
+    },
+    "loan.current_balance" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Current Balance"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saldo Atual"
+          }
+        }
+      }
+    },
+    "loan.day_of_month" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Day %lld"
+          }
+        }
+      }
+    },
+    "loan.deactivate" : {
+
+    },
+    "loan.due_soon.header" : {
+
+    },
+    "loan.empty.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add your first loan to start tracking payments and balances."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adicione seu primeiro empréstimo para começar a acompanhar pagamentos e saldos."
+          }
+        }
+      }
+    },
+    "loan.empty.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Loans"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nenhum Empréstimo"
+          }
+        }
+      }
+    },
+    "loan.end_date" : {
+
+    },
+    "loan.error.create_failed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed to create loan"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Falha ao criar empréstimo"
+          }
+        }
+      }
+    },
+    "loan.error.invalid_data" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalid loan data"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dados do empréstimo inválidos"
+          }
+        }
+      }
+    },
+    "loan.error.network" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Network error"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erro de conexão"
+          }
+        }
+      }
+    },
+    "loan.error.not_authenticated" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "User not authenticated"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usuário não autenticado"
+          }
+        }
+      }
+    },
+    "loan.error.not_found" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loan not found"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Empréstimo não encontrado"
+          }
+        }
+      }
+    },
+    "loan.error.payment_failed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Payment failed"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Falha no pagamento"
+          }
+        }
+      }
+    },
+    "loan.financial_info.footer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter the loan's financial details accurately"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Insira os dados financeiros do empréstimo com precisão"
+          }
+        }
+      }
+    },
+    "loan.financial_info.header" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FINANCIAL INFORMATION"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "INFORMAÇÕES FINANCEIRAS"
+          }
+        }
+      }
+    },
+    "loan.inactive.header" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inactive Loans"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Empréstimos Inativos"
+          }
+        }
+      }
+    },
+    "loan.information" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loan Information"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informações do Empréstimo"
+          }
+        }
+      }
+    },
+    "loan.interest" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Interest"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Juros"
+          }
+        }
+      }
+    },
+    "loan.interest_rate" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Interest Rate (%)"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Taxa de Juros (%)"
+          }
+        }
+      }
+    },
+    "loan.is_active" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Active"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ativo"
+          }
+        }
+      }
+    },
+    "loan.loading" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loading loans..."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Carregando empréstimos..."
+          }
+        }
+      }
+    },
+    "loan.loan_progress" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loan Progress"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Progresso do Empréstimo"
+          }
+        }
+      }
+    },
+    "loan.make_payment" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Make Payment"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fazer Pagamento"
+          }
+        }
+      }
+    },
+    "loan.monthly_payment" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Monthly Payment"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pagamento Mensal"
+          }
+        }
+      }
+    },
+    "loan.months" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "months"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "meses"
+          }
+        }
+      }
+    },
+    "loan.name.placeholder" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loan Name"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nome do Empréstimo"
+          }
+        }
+      }
+    },
+    "loan.next_payment" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next Payment"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Próximo Pagamento"
+          }
+        }
+      }
+    },
+    "loan.next_payment_format" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Next payment: %@"
+          }
+        }
+      }
+    },
+    "loan.no_payments" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No payments made yet"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nenhum pagamento realizado"
+          }
+        }
+      }
+    },
+    "loan.payment_day" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Payment Day"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dia do Pagamento"
+          }
+        }
+      }
+    },
+    "loan.payment_preview.header" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PAYMENT PREVIEW"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PRÉVIA DO PAGAMENTO"
+          }
+        }
+      }
+    },
+    "loan.payment.additional_info" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Additional Information"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informações Adicionais"
+          }
+        }
+      }
+    },
+    "loan.payment.amount" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Payment Amount"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Valor do Pagamento"
+          }
+        }
+      }
+    },
+    "loan.payment.confirm" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Confirm Payment"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Confirmar Pagamento"
+          }
+        }
+      }
+    },
+    "loan.payment.custom" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Custom Amount"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Valor Personalizado"
+          }
+        }
+      }
+    },
+    "loan.payment.custom_amount" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Custom Amount"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Valor Personalizado"
+          }
+        }
+      }
+    },
+    "loan.payment.custom_info" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter any amount you want to pay"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Digite qualquer valor que deseja pagar"
+          }
+        }
+      }
+    },
+    "loan.payment.date" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Payment Date"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data do Pagamento"
+          }
+        }
+      }
+    },
+    "loan.payment.details" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Payment Details"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Detalhes do Pagamento"
+          }
+        }
+      }
+    },
+    "loan.payment.extra_amount" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Extra Amount"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Valor Extra"
+          }
+        }
+      }
+    },
+    "loan.payment.extra_principal" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Extra Principal"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Principal Extra"
+          }
+        }
+      }
+    },
+    "loan.payment.extra_principal_info" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regular payment plus extra principal to reduce loan term"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pagamento regular mais principal extra para reduzir o prazo"
+          }
+        }
+      }
+    },
+    "loan.payment.interest_portion" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Interest Portion"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Parte dos Juros"
+          }
+        }
+      }
+    },
+    "loan.payment.loan_info" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loan Information"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informações do Empréstimo"
+          }
+        }
+      }
+    },
+    "loan.payment.method" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Payment Method"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Forma de Pagamento"
+          }
+        }
+      }
+    },
+    "loan.payment.new_balance" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New Balance"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Novo Saldo"
+          }
+        }
+      }
+    },
+    "loan.payment.notes.footer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Optional notes about this payment"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Observações opcionais sobre este pagamento"
+          }
+        }
+      }
+    },
+    "loan.payment.notes.placeholder" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Additional notes..."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Observações adicionais..."
+          }
+        }
+      }
+    },
+    "loan.payment.principal_portion" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Principal Portion"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Parte do Principal"
+          }
+        }
+      }
+    },
+    "loan.payment.scheduled" : {
+
+    },
+    "loan.payment.scheduled_info" : {
+
+    },
+    "loan.payment.summary" : {
+
+    },
+    "loan.payment.summary.footer" : {
+
+    },
+    "loan.payment.title" : {
+
+    },
+    "loan.payment.total" : {
+
+    },
+    "loan.payment.total_amount" : {
+
+    },
+    "loan.payment.type" : {
+
+    },
+    "loan.percentage.placeholder" : {
+
+    },
+    "loan.principal" : {
+
+    },
+    "loan.principal_amount" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Principal Amount"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Valor Principal"
+          }
+        }
+      }
+    },
+    "loan.principal_paid" : {
+
+    },
+    "loan.progress" : {
+
+    },
+    "loan.purpose" : {
+
+    },
+    "loan.purpose.placeholder" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loan Purpose"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Finalidade do Empréstimo"
+          }
+        }
+      }
+    },
+    "loan.recent_payments" : {
+
+    },
+    "loan.remaining_payments" : {
+
+    },
+    "loan.start_date" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start Date"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data de Início"
+          }
+        }
+      }
+    },
+    "loan.status" : {
+
+    },
+    "loan.status.current" : {
+
+    },
+    "loan.status.due_soon" : {
+
+    },
+    "loan.status.inactive" : {
+
+    },
+    "loan.status.paid_off" : {
+
+    },
+    "loan.summary.current_balance" : {
+
+    },
+    "loan.summary.monthly_payments" : {
+
+    },
+    "loan.summary.total_amount" : {
+
+    },
+    "loan.summary.total_interest" : {
+
+    },
+    "loan.term" : {
+
+    },
+    "loan.term_months" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Term (months)"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prazo (meses)"
+          }
+        }
+      }
+    },
+    "loan.term.placeholder" : {
+
+    },
+    "loan.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loans"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Empréstimos"
+          }
+        }
+      }
+    },
+    "loan.total_amount" : {
+
+    },
+    "loan.total_interest" : {
+
+    },
+    "loan.type" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loan Type"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tipo de Empréstimo"
+          }
+        }
+      }
+    },
+    "loan.type.auto" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Auto Loan"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Financiamento de Veículo"
+          }
+        }
+      }
+    },
+    "loan.type.business" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Business Loan"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Empréstimo Empresarial"
+          }
+        }
+      }
+    },
+    "loan.type.consolidation" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Debt Consolidation"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Consolidação de Dívidas"
+          }
+        }
+      }
+    },
+    "loan.type.home" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Home Loan"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Financiamento Imobiliário"
+          }
+        }
+      }
+    },
+    "loan.type.other" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Other"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Outro"
+          }
+        }
+      }
+    },
+    "loan.type.personal" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Personal Loan"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Empréstimo Pessoal"
+          }
+        }
+      }
+    },
+    "loan.type.student" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Student Loan"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Financiamento Estudantil"
+          }
+        }
+      }
+    },
+    "loan.validation.bank_name_required" : {
+
+    },
+    "loan.validation.name_required" : {
+
+    },
+    "loan.validation.payment_method_required" : {
+
+    },
+    "loan.validation.valid_amount_required" : {
+
+    },
+    "loan.validation.valid_rate_required" : {
+
+    },
+    "loan.validation.valid_term_required" : {
+
+    },
+    "loan.view_all_payments" : {
+
+    },
+    "loan.view_amortization" : {
+
     },
     "login.continue.apple" : {
       "extractionState" : "manual",
@@ -9342,6 +12738,15 @@
         }
       }
     },
+    "transaction.amount" : {
+
+    },
+    "transaction.category" : {
+
+    },
+    "transaction.category_info" : {
+
+    },
     "transaction.category.bills" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -9563,6 +12968,9 @@
         }
       }
     },
+    "transaction.date" : {
+
+    },
     "transaction.delete.confirmation" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -9596,6 +13004,9 @@
           }
         }
       }
+    },
+    "transaction.description.placeholder" : {
+
     },
     "transaction.detail.title" : {
       "extractionState" : "manual",
@@ -9716,6 +13127,9 @@
         }
       }
     },
+    "transaction.is_recurring" : {
+
+    },
     "transaction.recurring.description" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -9766,6 +13180,9 @@
           }
         }
       }
+    },
+    "transaction.subcategory" : {
+
     },
     "transaction.subcategory.accessories" : {
       "extractionState" : "manual",
@@ -10162,6 +13579,9 @@
           }
         }
       }
+    },
+    "transaction.subcategory.none" : {
+
     },
     "transaction.subcategory.parking" : {
       "extractionState" : "manual",

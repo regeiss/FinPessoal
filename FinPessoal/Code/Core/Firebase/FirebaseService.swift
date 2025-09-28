@@ -456,7 +456,7 @@ class FirebaseService {
       .child(userID)
       .child(budgetID)
     
-    try await database.runTransactionBlock { currentData in
+    _ = try await database.runTransactionBlock { currentData in
       guard var budgetData = currentData.value as? [String: Any],
             let currentSpent = budgetData["spent"] as? Double else {
         return TransactionResult.abort()
@@ -484,7 +484,7 @@ class FirebaseService {
       .child(accountID)
       .child("balance")
     
-    try await database.runTransactionBlock { currentData in
+    _ = try await database.runTransactionBlock { currentData in
       var currentBalance = currentData.value as? Double ?? 0.0
       
       switch type {
@@ -609,30 +609,34 @@ class FirebaseService {
   }
   
   func batchDeleteUserData(userID: String) async throws {
-    async let deleteAccounts: () = database
-      .child(FirebaseConstants.accountsCollection)
-      .child(userID)
-      .removeValue()
-    
-    async let deleteTransactions: () = database
-      .child(FirebaseConstants.transactionsCollection)
-      .child(userID)
-      .removeValue()
-    
-    async let deleteBudgets: () = database
-      .child(FirebaseConstants.budgetsCollection)
-      .child(userID)
-      .removeValue()
-    
-    async let deleteUser: () = database
-      .child(FirebaseConstants.usersCollection)
-      .child(userID)
-      .removeValue()
-    
-    try await deleteAccounts
-    try await deleteTransactions
-    try await deleteBudgets
-    try await deleteUser
+    try await withThrowingTaskGroup(of: Void.self) { group in
+      group.addTask {
+        try await self.database
+          .child(FirebaseConstants.accountsCollection)
+          .child(userID)
+          .removeValue()
+      }
+      group.addTask {
+        try await self.database
+          .child(FirebaseConstants.transactionsCollection)
+          .child(userID)
+          .removeValue()
+      }
+      group.addTask {
+        try await self.database
+          .child(FirebaseConstants.budgetsCollection)
+          .child(userID)
+          .removeValue()
+      }
+      group.addTask {
+        try await self.database
+          .child(FirebaseConstants.usersCollection)
+          .child(userID)
+          .removeValue()
+      }
+
+      try await group.waitForAll()
+    }
   }
 }
 

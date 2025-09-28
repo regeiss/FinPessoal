@@ -119,20 +119,13 @@ class ReportsViewModel: ObservableObject {
     errorMessage = nil
     
     Task {
-      do {
-        let (startDate, endDate) = getDateRange()
-        let transactions = await getTransactionsForPeriod(startDate: startDate, endDate: endDate)
-        let budgets = await getBudgetsForPeriod(startDate: startDate, endDate: endDate)
-        
-        await MainActor.run {
-          self.processReportData(transactions: transactions, budgets: budgets, startDate: startDate, endDate: endDate)
-          self.isLoading = false
-        }
-      } catch {
-        await MainActor.run {
-          self.errorMessage = error.localizedDescription
-          self.isLoading = false
-        }
+      let (startDate, endDate) = getDateRange()
+      let transactions = await getTransactionsForPeriod(startDate: startDate, endDate: endDate)
+      let budgets = await getBudgetsForPeriod(startDate: startDate, endDate: endDate)
+      
+      await MainActor.run {
+        self.processReportData(transactions: transactions, budgets: budgets, startDate: startDate, endDate: endDate)
+        self.isLoading = false
       }
     }
   }

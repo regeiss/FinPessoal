@@ -50,6 +50,44 @@ struct MoreScreen: View {
             }
             .padding(.vertical, 4)
           }
+          
+          NavigationLink {
+            CreditCardsScreen()
+          } label: {
+            HStack {
+              Image(systemName: "creditcard.fill")
+                .foregroundColor(.purple)
+                .frame(width: 32, height: 32)
+              
+              VStack(alignment: .leading, spacing: 4) {
+                Text(String(localized: "creditcard.title"))
+                  .font(.headline)
+                Text(String(localized: "creditcard.description"))
+                  .font(.caption)
+                  .foregroundColor(.secondary)
+              }
+            }
+            .padding(.vertical, 4)
+          }
+          
+          NavigationLink {
+            LoansScreen()
+          } label: {
+            HStack {
+              Image(systemName: "building.columns.fill")
+                .foregroundColor(.indigo)
+                .frame(width: 32, height: 32)
+              
+              VStack(alignment: .leading, spacing: 4) {
+                Text(String(localized: "loan.title"))
+                  .font(.headline)
+                Text(String(localized: "loan.empty.description"))
+                  .font(.caption)
+                  .foregroundColor(.secondary)
+              }
+            }
+            .padding(.vertical, 4)
+          }
         } header: {
           Text(String(localized: "more.features.header"))
         }

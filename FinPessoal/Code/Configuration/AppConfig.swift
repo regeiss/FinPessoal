@@ -84,6 +84,22 @@ class AppConfiguration {
     }
   }
   
+  func createCreditCardRepository() -> CreditCardRepositoryProtocol {
+    if useMockData {
+      return MockCreditCardRepository()
+    } else {
+      return FirebaseCreditCardRepository()
+    }
+  }
+  
+  func createLoanRepository() -> LoanRepositoryProtocol {
+    if useMockData {
+      return MockLoanRepository()
+    } else {
+      return FirebaseLoanRepository()
+    }
+  }
+  
   // MARK: - Firebase Configuration
   
   var firebaseConfig: [String: Any] {
