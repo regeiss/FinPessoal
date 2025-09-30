@@ -161,60 +161,13 @@ class FirebaseCreditCardRepository: CreditCardRepositoryProtocol {
       updatedAt: Date()
     )
 
-    // Use a transaction to ensure data consistency
-    try await db.runTransaction { [weak self] transaction, errorPointer in
-      guard let self = self else { return nil }
-
-      do {
-        // Add the transaction
-        let transactionRef = self.db.collection(self.transactionsCollection)
-          .document(updatedTransaction.id)
-        try transaction.setData(
-          from: updatedTransaction,
-          forDocument: transactionRef
-        )
-
-        // Update credit card balance
-        let creditCardRef = self.db.collection(self.creditCardsCollection)
-          .document(updatedTransaction.creditCardId)
-        let creditCardDoc = try transaction.getDocument(creditCardRef)
-
-        if let creditCard = try? creditCardDoc.data(as: CreditCard.self) {
-          let newBalance = creditCard.currentBalance + updatedTransaction.amount
-          let newAvailableCredit = creditCard.creditLimit - newBalance
-
-          let updatedCreditCard = CreditCard(
-            id: creditCard.id,
-            name: creditCard.name,
-            lastFourDigits: creditCard.lastFourDigits,
-            brand: creditCard.brand,
-            creditLimit: creditCard.creditLimit,
-            availableCredit: max(0, newAvailableCredit),
-            currentBalance: newBalance,
-            dueDate: creditCard.dueDate,
-            closingDate: creditCard.closingDate,
-            minimumPayment: max(creditCard.minimumPayment, newBalance * 0.02),
-            annualFee: creditCard.annualFee,
-            interestRate: creditCard.interestRate,
-            isActive: creditCard.isActive,
-            userId: creditCard.userId,
-            createdAt: creditCard.createdAt,
-            updatedAt: Date()
-          )
-
-          try transaction.setData(
-            from: updatedCreditCard,
-            forDocument: creditCardRef,
-            merge: true
-          )
-        }
-
-        return nil
-      } catch {
-        errorPointer?.pointee = error as NSError
-        return nil
-      }
-    }
+    // Add the transaction document
+    try await db.collection(transactionsCollection)
+      .document(updatedTransaction.id)
+      .setData(from: updatedTransaction)
+    
+    // Update credit card balance in a separate transaction
+    try await updateCreditCardBalance(creditCardId: updatedTransaction.creditCardId, amountChange: updatedTransaction.amount)
 
     return updatedTransaction
   }
@@ -322,64 +275,49 @@ class FirebaseCreditCardRepository: CreditCardRepositoryProtocol {
       createdAt: statement.createdAt
     )
 
-    // Use a transaction to ensure data consistency
-    try await db.runTransaction { [weak self] transaction, errorPointer in
-      guard let self = self else { return nil }
-
-      do {
-        // Update statement
-        let statementRef = self.db.collection(self.statementsCollection).document(
-          updatedStatement.id
-        )
-        try transaction.setData(
-          from: updatedStatement,
-          forDocument: statementRef,
-          merge: true
-        )
-
-        // Update credit card balance
-        let creditCardRef = self.db.collection(self.creditCardsCollection)
-          .document(updatedStatement.creditCardId)
-        let creditCardDoc = try transaction.getDocument(creditCardRef)
-
-        if let creditCard = try? creditCardDoc.data(as: CreditCard.self) {
-          let newBalance = max(0, creditCard.currentBalance - amount)
-          let newAvailableCredit = creditCard.creditLimit - newBalance
-
-          let updatedCreditCard = CreditCard(
-            id: creditCard.id,
-            name: creditCard.name,
-            lastFourDigits: creditCard.lastFourDigits,
-            brand: creditCard.brand,
-            creditLimit: creditCard.creditLimit,
-            availableCredit: newAvailableCredit,
-            currentBalance: newBalance,
-            dueDate: creditCard.dueDate,
-            closingDate: creditCard.closingDate,
-            minimumPayment: max(0, newBalance * 0.02),
-            annualFee: creditCard.annualFee,
-            interestRate: creditCard.interestRate,
-            isActive: creditCard.isActive,
-            userId: creditCard.userId,
-            createdAt: creditCard.createdAt,
-            updatedAt: Date()
-          )
-
-          try transaction.setData(
-            from: updatedCreditCard,
-            forDocument: creditCardRef,
-            merge: true
-          )
-        }
-
-        return nil
-      } catch {
-        errorPointer?.pointee = error as NSError
-        return nil
-      }
-    }
+    // Update statement
+    try await db.collection(statementsCollection)
+      .document(updatedStatement.id)
+      .setData(from: updatedStatement, merge: true)
+    
+    // Update credit card balance
+    try await updateCreditCardBalance(creditCardId: updatedStatement.creditCardId, amountChange: -amount)
 
     return updatedStatement
+  }
+  
+  // MARK: - Helper Methods
+  
+  private func updateCreditCardBalance(creditCardId: String, amountChange: Double) async throws {
+    guard let creditCard = try await getCreditCard(by: creditCardId) else {
+      throw CreditCardError.creditCardNotFound
+    }
+    
+    let newBalance = creditCard.currentBalance + amountChange
+    let newAvailableCredit = creditCard.creditLimit - newBalance
+    
+    let updatedCreditCard = CreditCard(
+      id: creditCard.id,
+      name: creditCard.name,
+      lastFourDigits: creditCard.lastFourDigits,
+      brand: creditCard.brand,
+      creditLimit: creditCard.creditLimit,
+      availableCredit: max(0, newAvailableCredit),
+      currentBalance: newBalance,
+      dueDate: creditCard.dueDate,
+      closingDate: creditCard.closingDate,
+      minimumPayment: max(creditCard.minimumPayment, newBalance * 0.02),
+      annualFee: creditCard.annualFee,
+      interestRate: creditCard.interestRate,
+      isActive: creditCard.isActive,
+      userId: creditCard.userId,
+      createdAt: creditCard.createdAt,
+      updatedAt: Date()
+    )
+    
+    try await db.collection(creditCardsCollection)
+      .document(updatedCreditCard.id)
+      .setData(from: updatedCreditCard, merge: true)
   }
 }
 

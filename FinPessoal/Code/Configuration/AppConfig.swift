@@ -100,6 +100,38 @@ class AppConfiguration {
     }
   }
   
+  func createCategoryRepository() -> CategoryRepositoryProtocol {
+    if useMockData {
+      return MockCategoryRepository()
+    } else {
+      return FirebaseCategoryRepository()
+    }
+  }
+  
+  func createSubcategoryRepository() -> SubcategoryRepositoryProtocol {
+    if useMockData {
+      return MockSubcategoryRepository()
+    } else {
+      return FirebaseSubcategoryRepository()
+    }
+  }
+  
+  func createDynamicTransactionRepository() -> DynamicTransactionRepositoryProtocol {
+    if useMockData {
+      return MockDynamicTransactionRepository()
+    } else {
+      return FirebaseDynamicTransactionRepository()
+    }
+  }
+  
+  func createDynamicCreditCardRepository() -> DynamicCreditCardRepositoryProtocol {
+    if useMockData {
+      return MockDynamicCreditCardRepository()
+    } else {
+      return FirebaseDynamicCreditCardRepository()
+    }
+  }
+  
   // MARK: - Firebase Configuration
   
   var firebaseConfig: [String: Any] {

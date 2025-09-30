@@ -8688,13 +8688,55 @@
       }
     },
     "loan.active_status.footer" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toggle to activate or deactivate the loan"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alterne para ativar ou desativar o empréstimo"
+          }
+        }
+      }
     },
     "loan.active.footer" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your active loans and current balances"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seus empréstimos ativos e saldos atuais"
+          }
+        }
+      }
     },
     "loan.active.header" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Active Loans"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Empréstimos Ativos"
+          }
+        }
+      }
     },
     "loan.add.button" : {
       "extractionState" : "manual",
@@ -8734,36 +8776,139 @@
 
     },
     "loan.amortization.filter" : {
-
-    },
-    "loan.amortization.loan_paid_off" : {
-
-    },
-    "loan.amortization.loan_summary" : {
-
-    },
-    "loan.amortization.payment_number" : {
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filter by Year"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
-            "state" : "new",
+            "state" : "translated",
+            "value" : "Filtrar por Ano"
+          }
+        }
+      }
+    },
+    "loan.amortization.loan_paid_off" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loan Paid Off"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Empréstimo Quitado"
+          }
+        }
+      }
+    },
+    "loan.amortization.loan_summary" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loan Summary"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resumo do Empréstimo"
+          }
+        }
+      }
+    },
+    "loan.amortization.payment_number" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
             "value" : "Payment #%lld"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pagamento #%lld"
           }
         }
       }
     },
     "loan.amortization.show_all" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show All"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostrar Todos"
+          }
+        }
+      }
     },
     "loan.amortization.title" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Amortization Schedule"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cronograma de Amortização"
+          }
+        }
+      }
     },
     "loan.amount.placeholder" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "R$ 0.00"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "R$ 0,00"
+          }
+        }
+      }
     },
     "loan.balance" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Balance"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saldo"
+          }
+        }
+      }
     },
     "loan.bank_name.placeholder" : {
       "extractionState" : "manual",
@@ -8783,10 +8928,38 @@
       }
     },
     "loan.basic_info.footer" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter the loan's financial details accurately"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Insira os dados financeiros do empréstimo com precisão"
+          }
+        }
+      }
     },
     "loan.basic_info.header" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BASIC INFORMATION"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "INFORMAÇÕES BÁSICAS"
+          }
+        }
+      }
     },
     "loan.current_balance" : {
       "extractionState" : "manual",
@@ -8806,21 +8979,54 @@
       }
     },
     "loan.day_of_month" : {
-      "extractionState" : "extracted_with_value",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Day %lld"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "Day %lld"
+            "state" : "translated",
+            "value" : "Dia %lld"
           }
         }
       }
     },
     "loan.deactivate" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deactivate"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desativar"
+          }
+        }
+      }
     },
     "loan.due_soon.header" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Due Soon"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vence em Breve"
+          }
+        }
+      }
     },
     "loan.empty.description" : {
       "extractionState" : "manual",
@@ -9200,12 +9406,17 @@
       }
     },
     "loan.next_payment_format" : {
-      "extractionState" : "extracted_with_value",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next payment: %@"
+          }
+        },
         "pt-BR" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "Next payment: %@"
+            "state" : "translated",
+            "value" : "Próximo pagamento: %@"
           }
         }
       }
@@ -9568,34 +9779,174 @@
       }
     },
     "loan.payment.scheduled" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scheduled Payment"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pagamento Agendado"
+          }
+        }
+      }
     },
     "loan.payment.scheduled_info" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regular monthly payment as scheduled"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pagamento mensal regular conforme agendado"
+          }
+        }
+      }
     },
     "loan.payment.summary" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Payment Summary"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resumo do Pagamento"
+          }
+        }
+      }
     },
     "loan.payment.summary.footer" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Review the payment details before confirming"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Revise os detalhes do pagamento antes de confirmar"
+          }
+        }
+      }
     },
     "loan.payment.title" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Make Payment"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fazer Pagamento"
+          }
+        }
+      }
     },
     "loan.payment.total" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total"
+          }
+        }
+      }
     },
     "loan.payment.total_amount" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total Amount"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Valor Total"
+          }
+        }
+      }
     },
     "loan.payment.type" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Payment Type"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tipo de Pagamento"
+          }
+        }
+      }
     },
     "loan.percentage.placeholder" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "8.5"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "8,5"
+          }
+        }
+      }
     },
     "loan.principal" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Principal"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Principal"
+          }
+        }
+      }
     },
     "loan.principal_amount" : {
       "extractionState" : "manual",
@@ -9615,13 +9966,55 @@
       }
     },
     "loan.principal_paid" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Principal Paid"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Principal Pago"
+          }
+        }
+      }
     },
     "loan.progress" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Progress"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Progresso"
+          }
+        }
+      }
     },
     "loan.purpose" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Purpose"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Finalidade"
+          }
+        }
+      }
     },
     "loan.purpose.placeholder" : {
       "extractionState" : "manual",
@@ -9641,10 +10034,38 @@
       }
     },
     "loan.recent_payments" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recent Payments"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pagamentos Recentes"
+          }
+        }
+      }
     },
     "loan.remaining_payments" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remaining Payments"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pagamentos Restantes"
+          }
+        }
+      }
     },
     "loan.start_date" : {
       "extractionState" : "manual",
@@ -9664,34 +10085,174 @@
       }
     },
     "loan.status" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Status"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Status"
+          }
+        }
+      }
     },
     "loan.status.current" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Current"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Atual"
+          }
+        }
+      }
     },
     "loan.status.due_soon" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Due Soon"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vence em Breve"
+          }
+        }
+      }
     },
     "loan.status.inactive" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inactive"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inativo"
+          }
+        }
+      }
     },
     "loan.status.paid_off" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paid Off"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quitado"
+          }
+        }
+      }
     },
     "loan.summary.current_balance" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Current Balance"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Saldo Atual"
+          }
+        }
+      }
     },
     "loan.summary.monthly_payments" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Monthly Payments"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pagamentos Mensais"
+          }
+        }
+      }
     },
     "loan.summary.total_amount" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total Amount"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Valor Total"
+          }
+        }
+      }
     },
     "loan.summary.total_interest" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total Interest"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Juros Totais"
+          }
+        }
+      }
     },
     "loan.term" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Term"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prazo"
+          }
+        }
+      }
     },
     "loan.term_months" : {
       "extractionState" : "manual",
@@ -9711,7 +10272,21 @@
       }
     },
     "loan.term.placeholder" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "360"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "360"
+          }
+        }
+      }
     },
     "loan.title" : {
       "extractionState" : "manual",
@@ -9731,10 +10306,38 @@
       }
     },
     "loan.total_amount" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total Amount"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Valor Total"
+          }
+        }
+      }
     },
     "loan.total_interest" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total Interest"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Juros Totais"
+          }
+        }
+      }
     },
     "loan.type" : {
       "extractionState" : "manual",
@@ -9873,28 +10476,140 @@
       }
     },
     "loan.validation.bank_name_required" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bank name is required"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nome do banco é obrigatório"
+          }
+        }
+      }
     },
     "loan.validation.name_required" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loan name is required"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nome do empréstimo é obrigatório"
+          }
+        }
+      }
     },
     "loan.validation.payment_method_required" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Payment method is required"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Forma de pagamento é obrigatória"
+          }
+        }
+      }
     },
     "loan.validation.valid_amount_required" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Valid amount is required"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Valor válido é obrigatório"
+          }
+        }
+      }
     },
     "loan.validation.valid_rate_required" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Valid interest rate is required"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Taxa de juros válida é obrigatória"
+          }
+        }
+      }
     },
     "loan.validation.valid_term_required" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Valid term is required"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prazo válido é obrigatório"
+          }
+        }
+      }
     },
     "loan.view_all_payments" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "View All Payments"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ver Todos os Pagamentos"
+          }
+        }
+      }
     },
     "loan.view_amortization" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "View Amortization"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ver Amortização"
+          }
+        }
+      }
     },
     "login.continue.apple" : {
       "extractionState" : "manual",
@@ -14664,6 +15379,125 @@
     },
     "Your financial overview and key metrics will be displayed here." : {
 
+    },
+    "category.error.not_authenticated" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "User not authenticated"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usuário não autenticado"
+          }
+        }
+      }
+    },
+    "category.error.category_not_found" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Category not found"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Categoria não encontrada"
+          }
+        }
+      }
+    },
+    "category.error.subcategory_not_found" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Subcategory not found"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Subcategoria não encontrada"
+          }
+        }
+      }
+    },
+    "category.error.invalid_data" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalid category data"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dados de categoria inválidos"
+          }
+        }
+      }
+    },
+    "category.error.network" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Network error"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erro de rede"
+          }
+        }
+      }
+    },
+    "categories.management.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Manage Categories"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gerenciar Categorias"
+          }
+        }
+      }
+    },
+    "categories.management.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create and organize your transaction categories"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Criar e organizar suas categorias de transação"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

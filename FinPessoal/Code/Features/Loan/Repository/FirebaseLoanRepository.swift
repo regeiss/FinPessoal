@@ -60,7 +60,7 @@ class FirebaseLoanRepository: LoanRepositoryProtocol {
       updatedAt: Date()
     )
     
-    try db.collection(loansCollection)
+    try await db.collection(loansCollection)
       .document(updatedLoan.id)
       .setData(from: updatedLoan)
     
@@ -86,7 +86,7 @@ class FirebaseLoanRepository: LoanRepositoryProtocol {
       updatedAt: Date()
     )
     
-    try db.collection(loansCollection)
+    try await db.collection(loansCollection)
       .document(updatedLoan.id)
       .setData(from: updatedLoan, merge: true)
     
@@ -141,58 +141,13 @@ class FirebaseLoanRepository: LoanRepositoryProtocol {
       createdAt: Date()
     )
     
-    // Use a transaction to ensure data consistency
-    _ = try await db.runTransaction { [weak self] transaction, errorPointer in
-      guard let self = self else { return nil }
-      
-      do {
-        // Add the payment
-        let paymentRef = self.db.collection(self.paymentsCollection)
-          .document(updatedPayment.id)
-        try transaction.setData(
-          from: updatedPayment,
-          forDocument: paymentRef
-        )
-        
-        // Update loan balance
-        let loanRef = self.db.collection(self.loansCollection)
-          .document(updatedPayment.loanId)
-        let loanDoc = try transaction.getDocument(loanRef)
-        
-        if let loan = try? loanDoc.data(as: Loan.self) {
-          let newBalance = max(0, loan.currentBalance - updatedPayment.principalAmount)
-          
-          let updatedLoan = Loan(
-            id: loan.id,
-            name: loan.name,
-            loanType: loan.loanType,
-            principalAmount: loan.principalAmount,
-            currentBalance: newBalance,
-            interestRate: loan.interestRate,
-            term: loan.term,
-            startDate: loan.startDate,
-            paymentDay: loan.paymentDay,
-            bankName: loan.bankName,
-            purpose: loan.purpose,
-            isActive: newBalance > 0,
-            userId: loan.userId,
-            createdAt: loan.createdAt,
-            updatedAt: Date()
-          )
-          
-          try transaction.setData(
-            from: updatedLoan,
-            forDocument: loanRef,
-            merge: true
-          )
-        }
-        
-        return nil
-      } catch {
-        errorPointer?.pointee = error as NSError
-        return nil
-      }
-    }
+    // Add the payment document
+    try await db.collection(paymentsCollection)
+      .document(updatedPayment.id)
+      .setData(from: updatedPayment)
+    
+    // Update loan balance
+    try await updateLoanBalance(loanId: updatedPayment.loanId, principalPayment: updatedPayment.principalAmount)
     
     return updatedPayment
   }
@@ -211,7 +166,7 @@ class FirebaseLoanRepository: LoanRepositoryProtocol {
       createdAt: payment.createdAt
     )
     
-    try db.collection(paymentsCollection)
+    try await db.collection(paymentsCollection)
       .document(updatedPayment.id)
       .setData(from: updatedPayment, merge: true)
     
@@ -254,6 +209,38 @@ class FirebaseLoanRepository: LoanRepositoryProtocol {
     }
     
     return schedule
+  }
+  
+  // MARK: - Helper Methods
+  
+  private func updateLoanBalance(loanId: String, principalPayment: Double) async throws {
+    guard let loan = try await getLoan(by: loanId) else {
+      throw LoanError.loanNotFound
+    }
+    
+    let newBalance = max(0, loan.currentBalance - principalPayment)
+    
+    let updatedLoan = Loan(
+      id: loan.id,
+      name: loan.name,
+      loanType: loan.loanType,
+      principalAmount: loan.principalAmount,
+      currentBalance: newBalance,
+      interestRate: loan.interestRate,
+      term: loan.term,
+      startDate: loan.startDate,
+      paymentDay: loan.paymentDay,
+      bankName: loan.bankName,
+      purpose: loan.purpose,
+      isActive: newBalance > 0,
+      userId: loan.userId,
+      createdAt: loan.createdAt,
+      updatedAt: Date()
+    )
+    
+    try await db.collection(loansCollection)
+      .document(updatedLoan.id)
+      .setData(from: updatedLoan, merge: true)
   }
 }
 

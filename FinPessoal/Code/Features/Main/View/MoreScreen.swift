@@ -94,7 +94,7 @@ struct MoreScreen: View {
         
         Section {
           NavigationLink {
-            CategoriesManagementScreen(transactionRepository: AppConfiguration.shared.createTransactionRepository())
+            CategoriesManagementScreen()
           } label: {
             HStack {
               Image(systemName: "tag.fill")
