@@ -31,7 +31,7 @@ class FirebaseDynamicTransactionRepository: DynamicTransactionRepositoryProtocol
         }
     }
     
-    func getTransactions(for accountId: String) async throws -> [DynamicTransaction] {
+    func getTransactions(forAccount accountId: String) async throws -> [DynamicTransaction] {
         guard let userId = Auth.auth().currentUser?.uid else {
             throw DynamicTransactionError.userNotAuthenticated
         }
@@ -47,7 +47,7 @@ class FirebaseDynamicTransactionRepository: DynamicTransactionRepositoryProtocol
         }
     }
     
-    func getTransactions(for categoryId: String) async throws -> [DynamicTransaction] {
+    func getTransactions(forCategory categoryId: String) async throws -> [DynamicTransaction] {
         guard let userId = Auth.auth().currentUser?.uid else {
             throw DynamicTransactionError.userNotAuthenticated
         }
@@ -217,14 +217,14 @@ class FirebaseDynamicTransactionRepository: DynamicTransactionRepositoryProtocol
         }
     }
     
-    func getTotalAmount(for categoryId: String, from startDate: Date, to endDate: Date) async throws -> Double {
+    func getTotalAmount(forCategory categoryId: String, from startDate: Date, to endDate: Date) async throws -> Double {
         let transactions = try await getTransactionsByCategory(categoryId, from: startDate, to: endDate)
         return transactions.reduce(0) { total, transaction in
             total + (transaction.type == .income ? transaction.amount : -transaction.amount)
         }
     }
     
-    func getTotalAmount(for type: TransactionType, from startDate: Date, to endDate: Date) async throws -> Double {
+    func getTotalAmount(forType type: TransactionType, from startDate: Date, to endDate: Date) async throws -> Double {
         guard let userId = Auth.auth().currentUser?.uid else {
             throw DynamicTransactionError.userNotAuthenticated
         }

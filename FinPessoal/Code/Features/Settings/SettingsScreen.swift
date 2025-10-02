@@ -99,7 +99,7 @@ struct SettingsScreen: View {
           } label: {
             HStack {
               Image(systemName: "paintbrush")
-                .foregroundColor(.blue)
+                .foregroundColor(themeManager.isDarkMode ? Color(red: 0.40, green: 0.86, blue: 0.18) : .blue)
                 .frame(width: 24)
               
               Text(String(localized: "settings.theme", defaultValue: "Tema"))
@@ -122,7 +122,7 @@ struct SettingsScreen: View {
           if UserDefaults.standard.string(forKey: "selectedTheme") != "system" {
             HStack {
               Image(systemName: "moon.fill")
-                .foregroundColor(.blue)
+                .foregroundColor(themeManager.isDarkMode ? Color(red: 0.40, green: 0.86, blue: 0.18) : .blue)
                 .frame(width: 24)
               
               Text(String(localized: "settings.dark.mode", defaultValue: "Modo Escuro"))
@@ -223,6 +223,8 @@ struct SettingsScreen: View {
         }
       }
       .navigationTitle(String(localized: "settings.title"))
+      .preferredColorScheme(themeManager.colorScheme)
+      .background(themeManager.isDarkMode ? Color(red: 0.12, green: 0.12, blue: 0.12) : .clear)
       .sheet(isPresented: $showingProfile) {
         ProfileView()
           .environmentObject(authViewModel)

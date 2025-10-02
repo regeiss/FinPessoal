@@ -20,13 +20,13 @@ class MockDynamicCreditCardRepository: DynamicCreditCardRepositoryProtocol {
         return creditCardTransactions.sorted { $0.date > $1.date }
     }
     
-    func getCreditCardTransactions(for creditCardId: String) async throws -> [DynamicCreditCardTransaction] {
+    func getCreditCardTransactions(forCreditCard creditCardId: String) async throws -> [DynamicCreditCardTransaction] {
         return creditCardTransactions
             .filter { $0.creditCardId == creditCardId }
             .sorted { $0.date > $1.date }
     }
     
-    func getCreditCardTransactions(for categoryId: String) async throws -> [DynamicCreditCardTransaction] {
+    func getCreditCardTransactions(forCategory categoryId: String) async throws -> [DynamicCreditCardTransaction] {
         return creditCardTransactions
             .filter { $0.categoryId == categoryId }
             .sorted { $0.date > $1.date }
@@ -144,20 +144,20 @@ class MockDynamicCreditCardRepository: DynamicCreditCardRepositoryProtocol {
             .sorted { $0.date > $1.date }
     }
     
-    func getTotalCreditCardAmount(for categoryId: String, from startDate: Date, to endDate: Date) async throws -> Double {
+    func getTotalCreditCardAmount(forCategory categoryId: String, from startDate: Date, to endDate: Date) async throws -> Double {
         let categoryTransactions = try await getCreditCardTransactionsByCategory(categoryId, from: startDate, to: endDate)
         return categoryTransactions.reduce(0) { total, transaction in
             total + (transaction.type == .income ? transaction.amount : -transaction.amount)
         }
     }
     
-    func getTotalCreditCardAmount(for type: TransactionType, from startDate: Date, to endDate: Date) async throws -> Double {
+    func getTotalCreditCardAmount(forType type: TransactionType, from startDate: Date, to endDate: Date) async throws -> Double {
         return creditCardTransactions
             .filter { $0.type == type && $0.date >= startDate && $0.date <= endDate }
             .reduce(0) { $0 + $1.amount }
     }
     
-    func getTotalCreditCardAmount(for creditCardId: String, from startDate: Date, to endDate: Date) async throws -> Double {
+    func getTotalCreditCardAmount(forCreditCard creditCardId: String, from startDate: Date, to endDate: Date) async throws -> Double {
         return creditCardTransactions
             .filter { $0.creditCardId == creditCardId && $0.date >= startDate && $0.date <= endDate }
             .reduce(0) { $0 + $1.amount }

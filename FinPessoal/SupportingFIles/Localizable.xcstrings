@@ -4,6 +4,9 @@
     "" : {
 
     },
+    "-" : {
+
+    },
     "/ %@" : {
 
     },
@@ -71,6 +74,9 @@
 
     },
     "•••• •••• •••• %@" : {
+
+    },
+    "+" : {
 
     },
     "account.add.title" : {
@@ -807,6 +813,9 @@
           }
         }
       }
+    },
+    "Bem-vindo de volta" : {
+
     },
     "budget.add.title" : {
       "extractionState" : "manual",
@@ -2517,6 +2526,23 @@
         }
       }
     },
+    "category.error.category_not_found" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Category not found"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Categoria não encontrada"
+          }
+        }
+      }
+    },
     "category.error.duplicateName" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2585,6 +2611,23 @@
         }
       }
     },
+    "category.error.invalid_data" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalid category data"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dados de categoria inválidos"
+          }
+        }
+      }
+    },
     "category.error.invalidName" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2615,6 +2658,57 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Por favor, insira um nome válido para a categoria"
+          }
+        }
+      }
+    },
+    "category.error.network" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Network error"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erro de rede"
+          }
+        }
+      }
+    },
+    "category.error.not_authenticated" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "User not authenticated"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usuário não autenticado"
+          }
+        }
+      }
+    },
+    "category.error.subcategory_not_found" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Subcategory not found"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Subcategoria não encontrada"
           }
         }
       }
@@ -4777,6 +4871,24 @@
         }
       }
     },
+    "creditcard.transaction.error.creditcard_not_found" : {
+
+    },
+    "creditcard.transaction.error.invalid_data" : {
+
+    },
+    "creditcard.transaction.error.migration_failed" : {
+
+    },
+    "creditcard.transaction.error.network" : {
+
+    },
+    "creditcard.transaction.error.not_authenticated" : {
+
+    },
+    "creditcard.transaction.error.not_found" : {
+
+    },
     "creditcard.transaction.exceeds_limit" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -4872,6 +4984,18 @@
           }
         }
       }
+    },
+    "creditcard.transaction.status.due_soon" : {
+
+    },
+    "creditcard.transaction.status.overdue" : {
+
+    },
+    "creditcard.transaction.status.paid" : {
+
+    },
+    "creditcard.transaction.status.pending" : {
+
     },
     "creditcard.utilization" : {
       "extractionState" : "manual",
@@ -5222,6 +5346,9 @@
       }
     },
     "de" : {
+
+    },
+    "Despesas" : {
 
     },
     "detail.empty.select.message" : {
@@ -10813,6 +10940,9 @@
     "OK" : {
 
     },
+    "Olá, Roberto" : {
+
+    },
     "onboarding.accounts.description" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -11477,6 +11607,9 @@
 
     },
     "Real (BRL)" : {
+
+    },
+    "Receitas" : {
 
     },
     "Reports" : {
@@ -12281,6 +12414,9 @@
         }
       }
     },
+    "Saldo Total" : {
+
+    },
     "Selecione uma categoria para gerenciar suas subcategorias" : {
 
     },
@@ -13053,6 +13189,18 @@
         }
       }
     },
+    "subcategory.error.invalid_data" : {
+
+    },
+    "subcategory.error.network" : {
+
+    },
+    "subcategory.error.not_authenticated" : {
+
+    },
+    "subcategory.error.subcategory_not_found" : {
+
+    },
     "tab.accounts" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -13757,6 +13905,24 @@
         }
       }
     },
+    "transaction.error.account_not_found" : {
+
+    },
+    "transaction.error.invalid_data" : {
+
+    },
+    "transaction.error.migration_failed" : {
+
+    },
+    "transaction.error.network" : {
+
+    },
+    "transaction.error.not_authenticated" : {
+
+    },
+    "transaction.error.not_found" : {
+
+    },
     "transaction.info.amount" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -13845,6 +14011,9 @@
     "transaction.is_recurring" : {
 
     },
+    "transaction.recurring.daily" : {
+
+    },
     "transaction.recurring.description" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -13879,6 +14048,9 @@
         }
       }
     },
+    "transaction.recurring.monthly" : {
+
+    },
     "transaction.recurring.title" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -13895,6 +14067,12 @@
           }
         }
       }
+    },
+    "transaction.recurring.weekly" : {
+
+    },
+    "transaction.recurring.yearly" : {
+
     },
     "transaction.subcategory" : {
 
@@ -15374,130 +15552,14 @@
         }
       }
     },
+    "Ver Todas" : {
+
+    },
     "View Mode" : {
 
     },
     "Your financial overview and key metrics will be displayed here." : {
 
-    },
-    "category.error.not_authenticated" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "User not authenticated"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Usuário não autenticado"
-          }
-        }
-      }
-    },
-    "category.error.category_not_found" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Category not found"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Categoria não encontrada"
-          }
-        }
-      }
-    },
-    "category.error.subcategory_not_found" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Subcategory not found"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Subcategoria não encontrada"
-          }
-        }
-      }
-    },
-    "category.error.invalid_data" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Invalid category data"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dados de categoria inválidos"
-          }
-        }
-      }
-    },
-    "category.error.network" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Network error"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Erro de rede"
-          }
-        }
-      }
-    },
-    "categories.management.title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Manage Categories"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gerenciar Categorias"
-          }
-        }
-      }
-    },
-    "categories.management.description" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Create and organize your transaction categories"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Criar e organizar suas categorias de transação"
-          }
-        }
-      }
     }
   },
   "version" : "1.0"

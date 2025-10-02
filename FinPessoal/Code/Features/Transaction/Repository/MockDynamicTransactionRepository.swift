@@ -21,13 +21,13 @@ class MockDynamicTransactionRepository: DynamicTransactionRepositoryProtocol {
         return transactions.sorted { $0.date > $1.date }
     }
     
-    func getTransactions(for accountId: String) async throws -> [DynamicTransaction] {
+    func getTransactions(forAccount accountId: String) async throws -> [DynamicTransaction] {
         return transactions
             .filter { $0.accountId == accountId }
             .sorted { $0.date > $1.date }
     }
     
-    func getTransactions(for categoryId: String) async throws -> [DynamicTransaction] {
+    func getTransactions(forCategory categoryId: String) async throws -> [DynamicTransaction] {
         return transactions
             .filter { $0.categoryId == categoryId }
             .sorted { $0.date > $1.date }
@@ -131,14 +131,14 @@ class MockDynamicTransactionRepository: DynamicTransactionRepositoryProtocol {
             .sorted { $0.date > $1.date }
     }
     
-    func getTotalAmount(for categoryId: String, from startDate: Date, to endDate: Date) async throws -> Double {
+    func getTotalAmount(forCategory categoryId: String, from startDate: Date, to endDate: Date) async throws -> Double {
         let categoryTransactions = try await getTransactionsByCategory(categoryId, from: startDate, to: endDate)
         return categoryTransactions.reduce(0) { total, transaction in
             total + (transaction.type == .income ? transaction.amount : -transaction.amount)
         }
     }
     
-    func getTotalAmount(for type: TransactionType, from startDate: Date, to endDate: Date) async throws -> Double {
+    func getTotalAmount(forType type: TransactionType, from startDate: Date, to endDate: Date) async throws -> Double {
         return transactions
             .filter { $0.type == type && $0.date >= startDate && $0.date <= endDate }
             .reduce(0) { $0 + $1.amount }

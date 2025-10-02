@@ -1,3 +1,4 @@
+#if false
 //
 //  CategoryManagementService.swift
 //  FinPessoal
@@ -209,3 +210,4 @@ enum CategoryError: Error, LocalizedError {
   }
 }
 
+#endif

@@ -10,8 +10,8 @@ import Foundation
 protocol DynamicCreditCardRepositoryProtocol {
     // MARK: - Credit Card Transaction Operations
     func getCreditCardTransactions() async throws -> [DynamicCreditCardTransaction]
-    func getCreditCardTransactions(for creditCardId: String) async throws -> [DynamicCreditCardTransaction]
-    func getCreditCardTransactions(for categoryId: String) async throws -> [DynamicCreditCardTransaction]
+    func getCreditCardTransactions(forCreditCard creditCardId: String) async throws -> [DynamicCreditCardTransaction]
+    func getCreditCardTransactions(forCategory categoryId: String) async throws -> [DynamicCreditCardTransaction]
     func getCreditCardTransactions(from startDate: Date, to endDate: Date) async throws -> [DynamicCreditCardTransaction]
     func getCreditCardTransaction(by id: String) async throws -> DynamicCreditCardTransaction?
     func createCreditCardTransaction(_ transaction: DynamicCreditCardTransaction) async throws -> DynamicCreditCardTransaction
@@ -27,9 +27,9 @@ protocol DynamicCreditCardRepositoryProtocol {
     func getCreditCardTransactionsByType(_ type: TransactionType) async throws -> [DynamicCreditCardTransaction]
     func getCreditCardTransactionsByCategory(_ categoryId: String, from startDate: Date, to endDate: Date) async throws -> [DynamicCreditCardTransaction]
     func getCreditCardTransactionsBySubcategory(_ subcategoryId: String, from startDate: Date, to endDate: Date) async throws -> [DynamicCreditCardTransaction]
-    func getTotalCreditCardAmount(for categoryId: String, from startDate: Date, to endDate: Date) async throws -> Double
-    func getTotalCreditCardAmount(for type: TransactionType, from startDate: Date, to endDate: Date) async throws -> Double
-    func getTotalCreditCardAmount(for creditCardId: String, from startDate: Date, to endDate: Date) async throws -> Double
+    func getTotalCreditCardAmount(forCategory categoryId: String, from startDate: Date, to endDate: Date) async throws -> Double
+    func getTotalCreditCardAmount(forType type: TransactionType, from startDate: Date, to endDate: Date) async throws -> Double
+    func getTotalCreditCardAmount(forCreditCard creditCardId: String, from startDate: Date, to endDate: Date) async throws -> Double
     
     // MARK: - Statement and Billing
     func getCreditCardTransactionsForBillingCycle(creditCardId: String, billingDate: Date) async throws -> [DynamicCreditCardTransaction]

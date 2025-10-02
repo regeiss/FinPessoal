@@ -12,6 +12,7 @@ struct SidebarView: View {
   @EnvironmentObject var navigationState: NavigationState
   @EnvironmentObject var authViewModel: AuthViewModel
   @EnvironmentObject var financeViewModel: FinanceViewModel
+  @EnvironmentObject var themeManager: ThemeManager
   
   var body: some View {
     List(selection: $navigationState.selectedSidebarItem) {
@@ -44,5 +45,7 @@ struct SidebarView: View {
     }
     .listStyle(.sidebar)
     .navigationTitle("Money Manager")
+    .preferredColorScheme(themeManager.colorScheme)
+    .background(themeManager.isDarkMode ? Color(red: 0.12, green: 0.12, blue: 0.12) : .clear)
   }
 }

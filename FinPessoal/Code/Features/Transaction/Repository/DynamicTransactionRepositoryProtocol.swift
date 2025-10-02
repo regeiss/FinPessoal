@@ -10,8 +10,8 @@ import Foundation
 protocol DynamicTransactionRepositoryProtocol {
     // MARK: - Transaction Operations
     func getTransactions() async throws -> [DynamicTransaction]
-    func getTransactions(for accountId: String) async throws -> [DynamicTransaction]
-    func getTransactions(for categoryId: String) async throws -> [DynamicTransaction]
+    func getTransactions(forAccount accountId: String) async throws -> [DynamicTransaction]
+    func getTransactions(forCategory categoryId: String) async throws -> [DynamicTransaction]
     func getTransactions(from startDate: Date, to endDate: Date) async throws -> [DynamicTransaction]
     func getTransaction(by id: String) async throws -> DynamicTransaction?
     func createTransaction(_ transaction: DynamicTransaction) async throws -> DynamicTransaction
@@ -22,8 +22,8 @@ protocol DynamicTransactionRepositoryProtocol {
     func getTransactionsByType(_ type: TransactionType) async throws -> [DynamicTransaction]
     func getTransactionsByCategory(_ categoryId: String, from startDate: Date, to endDate: Date) async throws -> [DynamicTransaction]
     func getTransactionsBySubcategory(_ subcategoryId: String, from startDate: Date, to endDate: Date) async throws -> [DynamicTransaction]
-    func getTotalAmount(for categoryId: String, from startDate: Date, to endDate: Date) async throws -> Double
-    func getTotalAmount(for type: TransactionType, from startDate: Date, to endDate: Date) async throws -> Double
+    func getTotalAmount(forCategory categoryId: String, from startDate: Date, to endDate: Date) async throws -> Double
+    func getTotalAmount(forType type: TransactionType, from startDate: Date, to endDate: Date) async throws -> Double
     
     // MARK: - Recurring Transactions
     func getRecurringTransactions() async throws -> [DynamicTransaction]

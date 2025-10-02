@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CategoriesManagementScreen: View {
     @StateObject private var subcategoryService: SubcategoryManagementService
+    @EnvironmentObject var themeManager: ThemeManager
     @State private var selectedCategory: TransactionCategory = .food
     @State private var showingAddSubcategory = false
     @State private var newSubcategoryName = ""
@@ -65,7 +66,7 @@ struct CategoriesManagementScreen: View {
                                 showingAddSubcategory = true
                             } label: {
                                 Image(systemName: "plus")
-                                    .foregroundColor(.blue)
+                                    .foregroundColor(themeManager.isDarkMode ? Color(red: 0.40, green: 0.86, blue: 0.18) : .blue)
                             }
                         }
                     } footer: {
@@ -77,6 +78,8 @@ struct CategoriesManagementScreen: View {
             }
             .navigationTitle(String(localized: "categories.management.title"))
             .navigationBarTitleDisplayMode(.large)
+            .preferredColorScheme(themeManager.colorScheme)
+            .background(themeManager.isDarkMode ? Color(red: 0.12, green: 0.12, blue: 0.12) : .clear)
             .task {
                 await loadUsageData()
             }
@@ -139,9 +142,9 @@ struct CategoriesManagementScreen: View {
                         HStack {
                             Image(systemName: category.icon)
                                 .font(.system(size: 20))
-                                .foregroundColor(selectedCategory == category ? .white : .blue)
+                                .foregroundColor(selectedCategory == category ? .white : (themeManager.isDarkMode ? Color(red: 0.40, green: 0.86, blue: 0.18) : .blue))
                                 .frame(width: 32, height: 32)
-                                .background(selectedCategory == category ? .blue : .blue.opacity(0.1))
+                                .background(selectedCategory == category ? (themeManager.isDarkMode ? Color(red: 0.40, green: 0.86, blue: 0.18) : .blue) : (themeManager.isDarkMode ? Color(red: 0.40, green: 0.86, blue: 0.18).opacity(0.1) : .blue.opacity(0.1)))
                                 .clipShape(Circle())
                             
                             VStack(alignment: .leading, spacing: 2) {
@@ -158,14 +161,14 @@ struct CategoriesManagementScreen: View {
                             
                             if selectedCategory == category {
                                 Image(systemName: "checkmark")
-                                    .foregroundColor(.blue)
+                                    .foregroundColor(themeManager.isDarkMode ? Color(red: 0.40, green: 0.86, blue: 0.18) : .blue)
                                     .fontWeight(.semibold)
                             }
                         }
                         .padding(.vertical, 4)
                     }
                     .buttonStyle(PlainButtonStyle())
-                    .listRowBackground(selectedCategory == category ? Color.blue.opacity(0.1) : Color.clear)
+                    .listRowBackground(selectedCategory == category ? (themeManager.isDarkMode ? Color(red: 0.40, green: 0.86, blue: 0.18).opacity(0.1) : Color.blue.opacity(0.1)) : Color.clear)
                 }
                 .listStyle(SidebarListStyle())
             }
@@ -183,7 +186,7 @@ struct CategoriesManagementScreen: View {
                         .font(.system(size: 24))
                         .foregroundColor(.white)
                         .frame(width: 48, height: 48)
-                        .background(.blue)
+                        .background(themeManager.isDarkMode ? Color(red: 0.40, green: 0.86, blue: 0.18) : .blue)
                         .clipShape(Circle())
                     
                     VStack(alignment: .leading, spacing: 4) {
@@ -207,7 +210,7 @@ struct CategoriesManagementScreen: View {
                         }
                         .padding(.horizontal, 16)
                         .padding(.vertical, 8)
-                        .background(.blue)
+                        .background(themeManager.isDarkMode ? Color(red: 0.40, green: 0.86, blue: 0.18) : .blue)
                         .foregroundColor(.white)
                         .clipShape(Capsule())
                     }
@@ -280,21 +283,19 @@ struct CategoriesManagementScreen: View {
 
 struct CategoryScrollPickerView: View {
     @Binding var selectedCategory: TransactionCategory
-    
+
     var body: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: 12) {
-                ForEach(TransactionCategory.allCases.sorted(), id: \.self) { category in
-                    CategoryChip(
-                        category: category,
-                        isSelected: selectedCategory == category
-                    ) {
-                        selectedCategory = category
-                    }
+        FlowLayout(spacing: 12) {
+            ForEach(TransactionCategory.allCases.sorted(), id: \.self) { category in
+                CategoryChip(
+                    category: category,
+                    isSelected: selectedCategory == category
+                ) {
+                    selectedCategory = category
                 }
             }
-            .padding(.horizontal)
         }
+        .padding(.horizontal)
         .onAppear {
             print("CategoryScrollPickerView: Total categories available: \(TransactionCategory.allCases.count)")
             for category in TransactionCategory.allCases.sorted() {
@@ -304,10 +305,62 @@ struct CategoryScrollPickerView: View {
     }
 }
 
+struct FlowLayout: Layout {
+    var spacing: CGFloat
+
+    func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) -> CGSize {
+        let result = FlowResult(
+            in: proposal.replacingUnspecifiedDimensions().width,
+            subviews: subviews,
+            spacing: spacing
+        )
+        return result.size
+    }
+
+    func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) {
+        let result = FlowResult(
+            in: bounds.width,
+            subviews: subviews,
+            spacing: spacing
+        )
+        for (index, subview) in subviews.enumerated() {
+            subview.place(at: CGPoint(x: bounds.minX + result.positions[index].x, y: bounds.minY + result.positions[index].y), proposal: .unspecified)
+        }
+    }
+
+    struct FlowResult {
+        var size: CGSize
+        var positions: [CGPoint] = []
+
+        init(in maxWidth: CGFloat, subviews: Subviews, spacing: CGFloat) {
+            var currentX: CGFloat = 0
+            var currentY: CGFloat = 0
+            var lineHeight: CGFloat = 0
+
+            for subview in subviews {
+                let size = subview.sizeThatFits(.unspecified)
+
+                if currentX + size.width > maxWidth && currentX > 0 {
+                    currentX = 0
+                    currentY += lineHeight + spacing
+                    lineHeight = 0
+                }
+
+                positions.append(CGPoint(x: currentX, y: currentY))
+                currentX += size.width + spacing
+                lineHeight = max(lineHeight, size.height)
+            }
+
+            self.size = CGSize(width: maxWidth, height: currentY + lineHeight)
+        }
+    }
+}
+
 struct CategoryChip: View {
     let category: TransactionCategory
     let isSelected: Bool
     let onTap: () -> Void
+    @EnvironmentObject var themeManager: ThemeManager
     
     var body: some View {
         Button(action: onTap) {
@@ -320,7 +373,7 @@ struct CategoryChip: View {
             }
             .padding(.horizontal, 16)
             .padding(.vertical, 8)
-            .background(isSelected ? Color.blue : Color(.systemGray6))
+            .background(isSelected ? (themeManager.isDarkMode ? Color(red: 0.40, green: 0.86, blue: 0.18) : Color.blue) : Color(.systemGray6))
             .foregroundColor(isSelected ? .white : .primary)
             .clipShape(Capsule())
         }
@@ -334,6 +387,7 @@ struct SubcategoryRow: View {
     let isCustom: Bool
     let canDelete: Bool
     let onDelete: () -> Void
+    @EnvironmentObject var themeManager: ThemeManager
     
     var body: some View {
         HStack {
@@ -347,8 +401,8 @@ struct SubcategoryRow: View {
                             .font(.caption2)
                             .padding(.horizontal, 6)
                             .padding(.vertical, 2)
-                            .background(Color.blue.opacity(0.1))
-                            .foregroundColor(.blue)
+                            .background((themeManager.isDarkMode ? Color(red: 0.40, green: 0.86, blue: 0.18) : Color.blue).opacity(0.1))
+                            .foregroundColor(themeManager.isDarkMode ? Color(red: 0.40, green: 0.86, blue: 0.18) : .blue)
                             .cornerRadius(4)
                     }
                 }

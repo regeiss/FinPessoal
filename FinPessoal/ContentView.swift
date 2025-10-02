@@ -12,6 +12,7 @@ struct ContentView: View {
   @EnvironmentObject var financeViewModel: FinanceViewModel
   @EnvironmentObject var navigationState: NavigationState
   @EnvironmentObject var onboardingManager: OnboardingManager
+  @EnvironmentObject var themeManager: ThemeManager
 
   var body: some View {
     Group {
@@ -34,6 +35,8 @@ struct ContentView: View {
     .environmentObject(authViewModel)
     .environmentObject(financeViewModel)
     .environmentObject(navigationState)
+    .preferredColorScheme(themeManager.colorScheme)
+    .background(themeManager.isDarkMode ? Color(red: 0.12, green: 0.12, blue: 0.12) : .clear)
     .animation(
       .easeInOut(duration: 0.3),
       value: onboardingManager.hasCompletedOnboarding

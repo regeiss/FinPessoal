@@ -11,6 +11,7 @@ import SwiftUI
 struct MainTabView: View {
   @EnvironmentObject var appState: AppState
   @EnvironmentObject var navigationState: NavigationState
+  @EnvironmentObject var themeManager: ThemeManager
   
   var body: some View {
     if UIDevice.current.userInterfaceIdiom == .pad {
@@ -73,6 +74,8 @@ struct MainTabView: View {
           }
           .tag(6)
       }
+      .accentColor(themeManager.isDarkMode ? Color(red: 0.40, green: 0.86, blue: 0.18) : .blue)
+      .background(themeManager.isDarkMode ? Color(red: 0.12, green: 0.12, blue: 0.12) : .clear)
     }
   }
   

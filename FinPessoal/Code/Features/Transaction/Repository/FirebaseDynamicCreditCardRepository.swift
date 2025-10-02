@@ -31,7 +31,7 @@ class FirebaseDynamicCreditCardRepository: DynamicCreditCardRepositoryProtocol {
         }
     }
     
-    func getCreditCardTransactions(for creditCardId: String) async throws -> [DynamicCreditCardTransaction] {
+    func getCreditCardTransactions(forCreditCard creditCardId: String) async throws -> [DynamicCreditCardTransaction] {
         guard let userId = Auth.auth().currentUser?.uid else {
             throw DynamicCreditCardTransactionError.userNotAuthenticated
         }
@@ -47,7 +47,7 @@ class FirebaseDynamicCreditCardRepository: DynamicCreditCardRepositoryProtocol {
         }
     }
     
-    func getCreditCardTransactions(for categoryId: String) async throws -> [DynamicCreditCardTransaction] {
+    func getCreditCardTransactions(forCategory categoryId: String) async throws -> [DynamicCreditCardTransaction] {
         guard let userId = Auth.auth().currentUser?.uid else {
             throw DynamicCreditCardTransactionError.userNotAuthenticated
         }
@@ -110,7 +110,7 @@ class FirebaseDynamicCreditCardRepository: DynamicCreditCardRepositoryProtocol {
             updatedAt: Date()
         )
         
-        try await db.collection(creditCardTransactionsCollection)
+        try db.collection(creditCardTransactionsCollection)
             .document(updatedTransaction.id)
             .setData(from: updatedTransaction)
         
@@ -141,7 +141,7 @@ class FirebaseDynamicCreditCardRepository: DynamicCreditCardRepositoryProtocol {
             updatedAt: Date()
         )
         
-        try await db.collection(creditCardTransactionsCollection)
+        try db.collection(creditCardTransactionsCollection)
             .document(updatedTransaction.id)
             .setData(from: updatedTransaction, merge: true)
         
@@ -262,14 +262,14 @@ class FirebaseDynamicCreditCardRepository: DynamicCreditCardRepositoryProtocol {
         }
     }
     
-    func getTotalCreditCardAmount(for categoryId: String, from startDate: Date, to endDate: Date) async throws -> Double {
+    func getTotalCreditCardAmount(forCategory categoryId: String, from startDate: Date, to endDate: Date) async throws -> Double {
         let transactions = try await getCreditCardTransactionsByCategory(categoryId, from: startDate, to: endDate)
         return transactions.reduce(0) { total, transaction in
             total + (transaction.type == .income ? transaction.amount : -transaction.amount)
         }
     }
     
-    func getTotalCreditCardAmount(for type: TransactionType, from startDate: Date, to endDate: Date) async throws -> Double {
+    func getTotalCreditCardAmount(forType type: TransactionType, from startDate: Date, to endDate: Date) async throws -> Double {
         guard let userId = Auth.auth().currentUser?.uid else {
             throw DynamicCreditCardTransactionError.userNotAuthenticated
         }
@@ -288,7 +288,7 @@ class FirebaseDynamicCreditCardRepository: DynamicCreditCardRepositoryProtocol {
         return transactions.reduce(0) { $0 + $1.amount }
     }
     
-    func getTotalCreditCardAmount(for creditCardId: String, from startDate: Date, to endDate: Date) async throws -> Double {
+    func getTotalCreditCardAmount(forCreditCard creditCardId: String, from startDate: Date, to endDate: Date) async throws -> Double {
         guard let userId = Auth.auth().currentUser?.uid else {
             throw DynamicCreditCardTransactionError.userNotAuthenticated
         }

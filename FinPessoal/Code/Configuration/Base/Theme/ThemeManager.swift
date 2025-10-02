@@ -13,6 +13,7 @@ import UIKit
 
 class ThemeManager: ObservableObject {
     @Published var isDarkMode = false
+    @Published var currentTheme: ThemeMode = .system
     
     private var cancellables = Set<AnyCancellable>()
     
@@ -20,6 +21,14 @@ class ThemeManager: ObservableObject {
         case system = "system"
         case light = "light"
         case dark = "dark"
+        
+        var displayName: String {
+            switch self {
+            case .system: return "Sistema"
+            case .light: return "Claro"
+            case .dark: return "Escuro"
+            }
+        }
     }
     
     var colorScheme: ColorScheme? {
@@ -39,11 +48,13 @@ class ThemeManager: ObservableObject {
     init() {
         loadThemePreference()
         observeSystemThemeChanges()
+        configureAppearance()
     }
     
     private func loadThemePreference() {
         let savedTheme = UserDefaults.standard.string(forKey: "selectedTheme") ?? "system"
         let themeMode = ThemeMode(rawValue: savedTheme) ?? .system
+        currentTheme = themeMode
         
         switch themeMode {
         case .system:
@@ -68,6 +79,7 @@ class ThemeManager: ObservableObject {
     }
     
     func setTheme(_ mode: ThemeMode) {
+        currentTheme = mode
         UserDefaults.standard.set(mode.rawValue, forKey: "selectedTheme")
         
         switch mode {
@@ -80,6 +92,9 @@ class ThemeManager: ObservableObject {
         }
         
         UserDefaults.standard.set(isDarkMode, forKey: "isDarkMode")
+        
+        // Apply the new theme appearance
+        configureAppearance()
         
         // Log theme change for analytics (only if not using mock data)
         if !AppConfiguration.shared.useMockData {
@@ -94,9 +109,48 @@ class ThemeManager: ObservableObject {
         isDarkMode.toggle()
         UserDefaults.standard.set(isDarkMode, forKey: "isDarkMode")
         UserDefaults.standard.set(isDarkMode ? "dark" : "light", forKey: "selectedTheme")
+        currentTheme = isDarkMode ? .dark : .light
+        
+        configureAppearance()
         
         if !AppConfiguration.shared.useMockData {
             Analytics.logEvent("theme_changed", parameters: ["dark_mode": isDarkMode])
+        }
+    }
+    
+    private func configureAppearance() {
+        DispatchQueue.main.async {
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+                for window in windowScene.windows {
+                    window.overrideUserInterfaceStyle = self.isDarkMode ? .dark : .light
+                }
+            }
+            
+            let appearance = UINavigationBarAppearance()
+            let tabBarAppearance = UITabBarAppearance()
+            
+            if self.isDarkMode {
+                appearance.configureWithOpaqueBackground()
+                appearance.backgroundColor = UIColor(red: 0.12, green: 0.12, blue: 0.12, alpha: 1.0)
+                appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+                appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+                
+                tabBarAppearance.configureWithOpaqueBackground()
+                tabBarAppearance.backgroundColor = UIColor(red: 0.12, green: 0.12, blue: 0.12, alpha: 1.0)
+                tabBarAppearance.selectionIndicatorTintColor = UIColor(red: 0.40, green: 0.86, blue: 0.18, alpha: 1.0)
+            } else {
+                appearance.configureWithDefaultBackground()
+                tabBarAppearance.configureWithDefaultBackground()
+            }
+            
+            UINavigationBar.appearance().standardAppearance = appearance
+            UINavigationBar.appearance().compactAppearance = appearance
+            UINavigationBar.appearance().scrollEdgeAppearance = appearance
+            
+            UITabBar.appearance().standardAppearance = tabBarAppearance
+            if #available(iOS 15.0, *) {
+                UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
+            }
         }
     }
 }

@@ -65,15 +65,23 @@ struct DynamicCreditCardTransaction: Identifiable, Codable, Hashable {
 // MARK: - Computed Properties
 extension DynamicCreditCardTransaction {
     var formattedAmount: String {
-        return CurrencyFormatter.shared.string(from: amount) ?? "R$ 0,00"
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.currencyCode = "BRL"
+        formatter.locale = Locale(identifier: "pt_BR")
+        return formatter.string(from: NSNumber(value: amount)) ?? "R$ 0,00"
     }
     
     var formattedDate: String {
-        return DateFormatter.shortDate.string(from: date)
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        return formatter.string(from: date)
     }
     
     var formattedDueDate: String {
-        return DateFormatter.shortDate.string(from: dueDate)
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        return formatter.string(from: dueDate)
     }
     
     var isInstallment: Bool {
@@ -121,6 +129,10 @@ extension DynamicCreditCardTransaction {
         
         let subcategoryId = creditCardTransaction.subcategory.flatMap { subcategoryMapping[$0] }
         
+        // Calculate due date (assuming 30 days from transaction date)
+        let calendar = Calendar.current
+        let dueDate = calendar.date(byAdding: .day, value: 30, to: creditCardTransaction.date) ?? creditCardTransaction.date
+        
         return DynamicCreditCardTransaction(
             id: creditCardTransaction.id,
             creditCardId: creditCardTransaction.creditCardId,
@@ -128,16 +140,16 @@ extension DynamicCreditCardTransaction {
             description: creditCardTransaction.description,
             categoryId: categoryId,
             subcategoryId: subcategoryId,
-            type: creditCardTransaction.type,
+            type: .expense, // Credit card transactions are always expenses
             date: creditCardTransaction.date,
-            dueDate: creditCardTransaction.dueDate,
+            dueDate: dueDate,
             installments: creditCardTransaction.installments,
             currentInstallment: creditCardTransaction.currentInstallment,
-            isPaid: creditCardTransaction.isPaid,
-            paymentDate: creditCardTransaction.paymentDate,
-            userId: creditCardTransaction.userId ?? "",
-            createdAt: creditCardTransaction.createdAt ?? Date(),
-            updatedAt: creditCardTransaction.updatedAt ?? Date()
+            isPaid: false, // Default to unpaid during migration
+            paymentDate: nil,
+            userId: creditCardTransaction.userId,
+            createdAt: creditCardTransaction.createdAt,
+            updatedAt: creditCardTransaction.updatedAt
         )
     }
 }
