@@ -60,7 +60,10 @@ struct MainTabView: View {
           }
           .tag(4)
         
-        CategoriesManagementScreen(transactionRepository: AppConfiguration.shared.createTransactionRepository())
+        CategoriesManagementScreen(
+          transactionRepository: AppConfiguration.shared.createTransactionRepository(),
+          categoryRepository: AppConfiguration.shared.createCategoryRepository()
+        )
           .tabItem {
             Image(systemName: "tag.circle.fill")
             Text("tab.categories")
@@ -95,7 +98,10 @@ struct MainTabView: View {
     case .reports:
       ReportsScreen()
     case .categories:
-      CategoriesManagementScreen(transactionRepository: AppConfiguration.shared.createTransactionRepository())
+      CategoriesManagementScreen(
+        transactionRepository: AppConfiguration.shared.createTransactionRepository(),
+        categoryRepository: AppConfiguration.shared.createCategoryRepository()
+      )
     case .settings:
       SettingsScreen()
     case .none:

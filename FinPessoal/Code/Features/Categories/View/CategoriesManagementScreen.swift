@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct CategoriesManagementScreen: View {
     @StateObject private var subcategoryService: SubcategoryManagementService
@@ -14,30 +15,79 @@ struct CategoriesManagementScreen: View {
     @State private var showingAddSubcategory = false
     @State private var newSubcategoryName = ""
     @State private var subcategoryUsage: [String: Int] = [:]
-    
+    @State private var showingAddCategory = false
+    @State private var showingEditCategory = false
+    @State private var categories: [Category] = []
+    @State private var selectedCategoryForEdit: Category?
+    @State private var isLoadingCategories = false
+    @State private var selectedTab = 0 // 0 = Categories, 1 = Subcategories
+
+    let transactionRepository: TransactionRepositoryProtocol
+    let categoryRepository: CategoryRepositoryProtocol
     let forcePhoneLayout: Bool
-    
-    init(transactionRepository: TransactionRepositoryProtocol, forcePhoneLayout: Bool = false) {
+
+    init(
+        transactionRepository: TransactionRepositoryProtocol,
+        categoryRepository: CategoryRepositoryProtocol,
+        forcePhoneLayout: Bool = false
+    ) {
+        self.transactionRepository = transactionRepository
+        self.categoryRepository = categoryRepository
         self._subcategoryService = StateObject(wrappedValue: SubcategoryManagementService(transactionRepository: transactionRepository))
         self.forcePhoneLayout = forcePhoneLayout
     }
     
+    var currentUserId: String {
+        Auth.auth().currentUser?.uid ?? "mock-user"
+    }
+
     var body: some View {
+        Group {
+            if selectedTab == 0 {
+                categoriesView
+            } else {
+                subcategoriesView
+            }
+        }
+        .task {
+            await loadCategories()
+        }
+    }
+
+    @ViewBuilder
+    private var subcategoriesView: some View {
         if UIDevice.current.userInterfaceIdiom == .pad && !forcePhoneLayout {
             iPadCategoriesView
         } else {
             iPhoneCategoriesView
         }
     }
+
+    @ViewBuilder
+    private var categoriesView: some View {
+        if UIDevice.current.userInterfaceIdiom == .pad && !forcePhoneLayout {
+            iPadCategoryManagementView
+        } else {
+            iPhoneCategoryManagementView
+        }
+    }
     
     private var iPhoneCategoriesView: some View {
         NavigationView {
             VStack(spacing: 0) {
+                // Segmented control for tabs
+                Picker("", selection: $selectedTab) {
+                    Text(String(localized: "categories.categories.tab")).tag(0)
+                    Text(String(localized: "categories.subcategories.tab")).tag(1)
+                }
+                .pickerStyle(.segmented)
+                .padding()
+
                 // Category picker
                 CategoryScrollPickerView(selectedCategory: $selectedCategory)
                     .padding(.horizontal)
                     .padding(.bottom)
-                
+
                 // Subcategories list
                 List {
                     Section {
@@ -120,6 +170,14 @@ struct CategoriesManagementScreen: View {
         NavigationSplitView {
             // Category picker in sidebar
             VStack(spacing: 0) {
+                // Segmented control for tabs
+                Picker("", selection: $selectedTab) {
+                    Text(String(localized: "categories.categories.tab")).tag(0)
+                    Text(String(localized: "categories.subcategories.tab")).tag(1)
+                }
+                .pickerStyle(.segmented)
+                .padding()
+
                 Text("Categorias")
                     .font(.largeTitle)
                     .fontWeight(.bold)
@@ -277,6 +335,289 @@ struct CategoriesManagementScreen: View {
         let usage = await subcategoryService.getSubcategoryUsage(for: selectedCategory)
         await MainActor.run {
             subcategoryUsage = usage
+        }
+    }
+
+    // MARK: - Category Management Views
+
+    private var iPhoneCategoryManagementView: some View {
+        NavigationView {
+            VStack(spacing: 0) {
+                // Segmented control for tabs
+                Picker("", selection: $selectedTab) {
+                    Text(String(localized: "categories.categories.tab")).tag(0)
+                    Text(String(localized: "categories.subcategories.tab")).tag(1)
+                }
+                .pickerStyle(.segmented)
+                .padding()
+
+                List {
+                if isLoadingCategories {
+                    HStack {
+                        Spacer()
+                        ProgressView()
+                        Spacer()
+                    }
+                } else {
+                    ForEach(TransactionType.allCases, id: \.self) { type in
+                        Section(header: Text(type.displayName)) {
+                            ForEach(categories.filter { $0.transactionType == type }, id: \.id) { category in
+                                CategoryManagementRow(
+                                    category: category,
+                                    onEdit: {
+                                        selectedCategoryForEdit = category
+                                        showingEditCategory = true
+                                    },
+                                    onDelete: {
+                                        deleteCategory(category)
+                                    }
+                                )
+                            }
+                        }
+                    }
+                }
+                }
+                .listStyle(InsetGroupedListStyle())
+            }
+            .navigationTitle(String(localized: "categories.management.title"))
+            .navigationBarTitleDisplayMode(.large)
+            .preferredColorScheme(themeManager.colorScheme)
+            .toolbar {
+                ToolbarItem(placement: .primaryAction) {
+                    Button {
+                        showingAddCategory = true
+                    } label: {
+                        Image(systemName: "plus")
+                    }
+                }
+            }
+            .refreshable {
+                await loadCategories()
+            }
+            .sheet(isPresented: $showingAddCategory) {
+                CategoryFormView(
+                    categoryRepository: categoryRepository,
+                    userId: currentUserId,
+                    onSave: {
+                        Task {
+                            await loadCategories()
+                        }
+                    }
+                )
+                .environmentObject(themeManager)
+            }
+            .sheet(isPresented: $showingEditCategory) {
+                if let category = selectedCategoryForEdit {
+                    CategoryFormView(
+                        categoryRepository: categoryRepository,
+                        userId: currentUserId,
+                        category: category,
+                        onSave: {
+                            Task {
+                                await loadCategories()
+                            }
+                        }
+                    )
+                    .environmentObject(themeManager)
+                }
+            }
+        }
+    }
+
+    private var iPadCategoryManagementView: some View {
+        NavigationView {
+            VStack(spacing: 0) {
+                // Segmented control for tabs
+                Picker("", selection: $selectedTab) {
+                    Text(String(localized: "categories.categories.tab")).tag(0)
+                    Text(String(localized: "categories.subcategories.tab")).tag(1)
+                }
+                .pickerStyle(.segmented)
+                .padding()
+
+                List {
+                if isLoadingCategories {
+                    HStack {
+                        Spacer()
+                        ProgressView()
+                        Spacer()
+                    }
+                } else {
+                    ForEach(TransactionType.allCases, id: \.self) { type in
+                        Section(header: Text(type.displayName)) {
+                            ForEach(categories.filter { $0.transactionType == type }, id: \.id) { category in
+                                CategoryManagementRow(
+                                    category: category,
+                                    onEdit: {
+                                        selectedCategoryForEdit = category
+                                        showingEditCategory = true
+                                    },
+                                    onDelete: {
+                                        deleteCategory(category)
+                                    }
+                                )
+                            }
+                        }
+                    }
+                }
+                }
+                .listStyle(InsetGroupedListStyle())
+            }
+            .navigationTitle(String(localized: "categories.management.title"))
+            .navigationBarTitleDisplayMode(.large)
+            .preferredColorScheme(themeManager.colorScheme)
+            .toolbar {
+                ToolbarItem(placement: .primaryAction) {
+                    Button {
+                        showingAddCategory = true
+                    } label: {
+                        Label(String(localized: "category.add"), systemImage: "plus")
+                    }
+                }
+            }
+            .refreshable {
+                await loadCategories()
+            }
+            .sheet(isPresented: $showingAddCategory) {
+                CategoryFormView(
+                    categoryRepository: categoryRepository,
+                    userId: currentUserId,
+                    onSave: {
+                        Task {
+                            await loadCategories()
+                        }
+                    }
+                )
+                .environmentObject(themeManager)
+            }
+            .sheet(isPresented: $showingEditCategory) {
+                if let category = selectedCategoryForEdit {
+                    CategoryFormView(
+                        categoryRepository: categoryRepository,
+                        userId: currentUserId,
+                        category: category,
+                        onSave: {
+                            Task {
+                                await loadCategories()
+                            }
+                        }
+                    )
+                    .environmentObject(themeManager)
+                }
+            }
+        }
+    }
+
+    // MARK: - Helper Functions
+
+    private func loadCategories() async {
+        isLoadingCategories = true
+        defer { isLoadingCategories = false }
+
+        do {
+            let loadedCategories = try await categoryRepository.getCategories()
+            await MainActor.run {
+                categories = loadedCategories.sorted { $0.sortOrder < $1.sortOrder }
+            }
+        } catch {
+            print("Error loading categories: \(error)")
+        }
+    }
+
+    private func deleteCategory(_ category: Category) {
+        Task {
+            do {
+                try await categoryRepository.deleteCategory(id: category.id)
+                await loadCategories()
+            } catch {
+                print("Error deleting category: \(error)")
+            }
+        }
+    }
+}
+
+// MARK: - Category Management Row
+struct CategoryManagementRow: View {
+    let category: Category
+    let onEdit: () -> Void
+    let onDelete: () -> Void
+    @EnvironmentObject var themeManager: ThemeManager
+    @State private var showDeleteConfirmation = false
+
+    var body: some View {
+        HStack(spacing: 12) {
+            // Icon
+            Image(systemName: category.icon)
+                .font(.system(size: 20))
+                .foregroundColor(.white)
+                .frame(width: 40, height: 40)
+                .background(category.displayColor)
+                .clipShape(Circle())
+
+            // Info
+            VStack(alignment: .leading, spacing: 4) {
+                Text(category.name)
+                    .font(.headline)
+
+                if let description = category.description, !description.isEmpty {
+                    Text(description)
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                        .lineLimit(1)
+                }
+
+                HStack {
+                    Text(category.transactionType.displayName)
+                        .font(.caption2)
+                        .padding(.horizontal, 6)
+                        .padding(.vertical, 2)
+                        .background(category.displayColor.opacity(0.2))
+                        .foregroundColor(category.displayColor)
+                        .cornerRadius(4)
+
+                    if category.isActive {
+                        Text(String(localized: "category.active"))
+                            .font(.caption2)
+                            .padding(.horizontal, 6)
+                            .padding(.vertical, 2)
+                            .background(Color.green.opacity(0.2))
+                            .foregroundColor(.green)
+                            .cornerRadius(4)
+                    }
+                }
+            }
+
+            Spacer()
+
+            // Actions
+            HStack(spacing: 16) {
+                Button(action: onEdit) {
+                    Image(systemName: "pencil")
+                        .foregroundColor(themeManager.isDarkMode ? Color(red: 0.40, green: 0.86, blue: 0.18) : .blue)
+                        .font(.system(size: 16))
+                }
+                .buttonStyle(PlainButtonStyle())
+
+                Button(action: { showDeleteConfirmation = true }) {
+                    Image(systemName: "trash")
+                        .foregroundColor(.red)
+                        .font(.system(size: 16))
+                }
+                .buttonStyle(PlainButtonStyle())
+            }
+        }
+        .padding(.vertical, 4)
+        .confirmationDialog(
+            String(localized: "category.delete.confirmation.title"),
+            isPresented: $showDeleteConfirmation,
+            titleVisibility: .visible
+        ) {
+            Button(String(localized: "common.delete"), role: .destructive) {
+                onDelete()
+            }
+            Button(String(localized: "common.cancel"), role: .cancel) {}
+        } message: {
+            Text(String(localized: "category.delete.confirmation.message"))
         }
     }
 }
@@ -438,5 +779,9 @@ struct SubcategoryRow: View {
 }
 
 #Preview {
-    CategoriesManagementScreen(transactionRepository: MockTransactionRepository())
+    CategoriesManagementScreen(
+        transactionRepository: MockTransactionRepository(),
+        categoryRepository: MockCategoryRepository()
+    )
+    .environmentObject(ThemeManager())
 }

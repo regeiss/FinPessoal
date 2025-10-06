@@ -52,6 +52,7 @@ struct HelpStep: Identifiable, Hashable {
 enum HelpCategory: String, CaseIterable, Identifiable {
   case gettingStarted = "getting_started"
   case transactions = "transactions"
+  case categories = "categories"
   case creditCards = "credit_cards"
   case loans = "loans"
   case budgets = "budgets"
@@ -60,7 +61,7 @@ enum HelpCategory: String, CaseIterable, Identifiable {
   case accounts = "accounts"
   case troubleshooting = "troubleshooting"
   case security = "security"
-  
+
   var id: String { rawValue }
   
   var displayName: String {
@@ -69,6 +70,8 @@ enum HelpCategory: String, CaseIterable, Identifiable {
       return String(localized: "help.category.getting.started")
     case .transactions:
       return String(localized: "help.category.transactions")
+    case .categories:
+      return String(localized: "help.category.categories")
     case .creditCards:
       return String(localized: "help.category.credit.cards")
     case .loans:
@@ -94,6 +97,8 @@ enum HelpCategory: String, CaseIterable, Identifiable {
       return "star.circle"
     case .transactions:
       return "list.bullet.rectangle"
+    case .categories:
+      return "tag.circle"
     case .creditCards:
       return "creditcard"
     case .loans:
@@ -119,6 +124,8 @@ enum HelpCategory: String, CaseIterable, Identifiable {
       return "blue"
     case .transactions:
       return "green"
+    case .categories:
+      return "pink"
     case .creditCards:
       return "indigo"
     case .loans:

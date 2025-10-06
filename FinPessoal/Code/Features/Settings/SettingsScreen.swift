@@ -147,7 +147,7 @@ struct SettingsScreen: View {
           } label: {
             HStack {
               Image(systemName: "dollarsign.circle")
-                .foregroundColor(.blue)
+                .foregroundColor(themeManager.isDarkMode ? Color(red: 0.40, green: 0.86, blue: 0.18) : .blue)
                 .frame(width: 24)
               
               Text(String(localized: "settings.currency"))
@@ -172,7 +172,7 @@ struct SettingsScreen: View {
           } label: {
             HStack {
               Image(systemName: "globe")
-                .foregroundColor(.blue)
+                .foregroundColor(themeManager.isDarkMode ? Color(red: 0.40, green: 0.86, blue: 0.18) : .blue)
                 .frame(width: 24)
               
               Text(String(localized: "settings.language"))
@@ -235,9 +235,11 @@ struct SettingsScreen: View {
       }
       .sheet(isPresented: $showingCurrencySettings) {
         CurrencySettingsView()
+          .environmentObject(themeManager)
       }
       .sheet(isPresented: $showingLanguageSettings) {
         LanguageSettingsView()
+          .environmentObject(themeManager)
       }
       .sheet(isPresented: $showingHelp) {
         HelpScreen()
@@ -250,12 +252,13 @@ struct SettingsRow: View {
   let title: String
   let icon: String
   let action: () -> Void
-  
+  @EnvironmentObject var themeManager: ThemeManager
+
   var body: some View {
     Button(action: action) {
       HStack {
         Image(systemName: icon)
-          .foregroundColor(.blue)
+          .foregroundColor(themeManager.isDarkMode ? Color(red: 0.40, green: 0.86, blue: 0.18) : .blue)
           .frame(width: 24)
         
         Text(title)
@@ -307,8 +310,9 @@ extension CurrencyHelper {
 // MARK: - Currency Settings View
 struct CurrencySettingsView: View {
   @Environment(\.dismiss) private var dismiss
+  @EnvironmentObject var themeManager: ThemeManager
   @State private var selectedCurrency = CurrencyHelper.getCurrentCurrency().code
-  
+
   var body: some View {
     NavigationView {
       List {
@@ -333,7 +337,7 @@ struct CurrencySettingsView: View {
                 
                 if selectedCurrency == currency.code {
                   Image(systemName: "checkmark")
-                    .foregroundColor(.blue)
+                    .foregroundColor(themeManager.isDarkMode ? Color(red: 0.40, green: 0.86, blue: 0.18) : .blue)
                     .font(.headline)
                 }
               }
@@ -365,8 +369,9 @@ struct CurrencySettingsView: View {
 // MARK: - Language Settings View
 struct LanguageSettingsView: View {
   @Environment(\.dismiss) private var dismiss
+  @EnvironmentObject var themeManager: ThemeManager
   @State private var selectedLanguage = UserDefaults.standard.string(forKey: "selectedLanguage") ?? "system"
-  
+
   private let languages = [
     (code: "system", name: String(localized: "language.system", defaultValue: "Automático"), flag: "🌍"),
     (code: "pt-BR", name: String(localized: "language.portuguese", defaultValue: "Português"), flag: "🇧🇷"),
@@ -399,7 +404,7 @@ struct LanguageSettingsView: View {
                 
                 if selectedLanguage == language.code {
                   Image(systemName: "checkmark")
-                    .foregroundColor(.blue)
+                    .foregroundColor(themeManager.isDarkMode ? Color(red: 0.40, green: 0.86, blue: 0.18) : .blue)
                     .font(.headline)
                 }
               }

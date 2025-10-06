@@ -95,7 +95,8 @@ struct MoreScreen: View {
         Section {
           NavigationLink {
             CategoriesManagementScreen(
-              transactionRepository: AppConfiguration.shared.createTransactionRepository()
+              transactionRepository: AppConfiguration.shared.createTransactionRepository(),
+              categoryRepository: AppConfiguration.shared.createCategoryRepository()
             )
           } label: {
             HStack {

@@ -777,5 +777,9 @@ struct CategoriesDetailView: View {
   
   @ViewBuilder
   private var iPadCategoriesContent: some View {
-    CategoriesManagementScreen(transactionRepository: AppConfiguration.shared.createTransactionRepository(), forcePhoneLayout: true)
+    CategoriesManagementScreen(
+      transactionRepository: AppConfiguration.shared.createTransactionRepository(),
+      categoryRepository: AppConfiguration.shared.createCategoryRepository(),
+      forcePhoneLayout: true
+    )
   }

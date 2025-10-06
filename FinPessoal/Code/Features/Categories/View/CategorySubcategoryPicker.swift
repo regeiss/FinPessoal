@@ -10,10 +10,11 @@ import SwiftUI
 struct CategorySubcategoryPicker: View {
     @Binding var selectedCategory: TransactionCategory
     @Binding var selectedSubcategory: TransactionSubcategory?
-    
+    @EnvironmentObject var themeManager: ThemeManager
+
     @State private var showingCategoryPicker = false
     @State private var showingSubcategoryPicker = false
-    
+
     var body: some View {
         VStack(spacing: 12) {
             // Category Selection
@@ -22,7 +23,7 @@ struct CategorySubcategoryPicker: View {
             }) {
                 HStack {
                     Image(systemName: selectedCategory.icon)
-                        .foregroundColor(.blue)
+                        .foregroundColor(themeManager.isDarkMode ? Color(red: 0.40, green: 0.86, blue: 0.18) : .blue)
                         .frame(width: 24)
                     
                     VStack(alignment: .leading, spacing: 2) {
@@ -82,9 +83,11 @@ struct CategorySubcategoryPicker: View {
         }
         .sheet(isPresented: $showingCategoryPicker) {
             CategoryPickerView(selectedCategory: $selectedCategory, selectedSubcategory: $selectedSubcategory)
+                .environmentObject(themeManager)
         }
         .sheet(isPresented: $showingSubcategoryPicker) {
             SubcategoryPickerView(category: selectedCategory, selectedSubcategory: $selectedSubcategory)
+                .environmentObject(themeManager)
         }
     }
 }
@@ -93,7 +96,8 @@ struct CategoryPickerView: View {
     @Binding var selectedCategory: TransactionCategory
     @Binding var selectedSubcategory: TransactionSubcategory?
     @Environment(\.dismiss) private var dismiss
-    
+    @EnvironmentObject var themeManager: ThemeManager
+
     var body: some View {
         NavigationView {
             List {
@@ -106,17 +110,17 @@ struct CategoryPickerView: View {
                     }) {
                         HStack {
                             Image(systemName: category.icon)
-                                .foregroundColor(.blue)
+                                .foregroundColor(themeManager.isDarkMode ? Color(red: 0.40, green: 0.86, blue: 0.18) : .blue)
                                 .frame(width: 24)
-                            
+
                             Text(category.displayName)
                                 .foregroundColor(.primary)
-                            
+
                             Spacer()
-                            
+
                             if selectedCategory == category {
                                 Image(systemName: "checkmark")
-                                    .foregroundColor(.blue)
+                                    .foregroundColor(themeManager.isDarkMode ? Color(red: 0.40, green: 0.86, blue: 0.18) : .blue)
                             }
                         }
                         .padding(.vertical, 4)
@@ -141,7 +145,8 @@ struct SubcategoryPickerView: View {
     let category: TransactionCategory
     @Binding var selectedSubcategory: TransactionSubcategory?
     @Environment(\.dismiss) private var dismiss
-    
+    @EnvironmentObject var themeManager: ThemeManager
+
     var body: some View {
         NavigationView {
             List {
@@ -162,7 +167,7 @@ struct SubcategoryPickerView: View {
                         
                         if selectedSubcategory == nil {
                             Image(systemName: "checkmark")
-                                .foregroundColor(.blue)
+                                .foregroundColor(themeManager.isDarkMode ? Color(red: 0.40, green: 0.86, blue: 0.18) : .blue)
                         }
                     }
                     .padding(.vertical, 4)
@@ -189,7 +194,7 @@ struct SubcategoryPickerView: View {
                             
                             if selectedSubcategory == subcategory {
                                 Image(systemName: "checkmark")
-                                    .foregroundColor(.blue)
+                                    .foregroundColor(themeManager.isDarkMode ? Color(red: 0.40, green: 0.86, blue: 0.18) : .blue)
                             }
                         }
                         .padding(.vertical, 4)
@@ -214,7 +219,7 @@ struct SubcategoryPickerView: View {
     struct PreviewWrapper: View {
         @State private var selectedCategory: TransactionCategory = .food
         @State private var selectedSubcategory: TransactionSubcategory? = .restaurants
-        
+
         var body: some View {
             Form {
                 CategorySubcategoryPicker(
@@ -222,8 +227,9 @@ struct SubcategoryPickerView: View {
                     selectedSubcategory: $selectedSubcategory
                 )
             }
+            .environmentObject(ThemeManager())
         }
     }
-    
+
     return PreviewWrapper()
 }

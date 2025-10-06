@@ -101,7 +101,67 @@ class HelpDataProvider: ObservableObject {
         category: .transactions,
         keywords: ["recorrente", "automática", "repetir", "mensal"]
       ),
-      
+
+      // Categories and Subcategories
+      HelpTopic(
+        id: "manage_categories",
+        title: String(localized: "help.manage.categories.title"),
+        content: String(localized: "help.manage.categories.content"),
+        category: .categories,
+        keywords: ["categoria", "gerenciar", "organizar", "personalizar"],
+        steps: [
+          HelpStep(id: "cat_step1", stepNumber: 1, title: String(localized: "help.manage.categories.step1.title"), description: String(localized: "help.manage.categories.step1.desc")),
+          HelpStep(id: "cat_step2", stepNumber: 2, title: String(localized: "help.manage.categories.step2.title"), description: String(localized: "help.manage.categories.step2.desc")),
+          HelpStep(id: "cat_step3", stepNumber: 3, title: String(localized: "help.manage.categories.step3.title"), description: String(localized: "help.manage.categories.step3.desc"))
+        ],
+        isFrequentlyAsked: true
+      ),
+
+      HelpTopic(
+        id: "add_custom_category",
+        title: String(localized: "help.add.custom.category.title"),
+        content: String(localized: "help.add.custom.category.content"),
+        category: .categories,
+        keywords: ["adicionar", "criar", "nova", "categoria", "personalizada"],
+        steps: [
+          HelpStep(id: "add_cat_step1", stepNumber: 1, title: String(localized: "help.add.custom.category.step1.title"), description: String(localized: "help.add.custom.category.step1.desc")),
+          HelpStep(id: "add_cat_step2", stepNumber: 2, title: String(localized: "help.add.custom.category.step2.title"), description: String(localized: "help.add.custom.category.step2.desc")),
+          HelpStep(id: "add_cat_step3", stepNumber: 3, title: String(localized: "help.add.custom.category.step3.title"), description: String(localized: "help.add.custom.category.step3.desc")),
+          HelpStep(id: "add_cat_step4", stepNumber: 4, title: String(localized: "help.add.custom.category.step4.title"), description: String(localized: "help.add.custom.category.step4.desc"))
+        ],
+        isFrequentlyAsked: true
+      ),
+
+      HelpTopic(
+        id: "manage_subcategories",
+        title: String(localized: "help.manage.subcategories.title"),
+        content: String(localized: "help.manage.subcategories.content"),
+        category: .categories,
+        keywords: ["subcategoria", "gerenciar", "adicionar", "remover"],
+        steps: [
+          HelpStep(id: "subcat_step1", stepNumber: 1, title: String(localized: "help.manage.subcategories.step1.title"), description: String(localized: "help.manage.subcategories.step1.desc")),
+          HelpStep(id: "subcat_step2", stepNumber: 2, title: String(localized: "help.manage.subcategories.step2.title"), description: String(localized: "help.manage.subcategories.step2.desc")),
+          HelpStep(id: "subcat_step3", stepNumber: 3, title: String(localized: "help.manage.subcategories.step3.title"), description: String(localized: "help.manage.subcategories.step3.desc"))
+        ],
+        isFrequentlyAsked: true
+      ),
+
+      HelpTopic(
+        id: "edit_delete_categories",
+        title: String(localized: "help.edit.delete.categories.title"),
+        content: String(localized: "help.edit.delete.categories.content"),
+        category: .categories,
+        keywords: ["editar", "excluir", "deletar", "categoria", "modificar"]
+      ),
+
+      HelpTopic(
+        id: "category_icons_colors",
+        title: String(localized: "help.category.icons.colors.title"),
+        content: String(localized: "help.category.icons.colors.content"),
+        category: .categories,
+        keywords: ["ícone", "cor", "personalizar", "aparência", "visual"]
+      ),
+
       // Credit Cards
       HelpTopic(
         id: "add_credit_card",
