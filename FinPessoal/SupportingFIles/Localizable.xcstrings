@@ -6712,6 +6712,176 @@
         }
       }
     },
+    "help.add.custom.category.content" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create your own custom categories with personalized icons and colors to better organize your finances according to your needs."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Crie suas próprias categorias personalizadas com ícones e cores personalizadas para organizar melhor suas finanças de acordo com suas necessidades."
+          }
+        }
+      }
+    },
+    "help.add.custom.category.step1.desc" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In the Categories tab, tap the + button in the top right corner to create a new category."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Na aba Categorias, toque no botão + no canto superior direito para criar uma nova categoria."
+          }
+        }
+      }
+    },
+    "help.add.custom.category.step1.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap the Add Button"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toque no Botão Adicionar"
+          }
+        }
+      }
+    },
+    "help.add.custom.category.step2.desc" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Provide a name and optional description for your category. Choose the transaction type (Income, Expense, or Transfer)."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Forneça um nome e descrição opcional para sua categoria. Escolha o tipo de transação (Receita, Despesa ou Transferência)."
+          }
+        }
+      }
+    },
+    "help.add.custom.category.step2.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter Basic Information"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Digite as Informações Básicas"
+          }
+        }
+      }
+    },
+    "help.add.custom.category.step3.desc" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select an icon and color for your category. The preview shows how it will appear in the app."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selecione um ícone e cor para sua categoria. A visualização mostra como ela aparecerá no aplicativo."
+          }
+        }
+      }
+    },
+    "help.add.custom.category.step3.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Customize Appearance"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Personalizar Aparência"
+          }
+        }
+      }
+    },
+    "help.add.custom.category.step4.desc" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap Save to create your new category. It will immediately be available for use in transactions."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toque em Salvar para criar sua nova categoria. Ela estará imediatamente disponível para uso em transações."
+          }
+        }
+      }
+    },
+    "help.add.custom.category.step4.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save Category"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salvar Categoria"
+          }
+        }
+      }
+    },
+    "help.add.custom.category.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adding Custom Categories"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adicionar Categorias Personalizadas"
+          }
+        }
+      }
+    },
     "help.add.loan.content" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -6902,516 +7072,6 @@
         }
       }
     },
-    "help.manage.categories.title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Managing Categories"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gerenciar Categorias"
-          }
-        }
-      }
-    },
-    "help.manage.categories.content" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Learn how to organize your transactions using categories. Categories help you track where your money goes and make it easier to analyze your spending patterns."
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aprenda como organizar suas transações usando categorias. As categorias ajudam você a rastrear para onde seu dinheiro vai e facilitam a análise dos seus padrões de gastos."
-          }
-        }
-      }
-    },
-    "help.manage.categories.step1.title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Navigate to Categories"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Navegar para Categorias"
-          }
-        }
-      }
-    },
-    "help.manage.categories.step1.desc" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tap the Categories tab at the bottom of the screen to access the category management area."
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Toque na aba Categorias na parte inferior da tela para acessar a área de gerenciamento de categorias."
-          }
-        }
-      }
-    },
-    "help.manage.categories.step2.title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Switch to Categories Tab"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mudar para Aba Categorias"
-          }
-        }
-      }
-    },
-    "help.manage.categories.step2.desc" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Use the segmented control at the top to switch between Subcategories and Categories views."
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Use o controle segmentado no topo para alternar entre as visualizações de Subcategorias e Categorias."
-          }
-        }
-      }
-    },
-    "help.manage.categories.step3.title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "View and Edit"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Visualizar e Editar"
-          }
-        }
-      }
-    },
-    "help.manage.categories.step3.desc" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Browse your categories organized by transaction type. Tap on any category to edit or manage it."
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Navegue pelas suas categorias organizadas por tipo de transação. Toque em qualquer categoria para editar ou gerenciar."
-          }
-        }
-      }
-    },
-    "help.add.custom.category.title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Adding Custom Categories"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Adicionar Categorias Personalizadas"
-          }
-        }
-      }
-    },
-    "help.add.custom.category.content" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Create your own custom categories with personalized icons and colors to better organize your finances according to your needs."
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Crie suas próprias categorias personalizadas com ícones e cores personalizadas para organizar melhor suas finanças de acordo com suas necessidades."
-          }
-        }
-      }
-    },
-    "help.add.custom.category.step1.title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tap the Add Button"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Toque no Botão Adicionar"
-          }
-        }
-      }
-    },
-    "help.add.custom.category.step1.desc" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "In the Categories tab, tap the + button in the top right corner to create a new category."
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Na aba Categorias, toque no botão + no canto superior direito para criar uma nova categoria."
-          }
-        }
-      }
-    },
-    "help.add.custom.category.step2.title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Enter Basic Information"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Digite as Informações Básicas"
-          }
-        }
-      }
-    },
-    "help.add.custom.category.step2.desc" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Provide a name and optional description for your category. Choose the transaction type (Income, Expense, or Transfer)."
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Forneça um nome e descrição opcional para sua categoria. Escolha o tipo de transação (Receita, Despesa ou Transferência)."
-          }
-        }
-      }
-    },
-    "help.add.custom.category.step3.title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Customize Appearance"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Personalizar Aparência"
-          }
-        }
-      }
-    },
-    "help.add.custom.category.step3.desc" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Select an icon and color for your category. The preview shows how it will appear in the app."
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Selecione um ícone e cor para sua categoria. A visualização mostra como ela aparecerá no aplicativo."
-          }
-        }
-      }
-    },
-    "help.add.custom.category.step4.title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Save Category"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Salvar Categoria"
-          }
-        }
-      }
-    },
-    "help.add.custom.category.step4.desc" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tap Save to create your new category. It will immediately be available for use in transactions."
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Toque em Salvar para criar sua nova categoria. Ela estará imediatamente disponível para uso em transações."
-          }
-        }
-      }
-    },
-    "help.manage.subcategories.title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Managing Subcategories"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gerenciar Subcategorias"
-          }
-        }
-      }
-    },
-    "help.manage.subcategories.content" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Subcategories provide detailed classification within main categories, helping you track specific types of expenses or income more precisely."
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "As subcategorias fornecem classificação detalhada dentro das categorias principais, ajudando você a rastrear tipos específicos de despesas ou receitas com mais precisão."
-          }
-        }
-      }
-    },
-    "help.manage.subcategories.step1.title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Select a Category"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Selecionar uma Categoria"
-          }
-        }
-      }
-    },
-    "help.manage.subcategories.step1.desc" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "In the Subcategories tab, choose the category you want to manage from the horizontal scroll picker."
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Na aba Subcategorias, escolha a categoria que deseja gerenciar no seletor horizontal de rolagem."
-          }
-        }
-      }
-    },
-    "help.manage.subcategories.step2.title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Add Subcategory"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Adicionar Subcategoria"
-          }
-        }
-      }
-    },
-    "help.manage.subcategories.step2.desc" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tap the + button next to 'Subcategories' section header to add a new custom subcategory."
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Toque no botão + ao lado do cabeçalho da seção 'Subcategorias' para adicionar uma nova subcategoria personalizada."
-          }
-        }
-      }
-    },
-    "help.manage.subcategories.step3.title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Delete Unused Subcategories"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Excluir Subcategorias Não Utilizadas"
-          }
-        }
-      }
-    },
-    "help.manage.subcategories.step3.desc" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "You can delete custom subcategories that haven't been used in any transactions. System subcategories cannot be deleted."
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Você pode excluir subcategorias personalizadas que não foram usadas em nenhuma transação. Subcategorias do sistema não podem ser excluídas."
-          }
-        }
-      }
-    },
-    "help.edit.delete.categories.title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Editing and Deleting Categories"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Editar e Excluir Categorias"
-          }
-        }
-      }
-    },
-    "help.edit.delete.categories.content" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Modify your custom categories or remove ones you no longer need. Note that you cannot change the transaction type of an existing category, and categories in use cannot be deleted."
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Modifique suas categorias personalizadas ou remova aquelas que você não precisa mais. Observe que você não pode alterar o tipo de transação de uma categoria existente, e categorias em uso não podem ser excluídas."
-          }
-        }
-      }
-    },
-    "help.category.icons.colors.title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Category Icons and Colors"
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ícones e Cores de Categorias"
-          }
-        }
-      }
-    },
-    "help.category.icons.colors.content" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Each category can have a unique icon and color to make it easy to identify at a glance. Choose from over 40 icons and 13 colors to create a visual system that works for you. Icons and colors can be changed at any time without affecting your transaction history."
-          }
-        },
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cada categoria pode ter um ícone e cor únicos para facilitar a identificação rápida. Escolha entre mais de 40 ícones e 13 cores para criar um sistema visual que funcione para você. Ícones e cores podem ser alterados a qualquer momento sem afetar seu histórico de transações."
-          }
-        }
-      }
-    },
     "help.categories" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -7479,9 +7139,6 @@
         }
       }
     },
-    "help.category.description.%@" : {
-
-    },
     "help.category.description.accounts" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -7521,6 +7178,23 @@
         }
       }
     },
+    "help.category.description.credit_cards" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Manage your credit cards, track purchases, and control your credit limits"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gerencie seus cartões de crédito, acompanhe compras e controle seus limites"
+          }
+        }
+      }
+    },
     "help.category.description.getting_started" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -7539,6 +7213,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Defina e acompanhe suas metas financeiras"
+          }
+        }
+      }
+    },
+    "help.category.description.loans" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Track and manage your loans, installments, and payment schedules"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acompanhe e gerencie seus empréstimos, parcelas e cronogramas de pagamento"
           }
         }
       }
@@ -7615,6 +7306,40 @@
         }
       }
     },
+    "help.category.icons.colors.content" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Each category can have a unique icon and color to make it easy to identify at a glance. Choose from over 40 icons and 13 colors to create a visual system that works for you. Icons and colors can be changed at any time without affecting your transaction history."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cada categoria pode ter um ícone e cor únicos para facilitar a identificação rápida. Escolha entre mais de 40 ícones e 13 cores para criar um sistema visual que funcione para você. Ícones e cores podem ser alterados a qualquer momento sem afetar seu histórico de transações."
+          }
+        }
+      }
+    },
+    "help.category.icons.colors.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Category Icons and Colors"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ícones e Cores de Categorias"
+          }
+        }
+      }
+    },
     "help.category.loans" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -7686,10 +7411,38 @@
 
     },
     "help.contact.support" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contact Support"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contatar Suporte"
+          }
+        }
+      }
     },
     "help.contact.support.content" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Need help? Contact our support team via email at support@finpessoal.com or use the in-app feedback option. We typically respond within 24-48 hours."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Precisa de ajuda? Entre em contato com nossa equipe de suporte por e-mail em support@finpessoal.com ou use a opção de feedback no aplicativo. Normalmente respondemos em 24-48 horas."
+          }
+        }
+      }
     },
     "help.create.budget.content" : {
       "extractionState" : "manual",
@@ -8095,6 +7848,40 @@
         }
       }
     },
+    "help.edit.delete.categories.content" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modify your custom categories or remove ones you no longer need. Note that you cannot change the transaction type of an existing category, and categories in use cannot be deleted."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modifique suas categorias personalizadas ou remova aquelas que você não precisa mais. Observe que você não pode alterar o tipo de transação de uma categoria existente, e categorias em uso não podem ser excluídas."
+          }
+        }
+      }
+    },
+    "help.edit.delete.categories.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Editing and Deleting Categories"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Editar e Excluir Categorias"
+          }
+        }
+      }
+    },
     "help.edit.transaction.content" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -8468,11 +8255,283 @@
     "help.loan.types.title" : {
 
     },
+    "help.manage.categories.content" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Learn how to organize your transactions using categories. Categories help you track where your money goes and make it easier to analyze your spending patterns."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aprenda como organizar suas transações usando categorias. As categorias ajudam você a rastrear para onde seu dinheiro vai e facilitam a análise dos seus padrões de gastos."
+          }
+        }
+      }
+    },
+    "help.manage.categories.step1.desc" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap the Categories tab at the bottom of the screen to access the category management area."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toque na aba Categorias na parte inferior da tela para acessar a área de gerenciamento de categorias."
+          }
+        }
+      }
+    },
+    "help.manage.categories.step1.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Navigate to Categories"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Navegar para Categorias"
+          }
+        }
+      }
+    },
+    "help.manage.categories.step2.desc" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use the segmented control at the top to switch between Subcategories and Categories views."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use o controle segmentado no topo para alternar entre as visualizações de Subcategorias e Categorias."
+          }
+        }
+      }
+    },
+    "help.manage.categories.step2.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Switch to Categories Tab"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mudar para Aba Categorias"
+          }
+        }
+      }
+    },
+    "help.manage.categories.step3.desc" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Browse your categories organized by transaction type. Tap on any category to edit or manage it."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Navegue pelas suas categorias organizadas por tipo de transação. Toque em qualquer categoria para editar ou gerenciar."
+          }
+        }
+      }
+    },
+    "help.manage.categories.step3.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "View and Edit"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Visualizar e Editar"
+          }
+        }
+      }
+    },
+    "help.manage.categories.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Managing Categories"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gerenciar Categorias"
+          }
+        }
+      }
+    },
     "help.manage.profile.content" : {
 
     },
     "help.manage.profile.title" : {
 
+    },
+    "help.manage.subcategories.content" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Subcategories provide detailed classification within main categories, helping you track specific types of expenses or income more precisely."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "As subcategorias fornecem classificação detalhada dentro das categorias principais, ajudando você a rastrear tipos específicos de despesas ou receitas com mais precisão."
+          }
+        }
+      }
+    },
+    "help.manage.subcategories.step1.desc" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In the Subcategories tab, choose the category you want to manage from the horizontal scroll picker."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Na aba Subcategorias, escolha a categoria que deseja gerenciar no seletor horizontal de rolagem."
+          }
+        }
+      }
+    },
+    "help.manage.subcategories.step1.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select a Category"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selecionar uma Categoria"
+          }
+        }
+      }
+    },
+    "help.manage.subcategories.step2.desc" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap the + button next to 'Subcategories' section header to add a new custom subcategory."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toque no botão + ao lado do cabeçalho da seção 'Subcategorias' para adicionar uma nova subcategoria personalizada."
+          }
+        }
+      }
+    },
+    "help.manage.subcategories.step2.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add Subcategory"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adicionar Subcategoria"
+          }
+        }
+      }
+    },
+    "help.manage.subcategories.step3.desc" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You can delete custom subcategories that haven't been used in any transactions. System subcategories cannot be deleted."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Você pode excluir subcategorias personalizadas que não foram usadas em nenhuma transação. Subcategorias do sistema não podem ser excluídas."
+          }
+        }
+      }
+    },
+    "help.manage.subcategories.step3.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete Unused Subcategories"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Excluir Subcategorias Não Utilizadas"
+          }
+        }
+      }
+    },
+    "help.manage.subcategories.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Managing Subcategories"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gerenciar Subcategorias"
+          }
+        }
+      }
     },
     "help.question.available" : {
       "extractionState" : "manual",

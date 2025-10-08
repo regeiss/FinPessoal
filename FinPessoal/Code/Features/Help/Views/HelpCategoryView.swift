@@ -60,23 +60,28 @@ struct HelpCategoryView: View {
 
 struct HelpCategoryHeaderView: View {
   let category: HelpCategory
-  
+
   var topicCount: Int {
     HelpDataProvider.shared.getTopicsByCategory(category).count
   }
-  
+
+  var categoryDescription: String {
+    let key = "help.category.description.\(category.rawValue)"
+    return String(localized: String.LocalizationValue(key))
+  }
+
   var body: some View {
     VStack(spacing: 12) {
       Image(systemName: category.icon)
         .font(.largeTitle)
         .foregroundColor(colorForCategory(category.color))
-      
+
       Text(category.displayName)
         .font(.title2)
         .fontWeight(.bold)
         .foregroundColor(.primary)
-      
-      Text(String(localized: "help.category.description.\(category.rawValue)"))
+
+      Text(categoryDescription)
         .font(.subheadline)
         .foregroundColor(.secondary)
         .multilineTextAlignment(.center)

@@ -73,7 +73,7 @@ class FirebaseSubcategoryRepository: SubcategoryRepositoryProtocol {
       updatedAt: Date()
     )
 
-    try await db.collection(subcategoriesCollection)
+    try db.collection(subcategoriesCollection)
       .document(updatedSubcategory.id)
       .setData(from: updatedSubcategory)
 
@@ -95,7 +95,7 @@ class FirebaseSubcategoryRepository: SubcategoryRepositoryProtocol {
       updatedAt: Date()
     )
 
-    try await db.collection(subcategoriesCollection)
+    try db.collection(subcategoriesCollection)
       .document(updatedSubcategory.id)
       .setData(from: updatedSubcategory, merge: true)
 
@@ -172,3 +172,4 @@ enum SubcategoryError: LocalizedError {
     }
   }
 }
+

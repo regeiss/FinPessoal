@@ -44,7 +44,7 @@ struct DashboardScreen: View {
           Button {
             showingSettings = true
           } label: {
-            Image(systemName: "gear")
+            Image(systemName: "gearshape")
           }
         }
       }
