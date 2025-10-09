@@ -6537,10 +6537,38 @@
       }
     },
     "help.account.security.content" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Learn how to protect your account with strong passwords, two-factor authentication, and other security features to keep your financial data safe."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aprenda como proteger sua conta com senhas fortes, autenticação de dois fatores e outros recursos de segurança para manter seus dados financeiros seguros."
+          }
+        }
+      }
     },
     "help.account.security.title" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Account Security"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Segurança da Conta"
+          }
+        }
+      }
     },
     "help.add.credit.card.content" : {
       "extractionState" : "manual",
@@ -6900,28 +6928,140 @@
       }
     },
     "help.add.loan.step1.desc" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Navigate to the Loans section from the main menu to access your loan management area."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Navegue até a seção Empréstimos no menu principal para acessar sua área de gerenciamento de empréstimos."
+          }
+        }
+      }
     },
     "help.add.loan.step1.title" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open Loans Section"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abrir Seção de Empréstimos"
+          }
+        }
+      }
     },
     "help.add.loan.step2.desc" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap the + button in the top right corner to start creating a new loan entry."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toque no botão + no canto superior direito para começar a criar uma nova entrada de empréstimo."
+          }
+        }
+      }
     },
     "help.add.loan.step2.title" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap Add Loan"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Toque em Adicionar Empréstimo"
+          }
+        }
+      }
     },
     "help.add.loan.step3.desc" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter the loan amount, interest rate, term length, start date, and optional description."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Digite o valor do empréstimo, taxa de juros, prazo, data de início e descrição opcional."
+          }
+        }
+      }
     },
     "help.add.loan.step3.title" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter Loan Details"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Digite os Detalhes do Empréstimo"
+          }
+        }
+      }
     },
     "help.add.loan.step4.desc" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Review your loan information and tap Save. The app will automatically calculate your payment schedule."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Revise as informações do empréstimo e toque em Salvar. O aplicativo calculará automaticamente seu cronograma de pagamento."
+          }
+        }
+      }
     },
     "help.add.loan.step4.title" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save Loan"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Salvar Empréstimo"
+          }
+        }
+      }
     },
     "help.add.loan.title" : {
       "extractionState" : "manual",
@@ -7807,7 +7947,21 @@
       }
     },
     "help.data.missing.content" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "If your data is missing or not appearing, first check if sync is enabled and working properly. Try refreshing the view by pulling down. Check if you're viewing the correct date range or filters. If data is still missing, contact support."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se seus dados estão faltando ou não aparecem, primeiro verifique se a sincronização está ativada e funcionando corretamente. Tente atualizar a visualização puxando para baixo. Verifique se está visualizando o intervalo de datas ou filtros corretos. Se os dados ainda estiverem faltando, entre em contato com o suporte."
+          }
+        }
+      }
     },
     "help.data.missing.title" : {
       "extractionState" : "manual",
@@ -7821,10 +7975,38 @@
       }
     },
     "help.data.privacy.content" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Understand how we collect, use, and protect your personal and financial data. Your privacy is our priority, and all data is encrypted and stored securely."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Entenda como coletamos, usamos e protegemos seus dados pessoais e financeiros. Sua privacidade é nossa prioridade, e todos os dados são criptografados e armazenados com segurança."
+          }
+        }
+      }
     },
     "help.data.privacy.title" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data Privacy"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Privacidade de Dados"
+          }
+        }
+      }
     },
     "help.delete.transaction.content" : {
       "extractionState" : "manual",
@@ -8250,10 +8432,38 @@
       }
     },
     "help.loan.types.content" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Understand different types of loans available in the app: personal loans, auto loans, mortgages, and more. Each type has specific features to help you track payments and interest."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Entenda os diferentes tipos de empréstimos disponíveis no aplicativo: empréstimos pessoais, financiamento de veículos, hipotecas e mais. Cada tipo tem recursos específicos para ajudá-lo a rastrear pagamentos e juros."
+          }
+        }
+      }
     },
     "help.loan.types.title" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loan Types"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tipos de Empréstimo"
+          }
+        }
+      }
     },
     "help.manage.categories.content" : {
       "extractionState" : "manual",
@@ -8392,10 +8602,38 @@
       }
     },
     "help.manage.profile.content" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Update your personal information, profile picture, and account preferences. Keep your profile up to date to personalize your experience."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Atualize suas informações pessoais, foto de perfil e preferências da conta. Mantenha seu perfil atualizado para personalizar sua experiência."
+          }
+        }
+      }
     },
     "help.manage.profile.title" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Managing Your Profile"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gerenciar Seu Perfil"
+          }
+        }
+      }
     },
     "help.manage.subcategories.content" : {
       "extractionState" : "manual",
@@ -8747,13 +8985,55 @@
       }
     },
     "help.sync.data.content" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keep your financial data synchronized across all your devices using cloud backup. Your data is automatically synced and encrypted for security."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mantenha seus dados financeiros sincronizados em todos os seus dispositivos usando backup na nuvem. Seus dados são sincronizados automaticamente e criptografados para segurança."
+          }
+        }
+      }
     },
     "help.sync.data.title" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Syncing Your Data"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sincronizar Seus Dados"
+          }
+        }
+      }
     },
     "help.sync.issues.content" : {
-
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Troubleshoot common synchronization problems. Check your internet connection, ensure you're logged in, and verify that sync is enabled in settings. If issues persist, try logging out and back in."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Solucione problemas comuns de sincronização. Verifique sua conexão com a internet, certifique-se de que está conectado e verifique se a sincronização está ativada nas configurações. Se os problemas persistirem, tente fazer logout e login novamente."
+          }
+        }
+      }
     },
     "help.sync.issues.title" : {
       "extractionState" : "manual",
