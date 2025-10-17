@@ -123,34 +123,74 @@ class ThemeManager: ObservableObject {
             if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
                 for window in windowScene.windows {
                     window.overrideUserInterfaceStyle = self.isDarkMode ? .dark : .light
+
+                    // Apply color palette to window
+                    if !self.isDarkMode {
+                        window.tintColor = UIColor(red: 0.584, green: 0.463, blue: 0.322, alpha: 1.0) // Leather
+                    }
                 }
             }
-            
+
+            // Configure global text color appearances for light mode
+            if !self.isDarkMode {
+                // Set global label color
+                UILabel.appearance().textColor = UIColor(red: 0.125, green: 0.149, blue: 0.176, alpha: 1.0) // Shark
+
+                // Set global text field colors
+                UITextField.appearance().textColor = UIColor(red: 0.125, green: 0.149, blue: 0.176, alpha: 1.0) // Shark
+
+                // Set global text view colors
+                UITextView.appearance().textColor = UIColor(red: 0.125, green: 0.149, blue: 0.176, alpha: 1.0) // Shark
+
+                // Set global tint color (affects buttons, switches, etc.)
+                UIView.appearance(whenContainedInInstancesOf: [UIWindow.self]).tintColor = UIColor(red: 0.584, green: 0.463, blue: 0.322, alpha: 1.0) // Leather
+
+                // Set table view background
+                UITableView.appearance().backgroundColor = UIColor.white
+
+                // Set collection view background
+                UICollectionView.appearance().backgroundColor = UIColor.white
+            } else {
+                // Reset to default dark mode colors
+                UILabel.appearance().textColor = UIColor.label
+                UITextField.appearance().textColor = UIColor.label
+                UITextView.appearance().textColor = UIColor.label
+            }
+
             let appearance = UINavigationBarAppearance()
             let tabBarAppearance = UITabBarAppearance()
-            
+
             if self.isDarkMode {
                 appearance.configureWithOpaqueBackground()
                 appearance.backgroundColor = UIColor(red: 0.12, green: 0.12, blue: 0.12, alpha: 1.0)
                 appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
                 appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-                
+
                 tabBarAppearance.configureWithOpaqueBackground()
                 tabBarAppearance.backgroundColor = UIColor(red: 0.12, green: 0.12, blue: 0.12, alpha: 1.0)
                 tabBarAppearance.selectionIndicatorTintColor = UIColor(red: 0.40, green: 0.86, blue: 0.18, alpha: 1.0)
             } else {
-                appearance.configureWithDefaultBackground()
-                tabBarAppearance.configureWithDefaultBackground()
+                // Light mode with custom color palette
+                appearance.configureWithOpaqueBackground()
+                appearance.backgroundColor = UIColor.white
+                appearance.titleTextAttributes = [.foregroundColor: UIColor(red: 0.125, green: 0.149, blue: 0.176, alpha: 1.0)] // Shark
+                appearance.largeTitleTextAttributes = [.foregroundColor: UIColor(red: 0.125, green: 0.149, blue: 0.176, alpha: 1.0)] // Shark
+
+                tabBarAppearance.configureWithOpaqueBackground()
+                tabBarAppearance.backgroundColor = UIColor.white
+                tabBarAppearance.selectionIndicatorTintColor = UIColor(red: 0.584, green: 0.463, blue: 0.322, alpha: 1.0) // Leather
             }
-            
+
             UINavigationBar.appearance().standardAppearance = appearance
             UINavigationBar.appearance().compactAppearance = appearance
             UINavigationBar.appearance().scrollEdgeAppearance = appearance
-            
+            UINavigationBar.appearance().tintColor = self.isDarkMode ? .white : UIColor(red: 0.584, green: 0.463, blue: 0.322, alpha: 1.0) // Leather for buttons
+
             UITabBar.appearance().standardAppearance = tabBarAppearance
             if #available(iOS 15.0, *) {
                 UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
             }
+            UITabBar.appearance().tintColor = self.isDarkMode ? UIColor(red: 0.40, green: 0.86, blue: 0.18, alpha: 1.0) : UIColor(red: 0.584, green: 0.463, blue: 0.322, alpha: 1.0)
         }
     }
 }

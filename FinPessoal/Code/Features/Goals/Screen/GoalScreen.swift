@@ -44,9 +44,15 @@ struct GoalScreen: View {
           )
         } else {
           ScrollView {
-            LazyVStack(spacing: 16) {
+            LazyVStack(spacing: 0) {
               if !activeGoals.isEmpty {
-                Section {
+                VStack(alignment: .leading, spacing: 12) {
+                  Text(String(localized: "goals.active"))
+                    .font(.headline)
+                    .foregroundColor(.primary)
+                    .padding(.horizontal, 20)
+                    .padding(.top, 20)
+
                   if selectedViewMode == .cards {
                     LazyVGrid(columns: [
                       GridItem(.flexible(minimum: 160)),
@@ -56,6 +62,8 @@ struct GoalScreen: View {
                         GoalCard(goal: goal)
                       }
                     }
+                    .padding(.horizontal, 20)
+                    .padding(.bottom, 20)
                   } else {
                     LazyVStack(spacing: 8) {
                       ForEach(activeGoals) { goal in
@@ -65,20 +73,20 @@ struct GoalScreen: View {
                           .shadow(color: .black.opacity(0.05), radius: 1, x: 0, y: 1)
                       }
                     }
+                    .padding(.horizontal, 20)
+                    .padding(.bottom, 20)
                   }
-                } header: {
-                  HStack {
-                    Text(String(localized: "goals.active"))
-                      .font(.headline)
-                      .foregroundColor(.primary)
-                    Spacer()
-                  }
-                  .padding(.horizontal)
                 }
               }
-              
+
               if !completedGoals.isEmpty {
-                Section {
+                VStack(alignment: .leading, spacing: 12) {
+                  Text(String(localized: "goals.completed"))
+                    .font(.headline)
+                    .foregroundColor(.primary)
+                    .padding(.horizontal, 20)
+                    .padding(.top, 20)
+
                   LazyVStack(spacing: 8) {
                     ForEach(completedGoals) { goal in
                       GoalRowView(goal: goal)
@@ -88,20 +96,13 @@ struct GoalScreen: View {
                         .opacity(0.7)
                     }
                   }
-                } header: {
-                  HStack {
-                    Text(String(localized: "goals.completed"))
-                      .font(.headline)
-                      .foregroundColor(.primary)
-                    Spacer()
-                  }
-                  .padding(.horizontal)
-                  .padding(.top)
+                  .padding(.horizontal, 20)
+                  .padding(.bottom, 20)
                 }
               }
             }
-            .padding()
           }
+          .background(Color(.systemBackground))
         }
       }
       .navigationTitle(String(localized: "goals.title"))

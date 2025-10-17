@@ -23,21 +23,22 @@ struct DashboardScreen: View {
             monthlyExpenses: viewModel.monthlyExpenses
           )
           .redacted(reason: viewModel.isLoading ? .placeholder : [])
-          
+
           // Budget Alerts (only show if there are alerts)
           if !viewModel.budgetAlerts.isEmpty {
             BudgetAlertsView(budgets: viewModel.budgetAlerts)
           }
-          
+
           // Recent Transactions
           RecentTransactionScreen(transactions: viewModel.recentTransactions)
             .redacted(reason: viewModel.isLoading ? .placeholder : [])
-          
+
           // Quick Actions
           QuickActionsView()
         }
         .padding()
       }
+      .background(Color(.systemBackground))
       .navigationTitle(String(localized: "dashboard.title", defaultValue: "Painel"))
       .toolbar {
         ToolbarItem(placement: .navigationBarTrailing) {

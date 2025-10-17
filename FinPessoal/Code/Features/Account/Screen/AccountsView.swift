@@ -60,7 +60,7 @@ struct AccountsView: View {
           accountViewModel.loadAccounts()
         }
       }
-      .onChange(of: authViewModel.isAuthenticated) { isAuthenticated in
+      .onChange(of: authViewModel.isAuthenticated) { _, isAuthenticated in
         if isAuthenticated {
           accountViewModel.loadAccounts()
         } else {
@@ -256,3 +256,4 @@ struct SummaryCard: View {
 }
 
 // MARK: - Placeholder Views
+

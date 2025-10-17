@@ -3,16 +3,24 @@
 //  FinPessoal
 //
 //  Created by Roberto Edgar Geiss on 18/08/25.
+//  Modified by Roberto Edgar Geiss on 14/10/25.
 //
 
 import SwiftUI
+import Firebase
 
 struct iPadMainView: View {
   @EnvironmentObject var navigationState: NavigationState
   @EnvironmentObject var financeViewModel: FinanceViewModel
   @EnvironmentObject var authViewModel: AuthViewModel
+  @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+  @Environment(\.verticalSizeClass) private var verticalSizeClass
   @State private var columnVisibility: NavigationSplitViewVisibility = .all
-  
+
+  private var isLandscape: Bool {
+    horizontalSizeClass == .regular && verticalSizeClass == .compact
+  }
+
   var body: some View {
     NavigationSplitView(columnVisibility: $columnVisibility) {
       // Column 1: Sidebar Navigation
@@ -21,36 +29,31 @@ struct iPadMainView: View {
     } content: {
       // Column 2: Content Lists
       iPadContentView()
-        .navigationSplitViewColumnWidth(
-          min: navigationState.selectedSidebarItem == .categories ? 400 : 300,
-          ideal: navigationState.selectedSidebarItem == .categories ? 600 : 350,
-          max: navigationState.selectedSidebarItem == .categories ? .infinity : 400
-        )
+        .navigationSplitViewColumnWidth(ideal: 600, max: 700)
     } detail: {
-      // Column 3: Detail Views
+      // Column 3: Detail Views - Expands to fill all remaining space
       DetailView()
-        .navigationSplitViewColumnWidth(min: 400, ideal: 600, max: .infinity)
+        .navigationSplitViewColumnWidth(min: 400, ideal: 700, max: .infinity)
     }
-    .navigationSplitViewStyle(.automatic)
+    .navigationSplitViewStyle(.prominentDetail)
     .onChange(of: navigationState.selectedSidebarItem) { _, newItem in
-      // Hide detail column for categories to create two-column layout
-      if newItem == .categories {
-        columnVisibility = .doubleColumn
-      } else {
-        columnVisibility = .all
-      }
+      updateColumnVisibility(for: newItem)
+    }
+    .onChange(of: isLandscape) { _, _ in
+      updateColumnVisibility(for: navigationState.selectedSidebarItem)
     }
     .onAppear {
-      // Set initial column visibility based on current selection
-      if navigationState.selectedSidebarItem == .categories {
-        columnVisibility = .doubleColumn
-      } else {
-        columnVisibility = .all
-      }
+      // Set initial column visibility based on current selection and orientation
+      updateColumnVisibility(for: navigationState.selectedSidebarItem)
     }
     .task {
       await financeViewModel.loadData()
     }
+  }
+
+  private func updateColumnVisibility(for item: SidebarItem?) {
+    // Always show all columns (sidebar always visible)
+    columnVisibility = .all
   }
 }
 
@@ -85,7 +88,11 @@ struct iPadContentView: View {
         case .goals:
           GoalScreen()
         case .categories:
-          iPadCategoriesContent
+          CategoriesManagementScreen(
+            transactionRepository: AppConfiguration.shared.createTransactionRepository(),
+            categoryRepository: AppConfiguration.shared.createCategoryRepository(),
+            forcePhoneLayout: true
+          )
         case .settings:
           SettingsScreen()
         case .none:
@@ -101,11 +108,10 @@ struct iPadContentView: View {
 // Column 3: Detail Views
 struct DetailView: View {
     @EnvironmentObject var navigationState: NavigationState
-    
+
     var body: some View {
       NavigationStack {
         Group {
-          // Show detail screens if any are selected
           if navigationState.isShowingAddTransaction {
             iPadAddTransactionView()
           } else if navigationState.isShowingAddAccount {
@@ -295,59 +301,27 @@ struct DetailView: View {
     }
   }
   
-  struct SettingsDetailView: View {
-    var body: some View {
-      VStack(spacing: 24) {
-        Image(systemName: "gear")
-          .font(.system(size: 64))
-          .foregroundColor(.gray)
-        
-        Text("Settings")
-          .font(.title2)
-          .fontWeight(.semibold)
-        
-        Text("Configure your app preferences and account settings.")
-          .multilineTextAlignment(.center)
-          .foregroundColor(.secondary)
-          .padding(.horizontal, 32)
-      }
-      .frame(maxWidth: .infinity, maxHeight: .infinity)
-      .padding(.vertical, 40)
+struct SettingsDetailView: View {
+  var body: some View {
+    VStack(spacing: 24) {
+      Image(systemName: "gear")
+        .font(.system(size: 64))
+        .foregroundColor(.gray)
+      
+      Text("Settings")
+        .font(.title2)
+        .fontWeight(.semibold)
+      
+      Text("Configure your app preferences and account settings.")
+        .multilineTextAlignment(.center)
+        .foregroundColor(.secondary)
+        .padding(.horizontal, 32)
     }
+    .frame(maxWidth: .infinity, maxHeight: .infinity)
+    .padding(.vertical, 40)
   }
-  
-//  struct StatCard: View {
-//    let title: String
-//    let value: String
-//    let color: Color
-//    
-//    var body: some View {
-//      VStack(spacing: 8) {
-//        Text(value)
-//          .font(.title2)
-//          .fontWeight(.bold)
-//          .foregroundColor(color)
-//        
-//        Text(title)
-//          .font(.caption)
-//          .foregroundColor(.secondary)
-//      }
-//      .frame(maxWidth: .infinity)
-//      .padding()
-//      .background(Color(.systemGray6))
-//      .cornerRadius(12)
-//    }
-//  }
-  
-  // Legacy empty detail view - kept for compatibility
-  struct EmptyDetailView: View {
-    @EnvironmentObject var navigationState: NavigationState
-    
-    var body: some View {
-      DefaultDetailView()
-    }
-  }
-  
+}
+   
   // iPad-specific wrapper views that coordinate with NavigationState
   struct iPadTransactionsView: View {
     @EnvironmentObject var navigationState: NavigationState
@@ -776,6 +750,85 @@ struct CategoriesDetailView: View {
   }
   
   @ViewBuilder
+  private var iPadDashboardContent: some View {
+    iPadDashboardView()
+      .frame(maxWidth: .infinity, maxHeight: .infinity)
+  }
+
+  struct iPadDashboardView: View {
+    @StateObject private var viewModel = DashboardViewModel()
+    @State private var showingSettings = false
+
+    var body: some View {
+      ScrollView {
+        LazyVStack(spacing: 20) {
+          // Balance Card
+          BalanceCardView(
+            totalBalance: viewModel.totalBalance,
+            monthlyExpenses: viewModel.monthlyExpenses
+          )
+          .redacted(reason: viewModel.isLoading ? .placeholder : [])
+
+          // Budget Alerts (only show if there are alerts)
+          if !viewModel.budgetAlerts.isEmpty {
+            BudgetAlertsView(budgets: viewModel.budgetAlerts)
+          }
+
+          // Recent Transactions
+          RecentTransactionScreen(transactions: viewModel.recentTransactions)
+            .redacted(reason: viewModel.isLoading ? .placeholder : [])
+
+          // Quick Actions
+          QuickActionsView()
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(20)
+      }
+      .frame(maxWidth: .infinity, maxHeight: .infinity)
+      .background(Color(.systemBackground))
+      .refreshable {
+        await MainActor.run {
+          viewModel.loadDashboardData()
+        }
+      }
+      .overlay {
+        if viewModel.isLoading && viewModel.recentTransactions.isEmpty {
+          ProgressView(String(localized: "dashboard.loading", defaultValue: "Carregando..."))
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color(.systemBackground))
+        }
+      }
+      .alert("Erro", isPresented: .constant(viewModel.error != nil)) {
+        Button("OK") {
+          viewModel.error = nil
+        }
+        Button(String(localized: "common.try.again", defaultValue: "Tentar Novamente")) {
+          viewModel.error = nil
+          viewModel.loadDashboardData()
+        }
+      } message: {
+        if let error = viewModel.error {
+          Text(error.localizedDescription)
+        }
+      }
+      .onAppear {
+        viewModel.loadDashboardData()
+
+        // Only log analytics if not using mock data
+        if !AppConfiguration.shared.useMockData {
+          Analytics.logEvent("dashboard_viewed", parameters: nil)
+        }
+      }
+    }
+  }
+
+  @ViewBuilder
+  private var iPadGoalsContent: some View {
+    GoalScreen()
+      .frame(maxWidth: .infinity, maxHeight: .infinity)
+  }
+
+  @ViewBuilder
   private var iPadCategoriesContent: some View {
     CategoriesManagementScreen(
       transactionRepository: AppConfiguration.shared.createTransactionRepository(),
@@ -783,3 +836,16 @@ struct CategoriesDetailView: View {
       forcePhoneLayout: true
     )
   }
+
+#Preview("iPad Main View") {
+  iPadMainView()
+    .environmentObject(NavigationState())
+    .environmentObject(FinanceViewModel(
+      financeRepository: AppConfiguration.shared.createFinanceRepository()
+    ))
+    .environmentObject(AuthViewModel(
+      authRepository: AppConfiguration.shared.createAuthRepository()
+    ))
+    .environmentObject(AccountViewModel(repository: AppConfiguration.shared.createAccountRepository()))
+    .environmentObject(ThemeManager())
+}
