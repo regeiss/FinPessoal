@@ -4,9 +4,6 @@
     "" : {
 
     },
-    "-" : {
-
-    },
     "/ %@" : {
 
     },
@@ -74,9 +71,6 @@
 
     },
     "•••• •••• •••• %@" : {
-
-    },
-    "+" : {
 
     },
     "account.add.title" : {
@@ -813,9 +807,6 @@
           }
         }
       }
-    },
-    "Bem-vindo de volta" : {
-
     },
     "budget.add.title" : {
       "extractionState" : "manual",
@@ -5573,9 +5564,6 @@
       }
     },
     "de" : {
-
-    },
-    "Despesas" : {
 
     },
     "detail.empty.select.message" : {
@@ -12050,9 +12038,6 @@
     "OK" : {
 
     },
-    "Olá, Roberto" : {
-
-    },
     "onboarding.accounts.description" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -12717,9 +12702,6 @@
 
     },
     "Real (BRL)" : {
-
-    },
-    "Receitas" : {
 
     },
     "Reports" : {
@@ -13524,9 +13506,6 @@
         }
       }
     },
-    "Saldo Total" : {
-
-    },
     "Selecione uma categoria para gerenciar suas subcategorias" : {
 
     },
@@ -13555,17 +13534,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Conta"
-          }
-        }
-      }
-    },
-    "settings.appearance.section" : {
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Aparência"
           }
         }
       }
@@ -13707,17 +13675,6 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "A mudança de moeda será aplicada imediatamente em todo o aplicativo."
-          }
-        }
-      }
-    },
-    "settings.dark.mode" : {
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Modo Escuro"
           }
         }
       }
@@ -14596,83 +14553,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Histórico de transações"
-          }
-        }
-      }
-    },
-    "theme.choose.description" : {
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "O tema automático segue a configuração do sistema do seu dispositivo"
-          }
-        }
-      }
-    },
-    "theme.choose.title" : {
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Escolha o tema do app"
-          }
-        }
-      }
-    },
-    "theme.dark" : {
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Escuro"
-          }
-        }
-      }
-    },
-    "theme.light" : {
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Claro"
-          }
-        }
-      }
-    },
-    "theme.system" : {
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Automático"
-          }
-        }
-      }
-    },
-    "theme.tip.description" : {
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "O tema escuro pode ajudar a economizar bateria em dispositivos com tela OLED e proporciona melhor experiência em ambientes com pouca luz."
-          }
-        }
-      }
-    },
-    "theme.tip.title" : {
-      "extractionState" : "extracted_with_value",
-      "localizations" : {
-        "pt-BR" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Dica"
           }
         }
       }
@@ -16661,9 +16541,6 @@
           }
         }
       }
-    },
-    "Ver Todas" : {
-
     },
     "View Mode" : {
 

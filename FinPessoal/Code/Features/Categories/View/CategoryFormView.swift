@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct CategoryFormView: View {
-    @EnvironmentObject var themeManager: ThemeManager
     @Environment(\.dismiss) var dismiss
 
     let categoryRepository: CategoryRepositoryProtocol
@@ -173,7 +172,6 @@ struct CategoryFormView: View {
             }
             .navigationTitle(isEditing ? String(localized: "category.edit") : String(localized: "category.add"))
             .navigationBarTitleDisplayMode(.inline)
-            .preferredColorScheme(themeManager.colorScheme)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button(String(localized: "common.cancel")) {
@@ -278,7 +276,6 @@ struct CategoryFormView: View {
 struct IconPickerView: View {
     @Environment(\.dismiss) var dismiss
     @Binding var selectedIcon: String
-    @EnvironmentObject var themeManager: ThemeManager
 
     private let icons = [
         "fork.knife", "car", "house", "cross", "gamecontroller", "bag",
@@ -307,9 +304,9 @@ struct IconPickerView: View {
                             VStack {
                                 Image(systemName: icon)
                                     .font(.system(size: 28))
-                                    .foregroundColor(selectedIcon == icon ? .white : (themeManager.isDarkMode ? Color(red: 0.40, green: 0.86, blue: 0.18) : .blue))
+                                    .foregroundColor(selectedIcon == icon ? .white : (.blue))
                                     .frame(width: 60, height: 60)
-                                    .background(selectedIcon == icon ? (themeManager.isDarkMode ? Color(red: 0.40, green: 0.86, blue: 0.18) : .blue) : Color(.systemGray6))
+                                    .background(selectedIcon == icon ? (.blue) : Color(.systemGray6))
                                     .clipShape(Circle())
                             }
                         }
@@ -320,7 +317,6 @@ struct IconPickerView: View {
             }
             .navigationTitle(String(localized: "category.select.icon"))
             .navigationBarTitleDisplayMode(.inline)
-            .preferredColorScheme(themeManager.colorScheme)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button(String(localized: "common.cancel")) {
@@ -336,7 +332,6 @@ struct IconPickerView: View {
 struct ColorPickerView: View {
     @Environment(\.dismiss) var dismiss
     @Binding var selectedColor: String
-    @EnvironmentObject var themeManager: ThemeManager
 
     private let colors: [(name: String, color: Color)] = [
         ("red", .red), ("blue", .blue), ("green", .green), ("orange", .orange),
@@ -364,12 +359,12 @@ struct ColorPickerView: View {
                                     .frame(width: 60, height: 60)
                                     .overlay(
                                         Circle()
-                                            .stroke(selectedColor == colorItem.name ? (themeManager.isDarkMode ? Color(red: 0.40, green: 0.86, blue: 0.18) : .blue) : Color.clear, lineWidth: 3)
+                                            .stroke(selectedColor == colorItem.name ? (.blue) : Color.clear, lineWidth: 3)
                                     )
 
                                 if selectedColor == colorItem.name {
                                     Image(systemName: "checkmark")
-                                        .foregroundColor(themeManager.isDarkMode ? Color(red: 0.40, green: 0.86, blue: 0.18) : .blue)
+                                        .foregroundColor(.blue)
                                         .font(.caption)
                                 }
                             }
@@ -381,7 +376,6 @@ struct ColorPickerView: View {
             }
             .navigationTitle(String(localized: "category.select.color"))
             .navigationBarTitleDisplayMode(.inline)
-            .preferredColorScheme(themeManager.colorScheme)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button(String(localized: "common.cancel")) {
@@ -399,5 +393,4 @@ struct ColorPickerView: View {
         userId: "preview-user",
         onSave: {}
     )
-    .environmentObject(ThemeManager())
 }

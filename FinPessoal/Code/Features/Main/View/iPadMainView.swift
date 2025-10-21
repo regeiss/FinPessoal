@@ -17,43 +17,90 @@ struct iPadMainView: View {
   @Environment(\.verticalSizeClass) private var verticalSizeClass
   @State private var columnVisibility: NavigationSplitViewVisibility = .all
 
+  // Portrait: regular width, regular height
+  // Landscape: regular width, compact height
   private var isLandscape: Bool {
-    horizontalSizeClass == .regular && verticalSizeClass == .compact
+    verticalSizeClass == .compact && horizontalSizeClass == .regular
   }
 
   var body: some View {
-    NavigationSplitView(columnVisibility: $columnVisibility) {
-      // Column 1: Sidebar Navigation
-      SidebarView()
-        .navigationSplitViewColumnWidth(min: 200, ideal: 250, max: 300)
-    } content: {
-      // Column 2: Content Lists
-      iPadContentView()
-        .navigationSplitViewColumnWidth(ideal: 600, max: 700)
-    } detail: {
-      // Column 3: Detail Views - Expands to fill all remaining space
-      DetailView()
-        .navigationSplitViewColumnWidth(min: 400, ideal: 700, max: .infinity)
-    }
-    .navigationSplitViewStyle(.prominentDetail)
-    .onChange(of: navigationState.selectedSidebarItem) { _, newItem in
-      updateColumnVisibility(for: newItem)
-    }
-    .onChange(of: isLandscape) { _, _ in
-      updateColumnVisibility(for: navigationState.selectedSidebarItem)
-    }
-    .onAppear {
-      // Set initial column visibility based on current selection and orientation
-      updateColumnVisibility(for: navigationState.selectedSidebarItem)
+    Group {
+      if isLandscape {
+        // Landscape: 3-column layout (Sidebar + Content + Detail)
+        landscapeLayout
+      } else {
+        // Portrait: 2-column layout (Sidebar + Content)
+        portraitLayout
+      }
     }
     .task {
       await financeViewModel.loadData()
     }
   }
 
-  private func updateColumnVisibility(for item: SidebarItem?) {
-    // Always show all columns (sidebar always visible)
-    columnVisibility = .all
+  // MARK: - Portrait Layout (2 columns)
+  private var portraitLayout: some View {
+    NavigationSplitView {
+      // Column 1: Sidebar Navigation
+      SidebarView()
+        .navigationSplitViewColumnWidth(min: 200, ideal: 250, max: 300)
+    } detail: {
+      // Column 2: Main Content - Fills all remaining space to right edge
+      iPadContentView()
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+  }
+
+  // MARK: - Landscape Layout (3 columns)
+  private var landscapeLayout: some View {
+    NavigationSplitView(columnVisibility: $columnVisibility) {
+      // Column 1: Sidebar Navigation
+      SidebarView()
+        .navigationSplitViewColumnWidth(min: 200, ideal: 220, max: 250)
+    } content: {
+      // Column 2: Content Lists
+      iPadContentView()
+        .navigationSplitViewColumnWidth(min: 300, ideal: 350, max: 400)
+    } detail: {
+      // Column 3: Detail Views
+      DetailView()
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+    }
+    .navigationSplitViewStyle(.prominentDetail)
+    .onChange(of: navigationState.selectedSidebarItem) { _, _ in
+      updateColumnVisibility()
+    }
+    .onChange(of: navigationState.selectedAccount) { _, account in
+      if account != nil {
+        columnVisibility = .all
+      }
+    }
+    .onChange(of: navigationState.selectedTransaction) { _, transaction in
+      if transaction != nil {
+        columnVisibility = .all
+      }
+    }
+    .onAppear {
+      updateColumnVisibility()
+    }
+  }
+
+  private func updateColumnVisibility() {
+    // In landscape, intelligently show/hide detail column
+    switch navigationState.selectedSidebarItem {
+    case .accounts, .transactions:
+      // Show detail for list-detail patterns
+      if navigationState.selectedAccount != nil || navigationState.selectedTransaction != nil {
+        columnVisibility = .all
+      } else {
+        columnVisibility = .all // Keep all visible for selection
+      }
+    case .dashboard, .reports, .budgets, .goals, .settings, .categories:
+      // For full-screen views, show detail with helpful content
+      columnVisibility = .all
+    default:
+      columnVisibility = .all
+    }
   }
 }
 
@@ -70,7 +117,7 @@ struct SidebarRow: View {
 // Column 2: Content Lists
 struct iPadContentView: View {
   @EnvironmentObject var navigationState: NavigationState
-  
+
   var body: some View {
     NavigationStack {
       Group {
@@ -99,9 +146,11 @@ struct iPadContentView: View {
           DashboardScreen()
         }
       }
+      .frame(maxWidth: .infinity, maxHeight: .infinity)
       .navigationTitle(navigationState.selectedSidebarItem?.displayName ?? String(localized: "navigation.dashboard.title", defaultValue: "Dashboard"))
       .navigationBarTitleDisplayMode(.large)
     }
+    .frame(maxWidth: .infinity, maxHeight: .infinity)
   }
 }
 
@@ -326,46 +375,54 @@ struct SettingsDetailView: View {
   struct iPadTransactionsView: View {
     @EnvironmentObject var navigationState: NavigationState
     @StateObject private var transactionViewModel: TransactionViewModel
-    
+    @Environment(\.verticalSizeClass) private var verticalSizeClass
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+
+    private var isLandscape: Bool {
+      verticalSizeClass == .compact && horizontalSizeClass == .regular
+    }
+
     init() {
       let repository = AppConfiguration.shared.createTransactionRepository()
       self._transactionViewModel = StateObject(wrappedValue: TransactionViewModel(repository: repository))
     }
-    
+
     var body: some View {
-      ZStack {
-        TransactionsScreen(transactionViewModel: transactionViewModel)
-      }
-      .onReceive(transactionViewModel.$selectedTransaction) { transaction in
-        if let transaction = transaction {
-          navigationState.selectTransaction(transaction)
+      TransactionsScreen(transactionViewModel: transactionViewModel)
+        .environmentObject(transactionViewModel)
+        .onReceive(transactionViewModel.$selectedTransaction) { transaction in
+          if isLandscape, let transaction = transaction {
+            navigationState.selectTransaction(transaction)
+          }
         }
-      }
-      .onChange(of: transactionViewModel.showingAddTransaction) { _, showing in
-        if showing {
-          navigationState.showAddTransaction()
-          transactionViewModel.dismissAddTransaction()
+        .onChange(of: transactionViewModel.showingAddTransaction) { _, showing in
+          if isLandscape && showing {
+            navigationState.showAddTransaction()
+            transactionViewModel.dismissAddTransaction()
+          }
         }
-      }
-      .environmentObject(transactionViewModel)
     }
   }
-  
+
   struct iPadAccountsView: View {
     @EnvironmentObject var navigationState: NavigationState
     @EnvironmentObject var accountViewModel: AccountViewModel
-    
+    @Environment(\.verticalSizeClass) private var verticalSizeClass
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+
+    private var isLandscape: Bool {
+      verticalSizeClass == .compact && horizontalSizeClass == .regular
+    }
+
     var body: some View {
       AccountsView()
         .onReceive(accountViewModel.$selectedAccount) { account in
-          print("iPadAccountsView: received selectedAccount: \(account?.name ?? "nil")")
-          if let account = account {
-            print("iPadAccountsView: calling navigationState.selectAccount")
+          if isLandscape, let account = account {
             navigationState.selectAccount(account)
           }
         }
         .onChange(of: accountViewModel.showingAddAccount) { _, showing in
-          if showing {
+          if isLandscape && showing {
             navigationState.showAddAccount()
             accountViewModel.showingAddAccount = false
           }
@@ -781,7 +838,8 @@ struct CategoriesDetailView: View {
           // Quick Actions
           QuickActionsView()
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
+        .frame(maxWidth: 1200, alignment: .leading)
+        .frame(maxWidth: .infinity)
         .padding(20)
       }
       .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -847,5 +905,4 @@ struct CategoriesDetailView: View {
       authRepository: AppConfiguration.shared.createAuthRepository()
     ))
     .environmentObject(AccountViewModel(repository: AppConfiguration.shared.createAccountRepository()))
-    .environmentObject(ThemeManager())
 }

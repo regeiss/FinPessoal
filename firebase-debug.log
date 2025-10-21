@@ -1187,3 +1187,172 @@
 [debug] [2025-10-13T23:19:51.016Z] > authorizing via signed-in user (roberto.geiss.nh@gmail.com)
 [debug] [2025-10-13T23:19:51.061Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
 [debug] [2025-10-13T23:19:51.062Z] > authorizing via signed-in user (roberto.geiss.nh@gmail.com)
+[debug] [2025-10-18T23:42:32.598Z] Checked if tokens are valid: false, expires at: 1760401188538
+[debug] [2025-10-18T23:42:32.601Z] Checked if tokens are valid: false, expires at: 1760401188538
+[debug] [2025-10-18T23:42:32.601Z] > refreshing access token with scopes: []
+[debug] [2025-10-18T23:42:32.602Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-10-18T23:42:32.602Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-18T23:42:32.620Z] Checked if tokens are valid: false, expires at: 1760401188538
+[debug] [2025-10-18T23:42:32.620Z] Checked if tokens are valid: false, expires at: 1760401188538
+[debug] [2025-10-18T23:42:32.620Z] > refreshing access token with scopes: []
+[debug] [2025-10-18T23:42:32.620Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-10-18T23:42:32.621Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-18T23:42:32.621Z] Checked if tokens are valid: false, expires at: 1760401188538
+[debug] [2025-10-18T23:42:32.622Z] Checked if tokens are valid: false, expires at: 1760401188538
+[debug] [2025-10-18T23:42:32.622Z] > refreshing access token with scopes: []
+[debug] [2025-10-18T23:42:32.622Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-10-18T23:42:32.622Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-18T23:42:32.622Z] Checked if tokens are valid: false, expires at: 1760401188538
+[debug] [2025-10-18T23:42:32.622Z] Checked if tokens are valid: false, expires at: 1760401188538
+[debug] [2025-10-18T23:42:32.622Z] > refreshing access token with scopes: []
+[debug] [2025-10-18T23:42:32.622Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-10-18T23:42:32.622Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-18T23:42:32.623Z] Checked if tokens are valid: false, expires at: 1760401188538
+[debug] [2025-10-18T23:42:32.623Z] Checked if tokens are valid: false, expires at: 1760401188538
+[debug] [2025-10-18T23:42:32.623Z] > refreshing access token with scopes: []
+[debug] [2025-10-18T23:42:32.623Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-10-18T23:42:32.623Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-18T23:42:32.631Z] Checked if tokens are valid: false, expires at: 1760401188538
+[debug] [2025-10-18T23:42:32.631Z] Checked if tokens are valid: false, expires at: 1760401188538
+[debug] [2025-10-18T23:42:32.631Z] > refreshing access token with scopes: []
+[debug] [2025-10-18T23:42:32.631Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-10-18T23:42:32.631Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-18T23:42:32.631Z] Checked if tokens are valid: false, expires at: 1760401188538
+[debug] [2025-10-18T23:42:32.631Z] Checked if tokens are valid: false, expires at: 1760401188538
+[debug] [2025-10-18T23:42:32.631Z] > refreshing access token with scopes: []
+[debug] [2025-10-18T23:42:32.631Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-10-18T23:42:32.631Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-18T23:42:32.633Z] Checked if tokens are valid: false, expires at: 1760401188538
+[debug] [2025-10-18T23:42:32.633Z] Checked if tokens are valid: false, expires at: 1760401188538
+[debug] [2025-10-18T23:42:32.633Z] > refreshing access token with scopes: []
+[debug] [2025-10-18T23:42:32.633Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-10-18T23:42:32.633Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-18T23:42:32.633Z] Checked if tokens are valid: false, expires at: 1760401188538
+[debug] [2025-10-18T23:42:32.633Z] Checked if tokens are valid: false, expires at: 1760401188538
+[debug] [2025-10-18T23:42:32.633Z] > refreshing access token with scopes: []
+[debug] [2025-10-18T23:42:32.633Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-10-18T23:42:32.633Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-18T23:42:32.634Z] Checked if tokens are valid: false, expires at: 1760401188538
+[debug] [2025-10-18T23:42:32.634Z] Checked if tokens are valid: false, expires at: 1760401188538
+[debug] [2025-10-18T23:42:32.634Z] > refreshing access token with scopes: []
+[debug] [2025-10-18T23:42:32.634Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-10-18T23:42:32.634Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-18T23:42:32.634Z] Checked if tokens are valid: false, expires at: 1760401188538
+[debug] [2025-10-18T23:42:32.634Z] Checked if tokens are valid: false, expires at: 1760401188538
+[debug] [2025-10-18T23:42:32.634Z] > refreshing access token with scopes: []
+[debug] [2025-10-18T23:42:32.634Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-10-18T23:42:32.634Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-18T23:42:32.635Z] Checked if tokens are valid: false, expires at: 1760401188538
+[debug] [2025-10-18T23:42:32.635Z] Checked if tokens are valid: false, expires at: 1760401188538
+[debug] [2025-10-18T23:42:32.635Z] > refreshing access token with scopes: []
+[debug] [2025-10-18T23:42:32.635Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-10-18T23:42:32.635Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-18T23:42:32.635Z] Checked if tokens are valid: false, expires at: 1760401188538
+[debug] [2025-10-18T23:42:32.635Z] Checked if tokens are valid: false, expires at: 1760401188538
+[debug] [2025-10-18T23:42:32.635Z] > refreshing access token with scopes: []
+[debug] [2025-10-18T23:42:32.635Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-10-18T23:42:32.635Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-18T23:42:32.635Z] Checked if tokens are valid: false, expires at: 1760401188538
+[debug] [2025-10-18T23:42:32.635Z] Checked if tokens are valid: false, expires at: 1760401188538
+[debug] [2025-10-18T23:42:32.635Z] > refreshing access token with scopes: []
+[debug] [2025-10-18T23:42:32.635Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-10-18T23:42:32.635Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-18T23:42:32.636Z] Checked if tokens are valid: false, expires at: 1760401188538
+[debug] [2025-10-18T23:42:32.636Z] Checked if tokens are valid: false, expires at: 1760401188538
+[debug] [2025-10-18T23:42:32.636Z] > refreshing access token with scopes: []
+[debug] [2025-10-18T23:42:32.636Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-10-18T23:42:32.636Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-18T23:42:32.872Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-10-18T23:42:32.872Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-18T23:42:32.893Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/ [none]
+[debug] [2025-10-18T23:42:32.893Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/ x-goog-quota-user=projects/finpessoal
+[debug] [2025-10-18T23:42:32.899Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-10-18T23:42:32.899Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-18T23:42:32.922Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com [none]
+[debug] [2025-10-18T23:42:32.922Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-10-18T23:42:32.923Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-10-18T23:42:32.923Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-18T23:42:32.929Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com [none]
+[debug] [2025-10-18T23:42:32.929Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-10-18T23:42:32.933Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-10-18T23:42:32.933Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-18T23:42:32.941Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasecrashlytics.googleapis.com [none]
+[debug] [2025-10-18T23:42:32.941Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasecrashlytics.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-10-18T23:42:32.943Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-10-18T23:42:32.943Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-18T23:42:32.952Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasecrashlytics.googleapis.com [none]
+[debug] [2025-10-18T23:42:32.952Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasecrashlytics.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-10-18T23:42:32.953Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-10-18T23:42:32.953Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-18T23:42:32.961Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/ [none]
+[debug] [2025-10-18T23:42:32.961Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/ x-goog-quota-user=projects/finpessoal
+[debug] [2025-10-18T23:42:32.962Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-10-18T23:42:32.962Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-18T23:42:32.971Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com [none]
+[debug] [2025-10-18T23:42:32.971Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-10-18T23:42:32.972Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-10-18T23:42:32.972Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-18T23:42:32.980Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com [none]
+[debug] [2025-10-18T23:42:32.980Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-10-18T23:42:32.981Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-10-18T23:42:32.981Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-18T23:42:32.988Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/ [none]
+[debug] [2025-10-18T23:42:32.988Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/ x-goog-quota-user=projects/finpessoal
+[debug] [2025-10-18T23:42:32.989Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-10-18T23:42:32.989Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-18T23:42:32.998Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com [none]
+[debug] [2025-10-18T23:42:32.998Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-10-18T23:42:32.999Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-10-18T23:42:32.999Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-18T23:42:33.012Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com [none]
+[debug] [2025-10-18T23:42:33.012Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-10-18T23:42:33.013Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-10-18T23:42:33.013Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-18T23:42:33.022Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com [none]
+[debug] [2025-10-18T23:42:33.022Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-10-18T23:42:33.023Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-10-18T23:42:33.024Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-18T23:42:33.032Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasecrashlytics.googleapis.com [none]
+[debug] [2025-10-18T23:42:33.032Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasecrashlytics.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-10-18T23:42:33.033Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-10-18T23:42:33.033Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-18T23:42:33.043Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com [none]
+[debug] [2025-10-18T23:42:33.043Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-10-18T23:42:33.044Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-10-18T23:42:33.044Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-10-18T23:42:33.053Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com [none]
+[debug] [2025-10-18T23:42:33.053Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-10-18T23:42:34.108Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasecrashlytics.googleapis.com 200
+[debug] [2025-10-18T23:42:34.109Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasecrashlytics.googleapis.com [omitted]
+[debug] [2025-10-18T23:42:34.114Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com 200
+[debug] [2025-10-18T23:42:34.114Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com [omitted]
+[debug] [2025-10-18T23:42:34.116Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com 200
+[debug] [2025-10-18T23:42:34.116Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com [omitted]
+[debug] [2025-10-18T23:42:34.127Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com 200
+[debug] [2025-10-18T23:42:34.127Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com [omitted]
+[debug] [2025-10-18T23:42:34.427Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/ 200
+[debug] [2025-10-18T23:42:34.427Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/ [omitted]
+[debug] [2025-10-18T23:42:34.975Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasecrashlytics.googleapis.com 200
+[debug] [2025-10-18T23:42:34.976Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasecrashlytics.googleapis.com [omitted]
+[debug] [2025-10-18T23:42:34.977Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com 200
+[debug] [2025-10-18T23:42:34.977Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com [omitted]
+[debug] [2025-10-18T23:42:34.979Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com 200
+[debug] [2025-10-18T23:42:34.979Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com [omitted]
+[debug] [2025-10-18T23:42:34.990Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com 200
+[debug] [2025-10-18T23:42:34.990Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com [omitted]
+[debug] [2025-10-18T23:42:34.991Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasecrashlytics.googleapis.com 200
+[debug] [2025-10-18T23:42:34.991Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasecrashlytics.googleapis.com [omitted]
+[debug] [2025-10-18T23:42:34.993Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com 200
+[debug] [2025-10-18T23:42:34.993Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com [omitted]
+[debug] [2025-10-18T23:42:35.007Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com 200
+[debug] [2025-10-18T23:42:35.007Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com [omitted]
+[debug] [2025-10-18T23:42:35.009Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com 200
+[debug] [2025-10-18T23:42:35.009Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com [omitted]
+[debug] [2025-10-18T23:42:35.495Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/ 200
+[debug] [2025-10-18T23:42:35.495Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/ [omitted]
+[debug] [2025-10-18T23:42:35.547Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/ 200
+[debug] [2025-10-18T23:42:35.547Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/ [omitted]
+[debug] [2025-10-18T23:42:35.589Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-10-18T23:42:35.589Z] > authorizing via signed-in user (roberto.geiss.nh@gmail.com)
+[debug] [2025-10-18T23:42:35.652Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-10-18T23:42:35.653Z] > authorizing via signed-in user (roberto.geiss.nh@gmail.com)

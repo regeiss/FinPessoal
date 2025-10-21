@@ -13,69 +13,66 @@ struct AccountsView: View {
   @EnvironmentObject var authViewModel: AuthViewModel
   
   var body: some View {
-    NavigationView {
-      ScrollView {
-        LazyVStack(spacing: 20) {
-          if accountViewModel.isLoading {
-            ProgressView(String(localized: "accounts.loading"))
-              .padding(.vertical, 60)
-          } else if accountViewModel.accounts.isEmpty {
-            emptyStateView
-          } else {
-            summarySection
-            accountsListSection
-          }
-        }
-        .padding(.horizontal, 20)
-        .padding(.top, 8)
-      }
-      .navigationTitle(String(localized: "accounts.title"))
-      .toolbar {
-        ToolbarItem(placement: .navigationBarTrailing) {
-          Button {
-            accountViewModel.showAddAccount()
-          } label: {
-            Image(systemName: "plus.circle.fill")
-          }
-        }
-      }
-      .sheet(isPresented: $accountViewModel.showingAddAccount) {
-        if UIDevice.current.userInterfaceIdiom != .pad {
-          AddAccountView(accountViewModel: accountViewModel)
-        }
-      }
-      .sheet(isPresented: $accountViewModel.showingAccountDetail) {
-        if UIDevice.current.userInterfaceIdiom != .pad {
-          if let selectedAccount = accountViewModel.selectedAccount {
-            AccountDetailView(account: selectedAccount, accountViewModel: accountViewModel)
-          }
-        }
-      }
-      .refreshable {
-        await accountViewModel.fetchAccounts()
-      }
-      .onAppear {
-        // Only load accounts if user is authenticated
-        if authViewModel.isAuthenticated {
-          accountViewModel.loadAccounts()
-        }
-      }
-      .onChange(of: authViewModel.isAuthenticated) { _, isAuthenticated in
-        if isAuthenticated {
-          accountViewModel.loadAccounts()
+    ScrollView {
+      LazyVStack(spacing: 20) {
+        if accountViewModel.isLoading {
+          ProgressView(String(localized: "accounts.loading"))
+            .padding(.vertical, 60)
+        } else if accountViewModel.accounts.isEmpty {
+          emptyStateView
         } else {
-          // Clear accounts when user logs out
-          accountViewModel.accounts = []
+          summarySection
+          accountsListSection
         }
       }
-      .alert("Error", isPresented: .constant(accountViewModel.errorMessage != nil)) {
-        Button("OK") {
-          accountViewModel.clearError()
+      .padding(.horizontal, 20)
+      .padding(.top, 8)
+    }
+    .toolbar {
+      ToolbarItem(placement: .navigationBarTrailing) {
+        Button {
+          accountViewModel.showAddAccount()
+        } label: {
+          Image(systemName: "plus.circle.fill")
         }
-      } message: {
-        if let errorMessage = accountViewModel.errorMessage {
-          Text(errorMessage)
+      }
+    }
+    .sheet(isPresented: $accountViewModel.showingAddAccount) {
+      if UIDevice.current.userInterfaceIdiom != .pad {
+        AddAccountView(accountViewModel: accountViewModel)
+      }
+    }
+    .sheet(isPresented: $accountViewModel.showingAccountDetail) {
+      if UIDevice.current.userInterfaceIdiom != .pad {
+        if let selectedAccount = accountViewModel.selectedAccount {
+          AccountDetailView(account: selectedAccount, accountViewModel: accountViewModel)
         }
+      }
+    }
+    .refreshable {
+      await accountViewModel.fetchAccounts()
+    }
+    .onAppear {
+      // Only load accounts if user is authenticated
+      if authViewModel.isAuthenticated {
+        accountViewModel.loadAccounts()
+      }
+    }
+    .onChange(of: authViewModel.isAuthenticated) { _, isAuthenticated in
+      if isAuthenticated {
+        accountViewModel.loadAccounts()
+      } else {
+        // Clear accounts when user logs out
+        accountViewModel.accounts = []
+      }
+    }
+    .alert("Error", isPresented: .constant(accountViewModel.errorMessage != nil)) {
+      Button("OK") {
+        accountViewModel.clearError()
+      }
+    } message: {
+      if let errorMessage = accountViewModel.errorMessage {
+        Text(errorMessage)
       }
     }
   }

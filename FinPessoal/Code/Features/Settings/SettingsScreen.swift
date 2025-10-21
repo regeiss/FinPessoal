@@ -10,26 +10,10 @@ import SwiftUI
 struct SettingsScreen: View {
   @EnvironmentObject var authViewModel: AuthViewModel
   @EnvironmentObject var onboardingManager: OnboardingManager
-  @EnvironmentObject var themeManager: ThemeManager
   @State private var showingProfile = false
-  @State private var showingThemeSettings = false
   @State private var showingCurrencySettings = false
   @State private var showingLanguageSettings = false
   @State private var showingHelp = false
-  
-  private var currentThemeDescription: String {
-    let savedTheme = UserDefaults.standard.string(forKey: "selectedTheme") ?? "system"
-    switch savedTheme {
-    case "system":
-      return String(localized: "theme.system", defaultValue: "Automático")
-    case "light":
-      return String(localized: "theme.light", defaultValue: "Claro")
-    case "dark":
-      return String(localized: "theme.dark", defaultValue: "Escuro")
-    default:
-      return String(localized: "theme.system", defaultValue: "Automático")
-    }
-  }
   
   private var currentCurrencyDescription: String {
     let savedCurrency = UserDefaults.standard.string(forKey: "selectedCurrency") ?? "BRL"
@@ -49,96 +33,49 @@ struct SettingsScreen: View {
       return String(localized: "language.system", defaultValue: "Automático")
     }
   }
-  
+
   var body: some View {
-    NavigationView {
-      List {
-        Section(String(localized: "profile.title", defaultValue: "Perfil")) {
-          if let user = authViewModel.currentUser {
-            Button {
-              showingProfile = true
-            } label: {
-              HStack {
-                AsyncImage(url: URL(string: user.profileImageURL ?? "")) { image in
-                  image
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                } placeholder: {
-                  Image(systemName: "person.circle.fill")
-                    .font(.title2)
-                    .foregroundColor(.gray)
-                }
-                .frame(width: 40, height: 40)
-                .clipShape(Circle())
-                
-                VStack(alignment: .leading, spacing: 4) {
-                  Text(user.name)
-                    .font(.headline)
-                    .foregroundColor(.primary)
-                  Text(user.email)
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-                }
-                
-                Spacer()
-                
-                Image(systemName: "chevron.right")
+    List {
+      Section(String(localized: "profile.title", defaultValue: "Perfil")) {
+        if let user = authViewModel.currentUser {
+          Button {
+            showingProfile = true
+          } label: {
+            HStack {
+              AsyncImage(url: URL(string: user.profileImageURL ?? "")) { image in
+                image
+                  .resizable()
+                  .aspectRatio(contentMode: .fill)
+              } placeholder: {
+                Image(systemName: "person.circle.fill")
+                  .font(.title2)
+                  .foregroundColor(.gray)
+              }
+              .frame(width: 40, height: 40)
+              .clipShape(Circle())
+
+              VStack(alignment: .leading, spacing: 4) {
+                Text(user.name)
+                  .font(.headline)
+                  .foregroundColor(.primary)
+                Text(user.email)
                   .font(.caption)
                   .foregroundColor(.secondary)
               }
-              .padding(.vertical, 4)
-            }
-            .buttonStyle(.plain)
-          }
-        }
-        
-        Section(String(localized: "settings.appearance.section", defaultValue: "Aparência")) {
-          // Theme settings row with current theme indicator
-          Button {
-            showingThemeSettings = true
-          } label: {
-            HStack {
-              Image(systemName: "paintbrush")
-                .foregroundColor(themeManager.isDarkMode ? Color(red: 0.40, green: 0.86, blue: 0.18) : .blue)
-                .frame(width: 24)
-              
-              Text(String(localized: "settings.theme", defaultValue: "Tema"))
-                .foregroundColor(.primary)
-              
+
               Spacer()
-              
-              Text(currentThemeDescription)
-                .font(.caption)
-                .foregroundColor(.secondary)
-              
+
               Image(systemName: "chevron.right")
                 .font(.caption)
                 .foregroundColor(.secondary)
             }
+            .padding(.vertical, 4)
           }
           .buttonStyle(.plain)
-          
-          // Quick dark mode toggle (only show if not in system mode)
-          if UserDefaults.standard.string(forKey: "selectedTheme") != "system" {
-            HStack {
-              Image(systemName: "moon.fill")
-                .foregroundColor(themeManager.isDarkMode ? Color(red: 0.40, green: 0.86, blue: 0.18) : .blue)
-                .frame(width: 24)
-              
-              Text(String(localized: "settings.dark.mode", defaultValue: "Modo Escuro"))
-                .foregroundColor(.primary)
-              
-              Spacer()
-              
-              Toggle("", isOn: $themeManager.isDarkMode)
-                .onChange(of: themeManager.isDarkMode) { _, newValue in
-                  themeManager.setTheme(newValue ? .dark : .light)
-                }
-            }
-          }
         }
-        
-        Section(String(localized: "settings.preferences.section")) {
+      }
+
+      Section(String(localized: "settings.preferences.section")) {
           SettingsRow(title: String(localized: "settings.notifications"), icon: "bell", action: {})
           
           // Currency settings row with current currency indicator
@@ -147,43 +84,43 @@ struct SettingsScreen: View {
           } label: {
             HStack {
               Image(systemName: "dollarsign.circle")
-                .foregroundColor(themeManager.isDarkMode ? Color(red: 0.40, green: 0.86, blue: 0.18) : .blue)
+                .foregroundColor(.blue)
                 .frame(width: 24)
-              
+
               Text(String(localized: "settings.currency"))
                 .foregroundColor(.primary)
-              
+
               Spacer()
-              
+
               Text(currentCurrencyDescription)
                 .font(.caption)
                 .foregroundColor(.secondary)
-              
+
               Image(systemName: "chevron.right")
                 .font(.caption)
                 .foregroundColor(.secondary)
             }
           }
           .buttonStyle(.plain)
-          
+
           // Language settings row with current language indicator
           Button {
             showingLanguageSettings = true
           } label: {
             HStack {
               Image(systemName: "globe")
-                .foregroundColor(themeManager.isDarkMode ? Color(red: 0.40, green: 0.86, blue: 0.18) : .blue)
+                .foregroundColor(.blue)
                 .frame(width: 24)
-              
+
               Text(String(localized: "settings.language"))
                 .foregroundColor(.primary)
-              
+
               Spacer()
-              
+
               Text(currentLanguageDescription)
                 .font(.caption)
                 .foregroundColor(.secondary)
-              
+
               Image(systemName: "chevron.right")
                 .font(.caption)
                 .foregroundColor(.secondary)
@@ -221,29 +158,19 @@ struct SettingsScreen: View {
           }
           .foregroundColor(.red)
         }
-      }
-      .navigationTitle(String(localized: "settings.title"))
-      .preferredColorScheme(themeManager.colorScheme)
-      .background(themeManager.isDarkMode ? Color(red: 0.12, green: 0.12, blue: 0.12) : .clear)
-      .sheet(isPresented: $showingProfile) {
-        ProfileView()
-          .environmentObject(authViewModel)
-      }
-      .sheet(isPresented: $showingThemeSettings) {
-        ThemeSettingsView()
-          .environmentObject(themeManager)
-      }
-      .sheet(isPresented: $showingCurrencySettings) {
-        CurrencySettingsView()
-          .environmentObject(themeManager)
-      }
-      .sheet(isPresented: $showingLanguageSettings) {
-        LanguageSettingsView()
-          .environmentObject(themeManager)
-      }
-      .sheet(isPresented: $showingHelp) {
-        HelpScreen()
-      }
+    }
+    .sheet(isPresented: $showingProfile) {
+      ProfileView()
+        .environmentObject(authViewModel)
+    }
+    .sheet(isPresented: $showingCurrencySettings) {
+      CurrencySettingsView()
+    }
+    .sheet(isPresented: $showingLanguageSettings) {
+      LanguageSettingsView()
+    }
+    .sheet(isPresented: $showingHelp) {
+      HelpScreen()
     }
   }
 }
@@ -252,20 +179,19 @@ struct SettingsRow: View {
   let title: String
   let icon: String
   let action: () -> Void
-  @EnvironmentObject var themeManager: ThemeManager
 
   var body: some View {
     Button(action: action) {
       HStack {
         Image(systemName: icon)
-          .foregroundColor(themeManager.isDarkMode ? Color(red: 0.40, green: 0.86, blue: 0.18) : .blue)
+          .foregroundColor(.blue)
           .frame(width: 24)
-        
+
         Text(title)
           .foregroundColor(.primary)
-        
+
         Spacer()
-        
+
         Image(systemName: "chevron.right")
           .font(.caption)
           .foregroundColor(.secondary)
@@ -310,7 +236,6 @@ extension CurrencyHelper {
 // MARK: - Currency Settings View
 struct CurrencySettingsView: View {
   @Environment(\.dismiss) private var dismiss
-  @EnvironmentObject var themeManager: ThemeManager
   @State private var selectedCurrency = CurrencyHelper.getCurrentCurrency().code
 
   var body: some View {
@@ -327,17 +252,17 @@ struct CurrencySettingsView: View {
                   Text(currency.displayName)
                     .font(.headline)
                     .foregroundColor(.primary)
-                  
+
                   Text("\(currency.code) • \(currency.symbol)")
                     .font(.caption)
                     .foregroundColor(.secondary)
                 }
-                
+
                 Spacer()
-                
+
                 if selectedCurrency == currency.code {
                   Image(systemName: "checkmark")
-                    .foregroundColor(themeManager.isDarkMode ? Color(red: 0.40, green: 0.86, blue: 0.18) : .blue)
+                    .foregroundColor(.blue)
                     .font(.headline)
                 }
               }
@@ -369,7 +294,6 @@ struct CurrencySettingsView: View {
 // MARK: - Language Settings View
 struct LanguageSettingsView: View {
   @Environment(\.dismiss) private var dismiss
-  @EnvironmentObject var themeManager: ThemeManager
   @State private var selectedLanguage = UserDefaults.standard.string(forKey: "selectedLanguage") ?? "system"
 
   private let languages = [
@@ -377,7 +301,7 @@ struct LanguageSettingsView: View {
     (code: "pt-BR", name: String(localized: "language.portuguese", defaultValue: "Português"), flag: "🇧🇷"),
     (code: "en", name: String(localized: "language.english", defaultValue: "English"), flag: "🇺🇸")
   ]
-  
+
   var body: some View {
     NavigationView {
       List {
@@ -386,7 +310,7 @@ struct LanguageSettingsView: View {
             Button {
               selectedLanguage = language.code
               UserDefaults.standard.set(language.code, forKey: "selectedLanguage")
-              
+
               // Apply language change if not system
               if language.code != "system" {
                 // Note: Full app restart may be required for complete language change
@@ -395,16 +319,16 @@ struct LanguageSettingsView: View {
               HStack {
                 Text(language.flag)
                   .font(.title2)
-                
+
                 Text(language.name)
                   .font(.headline)
                   .foregroundColor(.primary)
-                
+
                 Spacer()
-                
+
                 if selectedLanguage == language.code {
                   Image(systemName: "checkmark")
-                    .foregroundColor(themeManager.isDarkMode ? Color(red: 0.40, green: 0.86, blue: 0.18) : .blue)
+                    .foregroundColor(.blue)
                     .font(.headline)
                 }
               }

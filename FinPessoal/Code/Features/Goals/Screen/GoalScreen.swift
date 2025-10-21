@@ -34,8 +34,7 @@ struct GoalScreen: View {
   }
   
   var body: some View {
-    NavigationView {
-      Group {
+    Group {
         if financeViewModel.goals.isEmpty {
           EmptyStateView(
             icon: "target",
@@ -103,38 +102,36 @@ struct GoalScreen: View {
             }
           }
           .background(Color(.systemBackground))
-        }
       }
-      .navigationTitle(String(localized: "goals.title"))
-      .toolbar {
-        ToolbarItem(placement: .navigationBarLeading) {
-          if !financeViewModel.goals.isEmpty {
-            Picker("View Mode", selection: $selectedViewMode) {
-              ForEach(ViewMode.allCases, id: \.self) { mode in
-                Image(systemName: mode.icon)
-                  .font(.system(size: 16, weight: .medium))
-                  .tag(mode)
-              }
+    }
+    .toolbar {
+      ToolbarItem(placement: .navigationBarLeading) {
+        if !financeViewModel.goals.isEmpty {
+          Picker("View Mode", selection: $selectedViewMode) {
+            ForEach(ViewMode.allCases, id: \.self) { mode in
+              Image(systemName: mode.icon)
+                .font(.system(size: 16, weight: .medium))
+                .tag(mode)
             }
-            .pickerStyle(.segmented)
-            .frame(width: 120)
-            .scaleEffect(1.1)
           }
-        }
-        
-        ToolbarItem(placement: .navigationBarTrailing) {
-          Button {
-            showingAddGoal = true
-          } label: {
-            Image(systemName: "plus")
-          }
+          .pickerStyle(.segmented)
+          .frame(width: 120)
+          .scaleEffect(1.1)
         }
       }
-      .sheet(isPresented: $showingAddGoal) {
-        AddGoalScreen()
-          .environmentObject(goalViewModel)
-          .environmentObject(financeViewModel)
+
+      ToolbarItem(placement: .navigationBarTrailing) {
+        Button {
+          showingAddGoal = true
+        } label: {
+          Image(systemName: "plus")
+        }
       }
+    }
+    .sheet(isPresented: $showingAddGoal) {
+      AddGoalScreen()
+        .environmentObject(goalViewModel)
+        .environmentObject(financeViewModel)
     }
   }
 }

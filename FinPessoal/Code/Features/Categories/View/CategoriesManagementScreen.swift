@@ -10,7 +10,6 @@ import FirebaseAuth
 
 struct CategoriesManagementScreen: View {
     @StateObject private var subcategoryService: SubcategoryManagementService
-    @EnvironmentObject var themeManager: ThemeManager
     @State private var selectedCategory: TransactionCategory = .food
     @State private var showingAddSubcategory = false
     @State private var newSubcategoryName = ""
@@ -73,8 +72,7 @@ struct CategoriesManagementScreen: View {
     }
     
     private var iPhoneCategoriesView: some View {
-        NavigationView {
-            VStack(spacing: 0) {
+        VStack(spacing: 0) {
                 // Segmented control for tabs
                 Picker("", selection: $selectedTab) {
                     Text(String(localized: "categories.categories.tab")).tag(0)
@@ -116,7 +114,7 @@ struct CategoriesManagementScreen: View {
                                 showingAddSubcategory = true
                             } label: {
                                 Image(systemName: "plus")
-                                    .foregroundColor(themeManager.isDarkMode ? Color(red: 0.40, green: 0.86, blue: 0.18) : .blue)
+                                    .foregroundColor(.blue)
                             }
                         }
                     } footer: {
@@ -125,43 +123,39 @@ struct CategoriesManagementScreen: View {
                     }
                 }
                 .listStyle(InsetGroupedListStyle())
-            }
-            .navigationTitle(String(localized: "categories.management.title"))
-            .navigationBarTitleDisplayMode(.large)
-            .preferredColorScheme(themeManager.colorScheme)
-            .background(themeManager.isDarkMode ? Color(red: 0.12, green: 0.12, blue: 0.12) : .clear)
-            .task {
+        }
+        .background(.clear)
+        .task {
+            await loadUsageData()
+        }
+        .onChange(of: selectedCategory) { _, _ in
+            Task {
                 await loadUsageData()
             }
-            .onChange(of: selectedCategory) { _, _ in
+        }
+        .alert(String(localized: "categories.subcategory.add"), isPresented: $showingAddSubcategory) {
+            TextField(String(localized: "categories.subcategory.name.placeholder"), text: $newSubcategoryName)
+            Button(String(localized: "common.cancel"), role: .cancel) {
+                newSubcategoryName = ""
+            }
+            Button(String(localized: "common.add")) {
+                subcategoryService.addCustomSubcategory(newSubcategoryName, to: selectedCategory)
+                newSubcategoryName = ""
                 Task {
                     await loadUsageData()
                 }
             }
-            .alert(String(localized: "categories.subcategory.add"), isPresented: $showingAddSubcategory) {
-                TextField(String(localized: "categories.subcategory.name.placeholder"), text: $newSubcategoryName)
-                Button(String(localized: "common.cancel"), role: .cancel) {
-                    newSubcategoryName = ""
-                }
-                Button(String(localized: "common.add")) {
-                    subcategoryService.addCustomSubcategory(newSubcategoryName, to: selectedCategory)
-                    newSubcategoryName = ""
-                    Task {
-                        await loadUsageData()
-                    }
-                }
-                .disabled(newSubcategoryName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
-            } message: {
-                Text(String(localized: "categories.subcategory.add.message"))
+            .disabled(newSubcategoryName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+        } message: {
+            Text(String(localized: "categories.subcategory.add.message"))
+        }
+        .alert(String(localized: "common.error"), isPresented: .constant(subcategoryService.errorMessage != nil)) {
+            Button(String(localized: "common.ok")) {
+                subcategoryService.errorMessage = nil
             }
-            .alert(String(localized: "common.error"), isPresented: .constant(subcategoryService.errorMessage != nil)) {
-                Button(String(localized: "common.ok")) {
-                    subcategoryService.errorMessage = nil
-                }
-            } message: {
-                if let error = subcategoryService.errorMessage {
-                    Text(error)
-                }
+        } message: {
+            if let error = subcategoryService.errorMessage {
+                Text(error)
             }
         }
     }
@@ -200,9 +194,9 @@ struct CategoriesManagementScreen: View {
                         HStack {
                             Image(systemName: category.icon)
                                 .font(.system(size: 20))
-                                .foregroundColor(selectedCategory == category ? .white : (themeManager.isDarkMode ? Color(red: 0.40, green: 0.86, blue: 0.18) : .blue))
+                                .foregroundColor(selectedCategory == category ? .white : (.blue))
                                 .frame(width: 32, height: 32)
-                                .background(selectedCategory == category ? (themeManager.isDarkMode ? Color(red: 0.40, green: 0.86, blue: 0.18) : .blue) : (themeManager.isDarkMode ? Color(red: 0.40, green: 0.86, blue: 0.18).opacity(0.1) : .blue.opacity(0.1)))
+                                .background(selectedCategory == category ? (.blue) : Color.blue.opacity(0.1))
                                 .clipShape(Circle())
                             
                             VStack(alignment: .leading, spacing: 2) {
@@ -219,14 +213,14 @@ struct CategoriesManagementScreen: View {
                             
                             if selectedCategory == category {
                                 Image(systemName: "checkmark")
-                                    .foregroundColor(themeManager.isDarkMode ? Color(red: 0.40, green: 0.86, blue: 0.18) : .blue)
+                                    .foregroundColor(.blue)
                                     .fontWeight(.semibold)
                             }
                         }
                         .padding(.vertical, 4)
                     }
                     .buttonStyle(PlainButtonStyle())
-                    .listRowBackground(selectedCategory == category ? (themeManager.isDarkMode ? Color(red: 0.40, green: 0.86, blue: 0.18).opacity(0.1) : Color.blue.opacity(0.1)) : Color.clear)
+                    .listRowBackground(selectedCategory == category ? Color.blue.opacity(0.1) : Color.clear)
                 }
                 .listStyle(SidebarListStyle())
             }
@@ -244,7 +238,7 @@ struct CategoriesManagementScreen: View {
                         .font(.system(size: 24))
                         .foregroundColor(.white)
                         .frame(width: 48, height: 48)
-                        .background(themeManager.isDarkMode ? Color(red: 0.40, green: 0.86, blue: 0.18) : .blue)
+                        .background(.blue)
                         .clipShape(Circle())
                     
                     VStack(alignment: .leading, spacing: 4) {
@@ -268,7 +262,7 @@ struct CategoriesManagementScreen: View {
                         }
                         .padding(.horizontal, 16)
                         .padding(.vertical, 8)
-                        .background(themeManager.isDarkMode ? Color(red: 0.40, green: 0.86, blue: 0.18) : .blue)
+                        .background(.blue)
                         .foregroundColor(.white)
                         .clipShape(Capsule())
                     }
@@ -341,8 +335,7 @@ struct CategoriesManagementScreen: View {
     // MARK: - Category Management Views
 
     private var iPhoneCategoryManagementView: some View {
-        NavigationView {
-            VStack(spacing: 0) {
+        VStack(spacing: 0) {
                 // Segmented control for tabs
                 Picker("", selection: $selectedTab) {
                     Text(String(localized: "categories.categories.tab")).tag(0)
@@ -378,54 +371,47 @@ struct CategoriesManagementScreen: View {
                 }
                 }
                 .listStyle(InsetGroupedListStyle())
-            }
-            .navigationTitle(String(localized: "categories.management.title"))
-            .navigationBarTitleDisplayMode(.large)
-            .preferredColorScheme(themeManager.colorScheme)
-            .toolbar {
-                ToolbarItem(placement: .primaryAction) {
-                    Button {
-                        showingAddCategory = true
-                    } label: {
-                        Image(systemName: "plus")
-                    }
+        }
+        .toolbar {
+            ToolbarItem(placement: .primaryAction) {
+                Button {
+                    showingAddCategory = true
+                } label: {
+                    Image(systemName: "plus")
                 }
             }
-            .refreshable {
-                await loadCategories()
-            }
-            .sheet(isPresented: $showingAddCategory) {
+        }
+        .refreshable {
+            await loadCategories()
+        }
+        .sheet(isPresented: $showingAddCategory) {
+            CategoryFormView(
+                categoryRepository: categoryRepository,
+                userId: currentUserId,
+                onSave: {
+                    Task {
+                        await loadCategories()
+                    }
+                }
+            )
+        }
+        .sheet(isPresented: $showingEditCategory) {
+            if let category = selectedCategoryForEdit {
                 CategoryFormView(
                     categoryRepository: categoryRepository,
                     userId: currentUserId,
+                    category: category,
                     onSave: {
                         Task {
                             await loadCategories()
                         }
                     }
                 )
-                .environmentObject(themeManager)
-            }
-            .sheet(isPresented: $showingEditCategory) {
-                if let category = selectedCategoryForEdit {
-                    CategoryFormView(
-                        categoryRepository: categoryRepository,
-                        userId: currentUserId,
-                        category: category,
-                        onSave: {
-                            Task {
-                                await loadCategories()
-                            }
-                        }
-                    )
-                    .environmentObject(themeManager)
-                }
             }
         }
     }
 
     private var iPadCategoryManagementView: some View {
-        NavigationView {
             VStack(spacing: 0) {
                 // Segmented control for tabs
                 Picker("", selection: $selectedTab) {
@@ -462,48 +448,42 @@ struct CategoriesManagementScreen: View {
                 }
                 }
                 .listStyle(InsetGroupedListStyle())
-            }
-            .navigationTitle(String(localized: "categories.management.title"))
-            .navigationBarTitleDisplayMode(.large)
-            .preferredColorScheme(themeManager.colorScheme)
-            .toolbar {
-                ToolbarItem(placement: .primaryAction) {
-                    Button {
-                        showingAddCategory = true
-                    } label: {
-                        Label(String(localized: "category.add"), systemImage: "plus")
-                    }
+        }
+        .toolbar {
+            ToolbarItem(placement: .primaryAction) {
+                Button {
+                    showingAddCategory = true
+                } label: {
+                    Label(String(localized: "category.add"), systemImage: "plus")
                 }
             }
-            .refreshable {
-                await loadCategories()
-            }
-            .sheet(isPresented: $showingAddCategory) {
+        }
+        .refreshable {
+            await loadCategories()
+        }
+        .sheet(isPresented: $showingAddCategory) {
+            CategoryFormView(
+                categoryRepository: categoryRepository,
+                userId: currentUserId,
+                onSave: {
+                    Task {
+                        await loadCategories()
+                    }
+                }
+            )
+        }
+        .sheet(isPresented: $showingEditCategory) {
+            if let category = selectedCategoryForEdit {
                 CategoryFormView(
                     categoryRepository: categoryRepository,
                     userId: currentUserId,
+                    category: category,
                     onSave: {
                         Task {
                             await loadCategories()
                         }
                     }
                 )
-                .environmentObject(themeManager)
-            }
-            .sheet(isPresented: $showingEditCategory) {
-                if let category = selectedCategoryForEdit {
-                    CategoryFormView(
-                        categoryRepository: categoryRepository,
-                        userId: currentUserId,
-                        category: category,
-                        onSave: {
-                            Task {
-                                await loadCategories()
-                            }
-                        }
-                    )
-                    .environmentObject(themeManager)
-                }
             }
         }
     }
@@ -541,7 +521,6 @@ struct CategoryManagementRow: View {
     let category: Category
     let onEdit: () -> Void
     let onDelete: () -> Void
-    @EnvironmentObject var themeManager: ThemeManager
     @State private var showDeleteConfirmation = false
 
     var body: some View {
@@ -593,7 +572,7 @@ struct CategoryManagementRow: View {
             HStack(spacing: 16) {
                 Button(action: onEdit) {
                     Image(systemName: "pencil")
-                        .foregroundColor(themeManager.isDarkMode ? Color(red: 0.40, green: 0.86, blue: 0.18) : .blue)
+                        .foregroundColor(.blue)
                         .font(.system(size: 16))
                 }
                 .buttonStyle(PlainButtonStyle())
@@ -701,7 +680,6 @@ struct CategoryChip: View {
     let category: TransactionCategory
     let isSelected: Bool
     let onTap: () -> Void
-    @EnvironmentObject var themeManager: ThemeManager
     
     var body: some View {
         Button(action: onTap) {
@@ -714,7 +692,7 @@ struct CategoryChip: View {
             }
             .padding(.horizontal, 16)
             .padding(.vertical, 8)
-            .background(isSelected ? (themeManager.isDarkMode ? Color(red: 0.40, green: 0.86, blue: 0.18) : Color.blue) : Color(.systemGray6))
+            .background(isSelected ? Color.blue : Color(.systemGray6))
             .foregroundColor(isSelected ? .white : .primary)
             .clipShape(Capsule())
         }
@@ -728,7 +706,6 @@ struct SubcategoryRow: View {
     let isCustom: Bool
     let canDelete: Bool
     let onDelete: () -> Void
-    @EnvironmentObject var themeManager: ThemeManager
     
     var body: some View {
         HStack {
@@ -742,8 +719,8 @@ struct SubcategoryRow: View {
                             .font(.caption2)
                             .padding(.horizontal, 6)
                             .padding(.vertical, 2)
-                            .background((themeManager.isDarkMode ? Color(red: 0.40, green: 0.86, blue: 0.18) : Color.blue).opacity(0.1))
-                            .foregroundColor(themeManager.isDarkMode ? Color(red: 0.40, green: 0.86, blue: 0.18) : .blue)
+                            .background(Color.blue.opacity(0.1))
+                            .foregroundColor(.blue)
                             .cornerRadius(4)
                     }
                 }
@@ -783,5 +760,4 @@ struct SubcategoryRow: View {
         transactionRepository: MockTransactionRepository(),
         categoryRepository: MockCategoryRepository()
     )
-    .environmentObject(ThemeManager())
 }

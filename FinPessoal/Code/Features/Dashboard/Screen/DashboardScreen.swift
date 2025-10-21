@@ -14,65 +14,62 @@ struct DashboardScreen: View {
   @State private var showingSettings = false
   
   var body: some View {
-    NavigationView {
-      ScrollView {
-        LazyVStack(spacing: 20) {
-          // Balance Card
-          BalanceCardView(
-            totalBalance: viewModel.totalBalance,
-            monthlyExpenses: viewModel.monthlyExpenses
-          )
+    ScrollView {
+      LazyVStack(spacing: 20) {
+        // Balance Card
+        BalanceCardView(
+          totalBalance: viewModel.totalBalance,
+          monthlyExpenses: viewModel.monthlyExpenses
+        )
+        .redacted(reason: viewModel.isLoading ? .placeholder : [])
+
+        // Budget Alerts (only show if there are alerts)
+        if !viewModel.budgetAlerts.isEmpty {
+          BudgetAlertsView(budgets: viewModel.budgetAlerts)
+        }
+
+        // Recent Transactions
+        RecentTransactionScreen(transactions: viewModel.recentTransactions)
           .redacted(reason: viewModel.isLoading ? .placeholder : [])
 
-          // Budget Alerts (only show if there are alerts)
-          if !viewModel.budgetAlerts.isEmpty {
-            BudgetAlertsView(budgets: viewModel.budgetAlerts)
-          }
-
-          // Recent Transactions
-          RecentTransactionScreen(transactions: viewModel.recentTransactions)
-            .redacted(reason: viewModel.isLoading ? .placeholder : [])
-
-          // Quick Actions
-          QuickActionsView()
-        }
-        .padding()
+        // Quick Actions
+        QuickActionsView()
       }
-      .background(Color(.systemBackground))
-      .navigationTitle(String(localized: "dashboard.title", defaultValue: "Painel"))
-      .toolbar {
-        ToolbarItem(placement: .navigationBarTrailing) {
-          Button {
-            showingSettings = true
-          } label: {
-            Image(systemName: "gearshape")
-          }
+      .padding()
+    }
+    .background(Color(.systemBackground))
+    .toolbar {
+      ToolbarItem(placement: .navigationBarTrailing) {
+        Button {
+          showingSettings = true
+        } label: {
+          Image(systemName: "gearshape")
         }
       }
-      .refreshable {
-        await MainActor.run {
-          viewModel.loadDashboardData()
-        }
+    }
+    .refreshable {
+      await MainActor.run {
+        viewModel.loadDashboardData()
       }
-      .overlay {
-        if viewModel.isLoading && viewModel.recentTransactions.isEmpty {
-          ProgressView(String(localized: "dashboard.loading", defaultValue: "Carregando..."))
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Color(.systemBackground))
-        }
+    }
+    .overlay {
+      if viewModel.isLoading && viewModel.recentTransactions.isEmpty {
+        ProgressView(String(localized: "dashboard.loading", defaultValue: "Carregando..."))
+          .frame(maxWidth: .infinity, maxHeight: .infinity)
+          .background(Color(.systemBackground))
       }
-      .alert("Erro", isPresented: .constant(viewModel.error != nil)) {
-        Button("OK") {
-          viewModel.error = nil
-        }
-        Button(String(localized: "common.try.again", defaultValue: "Tentar Novamente")) {
-          viewModel.error = nil
-          viewModel.loadDashboardData()
-        }
-      } message: {
-        if let error = viewModel.error {
-          Text(error.localizedDescription)
-        }
+    }
+    .alert("Erro", isPresented: .constant(viewModel.error != nil)) {
+      Button("OK") {
+        viewModel.error = nil
+      }
+      Button(String(localized: "common.try.again", defaultValue: "Tentar Novamente")) {
+        viewModel.error = nil
+        viewModel.loadDashboardData()
+      }
+    } message: {
+      if let error = viewModel.error {
+        Text(error.localizedDescription)
       }
     }
     .sheet(isPresented: $showingSettings) {
@@ -81,7 +78,7 @@ struct DashboardScreen: View {
     .onAppear {
       print("DashboardScreen: onAppear called")
       viewModel.loadDashboardData()
-      
+
       // Only log analytics if not using mock data
       if !AppConfiguration.shared.useMockData {
         Analytics.logEvent("dashboard_viewed", parameters: nil)

@@ -11,8 +11,7 @@ struct ReportsScreen: View {
   @StateObject private var viewModel = ReportsViewModel()
   
   var body: some View {
-    NavigationView {
-      ZStack {
+    ZStack {
         if viewModel.isLoading && viewModel.reportSummary == nil {
           ProgressView(String(localized: "reports.loading"))
             .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -85,36 +84,33 @@ struct ReportsScreen: View {
           .shadow(color: .gray.opacity(0.2), radius: 8)
           .padding()
         }
-      }
-      .navigationTitle(String(localized: "reports.title"))
-      .navigationBarTitleDisplayMode(.large)
-      .toolbar {
-        ToolbarItemGroup(placement: .navigationBarTrailing) {
-          // Period selector
-          Button {
-            viewModel.showingPeriodPicker = true
-          } label: {
-            Image(systemName: "calendar")
-          }
-          
-          // View toggle (chart/table)
-          Button {
-            viewModel.toggleView()
-          } label: {
-            Image(systemName: viewModel.showingChartView ? "list.bullet" : "chart.bar")
-          }
-          
-          // Export options
-          Button {
-            viewModel.showingExportOptions = true
-          } label: {
-            Image(systemName: "square.and.arrow.up")
-          }
+    }
+    .toolbar {
+      ToolbarItemGroup(placement: .navigationBarTrailing) {
+        // Period selector
+        Button {
+          viewModel.showingPeriodPicker = true
+        } label: {
+          Image(systemName: "calendar")
+        }
+
+        // View toggle (chart/table)
+        Button {
+          viewModel.toggleView()
+        } label: {
+          Image(systemName: viewModel.showingChartView ? "list.bullet" : "chart.bar")
+        }
+
+        // Export options
+        Button {
+          viewModel.showingExportOptions = true
+        } label: {
+          Image(systemName: "square.and.arrow.up")
         }
       }
-      .refreshable {
-        viewModel.refreshData()
-      }
+    }
+    .refreshable {
+      viewModel.refreshData()
     }
     .confirmationDialog(
       String(localized: "reports.period.selector"),

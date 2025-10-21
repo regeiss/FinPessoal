@@ -14,39 +14,36 @@ struct BudgetsScreen: View {
   @State private var selectedBudget: Budget?
   
   var body: some View {
-    NavigationView {
-      ScrollView {
-        LazyVStack(spacing: 16) {
-          if financeViewModel.budgets.isEmpty {
-            emptyStateView
-          } else {
-            budgetSummarySection
-            budgetAlertSection
-            budgetListSection
-          }
-        }
-        .padding(.horizontal)
-      }
-      .navigationTitle(String(localized: "budgets.title"))
-      .toolbar {
-        ToolbarItem(placement: .navigationBarTrailing) {
-          Button(String(localized: "budgets.add.button")) {
-            showingAddBudget = true
-          }
+    ScrollView {
+      LazyVStack(spacing: 16) {
+        if financeViewModel.budgets.isEmpty {
+          emptyStateView
+        } else {
+          budgetSummarySection
+          budgetAlertSection
+          budgetListSection
         }
       }
-      .sheet(isPresented: $showingAddBudget) {
-        AddBudgetScreen()
-          .environmentObject(budgetViewModel)
-          .environmentObject(financeViewModel)
+      .padding(.horizontal)
+    }
+    .toolbar {
+      ToolbarItem(placement: .navigationBarTrailing) {
+        Button(String(localized: "budgets.add.button")) {
+          showingAddBudget = true
+        }
       }
-      .sheet(item: $selectedBudget) { budget in
-        BudgetRowView(budget: budget)
-          .environmentObject(financeViewModel)
-      }
-      .refreshable {
-        await financeViewModel.loadData()
-      }
+    }
+    .sheet(isPresented: $showingAddBudget) {
+      AddBudgetScreen()
+        .environmentObject(budgetViewModel)
+        .environmentObject(financeViewModel)
+    }
+    .sheet(item: $selectedBudget) { budget in
+      BudgetRowView(budget: budget)
+        .environmentObject(financeViewModel)
+    }
+    .refreshable {
+      await financeViewModel.loadData()
     }
   }
   

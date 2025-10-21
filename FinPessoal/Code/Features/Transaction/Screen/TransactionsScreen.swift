@@ -37,86 +37,83 @@ struct TransactionsScreen: View {
   }
   
   var body: some View {
-    NavigationView {
-      VStack(spacing: 0) {
-        if transactionViewModel.isLoading {
-          ProgressView(String(localized: "transactions.loading"))
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-        } else if !transactionViewModel.hasTransactions {
-          emptyStateView
-        } else {
-          filtersSection
-          transactionsList
+    VStack(spacing: 0) {
+      if transactionViewModel.isLoading {
+        ProgressView(String(localized: "transactions.loading"))
+          .frame(maxWidth: .infinity, maxHeight: .infinity)
+      } else if !transactionViewModel.hasTransactions {
+        emptyStateView
+      } else {
+        filtersSection
+        transactionsList
+      }
+    }
+    .searchable(text: $transactionViewModel.searchQuery, prompt: String(localized: "transactions.search.prompt"))
+    .toolbar {
+      ToolbarItemGroup(placement: .navigationBarTrailing) {
+        Button {
+          transactionViewModel.showImportPicker()
+        } label: {
+          Image(systemName: "square.and.arrow.down")
+        }
+
+        Button {
+          transactionViewModel.showAddTransaction()
+        } label: {
+          Image(systemName: "plus.circle.fill")
         }
       }
-      .navigationTitle(String(localized: "transactions.title"))
-      .searchable(text: $transactionViewModel.searchQuery, prompt: String(localized: "transactions.search.prompt"))
-      .toolbar {
-        ToolbarItemGroup(placement: .navigationBarTrailing) {
-          Button {
-            transactionViewModel.showImportPicker()
-          } label: {
-            Image(systemName: "square.and.arrow.down")
-          }
-          
-          Button {
-            transactionViewModel.showAddTransaction()
-          } label: {
-            Image(systemName: "plus.circle.fill")
-          }
+    }
+    .sheet(isPresented: $transactionViewModel.showingAddTransaction) {
+      if UIDevice.current.userInterfaceIdiom != .pad {
+        AddTransactionView(transactionViewModel: transactionViewModel)
+      }
+    }
+    .sheet(isPresented: $transactionViewModel.showingTransactionDetail) {
+      if UIDevice.current.userInterfaceIdiom != .pad {
+        if let selectedTransaction = transactionViewModel.selectedTransaction {
+          TransactionDetailView(transaction: selectedTransaction)
         }
       }
-      .sheet(isPresented: $transactionViewModel.showingAddTransaction) {
-        if UIDevice.current.userInterfaceIdiom != .pad {
-          AddTransactionView(transactionViewModel: transactionViewModel)
-        }
+    }
+    .fileImporter(
+      isPresented: $transactionViewModel.showingFilePicker,
+      allowedContentTypes: [UTType(filenameExtension: "ofx") ?? UTType.data],
+      allowsMultipleSelection: false
+    ) { result in
+      transactionViewModel.handleFileImport(result)
+    }
+    .sheet(isPresented: $transactionViewModel.showingImportResult) {
+      ImportResultView(result: transactionViewModel.importResult)
+    }
+    .refreshable {
+      await transactionViewModel.fetchTransactions()
+    }
+    .onAppear {
+      print("TransactionsScreen: onAppear called")
+      print("TransactionsScreen: authViewModel.isAuthenticated = \(authViewModel.isAuthenticated)")
+      print("TransactionsScreen: authViewModel.currentUser = \(String(describing: authViewModel.currentUser))")
+      if authViewModel.isAuthenticated {
+        print("TransactionsScreen: User authenticated, loading transactions...")
+        transactionViewModel.loadTransactions()
+      } else {
+        print("TransactionsScreen: User not authenticated, not loading transactions")
       }
-      .sheet(isPresented: $transactionViewModel.showingTransactionDetail) {
-        if UIDevice.current.userInterfaceIdiom != .pad {
-          if let selectedTransaction = transactionViewModel.selectedTransaction {
-            TransactionDetailView(transaction: selectedTransaction)
-          }
-        }
+    }
+    .onChange(of: authViewModel.isAuthenticated) { _, newValue in
+      if newValue {
+        transactionViewModel.loadTransactions()
+      } else {
+        transactionViewModel.transactions = []
       }
-      .fileImporter(
-        isPresented: $transactionViewModel.showingFilePicker,
-        allowedContentTypes: [UTType(filenameExtension: "ofx") ?? UTType.data],
-        allowsMultipleSelection: false
-      ) { result in
-        transactionViewModel.handleFileImport(result)
+    }
+    .alert("Ocorreu um erro", isPresented: .constant(transactionViewModel.errorMessage != nil)) {
+      Button("OK") {
+        transactionViewModel.clearError()
       }
-      .sheet(isPresented: $transactionViewModel.showingImportResult) {
-        ImportResultView(result: transactionViewModel.importResult)
-      }
-      .refreshable {
-        await transactionViewModel.fetchTransactions()
-      }
-      .onAppear {
-        print("TransactionsScreen: onAppear called")
-        print("TransactionsScreen: authViewModel.isAuthenticated = \(authViewModel.isAuthenticated)")
-        print("TransactionsScreen: authViewModel.currentUser = \(String(describing: authViewModel.currentUser))")
-        if authViewModel.isAuthenticated {
-          print("TransactionsScreen: User authenticated, loading transactions...")
-          transactionViewModel.loadTransactions()
-        } else {
-          print("TransactionsScreen: User not authenticated, not loading transactions")
-        }
-      }
-      .onChange(of: authViewModel.isAuthenticated) { _, newValue in
-        if newValue {
-          transactionViewModel.loadTransactions()
-        } else {
-          transactionViewModel.transactions = []
-        }
-      }
-      .alert("Ocorreu um erro", isPresented: .constant(transactionViewModel.errorMessage != nil)) {
-        Button("OK") {
-          transactionViewModel.clearError()
-        }
-      } message: {
-        if let errorMessage = transactionViewModel.errorMessage {
-          Text(errorMessage)
-        }
+    } message: {
+      if let errorMessage = transactionViewModel.errorMessage {
+        Text(errorMessage)
       }
     }
   }

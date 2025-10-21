@@ -12,8 +12,7 @@ struct SidebarView: View {
   @EnvironmentObject var navigationState: NavigationState
   @EnvironmentObject var authViewModel: AuthViewModel
   @EnvironmentObject var financeViewModel: FinanceViewModel
-  @EnvironmentObject var themeManager: ThemeManager
-  
+
   var body: some View {
     List(selection: $navigationState.selectedSidebarItem) {
       Section {
@@ -22,30 +21,28 @@ struct SidebarView: View {
             .listRowInsets(EdgeInsets())
         }
       }
-      
+
       Section("Menu Principal") {
         ForEach(SidebarItem.allCases.prefix(4), id: \.self) { item in
           SidebarRow(item: item)
         }
       }
-      
+
       Section("Ferramentas") {
         ForEach(Array(SidebarItem.allCases.dropFirst(4).dropLast(2)), id: \.self) { item in
           SidebarRow(item: item)
         }
       }
-      
+
       Section("Configurações") {
         SidebarRow(item: .categories)
       }
-      
+
       Section {
         SidebarRow(item: .settings)
       }
     }
     .listStyle(.sidebar)
     .navigationTitle("Money Manager")
-    .preferredColorScheme(themeManager.colorScheme)
-    .background(themeManager.isDarkMode ? Color(red: 0.12, green: 0.12, blue: 0.12) : .clear)
   }
 }
