@@ -9,7 +9,10 @@ import SwiftUI
 
 struct GoalRowView: View {
   let goal: Goal
-  
+  @State private var showingProgressSheet = false
+  @EnvironmentObject var financeViewModel: FinanceViewModel
+  @EnvironmentObject var goalViewModel: GoalViewModel
+
   var body: some View {
     HStack(spacing: 12) {
       // Category icon
@@ -70,5 +73,14 @@ struct GoalRowView: View {
         .foregroundColor(.secondary)
     }
     .padding(.vertical, 4)
+    .contentShape(Rectangle())
+    .onTapGesture {
+      showingProgressSheet = true
+    }
+    .sheet(isPresented: $showingProgressSheet) {
+      GoalProgressSheet(goal: goal)
+        .environmentObject(financeViewModel)
+        .environmentObject(goalViewModel)
+    }
   }
 }

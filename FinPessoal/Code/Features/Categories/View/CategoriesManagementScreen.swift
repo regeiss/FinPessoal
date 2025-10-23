@@ -15,7 +15,6 @@ struct CategoriesManagementScreen: View {
     @State private var newSubcategoryName = ""
     @State private var subcategoryUsage: [String: Int] = [:]
     @State private var showingAddCategory = false
-    @State private var showingEditCategory = false
     @State private var categories: [Category] = []
     @State private var selectedCategoryForEdit: Category?
     @State private var isLoadingCategories = false
@@ -359,7 +358,6 @@ struct CategoriesManagementScreen: View {
                                     category: category,
                                     onEdit: {
                                         selectedCategoryForEdit = category
-                                        showingEditCategory = true
                                     },
                                     onDelete: {
                                         deleteCategory(category)
@@ -395,19 +393,18 @@ struct CategoriesManagementScreen: View {
                 }
             )
         }
-        .sheet(isPresented: $showingEditCategory) {
-            if let category = selectedCategoryForEdit {
-                CategoryFormView(
-                    categoryRepository: categoryRepository,
-                    userId: currentUserId,
-                    category: category,
-                    onSave: {
-                        Task {
-                            await loadCategories()
-                        }
+        .sheet(item: $selectedCategoryForEdit) { category in
+            CategoryFormView(
+                categoryRepository: categoryRepository,
+                userId: currentUserId,
+                category: category,
+                onSave: {
+                    Task {
+                        await loadCategories()
                     }
-                )
-            }
+                    selectedCategoryForEdit = nil
+                }
+            )
         }
     }
 
@@ -436,7 +433,6 @@ struct CategoriesManagementScreen: View {
                                     category: category,
                                     onEdit: {
                                         selectedCategoryForEdit = category
-                                        showingEditCategory = true
                                     },
                                     onDelete: {
                                         deleteCategory(category)
@@ -472,19 +468,18 @@ struct CategoriesManagementScreen: View {
                 }
             )
         }
-        .sheet(isPresented: $showingEditCategory) {
-            if let category = selectedCategoryForEdit {
-                CategoryFormView(
-                    categoryRepository: categoryRepository,
-                    userId: currentUserId,
-                    category: category,
-                    onSave: {
-                        Task {
-                            await loadCategories()
-                        }
+        .sheet(item: $selectedCategoryForEdit) { category in
+            CategoryFormView(
+                categoryRepository: categoryRepository,
+                userId: currentUserId,
+                category: category,
+                onSave: {
+                    Task {
+                        await loadCategories()
                     }
-                )
-            }
+                    selectedCategoryForEdit = nil
+                }
+            )
         }
     }
 

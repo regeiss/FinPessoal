@@ -104,6 +104,7 @@ struct GoalScreen: View {
           .background(Color(.systemBackground))
       }
     }
+    .environmentObject(goalViewModel)
     .toolbar {
       ToolbarItem(placement: .navigationBarLeading) {
         if !financeViewModel.goals.isEmpty {

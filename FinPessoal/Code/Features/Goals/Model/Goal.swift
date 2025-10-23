@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 enum GoalCategory: String, CaseIterable, Codable {
   case emergency = "emergency"
@@ -57,6 +58,20 @@ enum GoalCategory: String, CaseIterable, Codable {
     case .wedding: return "pink"
     case .retirement: return "brown"
     case .other: return "gray"
+    }
+  }
+
+  var swiftUIColor: Color {
+    switch self {
+    case .emergency: return .red
+    case .vacation: return .blue
+    case .house: return .green
+    case .car: return .orange
+    case .education: return .purple
+    case .investment: return .mint
+    case .wedding: return .pink
+    case .retirement: return .brown
+    case .other: return .gray
     }
   }
 }
