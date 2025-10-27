@@ -12,8 +12,8 @@ This comprehensive testing suite provides extensive coverage for the FinPessoal 
 - **Device-Specific Tests**: iPad three-column layout functionality
 
 ### Test Statistics
-- **Total Test Files**: 12
-- **Estimated Test Count**: 150+ individual tests
+- **Total Test Files**: 15
+- **Estimated Test Count**: 200+ individual tests
 - **Code Coverage Target**: 80%+
 - **Platforms Tested**: iPhone, iPad
 
@@ -27,10 +27,13 @@ FinPessoalTests/
 ├── Models/                            # Data model tests
 │   ├── AccountTests.swift             # Account model validation
 │   ├── TransactionTests.swift         # Transaction model validation
-│   └── UserTests.swift                # User model validation
+│   ├── UserTests.swift                # User model validation
+│   ├── BudgetEnumTests.swift          # Budget period enum tests
+│   └── TransactionEnumTests.swift     # Transaction category/subcategory tests
 ├── ViewModels/                        # MVVM ViewModel tests
 │   ├── AccountViewModelTests.swift    # Account management logic
-│   └── TransactionViewModelTests.swift # Transaction management logic
+│   ├── TransactionViewModelTests.swift # Transaction management logic
+│   └── BudgetViewModelTests.swift     # Budget creation and validation logic
 ├── Navigation/                        # Navigation and routing tests
 │   └── NavigationStateTests.swift     # iPad three-column navigation
 ├── Repositories/                      # Data layer tests
@@ -48,7 +51,7 @@ FinPessoalUITests/
 ## 🧪 Test Categories
 
 ### 1. Model Tests
-**Files**: `Models/AccountTests.swift`, `Models/TransactionTests.swift`, `Models/UserTests.swift`
+**Files**: `Models/AccountTests.swift`, `Models/TransactionTests.swift`, `Models/UserTests.swift`, `Models/BudgetEnumTests.swift`, `Models/TransactionEnumTests.swift`
 
 Tests data model integrity, validation, and serialization:
 - Model initialization and property validation
@@ -56,6 +59,10 @@ Tests data model integrity, validation, and serialization:
 - Edge cases (zero amounts, empty strings, etc.)
 - Computed properties (formatted currency, dates)
 - Enum functionality and display properties
+- Transaction categories and 40+ subcategories
+- Budget period calculations (weekly, monthly, quarterly, yearly)
+- Category sorting and color schemes
+- Codable conformance for all enums
 
 **Key Test Cases**:
 ```swift
@@ -63,10 +70,13 @@ func testAccountInitialization()
 func testFormattedBalance()
 func testToDictionary()
 func testFromDictionaryWithInvalidData()
+func testBudgetPeriodNextPeriodStart()
+func testTransactionCategorySubcategories()
+func testCategorySortedByLogicalOrder()
 ```
 
 ### 2. ViewModel Tests
-**Files**: `ViewModels/AccountViewModelTests.swift`, `ViewModels/TransactionViewModelTests.swift`
+**Files**: `ViewModels/AccountViewModelTests.swift`, `ViewModels/TransactionViewModelTests.swift`, `ViewModels/BudgetViewModelTests.swift`
 
 Tests business logic and state management:
 - CRUD operations with mock repositories
@@ -75,6 +85,9 @@ Tests business logic and state management:
 - Statistics calculation
 - UI state management (loading, selection, etc.)
 - Device-specific behavior (iPad vs iPhone)
+- Budget creation and validation
+- Period-based end date calculations
+- Alert threshold management
 
 **Key Test Cases**:
 ```swift
@@ -82,6 +95,9 @@ func testLoadAccountsSuccess()
 func testTransactionFilteringPerformance()
 func testStatisticsCalculation()
 func testSelectAccountOniPad()
+func testCreateBudgetWithValidData()
+func testEndDateCalculationMonthly()
+func testBudgetValidation()
 ```
 
 ### 3. Navigation Tests

@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import SwiftUI
 @testable import FinPessoal
 
 final class TransactionTests: XCTestCase {
@@ -92,25 +93,68 @@ final class TransactionTests: XCTestCase {
     }
     
     // MARK: - Transaction Category Tests
-    
+
     func testTransactionCategoryProperties() throws {
         // Test a few key categories
         XCTAssertNotNil(TransactionCategory.food.icon)
         XCTAssertNotNil(TransactionCategory.shopping.icon)
         XCTAssertNotNil(TransactionCategory.salary.icon)
         XCTAssertNotNil(TransactionCategory.transport.icon)
-        
-        // TransactionCategory enum doesn't have color properties
-        // Test icon property instead
+
+        // Test icon properties
         XCTAssertEqual(TransactionCategory.food.icon, "fork.knife")
         XCTAssertEqual(TransactionCategory.shopping.icon, "bag")
         XCTAssertEqual(TransactionCategory.salary.icon, "dollarsign.circle")
         XCTAssertEqual(TransactionCategory.transport.icon, "car")
-        
+
         XCTAssertFalse(TransactionCategory.food.displayName.isEmpty)
         XCTAssertFalse(TransactionCategory.shopping.displayName.isEmpty)
         XCTAssertFalse(TransactionCategory.salary.displayName.isEmpty)
         XCTAssertFalse(TransactionCategory.transport.displayName.isEmpty)
+    }
+
+    func testTransactionCategoryColors() throws {
+        // Test that all categories have valid SwiftUI colors
+        for category in TransactionCategory.allCases {
+            let color = category.swiftUIColor
+            XCTAssertNotNil(color, "\(category) should have a SwiftUI color")
+        }
+    }
+
+    func testTransactionCategorySubcategories() throws {
+        // Test that all categories have subcategories
+        for category in TransactionCategory.allCases {
+            XCTAssertFalse(category.subcategories.isEmpty, "\(category) should have subcategories")
+        }
+
+        // Test specific category subcategories
+        XCTAssertTrue(TransactionCategory.food.subcategories.contains(.restaurants))
+        XCTAssertTrue(TransactionCategory.transport.subcategories.contains(.fuel))
+        XCTAssertTrue(TransactionCategory.healthcare.subcategories.contains(.doctor))
+    }
+
+    func testTransactionCategorySortOrder() throws {
+        // Test that all categories have a valid sort order
+        for category in TransactionCategory.allCases {
+            XCTAssertGreaterThanOrEqual(category.sortOrder, 0)
+            XCTAssertLessThan(category.sortOrder, TransactionCategory.allCases.count)
+        }
+
+        // Test that salary has the lowest sort order (comes first)
+        XCTAssertEqual(TransactionCategory.salary.sortOrder, 0)
+    }
+
+    func testTransactionCategorySortedByLogicalOrder() throws {
+        let categories = Array(TransactionCategory.allCases)
+        let sortedCategories = TransactionCategory.sortedByLogicalOrder(categories)
+
+        XCTAssertEqual(sortedCategories.count, categories.count)
+        XCTAssertEqual(sortedCategories.first, .salary)
+
+        // Verify that the list is sorted by sortOrder
+        for i in 0..<(sortedCategories.count - 1) {
+            XCTAssertLessThanOrEqual(sortedCategories[i].sortOrder, sortedCategories[i + 1].sortOrder)
+        }
     }
     
     func testTransactionCategorySorting() throws {

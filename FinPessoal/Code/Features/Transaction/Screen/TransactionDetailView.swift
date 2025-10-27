@@ -252,38 +252,202 @@ struct TransactionDetailView: View {
   }
 }
 
-// MARK: - Edit Transaction View (Placeholder)
+// MARK: - Edit Transaction View
 struct EditTransactionView: View {
   let transaction: Transaction
   @EnvironmentObject var financeViewModel: FinanceViewModel
   @Environment(\.dismiss) private var dismiss
-  
+
+  @State private var amount: String
+  @State private var amountValue: Double
+  @State private var description: String
+  @State private var selectedCategory: TransactionCategory
+  @State private var selectedType: TransactionType
+  @State private var selectedAccountId: String
+  @State private var selectedDate: Date
+  @State private var isRecurring: Bool
+  @State private var isLoading = false
+  @State private var showingDeleteConfirmation = false
+
+  init(transaction: Transaction) {
+    self.transaction = transaction
+
+    self._amountValue = State(initialValue: transaction.amount)
+    self._selectedCategory = State(initialValue: transaction.category)
+    self._selectedType = State(initialValue: transaction.type)
+    self._selectedAccountId = State(initialValue: transaction.accountId)
+    self._selectedDate = State(initialValue: transaction.date)
+    self._isRecurring = State(initialValue: transaction.isRecurring)
+
+    // Extract description (remove transfer destination if present)
+    let desc = transaction.description
+    if transaction.type == .transfer, let arrowIndex = desc.range(of: " → ")?.lowerBound {
+      self._description = State(initialValue: String(desc[..<arrowIndex]))
+    } else {
+      self._description = State(initialValue: desc)
+    }
+
+    // Format initial amount
+    let formatter = NumberFormatter()
+    formatter.numberStyle = .decimal
+    formatter.minimumFractionDigits = 2
+    formatter.maximumFractionDigits = 2
+    formatter.decimalSeparator = ","
+    formatter.groupingSeparator = "."
+    self._amount = State(initialValue: formatter.string(from: NSNumber(value: transaction.amount)) ?? "0,00")
+  }
+
   var body: some View {
     NavigationView {
-      VStack {
-        Text(String(localized: "transaction.edit.title", defaultValue: "Editar Transação"))
-          .font(.title)
-        
-        Text(String(localized: "common.coming.soon", defaultValue: "Funcionalidade em desenvolvimento"))
-          .foregroundColor(.secondary)
+      Form {
+        Section(header: Text(String(localized: "transactions.basic.info"))) {
+          HStack {
+            Text(String(localized: "transactions.type"))
+            Spacer()
+            Picker("", selection: $selectedType) {
+              ForEach(TransactionType.allCases, id: \.self) { type in
+                Text(type.displayName).tag(type)
+              }
+            }
+            .pickerStyle(SegmentedPickerStyle())
+          }
+
+          TextField(String(localized: "transactions.amount.placeholder"), text: $amount)
+            .keyboardType(.decimalPad)
+            .onChange(of: amount) { _, newValue in
+              formatAmountInput(newValue)
+            }
+
+          TextField(String(localized: "transactions.description.placeholder"), text: $description)
+        }
+
+        Section(header: Text(String(localized: "transactions.details"))) {
+          Picker(String(localized: "transaction.info.category"), selection: $selectedCategory) {
+            ForEach(TransactionCategory.allCases.sorted(), id: \.self) { category in
+              HStack {
+                Image(systemName: category.icon)
+                Text(category.displayName)
+              }
+              .tag(category)
+            }
+          }
+          .pickerStyle(MenuPickerStyle())
+
+          if !financeViewModel.accounts.isEmpty {
+            Picker(String(localized: "transactions.account"), selection: $selectedAccountId) {
+              ForEach(financeViewModel.accounts) { account in
+                Text(account.name).tag(account.id)
+              }
+            }
+            .pickerStyle(MenuPickerStyle())
+          }
+
+          DatePicker(String(localized: "transactions.date"), selection: $selectedDate, displayedComponents: .date)
+
+          Toggle(String(localized: "transactions.is.recurring"), isOn: $isRecurring)
+        }
       }
-      .navigationTitle(String(localized: "common.edit"))
+      .navigationTitle(String(localized: "transaction.edit.title"))
       .navigationBarTitleDisplayMode(.inline)
       .toolbar {
         ToolbarItem(placement: .navigationBarLeading) {
-          Button(String(localized: "common.cancel")) {
-            dismiss()
+          Button {
+            showingDeleteConfirmation = true
+          } label: {
+            Image(systemName: "trash")
+              .foregroundColor(.red)
           }
         }
-        
+
         ToolbarItem(placement: .navigationBarTrailing) {
-          Button(String(localized: "common.save")) {
-            // TODO: Implementar edição
-            dismiss()
+          HStack(spacing: 16) {
+            Button(String(localized: "common.save")) {
+              Task {
+                await saveTransaction()
+              }
+            }
+            .disabled(isLoading || amount.isEmpty || description.isEmpty || selectedAccountId.isEmpty)
+
+            Button(String(localized: "common.close")) {
+              dismiss()
+            }
           }
         }
       }
+      .disabled(isLoading)
+      .alert(
+        String(localized: "transaction.delete.title"),
+        isPresented: $showingDeleteConfirmation
+      ) {
+        Button(String(localized: "common.cancel"), role: .cancel) {}
+        Button(String(localized: "common.delete"), role: .destructive) {
+          deleteTransaction()
+        }
+      } message: {
+        Text(String(localized: "transaction.delete.confirmation"))
+      }
     }
+  }
+
+  private func formatAmountInput(_ input: String) {
+    let digitsOnly = input.filter { "0123456789".contains($0) }
+
+    guard !digitsOnly.isEmpty else {
+      amountValue = 0
+      amount = ""
+      return
+    }
+
+    guard let cents = Int(digitsOnly) else {
+      amountValue = 0
+      return
+    }
+
+    let value = Double(cents) / 100.0
+    amountValue = value
+
+    let formatter = NumberFormatter()
+    formatter.numberStyle = .decimal
+    formatter.minimumFractionDigits = 2
+    formatter.maximumFractionDigits = 2
+    formatter.decimalSeparator = ","
+    formatter.groupingSeparator = "."
+
+    if let formattedValue = formatter.string(from: NSNumber(value: value)) {
+      amount = formattedValue
+    }
+  }
+
+  private func saveTransaction() async {
+    isLoading = true
+
+    let updatedTransaction = Transaction(
+      id: transaction.id,
+      accountId: selectedAccountId,
+      amount: amountValue,
+      description: description,
+      category: selectedCategory,
+      type: selectedType,
+      date: selectedDate,
+      isRecurring: isRecurring,
+      userId: transaction.userId,
+      createdAt: transaction.createdAt,
+      updatedAt: Date(),
+      subcategory: transaction.subcategory
+    )
+
+    // Update in financeViewModel
+    if let index = financeViewModel.transactions.firstIndex(where: { $0.id == transaction.id }) {
+      financeViewModel.transactions[index] = updatedTransaction
+    }
+
+    isLoading = false
+    dismiss()
+  }
+
+  private func deleteTransaction() {
+    financeViewModel.transactions.removeAll { $0.id == transaction.id }
+    dismiss()
   }
 }
 

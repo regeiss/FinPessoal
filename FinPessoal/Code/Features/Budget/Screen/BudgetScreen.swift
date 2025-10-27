@@ -39,7 +39,7 @@ struct BudgetsScreen: View {
         .environmentObject(financeViewModel)
     }
     .sheet(item: $selectedBudget) { budget in
-      BudgetRowView(budget: budget)
+      BudgetDetailSheet(budget: budget)
         .environmentObject(financeViewModel)
     }
     .refreshable {

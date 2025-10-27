@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E11447702EAE8AFC00060A67 /* Roadmap.md in Resources */ = {isa = PBXBuildFile; fileRef = E11447672EAE8AFC00060A67 /* Roadmap.md */; };
+		E11447732EAE8AFC00060A67 /* Help.md in Resources */ = {isa = PBXBuildFile; fileRef = E114476C2EAE8AFC00060A67 /* Help.md */; };
+		E114481D2EAE8AFC00060A67 /* README 2.md in Resources */ = {isa = PBXBuildFile; fileRef = E114481B2EAE8AFC00060A67 /* README 2.md */; };
 		E177698F2E3E4D1D0028E21B /* FirebaseAI in Frameworks */ = {isa = PBXBuildFile; productRef = E177698E2E3E4D1D0028E21B /* FirebaseAI */; };
 		E17769912E3E4D1D0028E21B /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = E17769902E3E4D1D0028E21B /* FirebaseAnalytics */; };
 		E17769932E3E4D1D0028E21B /* FirebaseAnalyticsCore in Frameworks */ = {isa = PBXBuildFile; productRef = E17769922E3E4D1D0028E21B /* FirebaseAnalyticsCore */; };
@@ -55,6 +58,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E11447672EAE8AFC00060A67 /* Roadmap.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Roadmap.md; sourceTree = "<group>"; };
+		E114476C2EAE8AFC00060A67 /* Help.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Help.md; sourceTree = "<group>"; };
+		E114481B2EAE8AFC00060A67 /* README 2.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "README 2.md"; sourceTree = "<group>"; };
 		E177697D2E3E4AFF0028E21B /* FinPessoal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinPessoal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1776A202E3E51BE0028E21B /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		E191F5122E9C65D2002DB0A9 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
@@ -154,6 +160,9 @@
 				E177697E2E3E4AFF0028E21B /* Products */,
 				E1776A202E3E51BE0028E21B /* .swiftlint.yml */,
 				E191F5122E9C65D2002DB0A9 /* CHANGELOG.md */,
+				E114481B2EAE8AFC00060A67 /* README 2.md */,
+				E11447672EAE8AFC00060A67 /* Roadmap.md */,
+				E114476C2EAE8AFC00060A67 /* Help.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -319,6 +328,8 @@
 			files = (
 				E1776A212E3E51BE0028E21B /* .swiftlint.yml in Resources */,
 				E191F5132E9C65D2002DB0A9 /* CHANGELOG.md in Resources */,
+				E11447702EAE8AFC00060A67 /* Roadmap.md in Resources */,
+				E11447732EAE8AFC00060A67 /* Help.md in Resources */,
 				E1E8F1D02E4D609B00FFD30F /* MockLogin.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -327,6 +338,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E114481D2EAE8AFC00060A67 /* README 2.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,17 +15,29 @@ struct EditAccountView: View {
   @State private var accountName: String
   @State private var selectedAccountType: AccountType
   @State private var balance: String
+  @State private var balanceAmount: Double
   @State private var currency: String
   @State private var isActive: Bool
   @State private var isLoading = false
-  
+  @State private var showingDeleteConfirmation = false
+
   init(account: Account, accountViewModel: AccountViewModel) {
     self.account = account
     self.accountViewModel = accountViewModel
-    
+
     self._accountName = State(initialValue: account.name)
     self._selectedAccountType = State(initialValue: account.type)
-    self._balance = State(initialValue: String(format: "%.2f", account.balance))
+    self._balanceAmount = State(initialValue: account.balance)
+
+    // Format initial balance
+    let formatter = NumberFormatter()
+    formatter.numberStyle = .decimal
+    formatter.minimumFractionDigits = 2
+    formatter.maximumFractionDigits = 2
+    formatter.decimalSeparator = ","
+    formatter.groupingSeparator = "."
+    self._balance = State(initialValue: formatter.string(from: NSNumber(value: account.balance)) ?? "0,00")
+
     self._currency = State(initialValue: account.currency)
     self._isActive = State(initialValue: account.isActive)
   }
@@ -52,7 +64,10 @@ struct EditAccountView: View {
         Section(header: Text(String(localized: "accounts.balance.info"))) {
           TextField(String(localized: "accounts.current.balance"), text: $balance)
             .keyboardType(.decimalPad)
-          
+            .onChange(of: balance) { _, newValue in
+              formatBalanceInput(newValue)
+            }
+
           Picker(String(localized: "accounts.currency"), selection: $currency) {
             Text("Real (BRL)").tag("BRL")
             Text("Dólar (USD)").tag("USD")
@@ -87,46 +102,105 @@ struct EditAccountView: View {
       .navigationBarTitleDisplayMode(.inline)
       .toolbar {
         ToolbarItem(placement: .navigationBarLeading) {
-          Button(String(localized: "common.cancel")) {
-            dismiss()
+          Button {
+            showingDeleteConfirmation = true
+          } label: {
+            Image(systemName: "trash")
+              .foregroundColor(.red)
           }
         }
-        
+
         ToolbarItem(placement: .navigationBarTrailing) {
-          Button(String(localized: "common.save")) {
-            Task {
-              await saveAccount()
+          HStack(spacing: 16) {
+            Button(String(localized: "common.save")) {
+              Task {
+                await saveAccount()
+              }
+            }
+            .disabled(isLoading || accountName.isEmpty)
+
+            Button(String(localized: "common.close")) {
+              dismiss()
             }
           }
-          .disabled(isLoading || accountName.isEmpty)
         }
       }
       .disabled(isLoading)
+      .alert(
+        String(localized: "accounts.delete.confirmation"),
+        isPresented: $showingDeleteConfirmation
+      ) {
+        Button(String(localized: "common.cancel"), role: .cancel) {}
+        Button(String(localized: "accounts.delete.button"), role: .destructive) {
+          deleteAccount()
+        }
+      } message: {
+        Text(String(localized: "accounts.delete.message"))
+      }
     }
   }
   
+  private func formatBalanceInput(_ input: String) {
+    // Remove all non-numeric characters
+    let digitsOnly = input.filter { "0123456789".contains($0) }
+
+    // If empty, reset
+    guard !digitsOnly.isEmpty else {
+      balanceAmount = 0
+      balance = ""
+      return
+    }
+
+    // Convert to cents (integer)
+    guard let cents = Int(digitsOnly) else {
+      balanceAmount = 0
+      return
+    }
+
+    // Convert cents to actual value
+    let value = Double(cents) / 100.0
+    balanceAmount = value
+
+    // Format the display value
+    let formatter = NumberFormatter()
+    formatter.numberStyle = .decimal
+    formatter.minimumFractionDigits = 2
+    formatter.maximumFractionDigits = 2
+    formatter.decimalSeparator = ","
+    formatter.groupingSeparator = "."
+
+    if let formattedValue = formatter.string(from: NSNumber(value: value)) {
+      balance = formattedValue
+    }
+  }
+
   private func saveAccount() async {
     isLoading = true
-    
-    let updatedBalance = Double(balance.replacingOccurrences(of: ",", with: ".")) ?? account.balance
-    
+
     let updatedAccount = Account(
       id: account.id,
       name: accountName,
       type: selectedAccountType,
-      balance: updatedBalance,
+      balance: balanceAmount,
       currency: currency,
       isActive: isActive,
       userId: account.userId,
       createdAt: account.createdAt,
       updatedAt: Date()
     )
-    
+
     let success = await accountViewModel.updateAccount(updatedAccount)
-    
+
     isLoading = false
-    
+
     if success {
+      dismiss()
+    }
+  }
+
+  private func deleteAccount() {
+    Task {
+      await accountViewModel.deleteAccount(account.id)
       dismiss()
     }
   }

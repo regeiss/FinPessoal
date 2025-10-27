@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 enum TransactionPeriod: CaseIterable {
   case today
@@ -86,9 +87,22 @@ enum TransactionCategory: String, CaseIterable, Codable, Comparable {
     case .other: return "questionmark.circle"
     }
   }
-  
-  
-  
+
+  var swiftUIColor: Color {
+    switch self {
+    case .food: return .orange
+    case .transport: return .blue
+    case .entertainment: return .purple
+    case .healthcare: return .red
+    case .shopping: return .pink
+    case .bills: return .yellow
+    case .salary: return .green
+    case .investment: return .mint
+    case .housing: return .brown
+    case .other: return .gray
+    }
+  }
+
   // MARK: - Comparable Implementation
   static func < (lhs: TransactionCategory, rhs: TransactionCategory) -> Bool {
     return lhs.displayName < rhs.displayName

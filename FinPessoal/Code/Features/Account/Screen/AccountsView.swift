@@ -11,7 +11,8 @@ struct AccountsView: View {
   @EnvironmentObject var accountViewModel: AccountViewModel
   @EnvironmentObject var financeViewModel: FinanceViewModel
   @EnvironmentObject var authViewModel: AuthViewModel
-  
+  @State private var accountToEdit: Account?
+
   var body: some View {
     ScrollView {
       LazyVStack(spacing: 20) {
@@ -48,6 +49,9 @@ struct AccountsView: View {
           AccountDetailView(account: selectedAccount, accountViewModel: accountViewModel)
         }
       }
+    }
+    .sheet(item: $accountToEdit) { account in
+      EditAccountView(account: account, accountViewModel: accountViewModel)
     }
     .refreshable {
       await accountViewModel.fetchAccounts()
@@ -147,7 +151,7 @@ struct AccountsView: View {
       
       ForEach(accountViewModel.accounts) { account in
         EnhancedAccountCard(account: account) {
-          accountViewModel.selectAccount(account)
+          accountToEdit = account
         }
         .padding(.bottom, 4)
       }

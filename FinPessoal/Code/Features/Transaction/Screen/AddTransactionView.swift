@@ -100,19 +100,19 @@ struct AddTransactionView: View {
       .navigationTitle(String(localized: "transactions.new.title"))
       .navigationBarTitleDisplayMode(.inline)
       .toolbar {
-        ToolbarItem(placement: .navigationBarLeading) {
-          Button(String(localized: "common.cancel")) {
-            dismiss()
-          }
-        }
-        
         ToolbarItem(placement: .navigationBarTrailing) {
-          Button(String(localized: "common.save")) {
-            Task {
-              await saveTransaction()
+          HStack(spacing: 16) {
+            Button(String(localized: "common.save")) {
+              Task {
+                await saveTransaction()
+              }
+            }
+            .disabled(isLoading || amount.isEmpty || description.isEmpty || selectedAccountId.isEmpty || (selectedType == .transfer && selectedToAccountId.isEmpty))
+
+            Button(String(localized: "common.close")) {
+              dismiss()
             }
           }
-          .disabled(isLoading || amount.isEmpty || description.isEmpty || selectedAccountId.isEmpty || (selectedType == .transfer && selectedToAccountId.isEmpty))
         }
       }
       .disabled(isLoading)

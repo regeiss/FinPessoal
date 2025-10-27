@@ -39,11 +39,13 @@ struct DashboardScreen: View {
     }
     .background(Color(.systemBackground))
     .toolbar {
-      ToolbarItem(placement: .navigationBarTrailing) {
-        Button {
-          showingSettings = true
-        } label: {
-          Image(systemName: "gearshape")
+      if UIDevice.current.userInterfaceIdiom != .pad {
+        ToolbarItem(placement: .navigationBarTrailing) {
+          Button {
+            showingSettings = true
+          } label: {
+            Image(systemName: "gearshape")
+          }
         }
       }
     }

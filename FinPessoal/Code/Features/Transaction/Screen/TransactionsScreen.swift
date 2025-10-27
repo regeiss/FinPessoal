@@ -12,7 +12,8 @@ struct TransactionsScreen: View {
   @StateObject private var transactionViewModel: TransactionViewModel
   @EnvironmentObject var financeViewModel: FinanceViewModel
   @EnvironmentObject var authViewModel: AuthViewModel
-  
+  @State private var transactionToEdit: Transaction?
+
   init(transactionViewModel: TransactionViewModel? = nil) {
     if let existingViewModel = transactionViewModel {
       self._transactionViewModel = StateObject(wrappedValue: existingViewModel)
@@ -75,6 +76,10 @@ struct TransactionsScreen: View {
           TransactionDetailView(transaction: selectedTransaction)
         }
       }
+    }
+    .sheet(item: $transactionToEdit) { transaction in
+      EditTransactionView(transaction: transaction)
+        .environmentObject(financeViewModel)
     }
     .fileImporter(
       isPresented: $transactionViewModel.showingFilePicker,
@@ -212,7 +217,7 @@ struct TransactionsScreen: View {
           ForEach(transactions) { transaction in
             TransactionRow(transaction: transaction)
               .onTapGesture {
-                transactionViewModel.selectTransaction(transaction)
+                transactionToEdit = transaction
               }
           }
         } header: {
@@ -249,6 +254,11 @@ struct TransactionsScreen: View {
     formatter.locale = Locale(identifier: "pt_BR")
     let prefix = amount >= 0 ? "+" : ""
     return prefix + (formatter.string(from: NSNumber(value: abs(amount))) ?? "R$ 0,00")
+  }
+
+  private func deleteTransaction(_ transaction: Transaction) {
+    financeViewModel.transactions.removeAll { $0.id == transaction.id }
+    transactionViewModel.transactions.removeAll { $0.id == transaction.id }
   }
 }
 

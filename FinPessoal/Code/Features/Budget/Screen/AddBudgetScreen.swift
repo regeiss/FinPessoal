@@ -119,17 +119,17 @@ struct AddBudgetScreen: View {
       .navigationTitle(String(localized: "budget.add.title"))
       .navigationBarTitleDisplayMode(.large)
       .toolbar {
-        ToolbarItem(placement: .navigationBarLeading) {
-          Button(String(localized: "common.cancel")) {
-            dismiss()
-          }
-        }
-        
         ToolbarItem(placement: .navigationBarTrailing) {
-          Button(String(localized: "budget.save")) {
-            saveBudget()
+          HStack(spacing: 16) {
+            Button(String(localized: "budget.save")) {
+              saveBudget()
+            }
+            .disabled(!budgetViewModel.isValidBudget || budgetViewModel.isLoading)
+
+            Button(String(localized: "common.close")) {
+              dismiss()
+            }
           }
-          .disabled(!budgetViewModel.isValidBudget || budgetViewModel.isLoading)
         }
       }
       .alert(String(localized: "common.error"), isPresented: $showingAlert) {

@@ -5,6 +5,16 @@
     "/ %@": {},
     "%": {},
     "%.0f%% used": {},
+    "%@ - %@": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "new",
+            "value": "%1$@ - %2$@"
+          }
+        }
+      }
+    },
     "%@ • %@": {
       "localizations": {
         "pt-BR": {
@@ -934,6 +944,23 @@
         }
       }
     },
+    "budget.budgeted": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Budgeted"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Orçado"
+          }
+        }
+      }
+    },
     "budget.card.of.amount": {
       "extractionState": "manual",
       "localizations": {
@@ -998,6 +1025,91 @@
           "stringUnit": {
             "state": "translated",
             "value": "Categoria"
+          }
+        }
+      }
+    },
+    "budget.daily.available": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Daily Available"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Disponível por Dia"
+          }
+        }
+      }
+    },
+    "budget.days.remaining": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Days Left"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dias Restantes"
+          }
+        }
+      }
+    },
+    "budget.delete.button": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Excluir"
+          }
+        }
+      }
+    },
+    "budget.delete.confirmation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete Budget?"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Excluir Orçamento?"
+          }
+        }
+      }
+    },
+    "budget.delete.message": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This action cannot be undone. All data related to this budget will be permanently deleted."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Esta ação não pode ser desfeita. Todos os dados relacionados a este orçamento serão permanentemente excluídos."
           }
         }
       }
@@ -1257,6 +1369,23 @@
         }
       }
     },
+    "budget.details": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Budget Details"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Detalhes do Orçamento"
+          }
+        }
+      }
+    },
     "budget.end.date": {
       "extractionState": "manual",
       "localizations": {
@@ -1342,6 +1471,23 @@
         }
       }
     },
+    "budget.over.budget": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Over Budget!"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Acima do Orçamento!"
+          }
+        }
+      }
+    },
     "budget.period": {
       "extractionState": "manual",
       "localizations": {
@@ -1376,6 +1522,40 @@
         }
       }
     },
+    "budget.period.monthly": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Monthly"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mensal"
+          }
+        }
+      }
+    },
+    "budget.period.quarterly": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quarterly"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Trimestral"
+          }
+        }
+      }
+    },
     "budget.period.section": {
       "extractionState": "manual",
       "localizations": {
@@ -1389,6 +1569,57 @@
           "stringUnit": {
             "state": "translated",
             "value": "Período do Orçamento"
+          }
+        }
+      }
+    },
+    "budget.period.weekly": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Weekly"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Semanal"
+          }
+        }
+      }
+    },
+    "budget.period.yearly": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yearly"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Anual"
+          }
+        }
+      }
+    },
+    "budget.remaining": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remaining"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restante"
           }
         }
       }
@@ -1410,6 +1641,23 @@
         }
       }
     },
+    "budget.spent": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spent"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gasto"
+          }
+        }
+      }
+    },
     "budget.start.date": {
       "extractionState": "manual",
       "localizations": {
@@ -1423,6 +1671,23 @@
           "stringUnit": {
             "state": "translated",
             "value": "Data de Início"
+          }
+        }
+      }
+    },
+    "budget.used": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Used"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Usado"
           }
         }
       }
@@ -6054,6 +6319,23 @@
         }
       }
     },
+    "goal.completed": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Completed!"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Concluído!"
+          }
+        }
+      }
+    },
     "goal.contribution.amount": {
       "extractionState": "manual",
       "localizations": {
@@ -6122,6 +6404,23 @@
         }
       }
     },
+    "goal.days.remaining": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Days Remaining"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dias Restantes"
+          }
+        }
+      }
+    },
     "goal.delete.button": {
       "extractionState": "manual",
       "localizations": {
@@ -6169,23 +6468,6 @@
           "stringUnit": {
             "state": "translated",
             "value": "Esta ação não pode ser desfeita. Todo o progresso desta meta será permanentemente excluído."
-          }
-        }
-      }
-    },
-    "goal.days.remaining": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Days Remaining"
-          }
-        },
-        "pt-BR": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dias Restantes"
           }
         }
       }
@@ -16403,19 +16685,53 @@
     "Valor: %@": {},
     "View Mode": {},
     "Your financial overview and key metrics will be displayed here.": {},
-    "goal.completed": {
+    "accounts.delete.confirmation": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Completed!"
+            "value": "Delete Account?"
           }
         },
         "pt-BR": {
           "stringUnit": {
             "state": "translated",
-            "value": "Concluído!"
+            "value": "Excluir Conta?"
+          }
+        }
+      }
+    },
+    "accounts.delete.button": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Excluir"
+          }
+        }
+      }
+    },
+    "accounts.delete.message": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This action cannot be undone. All data related to this account will be permanently deleted."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Esta ação não pode ser desfeita. Todos os dados relacionados a esta conta serão permanentemente excluídos."
           }
         }
       }

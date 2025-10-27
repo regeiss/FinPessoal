@@ -22,6 +22,15 @@ enum BudgetPeriod: String, CaseIterable, Codable {
     }
   }
   
+  var displayName: String {
+    switch self {
+    case .weekly: return String(localized: "budget.period.weekly")
+    case .monthly: return String(localized: "budget.period.monthly")
+    case .quarterly: return String(localized: "budget.period.quarterly")
+    case .yearly: return String(localized: "budget.period.yearly")
+    }
+  }
+  
   func nextPeriodStart(from date: Date) -> Date {
     let calendar = Calendar.current
     switch self {
@@ -36,3 +45,4 @@ enum BudgetPeriod: String, CaseIterable, Codable {
     }
   }
 }
+

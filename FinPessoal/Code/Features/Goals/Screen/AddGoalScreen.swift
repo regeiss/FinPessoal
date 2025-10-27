@@ -115,17 +115,17 @@ struct AddGoalScreen: View {
       .navigationTitle(String(localized: "goal.add.title"))
       .navigationBarTitleDisplayMode(.large)
       .toolbar {
-        ToolbarItem(placement: .navigationBarLeading) {
-          Button(String(localized: "common.cancel")) {
-            dismiss()
-          }
-        }
-        
         ToolbarItem(placement: .navigationBarTrailing) {
-          Button(String(localized: "goal.save")) {
-            saveGoal()
+          HStack(spacing: 16) {
+            Button(String(localized: "goal.save")) {
+              saveGoal()
+            }
+            .disabled(!goalViewModel.isValidGoal || goalViewModel.isLoading)
+
+            Button(String(localized: "common.close")) {
+              dismiss()
+            }
           }
-          .disabled(!goalViewModel.isValidGoal || goalViewModel.isLoading)
         }
       }
       .alert(String(localized: "common.error"), isPresented: $showingAlert) {

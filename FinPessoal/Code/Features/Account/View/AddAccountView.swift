@@ -56,19 +56,19 @@ struct AddAccountView: View {
       .navigationTitle(String(localized: "accounts.new.title"))
       .navigationBarTitleDisplayMode(.inline)
       .toolbar {
-        ToolbarItem(placement: .navigationBarLeading) {
-          Button(String(localized: "common.cancel")) {
-            dismiss()
-          }
-        }
-        
         ToolbarItem(placement: .navigationBarTrailing) {
-          Button(String(localized: "common.save")) {
-            Task {
-              await saveAccount()
+          HStack(spacing: 16) {
+            Button(String(localized: "common.save")) {
+              Task {
+                await saveAccount()
+              }
+            }
+            .disabled(isLoading || accountName.isEmpty)
+
+            Button(String(localized: "common.close")) {
+              dismiss()
             }
           }
-          .disabled(isLoading || accountName.isEmpty)
         }
       }
       .disabled(isLoading)

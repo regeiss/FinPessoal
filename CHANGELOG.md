@@ -8,8 +8,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added - October 2025
+- Comprehensive test suite for BudgetEnum with period calculations and display properties (2025-10-26)
+- Comprehensive test suite for TransactionEnum including subcategories, colors, and sorting (2025-10-26)
+- Comprehensive test suite for BudgetViewModel with validation and creation tests (2025-10-26)
+- BudgetDetailSheet view for displaying detailed budget information with visual progress (2025-10-23)
+- TransactionSubcategory enum with 40+ subcategories across all transaction categories (2025-10-23)
+- Transaction category sorting functionality with logical ordering (2025-10-23)
+- SwiftUI color support for transaction categories (2025-10-23)
+- BudgetPeriod enum properties: icons, display names, and next period calculation (2025-10-17)
 - Help texts for account and loan features (2025-10-08)
 - Updated help section and category handling (2025-10-07)
+
+### Changed - October 2025
+- Enhanced TransactionCategory enum with subcategories property and Comparable conformance (2025-10-23)
+- Enhanced TransactionType enum with icon property (2025-10-23)
+- Updated TransactionTests to include tests for new enum properties (subcategories, colors, sorting) (2025-10-26)
+- Updated README.md with comprehensive project documentation (2025-10-26)
+- Updated FinPessoalTests/README.md with new test files and coverage details (2025-10-26)
 
 ### Added - October 2025
 - Category management screen (2025-10-05)
