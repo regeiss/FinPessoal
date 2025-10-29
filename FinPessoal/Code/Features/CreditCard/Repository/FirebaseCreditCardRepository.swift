@@ -62,7 +62,7 @@ class FirebaseCreditCardRepository: CreditCardRepositoryProtocol {
       updatedAt: Date()
     )
 
-    try await db.collection(creditCardsCollection)
+    try db.collection(creditCardsCollection)
       .document(updatedCreditCard.id)
       .setData(from: updatedCreditCard)
 
@@ -89,7 +89,7 @@ class FirebaseCreditCardRepository: CreditCardRepositoryProtocol {
       updatedAt: Date()
     )
 
-    try await db.collection(creditCardsCollection)
+    try db.collection(creditCardsCollection)
       .document(updatedCreditCard.id)
       .setData(from: updatedCreditCard, merge: true)
 
@@ -162,7 +162,7 @@ class FirebaseCreditCardRepository: CreditCardRepositoryProtocol {
     )
 
     // Add the transaction document
-    try await db.collection(transactionsCollection)
+    try db.collection(transactionsCollection)
       .document(updatedTransaction.id)
       .setData(from: updatedTransaction)
     
@@ -191,7 +191,7 @@ class FirebaseCreditCardRepository: CreditCardRepositoryProtocol {
       updatedAt: Date()
     )
 
-    try await db.collection(transactionsCollection)
+    try db.collection(transactionsCollection)
       .document(updatedTransaction.id)
       .setData(from: updatedTransaction, merge: true)
 
@@ -251,7 +251,7 @@ class FirebaseCreditCardRepository: CreditCardRepositoryProtocol {
       createdAt: Date()
     )
 
-    try await db.collection(statementsCollection)
+    try db.collection(statementsCollection)
       .document(statement.id)
       .setData(from: statement)
 
@@ -276,7 +276,7 @@ class FirebaseCreditCardRepository: CreditCardRepositoryProtocol {
     )
 
     // Update statement
-    try await db.collection(statementsCollection)
+    try db.collection(statementsCollection)
       .document(updatedStatement.id)
       .setData(from: updatedStatement, merge: true)
     
@@ -315,7 +315,7 @@ class FirebaseCreditCardRepository: CreditCardRepositoryProtocol {
       updatedAt: Date()
     )
     
-    try await db.collection(creditCardsCollection)
+    try db.collection(creditCardsCollection)
       .document(updatedCreditCard.id)
       .setData(from: updatedCreditCard, merge: true)
   }
@@ -341,3 +341,4 @@ enum CreditCardError: LocalizedError {
     }
   }
 }
+

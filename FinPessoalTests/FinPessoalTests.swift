@@ -38,8 +38,8 @@ struct FinPessoalTests {
 
   @Test("Basic app configuration should be valid")
   func testAppConfiguration() async throws {
-    let config = AppConfiguration.shared
-    #expect(config != nil, "AppConfiguration should be accessible")
+    let config = await AppConfiguration.shared
+    #expect(type(of: config) == AppConfiguration.self, "AppConfiguration should be of correct type")
   }
 
   @Test("Test data factory should create valid models")
@@ -103,11 +103,8 @@ struct FinPessoalTests {
     let mockAccountRepo = TestConfiguration.setupMockAccountRepository()
     let mockTransactionRepo = TestConfiguration.setupMockTransactionRepository()
 
-    #expect(mockAccountRepo != nil, "Mock account repository should be created")
-    #expect(
-      mockTransactionRepo != nil,
-      "Mock transaction repository should be created"
-    )
+    #expect(type(of: mockAccountRepo) == MockAccountRepository.self, "Mock account repository should be correct type")
+    #expect(type(of: mockTransactionRepo) == MockTransactionRepository.self, "Mock transaction repository should be correct type")
   }
 
   @Test("Test environment detection should work")
@@ -195,3 +192,4 @@ final class FinPessoalXCTests: XCTestCase {
     await fulfillment(of: [expectation], timeout: 1.0)
   }
 }
+

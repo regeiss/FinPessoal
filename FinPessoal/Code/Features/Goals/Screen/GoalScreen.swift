@@ -105,6 +105,7 @@ struct GoalScreen: View {
       }
     }
     .environmentObject(goalViewModel)
+    .navigationTitle(String(localized: "sidebar.goals"))
     .toolbar {
       ToolbarItem(placement: .navigationBarLeading) {
         if !financeViewModel.goals.isEmpty {

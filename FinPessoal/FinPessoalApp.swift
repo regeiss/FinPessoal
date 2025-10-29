@@ -15,12 +15,15 @@ import GoogleSignIn
 
 @main
 struct MoneyManagerApp: App {
+  @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+
   @StateObject private var authViewModel: AuthViewModel
   @StateObject private var financeViewModel: FinanceViewModel
   @StateObject private var accountViewModel: AccountViewModel
   @StateObject private var navigationState = NavigationState()
   @StateObject private var appState = AppState()
   @StateObject private var onboardingManager = OnboardingManager()
+  @StateObject private var notificationManager = NotificationManager.shared
   
   init() {
     // Always configure Firebase to prevent initialization warnings
@@ -60,14 +63,34 @@ struct MoneyManagerApp: App {
         .environmentObject(navigationState)
         .environmentObject(appState)
         .environmentObject(onboardingManager)
+        .environmentObject(notificationManager)
         .onAppear {
           authViewModel.checkAuthenticationState()
+          requestNotificationPermissions()
         }
         .onOpenURL { url in
           if !AppConfiguration.shared.useMockData {
             GIDSignIn.sharedInstance.handle(url)
           }
         }
+    }
+  }
+
+  // MARK: - Private Methods
+
+  private func requestNotificationPermissions() {
+    Task {
+      do {
+        let granted = try await NotificationManager.shared.requestAuthorization()
+        if granted {
+          print("✅ Notification permissions granted")
+          await NotificationManager.shared.scheduleDailySummary()
+        } else {
+          print("⚠️ Notification permissions denied")
+        }
+      } catch {
+        print("❌ Error requesting notification permissions: \(error.localizedDescription)")
+      }
     }
   }
 }

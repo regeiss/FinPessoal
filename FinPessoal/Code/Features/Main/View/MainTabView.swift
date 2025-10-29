@@ -88,6 +88,8 @@ struct MainTabView: View {
       AccountsView()
     case .transactions:
       TransactionsScreen()
+    case .bills:
+      BillsScreen(repository: AppConfiguration.shared.createBillRepository())
     case .budgets:
       BudgetsScreen()
     case .goals:

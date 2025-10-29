@@ -107,7 +107,7 @@ class FirebaseDynamicTransactionRepository: DynamicTransactionRepositoryProtocol
         )
         
         // Add the transaction document
-        try await db.collection(transactionsCollection)
+        try db.collection(transactionsCollection)
             .document(updatedTransaction.id)
             .setData(from: updatedTransaction)
         
@@ -138,7 +138,7 @@ class FirebaseDynamicTransactionRepository: DynamicTransactionRepositoryProtocol
             updatedAt: Date()
         )
         
-        try await db.collection(transactionsCollection)
+        try db.collection(transactionsCollection)
             .document(updatedTransaction.id)
             .setData(from: updatedTransaction, merge: true)
         

@@ -26,6 +26,7 @@ struct BudgetsScreen: View {
       }
       .padding(.horizontal)
     }
+    .navigationTitle(String(localized: "sidebar.budgets"))
     .toolbar {
       ToolbarItem(placement: .navigationBarTrailing) {
         Button(String(localized: "budgets.add.button")) {

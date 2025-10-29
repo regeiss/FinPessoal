@@ -24,12 +24,8 @@ struct TestConfiguration {
       id: id,
       name: name,
       email: email,
-      phoneNumber: "+55 11 99999-9999",
-      currency: "BRL",
       profileImageURL: nil,
       createdAt: Date(),
-      lastLoginAt: Date(),
-      isEmailVerified: true,
       settings: UserSettings()
     )
   }
@@ -101,19 +97,24 @@ struct TestConfiguration {
   static func createTestGoal(
     id: String = "test-goal-id",
     name: String = "Test Goal",
-    targetAmount: Double = 10000.0
+    description: String? = nil,
+    targetAmount: Double = 10000.0,
+    category: GoalCategory = .other,
+    updatedAt: Date = Date()
   ) -> Goal {
     return Goal(
       id: id,
       userId: "test-user-id",
       name: name,
+      description: description,
       targetAmount: targetAmount,
       currentAmount: 2500.0,
       targetDate: Calendar.current.date(byAdding: .year, value: 1, to: Date())
         ?? Date(),
-      category: "savings",
+      category: category,
       isActive: true,
-      createdAt: Date()
+      createdAt: Date(),
+      updatedAt: updatedAt
     )
   }
 
@@ -236,14 +237,21 @@ struct TestConfiguration {
       createTestGoal(
         id: "goal-1",
         name: "Emergency Fund",
-        targetAmount: 20000.00
+        targetAmount: 20000.00,
+        category: .emergency
       ),
       createTestGoal(
         id: "goal-2",
         name: "Vacation Fund",
-        targetAmount: 5000.00
+        targetAmount: 5000.00,
+        category: .vacation
       ),
-      createTestGoal(id: "goal-3", name: "New Car", targetAmount: 30000.00),
+      createTestGoal(
+        id: "goal-3",
+        name: "New Car",
+        targetAmount: 30000.00,
+        category: .car
+      ),
     ]
   }
 
@@ -435,3 +443,4 @@ extension XCTestCase {
     return expectation
   }
 }
+

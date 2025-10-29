@@ -37,10 +37,10 @@ class BudgetViewModel: ObservableObject {
           let amount = Double(budgetAmount) else {
       return nil
     }
-    
+
     let now = Date()
-    
-    return Budget(
+
+    let budget = Budget(
       id: UUID().uuidString,
       name: name,
       category: selectedCategory,
@@ -55,6 +55,29 @@ class BudgetViewModel: ObservableObject {
       createdAt: now,
       updatedAt: now
     )
+
+    // Schedule notification if budget has an alert threshold
+    if alertThreshold < 1.0 {
+      Task {
+        await NotificationManager.shared.scheduleBudgetAlert(budget: budget)
+      }
+    }
+
+    return budget
+  }
+
+  func updateBudget(_ budget: Budget) {
+    // Update budget alert when budget is modified
+    Task {
+      await NotificationManager.shared.updateBudgetAlert(budget: budget)
+    }
+  }
+
+  func deleteBudget(_ budgetId: String) {
+    // Cancel notifications for deleted budget
+    Task {
+      await NotificationManager.shared.cancelNotification(identifier: "budget-\(budgetId)")
+    }
   }
   
   func setCurrentUserId(_ userId: String) {

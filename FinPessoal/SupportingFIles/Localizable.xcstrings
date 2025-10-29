@@ -56,6 +56,11 @@
     "•••• %@": {},
     "•••• •••• •••• %@": {},
     "0,00": {},
+    "1 dia antes": {},
+    "2 dias antes": {},
+    "3 dias antes": {},
+    "5 dias antes": {},
+    "7 dias antes": {},
     "account.add.title": {
       "extractionState": "manual",
       "localizations": {
@@ -404,6 +409,57 @@
           "stringUnit": {
             "state": "translated",
             "value": "Desativar Conta"
+          }
+        }
+      }
+    },
+    "accounts.delete.button": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Excluir"
+          }
+        }
+      }
+    },
+    "accounts.delete.confirmation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete Account?"
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Excluir Conta?"
+          }
+        }
+      }
+    },
+    "accounts.delete.message": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This action cannot be undone. All data related to this account will be permanently deleted."
+          }
+        },
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Esta ação não pode ser desfeita. Todos os dados relacionados a esta conta serão permanentemente excluídos."
           }
         }
       }
@@ -770,6 +826,569 @@
           "stringUnit": {
             "state": "translated",
             "value": "Sair"
+          }
+        }
+      }
+    },
+    "bill.day.number": {
+      "extractionState": "stale",
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dia"
+          }
+        }
+      }
+    },
+    "bill.day.of.month": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dia do mês"
+          }
+        }
+      }
+    },
+    "bill.days.until": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dias"
+          }
+        }
+      }
+    },
+    "bill.delete.confirmation": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Excluir Pagamento"
+          }
+        }
+      }
+    },
+    "bill.delete.message": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tem certeza que deseja excluir este pagamento? Esta ação não pode ser desfeita."
+          }
+        }
+      }
+    },
+    "bill.details": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Detalhes do Pagamento"
+          }
+        }
+      }
+    },
+    "bill.due.in": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vence em"
+          }
+        }
+      }
+    },
+    "bill.error.invalid.amount": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Valor inválido"
+          }
+        }
+      }
+    },
+    "bill.error.invalid.data": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dados inválidos. Verifique os campos."
+          }
+        }
+      }
+    },
+    "bill.error.save.failed": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Erro ao salvar conta"
+          }
+        }
+      }
+    },
+    "bill.field.account": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Conta"
+          }
+        }
+      }
+    },
+    "bill.field.active": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ativa"
+          }
+        }
+      }
+    },
+    "bill.field.amount": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Valor"
+          }
+        }
+      }
+    },
+    "bill.field.due.day": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dia do Vencimento"
+          }
+        }
+      }
+    },
+    "bill.field.name": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nome do Pagamento"
+          }
+        }
+      }
+    },
+    "bill.field.reminder.days": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lembrete"
+          }
+        }
+      }
+    },
+    "bill.filter.active": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ativas"
+          }
+        }
+      }
+    },
+    "bill.filter.all": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Todas"
+          }
+        }
+      }
+    },
+    "bill.filter.due.soon": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vencendo"
+          }
+        }
+      }
+    },
+    "bill.filter.overdue": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Atrasadas"
+          }
+        }
+      }
+    },
+    "bill.filter.paid": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pagas"
+          }
+        }
+      }
+    },
+    "bill.filter.unpaid": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Não Pagas"
+          }
+        }
+      }
+    },
+    "bill.last.paid": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Último Pagamento"
+          }
+        }
+      }
+    },
+    "bill.mark.paid": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Marcar como Paga"
+          }
+        }
+      }
+    },
+    "bill.mark.paid.confirmation": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Confirmar Pagamento"
+          }
+        }
+      }
+    },
+    "bill.mark.paid.message": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Marcar conta como paga?"
+          }
+        }
+      }
+    },
+    "bill.next.due": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Próximo vencimento"
+          }
+        }
+      }
+    },
+    "bill.next.due.date": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Próximo Vencimento"
+          }
+        }
+      }
+    },
+    "bill.overdue.days": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "dias de atraso"
+          }
+        }
+      }
+    },
+    "bill.reminder.days": {
+      "extractionState": "stale",
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "dias antes"
+          }
+        }
+      }
+    },
+    "bill.reminder.days.value": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "dias antes"
+          }
+        }
+      }
+    },
+    "bill.reminder.same.day": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No dia"
+          }
+        }
+      }
+    },
+    "bill.section.account": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Conta"
+          }
+        }
+      }
+    },
+    "bill.section.basic": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Informações Básicas"
+          }
+        }
+      }
+    },
+    "bill.section.category": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Categoria"
+          }
+        }
+      }
+    },
+    "bill.section.notes": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Observações"
+          }
+        }
+      }
+    },
+    "bill.section.reminder": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lembrete"
+          }
+        }
+      }
+    },
+    "bill.status.due.soon": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vencendo"
+          }
+        }
+      }
+    },
+    "bill.status.overdue": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Atrasada"
+          }
+        }
+      }
+    },
+    "bill.status.paid": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Paga"
+          }
+        }
+      }
+    },
+    "bill.status.upcoming": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Próxima"
+          }
+        }
+      }
+    },
+    "Bills": {},
+    "bills.add.first": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Adicionar Primeiro Pagamento"
+          }
+        }
+      }
+    },
+    "bills.add.title": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Novo Pagamento"
+          }
+        }
+      }
+    },
+    "bills.clear.filters": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Limpar Filtros"
+          }
+        }
+      }
+    },
+    "bills.empty.message": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Adicione seus pagamentos recorrentes para receber lembretes automáticos"
+          }
+        }
+      }
+    },
+    "bills.empty.title": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nenhum Pagamento"
+          }
+        }
+      }
+    },
+    "bills.filter": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Filtrar"
+          }
+        }
+      }
+    },
+    "bills.filter.category": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Categoria"
+          }
+        }
+      }
+    },
+    "bills.filter.status": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Status"
+          }
+        }
+      }
+    },
+    "bills.filters": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Filtros"
+          }
+        }
+      }
+    },
+    "bills.no.results": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nenhuma conta encontrada"
+          }
+        }
+      }
+    },
+    "bills.search.placeholder": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Buscar contas"
+          }
+        }
+      }
+    },
+    "bills.stat.due.soon": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vencendo"
+          }
+        }
+      }
+    },
+    "bills.stat.overdue": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Atrasadas"
+          }
+        }
+      }
+    },
+    "bills.stat.unpaid": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A Pagar"
+          }
+        }
+      }
+    },
+    "bills.title": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pagamentos"
           }
         }
       }
@@ -3720,6 +4339,17 @@
         }
       }
     },
+    "common.category": {
+      "extractionState": "manual",
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Categoria"
+          }
+        }
+      }
+    },
     "common.clear.filters": {},
     "common.close": {
       "extractionState": "manual",
@@ -3909,6 +4539,18 @@
         }
       }
     },
+    "common.no": {},
+    "common.none": {
+      "extractionState": "manual",
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nenhuma"
+          }
+        }
+      }
+    },
     "common.ok": {
       "extractionState": "manual",
       "localizations": {
@@ -3971,6 +4613,17 @@
         }
       }
     },
+    "common.subcategory": {
+      "extractionState": "manual",
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Subcategoria"
+          }
+        }
+      }
+    },
     "common.try.again": {
       "extractionState": "extracted_with_value",
       "localizations": {
@@ -3983,6 +4636,7 @@
       }
     },
     "common.validation_error": {},
+    "common.yes": {},
     "Configurações": {},
     "Configure your app preferences and account settings.": {},
     "Create and manage your budgets to track your spending.": {},
@@ -5771,6 +6425,7 @@
         }
       }
     },
+    "Dia %lld": {},
     "Dólar (USD)": {},
     "Erro": {},
     "Error": {},
@@ -12184,6 +12839,7 @@
         }
       }
     },
+    "Manage your recurring bills and payment reminders.": {},
     "Manage your transaction categories and subcategories": {},
     "Menu Principal": {},
     "Money Manager": {},
@@ -12234,6 +12890,166 @@
           "stringUnit": {
             "state": "translated",
             "value": "Painel"
+          }
+        }
+      }
+    },
+    "notification.action.dismiss": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dispensar"
+          }
+        }
+      }
+    },
+    "notification.action.review": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Revisar"
+          }
+        }
+      }
+    },
+    "notification.action.view": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ver"
+          }
+        }
+      }
+    },
+    "notification.bill.reminder.body": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O pagamento '%@' vence em %d dias"
+          }
+        }
+      }
+    },
+    "notification.bill.reminder.title": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lembrete de Pagamento"
+          }
+        }
+      }
+    },
+    "notification.budget.alert.body": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Você usou %d%% do orçamento '%@'"
+          }
+        }
+      }
+    },
+    "notification.budget.alert.title": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alerta de Orçamento"
+          }
+        }
+      }
+    },
+    "notification.budget.over.subtitle": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Orçamento excedido!"
+          }
+        }
+      }
+    },
+    "notification.budget.warning.subtitle": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Atenção: orçamento quase esgotado"
+          }
+        }
+      }
+    },
+    "notification.daily.summary.body": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Confira suas finanças de hoje"
+          }
+        }
+      }
+    },
+    "notification.daily.summary.title": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Resumo Diário"
+          }
+        }
+      }
+    },
+    "notification.goal.complete.body": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Parabéns! Você alcançou sua meta '%@'! 🎉"
+          }
+        }
+      }
+    },
+    "notification.goal.progress.body": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Você está %d%% do caminho até '%@'! Continue! 💪"
+          }
+        }
+      }
+    },
+    "notification.goal.progress.title": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Progresso da Meta"
+          }
+        }
+      }
+    },
+    "notification.suspicious.body": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Grande despesa detectada: %@ para '%@'"
+          }
+        }
+      }
+    },
+    "notification.suspicious.title": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Atividade Incomum Detectada"
           }
         }
       }
@@ -14170,6 +14986,26 @@
         }
       }
     },
+    "sidebar.bills": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pagamentos"
+          }
+        }
+      }
+    },
+    "sidebar.bills.description": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pagamentos recorrentes e a pagar"
+          }
+        }
+      }
+    },
     "sidebar.budgets": {
       "extractionState": "manual",
       "localizations": {
@@ -14476,6 +15312,26 @@
           "stringUnit": {
             "state": "translated",
             "value": "Gerencie suas contas bancárias"
+          }
+        }
+      }
+    },
+    "tab.bills": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pagamentos"
+          }
+        }
+      }
+    },
+    "tab.bills.description": {
+      "localizations": {
+        "pt-BR": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gerencie seus pagamentos recorrentes"
           }
         }
       }
@@ -16684,58 +17540,7 @@
     },
     "Valor: %@": {},
     "View Mode": {},
-    "Your financial overview and key metrics will be displayed here.": {},
-    "accounts.delete.confirmation": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Delete Account?"
-          }
-        },
-        "pt-BR": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Excluir Conta?"
-          }
-        }
-      }
-    },
-    "accounts.delete.button": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Delete"
-          }
-        },
-        "pt-BR": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Excluir"
-          }
-        }
-      }
-    },
-    "accounts.delete.message": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "This action cannot be undone. All data related to this account will be permanently deleted."
-          }
-        },
-        "pt-BR": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Esta ação não pode ser desfeita. Todos os dados relacionados a esta conta serão permanentemente excluídos."
-          }
-        }
-      }
-    }
+    "Your financial overview and key metrics will be displayed here.": {}
   },
   "version": "1.0"
 }

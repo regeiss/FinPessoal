@@ -14,40 +14,50 @@ struct iPhoneMainView: View {
   
   var body: some View {
     TabView(selection: $navigationState.selectedTab) {
-      DashboardScreen()
-        .tabItem {
-          Image(systemName: MainTab.dashboard.icon)
-          Text(MainTab.dashboard.displayName)
-        }
-        .tag(MainTab.dashboard)
-      
-      AccountsView()
-        .tabItem {
-          Image(systemName: MainTab.accounts.icon)
-          Text(MainTab.accounts.displayName)
-        }
-        .tag(MainTab.accounts)
-      
-      TransactionsScreen()
-        .tabItem {
-          Image(systemName: MainTab.transactions.icon)
-          Text(MainTab.transactions.displayName)
-        }
-        .tag(MainTab.transactions)
-      
-      BudgetsScreen()
-        .tabItem {
-          Image(systemName: MainTab.budgets.icon)
-          Text(MainTab.budgets.displayName)
-        }
-        .tag(MainTab.budgets)
-      
-      MoreScreen()
-        .tabItem {
-          Image(systemName: MainTab.more.icon)
-          Text(MainTab.more.displayName)
-        }
-        .tag(MainTab.more)
+      NavigationStack {
+        DashboardScreen()
+      }
+      .tabItem {
+        Image(systemName: MainTab.dashboard.icon)
+        Text(MainTab.dashboard.displayName)
+      }
+      .tag(MainTab.dashboard)
+
+      NavigationStack {
+        AccountsView()
+      }
+      .tabItem {
+        Image(systemName: MainTab.accounts.icon)
+        Text(MainTab.accounts.displayName)
+      }
+      .tag(MainTab.accounts)
+
+      NavigationStack {
+        TransactionsScreen()
+      }
+      .tabItem {
+        Image(systemName: MainTab.transactions.icon)
+        Text(MainTab.transactions.displayName)
+      }
+      .tag(MainTab.transactions)
+
+      NavigationStack {
+        BillsScreen(repository: AppConfiguration.shared.createBillRepository())
+      }
+      .tabItem {
+        Image(systemName: MainTab.bills.icon)
+        Text(MainTab.bills.displayName)
+      }
+      .tag(MainTab.bills)
+
+      NavigationStack {
+        MoreScreen()
+      }
+      .tabItem {
+        Image(systemName: MainTab.more.icon)
+        Text(MainTab.more.displayName)
+      }
+      .tag(MainTab.more)
     }
     .task {
       await financeViewModel.loadData()

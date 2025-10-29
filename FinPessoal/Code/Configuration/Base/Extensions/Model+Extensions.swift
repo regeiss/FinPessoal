@@ -19,7 +19,7 @@ extension Account {
           let currency = data["currency"] as? String,
           let isActive = data["isActive"] as? Bool,
           let userId = data["userId"] as? String else {
-      throw FirebaseError.invalidData
+      throw FirebaseError.invalidData("Missing required Account fields")
     }
     
     let createdAtTimestamp = data["createdAt"] as? TimeInterval ?? Date().timeIntervalSince1970
@@ -71,7 +71,7 @@ extension Transaction {
           let dateTimestamp = data["date"] as? TimeInterval,
           let isRecurring = data["isRecurring"] as? Bool,
           let userId = data["userId"] as? String else {
-      throw FirebaseError.invalidData
+      throw FirebaseError.invalidData("Missing required fields")
     }
     
     let date = Date(timeIntervalSince1970: dateTimestamp)
@@ -130,7 +130,7 @@ extension Budget {
           let endDateTimestamp = data["endDate"] as? TimeInterval,
           let isActive = data["isActive"] as? Bool,
           let alertThreshold = data["alertThreshold"] as? Double else {
-      throw FirebaseError.invalidData
+      throw FirebaseError.invalidData("Missing required fields")
     }
     
     let startDate = Date(timeIntervalSince1970: startDateTimestamp)
@@ -198,7 +198,7 @@ extension User {
     guard let id = data["id"] as? String,
           let name = data["name"] as? String,
           let email = data["email"] as? String else {
-      throw FirebaseError.invalidData
+      throw FirebaseError.invalidData("Missing required fields")
     }
     
     let profileImageURL = data["profileImageURL"] as? String

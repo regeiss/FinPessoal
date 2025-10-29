@@ -198,5 +198,3 @@ Para usar o mock:
 3. Substitua o conteúdo de `FinPessoalApp.swift` pelo código com configurações mock
 4. Configure `useMockAuth = true` no `AppConfiguration`
 5. Execute o app - deve entrar automaticamente sem login!
-
-O sistema está pronto para desenvolvimento eficiente! 🚀

@@ -38,6 +38,7 @@ struct DashboardScreen: View {
       .padding()
     }
     .background(Color(.systemBackground))
+    .navigationTitle(String(localized: "tab.dashboard"))
     .toolbar {
       if UIDevice.current.userInterfaceIdiom != .pad {
         ToolbarItem(placement: .navigationBarTrailing) {

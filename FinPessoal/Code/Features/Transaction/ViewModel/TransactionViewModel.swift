@@ -175,6 +175,17 @@ class TransactionViewModel: ObservableObject {
   func addTransaction(_ transaction: Transaction) async -> Bool {
     do {
       try await repository.addTransaction(transaction)
+
+      // Schedule notifications for recurring transactions (bills)
+      if transaction.isRecurring {
+        await NotificationManager.shared.scheduleBillReminder(transaction: transaction, daysBeforeDue: 3)
+      }
+
+      // Notify if this is a large expense (suspicious activity)
+      if transaction.type == .expense {
+        await NotificationManager.shared.notifySuspiciousActivity(transaction: transaction, threshold: 1000.0)
+      }
+
       await fetchTransactions()
       return true
     } catch let authError as AuthError {
@@ -206,6 +217,10 @@ class TransactionViewModel: ObservableObject {
 
   func deleteTransaction(_ transactionId: String) async -> Bool {
     do {
+      // Cancel any notifications for this transaction
+      await NotificationManager.shared.cancelNotification(identifier: "bill-\(transactionId)")
+      await NotificationManager.shared.cancelNotification(identifier: "suspicious-\(transactionId)")
+
       try await repository.deleteTransaction(transactionId)
       await fetchTransactions()
       return true

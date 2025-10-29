@@ -131,7 +131,15 @@ class AppConfiguration {
       return FirebaseDynamicCreditCardRepository()
     }
   }
-  
+
+  func createBillRepository() -> BillRepositoryProtocol {
+    if useMockData {
+      return MockBillRepository()
+    } else {
+      return FirebaseBillRepository()
+    }
+  }
+
   // MARK: - Firebase Configuration
   
   var firebaseConfig: [String: Any] {

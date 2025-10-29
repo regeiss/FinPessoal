@@ -12,27 +12,43 @@ FinPessoal is a modern iOS app that provides complete financial management capab
 - **Account Management**: Track multiple accounts (checking, savings, credit cards)
 - **Transaction Tracking**: Record income, expenses, and transfers with detailed categorization
 - **Budget Management**: Set and monitor budgets by category with customizable periods (weekly, monthly, quarterly, yearly)
+- **Bills Management**: Track recurring bills with automatic due date calculation and payment reminders
 - **Goal Setting**: Create and track financial goals with progress visualization
 - **Dashboard**: Real-time financial overview with statistics and charts
 - **Reports & Analytics**: Comprehensive financial reports and spending analysis
 - **Categories & Subcategories**: Organize transactions with 10 main categories and 40+ subcategories
+- **Smart Notifications**: Budget alerts, bill reminders, goal milestones, and suspicious activity detection
 
 ### Advanced Features
+- **Bills Management System**:
+  - Recurring bill tracking with status indicators (paid, overdue, due soon, upcoming)
+  - Auto-calculation of next due dates based on billing day
+  - Configurable reminder notifications (days before due)
+  - Comprehensive statistics and filtering options
+  - Swipe actions for quick payment marking
+- **Smart Notification System**:
+  - Budget alerts when spending exceeds thresholds (80%, 90%, 100%)
+  - Bill reminders configurable days before due date
+  - Goal progress notifications at key milestones (25%, 50%, 75%, 90%, 100%)
+  - Suspicious activity alerts for large expenses (>1000)
+  - Daily financial summary notifications
 - **Credit Card Management**: Track credit card expenses and limits
 - **Loan Tracking**: Monitor loan balances and payments
 - **Transaction Import**: Import transactions from external sources
 - **Custom Categories**: Create and manage custom transaction categories
 - **Multi-Period Budgets**: Support for weekly, monthly, quarterly, and yearly budget periods
 - **Smart Filtering**: Advanced search and filtering by date, category, type, and amount
-- **Localization**: Full Portuguese (Brazil) localization support
+- **Localization**: Full Portuguese (Brazil) localization support with 60+ bills-related strings
 
 ### User Experience
 - **Onboarding Flow**: Smooth introduction for new users
 - **Google & Apple Sign-In**: Secure authentication with major providers
 - **iPad Optimization**: Three-column layout for enhanced iPad experience
+- **iPhone Navigation**: Clean 5-tab design (Dashboard, Accounts, Transactions, Bills, More)
 - **Dark Mode**: Full support for system appearance settings
 - **Responsive Design**: Adaptive layouts for all iOS device sizes
 - **Help & Support**: In-app help system with contextual guidance
+- **Smart Notifications**: Native iOS UserNotifications with actionable alerts
 
 ## 🏗️ Architecture
 
@@ -49,6 +65,11 @@ FinPessoal/
 │   ├── Features/              # Feature-based modules
 │   │   ├── Account/           # Account management
 │   │   ├── Auth/              # Authentication
+│   │   ├── Bills/             # Bills management (NEW)
+│   │   │   ├── Model/         # Bill model and enums
+│   │   │   ├── ViewModel/     # BillsViewModel
+│   │   │   ├── Screen/        # BillsScreen, AddBillScreen
+│   │   │   └── View/          # BillRow, BillDetailView
 │   │   ├── Budget/            # Budget tracking
 │   │   ├── Categories/        # Category management
 │   │   ├── CreditCard/        # Credit card features
@@ -56,21 +77,33 @@ FinPessoal/
 │   │   ├── Goals/             # Financial goals
 │   │   ├── Help/              # Help system
 │   │   ├── Loan/              # Loan management
+│   │   ├── Main/              # Main navigation views
 │   │   ├── OnBoarding/        # Onboarding flow
 │   │   ├── Reports/           # Reports and analytics
 │   │   └── Transaction/       # Transaction management
 │   ├── Core/                  # Core services
 │   │   ├── Firebase/          # Firebase integration
+│   │   ├── Notifications/     # NotificationManager (NEW)
 │   │   └── Repository/        # Repository protocols
 │   ├── Configuration/         # App configuration
 │   │   ├── Base/              # Base configurations
+│   │   │   ├── Navigation/    # NavigationState, MainTab, SidebarItem
+│   │   │   ├── Error/         # AuthError, FirebaseError
+│   │   │   └── Extensions/    # Swift extensions
 │   │   └── Constants/         # App constants and enums
 │   └── Utils/                 # Utility classes and extensions
 ├── SupportingFiles/           # Localization and assets
-│   └── Localizable.xcstrings  # Localized strings
+│   └── Localizable.xcstrings  # Localized strings (1000+ strings)
 └── FinPessoalTests/           # Comprehensive test suite
+    ├── Core/                  # Core service tests
+    │   └── NotificationManagerTests.swift
+    ├── Features/              # Feature tests
+    │   └── BillTests.swift    # Bill model tests (20+ tests)
     ├── Models/                # Model tests
+    │   ├── BudgetEnumTests.swift
+    │   └── TransactionEnumTests.swift
     ├── ViewModels/            # ViewModel tests
+    │   └── BudgetViewModelTests.swift
     ├── Navigation/            # Navigation tests
     ├── Repositories/          # Repository tests
     └── Performance/           # Performance tests
@@ -147,13 +180,49 @@ xcodebuild test -project FinPessoal.xcodeproj -scheme FinPessoal \
 ```
 
 ### Test Coverage
-- **Unit Tests**: 150+ tests covering models, ViewModels, and business logic
+- **Unit Tests**: 200+ tests covering models, ViewModels, and business logic
+  - BillTests: 20+ tests for Bill model, status calculation, and Firestore serialization
+  - BudgetEnumTests: Comprehensive tests for period calculations and edge cases
+  - TransactionEnumTests: Tests for categories, subcategories, and sorting
+  - BudgetViewModelTests: Validation and budget creation tests
+  - NotificationManagerTests: 20+ tests for notification system
 - **UI Tests**: End-to-end user flow testing
 - **Performance Tests**: Benchmarks for large datasets (10,000+ records)
 - **Integration Tests**: Component interaction validation
 - **Code Coverage Target**: 80%+
 
 See [FinPessoalTests/README.md](FinPessoalTests/README.md) for detailed testing documentation.
+
+## 💳 Bills Management
+
+The Bills Management System provides comprehensive tracking for recurring payments and subscriptions:
+
+### Bill Features
+- **Status Tracking**: Visual indicators for bill status (Paid, Overdue, Due Soon, Upcoming)
+- **Auto Due Dates**: Automatic calculation of next due dates based on billing day
+- **Smart Reminders**: Configurable notification reminders (1-30 days before due)
+- **Quick Actions**: Swipe to mark as paid or delete
+- **Filtering**: Filter by status (all, active, paid, unpaid, overdue, due soon)
+- **Search**: Real-time search across bill names and notes
+- **Statistics**: Dashboard cards showing unpaid count, overdue amount, and due soon alerts
+
+### Bill Information
+Each bill includes:
+- Name and amount
+- Due day of month (1-31)
+- Transaction category and subcategory
+- Associated account
+- Payment status and history
+- Custom notes
+- Reminder configuration
+
+### Sample Bills (Mock Data)
+The app includes 5 sample bills for development:
+1. **Electricity** - R$ 250.00 (Due: 10th)
+2. **Internet** - R$ 99.90 (Due: 5th)
+3. **Phone** - R$ 79.90 (Due: 15th)
+4. **Water** - R$ 85.50 (Due: 20th)
+5. **Netflix** - R$ 55.90 (Due: 25th)
 
 ## 📊 Transaction Categories
 
@@ -184,6 +253,7 @@ Each category includes 4-6 detailed subcategories for precise transaction tracki
 - **Cloud Firestore**: Real-time NoSQL database
 - **Firebase Analytics**: User behavior tracking
 - **Firebase Crashlytics**: Crash reporting and monitoring
+- **UserNotifications**: Native iOS notification framework for smart alerts
 
 ### Development Tools
 - **Xcode 15+**: IDE and interface builder
@@ -255,8 +325,9 @@ See [CHANGELOG.md](CHANGELOG.md) for detailed version history and release notes.
 
 ### Current Version
 - **Version**: 1.0.0 (Unreleased)
-- **Last Updated**: October 2025
+- **Last Updated**: October 27, 2025
 - **iOS Support**: iOS 18.0+
+- **Latest Features**: Bills Management System, Smart Notifications, Enhanced Navigation
 
 ## 🤝 Contributing
 

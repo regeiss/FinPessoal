@@ -323,5 +323,3 @@ Standard iPhone navigation testing:
 - Error handling tests cover edge cases
 
 ---
-
-This comprehensive test suite ensures the FinPessoal app maintains high quality, performs well with large datasets, and provides an excellent user experience across iPhone and iPad devices.

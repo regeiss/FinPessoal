@@ -85,6 +85,7 @@ struct ReportsScreen: View {
           .padding()
         }
     }
+    .navigationTitle(String(localized: "sidebar.reports"))
     .toolbar {
       ToolbarItemGroup(placement: .navigationBarTrailing) {
         // Period selector

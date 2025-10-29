@@ -127,7 +127,7 @@ class FirebaseSubcategoryRepository: SubcategoryRepositoryProtocol {
   func initializeDefaultSubcategories(for categories: [Category]) async throws
     -> [Subcategory]
   {
-    guard let userId = Auth.auth().currentUser?.uid else {
+    guard Auth.auth().currentUser != nil else {
       throw SubcategoryError.userNotAuthenticated
     }
 

@@ -451,7 +451,7 @@ class FirebaseService {
   }
   
   func updateBudgetSpent(_ budgetID: String, amount: Double, for userID: String) async throws {
-    let budgetRef = database
+    _ = database
       .child(FirebaseConstants.budgetsCollection)
       .child(userID)
       .child(budgetID)
@@ -478,7 +478,7 @@ class FirebaseService {
     type: TransactionType,
     userID: String
   ) async throws {
-    let accountRef = database
+    _ = database
       .child(FirebaseConstants.accountsCollection)
       .child(userID)
       .child(accountID)
@@ -647,9 +647,11 @@ enum FirebaseError: LocalizedError {
   case accountNotFound
   case transactionNotFound
   case budgetNotFound
+  case documentNotFound
+  case databaseError(String)
   case insufficientPermissions
   case networkError
-  case invalidData
+  case invalidData(String)
   case offlineError
   case permissionDenied
   case databaseUnavailable
@@ -664,12 +666,16 @@ enum FirebaseError: LocalizedError {
       return "Transação não encontrada"
     case .budgetNotFound:
       return "Orçamento não encontrado"
+    case .documentNotFound:
+      return "Documento não encontrado"
+    case .databaseError(let message):
+      return "Erro no banco de dados: \(message)"
     case .insufficientPermissions, .permissionDenied:
       return "Permissões insuficientes. Verifique se você está autenticado."
     case .networkError:
       return "Erro de conexão"
-    case .invalidData:
-      return "Dados inválidos"
+    case .invalidData(let message):
+      return "Dados inválidos: \(message)"
     case .offlineError:
       return "Aplicativo está offline. Verifique sua conexão com a internet."
     case .databaseUnavailable:
@@ -691,7 +697,7 @@ enum FirebaseError: LocalizedError {
     } else if errorMessage.contains("account") && errorMessage.contains("not found") {
       return .accountNotFound
     } else if errorMessage.contains("invalid") {
-      return .invalidData
+      return .invalidData(error.localizedDescription)
     } else {
       return .databaseUnavailable
     }

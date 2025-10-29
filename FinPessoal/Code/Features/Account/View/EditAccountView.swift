@@ -200,7 +200,7 @@ struct EditAccountView: View {
 
   private func deleteAccount() {
     Task {
-      await accountViewModel.deleteAccount(account.id)
+      _ = await accountViewModel.deleteAccount(account.id)
       dismiss()
     }
   }

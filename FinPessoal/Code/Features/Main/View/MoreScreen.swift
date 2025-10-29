@@ -14,13 +14,51 @@ struct MoreScreen: View {
       List {
         Section {
           NavigationLink {
+            BudgetsScreen()
+          } label: {
+            HStack {
+              Image(systemName: "chart.pie.fill")
+                .foregroundColor(.blue)
+                .frame(width: 32, height: 32)
+
+              VStack(alignment: .leading, spacing: 4) {
+                Text(String(localized: "sidebar.budgets"))
+                  .font(.headline)
+                Text(String(localized: "sidebar.budgets.description"))
+                  .font(.caption)
+                  .foregroundColor(.secondary)
+              }
+            }
+            .padding(.vertical, 4)
+          }
+
+          NavigationLink {
+            BillsScreen(repository: AppConfiguration.shared.createBillRepository())
+          } label: {
+            HStack {
+              Image(systemName: "doc.text.fill")
+                .foregroundColor(.red)
+                .frame(width: 32, height: 32)
+
+              VStack(alignment: .leading, spacing: 4) {
+                Text(String(localized: "sidebar.bills"))
+                  .font(.headline)
+                Text(String(localized: "sidebar.bills.description"))
+                  .font(.caption)
+                  .foregroundColor(.secondary)
+              }
+            }
+            .padding(.vertical, 4)
+          }
+
+          NavigationLink {
             GoalScreen()
           } label: {
             HStack {
               Image(systemName: "target")
                 .foregroundColor(.purple)
                 .frame(width: 32, height: 32)
-              
+
               VStack(alignment: .leading, spacing: 4) {
                 Text(String(localized: "sidebar.goals"))
                   .font(.headline)
@@ -31,7 +69,7 @@ struct MoreScreen: View {
             }
             .padding(.vertical, 4)
           }
-          
+
           NavigationLink {
             ReportsScreen()
           } label: {

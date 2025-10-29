@@ -49,6 +49,7 @@ struct TransactionsScreen: View {
         transactionsList
       }
     }
+    .navigationTitle(String(localized: "tab.transactions"))
     .searchable(text: $transactionViewModel.searchQuery, prompt: String(localized: "transactions.search.prompt"))
     .toolbar {
       ToolbarItemGroup(placement: .navigationBarTrailing) {

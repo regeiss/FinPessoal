@@ -55,7 +55,7 @@ struct AccountDetailView: View {
             } else {
               Button(String(localized: "accounts.activate")) {
                 Task {
-                  await accountViewModel.activateAccount(account.id)
+                  _ = await accountViewModel.activateAccount(account.id)
                   dismiss()
                 }
               }
@@ -74,7 +74,7 @@ struct AccountDetailView: View {
       ) {
         Button(String(localized: "accounts.deactivate"), role: .destructive) {
           Task {
-            await accountViewModel.deactivateAccount(account.id)
+            _ = await accountViewModel.deactivateAccount(account.id)
             dismiss()
           }
         }
@@ -178,3 +178,4 @@ struct AccountDetailView: View {
     }
   }
 }
+

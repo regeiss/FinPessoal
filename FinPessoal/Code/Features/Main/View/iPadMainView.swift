@@ -88,7 +88,7 @@ struct iPadMainView: View {
   private func updateColumnVisibility() {
     // In landscape, intelligently show/hide detail column
     switch navigationState.selectedSidebarItem {
-    case .accounts, .transactions:
+    case .accounts, .transactions, .bills:
       // Show detail for list-detail patterns
       if navigationState.selectedAccount != nil || navigationState.selectedTransaction != nil {
         columnVisibility = .all
@@ -128,6 +128,8 @@ struct iPadContentView: View {
           iPadAccountsView()
         case .transactions:
           iPadTransactionsView()
+        case .bills:
+          BillsScreen(repository: AppConfiguration.shared.createBillRepository())
         case .reports:
           ReportsScreen()
         case .budgets:
@@ -200,6 +202,8 @@ struct DetailView: View {
             AccountsDetailView()
           case .transactions:
             TransactionsDetailView()
+          case .bills:
+            BillsDetailView()
           case .reports:
             ReportsDetailView()
           case .budgets:
@@ -335,11 +339,11 @@ struct DetailView: View {
         Image(systemName: "flag.checkered")
           .font(.system(size: 64))
           .foregroundColor(.indigo)
-        
+
         Text("Goals")
           .font(.title2)
           .fontWeight(.semibold)
-        
+
         Text("Set and track your financial goals.")
           .multilineTextAlignment(.center)
           .foregroundColor(.secondary)
@@ -349,7 +353,28 @@ struct DetailView: View {
       .padding(.vertical, 40)
     }
   }
-  
+
+  struct BillsDetailView: View {
+    var body: some View {
+      VStack(spacing: 24) {
+        Image(systemName: "doc.text")
+          .font(.system(size: 64))
+          .foregroundColor(.teal)
+
+        Text("Bills")
+          .font(.title2)
+          .fontWeight(.semibold)
+
+        Text("Manage your recurring bills and payment reminders.")
+          .multilineTextAlignment(.center)
+          .foregroundColor(.secondary)
+          .padding(.horizontal, 32)
+      }
+      .frame(maxWidth: .infinity, maxHeight: .infinity)
+      .padding(.vertical, 40)
+    }
+  }
+
 struct SettingsDetailView: View {
   var body: some View {
     VStack(spacing: 24) {
@@ -497,7 +522,7 @@ struct SettingsDetailView: View {
             } else {
               Button(String(localized: "accounts.activate", defaultValue: "Activate")) {
                 Task {
-                  await accountViewModel.activateAccount(account.id)
+                  _ = await accountViewModel.activateAccount(account.id)
                   navigationState.clearDetailSelection()
                 }
               }
@@ -518,7 +543,7 @@ struct SettingsDetailView: View {
       ) {
         Button(String(localized: "accounts.deactivate", defaultValue: "Deactivate"), role: .destructive) {
           Task {
-            await accountViewModel.deactivateAccount(account.id)
+            _ = await accountViewModel.deactivateAccount(account.id)
             navigationState.clearDetailSelection()
           }
         }

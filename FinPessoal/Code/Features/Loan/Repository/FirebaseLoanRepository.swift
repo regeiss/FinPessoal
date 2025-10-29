@@ -60,7 +60,7 @@ class FirebaseLoanRepository: LoanRepositoryProtocol {
       updatedAt: Date()
     )
     
-    try await db.collection(loansCollection)
+    try db.collection(loansCollection)
       .document(updatedLoan.id)
       .setData(from: updatedLoan)
     
@@ -86,7 +86,7 @@ class FirebaseLoanRepository: LoanRepositoryProtocol {
       updatedAt: Date()
     )
     
-    try await db.collection(loansCollection)
+    try db.collection(loansCollection)
       .document(updatedLoan.id)
       .setData(from: updatedLoan, merge: true)
     
@@ -142,7 +142,7 @@ class FirebaseLoanRepository: LoanRepositoryProtocol {
     )
     
     // Add the payment document
-    try await db.collection(paymentsCollection)
+    try db.collection(paymentsCollection)
       .document(updatedPayment.id)
       .setData(from: updatedPayment)
     
@@ -166,7 +166,7 @@ class FirebaseLoanRepository: LoanRepositoryProtocol {
       createdAt: payment.createdAt
     )
     
-    try await db.collection(paymentsCollection)
+    try db.collection(paymentsCollection)
       .document(updatedPayment.id)
       .setData(from: updatedPayment, merge: true)
     
@@ -238,7 +238,7 @@ class FirebaseLoanRepository: LoanRepositoryProtocol {
       updatedAt: Date()
     )
     
-    try await db.collection(loansCollection)
+    try db.collection(loansCollection)
       .document(updatedLoan.id)
       .setData(from: updatedLoan, merge: true)
   }
