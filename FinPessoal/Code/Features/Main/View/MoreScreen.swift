@@ -10,9 +10,46 @@ import SwiftUI
 struct MoreScreen: View {
   
   var body: some View {
-    NavigationView {
-      List {
+    List {
         Section {
+          NavigationLink {
+            AIInsightsScreen()
+          } label: {
+            HStack {
+              Image(systemName: "brain")
+                .foregroundColor(.purple)
+                .frame(width: 32, height: 32)
+
+              VStack(alignment: .leading, spacing: 4) {
+                Text(String(localized: "ai.insights.title"))
+                  .font(.headline)
+                Text(String(localized: "ai.insights.description"))
+                  .font(.caption)
+                  .foregroundColor(.secondary)
+              }
+            }
+            .padding(.vertical, 4)
+          }
+
+          NavigationLink {
+            InsightsScreen()
+          } label: {
+            HStack {
+              Image(systemName: "chart.line.uptrend.xyaxis")
+                .foregroundColor(.blue)
+                .frame(width: 32, height: 32)
+
+              VStack(alignment: .leading, spacing: 4) {
+                Text(String(localized: "insights.title"))
+                  .font(.headline)
+                Text(String(localized: "insights.description"))
+                  .font(.caption)
+                  .foregroundColor(.secondary)
+              }
+            }
+            .padding(.vertical, 4)
+          }
+
           NavigationLink {
             BudgetsScreen()
           } label: {
@@ -157,6 +194,5 @@ struct MoreScreen: View {
         }
       }
       .navigationTitle(String(localized: "tab.more"))
-    }
   }
 }

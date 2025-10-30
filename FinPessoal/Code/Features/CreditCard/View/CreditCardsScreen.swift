@@ -41,7 +41,7 @@ struct CreditCardsScreen: View {
                     Button {
                         showingAddCard = true
                     } label: {
-                        Image(systemName: "plus.circle.fill")
+                        Image(systemName: "plus")
                     }
                 }
             }

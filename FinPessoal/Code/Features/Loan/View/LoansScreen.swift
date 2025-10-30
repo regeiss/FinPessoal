@@ -41,7 +41,7 @@ struct LoansScreen: View {
           Button {
             showingAddLoan = true
           } label: {
-            Image(systemName: "plus.circle.fill")
+            Image(systemName: "plus")
           }
         }
       }

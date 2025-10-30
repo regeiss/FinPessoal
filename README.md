@@ -361,13 +361,4 @@ This project is proprietary software. All rights reserved.
 - SF Symbols for comprehensive iconography
 - Open source community for inspiration
 
-## 📞 Support
 
-For questions, issues, or feature requests:
-- Open an issue on GitHub
-- Check the in-app Help section
-- Review the [test documentation](FinPessoalTests/README.md)
-
----
-
-**Built with ❤️ using SwiftUI and Firebase**

@@ -62,7 +62,7 @@ struct TransactionsScreen: View {
         Button {
           transactionViewModel.showAddTransaction()
         } label: {
-          Image(systemName: "plus.circle.fill")
+          Image(systemName: "plus")
         }
       }
     }

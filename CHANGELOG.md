@@ -8,12 +8,69 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Fixed - October 2025
+- **Fixed ML/AI compilation warnings** (2025-10-29)
+  - Build succeeded with only minor unused variable warnings
+  - All ML algorithms compile and run correctly
+
+- **Fixed Financial Analytics compilation errors** (2025-10-29)
+  - Fixed Transaction mutability issue by creating new instances instead of mutating
+  - Fixed TransactionCategory enum case names (.transport instead of .transportation, .healthcare instead of .health)
+  - Fixed Budget property references (.budgetAmount instead of .limit)
+  - Fixed Goal targetDate optional binding (targetDate is not optional)
+  - All analytics code now compiles successfully
+- **Fixed MoreScreen navigation title not displaying on initial load (iPhone)** (2025-10-28)
+  - Removed NavigationView wrapper that was conflicting with NavigationStack
+  - Navigation title now displays correctly when first opening More screen
+  - Title previously only appeared when navigating back from subviews
 - **Fixed BillsScreen iPad layout to use full width** (2025-10-28)
   - Removed NavigationView wrapper that was causing layout constraints on iPad
   - Added frame modifiers to ensure full width/height usage
   - BillsScreen now properly fills available space like other screens on iPad
 
+### Added - October 2025
+- **ML/AI Financial Insights System** (2025-10-29)
+  - Created FinancialAIService with machine learning algorithms
+  - **Expense Prediction**: Predicts next 3 months expenses using linear regression and seasonal analysis
+  - **Anomaly Detection**: Detects unusual transactions using Z-score statistical analysis
+  - **Smart Budget Suggestions**: Recommends optimal budgets based on percentile analysis
+  - **Personalized Advice**: Generates tailored financial recommendations across 6 categories
+  - AIInsightsScreen with beautiful UI for ML insights
+  - Confidence scoring for predictions and suggestions
+  - Trend analysis (increasing/decreasing/stable)
+  - Seasonality factors for more accurate predictions
+  - Potential duplicate transaction detection
+  - Unusual timing detection (late night transactions)
+  - Frequency spike detection
+  - Income stability analysis
+  - Expense-to-income ratio monitoring
+  - Subscription spending aggregation
+  - Added 52 Portuguese localization strings for AI features
+  - Integrated into More screen as "IA Financeira"
+
+- **Financial Analytics & Insights System** (2025-10-29)
+  - Created FinancialAnalyticsService with intelligent analysis capabilities
+  - Automatic transaction categorization based on description patterns
+  - Spending pattern detection with trend analysis (increasing/decreasing/stable)
+  - Budget overrun prediction with daily average projections
+  - Financial insight generation across spending, budgets, goals, and savings
+  - Risk level assessment (low/medium/high/critical) for budgets
+  - Recurring subscription detection
+  - Unusual spending detection (transactions > 3x average)
+  - Smart recommendations based on spending behavior
+  - InsightsScreen with visual cards for patterns, predictions, and insights
+  - Filter insights by category (spending, budget, goals, savings)
+  - Added 48 Portuguese localization strings for insights
+  - Integrated insights into More screen navigation
+
 ### Changed - October 2025
+- **Standardized add buttons to simple plus icon in navigation bars** (2025-10-28)
+  - Changed TransactionsScreen add button from "plus.circle.fill" to "plus"
+  - Changed AccountsView add button from "plus.circle.fill" to "plus"
+  - Changed LoansScreen add button from "plus.circle.fill" to "plus"
+  - Changed CreditCardsScreen add button from "plus.circle.fill" to "plus"
+  - Changed BudgetsScreen add button from text "Adicionar" to "plus" icon
+  - All navigation bar add buttons now use consistent simple plus icon
+  - Note: BillsScreen and GoalScreen already used "plus" icon
 - **Updated Portuguese localization for Bills feature** (2025-10-28)
   - Changed "Contas" to "Pagamentos" for all bills-related strings
   - Updated tab.bills, sidebar.bills, and bills.title translations

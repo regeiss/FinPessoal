@@ -29,8 +29,10 @@ struct BudgetsScreen: View {
     .navigationTitle(String(localized: "sidebar.budgets"))
     .toolbar {
       ToolbarItem(placement: .navigationBarTrailing) {
-        Button(String(localized: "budgets.add.button")) {
+        Button {
           showingAddBudget = true
+        } label: {
+          Image(systemName: "plus")
         }
       }
     }

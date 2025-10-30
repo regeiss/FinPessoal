@@ -35,7 +35,7 @@ struct AccountsView: View {
         Button {
           accountViewModel.showAddAccount()
         } label: {
-          Image(systemName: "plus.circle.fill")
+          Image(systemName: "plus")
         }
       }
     }
