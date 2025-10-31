@@ -19,22 +19,26 @@ struct SidebarView: View {
         if let user = authViewModel.currentUser {
           UserProfileRow(user: user)
             .listRowInsets(EdgeInsets())
+            .accessibilityElement(children: .combine)
+            .accessibilityLabel(String(localized: "sidebar.profile.label", defaultValue: "User Profile: \(user.name)"))
+            .accessibilityHint(String(localized: "sidebar.profile.hint", defaultValue: "View profile and sign out"))
         }
       }
+      .accessibilityLabel(String(localized: "sidebar.section.profile", defaultValue: "Profile Section"))
 
-      Section("Menu Principal") {
+      Section(String(localized: "sidebar.section.main", defaultValue: "Menu Principal")) {
         ForEach(SidebarItem.allCases.prefix(4), id: \.self) { item in
           SidebarRow(item: item)
         }
       }
 
-      Section("Ferramentas") {
+      Section(String(localized: "sidebar.section.tools", defaultValue: "Ferramentas")) {
         ForEach(Array(SidebarItem.allCases.dropFirst(4).dropLast(2)), id: \.self) { item in
           SidebarRow(item: item)
         }
       }
 
-      Section("Configurações") {
+      Section(String(localized: "sidebar.section.configuration", defaultValue: "Configurações")) {
         SidebarRow(item: .categories)
       }
 
@@ -44,5 +48,6 @@ struct SidebarView: View {
     }
     .listStyle(.sidebar)
     .navigationTitle("Money Manager")
+    .accessibilityLabel(String(localized: "sidebar.title", defaultValue: "Navigation Sidebar"))
   }
 }

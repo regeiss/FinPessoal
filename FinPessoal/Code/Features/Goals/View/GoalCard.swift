@@ -21,12 +21,13 @@ struct GoalCard: View {
           Image(systemName: goal.category.icon)
             .foregroundColor(Color(goal.category.color))
             .frame(width: 24, height: 24)
-          
+            .accessibilityHidden(true)
+
           VStack(alignment: .leading, spacing: 2) {
             Text(goal.name)
               .font(.headline)
               .foregroundColor(.primary)
-            
+
             if let description = goal.description {
               Text(description)
                 .font(.caption)
@@ -35,16 +36,17 @@ struct GoalCard: View {
             }
           }
         }
-        
+
         Spacer()
-        
+
         if goal.isCompleted {
           Image(systemName: "checkmark.circle.fill")
             .foregroundColor(.green)
             .font(.title2)
+            .accessibilityLabel("Completed")
         }
       }
-      
+
       // Progress
       VStack(alignment: .leading, spacing: 8) {
         HStack(spacing: 4) {
@@ -55,7 +57,7 @@ struct GoalCard: View {
               .foregroundColor(.primary)
               .lineLimit(1)
               .minimumScaleFactor(0.7)
-            
+
             HStack(spacing: 2) {
               Text("de")
                 .font(.caption)
@@ -67,20 +69,24 @@ struct GoalCard: View {
                 .minimumScaleFactor(0.8)
             }
           }
-          
+
           Spacer()
-          
+
           Text("\(Int(goal.progressPercentage))%")
             .font(.caption)
             .fontWeight(.medium)
             .foregroundColor(Color(goal.category.color))
         }
-        
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("Progress")
+        .accessibilityValue("\(Int(goal.progressPercentage))%, \(CurrencyFormatter.shared.string(from: goal.currentAmount)) of \(CurrencyFormatter.shared.string(from: goal.targetAmount))")
+
         ProgressView(value: goal.progressPercentage / 100.0)
           .progressViewStyle(LinearProgressViewStyle(tint: Color(goal.category.color)))
           .scaleEffect(x: 1, y: 1.5, anchor: .center)
+          .accessibilityHidden(true)
       }
-      
+
       // Stats
       HStack(spacing: 8) {
         VStack(alignment: .leading, spacing: 2) {
@@ -94,7 +100,10 @@ struct GoalCard: View {
             .minimumScaleFactor(0.8)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("Remaining")
+        .accessibilityValue(CurrencyFormatter.shared.string(from: goal.remainingAmount))
+
         VStack(alignment: .trailing, spacing: 2) {
           Text(String(localized: "goal.days.left"))
             .font(.caption2)
@@ -104,14 +113,18 @@ struct GoalCard: View {
             .fontWeight(.medium)
         }
         .frame(maxWidth: .infinity, alignment: .trailing)
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("Days Left")
+        .accessibilityValue("\(goal.daysRemaining) days")
       }
-      
+
       // Monthly contribution needed
       if !goal.isCompleted {
         HStack(spacing: 4) {
           Image(systemName: "calendar")
             .foregroundColor(.blue)
             .font(.caption2)
+            .accessibilityHidden(true)
           Text(String(localized: "goal.monthly.needed"))
             .font(.caption2)
             .foregroundColor(.secondary)
@@ -127,6 +140,9 @@ struct GoalCard: View {
         .padding(.vertical, 4)
         .background(Color.blue.opacity(0.1))
         .clipShape(RoundedRectangle(cornerRadius: 4))
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("Monthly Contribution Needed")
+        .accessibilityValue(CurrencyFormatter.shared.string(from: goal.monthlyContributionNeeded))
       }
     }
     .padding()
@@ -136,6 +152,11 @@ struct GoalCard: View {
     .onTapGesture {
       showingProgressSheet = true
     }
+    .accessibilityElement(children: .combine)
+    .accessibilityLabel(goal.isCompleted ? "\(goal.name), Completed" : goal.name)
+    .accessibilityValue("\(goal.category.displayName). \(Int(goal.progressPercentage))% complete. \(CurrencyFormatter.shared.string(from: goal.currentAmount)) saved of \(CurrencyFormatter.shared.string(from: goal.targetAmount)) target. \(CurrencyFormatter.shared.string(from: goal.remainingAmount)) remaining. \(goal.daysRemaining) days left" + (goal.isCompleted ? "" : ". Monthly contribution needed: \(CurrencyFormatter.shared.string(from: goal.monthlyContributionNeeded))"))
+    .accessibilityHint("Double tap to view goal details and add contributions")
+    .accessibilityAddTraits(.isButton)
     .sheet(isPresented: $showingProgressSheet) {
       GoalProgressSheet(goal: goal)
         .environmentObject(financeViewModel)
@@ -174,16 +195,19 @@ struct GoalProgressSheet: View {
               Circle()
                 .fill(Color(goal.category.color).opacity(0.15))
                 .frame(width: 80, height: 80)
+                .accessibilityHidden(true)
 
               Image(systemName: goal.category.icon)
                 .font(.system(size: 36))
                 .foregroundColor(Color(goal.category.color))
+                .accessibilityHidden(true)
             }
 
             VStack(spacing: 4) {
               Text(goal.name)
                 .font(.title2)
                 .fontWeight(.bold)
+                .accessibilityAddTraits(.isHeader)
 
               if let description = goal.description {
                 Text(description)
@@ -195,6 +219,9 @@ struct GoalProgressSheet: View {
             }
           }
           .padding(.top, 8)
+          .accessibilityElement(children: .combine)
+          .accessibilityLabel(goal.description != nil ? "\(goal.name). \(goal.description!)" : goal.name)
+          .accessibilityAddTraits(.isHeader)
 
           // Progress section
           VStack(spacing: 20) {
@@ -203,6 +230,7 @@ struct GoalProgressSheet: View {
               Circle()
                 .stroke(Color.gray.opacity(0.15), lineWidth: 12)
                 .frame(width: 160, height: 160)
+                .accessibilityHidden(true)
 
               if goal.progressPercentage > 0 {
                 Circle()
@@ -214,6 +242,7 @@ struct GoalProgressSheet: View {
                   .frame(width: 160, height: 160)
                   .rotationEffect(.degrees(-90))
                   .animation(.easeInOut(duration: 0.8), value: goal.progressPercentage)
+                  .accessibilityHidden(true)
               }
 
               VStack(spacing: 4) {
@@ -221,6 +250,7 @@ struct GoalProgressSheet: View {
                   Image(systemName: "checkmark.circle.fill")
                     .font(.system(size: 48))
                     .foregroundColor(.green)
+                    .accessibilityHidden(true)
 
                   Text(String(localized: "goal.completed"))
                     .font(.caption)
@@ -237,6 +267,9 @@ struct GoalProgressSheet: View {
                 }
               }
             }
+            .accessibilityElement(children: .combine)
+            .accessibilityLabel("Goal Progress")
+            .accessibilityValue(goal.isCompleted ? "Completed" : "\(Int(min(goal.progressPercentage, 100))) percent complete")
 
             // Amount details
             VStack(spacing: 12) {
@@ -249,8 +282,12 @@ struct GoalProgressSheet: View {
                   .font(.headline)
                   .foregroundColor(.primary)
               }
+              .accessibilityElement(children: .combine)
+              .accessibilityLabel("Current Amount")
+              .accessibilityValue(CurrencyHelper.format(goal.currentAmount))
 
               Divider()
+                .accessibilityHidden(true)
 
               HStack {
                 Text(String(localized: "goal.target"))
@@ -261,8 +298,12 @@ struct GoalProgressSheet: View {
                   .font(.headline)
                   .foregroundColor(.primary)
               }
+              .accessibilityElement(children: .combine)
+              .accessibilityLabel("Target Amount")
+              .accessibilityValue(CurrencyHelper.format(goal.targetAmount))
 
               Divider()
+                .accessibilityHidden(true)
 
               HStack {
                 Text(String(localized: "goal.remaining"))
@@ -274,10 +315,14 @@ struct GoalProgressSheet: View {
                   .fontWeight(.semibold)
                   .foregroundColor(goal.category.swiftUIColor)
               }
+              .accessibilityElement(children: .combine)
+              .accessibilityLabel("Remaining Amount")
+              .accessibilityValue(CurrencyHelper.format(max(remainingAmount, 0)))
             }
             .padding()
             .background(Color(.secondarySystemGroupedBackground))
             .cornerRadius(12)
+            .accessibilityElement(children: .contain)
           }
           .padding(.horizontal)
 
@@ -286,6 +331,7 @@ struct GoalProgressSheet: View {
             Text(String(localized: "goal.add.contribution"))
               .font(.headline)
               .frame(maxWidth: .infinity, alignment: .leading)
+              .accessibilityAddTraits(.isHeader)
 
             // Money input field
             VStack(alignment: .leading, spacing: 8) {
@@ -295,6 +341,7 @@ struct GoalProgressSheet: View {
                   .fontWeight(.medium)
                   .foregroundColor(.secondary)
                   .frame(width: 30)
+                  .accessibilityHidden(true)
 
                 TextField("0,00", text: $newContribution)
                   .keyboardType(.decimalPad)
@@ -303,6 +350,9 @@ struct GoalProgressSheet: View {
                   .onChange(of: newContribution) { _, newValue in
                     formatMoneyInput(newValue)
                   }
+                  .accessibilityLabel("Contribution Amount")
+                  .accessibilityHint("Enter the amount to contribute to this goal")
+                  .accessibilityValue(contributionAmount > 0 ? formattedContribution : "Empty")
               }
               .padding()
               .background(Color(.secondarySystemGroupedBackground))
@@ -317,6 +367,7 @@ struct GoalProgressSheet: View {
                   .font(.caption)
                   .foregroundColor(.secondary)
                   .padding(.leading, 4)
+                  .accessibilityHidden(true)
               }
             }
 
@@ -327,6 +378,7 @@ struct GoalProgressSheet: View {
                   .font(.caption)
                   .foregroundColor(.secondary)
                   .padding(.leading, 4)
+                  .accessibilityAddTraits(.isHeader)
 
                 HStack(spacing: 12) {
                   QuickAmountButton(
@@ -353,6 +405,7 @@ struct GoalProgressSheet: View {
                     setContribution(remainingAmount)
                   }
                 }
+                .accessibilityElement(children: .contain)
               }
             }
 
@@ -363,6 +416,7 @@ struct GoalProgressSheet: View {
               HStack(spacing: 8) {
                 Image(systemName: "plus.circle.fill")
                   .font(.system(size: 18))
+                  .accessibilityHidden(true)
                 Text(String(localized: "goal.add.amount"))
                   .fontWeight(.semibold)
               }
@@ -376,11 +430,14 @@ struct GoalProgressSheet: View {
             }
             .disabled(contributionAmount <= 0)
             .animation(.easeInOut(duration: 0.2), value: contributionAmount > 0)
+            .accessibilityLabel("Add Contribution")
+            .accessibilityHint(contributionAmount > 0 ? "Adds \(formattedContribution) to the goal" : "Button is disabled. Please enter an amount first")
           }
           .padding()
           .background(Color(.systemGroupedBackground))
           .cornerRadius(16)
           .padding(.horizontal)
+          .accessibilityElement(children: .contain)
 
           Spacer(minLength: 20)
         }
@@ -396,12 +453,16 @@ struct GoalProgressSheet: View {
             Image(systemName: "trash")
               .foregroundColor(.red)
           }
+          .accessibilityLabel("Delete Goal")
+          .accessibilityHint("Deletes this goal permanently")
         }
 
         ToolbarItem(placement: .navigationBarTrailing) {
           Button(String(localized: "common.done")) {
             dismiss()
           }
+          .accessibilityLabel("Done")
+          .accessibilityHint("Closes the goal details")
         }
       }
       .alert(
@@ -504,5 +565,10 @@ struct QuickAmountButton: View {
           .stroke(color.opacity(0.3), lineWidth: 1)
       )
     }
+    .accessibilityElement(children: .combine)
+    .accessibilityLabel("Quick amount \(title)")
+    .accessibilityValue(CurrencyHelper.format(amount))
+    .accessibilityHint("Sets contribution amount to \(CurrencyHelper.format(amount))")
+    .accessibilityAddTraits(.isButton)
   }
 }

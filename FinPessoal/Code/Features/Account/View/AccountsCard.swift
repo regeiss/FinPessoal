@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AccountCard: View {
   let account: Account
-  
+
   var body: some View {
     HStack {
       Image(systemName: account.type.icon)
@@ -18,18 +18,19 @@ struct AccountCard: View {
         .frame(width: 40, height: 40)
         .background(account.type.color.opacity(0.1))
         .cornerRadius(8)
-      
+        .accessibilityHidden(true)
+
       VStack(alignment: .leading, spacing: 4) {
         Text(account.name)
           .font(.headline)
-        
+
         Text(account.type.rawValue)
           .font(.caption)
           .foregroundColor(.secondary)
       }
-      
+
       Spacer()
-      
+
       Text(account.formattedBalance)
         .font(.headline)
         .fontWeight(.semibold)
@@ -38,5 +39,9 @@ struct AccountCard: View {
     .padding()
     .background(Color(.systemGray6))
     .cornerRadius(12)
+    .accessibilityElement(children: .combine)
+    .accessibilityLabel("\(account.name), \(account.type.rawValue)")
+    .accessibilityValue("Balance: \(account.formattedBalance)")
+    .accessibilityAddTraits(.isButton)
   }
 }

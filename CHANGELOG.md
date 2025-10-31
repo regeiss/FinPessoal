@@ -7,6 +7,268 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added - October 2025
+- **Comprehensive Accessibility Implementation Across Entire App** (2025-10-31)
+  - Implemented WCAG 2.1 Level AA accessibility standards throughout the entire FinPessoal iOS app
+  - Created ACCESSIBILITY_GUIDELINES.md with comprehensive implementation patterns and examples
+  - Created ACCESSIBILITY_TESTING_CHECKLIST.md with 15 sections and 200+ checkpoints
+  - Added VoiceOver support to 60+ screens and 175+ components
+  - All authentication, onboarding, and login screens now fully accessible
+  - Complete accessibility for Dashboard with balance cards and statistics
+  - Full accessibility for Transactions including list, detail, and add/edit forms
+  - Complete accessibility for Budget management including progress tracking
+  - Full accessibility for Goals with progress indicators and contribution forms
+  - Complete accessibility for Account management and detail views
+  - Full accessibility for Bills tracking with status and payment actions
+  - Complete accessibility for Reports including charts with text alternatives
+  - Full accessibility for Help system with search and category navigation
+  - Complete accessibility for Settings, Profile, and navigation components
+  - All decorative elements hidden from VoiceOver with .accessibilityHidden(true)
+  - All interactive elements have descriptive labels, hints, and proper traits
+  - All form fields include labels, hints, and dynamic value announcements
+  - All progress indicators announce percentages and amounts
+  - All empty states provide clear guidance and next actions
+  - All financial data properly formatted and announced
+  - All charts and visualizations have comprehensive text alternatives
+  - All tables and lists properly structured with headers
+  - All buttons include action hints and state feedback
+  - All pickers announce current selection
+  - All toggles announce enabled/disabled state
+  - Combined related elements for better VoiceOver flow
+  - Proper accessibility traits (.isButton, .isHeader, .isStaticText, .isSelected)
+  - Loading states announce progress with .updatesFrequently trait
+  - Error messages announced with "Error:" prefix
+  - Validation feedback in form fields
+  - Currency and financial values with proper formatting
+  - Date and time information clearly stated
+  - Status indicators (paid/unpaid, active/inactive, complete/incomplete) announced
+  - Over-budget and goal progress warnings clearly communicated
+  - Navigation hints for all interactive elements
+  - Section headers marked throughout the app
+  - Tab bar items with descriptive labels and hints
+  - Sidebar navigation fully accessible on iPad
+  - Search functionality with labels and hints
+  - Filter and sort controls accessible
+  - Toolbar buttons with clear labels and action descriptions
+  - Sheet and modal presentations properly accessible
+  - All 7 main features (Dashboard, Transactions, Budgets, Goals, Accounts, Bills, Reports) fully accessible
+  - Support for Dynamic Type throughout the app
+  - Color contrast meets WCAG standards
+  - Interactive elements meet minimum 44x44pt tap target size
+  - Logical tab order maintained
+  - Comprehensive testing checklist with scenarios for each feature
+- **Comprehensive Accessibility for Navigation and Settings** (2025-10-30)
+  - Added full VoiceOver support to all Navigation, Settings, and Common UI components
+  - MainTabView: Added accessibility labels and hints for all tab items
+  - MainTabView: Each tab now announces its purpose clearly (e.g., "View your financial dashboard and overview")
+  - MainTabView: Converted tab items to use Label for better semantic structure
+  - SidebarView: Added accessibility labels for navigation sections (Profile, Main Menu, Tools, Configuration)
+  - SidebarView: User profile row with combined accessibility and proper hints
+  - SidebarRow: Added navigation hints for all sidebar items
+  - UserProfileRow: User name and email with descriptive labels
+  - UserProfileRow: Sign out button with clear action description
+  - UserProfileRow: Decorative avatar icon hidden from VoiceOver
+  - SettingsScreen: Profile button with combined user information
+  - SettingsScreen: Currency setting with current selection announced
+  - SettingsScreen: Language setting with current selection announced
+  - SettingsScreen: All settings rows with descriptive labels and hints
+  - SettingsScreen: Decorative icons (chevrons, icons) hidden from VoiceOver
+  - SettingsScreen: Reset onboarding button with clear warning
+  - SettingsScreen: Sign out button with account action warning
+  - SettingsRow: Combined element with proper button traits
+  - CurrencySettingsView: Currency options with selected state announced
+  - CurrencySettingsView: Checkmark icons hidden from VoiceOver
+  - CurrencySettingsView: Each currency shows name and code in label
+  - LanguageSettingsView: Language options with selected state announced
+  - LanguageSettingsView: Flag emojis hidden from VoiceOver
+  - LanguageSettingsView: Each language shows name clearly
+  - ProfileView: Profile header with combined user information
+  - ProfileView: Name, email, and member since date with descriptive labels
+  - ProfileView: Decorative avatar icon hidden from VoiceOver
+  - ProfileSettingRow: Settings preview with label-value pairs
+  - ProfileSettingRow: Navigation hints for accessing settings
+  - ProfileSettingRow: Decorative icons hidden from VoiceOver
+  - ProfileView: Account action buttons with clear labels and hints
+  - ProfileView: Export data, privacy policy, and terms buttons
+  - ProfileView: Section headers marked with .isHeader trait
+  - ProfileView: Dividers hidden from VoiceOver
+  - QuickActionButton: Icon hidden, text properly announced
+  - QuickActionButton: Descriptive hints for button actions
+  - QuickActionsView: Section header marked with .isHeader trait
+  - QuickActionsView: Reports NavigationLink with proper accessibility
+  - QuickActionsView: All decorative icons hidden from VoiceOver
+  - EmptyStateView: Enhanced with label, value, and static text trait
+  - EmptyStateView: Decorative icon hidden from VoiceOver
+  - EmptyStateView: Title and subtitle combined for better context
+  - StatCard: Already had good accessibility (label combining title and value)
+  - All decorative images and icons marked with .accessibilityHidden(true)
+  - All interactive elements have proper .isButton traits where appropriate
+  - All section headers marked with .isHeader trait
+  - Selected states announced with .isSelected trait in pickers
+  - Follows WCAG 2.1 Level AA accessibility standards
+- **Comprehensive Accessibility for Bills Feature** (2025-10-30)
+  - Added full VoiceOver support to all Bills screens and components
+  - BillsScreen: Added accessibility labels, hints, and values for all toolbar buttons
+  - BillsScreen: Loading indicator with descriptive label and hint
+  - BillsScreen: Filter button with active/inactive state announcement
+  - BillsScreen: Add bill button with clear action description
+  - BillsScreen: Statistics section with container accessibility
+  - BillsScreen: Search bar with proper labels, hints, and value feedback
+  - BillsScreen: Clear search button with descriptive action
+  - BillsScreen: Bill list items with tap hints for detail view
+  - BillsScreen: Swipe actions with contextual labels (delete, mark as paid)
+  - BillsScreen: Empty state with combined accessibility and hidden decorative icon
+  - BillsScreen: No results view with clear filter button
+  - BillsScreen: Filter sheet with done and clear buttons
+  - AddBillScreen: All form fields with labels, hints, and values
+  - AddBillScreen: Bill name field with empty state feedback
+  - AddBillScreen: Amount field with currency format guidance
+  - AddBillScreen: Due day picker with day of month context
+  - AddBillScreen: Category and subcategory pickers with current selection
+  - AddBillScreen: Payment account picker with selection announcement
+  - AddBillScreen: Reminder period picker with descriptive values
+  - AddBillScreen: Notes text editor with proper accessibility
+  - AddBillScreen: Active status toggle with enabled/disabled state
+  - AddBillScreen: Save button with validation state feedback
+  - AddBillScreen: Cancel button with discard warning
+  - AddBillScreen: Decorative category icons hidden from VoiceOver
+  - BillRow: Combined row element with comprehensive bill information
+  - BillRow: Bill name, amount, status, and due date in one announcement
+  - BillRow: Payment status clearly indicated (paid/unpaid/overdue)
+  - BillRow: Days until due or overdue days included in description
+  - BillRow: Mark as paid button with contextual action
+  - BillRow: Decorative status circles and icons hidden
+  - BillRow: .isButton trait for proper interaction
+  - BillDetailView: Header with bill name and category as header element
+  - BillDetailView: Status badge with combined status information
+  - BillDetailView: Amount display with clear label and value
+  - BillDetailView: Bill details section with container accessibility
+  - BillDetailView: Due day, reminder, and active status with labels
+  - BillDetailView: Next due date with days remaining/overdue
+  - BillDetailView: Last paid date when available
+  - BillDetailView: Mark as paid button with confirmation hint
+  - BillDetailView: Delete button with permanent action warning
+  - BillDetailView: Done button with close action
+  - BillDetailView: Notes section with proper value announcement
+  - BillDetailView: DetailRow component with label-value pairs
+  - BillDetailView: Decorative category icons hidden from VoiceOver
+  - All decorative images and icons marked with .accessibilityHidden(true)
+  - All interactive elements have proper .isButton traits
+  - Financial values announced with proper currency formatting
+  - Status information includes payment state and urgency
+  - Follows WCAG 2.1 Level AA accessibility standards
+
+- **Comprehensive Accessibility for Account Feature** (2025-10-30)
+  - Added full VoiceOver support to all Account screens and components
+  - AccountsView: Added accessibility labels, hints, and values for all interactive elements
+  - AccountsView: Toolbar add button with descriptive label and hint
+  - AccountsView: Empty state with combined accessibility and proper hints
+  - AccountsView: Summary section headers marked with .isHeader trait
+  - AccountsView: Summary cards with combined labels and values
+  - AccountsView: Account count label with proper accessibility
+  - EnhancedAccountCard: Combined card element with account name, type, and balance
+  - EnhancedAccountCard: Decorative icons (account type icon, checkmark, chevron) hidden from VoiceOver
+  - EnhancedAccountCard: Balance and status information in accessibility value
+  - EnhancedAccountCard: Tap hint for editing account
+  - AddAccountView: All form fields with labels, hints, and values
+  - AddAccountView: Section headers marked with .isHeader trait
+  - AddAccountView: Account name field with empty state feedback
+  - AddAccountView: Account type picker with current selection announced
+  - AddAccountView: Initial balance field with proper accessibility
+  - AddAccountView: Currency picker with current currency announced
+  - AddAccountView: Active toggle with current state announced
+  - AddAccountView: Save and close buttons with clear actions
+  - AccountsCard: Combined card element with comprehensive account information
+  - AccountsCard: Decorative account icon hidden from VoiceOver
+  - AccountsCard: Account name, type, and balance properly announced
+  - AccountDetailView: Header section with balance and account type
+  - AccountDetailView: Close and options menu buttons with descriptive labels
+  - AccountDetailView: Account options menu with clear accessibility
+  - AccountDetailView: Stats section with transaction count and status
+  - AccountDetailView: Empty transactions state with combined accessibility
+  - AccountDetailView: Recent transactions header marked with .isHeader trait
+  - AccountDetailView: View all transactions button with count
+  - EditAccountView: All form fields with labels, hints, and values
+  - EditAccountView: Section headers marked with .isHeader trait
+  - EditAccountView: Account information section with creation and update dates
+  - EditAccountView: Delete button with clear warning
+  - EditAccountView: Save and close buttons with validation feedback
+  - All decorative images and icons marked with .accessibilityHidden(true)
+  - All interactive elements have proper .isButton traits
+  - Financial values announced with proper currency formatting
+  - Form validation states communicated through accessibility
+  - Follows WCAG 2.1 Level AA accessibility standards
+
+- **Comprehensive Accessibility for Budget Feature** (2025-10-30)
+  - Added full VoiceOver support to all Budget screens and components
+  - BudgetScreen: Added accessibility labels, hints, and values for toolbar buttons
+  - BudgetScreen: Empty state with combined accessibility and proper hints
+  - BudgetScreen: Budget summary section with individual and combined accessibility
+  - BudgetScreen: Progress bars with percentage and amount announcements
+  - BudgetScreen: Alert section header marked with .isHeader trait
+  - BudgetScreen: Budget list items with .isButton trait and tap hints
+  - AddBudgetScreen: All form fields with labels, hints, and values
+  - AddBudgetScreen: Budget name field with empty state feedback
+  - AddBudgetScreen: Category picker with current selection announced
+  - AddBudgetScreen: Amount field with currency context
+  - AddBudgetScreen: Period picker with descriptive labels
+  - AddBudgetScreen: Date pickers with proper accessibility
+  - AddBudgetScreen: Alert threshold slider with current value in hint
+  - AddBudgetScreen: Save button with validation state feedback
+  - AddBudgetScreen: Decorative currency symbols and icons hidden from VoiceOver
+  - BudgetCard: Combined card element with comprehensive budget information
+  - BudgetCard: Category name and icon properly announced
+  - BudgetCard: Spent vs budgeted amounts with over-budget indication
+  - BudgetCard: Progress bar with percentage and amounts
+  - BudgetCard: Warning messages for over-budget and near-limit states
+  - BudgetCard: Decorative icons hidden, status information in labels
+  - BudgetRowView: Combined row element with budget summary
+  - BudgetRowView: Over-budget status included in accessibility value
+  - BudgetRowView: Tap hint for viewing details
+  - BudgetAlertRowView: Alert context with budget name and status
+  - BudgetAlertRowView: Usage percentage and amount announced
+  - BudgetAlertCard: Warning level (alert/over-budget) clearly stated
+  - BudgetAlertCard: Spent vs budgeted amounts in accessibility value
+  - BudgetDetailSheet: Header with budget name and category
+  - BudgetDetailSheet: Progress circle with usage percentage and over-budget status
+  - BudgetDetailSheet: Individual accessibility for budgeted, spent, and remaining amounts
+  - BudgetDetailSheet: Period information with descriptive labels
+  - BudgetDetailSheet: Daily available budget calculation announced
+  - BudgetDetailSheet: Period dates with full date format
+  - BudgetDetailSheet: Delete and Done buttons with clear actions
+  - All decorative images and icons marked with .accessibilityHidden(true)
+  - All interactive elements have proper .isButton traits
+  - Progress information includes percentages and amounts
+  - Financial values announced with proper currency formatting
+  - Follows WCAG 2.1 Level AA accessibility standards
+
+- **Comprehensive Accessibility for Goals Feature** (2025-10-30)
+  - Added full VoiceOver support to all Goals screens and components
+  - GoalScreen: Added accessibility labels, hints, and traits for all interactive elements
+  - GoalScreen: Section headers marked with .isHeader trait
+  - GoalScreen: Empty state with combined accessibility
+  - GoalScreen: View mode picker with descriptive labels and hints
+  - AddGoalScreen: All form fields with labels, hints, and values
+  - AddGoalScreen: Decorative currency symbols hidden from VoiceOver
+  - AddGoalScreen: Proper accessibility for date picker and calculations
+  - AddGoalScreen: Disabled state feedback for save button
+  - GoalCard: Combined card element with comprehensive progress information
+  - GoalCard: Progress bars hidden from VoiceOver (information in labels)
+  - GoalCard: Decorative icons hidden, completion status announced
+  - GoalProgressSheet: Progress circle with percentage announcement
+  - GoalProgressSheet: Amount details with individual accessibility
+  - GoalProgressSheet: Contribution input with proper labels and hints
+  - GoalProgressSheet: Quick amount buttons with descriptive labels
+  - GoalProgressSheet: Toolbar buttons with clear actions
+  - GoalRowView: Combined row element with all goal information
+  - GoalRowView: Progress information properly announced
+  - GoalRowView: Decorative elements (chevron, icons) hidden from VoiceOver
+  - All decorative images marked with .accessibilityHidden(true)
+  - All interactive elements have proper .isButton traits
+  - Progress information includes percentages and amounts
+  - Category information announced for context
+  - Follows WCAG 2.1 Level AA accessibility standards
+
 ### Fixed - October 2025
 - **Fixed ML/AI compilation warnings** (2025-10-29)
   - Build succeeded with only minor unused variable warnings

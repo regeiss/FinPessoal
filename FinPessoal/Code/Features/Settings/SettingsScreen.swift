@@ -53,6 +53,7 @@ struct SettingsScreen: View {
               }
               .frame(width: 40, height: 40)
               .clipShape(Circle())
+              .accessibilityHidden(true)
 
               VStack(alignment: .leading, spacing: 4) {
                 Text(user.name)
@@ -68,16 +69,21 @@ struct SettingsScreen: View {
               Image(systemName: "chevron.right")
                 .font(.caption)
                 .foregroundColor(.secondary)
+                .accessibilityHidden(true)
             }
             .padding(.vertical, 4)
           }
           .buttonStyle(.plain)
+          .accessibilityElement(children: .combine)
+          .accessibilityLabel(String(localized: "settings.profile.button.label", defaultValue: "Profile: \(user.name), \(user.email)"))
+          .accessibilityHint(String(localized: "settings.profile.button.hint", defaultValue: "View and edit your profile"))
+          .accessibilityAddTraits(.isButton)
         }
       }
 
       Section(String(localized: "settings.preferences.section")) {
           SettingsRow(title: String(localized: "settings.notifications"), icon: "bell", action: {})
-          
+
           // Currency settings row with current currency indicator
           Button {
             showingCurrencySettings = true
@@ -86,6 +92,7 @@ struct SettingsScreen: View {
               Image(systemName: "dollarsign.circle")
                 .foregroundColor(.blue)
                 .frame(width: 24)
+                .accessibilityHidden(true)
 
               Text(String(localized: "settings.currency"))
                 .foregroundColor(.primary)
@@ -99,9 +106,14 @@ struct SettingsScreen: View {
               Image(systemName: "chevron.right")
                 .font(.caption)
                 .foregroundColor(.secondary)
+                .accessibilityHidden(true)
             }
           }
           .buttonStyle(.plain)
+          .accessibilityElement(children: .combine)
+          .accessibilityLabel(String(localized: "settings.currency.label", defaultValue: "Currency: \(currentCurrencyDescription)"))
+          .accessibilityHint(String(localized: "settings.currency.hint", defaultValue: "Change your preferred currency"))
+          .accessibilityAddTraits(.isButton)
 
           // Language settings row with current language indicator
           Button {
@@ -111,6 +123,7 @@ struct SettingsScreen: View {
               Image(systemName: "globe")
                 .foregroundColor(.blue)
                 .frame(width: 24)
+                .accessibilityHidden(true)
 
               Text(String(localized: "settings.language"))
                 .foregroundColor(.primary)
@@ -124,9 +137,14 @@ struct SettingsScreen: View {
               Image(systemName: "chevron.right")
                 .font(.caption)
                 .foregroundColor(.secondary)
+                .accessibilityHidden(true)
             }
           }
           .buttonStyle(.plain)
+          .accessibilityElement(children: .combine)
+          .accessibilityLabel(String(localized: "settings.language.label", defaultValue: "Language: \(currentLanguageDescription)"))
+          .accessibilityHint(String(localized: "settings.language.hint", defaultValue: "Change your preferred language"))
+          .accessibilityAddTraits(.isButton)
         }
         
         Section(String(localized: "settings.data.section", defaultValue: "Dados")) {
@@ -148,8 +166,10 @@ struct SettingsScreen: View {
             onboardingManager.resetOnboarding()
           }
           .foregroundColor(.orange)
+          .accessibilityLabel(String(localized: "settings.reset.onboarding.label", defaultValue: "Reset onboarding"))
+          .accessibilityHint(String(localized: "settings.reset.onboarding.hint", defaultValue: "Reset the app to show onboarding screens again"))
         }
-        
+
         Section(String(localized: "settings.account.section")) {
           Button(String(localized: "settings.signout.button")) {
             Task {
@@ -157,6 +177,9 @@ struct SettingsScreen: View {
             }
           }
           .foregroundColor(.red)
+          .accessibilityLabel(String(localized: "settings.signout.label", defaultValue: "Sign out"))
+          .accessibilityHint(String(localized: "settings.signout.hint", defaultValue: "Sign out of your account"))
+          .accessibilityAddTraits(.isButton)
         }
     }
     .sheet(isPresented: $showingProfile) {
@@ -186,6 +209,7 @@ struct SettingsRow: View {
         Image(systemName: icon)
           .foregroundColor(.blue)
           .frame(width: 24)
+          .accessibilityHidden(true)
 
         Text(title)
           .foregroundColor(.primary)
@@ -195,9 +219,14 @@ struct SettingsRow: View {
         Image(systemName: "chevron.right")
           .font(.caption)
           .foregroundColor(.secondary)
+          .accessibilityHidden(true)
       }
     }
     .buttonStyle(.plain)
+    .accessibilityElement(children: .combine)
+    .accessibilityLabel(title)
+    .accessibilityHint(String(localized: "settings.row.hint", defaultValue: "Open \(title)"))
+    .accessibilityAddTraits(.isButton)
   }
 }
 
@@ -264,11 +293,16 @@ struct CurrencySettingsView: View {
                   Image(systemName: "checkmark")
                     .foregroundColor(.blue)
                     .font(.headline)
+                    .accessibilityHidden(true)
                 }
               }
               .contentShape(Rectangle())
             }
             .buttonStyle(.plain)
+            .accessibilityElement(children: .combine)
+            .accessibilityLabel("\(currency.displayName), \(currency.code)")
+            .accessibilityHint(String(localized: "settings.currency.select.hint", defaultValue: "Select \(currency.displayName) as your currency"))
+            .accessibilityAddTraits(selectedCurrency == currency.code ? [.isButton, .isSelected] : .isButton)
           }
         }
         
@@ -319,6 +353,7 @@ struct LanguageSettingsView: View {
               HStack {
                 Text(language.flag)
                   .font(.title2)
+                  .accessibilityHidden(true)
 
                 Text(language.name)
                   .font(.headline)
@@ -330,11 +365,16 @@ struct LanguageSettingsView: View {
                   Image(systemName: "checkmark")
                     .foregroundColor(.blue)
                     .font(.headline)
+                    .accessibilityHidden(true)
                 }
               }
               .contentShape(Rectangle())
             }
             .buttonStyle(.plain)
+            .accessibilityElement(children: .combine)
+            .accessibilityLabel(language.name)
+            .accessibilityHint(String(localized: "settings.language.select.hint", defaultValue: "Select \(language.name) as your language"))
+            .accessibilityAddTraits(selectedLanguage == language.code ? [.isButton, .isSelected] : .isButton)
           }
         }
         

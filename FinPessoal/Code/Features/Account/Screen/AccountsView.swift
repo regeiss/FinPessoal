@@ -19,6 +19,7 @@ struct AccountsView: View {
         if accountViewModel.isLoading {
           ProgressView(String(localized: "accounts.loading"))
             .padding(.vertical, 60)
+            .accessibilityLabel("Loading accounts")
         } else if accountViewModel.accounts.isEmpty {
           emptyStateView
         } else {
@@ -37,6 +38,8 @@ struct AccountsView: View {
         } label: {
           Image(systemName: "plus")
         }
+        .accessibilityLabel("Add Account")
+        .accessibilityHint("Opens form to add a new account")
       }
     }
     .sheet(isPresented: $accountViewModel.showingAddAccount) {
@@ -87,22 +90,26 @@ struct AccountsView: View {
       Image(systemName: "creditcard")
         .font(.system(size: 60))
         .foregroundColor(.blue)
-      
+        .accessibilityHidden(true)
+
       Text(String(localized: "accounts.empty.title"))
         .font(.title2)
         .fontWeight(.semibold)
-      
+
       Text(String(localized: "accounts.empty.description"))
         .multilineTextAlignment(.center)
         .foregroundColor(.secondary)
         .padding(.horizontal, 24)
-      
+
       Button(String(localized: "accounts.add.first.button")) {
         accountViewModel.showAddAccount()
       }
       .buttonStyle(.borderedProminent)
+      .accessibilityLabel("Add Your First Account")
+      .accessibilityHint("Opens form to create your first account")
     }
     .padding(.vertical, 80)
+    .accessibilityElement(children: .contain)
   }
   
   private var summarySection: some View {
@@ -111,9 +118,10 @@ struct AccountsView: View {
         Text(String(localized: "accounts.summary.title"))
           .font(.headline)
           .fontWeight(.semibold)
+          .accessibilityAddTraits(.isHeader)
         Spacer()
       }
-      
+
       LazyVGrid(columns: [
         GridItem(.flexible()),
         GridItem(.flexible())
@@ -124,7 +132,7 @@ struct AccountsView: View {
           icon: "creditcard.fill",
           color: .blue
         )
-        
+
         SummaryCard(
           title: String(localized: "accounts.total.balance"),
           value: accountViewModel.formattedTotalBalance,
@@ -144,12 +152,14 @@ struct AccountsView: View {
         Text(String(localized: "accounts.your.accounts"))
           .font(.headline)
           .fontWeight(.semibold)
+          .accessibilityAddTraits(.isHeader)
         Spacer()
         Text(String(localized: "accounts.count.label", defaultValue: "\(accountViewModel.accounts.count) conta(s)"))
           .font(.caption)
           .foregroundColor(.secondary)
+          .accessibilityLabel("\(accountViewModel.accounts.count) accounts")
       }
-      
+
       ForEach(accountViewModel.accounts) { account in
         EnhancedAccountCard(account: account) {
           accountToEdit = account
@@ -163,7 +173,7 @@ struct AccountsView: View {
 struct EnhancedAccountCard: View {
   let account: Account
   let onTap: () -> Void
-  
+
   var body: some View {
     Button(action: onTap) {
       HStack(spacing: 16) {
@@ -174,44 +184,47 @@ struct EnhancedAccountCard: View {
           .frame(width: 52, height: 52)
           .background(account.type.color.opacity(0.15))
           .cornerRadius(14)
-        
+          .accessibilityHidden(true)
+
         // Informações da conta
         VStack(alignment: .leading, spacing: 4) {
           Text(account.name)
             .font(.headline)
             .fontWeight(.semibold)
             .foregroundColor(.primary)
-          
+
           HStack {
             Text(LocalizedStringKey(account.type.rawValue))
               .font(.caption)
               .foregroundColor(.secondary)
-            
+
             if account.isActive {
               Image(systemName: "checkmark.circle.fill")
                 .font(.caption)
                 .foregroundColor(.green)
+                .accessibilityHidden(true)
             }
           }
         }
-        
+
         Spacer()
-        
+
         // Saldo da conta
         VStack(alignment: .trailing, spacing: 2) {
           Text(account.formattedBalance)
             .font(.headline)
             .fontWeight(.semibold)
             .foregroundColor(account.balance >= 0 ? .green : .red)
-          
+
           Text(String(localized: "accounts.balance.label"))
             .font(.caption2)
             .foregroundColor(.secondary)
         }
-        
+
         Image(systemName: "chevron.right")
           .font(.caption)
           .foregroundColor(.secondary)
+          .accessibilityHidden(true)
       }
       .padding(16)
       .background(Color(.systemBackground))
@@ -223,6 +236,11 @@ struct EnhancedAccountCard: View {
       .shadow(color: Color.black.opacity(0.05), radius: 2, x: 0, y: 1)
     }
     .buttonStyle(.plain)
+    .accessibilityElement(children: .combine)
+    .accessibilityLabel("\(account.name), \(account.type.rawValue)")
+    .accessibilityValue("Balance: \(account.formattedBalance), Status: \(account.isActive ? "Active" : "Inactive")")
+    .accessibilityHint("Double tap to edit account")
+    .accessibilityAddTraits(.isButton)
   }
 }
 
@@ -231,20 +249,21 @@ struct SummaryCard: View {
   let value: String
   let icon: String
   let color: Color
-  
+
   var body: some View {
     VStack(alignment: .leading, spacing: 8) {
       HStack {
         Image(systemName: icon)
           .foregroundColor(color)
           .font(.title3)
+          .accessibilityHidden(true)
         Spacer()
       }
-      
+
       Text(title)
         .font(.caption)
         .foregroundColor(.secondary)
-      
+
       Text(value)
         .font(.headline)
         .fontWeight(.semibold)
@@ -254,6 +273,9 @@ struct SummaryCard: View {
     .background(Color(.systemBackground))
     .cornerRadius(12)
     .shadow(color: Color.black.opacity(0.05), radius: 2, x: 0, y: 1)
+    .accessibilityElement(children: .combine)
+    .accessibilityLabel(title)
+    .accessibilityValue(value)
   }
 }
 

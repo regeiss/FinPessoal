@@ -41,6 +41,9 @@ struct GoalScreen: View {
             title: "goals.empty.title",
             subtitle: "goals.empty.subtitle"
           )
+          .accessibilityElement(children: .combine)
+          .accessibilityLabel(String(localized: "goals.empty.title"))
+          .accessibilityHint(String(localized: "goals.empty.subtitle") + ". Tap the add button in the toolbar to create your first goal")
         } else {
           ScrollView {
             LazyVStack(spacing: 0) {
@@ -51,6 +54,7 @@ struct GoalScreen: View {
                     .foregroundColor(.primary)
                     .padding(.horizontal, 20)
                     .padding(.top, 20)
+                    .accessibilityAddTraits(.isHeader)
 
                   if selectedViewMode == .cards {
                     LazyVGrid(columns: [
@@ -63,6 +67,8 @@ struct GoalScreen: View {
                     }
                     .padding(.horizontal, 20)
                     .padding(.bottom, 20)
+                    .accessibilityElement(children: .contain)
+                    .accessibilityLabel("Active goals grid")
                   } else {
                     LazyVStack(spacing: 8) {
                       ForEach(activeGoals) { goal in
@@ -74,6 +80,8 @@ struct GoalScreen: View {
                     }
                     .padding(.horizontal, 20)
                     .padding(.bottom, 20)
+                    .accessibilityElement(children: .contain)
+                    .accessibilityLabel("Active goals list")
                   }
                 }
               }
@@ -85,6 +93,7 @@ struct GoalScreen: View {
                     .foregroundColor(.primary)
                     .padding(.horizontal, 20)
                     .padding(.top, 20)
+                    .accessibilityAddTraits(.isHeader)
 
                   LazyVStack(spacing: 8) {
                     ForEach(completedGoals) { goal in
@@ -97,6 +106,8 @@ struct GoalScreen: View {
                   }
                   .padding(.horizontal, 20)
                   .padding(.bottom, 20)
+                  .accessibilityElement(children: .contain)
+                  .accessibilityLabel("Completed goals list")
                 }
               }
             }
@@ -119,6 +130,9 @@ struct GoalScreen: View {
           .pickerStyle(.segmented)
           .frame(width: 120)
           .scaleEffect(1.1)
+          .accessibilityLabel("View Mode")
+          .accessibilityHint("Switch between cards and list view for goals")
+          .accessibilityValue(selectedViewMode.rawValue)
         }
       }
 
@@ -128,6 +142,8 @@ struct GoalScreen: View {
         } label: {
           Image(systemName: "plus")
         }
+        .accessibilityLabel("Add Goal")
+        .accessibilityHint("Opens form to create a new goal")
       }
     }
     .sheet(isPresented: $showingAddGoal) {

@@ -35,11 +35,13 @@ struct LoginView: View {
       Image(systemName: "dollarsign.circle.fill")
         .font(.system(size: 80))
         .foregroundColor(.green)
-      
+        .accessibilityHidden(true)
+
       Text(String(localized: "app.name"))
         .font(.largeTitle)
         .fontWeight(.bold)
-      
+        .accessibilityAddTraits(.isHeader)
+
       Text(String(localized: "app.tagline"))
         .font(.subheadline)
         .foregroundColor(.secondary)
@@ -53,10 +55,16 @@ struct LoginView: View {
         .textFieldStyle(.roundedBorder)
         .keyboardType(.emailAddress)
         .autocapitalization(.none)
-      
+        .accessibilityLabel("Email Address")
+        .accessibilityHint("Enter your email address to sign in")
+        .accessibilityValue(email.isEmpty ? "Empty" : email)
+
       SecureField(String(localized: "login.password.placeholder"), text: $password)
         .textFieldStyle(.roundedBorder)
-      
+        .accessibilityLabel("Password")
+        .accessibilityHint("Enter your password. Input is secured and hidden")
+        .accessibilityValue(password.isEmpty ? "Empty" : "Entered")
+
       Button(action: {
         Task {
           await authViewModel.signInWithEmail(email, password: password)
@@ -71,6 +79,9 @@ struct LoginView: View {
           .cornerRadius(8)
       }
       .disabled(authViewModel.isLoading || email.isEmpty || password.isEmpty)
+      .accessibilityLabel("Sign In")
+      .accessibilityHint("Sign in with your email and password")
+      .accessibilityAddTraits(.isButton)
     }
   }
   
@@ -79,7 +90,7 @@ struct LoginView: View {
       Text(String(localized: "login.or.continue.with"))
         .font(.caption)
         .foregroundColor(.secondary)
-      
+
       VStack(spacing: 12) {
         // Google Sign-In Button
         Button(action: {
@@ -90,6 +101,7 @@ struct LoginView: View {
           HStack {
             Image(systemName: "globe")
               .foregroundColor(.white)
+              .accessibilityHidden(true)
             Text(String(localized: "login.continue.google"))
               .foregroundColor(.white)
               .fontWeight(.medium)
@@ -100,7 +112,9 @@ struct LoginView: View {
           .cornerRadius(8)
         }
         .disabled(authViewModel.isLoading)
-        
+        .accessibilityLabel("Sign in with Google")
+        .accessibilityHint("Continue using your Google account")
+
         // Apple Sign-In Button
         SignInWithAppleButton(
           onRequest: { request in
@@ -116,6 +130,8 @@ struct LoginView: View {
         .frame(height: 50)
         .cornerRadius(8)
         .disabled(authViewModel.isLoading)
+        .accessibilityLabel("Sign in with Apple")
+        .accessibilityHint("Continue using your Apple account")
       }
     }
   }
@@ -125,13 +141,16 @@ struct LoginView: View {
       if authViewModel.isLoading {
         ProgressView(String(localized: "login.signing.in"))
           .progressViewStyle(CircularProgressViewStyle())
+          .accessibilityLabel("Signing in, please wait")
       }
-      
+
       if let errorMessage = authViewModel.errorMessage {
         Text(errorMessage)
           .foregroundColor(.red)
           .font(.caption)
           .multilineTextAlignment(.center)
+          .accessibilityLabel("Error: \(errorMessage)")
+          .accessibilityAddTraits(.isStaticText)
       }
     }
   }

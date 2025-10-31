@@ -43,21 +43,25 @@ struct ProfileView: View {
       Image(systemName: "person.circle.fill")
         .font(.system(size: 80))
         .foregroundColor(.blue)
-      
+        .accessibilityHidden(true)
+
       // Informações básicas
       VStack(spacing: 4) {
         Text(authViewModel.currentUser?.name ?? String(localized: "profile.default.user", defaultValue: "Usuário"))
           .font(.title2)
           .fontWeight(.bold)
-        
+          .accessibilityLabel(String(localized: "profile.name.accessibility", defaultValue: "Name: \(authViewModel.currentUser?.name ?? "User")"))
+
         Text(authViewModel.currentUser?.email ?? "")
           .font(.subheadline)
           .foregroundColor(.secondary)
-        
+          .accessibilityLabel(String(localized: "profile.email.accessibility", defaultValue: "Email: \(authViewModel.currentUser?.email ?? "")"))
+
         if let createdAt = authViewModel.currentUser?.createdAt {
           Text(String(localized: "profile.member.since", defaultValue: "Membro desde \(createdAt.formatted(date: .abbreviated, time: .omitted))"))
             .font(.caption)
             .foregroundColor(.secondary)
+            .accessibilityLabel(String(localized: "profile.member.since.accessibility", defaultValue: "Member since \(createdAt.formatted(date: .abbreviated, time: .omitted))"))
         }
       }
     }
@@ -65,6 +69,7 @@ struct ProfileView: View {
     .padding(.vertical, 20)
     .background(Color(.systemGray6))
     .cornerRadius(16)
+    .accessibilityElement(children: .combine)
   }
   
   private var profileStatsSection: some View {
@@ -133,28 +138,36 @@ struct ProfileView: View {
       Text(String(localized: "settings.account.section"))
         .font(.headline)
         .fontWeight(.semibold)
-      
+        .accessibilityAddTraits(.isHeader)
+
       VStack(spacing: 12) {
         Button(String(localized: "profile.export.data", defaultValue: "Exportar Dados")) {
           // TODO: Implementar exportação de dados
         }
         .foregroundColor(.blue)
         .frame(maxWidth: .infinity, alignment: .leading)
-        
+        .accessibilityLabel(String(localized: "profile.export.data.label", defaultValue: "Export Data"))
+        .accessibilityHint(String(localized: "profile.export.data.hint", defaultValue: "Export your financial data"))
+
         Button(String(localized: "profile.privacy.policy", defaultValue: "Política de Privacidade")) {
           // TODO: Mostrar política de privacidade
         }
         .foregroundColor(.blue)
         .frame(maxWidth: .infinity, alignment: .leading)
-        
+        .accessibilityLabel(String(localized: "profile.privacy.policy.label", defaultValue: "Privacy Policy"))
+        .accessibilityHint(String(localized: "profile.privacy.policy.hint", defaultValue: "View privacy policy"))
+
         Button(String(localized: "profile.terms.of.use", defaultValue: "Termos de Uso")) {
           // TODO: Mostrar termos de uso
         }
         .foregroundColor(.blue)
         .frame(maxWidth: .infinity, alignment: .leading)
-        
+        .accessibilityLabel(String(localized: "profile.terms.of.use.label", defaultValue: "Terms of Use"))
+        .accessibilityHint(String(localized: "profile.terms.of.use.hint", defaultValue: "View terms of use"))
+
         Divider()
-        
+          .accessibilityHidden(true)
+
         Button(String(localized: "profile.sign.out", defaultValue: "Sair da Conta")) {
           Task {
             await authViewModel.signOut()
@@ -162,6 +175,8 @@ struct ProfileView: View {
         }
         .foregroundColor(.red)
         .frame(maxWidth: .infinity, alignment: .leading)
+        .accessibilityLabel(String(localized: "profile.sign.out.label", defaultValue: "Sign Out"))
+        .accessibilityHint(String(localized: "profile.sign.out.hint", defaultValue: "Sign out of your account"))
       }
     }
   }
@@ -177,29 +192,35 @@ struct ProfileSettingRow: View {
   let title: String
   let value: String
   let icon: String
-  
+
   var body: some View {
     HStack {
       Image(systemName: icon)
         .foregroundColor(.blue)
         .frame(width: 24)
-      
+        .accessibilityHidden(true)
+
       Text(title)
         .font(.subheadline)
-      
+
       Spacer()
-      
+
       Text(value)
         .font(.subheadline)
         .foregroundColor(.secondary)
-      
+
       Image(systemName: "chevron.right")
         .font(.caption)
         .foregroundColor(.secondary)
+        .accessibilityHidden(true)
     }
     .padding(.horizontal)
     .padding(.vertical, 12)
     .background(Color(.systemGray6))
     .cornerRadius(8)
+    .accessibilityElement(children: .combine)
+    .accessibilityLabel("\(title): \(value)")
+    .accessibilityHint(String(localized: "profile.setting.hint", defaultValue: "Navigate to \(title) settings"))
+    .accessibilityAddTraits(.isButton)
   }
 }

@@ -37,8 +37,10 @@ struct AccountDetailView: View {
           Button(String(localized: "common.close")) {
             dismiss()
           }
+          .accessibilityLabel("Close")
+          .accessibilityHint("Close account details")
         }
-        
+
         ToolbarItem(placement: .navigationBarTrailing) {
           Menu {
             Button(String(localized: "accounts.edit.button")) {
@@ -63,6 +65,8 @@ struct AccountDetailView: View {
           } label: {
             Image(systemName: "ellipsis.circle")
           }
+          .accessibilityLabel("Account Options")
+          .accessibilityHint("Open menu to edit, view statement, or change account status")
         }
       }
       .sheet(isPresented: $showingEditAccount) {
@@ -93,12 +97,13 @@ struct AccountDetailView: View {
         .frame(width: 80, height: 80)
         .background(account.type.color.opacity(0.15))
         .cornerRadius(20)
-      
+        .accessibilityHidden(true)
+
       VStack(spacing: 4) {
         Text(LocalizedStringKey(account.type.rawValue))
           .font(.headline)
           .foregroundColor(.secondary)
-        
+
         Text(account.formattedBalance)
           .font(.system(size: 32, weight: .bold, design: .rounded))
           .foregroundColor(account.balance >= 0 ? .green : .red)
@@ -108,6 +113,9 @@ struct AccountDetailView: View {
     .padding(.vertical, 20)
     .background(Color(.systemGray6))
     .cornerRadius(16)
+    .accessibilityElement(children: .combine)
+    .accessibilityLabel("Account Balance")
+    .accessibilityValue("\(account.type.rawValue), \(account.formattedBalance)")
   }
   
   private var accountStatsSection: some View {
@@ -121,13 +129,19 @@ struct AccountDetailView: View {
         icon: "list.bullet",
         color: .blue
       )
-      
+      .accessibilityElement(children: .combine)
+      .accessibilityLabel("Transactions")
+      .accessibilityValue("\(accountTransactions.count)")
+
       StatCard(
         title: String(localized: "common.status"),
         value: String(localized: account.isActive ? "common.active" : "common.inactive"),
         icon: account.isActive ? "checkmark.circle" : "pause.circle",
         color: account.isActive ? .green : .orange
       )
+      .accessibilityElement(children: .combine)
+      .accessibilityLabel("Account Status")
+      .accessibilityValue(account.isActive ? "Active" : "Inactive")
     }
   }
   
@@ -137,35 +151,41 @@ struct AccountDetailView: View {
         Text(String(localized: "transactions.recent"))
           .font(.headline)
           .fontWeight(.semibold)
+          .accessibilityAddTraits(.isHeader)
         Spacer()
         if !accountTransactions.isEmpty {
           Text(String(localized: "transactions.total.count", defaultValue: "\(accountTransactions.count) total"))
             .font(.caption)
             .foregroundColor(.secondary)
+            .accessibilityLabel("\(accountTransactions.count) total transactions")
         }
       }
-      
+
       if accountTransactions.isEmpty {
         VStack(spacing: 12) {
           Image(systemName: "tray")
             .font(.system(size: 40))
             .foregroundColor(.secondary)
-          
+            .accessibilityHidden(true)
+
           Text(String(localized: "transactions.empty.title"))
             .font(.subheadline)
             .foregroundColor(.secondary)
-          
+
           Text(String(localized: "transactions.empty.account.description"))
             .font(.caption)
             .foregroundColor(.secondary)
         }
         .frame(maxWidth: .infinity)
         .padding(.vertical, 40)
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("No Transactions")
+        .accessibilityValue("This account has no transactions yet")
       } else {
         ForEach(accountTransactions.prefix(5)) { transaction in
           TransactionRow(transaction: transaction)
         }
-        
+
         if accountTransactions.count > 5 {
           Button(String(localized: "transactions.view.all.count", defaultValue: "Ver todas as \(accountTransactions.count) transações")) {
             // Navegar para lista completa de transações
@@ -173,6 +193,8 @@ struct AccountDetailView: View {
           .font(.caption)
           .foregroundColor(.blue)
           .padding(.top, 8)
+          .accessibilityLabel("View All Transactions")
+          .accessibilityHint("Navigate to view all \(accountTransactions.count) transactions")
         }
       }
     }

@@ -56,7 +56,8 @@ struct OnboardingScreen: View {
               .background(Color.blue)
               .cornerRadius(12)
           }
-          .accessibilityLabel("onboarding.get_started")
+          .accessibilityLabel("Get Started")
+          .accessibilityHint("Complete onboarding and start using the app")
         } else {
           Button(action: {
             withAnimation {
@@ -71,16 +72,18 @@ struct OnboardingScreen: View {
               .background(Color.blue)
               .cornerRadius(12)
           }
-          .accessibilityLabel("onboarding.next")
+          .accessibilityLabel("Next")
+          .accessibilityHint("Go to page \(currentPage + 2) of \(pages.count)")
         }
-        
+
         Button(action: {
           onboardingManager.completeOnboarding()
         }) {
           Text("onboarding.skip")
             .foregroundColor(.secondary)
         }
-        .accessibilityLabel("onboarding.skip")
+        .accessibilityLabel("Skip Onboarding")
+        .accessibilityHint("Skip onboarding and go directly to the app")
       }
       .padding()
     }

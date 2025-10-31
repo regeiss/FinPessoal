@@ -16,7 +16,8 @@ struct QuickActionsView: View {
     VStack(alignment: .leading, spacing: 12) {
       Text("dashboard.quick.actions")
         .font(.headline)
-      
+        .accessibilityAddTraits(.isHeader)
+
       LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 2), spacing: 12) {
         QuickActionButton(
           icon: "plus.circle.fill",
@@ -25,7 +26,7 @@ struct QuickActionsView: View {
         ) {
           showingAddTransaction = true
         }
-        
+
         QuickActionButton(
           icon: "chart.pie.fill",
           title: "dashboard.create.budget",
@@ -33,7 +34,7 @@ struct QuickActionsView: View {
         ) {
           showingAddBudget = true
         }
-        
+
         QuickActionButton(
           icon: "target",
           title: "dashboard.set.goal",
@@ -41,13 +42,14 @@ struct QuickActionsView: View {
         ) {
           showingGoalScreen = true
         }
-        
+
         NavigationLink(destination: ReportsScreen()) {
           VStack(spacing: 8) {
             Image(systemName: "chart.bar.fill")
               .font(.title2)
               .foregroundColor(.orange)
-            
+              .accessibilityHidden(true)
+
             Text(LocalizedStringKey("dashboard.view.reports"))
               .font(.caption)
               .multilineTextAlignment(.center)
@@ -58,11 +60,16 @@ struct QuickActionsView: View {
           .background(Color(.systemBackground))
           .cornerRadius(8)
         }
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel(String(localized: "dashboard.view.reports"))
+        .accessibilityHint(String(localized: "dashboard.view.reports.hint", defaultValue: "Navigate to reports screen"))
+        .accessibilityAddTraits(.isButton)
       }
     }
     .padding()
     .background(Color(.systemGray6))
     .cornerRadius(12)
+    .accessibilityElement(children: .contain)
     .sheet(isPresented: $showingAddTransaction) {
       AddTransactionView(transactionViewModel: TransactionViewModel(repository: AppConfiguration.shared.createTransactionRepository()))
     }

@@ -16,7 +16,8 @@ struct CategorySpendingView: View {
       Text(String(localized: "reports.spending.by.category"))
         .font(.headline)
         .foregroundColor(.primary)
-      
+        .accessibilityAddTraits(.isHeader)
+
       if categorySpending.isEmpty {
         EmptyStateView(
           icon: "chart.pie",
@@ -24,6 +25,8 @@ struct CategorySpendingView: View {
           subtitle: "reports.empty.subtitle"
         )
         .frame(height: 200)
+        .accessibilityLabel("No category spending data")
+        .accessibilityHint("Add transactions to see category spending breakdown")
       } else if showingChart {
         CategoryChartView(categorySpending: categorySpending)
       } else {
@@ -39,7 +42,13 @@ struct CategorySpendingView: View {
 
 struct CategoryChartView: View {
   let categorySpending: [CategorySpending]
-  
+
+  private var chartDescription: String {
+    categorySpending.prefix(6).map { spending in
+      "\(spending.category.displayName): \(Int(spending.percentage.rounded()))%"
+    }.joined(separator: ", ")
+  }
+
   var body: some View {
     VStack(spacing: 16) {
       // Simple pie chart representation using progress circles
@@ -51,7 +60,11 @@ struct CategoryChartView: View {
           )
         }
       }
-      
+      .accessibilityElement(children: .combine)
+      .accessibilityLabel("Category spending chart")
+      .accessibilityValue(chartDescription)
+      .accessibilityHint("Shows spending breakdown by category")
+
       if categorySpending.count > 6 {
         Text(String(localized: "reports.showing.top.categories").replacingOccurrences(of: "%d", with: "6"))
           .font(.caption)
@@ -69,38 +82,45 @@ struct CategoryChartView: View {
 struct CategoryChartItem: View {
   let spending: CategorySpending
   let color: Color
-  
+
+  private var amountString: String {
+    NumberFormatter.currency.string(from: NSNumber(value: spending.amount)) ?? "R$ 0"
+  }
+
   var body: some View {
     VStack(spacing: 8) {
       ZStack {
         Circle()
           .stroke(color.opacity(0.3), lineWidth: 8)
           .frame(width: 60, height: 60)
-        
+          .accessibilityHidden(true)
+
         Circle()
           .trim(from: 0.0, to: min(spending.percentage / 100.0, 1.0))
           .stroke(color, style: StrokeStyle(lineWidth: 8, lineCap: .round))
           .frame(width: 60, height: 60)
           .rotationEffect(.degrees(-90))
           .animation(.easeInOut(duration: 1.0), value: spending.percentage)
-        
+          .accessibilityHidden(true)
+
         Image(systemName: spending.category.icon)
           .font(.system(size: 16, weight: .medium))
           .foregroundColor(color)
+          .accessibilityHidden(true)
       }
-      
+
       VStack(spacing: 2) {
         Text(spending.category.displayName)
           .font(.caption)
           .fontWeight(.medium)
           .lineLimit(1)
           .minimumScaleFactor(0.8)
-        
-        Text(NumberFormatter.currency.string(from: NSNumber(value: spending.amount)) ?? "R$ 0")
+
+        Text(amountString)
           .font(.caption2)
           .foregroundColor(.secondary)
           .lineLimit(1)
-        
+
         Text("\(Int(spending.percentage.rounded()))%")
           .font(.caption2)
           .fontWeight(.medium)
@@ -108,12 +128,15 @@ struct CategoryChartItem: View {
       }
     }
     .frame(maxWidth: .infinity)
+    .accessibilityElement(children: .combine)
+    .accessibilityLabel("\(spending.category.displayName) category")
+    .accessibilityValue("\(amountString), \(Int(spending.percentage.rounded())) percent of total spending, \(spending.transactionCount) transactions")
   }
 }
 
 struct CategoryTableView: View {
   let categorySpending: [CategorySpending]
-  
+
   var body: some View {
     VStack(spacing: 0) {
       // Header
@@ -122,14 +145,14 @@ struct CategoryTableView: View {
           .font(.caption)
           .fontWeight(.medium)
           .foregroundColor(.secondary)
-        
+
         Spacer()
-        
+
         Text(String(localized: "reports.amount"))
           .font(.caption)
           .fontWeight(.medium)
           .foregroundColor(.secondary)
-        
+
         Text(String(localized: "reports.percentage"))
           .font(.caption)
           .fontWeight(.medium)
@@ -138,6 +161,9 @@ struct CategoryTableView: View {
       }
       .padding(.vertical, 8)
       .padding(.horizontal, 4)
+      .accessibilityElement(children: .combine)
+      .accessibilityAddTraits(.isHeader)
+      .accessibilityLabel("Category spending table: category, amount, percentage")
       
       Divider()
       
@@ -167,37 +193,43 @@ struct CategoryTableView: View {
 struct CategoryTableRow: View {
   let spending: CategorySpending
   let color: Color
-  
+
+  private var amountString: String {
+    NumberFormatter.currency.string(from: NSNumber(value: spending.amount)) ?? "R$ 0"
+  }
+
   var body: some View {
     HStack {
       HStack(spacing: 8) {
         Circle()
           .fill(color)
           .frame(width: 8, height: 8)
-        
+          .accessibilityHidden(true)
+
         Image(systemName: spending.category.icon)
           .font(.system(size: 14))
           .foregroundColor(color)
           .frame(width: 20)
-        
+          .accessibilityHidden(true)
+
         VStack(alignment: .leading, spacing: 2) {
           Text(spending.category.displayName)
             .font(.subheadline)
             .fontWeight(.medium)
-          
+
           Text("\(spending.transactionCount) transações")
             .font(.caption2)
             .foregroundColor(.secondary)
         }
       }
-      
+
       Spacer()
-      
-      Text(NumberFormatter.currency.string(from: NSNumber(value: spending.amount)) ?? "R$ 0")
+
+      Text(amountString)
         .font(.subheadline)
         .fontWeight(.medium)
         .foregroundColor(.primary)
-      
+
       Text("\(Int(spending.percentage.rounded()))%")
         .font(.caption)
         .fontWeight(.medium)
@@ -206,6 +238,9 @@ struct CategoryTableRow: View {
     }
     .padding(.vertical, 12)
     .padding(.horizontal, 4)
+    .accessibilityElement(children: .combine)
+    .accessibilityLabel(spending.category.displayName)
+    .accessibilityValue("\(amountString), \(Int(spending.percentage.rounded())) percent, \(spending.transactionCount) transactions")
   }
 }
 

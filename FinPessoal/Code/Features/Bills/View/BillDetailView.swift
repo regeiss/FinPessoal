@@ -56,6 +56,8 @@ struct BillDetailView: View {
           Button(String(localized: "common.done")) {
             dismiss()
           }
+          .accessibilityLabel("Done")
+          .accessibilityHint("Closes bill details")
         }
 
         ToolbarItem(placement: .navigationBarLeading) {
@@ -65,6 +67,8 @@ struct BillDetailView: View {
             Image(systemName: "trash")
               .foregroundColor(.red)
           }
+          .accessibilityLabel("Delete Bill")
+          .accessibilityHint("Deletes this bill permanently")
         }
       }
       .alert(String(localized: "bill.delete.confirmation"), isPresented: $showingDeleteConfirmation) {
@@ -99,6 +103,7 @@ struct BillDetailView: View {
           .font(.system(size: 36))
           .foregroundColor(bill.category.swiftUIColor)
       }
+      .accessibilityHidden(true)
 
       VStack(spacing: 4) {
         Text(bill.name)
@@ -116,6 +121,9 @@ struct BillDetailView: View {
         }
       }
     }
+    .accessibilityElement(children: .combine)
+    .accessibilityLabel("Bill: \(bill.name), Category: \(bill.category.displayName)" + (bill.subcategory != nil ? ", \(bill.subcategory!.displayName)" : ""))
+    .accessibilityAddTraits(.isHeader)
   }
 
   // MARK: - Status View
@@ -125,6 +133,7 @@ struct BillDetailView: View {
       Circle()
         .fill(statusColor)
         .frame(width: 12, height: 12)
+        .accessibilityHidden(true)
 
       Text(bill.statusText)
         .font(.headline)
@@ -133,6 +142,7 @@ struct BillDetailView: View {
       if bill.isOverdue {
         Text("•")
           .foregroundColor(.secondary)
+          .accessibilityHidden(true)
 
         Text(String(localized: "bill.overdue.days", defaultValue: "\(-bill.daysUntilDue) days overdue"))
           .font(.subheadline)
@@ -140,6 +150,7 @@ struct BillDetailView: View {
       } else if bill.isDueSoon {
         Text("•")
           .foregroundColor(.secondary)
+          .accessibilityHidden(true)
 
         Text(String(localized: "bill.due.in", defaultValue: "Due in \(bill.daysUntilDue) days"))
           .font(.subheadline)
@@ -150,6 +161,21 @@ struct BillDetailView: View {
     .padding(.vertical, 8)
     .background(statusColor.opacity(0.1))
     .cornerRadius(20)
+    .accessibilityElement(children: .combine)
+    .accessibilityLabel(statusAccessibilityLabel)
+    .accessibilityAddTraits(.isStaticText)
+  }
+
+  private var statusAccessibilityLabel: String {
+    var label = "Status: \(bill.statusText)"
+
+    if bill.isOverdue {
+      label += ", \(-bill.daysUntilDue) days overdue"
+    } else if bill.isDueSoon {
+      label += ", Due in \(bill.daysUntilDue) days"
+    }
+
+    return label
   }
 
   // MARK: - Amount View
@@ -168,6 +194,10 @@ struct BillDetailView: View {
     .frame(maxWidth: .infinity)
     .background(Color(.secondarySystemGroupedBackground))
     .cornerRadius(12)
+    .accessibilityElement(children: .combine)
+    .accessibilityLabel("Bill Amount")
+    .accessibilityValue(bill.formattedAmount)
+    .accessibilityAddTraits(.isStaticText)
   }
 
   // MARK: - Details View
@@ -200,6 +230,8 @@ struct BillDetailView: View {
     .padding()
     .background(Color(.secondarySystemGroupedBackground))
     .cornerRadius(12)
+    .accessibilityElement(children: .contain)
+    .accessibilityLabel("Bill Details")
   }
 
   // MARK: - Due Date View
@@ -232,6 +264,9 @@ struct BillDetailView: View {
           }
         }
       }
+      .accessibilityElement(children: .combine)
+      .accessibilityLabel("Next Due Date")
+      .accessibilityValue(bill.nextDueDate.formatted(date: .long, time: .omitted) + (bill.isPaid ? "" : ", \(bill.daysUntilDue) days " + (bill.isOverdue ? "overdue" : "remaining")))
 
       if let lastPaidDate = bill.lastPaidDate {
         Divider()
@@ -247,6 +282,9 @@ struct BillDetailView: View {
             .font(.caption)
             .foregroundColor(.secondary)
         }
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("Last Paid")
+        .accessibilityValue(lastPaidDate.formatted(date: .long, time: .omitted))
       }
     }
     .padding()
@@ -273,6 +311,8 @@ struct BillDetailView: View {
       .background(Color.green)
       .cornerRadius(12)
     }
+    .accessibilityLabel("Mark Bill as Paid")
+    .accessibilityHint("Marks \(bill.name) as paid for the current period")
   }
 
   // MARK: - Notes View
@@ -291,6 +331,10 @@ struct BillDetailView: View {
     .padding()
     .background(Color(.secondarySystemGroupedBackground))
     .cornerRadius(12)
+    .accessibilityElement(children: .combine)
+    .accessibilityLabel("Notes")
+    .accessibilityValue(notes)
+    .accessibilityAddTraits(.isStaticText)
   }
 
   // MARK: - Helpers
@@ -344,6 +388,9 @@ struct DetailRow: View {
         .fontWeight(.medium)
         .foregroundColor(.primary)
     }
+    .accessibilityElement(children: .combine)
+    .accessibilityLabel(label)
+    .accessibilityValue(value)
   }
 }
 

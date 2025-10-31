@@ -20,6 +20,7 @@ struct BalanceCardView: View {
         Spacer()
         Image(systemName: "eye")
           .foregroundColor(.secondary)
+          .accessibilityHidden(true)
       }
       
       Text(totalBalance.formatted(.currency(code: "BRL")))
@@ -42,6 +43,7 @@ struct BalanceCardView: View {
     .background(Color(.systemGray6))
     .cornerRadius(12)
     .accessibilityElement(children: .combine)
-    .accessibilityLabel("dashboard.balance.card.accessibility")
+    .accessibilityLabel("Balance Overview")
+    .accessibilityValue("Total balance: \(totalBalance.formatted(.currency(code: "BRL"))), Monthly expenses: \(monthlyExpenses.formatted(.currency(code: "BRL")))")
   }
 }

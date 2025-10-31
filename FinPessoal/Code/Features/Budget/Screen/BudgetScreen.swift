@@ -34,6 +34,8 @@ struct BudgetsScreen: View {
         } label: {
           Image(systemName: "plus")
         }
+        .accessibilityLabel("Add Budget")
+        .accessibilityHint("Opens form to create a new budget")
       }
     }
     .sheet(isPresented: $showingAddBudget) {
@@ -55,22 +57,28 @@ struct BudgetsScreen: View {
       Image(systemName: "chart.pie")
         .font(.system(size: 60))
         .foregroundColor(.blue)
-      
+        .accessibilityHidden(true)
+
       Text(String(localized: "budgets.empty.title"))
         .font(.title2)
         .fontWeight(.semibold)
-      
+
       Text(String(localized: "budgets.empty.description"))
         .multilineTextAlignment(.center)
         .foregroundColor(.secondary)
         .padding(.horizontal)
-      
+
       Button(String(localized: "budgets.create.first")) {
         showingAddBudget = true
       }
       .buttonStyle(.borderedProminent)
+      .accessibilityLabel("Create Your First Budget")
+      .accessibilityHint("Opens form to create your first budget")
     }
     .padding(.vertical, 60)
+    .accessibilityElement(children: .contain)
+    .accessibilityLabel("No Budgets")
+    .accessibilityHint("You haven't created any budgets yet. Tap the button to create your first budget")
   }
   
   private var budgetSummarySection: some View {
@@ -84,9 +92,12 @@ struct BudgetsScreen: View {
             .font(.title2)
             .fontWeight(.bold)
         }
-        
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("Total Budgeted")
+        .accessibilityValue(formatCurrency(financeViewModel.totalBudgetAmount))
+
         Spacer()
-        
+
         VStack(alignment: .trailing) {
           Text(String(localized: "budgets.total.spent"))
             .font(.caption)
@@ -96,11 +107,16 @@ struct BudgetsScreen: View {
             .fontWeight(.bold)
             .foregroundColor(.red)
         }
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("Total Spent")
+        .accessibilityValue(formatCurrency(financeViewModel.totalBudgetSpent))
       }
-      
+
       ProgressView(value: financeViewModel.totalBudgetSpent, total: financeViewModel.totalBudgetAmount)
         .tint(.blue)
-      
+        .accessibilityLabel("Overall Budget Progress")
+        .accessibilityValue("\(Int((financeViewModel.totalBudgetSpent / max(financeViewModel.totalBudgetAmount, 1)) * 100))% used, \(formatCurrency(financeViewModel.totalBudgetSpent)) of \(formatCurrency(financeViewModel.totalBudgetAmount))")
+
       HStack {
         Text(String(localized: "budgets.remaining", defaultValue: "Restante: \(formatCurrency(financeViewModel.totalBudgetAmount - financeViewModel.totalBudgetSpent))"))
           .font(.caption)
@@ -110,10 +126,14 @@ struct BudgetsScreen: View {
           .font(.caption)
           .foregroundColor(.secondary)
       }
+      .accessibilityElement(children: .combine)
+      .accessibilityLabel("Budget Summary")
+      .accessibilityValue("Remaining: \(formatCurrency(financeViewModel.totalBudgetAmount - financeViewModel.totalBudgetSpent)), \(Int((financeViewModel.totalBudgetSpent / max(financeViewModel.totalBudgetAmount, 1)) * 100))% used")
     }
     .padding()
     .background(Color(.systemGray6))
     .cornerRadius(12)
+    .accessibilityElement(children: .contain)
   }
   
   private var budgetAlertSection: some View {
@@ -123,11 +143,15 @@ struct BudgetsScreen: View {
           HStack {
             Image(systemName: "exclamationmark.triangle.fill")
               .foregroundColor(.orange)
+              .accessibilityHidden(true)
             Text(String(localized: "budgets.alerts.title"))
               .font(.headline)
               .fontWeight(.semibold)
           }
-          
+          .accessibilityElement(children: .combine)
+          .accessibilityLabel("Budget Alerts")
+          .accessibilityAddTraits(.isHeader)
+
           ForEach(financeViewModel.budgetsNeedingAttention) { budget in
             BudgetAlertCard(budget: budget)
           }
@@ -141,10 +165,13 @@ struct BudgetsScreen: View {
       Text(String(localized: "budgets.all.title"))
         .font(.headline)
         .fontWeight(.semibold)
-      
+        .accessibilityAddTraits(.isHeader)
+
       ForEach(financeViewModel.budgets) { budget in
         BudgetCard(budget: budget)
           .onTapGesture { selectedBudget = budget }
+          .accessibilityAddTraits(.isButton)
+          .accessibilityHint("Double tap to view budget details")
       }
     }
   }

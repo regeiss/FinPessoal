@@ -16,6 +16,8 @@ struct ReportsScreen: View {
           ProgressView(String(localized: "reports.loading"))
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color(.systemGroupedBackground))
+            .accessibilityLabel(String(localized: "reports.loading"))
+            .accessibilityAddTraits(.updatesFrequently)
         } else {
           ScrollView {
             LazyVStack(spacing: 20) {
@@ -62,27 +64,33 @@ struct ReportsScreen: View {
             Image(systemName: "exclamationmark.triangle.fill")
               .font(.system(size: 48))
               .foregroundColor(.orange)
-            
+              .accessibilityHidden(true)
+
             Text(String(localized: "reports.error.title"))
               .font(.headline)
               .fontWeight(.semibold)
-            
+              .accessibilityAddTraits(.isHeader)
+
             Text(errorMessage)
               .font(.subheadline)
               .foregroundColor(.secondary)
               .multilineTextAlignment(.center)
               .padding(.horizontal)
-            
+
             Button(String(localized: "common.try.again")) {
               viewModel.refreshData()
             }
             .buttonStyle(.bordered)
+            .accessibilityLabel(String(localized: "common.try.again"))
+            .accessibilityHint("Reloads the reports data")
           }
           .padding()
           .background(Color(.systemBackground))
           .clipShape(RoundedRectangle(cornerRadius: 16))
           .shadow(color: .gray.opacity(0.2), radius: 8)
           .padding()
+          .accessibilityElement(children: .contain)
+          .accessibilityLabel("Error loading reports")
         }
     }
     .navigationTitle(String(localized: "sidebar.reports"))
@@ -94,6 +102,8 @@ struct ReportsScreen: View {
         } label: {
           Image(systemName: "calendar")
         }
+        .accessibilityLabel("Select report period")
+        .accessibilityHint("Opens period selection dialog")
 
         // View toggle (chart/table)
         Button {
@@ -101,6 +111,8 @@ struct ReportsScreen: View {
         } label: {
           Image(systemName: viewModel.showingChartView ? "list.bullet" : "chart.bar")
         }
+        .accessibilityLabel(viewModel.showingChartView ? "Switch to table view" : "Switch to chart view")
+        .accessibilityHint("Toggles between chart and table visualization")
 
         // Export options
         Button {
@@ -108,6 +120,8 @@ struct ReportsScreen: View {
         } label: {
           Image(systemName: "square.and.arrow.up")
         }
+        .accessibilityLabel("Export reports")
+        .accessibilityHint("Opens export options for PDF, CSV, or sharing")
       }
     }
     .refreshable {

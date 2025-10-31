@@ -47,14 +47,18 @@ struct HelpTopicDetailView: View {
           Button(String(localized: "common.close")) {
             dismiss()
           }
+          .accessibilityLabel("Close")
+          .accessibilityHint("Closes help topic detail")
         }
-        
+
         ToolbarItem(placement: .navigationBarTrailing) {
           Button {
             showingShareSheet = true
           } label: {
             Image(systemName: "square.and.arrow.up")
           }
+          .accessibilityLabel("Share topic")
+          .accessibilityHint("Opens share options for this help topic")
         }
       }
       .sheet(isPresented: $showingShareSheet) {
@@ -66,20 +70,21 @@ struct HelpTopicDetailView: View {
 
 struct HelpTopicHeaderView: View {
   let topic: HelpTopic
-  
+
   var body: some View {
     VStack(alignment: .leading, spacing: 12) {
       HStack {
         Image(systemName: topic.category.icon)
           .font(.title2)
           .foregroundColor(colorForCategory(topic.category.color))
-        
+          .accessibilityHidden(true)
+
         Text(topic.category.displayName)
           .font(.subheadline)
           .foregroundColor(.secondary)
-        
+
         Spacer()
-        
+
         if topic.isFrequentlyAsked {
           Text(String(localized: "help.faq.badge"))
             .font(.caption2)
@@ -89,17 +94,21 @@ struct HelpTopicHeaderView: View {
             .padding(.vertical, 2)
             .background(Color.blue)
             .clipShape(Capsule())
+            .accessibilityLabel("Frequently asked question")
         }
       }
-      
+
       Text(topic.title)
         .font(.title2)
         .fontWeight(.bold)
         .foregroundColor(.primary)
+        .accessibilityAddTraits(.isHeader)
     }
     .padding()
     .background(Color(.systemGray6))
     .clipShape(RoundedRectangle(cornerRadius: 12))
+    .accessibilityElement(children: .combine)
+    .accessibilityLabel("\(topic.title), \(topic.category.displayName) category\(topic.isFrequentlyAsked ? ", frequently asked question" : "")")
   }
   
   private func colorForCategory(_ colorName: String) -> Color {
@@ -119,13 +128,14 @@ struct HelpTopicHeaderView: View {
 
 struct HelpTopicContentView: View {
   let topic: HelpTopic
-  
+
   var body: some View {
     VStack(alignment: .leading, spacing: 12) {
       Text(String(localized: "help.topic.content"))
         .font(.headline)
         .foregroundColor(.primary)
-      
+        .accessibilityAddTraits(.isHeader)
+
       Text(topic.content)
         .font(.body)
         .foregroundColor(.primary)
@@ -135,18 +145,21 @@ struct HelpTopicContentView: View {
     .background(Color(.systemBackground))
     .clipShape(RoundedRectangle(cornerRadius: 12))
     .shadow(color: .gray.opacity(0.1), radius: 2, x: 0, y: 1)
+    .accessibilityElement(children: .combine)
+    .accessibilityLabel("Topic content: \(topic.content)")
   }
 }
 
 struct HelpTopicStepsView: View {
   let steps: [HelpStep]
-  
+
   var body: some View {
     VStack(alignment: .leading, spacing: 16) {
       Text(String(localized: "help.step.by.step"))
         .font(.headline)
         .foregroundColor(.primary)
-      
+        .accessibilityAddTraits(.isHeader)
+
       VStack(spacing: 12) {
         ForEach(steps) { step in
           HelpStepRow(step: step)
@@ -157,6 +170,8 @@ struct HelpTopicStepsView: View {
     .background(Color(.systemBackground))
     .clipShape(RoundedRectangle(cornerRadius: 12))
     .shadow(color: .gray.opacity(0.1), radius: 2, x: 0, y: 1)
+    .accessibilityElement(children: .contain)
+    .accessibilityLabel("Step by step guide, \(steps.count) steps")
   }
 }
 

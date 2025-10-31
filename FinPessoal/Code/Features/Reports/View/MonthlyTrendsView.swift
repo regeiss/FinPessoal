@@ -16,7 +16,8 @@ struct MonthlyTrendsView: View {
       Text(String(localized: "reports.monthly.trends"))
         .font(.headline)
         .foregroundColor(.primary)
-      
+        .accessibilityAddTraits(.isHeader)
+
       if monthlyTrends.isEmpty {
         EmptyStateView(
           icon: "chart.line.uptrend.xyaxis",
@@ -24,6 +25,8 @@ struct MonthlyTrendsView: View {
           subtitle: "reports.empty.subtitle"
         )
         .frame(height: 200)
+        .accessibilityLabel("No monthly trends data")
+        .accessibilityHint("Add transactions to see monthly income and expense trends")
       } else if showingChart {
         MonthlyTrendsChartView(monthlyTrends: monthlyTrends)
       } else {
@@ -39,16 +42,25 @@ struct MonthlyTrendsView: View {
 
 struct MonthlyTrendsChartView: View {
   let monthlyTrends: [MonthlyTrend]
-  
+
   private let maxValue: Double
-  
+
   init(monthlyTrends: [MonthlyTrend]) {
     self.monthlyTrends = monthlyTrends
-    
+
     let allValues = monthlyTrends.flatMap { [abs($0.income), abs($0.expenses), abs($0.netIncome)] }
     self.maxValue = allValues.max() ?? 1000
   }
-  
+
+  private var chartDescription: String {
+    monthlyTrends.map { trend in
+      let incomeStr = NumberFormatter.currency.string(from: NSNumber(value: trend.income)) ?? "R$ 0"
+      let expensesStr = NumberFormatter.currency.string(from: NSNumber(value: trend.expenses)) ?? "R$ 0"
+      let netStr = NumberFormatter.currency.string(from: NSNumber(value: trend.netIncome)) ?? "R$ 0"
+      return "\(trend.month): Income \(incomeStr), Expenses \(expensesStr), Net \(netStr)"
+    }.joined(separator: ". ")
+  }
+
   var body: some View {
     VStack(spacing: 16) {
       // Legend
@@ -58,6 +70,9 @@ struct MonthlyTrendsChartView: View {
         LegendItem(color: .blue, title: String(localized: "reports.net.income"))
       }
       .font(.caption)
+      .accessibilityElement(children: .combine)
+      .accessibilityLabel("Chart legend: green for income, red for expenses, blue for net income")
+      .accessibilityAddTraits(.isStaticText)
       
       // Chart
       ScrollView(.horizontal, showsIndicators: false) {
@@ -72,6 +87,10 @@ struct MonthlyTrendsChartView: View {
         .padding(.horizontal)
       }
       .frame(height: 200)
+      .accessibilityElement(children: .combine)
+      .accessibilityLabel("Monthly trends bar chart")
+      .accessibilityValue(chartDescription)
+      .accessibilityHint("Shows income, expenses, and net income for each month")
     }
   }
 }
@@ -79,13 +98,14 @@ struct MonthlyTrendsChartView: View {
 struct LegendItem: View {
   let color: Color
   let title: String
-  
+
   var body: some View {
     HStack(spacing: 4) {
       Circle()
         .fill(color)
         .frame(width: 8, height: 8)
-      
+        .accessibilityHidden(true)
+
       Text(title)
         .foregroundColor(.secondary)
     }
@@ -149,7 +169,7 @@ struct MonthlyTrendBar: View {
 
 struct MonthlyTrendsTableView: View {
   let monthlyTrends: [MonthlyTrend]
-  
+
   var body: some View {
     VStack(spacing: 0) {
       // Header
@@ -159,19 +179,19 @@ struct MonthlyTrendsTableView: View {
           .fontWeight(.medium)
           .foregroundColor(.secondary)
           .frame(maxWidth: .infinity, alignment: .leading)
-        
+
         Text(String(localized: "reports.income"))
           .font(.caption)
           .fontWeight(.medium)
           .foregroundColor(.secondary)
           .frame(width: 80, alignment: .trailing)
-        
+
         Text(String(localized: "reports.expenses"))
           .font(.caption)
           .fontWeight(.medium)
           .foregroundColor(.secondary)
           .frame(width: 80, alignment: .trailing)
-        
+
         Text(String(localized: "reports.net"))
           .font(.caption)
           .fontWeight(.medium)
@@ -180,6 +200,9 @@ struct MonthlyTrendsTableView: View {
       }
       .padding(.vertical, 8)
       .padding(.horizontal, 4)
+      .accessibilityElement(children: .combine)
+      .accessibilityAddTraits(.isHeader)
+      .accessibilityLabel("Monthly trends table: month, income, expenses, net income")
       
       Divider()
       
@@ -199,27 +222,39 @@ struct MonthlyTrendsTableView: View {
 
 struct MonthlyTrendRow: View {
   let trend: MonthlyTrend
-  
+
+  private var incomeString: String {
+    NumberFormatter.currency.string(from: NSNumber(value: trend.income)) ?? "R$ 0"
+  }
+
+  private var expensesString: String {
+    NumberFormatter.currency.string(from: NSNumber(value: trend.expenses)) ?? "R$ 0"
+  }
+
+  private var netIncomeString: String {
+    NumberFormatter.currency.string(from: NSNumber(value: trend.netIncome)) ?? "R$ 0"
+  }
+
   var body: some View {
     HStack {
       Text(trend.month)
         .font(.subheadline)
         .fontWeight(.medium)
         .frame(maxWidth: .infinity, alignment: .leading)
-      
-      Text(NumberFormatter.currency.string(from: NSNumber(value: trend.income)) ?? "R$ 0")
+
+      Text(incomeString)
         .font(.caption)
         .fontWeight(.medium)
         .foregroundColor(.green)
         .frame(width: 80, alignment: .trailing)
-      
-      Text(NumberFormatter.currency.string(from: NSNumber(value: trend.expenses)) ?? "R$ 0")
+
+      Text(expensesString)
         .font(.caption)
         .fontWeight(.medium)
         .foregroundColor(.red)
         .frame(width: 80, alignment: .trailing)
-      
-      Text(NumberFormatter.currency.string(from: NSNumber(value: trend.netIncome)) ?? "R$ 0")
+
+      Text(netIncomeString)
         .font(.caption)
         .fontWeight(.medium)
         .foregroundColor(trend.netIncome >= 0 ? .blue : .orange)
@@ -227,6 +262,9 @@ struct MonthlyTrendRow: View {
     }
     .padding(.vertical, 12)
     .padding(.horizontal, 4)
+    .accessibilityElement(children: .combine)
+    .accessibilityLabel(trend.month)
+    .accessibilityValue("Income \(incomeString), Expenses \(expensesString), Net income \(netIncomeString)")
   }
 }
 

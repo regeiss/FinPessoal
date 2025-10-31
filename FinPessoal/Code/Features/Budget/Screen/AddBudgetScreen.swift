@@ -20,6 +20,9 @@ struct AddBudgetScreen: View {
         Section {
           TextField(String(localized: "budget.name.placeholder"), text: $budgetViewModel.name)
             .textFieldStyle(RoundedBorderTextFieldStyle())
+            .accessibilityLabel("Budget Name")
+            .accessibilityHint("Enter a descriptive name for this budget")
+            .accessibilityValue(budgetViewModel.name.isEmpty ? "Empty" : budgetViewModel.name)
         } header: {
           Text(String(localized: "budget.name.section"))
         }
@@ -31,12 +34,16 @@ struct AddBudgetScreen: View {
                 Image(systemName: category.icon)
                   .foregroundColor(.blue)
                   .frame(width: 20)
+                  .accessibilityHidden(true)
                 Text(category.displayName)
               }
               .tag(category)
             }
           }
           .pickerStyle(.navigationLink)
+          .accessibilityLabel("Budget Category")
+          .accessibilityHint("Select the category for this budget")
+          .accessibilityValue(budgetViewModel.selectedCategory.displayName)
         } header: {
           Text(String(localized: "budget.category.section"))
         }
@@ -45,9 +52,13 @@ struct AddBudgetScreen: View {
           HStack {
             Text("R$")
               .foregroundColor(.secondary)
+              .accessibilityHidden(true)
             TextField(String(localized: "budget.amount.placeholder"), text: $budgetViewModel.budgetAmount)
               .keyboardType(.decimalPad)
               .textFieldStyle(RoundedBorderTextFieldStyle())
+              .accessibilityLabel("Budget Amount in Brazilian Reais")
+              .accessibilityHint("Enter the total budget amount")
+              .accessibilityValue(budgetViewModel.budgetAmount.isEmpty ? "Empty" : "R$ \(budgetViewModel.budgetAmount)")
           }
         } header: {
           Text(String(localized: "budget.amount.section"))
@@ -64,12 +75,16 @@ struct AddBudgetScreen: View {
                 Image(systemName: period.icon)
                   .foregroundColor(.blue)
                   .frame(width: 20)
+                  .accessibilityHidden(true)
                 Text(period.rawValue)
               }
               .tag(period)
             }
           }
           .pickerStyle(.navigationLink)
+          .accessibilityLabel("Budget Period")
+          .accessibilityHint("Select how often this budget repeats")
+          .accessibilityValue(budgetViewModel.selectedPeriod.rawValue)
         } header: {
           Text(String(localized: "budget.period.section"))
         }
@@ -81,13 +96,19 @@ struct AddBudgetScreen: View {
             displayedComponents: [.date]
           )
           .datePickerStyle(.compact)
-          
+          .accessibilityLabel("Budget Start Date")
+          .accessibilityHint("Select when this budget period begins")
+
           HStack {
             Text(String(localized: "budget.end.date"))
             Spacer()
             Text(budgetViewModel.endDate, format: .dateTime.day().month().year())
               .foregroundColor(.secondary)
           }
+          .accessibilityElement(children: .combine)
+          .accessibilityLabel("Budget End Date")
+          .accessibilityValue(budgetViewModel.endDate.formatted(date: .long, time: .omitted))
+          .accessibilityAddTraits(.isStaticText)
         } header: {
           Text(String(localized: "budget.period.dates"))
         }
@@ -100,13 +121,20 @@ struct AddBudgetScreen: View {
               Text("\(Int(budgetViewModel.alertThreshold * 100))%")
                 .foregroundColor(.secondary)
             }
-            
+            .accessibilityElement(children: .combine)
+            .accessibilityLabel("Alert Threshold")
+            .accessibilityValue("\(Int(budgetViewModel.alertThreshold * 100))%")
+            .accessibilityAddTraits(.isStaticText)
+
             Slider(
               value: $budgetViewModel.alertThreshold,
               in: 0.5...1.0,
               step: 0.05
             )
             .tint(.orange)
+            .accessibilityLabel("Alert Threshold Slider")
+            .accessibilityHint("Adjust the percentage at which you'll be notified about budget usage. Current value is \(Int(budgetViewModel.alertThreshold * 100))%")
+            .accessibilityValue("\(Int(budgetViewModel.alertThreshold * 100)) percent")
           }
         } header: {
           Text(String(localized: "budget.alerts.section"))
@@ -125,10 +153,14 @@ struct AddBudgetScreen: View {
               saveBudget()
             }
             .disabled(!budgetViewModel.isValidBudget || budgetViewModel.isLoading)
+            .accessibilityLabel("Save Budget")
+            .accessibilityHint(budgetViewModel.isValidBudget ? "Saves the new budget" : "Complete all required fields to save")
 
             Button(String(localized: "common.close")) {
               dismiss()
             }
+            .accessibilityLabel("Close")
+            .accessibilityHint("Closes the budget form without saving")
           }
         }
       }

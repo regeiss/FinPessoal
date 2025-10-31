@@ -106,11 +106,13 @@ struct iPadMainView: View {
 
 struct SidebarRow: View {
   let item: SidebarItem
-  
+
   var body: some View {
     NavigationLink(value: item) {
       Label(item.displayName, systemImage: item.icon)
     }
+    .accessibilityLabel(item.displayName)
+    .accessibilityHint(String(localized: "sidebar.item.hint", defaultValue: "Navigate to \(item.displayName)"))
   }
 }
 
@@ -779,23 +781,26 @@ struct EnhancedTransactionRow: View {
   struct UserProfileRow: View {
     let user: User
     @EnvironmentObject var authViewModel: AuthViewModel
-    
+
     var body: some View {
       VStack(spacing: 12) {
         Image(systemName: "person.circle.fill")
           .font(.system(size: 50))
           .foregroundColor(.blue)
-        
+          .accessibilityHidden(true)
+
         VStack(spacing: 4) {
           Text(user.name)
             .font(.headline)
             .fontWeight(.medium)
-          
+            .accessibilityLabel(String(localized: "profile.name.label", defaultValue: "User name: \(user.name)"))
+
           Text(user.email)
             .font(.caption)
             .foregroundColor(.secondary)
+            .accessibilityLabel(String(localized: "profile.email.label", defaultValue: "Email: \(user.email)"))
         }
-        
+
         Button(String(localized: "auth.signout.button", defaultValue: "Sair")) {
           Task {
             await authViewModel.signOut()
@@ -803,9 +808,12 @@ struct EnhancedTransactionRow: View {
         }
         .buttonStyle(.bordered)
         .controlSize(.small)
+        .accessibilityLabel(String(localized: "auth.signout.label", defaultValue: "Sign out"))
+        .accessibilityHint(String(localized: "auth.signout.hint", defaultValue: "Sign out of your account"))
       }
       .padding(.vertical, 16)
       .frame(maxWidth: .infinity)
+      .accessibilityElement(children: .contain)
     }
   }
 

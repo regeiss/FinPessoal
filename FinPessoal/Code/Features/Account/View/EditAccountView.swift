@@ -45,9 +45,13 @@ struct EditAccountView: View {
   var body: some View {
     NavigationView {
       Form {
-        Section(header: Text(String(localized: "accounts.basic.info"))) {
+        Section(header: Text(String(localized: "accounts.basic.info"))
+          .accessibilityAddTraits(.isHeader)) {
           TextField(String(localized: "accounts.name.placeholder"), text: $accountName)
-          
+            .accessibilityLabel("Account Name")
+            .accessibilityHint("Edit the name for your account")
+            .accessibilityValue(accountName.isEmpty ? "Empty" : accountName)
+
           Picker(String(localized: "accounts.type"), selection: $selectedAccountType) {
             ForEach(AccountType.allCases, id: \.self) { type in
               HStack {
@@ -59,14 +63,21 @@ struct EditAccountView: View {
             }
           }
           .pickerStyle(MenuPickerStyle())
+          .accessibilityLabel("Account Type")
+          .accessibilityHint("Select the type of account")
+          .accessibilityValue(selectedAccountType.rawValue)
         }
-        
-        Section(header: Text(String(localized: "accounts.balance.info"))) {
+
+        Section(header: Text(String(localized: "accounts.balance.info"))
+          .accessibilityAddTraits(.isHeader)) {
           TextField(String(localized: "accounts.current.balance"), text: $balance)
             .keyboardType(.decimalPad)
             .onChange(of: balance) { _, newValue in
               formatBalanceInput(newValue)
             }
+            .accessibilityLabel("Current Balance")
+            .accessibilityHint("Edit the current balance for this account")
+            .accessibilityValue(balance.isEmpty ? "Empty" : balance)
 
           Picker(String(localized: "accounts.currency"), selection: $currency) {
             Text("Real (BRL)").tag("BRL")
@@ -74,28 +85,39 @@ struct EditAccountView: View {
             Text("Euro (EUR)").tag("EUR")
           }
           .pickerStyle(MenuPickerStyle())
+          .accessibilityLabel("Currency")
+          .accessibilityHint("Select the currency for this account")
+          .accessibilityValue(currency)
         }
-        
-        Section(header: Text(String(localized: "accounts.settings"))) {
+
+        Section(header: Text(String(localized: "accounts.settings"))
+          .accessibilityAddTraits(.isHeader)) {
           Toggle(String(localized: "accounts.is.active"), isOn: $isActive)
+            .accessibilityLabel("Account Active")
+            .accessibilityHint("Toggle to activate or deactivate this account")
+            .accessibilityValue(isActive ? "Active" : "Inactive")
         }
-        
-        Section {
+
+        Section(header: Text("Account Information")
+          .accessibilityAddTraits(.isHeader)) {
           VStack(alignment: .leading, spacing: 8) {
             Text(String(localized: "accounts.created.at"))
               .font(.caption)
               .foregroundColor(.secondary)
-            
+
             Text(account.createdAt.formatted(date: .abbreviated, time: .shortened))
               .font(.subheadline)
-            
+
             Text(String(localized: "accounts.updated.at"))
               .font(.caption)
               .foregroundColor(.secondary)
-            
+
             Text(account.updatedAt.formatted(date: .abbreviated, time: .shortened))
               .font(.subheadline)
           }
+          .accessibilityElement(children: .combine)
+          .accessibilityLabel("Account Information")
+          .accessibilityValue("Created at \(account.createdAt.formatted(date: .abbreviated, time: .shortened)), Last updated at \(account.updatedAt.formatted(date: .abbreviated, time: .shortened))")
         }
       }
       .navigationTitle(String(localized: "accounts.edit.title"))
@@ -108,6 +130,8 @@ struct EditAccountView: View {
             Image(systemName: "trash")
               .foregroundColor(.red)
           }
+          .accessibilityLabel("Delete Account")
+          .accessibilityHint("Delete this account permanently")
         }
 
         ToolbarItem(placement: .navigationBarTrailing) {
@@ -118,10 +142,14 @@ struct EditAccountView: View {
               }
             }
             .disabled(isLoading || accountName.isEmpty)
+            .accessibilityLabel("Save Changes")
+            .accessibilityHint("Save changes to this account")
 
             Button(String(localized: "common.close")) {
               dismiss()
             }
+            .accessibilityLabel("Close")
+            .accessibilityHint("Close this form without saving")
           }
         }
       }

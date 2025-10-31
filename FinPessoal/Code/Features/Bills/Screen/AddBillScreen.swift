@@ -37,6 +37,9 @@ struct AddBillScreen: View {
       Form {
         Section(header: Text(String(localized: "bill.section.basic"))) {
           TextField(String(localized: "bill.field.name"), text: $name)
+            .accessibilityLabel("Bill Name")
+            .accessibilityHint("Enter the name of the bill")
+            .accessibilityValue(name.isEmpty ? "Empty" : name)
 
           HStack {
             Text(String(localized: "bill.field.amount"))
@@ -44,6 +47,9 @@ struct AddBillScreen: View {
             TextField("0,00", text: $amount)
               .keyboardType(.decimalPad)
               .multilineTextAlignment(.trailing)
+              .accessibilityLabel("Bill Amount")
+              .accessibilityHint("Enter the bill amount in currency format")
+              .accessibilityValue(amount.isEmpty ? "Empty" : amount)
           }
 
           Picker(String(localized: "bill.field.due.day"), selection: $dueDay) {
@@ -51,6 +57,9 @@ struct AddBillScreen: View {
               Text("Dia \(day)").tag(day)
             }
           }
+          .accessibilityLabel("Due Day of Month")
+          .accessibilityHint("Select the day of the month when this bill is due")
+          .accessibilityValue("Day \(dueDay)")
         }
 
         Section(header: Text(String(localized: "bill.section.category"))) {
@@ -58,11 +67,15 @@ struct AddBillScreen: View {
             ForEach(TransactionCategory.allCases, id: \.self) { cat in
               HStack {
                 Image(systemName: cat.icon)
+                  .accessibilityHidden(true)
                 Text(cat.displayName)
               }
               .tag(cat)
             }
           }
+          .accessibilityLabel("Bill Category")
+          .accessibilityHint("Select the category for this bill")
+          .accessibilityValue(category.displayName)
 
           if !category.subcategories.isEmpty {
             Picker(String(localized: "common.subcategory"), selection: $subcategory) {
@@ -71,11 +84,15 @@ struct AddBillScreen: View {
               ForEach(category.subcategories, id: \.self) { sub in
                 HStack {
                   Image(systemName: sub.icon)
+                    .accessibilityHidden(true)
                   Text(sub.displayName)
                 }
                 .tag(sub as TransactionSubcategory?)
               }
             }
+            .accessibilityLabel("Bill Subcategory")
+            .accessibilityHint("Select a subcategory for more specific classification")
+            .accessibilityValue(subcategory?.displayName ?? "None")
           }
         }
 
@@ -85,6 +102,9 @@ struct AddBillScreen: View {
               Text(account.1).tag(account.0)
             }
           }
+          .accessibilityLabel("Payment Account")
+          .accessibilityHint("Select the account from which this bill will be paid")
+          .accessibilityValue(mockAccounts.first(where: { $0.0 == selectedAccountId })?.1 ?? "Not selected")
         }
 
         Section(header: Text(String(localized: "bill.section.reminder"))) {
@@ -96,15 +116,24 @@ struct AddBillScreen: View {
             Text("5 dias antes").tag(5)
             Text("7 dias antes").tag(7)
           }
+          .accessibilityLabel("Reminder Notice Period")
+          .accessibilityHint("Select how many days before the due date you want to be reminded")
+          .accessibilityValue(reminderDaysBefore == 0 ? "Same day" : "\(reminderDaysBefore) days before")
         }
 
         Section(header: Text(String(localized: "bill.section.notes"))) {
           TextEditor(text: $notes)
             .frame(minHeight: 80)
+            .accessibilityLabel("Notes")
+            .accessibilityHint("Enter any additional notes or details about this bill")
+            .accessibilityValue(notes.isEmpty ? "Empty" : notes)
         }
 
         Section {
           Toggle(String(localized: "bill.field.active"), isOn: $isActive)
+            .accessibilityLabel("Bill Active Status")
+            .accessibilityHint("Toggle to enable or disable this bill")
+            .accessibilityValue(isActive ? "Active" : "Inactive")
         }
       }
       .navigationTitle(String(localized: "bills.add.title"))
@@ -114,6 +143,8 @@ struct AddBillScreen: View {
           Button(String(localized: "common.cancel")) {
             dismiss()
           }
+          .accessibilityLabel("Cancel")
+          .accessibilityHint("Discards changes and closes the form")
         }
 
         ToolbarItem(placement: .navigationBarTrailing) {
@@ -121,6 +152,9 @@ struct AddBillScreen: View {
             saveBill()
           }
           .disabled(!isValidBill)
+          .accessibilityLabel("Save Bill")
+          .accessibilityHint(isValidBill ? "Saves the new bill" : "Complete all required fields to save")
+          .accessibilityAddTraits(isValidBill ? [] : .isButton)
         }
       }
       .alert(String(localized: "common.error"), isPresented: $showingError) {

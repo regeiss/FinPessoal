@@ -24,7 +24,8 @@ struct HelpCategoryView: View {
           Section {
             HelpCategoryHeaderView(category: category)
           }
-          
+          .accessibilityElement(children: .contain)
+
           Section(String(localized: "help.topics.in.category")) {
             ForEach(categoryTopics) { topic in
               HelpTopicRow(topic: topic) {
@@ -32,10 +33,14 @@ struct HelpCategoryView: View {
               }
             }
           }
-          
+          .accessibilityElement(children: .contain)
+          .accessibilityLabel("Topics in \(category.displayName) category")
+
           Section(String(localized: "help.related.categories")) {
             HelpRelatedCategoriesView(currentCategory: category)
           }
+          .accessibilityElement(children: .contain)
+          .accessibilityLabel("Related categories")
         } else {
           Section {
             HelpEmptyCategoryView(category: category)
@@ -49,6 +54,8 @@ struct HelpCategoryView: View {
           Button(String(localized: "common.done")) {
             dismiss()
           }
+          .accessibilityLabel("Done")
+          .accessibilityHint("Closes category view")
         }
       }
       .sheet(item: $selectedTopic) { topic in
@@ -75,17 +82,19 @@ struct HelpCategoryHeaderView: View {
       Image(systemName: category.icon)
         .font(.largeTitle)
         .foregroundColor(colorForCategory(category.color))
+        .accessibilityHidden(true)
 
       Text(category.displayName)
         .font(.title2)
         .fontWeight(.bold)
         .foregroundColor(.primary)
+        .accessibilityAddTraits(.isHeader)
 
       Text(categoryDescription)
         .font(.subheadline)
         .foregroundColor(.secondary)
         .multilineTextAlignment(.center)
-      
+
       Text("\(topicCount) \(topicCount == 1 ? String(localized: "help.topic.available") : String(localized: "help.topics.available"))")
         .font(.caption)
         .foregroundColor(.secondary)
@@ -98,6 +107,9 @@ struct HelpCategoryHeaderView: View {
     .frame(maxWidth: .infinity)
     .background(Color(.systemGray6))
     .clipShape(RoundedRectangle(cornerRadius: 12))
+    .accessibilityElement(children: .combine)
+    .accessibilityLabel("\(category.displayName) category")
+    .accessibilityValue("\(categoryDescription). \(topicCount) \(topicCount == 1 ? "topic" : "topics") available")
   }
   
   private func colorForCategory(_ colorName: String) -> Color {
@@ -141,14 +153,15 @@ struct HelpRelatedCategoriesView: View {
 struct HelpMiniCategoryCard: View {
   let category: HelpCategory
   let action: () -> Void
-  
+
   var body: some View {
     Button(action: action) {
       VStack(spacing: 6) {
         Image(systemName: category.icon)
           .font(.title3)
           .foregroundColor(colorForCategory(category.color))
-        
+          .accessibilityHidden(true)
+
         Text(category.displayName)
           .font(.caption)
           .foregroundColor(.primary)
@@ -162,6 +175,9 @@ struct HelpMiniCategoryCard: View {
       .shadow(color: .gray.opacity(0.1), radius: 1, x: 0, y: 1)
     }
     .buttonStyle(.plain)
+    .accessibilityLabel(category.displayName)
+    .accessibilityHint("Opens \(category.displayName) category")
+    .accessibilityAddTraits(.isButton)
   }
   
   private func colorForCategory(_ colorName: String) -> Color {
@@ -181,17 +197,19 @@ struct HelpMiniCategoryCard: View {
 
 struct HelpEmptyCategoryView: View {
   let category: HelpCategory
-  
+
   var body: some View {
     VStack(spacing: 16) {
       Image(systemName: "doc.text")
         .font(.largeTitle)
         .foregroundColor(.secondary)
-      
+        .accessibilityHidden(true)
+
       Text(String(localized: "help.category.empty.title"))
         .font(.headline)
         .foregroundColor(.primary)
-      
+        .accessibilityAddTraits(.isHeader)
+
       Text(String(localized: "help.category.empty.subtitle"))
         .font(.subheadline)
         .foregroundColor(.secondary)
@@ -199,6 +217,9 @@ struct HelpEmptyCategoryView: View {
     }
     .padding()
     .frame(maxWidth: .infinity)
+    .accessibilityElement(children: .combine)
+    .accessibilityLabel("No topics available in \(category.displayName) category")
+    .accessibilityHint("This category currently has no help topics")
   }
 }
 

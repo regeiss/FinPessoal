@@ -19,7 +19,8 @@ struct QuickActionButton: View {
         Image(systemName: icon)
           .font(.title2)
           .foregroundColor(color)
-        
+          .accessibilityHidden(true)
+
         Text(LocalizedStringKey(title))
           .font(.caption)
           .multilineTextAlignment(.center)
@@ -30,6 +31,9 @@ struct QuickActionButton: View {
       .background(Color(.systemBackground))
       .cornerRadius(8)
     }
-    .accessibilityLabel(title)
+    .accessibilityElement(children: .combine)
+    .accessibilityLabel(String(localized: LocalizedStringKey(title)))
+    .accessibilityHint(String(localized: "quickaction.hint", defaultValue: "Double tap to \(title)"))
+    .accessibilityAddTraits(.isButton)
   }
 }

@@ -42,6 +42,7 @@ struct TransactionsScreen: View {
       if transactionViewModel.isLoading {
         ProgressView(String(localized: "transactions.loading"))
           .frame(maxWidth: .infinity, maxHeight: .infinity)
+          .accessibilityLabel("Loading transactions, please wait")
       } else if !transactionViewModel.hasTransactions {
         emptyStateView
       } else {
@@ -58,12 +59,16 @@ struct TransactionsScreen: View {
         } label: {
           Image(systemName: "square.and.arrow.down")
         }
+        .accessibilityLabel("Import Transactions")
+        .accessibilityHint("Import transactions from an OFX file")
 
         Button {
           transactionViewModel.showAddTransaction()
         } label: {
           Image(systemName: "plus")
         }
+        .accessibilityLabel("Add Transaction")
+        .accessibilityHint("Create a new transaction")
       }
     }
     .sheet(isPresented: $transactionViewModel.showingAddTransaction) {
@@ -129,22 +134,26 @@ struct TransactionsScreen: View {
       Image(systemName: "list.bullet.clipboard")
         .font(.system(size: 60))
         .foregroundColor(.orange)
-      
+        .accessibilityHidden(true)
+
       Text(String(localized: "transactions.empty.title"))
         .font(.title2)
         .fontWeight(.semibold)
-      
+        .accessibilityAddTraits(.isHeader)
+
       Text(String(localized: "transactions.empty.description"))
         .multilineTextAlignment(.center)
         .foregroundColor(.secondary)
         .padding(.horizontal)
-      
+
       Button(String(localized: "transactions.add.button")) {
         transactionViewModel.showAddTransaction()
       }
       .buttonStyle(.borderedProminent)
+      .accessibilityHint("Opens form to create your first transaction")
     }
     .frame(maxWidth: .infinity, maxHeight: .infinity)
+    .accessibilityElement(children: .contain)
   }
   
   private var filtersSection: some View {
@@ -202,6 +211,7 @@ struct TransactionsScreen: View {
             }
             .font(.caption)
             .foregroundColor(.blue)
+            .accessibilityHint("Remove all active filters")
           }
         }
         .padding(.horizontal)

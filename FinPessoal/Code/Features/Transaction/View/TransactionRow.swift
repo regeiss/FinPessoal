@@ -19,14 +19,15 @@ struct TransactionRow: View {
         .frame(width: 40, height: 40)
         .background((transaction.type == .income ? Color.green : transaction.type == .expense ? Color.red : Color.blue).opacity(0.1))
         .cornerRadius(8)
-      
+        .accessibilityHidden(true)
+
       // Informações da transação
       VStack(alignment: .leading, spacing: 4) {
         Text(transaction.description)
           .font(.headline)
           .fontWeight(.medium)
           .lineLimit(1)
-        
+
         HStack {
           if let subcategory = transaction.subcategory {
             Text(LocalizedStringKey(subcategory.displayName))
@@ -37,24 +38,25 @@ struct TransactionRow: View {
               .font(.caption)
               .foregroundColor(.secondary)
           }
-          
+
           if transaction.isRecurring {
             Image(systemName: "repeat")
               .font(.caption2)
               .foregroundColor(.blue)
+              .accessibilityLabel("Recurring")
           }
         }
       }
-      
+
       Spacer()
-      
+
       // Valor e data
       VStack(alignment: .trailing, spacing: 4) {
         Text(transaction.formattedAmount)
           .font(.headline)
           .fontWeight(.semibold)
           .foregroundColor(transaction.type == .income ? .green : transaction.type == .expense ? .red : .blue)
-        
+
         Text(transaction.date, format: .dateTime.hour().minute())
           .font(.caption2)
           .foregroundColor(.secondary)
@@ -63,5 +65,9 @@ struct TransactionRow: View {
     .padding()
     .background(Color(.systemGray6))
     .cornerRadius(12)
+    .accessibilityElement(children: .combine)
+    .accessibilityLabel("\(transaction.type.displayName): \(transaction.description), \(transaction.subcategory?.displayName ?? transaction.category.displayName), \(transaction.formattedAmount), \(transaction.date.formatted())\(transaction.isRecurring ? ", Recurring" : "")")
+    .accessibilityHint("Double tap to view transaction details")
+    .accessibilityAddTraits(.isButton)
   }
 }

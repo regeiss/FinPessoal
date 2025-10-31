@@ -19,15 +19,16 @@ struct StatCard: View {
         Image(systemName: icon)
           .font(.title2)
           .foregroundColor(color)
-        
+          .accessibilityHidden(true)
+
         Spacer()
       }
-      
+
       VStack(alignment: .leading, spacing: 4) {
         Text(title)
           .font(.caption)
           .foregroundColor(.secondary)
-        
+
         Text(value)
           .font(.title3)
           .fontWeight(.semibold)
@@ -37,5 +38,8 @@ struct StatCard: View {
     .padding()
     .background(Color(.systemGray6))
     .cornerRadius(12)
+    .accessibilityElement(children: .combine)
+    .accessibilityLabel("\(title): \(value)")
+    .accessibilityAddTraits(.isStaticText)
   }
 }

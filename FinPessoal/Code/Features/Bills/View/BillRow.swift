@@ -28,6 +28,7 @@ struct BillRow: View {
           .font(.system(size: 20))
           .foregroundColor(bill.category.swiftUIColor)
       }
+      .accessibilityHidden(true)
 
       // Bill info
       VStack(alignment: .leading, spacing: 4) {
@@ -41,6 +42,7 @@ struct BillRow: View {
             Circle()
               .fill(statusColor)
               .frame(width: 8, height: 8)
+              .accessibilityHidden(true)
 
             Text(bill.statusText)
               .font(.caption)
@@ -52,6 +54,7 @@ struct BillRow: View {
             Text("•")
               .font(.caption)
               .foregroundColor(.secondary)
+              .accessibilityHidden(true)
 
             if bill.isOverdue {
               Text(String(localized: "bill.overdue.days", defaultValue: "\(-bill.daysUntilDue) days overdue"))
@@ -66,6 +69,7 @@ struct BillRow: View {
             Text("•")
               .font(.caption)
               .foregroundColor(.secondary)
+              .accessibilityHidden(true)
 
             Text(String(localized: "bill.next.due"))
               .font(.caption)
@@ -99,11 +103,34 @@ struct BillRow: View {
             .foregroundColor(.green)
           }
           .buttonStyle(.plain)
+          .accessibilityLabel("Mark as Paid")
+          .accessibilityHint("Marks \(bill.name) as paid for the current period")
         }
       }
     }
     .padding(.vertical, 8)
     .contentShape(Rectangle())
+    .accessibilityElement(children: .combine)
+    .accessibilityLabel(accessibilityDescription)
+    .accessibilityAddTraits(.isButton)
+  }
+
+  private var accessibilityDescription: String {
+    var description = "\(bill.name), \(bill.formattedAmount), "
+
+    if bill.isPaid {
+      description += "Paid, Next due \(bill.nextDueDate.formatted(date: .abbreviated, time: .omitted))"
+    } else {
+      description += "\(bill.statusText), "
+
+      if bill.isOverdue {
+        description += "\(-bill.daysUntilDue) days overdue"
+      } else {
+        description += "Due in \(bill.daysUntilDue) days"
+      }
+    }
+
+    return description
   }
 
   private var statusColor: Color {

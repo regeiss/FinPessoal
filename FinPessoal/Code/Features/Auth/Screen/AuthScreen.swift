@@ -22,10 +22,11 @@ struct AuthView: View {
             .font(.system(size: 60))
             .foregroundColor(.blue)
             .accessibilityHidden(true)
-          
+
           Text("app.name")
             .font(.largeTitle)
             .fontWeight(.bold)
+            .accessibilityAddTraits(.isHeader)
         }
         
         // Form
@@ -35,10 +36,14 @@ struct AuthView: View {
             .keyboardType(.emailAddress)
             .autocapitalization(.none)
             .accessibilityLabel("auth.email.label")
-          
+            .accessibilityHint("Enter your email address to sign in")
+            .accessibilityValue(email.isEmpty ? "Empty" : email)
+
           SecureField("auth.password.placeholder", text: $password)
             .textFieldStyle(RoundedBorderTextFieldStyle())
             .accessibilityLabel("auth.password.label")
+            .accessibilityHint("Enter your password. Input is secured and hidden")
+            .accessibilityValue(password.isEmpty ? "Empty" : "Entered")
         }
         
         // Buttons
@@ -51,6 +56,7 @@ struct AuthView: View {
             if authViewModel.isLoading {
               ProgressView()
                 .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                .accessibilityLabel("Signing in")
             } else {
               Text("auth.sign_in")
             }
@@ -61,6 +67,9 @@ struct AuthView: View {
           .foregroundColor(.white)
           .cornerRadius(12)
           .disabled(authViewModel.isLoading)
+          .accessibilityLabel("Sign In")
+          .accessibilityHint("Sign in with your email and password")
+          .accessibilityAddTraits(authViewModel.isLoading ? [] : .isButton)
           
           Divider()
           
@@ -73,6 +82,7 @@ struct AuthView: View {
             }) {
               HStack {
                 Image(systemName: "applelogo")
+                  .accessibilityHidden(true)
                 Text("auth.sign_in_apple")
               }
               .frame(maxWidth: .infinity)
@@ -81,7 +91,9 @@ struct AuthView: View {
               .foregroundColor(.white)
               .cornerRadius(12)
             }
-            
+            .accessibilityLabel("Sign in with Apple")
+            .accessibilityHint("Continue using your Apple account")
+
             Button(action: {
               Task {
                 await authViewModel.signInWithGoogle()
@@ -89,6 +101,7 @@ struct AuthView: View {
             }) {
               HStack {
                 Image(systemName: "globe")
+                  .accessibilityHidden(true)
                 Text("auth.sign_in_google")
               }
               .frame(maxWidth: .infinity)
@@ -97,6 +110,8 @@ struct AuthView: View {
               .foregroundColor(.white)
               .cornerRadius(12)
             }
+            .accessibilityLabel("Sign in with Google")
+            .accessibilityHint("Continue using your Google account")
           }
         }
         

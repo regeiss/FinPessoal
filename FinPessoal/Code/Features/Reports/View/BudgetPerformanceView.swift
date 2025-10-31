@@ -16,7 +16,8 @@ struct BudgetPerformanceView: View {
       Text(String(localized: "reports.budget.performance"))
         .font(.headline)
         .foregroundColor(.primary)
-      
+        .accessibilityAddTraits(.isHeader)
+
       if budgetPerformance.isEmpty {
         EmptyStateView(
           icon: "chart.bar",
@@ -24,6 +25,8 @@ struct BudgetPerformanceView: View {
           subtitle: "reports.empty.subtitle"
         )
         .frame(height: 200)
+        .accessibilityLabel("No budget performance data")
+        .accessibilityHint("Create budgets to see budget performance tracking")
       } else if showingChart {
         BudgetPerformanceChartView(budgetPerformance: budgetPerformance)
       } else {
@@ -51,11 +54,11 @@ struct BudgetPerformanceChartView: View {
 
 struct BudgetPerformanceBar: View {
   let performance: BudgetPerformance
-  
+
   private var fillPercentage: Double {
     min(performance.percentage / 100.0, 1.0)
   }
-  
+
   private var barColor: Color {
     if performance.percentage >= 100 {
       return .red
@@ -65,7 +68,25 @@ struct BudgetPerformanceBar: View {
       return .green
     }
   }
-  
+
+  private var statusDescription: String {
+    if performance.percentage >= 100 {
+      return "over budget"
+    } else if performance.percentage >= 80 {
+      return "approaching budget limit"
+    } else {
+      return "within budget"
+    }
+  }
+
+  private var spentString: String {
+    NumberFormatter.currency.string(from: NSNumber(value: performance.spentAmount)) ?? "R$ 0"
+  }
+
+  private var budgetString: String {
+    NumberFormatter.currency.string(from: NSNumber(value: performance.budgetAmount)) ?? "R$ 0"
+  }
+
   var body: some View {
     VStack(alignment: .leading, spacing: 8) {
       // Header with category and percentage
@@ -74,30 +95,33 @@ struct BudgetPerformanceBar: View {
           Image(systemName: performance.category.icon)
             .font(.system(size: 14))
             .foregroundColor(barColor)
-          
+            .accessibilityHidden(true)
+
           Text(performance.category.displayName)
             .font(.subheadline)
             .fontWeight(.medium)
         }
-        
+
         Spacer()
-        
+
         Text("\(Int(performance.percentage.rounded()))%")
           .font(.subheadline)
           .fontWeight(.semibold)
           .foregroundColor(barColor)
       }
-      
+
       // Progress bar
       ZStack(alignment: .leading) {
         RoundedRectangle(cornerRadius: 8)
           .fill(Color(.systemGray5))
           .frame(height: 24)
-        
+          .accessibilityHidden(true)
+
         RoundedRectangle(cornerRadius: 8)
           .fill(barColor)
           .frame(width: fillPercentage * 300, height: 24)
           .animation(.easeInOut(duration: 1.0), value: fillPercentage)
+          .accessibilityHidden(true)
       }
       .frame(maxWidth: 300)
       
@@ -107,21 +131,21 @@ struct BudgetPerformanceBar: View {
           Text(String(localized: "reports.spent"))
             .font(.caption)
             .foregroundColor(.secondary)
-          
-          Text(NumberFormatter.currency.string(from: NSNumber(value: performance.spentAmount)) ?? "R$ 0")
+
+          Text(spentString)
             .font(.caption)
             .fontWeight(.medium)
             .foregroundColor(barColor)
         }
-        
+
         Spacer()
-        
+
         VStack(alignment: .trailing, spacing: 2) {
           Text(String(localized: "reports.budget"))
             .font(.caption)
             .foregroundColor(.secondary)
-          
-          Text(NumberFormatter.currency.string(from: NSNumber(value: performance.budgetAmount)) ?? "R$ 0")
+
+          Text(budgetString)
             .font(.caption)
             .fontWeight(.medium)
             .foregroundColor(.primary)
@@ -131,12 +155,16 @@ struct BudgetPerformanceBar: View {
     .padding()
     .background(barColor.opacity(0.05))
     .clipShape(RoundedRectangle(cornerRadius: 12))
+    .accessibilityElement(children: .combine)
+    .accessibilityLabel("\(performance.category.displayName) budget")
+    .accessibilityValue("\(Int(performance.percentage.rounded())) percent used, \(spentString) spent of \(budgetString) budget, \(statusDescription)")
+    .accessibilityHint("Budget performance indicator")
   }
 }
 
 struct BudgetPerformanceTableView: View {
   let budgetPerformance: [BudgetPerformance]
-  
+
   var body: some View {
     VStack(spacing: 0) {
       // Header
@@ -146,19 +174,19 @@ struct BudgetPerformanceTableView: View {
           .fontWeight(.medium)
           .foregroundColor(.secondary)
           .frame(maxWidth: .infinity, alignment: .leading)
-        
+
         Text(String(localized: "reports.budget"))
           .font(.caption)
           .fontWeight(.medium)
           .foregroundColor(.secondary)
           .frame(width: 70, alignment: .trailing)
-        
+
         Text(String(localized: "reports.spent"))
           .font(.caption)
           .fontWeight(.medium)
           .foregroundColor(.secondary)
           .frame(width: 70, alignment: .trailing)
-        
+
         Text(String(localized: "reports.usage"))
           .font(.caption)
           .fontWeight(.medium)
@@ -167,6 +195,9 @@ struct BudgetPerformanceTableView: View {
       }
       .padding(.vertical, 8)
       .padding(.horizontal, 4)
+      .accessibilityElement(children: .combine)
+      .accessibilityAddTraits(.isHeader)
+      .accessibilityLabel("Budget performance table: category, budget, spent, usage percentage")
       
       Divider()
       
@@ -187,7 +218,7 @@ struct BudgetPerformanceTableView: View {
 
 struct BudgetPerformanceRow: View {
   let performance: BudgetPerformance
-  
+
   private var statusColor: Color {
     if performance.percentage >= 100 {
       return .red
@@ -197,37 +228,57 @@ struct BudgetPerformanceRow: View {
       return .green
     }
   }
-  
+
+  private var statusDescription: String {
+    if performance.percentage >= 100 {
+      return "over budget"
+    } else if performance.percentage >= 80 {
+      return "approaching limit"
+    } else {
+      return "within budget"
+    }
+  }
+
+  private var budgetString: String {
+    NumberFormatter.currency.string(from: NSNumber(value: performance.budgetAmount)) ?? "R$ 0"
+  }
+
+  private var spentString: String {
+    NumberFormatter.currency.string(from: NSNumber(value: performance.spentAmount)) ?? "R$ 0"
+  }
+
   var body: some View {
     HStack {
       HStack(spacing: 8) {
         Circle()
           .fill(statusColor)
           .frame(width: 8, height: 8)
-        
+          .accessibilityHidden(true)
+
         Image(systemName: performance.category.icon)
           .font(.system(size: 14))
           .foregroundColor(statusColor)
           .frame(width: 20)
-        
+          .accessibilityHidden(true)
+
         Text(performance.category.displayName)
           .font(.subheadline)
           .fontWeight(.medium)
       }
       .frame(maxWidth: .infinity, alignment: .leading)
-      
-      Text(NumberFormatter.currency.string(from: NSNumber(value: performance.budgetAmount)) ?? "R$ 0")
+
+      Text(budgetString)
         .font(.caption)
         .fontWeight(.medium)
         .foregroundColor(.secondary)
         .frame(width: 70, alignment: .trailing)
-      
-      Text(NumberFormatter.currency.string(from: NSNumber(value: performance.spentAmount)) ?? "R$ 0")
+
+      Text(spentString)
         .font(.caption)
         .fontWeight(.medium)
         .foregroundColor(statusColor)
         .frame(width: 70, alignment: .trailing)
-      
+
       Text("\(Int(performance.percentage.rounded()))%")
         .font(.caption)
         .fontWeight(.semibold)
@@ -236,6 +287,9 @@ struct BudgetPerformanceRow: View {
     }
     .padding(.vertical, 12)
     .padding(.horizontal, 4)
+    .accessibilityElement(children: .combine)
+    .accessibilityLabel(performance.category.displayName)
+    .accessibilityValue("\(Int(performance.percentage.rounded())) percent, budget \(budgetString), spent \(spentString), \(statusDescription)")
   }
 }
 

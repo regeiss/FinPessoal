@@ -47,6 +47,8 @@ struct DashboardScreen: View {
           } label: {
             Image(systemName: "gearshape")
           }
+          .accessibilityLabel("Settings")
+          .accessibilityHint("Open application settings")
         }
       }
     }
@@ -55,11 +57,15 @@ struct DashboardScreen: View {
         viewModel.loadDashboardData()
       }
     }
+    .accessibilityAction(named: "Refresh Dashboard") {
+      viewModel.loadDashboardData()
+    }
     .overlay {
       if viewModel.isLoading && viewModel.recentTransactions.isEmpty {
         ProgressView(String(localized: "dashboard.loading", defaultValue: "Carregando..."))
           .frame(maxWidth: .infinity, maxHeight: .infinity)
           .background(Color(.systemBackground))
+          .accessibilityLabel("Loading dashboard data, please wait")
       }
     }
     .alert("Erro", isPresented: .constant(viewModel.error != nil)) {

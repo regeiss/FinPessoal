@@ -25,7 +25,8 @@ struct OnboardingPageView: View {
           .font(.largeTitle)
           .fontWeight(.bold)
           .multilineTextAlignment(.center)
-        
+          .accessibilityAddTraits(.isHeader)
+
         Text(LocalizedStringKey(page.subtitle))
           .font(.body)
           .foregroundColor(.secondary)

@@ -20,6 +20,8 @@ struct BillsScreen: View {
       if viewModel.isLoading && viewModel.bills.isEmpty {
         ProgressView()
           .scaleEffect(1.5)
+          .accessibilityLabel("Loading Bills")
+          .accessibilityHint("Please wait while bills are being loaded")
       } else if !viewModel.hasBills {
         emptyStateView
       } else {
@@ -35,6 +37,8 @@ struct BillsScreen: View {
         }) {
           Image(systemName: "plus")
         }
+        .accessibilityLabel("Add Bill")
+        .accessibilityHint("Opens form to add a new bill")
       }
 
       ToolbarItem(placement: .navigationBarLeading) {
@@ -50,6 +54,9 @@ struct BillsScreen: View {
             }
           }
         }
+        .accessibilityLabel("Filter Bills")
+        .accessibilityHint("Opens filter options for bills")
+        .accessibilityValue(viewModel.isFiltered ? "Filters active" : "No filters active")
       }
     }
     .sheet(isPresented: $viewModel.showingAddBill) {
@@ -83,6 +90,8 @@ struct BillsScreen: View {
       statisticsView
         .padding(.horizontal)
         .padding(.top, 8)
+        .accessibilityElement(children: .contain)
+        .accessibilityLabel("Bills Statistics")
 
       // Search bar
       SearchBar(text: $viewModel.searchQuery, placeholder: String(localized: "bills.search.placeholder"))
@@ -146,6 +155,7 @@ struct BillsScreen: View {
         .onTapGesture {
           viewModel.selectBill(bill)
         }
+        .accessibilityHint("Double tap to view bill details")
         .swipeActions(edge: .trailing, allowsFullSwipe: false) {
           Button(role: .destructive) {
             Task {
@@ -154,6 +164,8 @@ struct BillsScreen: View {
           } label: {
             Label(String(localized: "common.delete"), systemImage: "trash")
           }
+          .accessibilityLabel("Delete \(bill.name)")
+          .accessibilityHint("Deletes this bill permanently")
         }
         .swipeActions(edge: .leading, allowsFullSwipe: true) {
           if !bill.isPaid {
@@ -165,11 +177,14 @@ struct BillsScreen: View {
               Label(String(localized: "bill.mark.paid"), systemImage: "checkmark.circle")
             }
             .tint(.green)
+            .accessibilityLabel("Mark \(bill.name) as paid")
+            .accessibilityHint("Marks this bill as paid for the current period")
           }
         }
       }
     }
     .listStyle(.plain)
+    .accessibilityLabel("Bills List")
   }
 
   // MARK: - Empty State
@@ -179,6 +194,7 @@ struct BillsScreen: View {
       Image(systemName: "doc.text.magnifyingglass")
         .font(.system(size: 60))
         .foregroundColor(.gray)
+        .accessibilityHidden(true)
 
       Text(String(localized: "bills.empty.title"))
         .font(.title2)
@@ -202,7 +218,11 @@ struct BillsScreen: View {
           .cornerRadius(10)
       }
       .padding(.top, 8)
+      .accessibilityLabel("Add First Bill")
+      .accessibilityHint("Opens form to create your first bill")
     }
+    .accessibilityElement(children: .contain)
+    .accessibilityLabel("No Bills Yet")
   }
 
   // MARK: - No Results View
@@ -212,6 +232,7 @@ struct BillsScreen: View {
       Image(systemName: "magnifyingglass")
         .font(.system(size: 50))
         .foregroundColor(.gray)
+        .accessibilityHidden(true)
 
       Text(String(localized: "bills.no.results"))
         .font(.title3)
@@ -222,8 +243,12 @@ struct BillsScreen: View {
       }
       .font(.subheadline)
       .foregroundColor(.blue)
+      .accessibilityLabel("Clear Filters")
+      .accessibilityHint("Removes all applied filters to show all bills")
     }
     .padding(.top, 60)
+    .accessibilityElement(children: .contain)
+    .accessibilityLabel("No Results Found")
   }
 
   // MARK: - Filter Sheet
@@ -258,6 +283,8 @@ struct BillsScreen: View {
           Button(String(localized: "common.done")) {
             showingFilterSheet = false
           }
+          .accessibilityLabel("Done")
+          .accessibilityHint("Closes filter options and applies selected filters")
         }
 
         ToolbarItem(placement: .navigationBarLeading) {
@@ -265,6 +292,9 @@ struct BillsScreen: View {
             viewModel.clearFilters()
           }
           .disabled(!viewModel.isFiltered)
+          .accessibilityLabel("Clear Filters")
+          .accessibilityHint("Removes all applied filters")
+          .accessibilityAddTraits(viewModel.isFiltered ? [] : .isButton)
         }
       }
     }
@@ -281,9 +311,13 @@ struct SearchBar: View {
     HStack {
       Image(systemName: "magnifyingglass")
         .foregroundColor(.secondary)
+        .accessibilityHidden(true)
 
       TextField(placeholder, text: $text)
         .textFieldStyle(.plain)
+        .accessibilityLabel("Search Bills")
+        .accessibilityHint("Enter bill name to search")
+        .accessibilityValue(text.isEmpty ? "Empty" : text)
 
       if !text.isEmpty {
         Button(action: {
@@ -292,6 +326,8 @@ struct SearchBar: View {
           Image(systemName: "xmark.circle.fill")
             .foregroundColor(.secondary)
         }
+        .accessibilityLabel("Clear Search")
+        .accessibilityHint("Clears the search text")
       }
     }
     .padding(8)

@@ -21,9 +21,13 @@ struct AddAccountView: View {
   var body: some View {
     NavigationView {
       Form {
-        Section(header: Text(String(localized: "accounts.basic.info"))) {
+        Section(header: Text(String(localized: "accounts.basic.info"))
+          .accessibilityAddTraits(.isHeader)) {
           TextField(String(localized: "accounts.name.placeholder"), text: $accountName)
-          
+            .accessibilityLabel("Account Name")
+            .accessibilityHint("Enter the name for your account")
+            .accessibilityValue(accountName.isEmpty ? "Empty" : accountName)
+
           Picker(String(localized: "accounts.type"), selection: $selectedAccountType) {
             ForEach(AccountType.allCases, id: \.self) { type in
               HStack {
@@ -35,22 +39,36 @@ struct AddAccountView: View {
             }
           }
           .pickerStyle(MenuPickerStyle())
+          .accessibilityLabel("Account Type")
+          .accessibilityHint("Select the type of account")
+          .accessibilityValue(selectedAccountType.rawValue)
         }
-        
-        Section(header: Text(String(localized: "accounts.balance.info"))) {
+
+        Section(header: Text(String(localized: "accounts.balance.info"))
+          .accessibilityAddTraits(.isHeader)) {
           TextField(String(localized: "accounts.initial.balance"), text: $initialBalance)
             .keyboardType(.decimalPad)
-          
+            .accessibilityLabel("Initial Balance")
+            .accessibilityHint("Enter the starting balance for this account")
+            .accessibilityValue(initialBalance.isEmpty ? "Empty" : initialBalance)
+
           Picker(String(localized: "accounts.currency"), selection: $currency) {
             Text("Real (BRL)").tag("BRL")
             Text("Dólar (USD)").tag("USD")
             Text("Euro (EUR)").tag("EUR")
           }
           .pickerStyle(MenuPickerStyle())
+          .accessibilityLabel("Currency")
+          .accessibilityHint("Select the currency for this account")
+          .accessibilityValue(currency)
         }
-        
-        Section(header: Text(String(localized: "accounts.settings"))) {
+
+        Section(header: Text(String(localized: "accounts.settings"))
+          .accessibilityAddTraits(.isHeader)) {
           Toggle(String(localized: "accounts.is.active"), isOn: $isActive)
+            .accessibilityLabel("Account Active")
+            .accessibilityHint("Toggle to activate or deactivate this account")
+            .accessibilityValue(isActive ? "Active" : "Inactive")
         }
       }
       .navigationTitle(String(localized: "accounts.new.title"))
@@ -64,10 +82,15 @@ struct AddAccountView: View {
               }
             }
             .disabled(isLoading || accountName.isEmpty)
+            .accessibilityLabel("Save Account")
+            .accessibilityHint("Save this new account")
+            .accessibilityAddTraits(accountName.isEmpty ? .isButton : .isButton)
 
             Button(String(localized: "common.close")) {
               dismiss()
             }
+            .accessibilityLabel("Close")
+            .accessibilityHint("Close this form without saving")
           }
         }
       }

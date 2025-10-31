@@ -37,6 +37,8 @@ struct AddTransactionView: View {
               }
             }
             .pickerStyle(SegmentedPickerStyle())
+            .accessibilityLabel("Transaction Type")
+            .accessibilityValue(selectedType.displayName)
             .onChange(of: selectedType) { _, newType in
               // Initialize destination account when switching to transfer
               if newType == .transfer && selectedToAccountId.isEmpty {
@@ -47,8 +49,14 @@ struct AddTransactionView: View {
           
           TextField(String(localized: "transactions.amount.placeholder"), text: $amount)
             .keyboardType(.decimalPad)
-          
+            .accessibilityLabel("Transaction Amount")
+            .accessibilityHint("Enter the amount for this transaction")
+            .accessibilityValue(amount.isEmpty ? "Empty" : amount)
+
           TextField(String(localized: "transactions.description.placeholder"), text: $description)
+            .accessibilityLabel("Transaction Description")
+            .accessibilityHint("Enter a description for this transaction")
+            .accessibilityValue(description.isEmpty ? "Empty" : description)
         }
         
         Section(header: Text(String(localized: "transactions.details"))) {
@@ -64,6 +72,8 @@ struct AddTransactionView: View {
               }
             }
             .pickerStyle(MenuPickerStyle())
+            .accessibilityLabel("Transaction Account")
+            .accessibilityHint("Select the account for this transaction")
             .onAppear {
               if selectedAccountId.isEmpty && !accountViewModel.accounts.isEmpty {
                 selectedAccountId = accountViewModel.accounts.first?.id ?? ""
@@ -75,7 +85,7 @@ struct AddTransactionView: View {
                 selectedToAccountId = accountViewModel.accounts.first(where: { $0.id != newAccountId })?.id ?? ""
               }
             }
-            
+
             // Transfer to account picker (only shown for transfers)
             if selectedType == .transfer {
               Picker(String(localized: "transactions.transfer.to.account"), selection: $selectedToAccountId) {
@@ -84,6 +94,8 @@ struct AddTransactionView: View {
                 }
               }
               .pickerStyle(MenuPickerStyle())
+              .accessibilityLabel("Destination Account")
+              .accessibilityHint("Select the destination account for this transfer")
               .onAppear {
                 if selectedToAccountId.isEmpty {
                   selectedToAccountId = accountViewModel.accounts.first(where: { $0.id != selectedAccountId })?.id ?? ""
@@ -93,8 +105,13 @@ struct AddTransactionView: View {
           }
           
           DatePicker(String(localized: "transactions.date"), selection: $selectedDate, displayedComponents: .date)
-          
+            .accessibilityLabel("Transaction Date")
+            .accessibilityHint("Select the date for this transaction")
+
           Toggle(String(localized: "transactions.is.recurring"), isOn: $isRecurring)
+            .accessibilityLabel("Recurring Transaction")
+            .accessibilityHint("Toggle to mark this as a recurring transaction")
+            .accessibilityValue(isRecurring ? "Enabled" : "Disabled")
         }
       }
       .navigationTitle(String(localized: "transactions.new.title"))
@@ -108,10 +125,14 @@ struct AddTransactionView: View {
               }
             }
             .disabled(isLoading || amount.isEmpty || description.isEmpty || selectedAccountId.isEmpty || (selectedType == .transfer && selectedToAccountId.isEmpty))
+            .accessibilityLabel("Save Transaction")
+            .accessibilityHint("Save this transaction")
 
             Button(String(localized: "common.close")) {
               dismiss()
             }
+            .accessibilityLabel("Close")
+            .accessibilityHint("Cancel and close this form")
           }
         }
       }
