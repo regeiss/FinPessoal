@@ -32,8 +32,8 @@ struct EmptyStateView: View {
     }
     .padding(40)
     .accessibilityElement(children: .combine)
-    .accessibilityLabel(String(localized: LocalizedStringKey(title)))
-    .accessibilityValue(String(localized: LocalizedStringKey(subtitle)))
+    .accessibilityLabel(Text(LocalizedStringKey(title)))
+    .accessibilityValue(Text(LocalizedStringKey(subtitle)))
     .accessibilityAddTraits(.isStaticText)
   }
 }

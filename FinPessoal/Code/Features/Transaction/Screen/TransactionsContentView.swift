@@ -64,10 +64,12 @@ struct TransactionsContentView: View {
       }
       .sheet(isPresented: $transactionViewModel.showingAddTransaction) {
         AddTransactionView(transactionViewModel: transactionViewModel)
+          .environmentObject(AccountViewModel(repository: AppConfiguration.shared.createAccountRepository()))
       }
       .sheet(isPresented: $transactionViewModel.showingTransactionDetail) {
         if let selectedTransaction = transactionViewModel.selectedTransaction {
           TransactionDetailView(transaction: selectedTransaction)
+            .environmentObject(FinanceViewModel(financeRepository: AppConfiguration.shared.createFinanceRepository()))
         }
       }
       .refreshable {

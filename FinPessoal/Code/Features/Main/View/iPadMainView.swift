@@ -748,6 +748,7 @@ struct EnhancedTransactionRow: View {
     
     var body: some View {
       AddTransactionView(transactionViewModel: transactionViewModel)
+        .environmentObject(AccountViewModel(repository: AppConfiguration.shared.createAccountRepository()))
         .toolbar {
           ToolbarItem(placement: .navigationBarLeading) {
             Button(String(localized: "common.cancel", defaultValue: "Cancel")) {

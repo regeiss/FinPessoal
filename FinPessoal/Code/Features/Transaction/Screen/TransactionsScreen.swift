@@ -74,12 +74,14 @@ struct TransactionsScreen: View {
     .sheet(isPresented: $transactionViewModel.showingAddTransaction) {
       if UIDevice.current.userInterfaceIdiom != .pad {
         AddTransactionView(transactionViewModel: transactionViewModel)
+          .environmentObject(AccountViewModel(repository: AppConfiguration.shared.createAccountRepository()))
       }
     }
     .sheet(isPresented: $transactionViewModel.showingTransactionDetail) {
       if UIDevice.current.userInterfaceIdiom != .pad {
         if let selectedTransaction = transactionViewModel.selectedTransaction {
           TransactionDetailView(transaction: selectedTransaction)
+            .environmentObject(financeViewModel)
         }
       }
     }
