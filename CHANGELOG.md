@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added - December 2025
+- **Widget Suite Design Document** (2025-12-16)
+  - Comprehensive design for iOS widgets including Home Screen, Lock Screen, and Live Activities
+  - Home Screen widgets: Balance, Monthly Summary, Budget, Bills, Goals, Credit Card, Recent Transactions
+  - Lock Screen widgets: Balance, Bills Due, Budget, Goals, Quick Expense
+  - Live Activities: Bill Reminders, Budget Alerts, Goal Milestones, Credit Card Reminders
+  - Smart refresh strategy with different intervals per widget type
+  - Hybrid data architecture with App Groups cache + Firebase background refresh
+  - Deep links for quick actions (add transaction, pay bill, view details)
+  - Full accessibility support (VoiceOver, Dynamic Type, High Contrast)
+  - Design document: Docs/plans/2025-12-16-widgets-design.md
+
 ### Added - October 2025
 - **Comprehensive Accessibility Implementation Across Entire App** (2025-10-31)
   - Implemented WCAG 2.1 Level AA accessibility standards throughout the entire FinPessoal iOS app
