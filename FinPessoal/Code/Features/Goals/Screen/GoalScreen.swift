@@ -28,7 +28,7 @@ struct GoalScreen: View {
   var activeGoals: [Goal] {
     financeViewModel.goals.filter { $0.isActive }
   }
-  
+                                                                                                                                                     
   var completedGoals: [Goal] {
     financeViewModel.goals.filter { $0.isCompleted }
   }

@@ -12,6 +12,18 @@
 				<string>com.googleusercontent.apps.65883756520-a76q53ofo9ij5ofievmpuhqecm29ens0</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>CFBundleURLName</key>
+			<string>com.finpessoal.deeplink</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>finpessoal</string>
+			</array>
+		</dict>
 	</array>
+	<key>NSSupportsLiveActivities</key>
+	<true/>
 </dict>
 </plist>

@@ -8,6 +8,38 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added - December 2025
+- **Widget Suite Implementation** (2025-12-17)
+  - Implemented complete widget suite as designed in the widget design document
+  - **Home Screen Widgets (6 widgets)**:
+    - Balance Widget (Small/Medium/Large) - Total balance with account breakdown
+    - Budget Widget (Medium/Large) - Budget progress with visual indicators
+    - Bills Widget (Small/Medium) - Upcoming bills with due date countdown
+    - Goals Widget (Small/Medium/Large) - Goal progress with circular gauges
+    - Credit Card Widget (Small/Medium) - Card utilization overview
+    - Transactions Widget (Medium/Large) - Recent transactions list
+  - **Lock Screen Widgets (4 widgets)**:
+    - Balance Lock Widget (Circular/Rectangular/Inline) - Quick balance view
+    - Bills Lock Widget (Circular/Rectangular/Inline) - Next bill reminder
+    - Budget Lock Widget (Circular/Rectangular/Inline) - Budget gauge
+    - Goals Lock Widget (Circular/Rectangular/Inline) - Goal progress
+  - **Live Activities (4 types)**:
+    - Bill Reminder Live Activity - Dynamic Island with payment countdown
+    - Budget Alert Live Activity - Real-time budget progress tracking
+    - Goal Milestone Live Activity - Goal contribution tracking
+    - Credit Card Reminder Live Activity - Payment due reminders
+  - **Data Layer**:
+    - SharedDataManager - App Groups data sync between app and widgets
+    - WidgetDataProvider - Model conversion for lightweight widget data
+    - WidgetSyncService - Centralized sync orchestration
+  - **Deep Linking**:
+    - URL scheme: finpessoal://
+    - Supports navigation to all app sections from widgets
+    - DeepLinkHandler with destination parsing
+  - **LiveActivityManager** - Start/Update/End lifecycle management
+  - Full accessibility with VoiceOver labels on all widgets
+  - Unit tests for widget data models and deep link handling
+  - Updated Info.plist with URL scheme and NSSupportsLiveActivities
+
 - **Widget Suite Design Document** (2025-12-16)
   - Comprehensive design for iOS widgets including Home Screen, Lock Screen, and Live Activities
   - Home Screen widgets: Balance, Monthly Summary, Budget, Bills, Goals, Credit Card, Recent Transactions
