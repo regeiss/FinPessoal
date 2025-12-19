@@ -17,7 +17,7 @@ struct MoreScreen: View {
           } label: {
             HStack {
               Image(systemName: "brain")
-                .foregroundColor(.purple)
+                .foregroundStyle(Color.oldMoney.accent)
                 .frame(width: 32, height: 32)
 
               VStack(alignment: .leading, spacing: 4) {
@@ -25,7 +25,7 @@ struct MoreScreen: View {
                   .font(.headline)
                 Text(String(localized: "ai.insights.description"))
                   .font(.caption)
-                  .foregroundColor(.secondary)
+                  .foregroundStyle(Color.oldMoney.textSecondary)
               }
             }
             .padding(.vertical, 4)
@@ -36,7 +36,7 @@ struct MoreScreen: View {
           } label: {
             HStack {
               Image(systemName: "chart.line.uptrend.xyaxis")
-                .foregroundColor(.blue)
+                .foregroundStyle(Color.oldMoney.accent)
                 .frame(width: 32, height: 32)
 
               VStack(alignment: .leading, spacing: 4) {
@@ -44,7 +44,7 @@ struct MoreScreen: View {
                   .font(.headline)
                 Text(String(localized: "insights.description"))
                   .font(.caption)
-                  .foregroundColor(.secondary)
+                  .foregroundStyle(Color.oldMoney.textSecondary)
               }
             }
             .padding(.vertical, 4)
@@ -55,7 +55,7 @@ struct MoreScreen: View {
           } label: {
             HStack {
               Image(systemName: "chart.pie.fill")
-                .foregroundColor(.blue)
+                .foregroundStyle(Color.oldMoney.accent)
                 .frame(width: 32, height: 32)
 
               VStack(alignment: .leading, spacing: 4) {
@@ -63,7 +63,7 @@ struct MoreScreen: View {
                   .font(.headline)
                 Text(String(localized: "sidebar.budgets.description"))
                   .font(.caption)
-                  .foregroundColor(.secondary)
+                  .foregroundStyle(Color.oldMoney.textSecondary)
               }
             }
             .padding(.vertical, 4)
@@ -74,7 +74,7 @@ struct MoreScreen: View {
           } label: {
             HStack {
               Image(systemName: "doc.text.fill")
-                .foregroundColor(.red)
+                .foregroundStyle(Color.oldMoney.expense)
                 .frame(width: 32, height: 32)
 
               VStack(alignment: .leading, spacing: 4) {
@@ -82,7 +82,7 @@ struct MoreScreen: View {
                   .font(.headline)
                 Text(String(localized: "sidebar.bills.description"))
                   .font(.caption)
-                  .foregroundColor(.secondary)
+                  .foregroundStyle(Color.oldMoney.textSecondary)
               }
             }
             .padding(.vertical, 4)
@@ -93,7 +93,7 @@ struct MoreScreen: View {
           } label: {
             HStack {
               Image(systemName: "target")
-                .foregroundColor(.purple)
+                .foregroundStyle(Color.oldMoney.accent)
                 .frame(width: 32, height: 32)
 
               VStack(alignment: .leading, spacing: 4) {
@@ -101,7 +101,7 @@ struct MoreScreen: View {
                   .font(.headline)
                 Text(String(localized: "sidebar.goals.description"))
                   .font(.caption)
-                  .foregroundColor(.secondary)
+                  .foregroundStyle(Color.oldMoney.textSecondary)
               }
             }
             .padding(.vertical, 4)
@@ -112,7 +112,7 @@ struct MoreScreen: View {
           } label: {
             HStack {
               Image(systemName: "chart.bar.fill")
-                .foregroundColor(.green)
+                .foregroundStyle(Color.oldMoney.income)
                 .frame(width: 32, height: 32)
               
               VStack(alignment: .leading, spacing: 4) {
@@ -120,7 +120,7 @@ struct MoreScreen: View {
                   .font(.headline)
                 Text(String(localized: "sidebar.reports.description"))
                   .font(.caption)
-                  .foregroundColor(.secondary)
+                  .foregroundStyle(Color.oldMoney.textSecondary)
               }
             }
             .padding(.vertical, 4)
@@ -131,7 +131,7 @@ struct MoreScreen: View {
           } label: {
             HStack {
               Image(systemName: "creditcard.fill")
-                .foregroundColor(.purple)
+                .foregroundStyle(Color.oldMoney.accent)
                 .frame(width: 32, height: 32)
               
               VStack(alignment: .leading, spacing: 4) {
@@ -139,7 +139,7 @@ struct MoreScreen: View {
                   .font(.headline)
                 Text(String(localized: "creditcard.description"))
                   .font(.caption)
-                  .foregroundColor(.secondary)
+                  .foregroundStyle(Color.oldMoney.textSecondary)
               }
             }
             .padding(.vertical, 4)
@@ -150,7 +150,7 @@ struct MoreScreen: View {
           } label: {
             HStack {
               Image(systemName: "building.columns.fill")
-                .foregroundColor(.indigo)
+                .foregroundStyle(Color.oldMoney.accent)
                 .frame(width: 32, height: 32)
               
               VStack(alignment: .leading, spacing: 4) {
@@ -158,7 +158,7 @@ struct MoreScreen: View {
                   .font(.headline)
                 Text(String(localized: "loan.empty.description"))
                   .font(.caption)
-                  .foregroundColor(.secondary)
+                  .foregroundStyle(Color.oldMoney.textSecondary)
               }
             }
             .padding(.vertical, 4)
@@ -176,7 +176,7 @@ struct MoreScreen: View {
           } label: {
             HStack {
               Image(systemName: "tag.fill")
-                .foregroundColor(.orange)
+                .foregroundStyle(Color.oldMoney.warning)
                 .frame(width: 32, height: 32)
               
               VStack(alignment: .leading, spacing: 4) {
@@ -184,7 +184,7 @@ struct MoreScreen: View {
                   .font(.headline)
                 Text(String(localized: "categories.management.description"))
                   .font(.caption)
-                  .foregroundColor(.secondary)
+                  .foregroundStyle(Color.oldMoney.textSecondary)
               }
             }
             .padding(.vertical, 4)

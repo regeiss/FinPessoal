@@ -33,6 +33,20 @@
 		E15E49B32EF22B9E004A2129 /* BillSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15E49972EF22B9E004A2129 /* BillSummary.swift */; };
 		E15E49E52EF38ADD004A2129 /* ActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15E49E42EF38ADD004A2129 /* ActivityAttributes.swift */; };
 		E15E49E62EF38ADD004A2129 /* ActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15E49E42EF38ADD004A2129 /* ActivityAttributes.swift */; };
+		E15E49F62EF4CF9C004A2129 /* Roadmap.md in Resources */ = {isa = PBXBuildFile; fileRef = E15E49F32EF4CF9C004A2129 /* Roadmap.md */; };
+		E15E49F72EF4CF9C004A2129 /* LOCALIZATION_FIX_SUMMARY.md in Resources */ = {isa = PBXBuildFile; fileRef = E15E49F12EF4CF9C004A2129 /* LOCALIZATION_FIX_SUMMARY.md */; };
+		E15E49F82EF4CF9C004A2129 /* 2025-12-16-widgets-design.md in Resources */ = {isa = PBXBuildFile; fileRef = E15E49E82EF4CF9C004A2129 /* 2025-12-16-widgets-design.md */; };
+		E15E49F92EF4CF9C004A2129 /* MAC_IMPLEMENTATION_GUIDE.md in Resources */ = {isa = PBXBuildFile; fileRef = E15E49F22EF4CF9C004A2129 /* MAC_IMPLEMENTATION_GUIDE.md */; };
+		E15E49FA2EF4CF9C004A2129 /* ACCESSIBILITY_TESTING_CHECKLIST.md in Resources */ = {isa = PBXBuildFile; fileRef = E15E49EC2EF4CF9C004A2129 /* ACCESSIBILITY_TESTING_CHECKLIST.md */; };
+		E15E49FB2EF4CF9C004A2129 /* TESTS.md in Resources */ = {isa = PBXBuildFile; fileRef = E15E49F42EF4CF9C004A2129 /* TESTS.md */; };
+		E15E49FC2EF4CF9C004A2129 /* AI_ML_IMPLEMENTATION.md in Resources */ = {isa = PBXBuildFile; fileRef = E15E49ED2EF4CF9C004A2129 /* AI_ML_IMPLEMENTATION.md */; };
+		E15E49FD2EF4CF9C004A2129 /* ACCESSIBILITY_GUIDELINES.md in Resources */ = {isa = PBXBuildFile; fileRef = E15E49EB2EF4CF9C004A2129 /* ACCESSIBILITY_GUIDELINES.md */; };
+		E15E49FE2EF4CF9C004A2129 /* ALL_ENVIRONMENT_OBJECT_FIXES.md in Resources */ = {isa = PBXBuildFile; fileRef = E15E49EE2EF4CF9C004A2129 /* ALL_ENVIRONMENT_OBJECT_FIXES.md */; };
+		E15E49FF2EF4CF9C004A2129 /* INSIGHTS_IMPLEMENTATION.md in Resources */ = {isa = PBXBuildFile; fileRef = E15E49F02EF4CF9C004A2129 /* INSIGHTS_IMPLEMENTATION.md */; };
+		E15E4A002EF4CF9C004A2129 /* 2025-12-16-widgets-implementation.md in Resources */ = {isa = PBXBuildFile; fileRef = E15E49E92EF4CF9C004A2129 /* 2025-12-16-widgets-implementation.md */; };
+		E15E4A012EF4CF9C004A2129 /* ENVIRONMENT_OBJECT_FIX.md in Resources */ = {isa = PBXBuildFile; fileRef = E15E49EF2EF4CF9C004A2129 /* ENVIRONMENT_OBJECT_FIX.md */; };
+		E15E4A0A2EF4DB3B004A2129 /* WidgetColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15E4A092EF4DB3B004A2129 /* WidgetColors.swift */; };
+		E15E4A0B2EF4DB3B004A2129 /* WidgetColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15E4A092EF4DB3B004A2129 /* WidgetColors.swift */; };
 		E177698F2E3E4D1D0028E21B /* FirebaseAI in Frameworks */ = {isa = PBXBuildFile; productRef = E177698E2E3E4D1D0028E21B /* FirebaseAI */; };
 		E17769912E3E4D1D0028E21B /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = E17769902E3E4D1D0028E21B /* FirebaseAnalytics */; };
 		E17769932E3E4D1D0028E21B /* FirebaseAnalyticsCore in Frameworks */ = {isa = PBXBuildFile; productRef = E17769922E3E4D1D0028E21B /* FirebaseAnalyticsCore */; };
@@ -120,6 +134,19 @@
 		E15E499E2EF22B9E004A2129 /* SharedDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedDataManager.swift; sourceTree = "<group>"; };
 		E15E499F2EF22B9E004A2129 /* WidgetDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetDataProvider.swift; sourceTree = "<group>"; };
 		E15E49E42EF38ADD004A2129 /* ActivityAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityAttributes.swift; sourceTree = "<group>"; };
+		E15E49E82EF4CF9C004A2129 /* 2025-12-16-widgets-design.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2025-12-16-widgets-design.md"; sourceTree = "<group>"; };
+		E15E49E92EF4CF9C004A2129 /* 2025-12-16-widgets-implementation.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "2025-12-16-widgets-implementation.md"; sourceTree = "<group>"; };
+		E15E49EB2EF4CF9C004A2129 /* ACCESSIBILITY_GUIDELINES.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ACCESSIBILITY_GUIDELINES.md; sourceTree = "<group>"; };
+		E15E49EC2EF4CF9C004A2129 /* ACCESSIBILITY_TESTING_CHECKLIST.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ACCESSIBILITY_TESTING_CHECKLIST.md; sourceTree = "<group>"; };
+		E15E49ED2EF4CF9C004A2129 /* AI_ML_IMPLEMENTATION.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = AI_ML_IMPLEMENTATION.md; sourceTree = "<group>"; };
+		E15E49EE2EF4CF9C004A2129 /* ALL_ENVIRONMENT_OBJECT_FIXES.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ALL_ENVIRONMENT_OBJECT_FIXES.md; sourceTree = "<group>"; };
+		E15E49EF2EF4CF9C004A2129 /* ENVIRONMENT_OBJECT_FIX.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ENVIRONMENT_OBJECT_FIX.md; sourceTree = "<group>"; };
+		E15E49F02EF4CF9C004A2129 /* INSIGHTS_IMPLEMENTATION.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = INSIGHTS_IMPLEMENTATION.md; sourceTree = "<group>"; };
+		E15E49F12EF4CF9C004A2129 /* LOCALIZATION_FIX_SUMMARY.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = LOCALIZATION_FIX_SUMMARY.md; sourceTree = "<group>"; };
+		E15E49F22EF4CF9C004A2129 /* MAC_IMPLEMENTATION_GUIDE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = MAC_IMPLEMENTATION_GUIDE.md; sourceTree = "<group>"; };
+		E15E49F32EF4CF9C004A2129 /* Roadmap.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Roadmap.md; sourceTree = "<group>"; };
+		E15E49F42EF4CF9C004A2129 /* TESTS.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TESTS.md; sourceTree = "<group>"; };
+		E15E4A092EF4DB3B004A2129 /* WidgetColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetColors.swift; sourceTree = "<group>"; };
 		E177697D2E3E4AFF0028E21B /* FinPessoal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinPessoal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1776A202E3E51BE0028E21B /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		E191F5122E9C65D2002DB0A9 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
@@ -252,6 +279,7 @@
 				E15E49992EF22B9E004A2129 /* CardSummary.swift */,
 				E15E499A2EF22B9E004A2129 /* GoalSummary.swift */,
 				E15E499B2EF22B9E004A2129 /* TransactionSummary.swift */,
+				E15E4A092EF4DB3B004A2129 /* WidgetColors.swift */,
 				E15E499C2EF22B9E004A2129 /* WidgetData.swift */,
 			);
 			path = Models;
@@ -275,6 +303,33 @@
 			path = Shared;
 			sourceTree = "<group>";
 		};
+		E15E49EA2EF4CF9C004A2129 /* plans */ = {
+			isa = PBXGroup;
+			children = (
+				E15E49E82EF4CF9C004A2129 /* 2025-12-16-widgets-design.md */,
+				E15E49E92EF4CF9C004A2129 /* 2025-12-16-widgets-implementation.md */,
+			);
+			path = plans;
+			sourceTree = "<group>";
+		};
+		E15E49F52EF4CF9C004A2129 /* Docs */ = {
+			isa = PBXGroup;
+			children = (
+				E15E49EA2EF4CF9C004A2129 /* plans */,
+				E15E49EB2EF4CF9C004A2129 /* ACCESSIBILITY_GUIDELINES.md */,
+				E15E49EC2EF4CF9C004A2129 /* ACCESSIBILITY_TESTING_CHECKLIST.md */,
+				E15E49ED2EF4CF9C004A2129 /* AI_ML_IMPLEMENTATION.md */,
+				E15E49EE2EF4CF9C004A2129 /* ALL_ENVIRONMENT_OBJECT_FIXES.md */,
+				E15E49EF2EF4CF9C004A2129 /* ENVIRONMENT_OBJECT_FIX.md */,
+				E15E49F02EF4CF9C004A2129 /* INSIGHTS_IMPLEMENTATION.md */,
+				E15E49F12EF4CF9C004A2129 /* LOCALIZATION_FIX_SUMMARY.md */,
+				E15E49F22EF4CF9C004A2129 /* MAC_IMPLEMENTATION_GUIDE.md */,
+				E15E49F32EF4CF9C004A2129 /* Roadmap.md */,
+				E15E49F42EF4CF9C004A2129 /* TESTS.md */,
+			);
+			path = Docs;
+			sourceTree = "<group>";
+		};
 		E17769742E3E4AFF0028E21B = {
 			isa = PBXGroup;
 			children = (
@@ -293,6 +348,7 @@
 				E11447672EAE8AFC00060A67 /* Roadmap.md */,
 				E15E49A12EF22B9E004A2129 /* Shared */,
 				E114481B2EAE8AFC00060A67 /* TESTS.md */,
+				E15E49F52EF4CF9C004A2129 /* Docs */,
 			);
 			sourceTree = "<group>";
 		};
@@ -498,6 +554,18 @@
 				E11447702EAE8AFC00060A67 /* Roadmap.md in Resources */,
 				E11447732EAE8AFC00060A67 /* Help.md in Resources */,
 				E1E8F1D02E4D609B00FFD30F /* MockLogin.md in Resources */,
+				E15E49F62EF4CF9C004A2129 /* Roadmap.md in Resources */,
+				E15E49F72EF4CF9C004A2129 /* LOCALIZATION_FIX_SUMMARY.md in Resources */,
+				E15E49F82EF4CF9C004A2129 /* 2025-12-16-widgets-design.md in Resources */,
+				E15E49F92EF4CF9C004A2129 /* MAC_IMPLEMENTATION_GUIDE.md in Resources */,
+				E15E49FA2EF4CF9C004A2129 /* ACCESSIBILITY_TESTING_CHECKLIST.md in Resources */,
+				E15E49FB2EF4CF9C004A2129 /* TESTS.md in Resources */,
+				E15E49FC2EF4CF9C004A2129 /* AI_ML_IMPLEMENTATION.md in Resources */,
+				E15E49FD2EF4CF9C004A2129 /* ACCESSIBILITY_GUIDELINES.md in Resources */,
+				E15E49FE2EF4CF9C004A2129 /* ALL_ENVIRONMENT_OBJECT_FIXES.md in Resources */,
+				E15E49FF2EF4CF9C004A2129 /* INSIGHTS_IMPLEMENTATION.md in Resources */,
+				E15E4A002EF4CF9C004A2129 /* 2025-12-16-widgets-implementation.md in Resources */,
+				E15E4A012EF4CF9C004A2129 /* ENVIRONMENT_OBJECT_FIX.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -528,6 +596,7 @@
 				E15E49AD2EF22B9E004A2129 /* SharedDataManager.swift in Sources */,
 				E15E49AF2EF22B9E004A2129 /* AccountSummary.swift in Sources */,
 				E15E49E52EF38ADD004A2129 /* ActivityAttributes.swift in Sources */,
+				E15E4A0B2EF4DB3B004A2129 /* WidgetColors.swift in Sources */,
 				E15E49B02EF22B9E004A2129 /* CardSummary.swift in Sources */,
 				E15E49B12EF22B9E004A2129 /* WidgetData.swift in Sources */,
 				E15E49B22EF22B9E004A2129 /* GoalSummary.swift in Sources */,
@@ -549,6 +618,7 @@
 				E15E49A82EF22B9E004A2129 /* WidgetData.swift in Sources */,
 				E15E49A92EF22B9E004A2129 /* GoalSummary.swift in Sources */,
 				E15E49AA2EF22B9E004A2129 /* BillSummary.swift in Sources */,
+				E15E4A0A2EF4DB3B004A2129 /* WidgetColors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

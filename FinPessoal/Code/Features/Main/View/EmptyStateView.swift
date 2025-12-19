@@ -16,17 +16,18 @@ struct EmptyStateView: View {
     VStack(spacing: 16) {
       Image(systemName: icon)
         .font(.system(size: 40))
-        .foregroundColor(.secondary)
+        .foregroundStyle(Color.oldMoney.textSecondary)
         .accessibilityHidden(true)
 
       VStack(spacing: 8) {
         Text(LocalizedStringKey(title))
           .font(.headline)
           .fontWeight(.medium)
+          .foregroundStyle(Color.oldMoney.text)
 
         Text(LocalizedStringKey(subtitle))
           .font(.subheadline)
-          .foregroundColor(.secondary)
+          .foregroundStyle(Color.oldMoney.textSecondary)
           .multilineTextAlignment(.center)
       }
     }

@@ -8,6 +8,45 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added - December 2025
+- **Old Money Color Palette** (2025-12-18)
+  - Implemented sophisticated "Old Money" color theme with understated elegance aesthetic
+  - **Core Files**:
+    - OldMoneyColors.swift - Raw color definitions with Light/Dark mode support
+    - Color+OldMoney.swift - SwiftUI extension for easy palette access (`Color.oldMoney.background`)
+    - OldMoneyTheme.swift - Typography, shadows, spacing, and animation configurations
+    - WidgetColors.swift (Shared/) - Lightweight colors for widget extension
+  - **Light Mode Base Colors**:
+    - Ivory (#FAF8F5) - Primary background
+    - Cream (#F5F2EC) - Card/surface backgrounds
+    - Warm Gray (#E8E4DD) - Dividers, subtle borders
+    - Stone (#9C9589) - Secondary text, icons
+    - Charcoal (#3D3A36) - Primary text
+  - **Dark Mode Base Colors**:
+    - Charcoal Dark (#1C1B19) - Primary background
+    - Slate (#2A2826) - Card/surface backgrounds
+    - Dark Stone (#3D3A36) - Dividers, subtle borders
+    - Muted Ivory (#A8A49C) - Secondary text
+    - Ivory (#FAF8F5) - Primary text
+  - **Accent Colors**:
+    - Antique Gold (#B8965C) - Primary accent, CTAs, highlights
+    - Soft Gold (#D4BA8A) - Secondary accent, hover states
+  - **Semantic Colors** (with Light/Dark variants):
+    - Income Green, Expense Rose, Warning Amber, Error Burgundy
+    - Success Sage, Neutral Steel, Attention Terracotta
+  - **10 Muted Category Colors** for transaction categories
+  - **Typography System**:
+    - Headlines: System Serif (New York) - Medium weight
+    - Body: SF Pro - Regular weight
+    - Money: SF Pro Rounded - Medium weight
+    - Captions: SF Pro - Light weight
+  - **Polish Details**:
+    - Shadows: Subtle 5-8% opacity charcoal shadows
+    - Border Radius: 8pt (small), 12pt (medium), 16pt (large)
+    - Animations: 200-300ms easeInOut, no bouncing
+  - **View Modifiers**: oldMoneyCard(), oldMoneyButton(), oldMoneyBackground()
+  - **WCAG AA Compliant** contrast ratios for accessibility
+  - Design document: Docs/plans/2025-12-18-old-money-color-palette-design.md
+
 - **Widget Suite Implementation** (2025-12-17)
   - Implemented complete widget suite as designed in the widget design document
   - **Home Screen Widgets (6 widgets)**:

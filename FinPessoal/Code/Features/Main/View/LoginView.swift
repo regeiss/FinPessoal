@@ -34,17 +34,17 @@ struct LoginView: View {
     VStack(spacing: 16) {
       Image(systemName: "dollarsign.circle.fill")
         .font(.system(size: 80))
-        .foregroundColor(.green)
+        .foregroundStyle(Color.oldMoney.accent)
         .accessibilityHidden(true)
 
       Text(String(localized: "app.name"))
-        .font(.largeTitle)
-        .fontWeight(.bold)
+        .font(OldMoneyTheme.Typography.largeTitle)
+        .foregroundStyle(Color.oldMoney.text)
         .accessibilityAddTraits(.isHeader)
 
       Text(String(localized: "app.tagline"))
         .font(.subheadline)
-        .foregroundColor(.secondary)
+        .foregroundStyle(Color.oldMoney.textSecondary)
         .multilineTextAlignment(.center)
     }
   }
@@ -71,12 +71,12 @@ struct LoginView: View {
         }
       }) {
         Text(String(localized: "login.signin.button"))
-          .foregroundColor(.white)
+          .foregroundStyle(Color.oldMoney.background)
           .fontWeight(.medium)
           .frame(maxWidth: .infinity)
           .frame(height: 50)
-          .background(Color.accentColor)
-          .cornerRadius(8)
+          .background(Color.oldMoney.accent)
+          .clipShape(RoundedRectangle(cornerRadius: OldMoneyTheme.Radius.small))
       }
       .disabled(authViewModel.isLoading || email.isEmpty || password.isEmpty)
       .accessibilityLabel("Sign In")
@@ -89,7 +89,7 @@ struct LoginView: View {
     VStack(spacing: 12) {
       Text(String(localized: "login.or.continue.with"))
         .font(.caption)
-        .foregroundColor(.secondary)
+        .foregroundStyle(Color.oldMoney.textSecondary)
 
       VStack(spacing: 12) {
         // Google Sign-In Button
@@ -146,7 +146,7 @@ struct LoginView: View {
 
       if let errorMessage = authViewModel.errorMessage {
         Text(errorMessage)
-          .foregroundColor(.red)
+          .foregroundStyle(Color.oldMoney.error)
           .font(.caption)
           .multilineTextAlignment(.center)
           .accessibilityLabel("Error: \(errorMessage)")
