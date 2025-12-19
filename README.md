@@ -19,6 +19,26 @@ FinPessoal is a modern iOS app that provides complete financial management capab
 - **Categories & Subcategories**: Organize transactions with 10 main categories and 40+ subcategories
 - **Smart Notifications**: Budget alerts, bill reminders, goal milestones, and suspicious activity detection
 
+### Widgets & Live Activities
+- **Home Screen Widgets (6 types)**:
+  - Balance Widget (Small/Medium/Large) - Total balance with account breakdown
+  - Budget Widget (Medium/Large) - Budget progress with visual indicators
+  - Bills Widget (Small/Medium) - Upcoming bills with due date countdown
+  - Goals Widget (Small/Medium/Large) - Goal progress with circular gauges
+  - Credit Card Widget (Small/Medium) - Card utilization overview
+  - Transactions Widget (Medium/Large) - Recent transactions list
+- **Lock Screen Widgets (4 types)**:
+  - Balance - Quick balance view (Circular/Rectangular/Inline)
+  - Bills - Next bill reminder with countdown
+  - Budget - Budget gauge with percentage
+  - Goals - Goal progress indicator
+- **Live Activities (4 types)**:
+  - Bill Reminders - Dynamic Island with payment countdown
+  - Budget Alerts - Real-time budget progress tracking
+  - Goal Milestones - Goal contribution tracking
+  - Credit Card Reminders - Payment due notifications
+- **Deep Linking**: Open app sections directly from widgets (finpessoal:// URL scheme)
+
 ### Advanced Features
 - **Bills Management System**:
   - Recurring bill tracking with status indicators (paid, overdue, due soon, upcoming)
@@ -65,7 +85,7 @@ FinPessoal/
 │   ├── Features/              # Feature-based modules
 │   │   ├── Account/           # Account management
 │   │   ├── Auth/              # Authentication
-│   │   ├── Bills/             # Bills management (NEW)
+│   │   ├── Bills/             # Bills management
 │   │   │   ├── Model/         # Bill model and enums
 │   │   │   ├── ViewModel/     # BillsViewModel
 │   │   │   ├── Screen/        # BillsScreen, AddBillScreen
@@ -83,8 +103,12 @@ FinPessoal/
 │   │   └── Transaction/       # Transaction management
 │   ├── Core/                  # Core services
 │   │   ├── Firebase/          # Firebase integration
-│   │   ├── Notifications/     # NotificationManager (NEW)
-│   │   └── Repository/        # Repository protocols
+│   │   ├── Notifications/     # NotificationManager
+│   │   ├── Repository/        # Repository protocols
+│   │   └── Services/          # App services
+│   │       ├── WidgetSyncService.swift    # Widget data sync
+│   │       ├── LiveActivityManager.swift  # Live Activity management
+│   │       └── DeepLinkHandler.swift      # Deep link handling
 │   ├── Configuration/         # App configuration
 │   │   ├── Base/              # Base configurations
 │   │   │   ├── Navigation/    # NavigationState, MainTab, SidebarItem
@@ -92,18 +116,41 @@ FinPessoal/
 │   │   │   └── Extensions/    # Swift extensions
 │   │   └── Constants/         # App constants and enums
 │   └── Utils/                 # Utility classes and extensions
+├── Shared/                    # Shared code (App + Widgets)
+│   ├── Models/                # Widget data models
+│   │   ├── WidgetData.swift
+│   │   ├── AccountSummary.swift
+│   │   ├── BudgetSummary.swift
+│   │   ├── BillSummary.swift
+│   │   ├── GoalSummary.swift
+│   │   ├── CardSummary.swift
+│   │   ├── TransactionSummary.swift
+│   │   └── ActivityAttributes.swift
+│   └── Services/
+│       ├── SharedDataManager.swift   # App Groups data sync
+│       └── WidgetDataProvider.swift  # Model conversion
+├── FinPessoalWidgets/         # Widget Extension
+│   ├── HomeScreen/            # Home Screen widgets
+│   │   ├── BalanceWidget.swift
+│   │   ├── BudgetWidget.swift
+│   │   ├── BillsWidget.swift
+│   │   ├── GoalsWidget.swift
+│   │   ├── CreditCardWidget.swift
+│   │   └── TransactionsWidget.swift
+│   ├── Views/                 # Widget views
+│   ├── LockScreen/            # Lock Screen widgets
+│   └── LiveActivity/          # Live Activity views
 ├── SupportingFiles/           # Localization and assets
 │   └── Localizable.xcstrings  # Localized strings (1000+ strings)
 └── FinPessoalTests/           # Comprehensive test suite
     ├── Core/                  # Core service tests
-    │   └── NotificationManagerTests.swift
     ├── Features/              # Feature tests
-    │   └── BillTests.swift    # Bill model tests (20+ tests)
     ├── Models/                # Model tests
-    │   ├── BudgetEnumTests.swift
-    │   └── TransactionEnumTests.swift
     ├── ViewModels/            # ViewModel tests
-    │   └── BudgetViewModelTests.swift
+    ├── Widgets/               # Widget tests
+    │   ├── WidgetDataTests.swift
+    │   ├── WidgetDataProviderTests.swift
+    │   └── DeepLinkHandlerTests.swift
     ├── Navigation/            # Navigation tests
     ├── Repositories/          # Repository tests
     └── Performance/           # Performance tests
@@ -241,6 +288,53 @@ The app includes 5 sample bills for development:
 ### Subcategories
 Each category includes 4-6 detailed subcategories for precise transaction tracking, totaling 40+ subcategory options.
 
+## 📲 Widgets
+
+### Home Screen Widgets
+
+Add widgets to your Home Screen for quick access to financial data:
+
+| Widget | Sizes | Description |
+|--------|-------|-------------|
+| **Saldo** | S/M/L | Total balance with account breakdown and monthly trend |
+| **Orçamentos** | M/L | Budget progress bars with percentage indicators |
+| **Contas a Pagar** | S/M | Upcoming bills sorted by due date |
+| **Metas** | S/M/L | Goal progress with circular gauges |
+| **Cartões de Crédito** | S/M | Credit utilization overview |
+| **Transações** | M/L | Recent transactions with monthly summary |
+
+### Lock Screen Widgets
+
+Quick glance widgets for Lock Screen (iOS 16+):
+
+- **Balance** - Compact balance display
+- **Bills** - Next bill countdown
+- **Budget** - Budget gauge
+- **Goals** - Goal progress ring
+
+### Live Activities
+
+Real-time tracking on Dynamic Island and Lock Screen:
+
+- **Bill Reminders** - Countdown to bill due dates
+- **Budget Alerts** - Live budget progress when near limit
+- **Goal Milestones** - Track contributions in real-time
+- **Credit Card Reminders** - Payment due notifications
+
+### Deep Links
+
+Widgets support deep linking to open specific app sections:
+
+```
+finpessoal://dashboard          # Open dashboard
+finpessoal://accounts           # View accounts
+finpessoal://transactions       # View transactions
+finpessoal://budgets            # View budgets
+finpessoal://bills              # View bills
+finpessoal://goals              # View goals
+finpessoal://add-transaction?type=expense  # Add expense
+```
+
 ## 💾 Technologies
 
 ### Core Technologies
@@ -325,9 +419,9 @@ See [CHANGELOG.md](CHANGELOG.md) for detailed version history and release notes.
 
 ### Current Version
 - **Version**: 1.0.0 (Unreleased)
-- **Last Updated**: October 27, 2025
-- **iOS Support**: iOS 18.0+
-- **Latest Features**: Bills Management System, Smart Notifications, Enhanced Navigation
+- **Last Updated**: December 17, 2025
+- **iOS Support**: iOS 17.0+
+- **Latest Features**: Widget Suite (Home Screen, Lock Screen, Live Activities), Deep Linking
 
 ## 🤝 Contributing
 
