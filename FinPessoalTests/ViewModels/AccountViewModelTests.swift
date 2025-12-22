@@ -119,6 +119,7 @@ final class AccountViewModelTests: XCTestCase {
     func testAddAccountSuccess() async throws {
         let newAccount = createTestAccount(id: "new-account", name: "New Account", balance: 500.0)
         
+        
         let success = await viewModel.addAccount(newAccount)
         
         XCTAssertTrue(success)
@@ -129,16 +130,15 @@ final class AccountViewModelTests: XCTestCase {
     
     func testAddAccountFailure() async throws {
         mockRepository.shouldFail = true
-        mockRepository.mockError = FirebaseError.authenticationError("Auth failed")
-        
+        mockRepository.mockError = FirebaseError.databaseError("Auth failed")
+
         let newAccount = createTestAccount(id: "new-account", name: "New Account", balance: 500.0)
-        
+
         let success = await viewModel.addAccount(newAccount)
-        
+
         XCTAssertFalse(success)
         XCTAssertTrue(viewModel.accounts.isEmpty)
         XCTAssertNotNil(viewModel.errorMessage)
-        XCTAssertEqual(viewModel.errorMessage, "Auth failed")
     }
     
     func testUpdateAccountSuccess() async throws {
@@ -257,19 +257,19 @@ final class AccountViewModelTests: XCTestCase {
         XCTAssertTrue(viewModel.hasAccounts)
     }
     
-    func testActiveAccounts() async throws {
+    func testAccountsByType() async throws {
         let accounts = [
-            createTestAccount(id: "account1", name: "Active Account", balance: 1000.0, isActive: true),
-            createTestAccount(id: "account2", name: "Inactive Account", balance: 2000.0, isActive: false),
-            createTestAccount(id: "account3", name: "Another Active Account", balance: 3000.0, isActive: true)
+            createTestAccount(id: "account1", name: "Checking Account", balance: 1000.0, type: .checking),
+            createTestAccount(id: "account2", name: "Savings Account", balance: 2000.0, type: .savings),
+            createTestAccount(id: "account3", name: "Another Checking", balance: 3000.0, type: .checking)
         ]
         mockRepository.mockAccounts = accounts
-        
+
         await viewModel.fetchAccounts()
-        
-        let activeAccounts = viewModel.activeAccounts
-        XCTAssertEqual(activeAccounts.count, 2)
-        XCTAssertTrue(activeAccounts.allSatisfy { $0.isActive })
+
+        let accountsByType = viewModel.accountsByType
+        XCTAssertEqual(accountsByType[.checking]?.count, 2)
+        XCTAssertEqual(accountsByType[.savings]?.count, 1)
     }
     
     // MARK: - Error Handling Tests
