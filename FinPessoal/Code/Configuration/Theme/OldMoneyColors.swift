@@ -59,6 +59,64 @@ struct OldMoneyColors {
     static let softGold = Color(red: 212/255, green: 186/255, blue: 138/255)
   }
 
+  // MARK: - Warm Palette (Positive Financial States)
+
+  struct Warm {
+    // Base Colors - Light Mode
+    struct Light {
+      /// Primary background - Peachy cream
+      static let background = Color(red: 255/255, green: 245/255, blue: 232/255)
+
+      /// Card/surface backgrounds - Warm ivory
+      static let surface = Color(red: 255/255, green: 249/255, blue: 240/255)
+
+      /// Dividers, subtle borders - Soft peach
+      static let divider = Color(red: 255/255, green: 232/255, blue: 214/255)
+
+      /// Secondary text, icons - Warm stone
+      static let textSecondary = Color(red: 184/255, green: 155/255, blue: 133/255)
+
+      /// Primary text - Rich charcoal
+      static let textPrimary = Color(red: 45/255, green: 42/255, blue: 38/255)
+    }
+
+    // Accent Colors
+    struct Accent {
+      /// Primary CTA - Coral gold
+      static let primary = Color(red: 232/255, green: 149/255, blue: 108/255)
+
+      /// Secondary accent - Amber glow
+      static let secondary = Color(red: 212/255, green: 165/255, blue: 116/255)
+
+      /// Tertiary highlights - Honey gold
+      static let tertiary = Color(red: 201/255, green: 166/255, blue: 105/255)
+    }
+
+    // Semantic Colors
+    struct Semantic {
+      /// Income - Sage green
+      static let income = Color(red: 107/255, green: 158/255, blue: 122/255)
+
+      /// Expenses - Soft rose
+      static let expense = Color(red: 212/255, green: 147/255, blue: 139/255)
+
+      /// Warnings - Warm amber
+      static let warning = Color(red: 232/255, green: 177/255, blue: 92/255)
+
+      /// Errors - Deep burgundy
+      static let error = Color(red: 139/255, green: 90/255, blue: 90/255)
+
+      /// Success - Terracotta
+      static let success = Color(red: 168/255, green: 139/255, blue: 107/255)
+
+      /// Neutral - Warm gray
+      static let neutral = Color(red: 107/255, green: 114/255, blue: 128/255)
+
+      /// Attention - Warm terracotta
+      static let attention = Color(red: 166/255, green: 122/255, blue: 92/255)
+    }
+  }
+
   // MARK: - Semantic Colors (Light Mode)
 
   struct SemanticLight {
