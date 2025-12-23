@@ -117,6 +117,64 @@ struct OldMoneyColors {
     }
   }
 
+  // MARK: - Cool Palette (Negative Financial States)
+
+  struct Cool {
+    // Base Colors - Light Mode
+    struct Light {
+      /// Primary background - Slate mist
+      static let background = Color(red: 240/255, green: 244/255, blue: 248/255)
+
+      /// Card/surface backgrounds - Cool ivory
+      static let surface = Color(red: 245/255, green: 248/255, blue: 250/255)
+
+      /// Dividers, subtle borders - Silver fog
+      static let divider = Color(red: 216/255, green: 225/255, blue: 232/255)
+
+      /// Secondary text, icons - Steel stone
+      static let textSecondary = Color(red: 139/255, green: 154/255, blue: 168/255)
+
+      /// Primary text - Deep charcoal
+      static let textPrimary = Color(red: 42/255, green: 45/255, blue: 50/255)
+    }
+
+    // Accent Colors
+    struct Accent {
+      /// Primary CTA - Steel blue
+      static let primary = Color(red: 107/255, green: 140/255, blue: 174/255)
+
+      /// Secondary accent - Silver sage
+      static let secondary = Color(red: 155/255, green: 173/255, blue: 183/255)
+
+      /// Tertiary highlights - Slate violet
+      static let tertiary = Color(red: 139/255, green: 138/255, blue: 168/255)
+    }
+
+    // Semantic Colors
+    struct Semantic {
+      /// Income - Teal
+      static let income = Color(red: 92/255, green: 154/255, blue: 158/255)
+
+      /// Expenses - Deep rose
+      static let expense = Color(red: 200/255, green: 122/255, blue: 122/255)
+
+      /// Warnings - Cool amber
+      static let warning = Color(red: 201/255, green: 168/255, blue: 101/255)
+
+      /// Errors - Cool burgundy
+      static let error = Color(red: 158/255, green: 107/255, blue: 107/255)
+
+      /// Success - Slate sage
+      static let success = Color(red: 122/255, green: 139/255, blue: 139/255)
+
+      /// Neutral - Cool gray
+      static let neutral = Color(red: 156/255, green: 163/255, blue: 175/255)
+
+      /// Attention - Cool terracotta
+      static let attention = Color(red: 184/255, green: 138/255, blue: 108/255)
+    }
+  }
+
   // MARK: - Semantic Colors (Light Mode)
 
   struct SemanticLight {
