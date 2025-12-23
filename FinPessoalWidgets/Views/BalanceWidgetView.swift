@@ -31,7 +31,7 @@ struct BalanceWidgetView: View {
     VStack(alignment: .leading, spacing: 4) {
       Label("Saldo Total", systemImage: "banknote")
         .font(.caption)
-        .foregroundStyle(.secondary)
+        .foregroundStyle(Color.widget.textSecondary)
 
       Text(formattedBalance)
         .font(.title2)
@@ -45,7 +45,7 @@ struct BalanceWidgetView: View {
         trendIndicator
         Text(trendText)
           .font(.caption2)
-          .foregroundStyle(.secondary)
+          .foregroundStyle(Color.widget.textSecondary)
           .lineLimit(1)
       }
     }
@@ -61,7 +61,7 @@ struct BalanceWidgetView: View {
       VStack(alignment: .leading, spacing: 4) {
         Label("Saldo Total", systemImage: "banknote")
           .font(.caption)
-          .foregroundStyle(.secondary)
+          .foregroundStyle(Color.widget.textSecondary)
 
         Text(formattedBalance)
           .font(.title)
@@ -73,7 +73,7 @@ struct BalanceWidgetView: View {
           trendIndicator
           Text(trendText)
             .font(.caption)
-            .foregroundStyle(.secondary)
+            .foregroundStyle(Color.widget.textSecondary)
         }
       }
 
@@ -99,7 +99,7 @@ struct BalanceWidgetView: View {
         VStack(alignment: .leading, spacing: 4) {
           Label("Saldo Total", systemImage: "banknote")
             .font(.caption)
-            .foregroundStyle(.secondary)
+            .foregroundStyle(Color.widget.textSecondary)
 
           Text(formattedBalance)
             .font(.largeTitle)
@@ -121,11 +121,11 @@ struct BalanceWidgetView: View {
         VStack(alignment: .leading) {
           Text("Receitas")
             .font(.caption)
-            .foregroundStyle(.secondary)
+            .foregroundStyle(Color.widget.textSecondary)
           Text(formatCurrency(data.monthlyIncome))
             .font(.subheadline)
             .fontWeight(.medium)
-            .foregroundStyle(.green)
+            .foregroundStyle(Color.widget.income)
         }
 
         Spacer()
@@ -133,11 +133,11 @@ struct BalanceWidgetView: View {
         VStack(alignment: .trailing) {
           Text("Despesas")
             .font(.caption)
-            .foregroundStyle(.secondary)
+            .foregroundStyle(Color.widget.textSecondary)
           Text(formatCurrency(data.monthlyExpenses))
             .font(.subheadline)
             .fontWeight(.medium)
-            .foregroundStyle(.red)
+            .foregroundStyle(Color.widget.expense)
         }
       }
 
@@ -150,13 +150,13 @@ struct BalanceWidgetView: View {
       if data.accounts.isEmpty {
         Text("Nenhuma conta cadastrada")
           .font(.caption)
-          .foregroundStyle(.secondary)
+          .foregroundStyle(Color.widget.textSecondary)
           .frame(maxWidth: .infinity, alignment: .center)
       } else {
         ForEach(data.accounts.prefix(3)) { account in
           HStack {
             Image(systemName: iconForAccountType(account.type))
-              .foregroundStyle(.blue)
+              .foregroundStyle(Color.widget.accent)
               .frame(width: 20)
             Text(account.name)
               .font(.subheadline)
@@ -174,7 +174,7 @@ struct BalanceWidgetView: View {
       // Last updated
       Text("Atualizado: \(formattedLastUpdate)")
         .font(.caption2)
-        .foregroundStyle(.tertiary)
+        .foregroundStyle(Color.widget.textSecondary.opacity(0.7))
     }
     .padding()
   }
@@ -188,7 +188,7 @@ struct BalanceWidgetView: View {
   private var trendIndicator: some View {
     let isPositive = data.monthlyIncome >= data.monthlyExpenses
     return Image(systemName: isPositive ? "arrow.up.right" : "arrow.down.right")
-      .foregroundStyle(isPositive ? .green : .red)
+      .foregroundStyle(isPositive ? Color.widget.income : Color.widget.expense)
   }
 
   private var trendText: String {
@@ -219,7 +219,7 @@ struct BalanceWidgetView: View {
     HStack(spacing: 4) {
       Image(systemName: icon)
         .font(.caption)
-        .foregroundStyle(.secondary)
+        .foregroundStyle(Color.widget.textSecondary)
       Text(formatCurrency(value))
         .font(.caption)
         .fontWeight(.medium)

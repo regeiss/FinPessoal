@@ -26,7 +26,7 @@ struct AccountCard: View {
 
         Text(account.type.rawValue)
           .font(.caption)
-          .foregroundColor(.secondary)
+          .foregroundStyle(Color.oldMoney.textSecondary)
       }
 
       Spacer()
@@ -34,10 +34,10 @@ struct AccountCard: View {
       Text(account.formattedBalance)
         .font(.headline)
         .fontWeight(.semibold)
-        .foregroundColor(account.balance >= 0 ? .green : .red)
+        .foregroundStyle(account.balance >= 0 ? Color.oldMoney.income : Color.oldMoney.expense)
     }
     .padding()
-    .background(Color(.systemGray6))
+    .background(Color.oldMoney.surface)
     .cornerRadius(12)
     .accessibilityElement(children: .combine)
     .accessibilityLabel("\(account.name), \(account.type.rawValue)")

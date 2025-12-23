@@ -50,11 +50,11 @@ struct OnboardingScreen: View {
           }) {
             Text("onboarding.get_started")
               .font(.headline)
-              .foregroundColor(.white)
+              .foregroundStyle(Color.oldMoney.background)
               .frame(maxWidth: .infinity)
               .padding()
-              .background(Color.blue)
-              .cornerRadius(12)
+              .background(Color.oldMoney.accent)
+              .clipShape(RoundedRectangle(cornerRadius: OldMoneyTheme.Radius.medium))
           }
           .accessibilityLabel("Get Started")
           .accessibilityHint("Complete onboarding and start using the app")
@@ -66,11 +66,11 @@ struct OnboardingScreen: View {
           }) {
             Text("onboarding.next")
               .font(.headline)
-              .foregroundColor(.white)
+              .foregroundStyle(Color.oldMoney.background)
               .frame(maxWidth: .infinity)
               .padding()
-              .background(Color.blue)
-              .cornerRadius(12)
+              .background(Color.oldMoney.accent)
+              .clipShape(RoundedRectangle(cornerRadius: OldMoneyTheme.Radius.medium))
           }
           .accessibilityLabel("Next")
           .accessibilityHint("Go to page \(currentPage + 2) of \(pages.count)")
@@ -80,7 +80,7 @@ struct OnboardingScreen: View {
           onboardingManager.completeOnboarding()
         }) {
           Text("onboarding.skip")
-            .foregroundColor(.secondary)
+            .foregroundStyle(Color.oldMoney.textSecondary)
         }
         .accessibilityLabel("Skip Onboarding")
         .accessibilityHint("Skip onboarding and go directly to the app")

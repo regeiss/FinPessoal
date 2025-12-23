@@ -14,14 +14,14 @@ struct OldMoneyColors {
   // MARK: - Base Colors (Light Mode)
 
   struct Light {
-    /// Primary background - #FAF8F5
-    static let ivory = Color(red: 250/255, green: 248/255, blue: 245/255)
+    /// Primary background - #E8E4DD (darker for card contrast)
+    static let ivory = Color(red: 232/255, green: 228/255, blue: 221/255)
 
-    /// Card/surface backgrounds - #F5F2EC
-    static let cream = Color(red: 245/255, green: 242/255, blue: 236/255)
+    /// Card/surface backgrounds - #FAF8F5 (lighter for cards to pop)
+    static let cream = Color(red: 250/255, green: 248/255, blue: 245/255)
 
-    /// Dividers, subtle borders - #E8E4DD
-    static let warmGray = Color(red: 232/255, green: 228/255, blue: 221/255)
+    /// Dividers, subtle borders - #D8D4CC
+    static let warmGray = Color(red: 216/255, green: 212/255, blue: 204/255)
 
     /// Secondary text, icons - #9C9589
     static let stone = Color(red: 156/255, green: 149/255, blue: 137/255)

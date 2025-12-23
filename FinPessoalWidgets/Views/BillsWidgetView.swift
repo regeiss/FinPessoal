@@ -29,7 +29,7 @@ struct BillsWidgetView: View {
     VStack(alignment: .leading, spacing: 4) {
       Label("Próxima Conta", systemImage: "calendar.badge.clock")
         .font(.caption)
-        .foregroundStyle(.secondary)
+        .foregroundStyle(Color.widget.textSecondary)
 
       if let nextBill = data.upcomingBills.first {
         Spacer()
@@ -47,10 +47,10 @@ struct BillsWidgetView: View {
         HStack {
           if nextBill.isOverdue {
             Image(systemName: "exclamationmark.triangle.fill")
-              .foregroundStyle(.red)
+              .foregroundStyle(Color.widget.expense)
             Text("Vencido")
               .font(.caption)
-              .foregroundStyle(.red)
+              .foregroundStyle(Color.widget.expense)
           } else {
             Image(systemName: "clock")
               .foregroundStyle(colorForDays(nextBill.daysUntilDue))
@@ -64,10 +64,10 @@ struct BillsWidgetView: View {
         VStack {
           Image(systemName: "checkmark.circle")
             .font(.title)
-            .foregroundStyle(.green)
+            .foregroundStyle(Color.widget.income)
           Text("Tudo em dia!")
             .font(.caption)
-            .foregroundStyle(.secondary)
+            .foregroundStyle(Color.widget.textSecondary)
         }
         .frame(maxWidth: .infinity)
         Spacer()
@@ -85,14 +85,14 @@ struct BillsWidgetView: View {
       HStack {
         Label("Contas a Pagar", systemImage: "calendar.badge.clock")
           .font(.caption)
-          .foregroundStyle(.secondary)
+          .foregroundStyle(Color.widget.textSecondary)
 
         Spacer()
 
         if !data.upcomingBills.isEmpty {
           Text("\(data.upcomingBills.count) pendentes")
             .font(.caption2)
-            .foregroundStyle(.secondary)
+            .foregroundStyle(Color.widget.textSecondary)
         }
       }
 
@@ -114,10 +114,10 @@ struct BillsWidgetView: View {
       Spacer()
       Image(systemName: "checkmark.circle")
         .font(.title)
-        .foregroundStyle(.green)
+        .foregroundStyle(Color.widget.income)
       Text("Tudo em dia!")
         .font(.caption)
-        .foregroundStyle(.secondary)
+        .foregroundStyle(Color.widget.textSecondary)
       Spacer()
     }
     .frame(maxWidth: .infinity)
@@ -128,7 +128,7 @@ struct BillsWidgetView: View {
     HStack {
       Image(systemName: bill.categoryIcon)
         .font(.caption)
-        .foregroundStyle(.secondary)
+        .foregroundStyle(Color.widget.textSecondary)
         .frame(width: 20)
 
       VStack(alignment: .leading, spacing: 0) {
@@ -137,7 +137,7 @@ struct BillsWidgetView: View {
           .lineLimit(1)
         Text(bill.formattedDueDate)
           .font(.caption2)
-          .foregroundStyle(.secondary)
+          .foregroundStyle(Color.widget.textSecondary)
       }
 
       Spacer()
@@ -150,7 +150,7 @@ struct BillsWidgetView: View {
         if bill.isOverdue {
           Text("Vencido")
             .font(.caption2)
-            .foregroundStyle(.red)
+            .foregroundStyle(Color.widget.expense)
         } else {
           Text(bill.daysText)
             .font(.caption2)
@@ -167,13 +167,13 @@ struct BillsWidgetView: View {
   private func colorForDays(_ days: Int) -> Color {
     switch days {
     case ..<0:
-      return .red
+      return Color.widget.expense
     case 0...1:
-      return .orange
+      return Color.widget.warning
     case 2...3:
-      return .yellow
+      return Color.widget.warning.opacity(0.8)
     default:
-      return .secondary
+      return Color.widget.textSecondary
     }
   }
 

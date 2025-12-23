@@ -84,7 +84,7 @@ final class BillTests: XCTestCase {
   func testIsDueSoon() throws {
     let calendar = Calendar.current
     let dueSoonDate = calendar.date(byAdding: .day, value: 2, to: Date())!
-    let bill = createTestBill(isPaid: false, nextDueDate: dueSoonDate, reminderDaysBefore: 3)
+      let bill = createTestBill(isPaid: false, reminderDaysBefore: 3, nextDueDate: dueSoonDate)
 
     XCTAssertTrue(bill.isDueSoon)
   }
@@ -92,7 +92,7 @@ final class BillTests: XCTestCase {
   func testIsNotDueSoonWhenFarAway() throws {
     let calendar = Calendar.current
     let farDate = calendar.date(byAdding: .day, value: 10, to: Date())!
-    let bill = createTestBill(isPaid: false, nextDueDate: farDate, reminderDaysBefore: 3)
+      let bill = createTestBill(isPaid: false, reminderDaysBefore: 3, nextDueDate: farDate)
 
     XCTAssertFalse(bill.isDueSoon)
   }
@@ -115,7 +115,7 @@ final class BillTests: XCTestCase {
   func testStatusDueSoon() throws {
     let calendar = Calendar.current
     let dueSoonDate = calendar.date(byAdding: .day, value: 2, to: Date())!
-    let bill = createTestBill(isPaid: false, nextDueDate: dueSoonDate, reminderDaysBefore: 3)
+      let bill = createTestBill(isPaid: false, reminderDaysBefore: 3, nextDueDate: dueSoonDate)
 
     XCTAssertEqual(bill.status, .dueSoon)
   }

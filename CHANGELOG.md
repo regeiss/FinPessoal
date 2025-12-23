@@ -7,7 +7,118 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed - December 2025
+- **MockRepository runtime crash** (2025-12-21)
+  - Added `@MainActor` annotation to `MockTransactionRepository` and `MockAccountRepository`
+  - Fixed memory corruption during deinitialization when used with SwiftUI views
+  - Root cause: Async Task.sleep operations still running during object deallocation
+  - Solution: `@MainActor` ensures proper actor isolation and prevents concurrent access during cleanup
+  - Error: `___BUG_IN_CLIENT_OF_LIBMALLOC_POINTER_BEING_FREED_WAS_NOT_ALLOCATED`
+
+- **PerformanceTests.swift compilation errors** (2025-12-21)
+  - Fixed throwing function calls in non-throwing measure blocks:
+    - Used `try!` for controlled test data inside `measure` closures (lines 20, 30, 40, 50)
+    - Added `try` in map closures for dictionary conversions outside measure blocks (lines 36, 46)
+  - Updated deprecated XCTest performance metrics API:
+    - `measureMetrics([.memoryPhysical])` → `measure(metrics: [XCTMemoryMetric()])` (line 159)
+  - Root cause: `measure` blocks expect non-throwing closures `() -> Void`
+  - Solution: Used `try!` (force try) for controlled test data, which is safe and appropriate for performance tests
+  - All compilation errors resolved successfully
+- **ViewModel Tests fixes** (2025-12-20)
+  - **AccountViewModelTests.swift**:
+    - Changed `FirebaseError.authenticationError` to `FirebaseError.databaseError`
+    - Replaced `activeAccounts` test with `accountsByType` test
+  - **TransactionViewModelTests.swift**:
+    - Changed `AuthError.userNotAuthenticated` to `AuthError.noCurrentUser`
+    - Changed `TransactionCategory.freelance` to `.investment`
+    - Fixed Transaction initializer argument order in helper method
+  - **BudgetViewModelTests.swift**:
+    - Fixed optional `Date?` comparisons for `createdAt` and `updatedAt`
+  - **NavigationStateTests.swift**:
+    - Changed `MainTab.reports` to `.more` (reports tab doesn't exist)
+    - Fixed Transaction initializer argument order in helper method
+
+- **MockRepositoryTests fixes** (2025-12-20)
+  - Fixed `Transaction` initializer argument order (description before category/type)
+  - Changed `AuthError.userNotAuthenticated` to `AuthError.noCurrentUser`
+  - Added `Equatable` conformance to `FirebaseError` and `AuthError`
+  - Added testable properties to `MockAccountRepository`:
+    - `mockAccounts` - settable accounts array
+    - `shouldFail` - flag to trigger errors
+    - `mockError` - customizable error to throw
+    - `delay` - configurable operation delay
+  - Added testable properties to `MockTransactionRepository`:
+    - `mockTransactions` - settable transactions array
+    - `shouldFail` - flag to trigger errors
+    - `mockError` - customizable error to throw
+    - `mockTotalIncome` - override for statistics
+    - `mockTotalExpenses` - override for statistics
+    - `delay` - configurable operation delay
+
 ### Added - December 2025
+- **Old Money Color Palette Tests** (2025-12-20)
+  - Comprehensive test suite for Old Money theme implementation
+  - **OldMoneyColorsTests.swift** - Tests for color values:
+    - Light mode base colors (ivory, cream, warmGray, stone, charcoal)
+    - Dark mode base colors (charcoal, slate, darkStone, mutedIvory, ivory)
+    - Accent colors (antiqueGold, softGold)
+    - Semantic colors (income, expense, warning, error, success)
+    - Category colors (food, transport, entertainment, etc.)
+    - Contrast tests (background vs surface)
+    - Color extension tests (Color.oldMoney accessors)
+  - **WidgetColorsTests.swift** - Tests for widget colors:
+    - Singleton pattern verification
+    - Light/dark mode base colors
+    - Accent and semantic colors
+    - Adaptive color existence
+    - Gradient tests
+    - Color extension tests (Color.widget)
+    - Consistency tests (widget colors match app colors)
+  - **OldMoneyThemeTests.swift** - Tests for theme configuration:
+    - Typography fonts (headline, title, body, caption, money)
+    - Shadow configurations (card, button, elevated, none)
+    - Border radius values (small, medium, large, extraLarge, circular)
+    - Border width values
+    - Spacing values (xs, sm, md, base, lg, xl, xxl)
+    - Animation durations (fast, standard, slow)
+    - View modifier existence tests
+    - Consistency tests (values increase progressively)
+    - Accessibility tests (minimum sizes)
+
+- **Old Money Color Palette Migration** (2025-12-19)
+  - Applied Old Money color palette across the app and widget views
+  - **Updated App Screens**:
+    - Dashboard (DashboardScreen, StatCard, BalanceCardView)
+    - Main/Navigation (iPadMainView, MoreScreen, LoginView, EmptyStateView)
+    - Auth and Onboarding screens
+    - Account feature (AccountsView, AccountDetailView, AccountCard, etc.)
+    - Transaction feature (TransactionsScreen, TransactionRow, etc.)
+    - Budget feature (BudgetScreen, BudgetCard, BudgetDetailSheet, BudgetCategoriesScreen)
+    - Bills feature (BillsScreen, BillRow, BillDetailView)
+    - Goals feature (GoalScreen, GoalCard, GoalProgressSheet)
+    - Reports feature (ReportsScreen, ReportSummaryCard, MetricView, SavingsRateView)
+    - CreditCard feature (CreditCardsScreen, CreditCardDetailView, summary cards)
+    - Loan feature (LoansScreen, summary cards, loan rows)
+    - Categories feature (CategoriesManagementScreen, category chips, subcategory rows)
+    - QuickActions feature (QuickActionsView, QuickActionButton)
+  - **Updated Widget Views**:
+    - BalanceWidgetView - Income/expense colors, text hierarchy
+    - BudgetWidgetView - Progress indicators, budget status colors
+    - BillsWidgetView - Due date urgency colors, status indicators
+    - GoalsWidgetView - Progress rings, milestone colors
+    - CreditCardWidgetView - Utilization gauges, brand colors
+    - TransactionsWidgetView - Income/expense styling
+  - Color mappings:
+    - `.primary` -> `Color.oldMoney.text`
+    - `.secondary` -> `Color.oldMoney.textSecondary`
+    - `.green` -> `Color.oldMoney.income`
+    - `.red` -> `Color.oldMoney.expense`
+    - `.blue` -> `Color.oldMoney.accent`
+    - `.orange` -> `Color.oldMoney.warning`
+    - `.systemBackground` -> `Color.oldMoney.background`
+    - `.systemGray6` -> `Color.oldMoney.surface`
+  - Widgets use `Color.widget.x` for lightweight palette access
+
 - **Old Money Color Palette** (2025-12-18)
   - Implemented sophisticated "Old Money" color theme with understated elegance aesthetic
   - **Core Files**:

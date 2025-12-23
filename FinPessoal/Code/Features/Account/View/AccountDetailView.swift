@@ -102,7 +102,7 @@ struct AccountDetailView: View {
       VStack(spacing: 4) {
         Text(LocalizedStringKey(account.type.rawValue))
           .font(.headline)
-          .foregroundColor(.secondary)
+          .foregroundStyle(Color.oldMoney.textSecondary)
 
         Text(account.formattedBalance)
           .font(.system(size: 32, weight: .bold, design: .rounded))
@@ -111,7 +111,7 @@ struct AccountDetailView: View {
     }
     .frame(maxWidth: .infinity)
     .padding(.vertical, 20)
-    .background(Color(.systemGray6))
+    .background(Color.oldMoney.surface)
     .cornerRadius(16)
     .accessibilityElement(children: .combine)
     .accessibilityLabel("Account Balance")
@@ -156,7 +156,7 @@ struct AccountDetailView: View {
         if !accountTransactions.isEmpty {
           Text(String(localized: "transactions.total.count", defaultValue: "\(accountTransactions.count) total"))
             .font(.caption)
-            .foregroundColor(.secondary)
+            .foregroundStyle(Color.oldMoney.textSecondary)
             .accessibilityLabel("\(accountTransactions.count) total transactions")
         }
       }
@@ -165,16 +165,16 @@ struct AccountDetailView: View {
         VStack(spacing: 12) {
           Image(systemName: "tray")
             .font(.system(size: 40))
-            .foregroundColor(.secondary)
+            .foregroundStyle(Color.oldMoney.textSecondary)
             .accessibilityHidden(true)
 
           Text(String(localized: "transactions.empty.title"))
             .font(.subheadline)
-            .foregroundColor(.secondary)
+            .foregroundStyle(Color.oldMoney.textSecondary)
 
           Text(String(localized: "transactions.empty.account.description"))
             .font(.caption)
-            .foregroundColor(.secondary)
+            .foregroundStyle(Color.oldMoney.textSecondary)
         }
         .frame(maxWidth: .infinity)
         .padding(.vertical, 40)
@@ -191,7 +191,7 @@ struct AccountDetailView: View {
             // Navegar para lista completa de transações
           }
           .font(.caption)
-          .foregroundColor(.blue)
+          .foregroundStyle(Color.oldMoney.accent)
           .padding(.top, 8)
           .accessibilityLabel("View All Transactions")
           .accessibilityHint("Navigate to view all \(accountTransactions.count) transactions")

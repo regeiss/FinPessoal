@@ -642,7 +642,7 @@ class FirebaseService {
 
 // MARK: - Firebase Errors
 
-enum FirebaseError: LocalizedError {
+enum FirebaseError: LocalizedError, Equatable {
   case userNotFound
   case accountNotFound
   case transactionNotFound

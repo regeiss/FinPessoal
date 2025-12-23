@@ -15,7 +15,7 @@ struct ReportsScreen: View {
         if viewModel.isLoading && viewModel.reportSummary == nil {
           ProgressView(String(localized: "reports.loading"))
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Color(.systemGroupedBackground))
+            .background(Color.oldMoney.background)
             .accessibilityLabel(String(localized: "reports.loading"))
             .accessibilityAddTraits(.updatesFrequently)
         } else {
@@ -55,7 +55,7 @@ struct ReportsScreen: View {
             }
             .padding()
           }
-          .background(Color(.systemGroupedBackground))
+          .background(Color.oldMoney.background)
         }
         
         // Error overlay
@@ -63,7 +63,7 @@ struct ReportsScreen: View {
           VStack(spacing: 16) {
             Image(systemName: "exclamationmark.triangle.fill")
               .font(.system(size: 48))
-              .foregroundColor(.orange)
+              .foregroundStyle(Color.oldMoney.warning)
               .accessibilityHidden(true)
 
             Text(String(localized: "reports.error.title"))
@@ -73,7 +73,7 @@ struct ReportsScreen: View {
 
             Text(errorMessage)
               .font(.subheadline)
-              .foregroundColor(.secondary)
+              .foregroundStyle(Color.oldMoney.textSecondary)
               .multilineTextAlignment(.center)
               .padding(.horizontal)
 
@@ -85,7 +85,7 @@ struct ReportsScreen: View {
             .accessibilityHint("Reloads the reports data")
           }
           .padding()
-          .background(Color(.systemBackground))
+          .background(Color.oldMoney.background)
           .clipShape(RoundedRectangle(cornerRadius: 16))
           .shadow(color: .gray.opacity(0.2), radius: 8)
           .padding()

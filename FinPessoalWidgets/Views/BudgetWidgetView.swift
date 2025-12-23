@@ -29,7 +29,7 @@ struct BudgetWidgetView: View {
     VStack(alignment: .leading, spacing: 8) {
       Label("Orçamentos", systemImage: "chart.pie")
         .font(.caption)
-        .foregroundStyle(.secondary)
+        .foregroundStyle(Color.widget.textSecondary)
 
       if data.budgets.isEmpty {
         emptyState
@@ -55,7 +55,7 @@ struct BudgetWidgetView: View {
         if !data.budgets.isEmpty {
           Text("\(data.budgets.count) ativos")
             .font(.caption)
-            .foregroundStyle(.secondary)
+            .foregroundStyle(Color.widget.textSecondary)
         }
       }
 
@@ -79,10 +79,10 @@ struct BudgetWidgetView: View {
       Spacer()
       Image(systemName: "chart.pie")
         .font(.largeTitle)
-        .foregroundStyle(.secondary)
+        .foregroundStyle(Color.widget.textSecondary)
       Text("Nenhum orçamento")
         .font(.caption)
-        .foregroundStyle(.secondary)
+        .foregroundStyle(Color.widget.textSecondary)
       Spacer()
     }
     .frame(maxWidth: .infinity)
@@ -108,7 +108,7 @@ struct BudgetWidgetView: View {
       GeometryReader { geometry in
         ZStack(alignment: .leading) {
           RoundedRectangle(cornerRadius: 2)
-            .fill(Color.gray.opacity(0.2))
+            .fill(Color.widget.divider)
 
           RoundedRectangle(cornerRadius: 2)
             .fill(colorForPercentage(budget.percentage))
@@ -136,16 +136,16 @@ struct BudgetWidgetView: View {
           .font(.caption)
         Text("/")
           .font(.caption)
-          .foregroundStyle(.secondary)
+          .foregroundStyle(Color.widget.textSecondary)
         Text(budget.formattedLimit)
           .font(.caption)
-          .foregroundStyle(.secondary)
+          .foregroundStyle(Color.widget.textSecondary)
       }
 
       GeometryReader { geometry in
         ZStack(alignment: .leading) {
           RoundedRectangle(cornerRadius: 3)
-            .fill(Color.gray.opacity(0.2))
+            .fill(Color.widget.divider)
 
           RoundedRectangle(cornerRadius: 3)
             .fill(colorForPercentage(budget.percentage))
@@ -161,7 +161,7 @@ struct BudgetWidgetView: View {
           Text("Excedido em \(budget.formattedRemaining)")
             .font(.caption2)
         }
-        .foregroundStyle(.red)
+        .foregroundStyle(Color.widget.expense)
       }
     }
     .padding(.vertical, 2)
@@ -174,13 +174,13 @@ struct BudgetWidgetView: View {
   private func colorForPercentage(_ percentage: Double) -> Color {
     switch percentage {
     case ..<75:
-      return .green
+      return Color.widget.income
     case 75..<90:
-      return .yellow
+      return Color.widget.warning
     case 90..<100:
-      return .orange
+      return Color.widget.warning.opacity(0.8)
     default:
-      return .red
+      return Color.widget.expense
     }
   }
 }

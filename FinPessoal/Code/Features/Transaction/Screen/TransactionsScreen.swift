@@ -135,7 +135,7 @@ struct TransactionsScreen: View {
     VStack(spacing: 20) {
       Image(systemName: "list.bullet.clipboard")
         .font(.system(size: 60))
-        .foregroundColor(.orange)
+        .foregroundStyle(Color.oldMoney.warning)
         .accessibilityHidden(true)
 
       Text(String(localized: "transactions.empty.title"))
@@ -145,7 +145,7 @@ struct TransactionsScreen: View {
 
       Text(String(localized: "transactions.empty.description"))
         .multilineTextAlignment(.center)
-        .foregroundColor(.secondary)
+        .foregroundStyle(Color.oldMoney.textSecondary)
         .padding(.horizontal)
 
       Button(String(localized: "transactions.add.button")) {
@@ -205,14 +205,14 @@ struct TransactionsScreen: View {
         HStack {
           Text(String(localized: "transactions.filter.showing.count", defaultValue: "Mostrando \(transactionViewModel.filteredTransactions.count) de \(transactionViewModel.transactions.count) transações"))
             .font(.caption)
-            .foregroundColor(.secondary)
+            .foregroundStyle(Color.oldMoney.textSecondary)
           
           if transactionViewModel.isFiltered {
             Button(String(localized: "common.clear.filters")) {
               transactionViewModel.clearFilters()
             }
             .font(.caption)
-            .foregroundColor(.blue)
+            .foregroundStyle(Color.oldMoney.accent)
             .accessibilityHint("Remove all active filters")
           }
         }
@@ -220,7 +220,7 @@ struct TransactionsScreen: View {
       }
     }
     .padding(.vertical, 8)
-    .background(Color(.systemGray6))
+    .background(Color.oldMoney.surface)
   }
   
   private var transactionsList: some View {
@@ -252,7 +252,7 @@ struct TransactionsScreen: View {
             Text(formatCurrency(dayTotal))
               .font(.caption)
               .fontWeight(.medium)
-              .foregroundColor(dayTotal >= 0 ? .green : .red)
+              .foregroundStyle(dayTotal >= 0 ? Color.oldMoney.income : Color.oldMoney.expense)
           }
         }
       }

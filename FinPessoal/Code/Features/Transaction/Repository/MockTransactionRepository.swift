@@ -7,12 +7,43 @@
 
 import Foundation
 
+@MainActor
 class MockTransactionRepository: TransactionRepositoryProtocol {
     private let mockUserId = "mock-user-123"
     private var transactions: [Transaction] = []
-    
+
+    // MARK: - Test Configuration
+    /// Set mock transactions for testing
+    var mockTransactions: [Transaction] {
+        get { transactions }
+        set { transactions = newValue }
+    }
+
+    /// When true, operations will throw mockError
+    var shouldFail: Bool = false
+
+    /// Error to throw when shouldFail is true
+    var mockError: Error = FirebaseError.networkError
+
+    /// Mock value for getTotalIncome
+    var mockTotalIncome: Double?
+
+    /// Mock value for getTotalExpenses
+    var mockTotalExpenses: Double?
+
+    /// Delay in seconds before operations complete (0 = use default)
+    var delay: TimeInterval = 0
+
     init() {
         setupMockData()
+    }
+
+    private func performDelay() async throws {
+        if shouldFail {
+            throw mockError
+        }
+        let nanoseconds = delay > 0 ? UInt64(delay * 1_000_000_000) : 300_000_000
+        try await Task.sleep(nanoseconds: nanoseconds)
     }
     
     private func setupMockData() {
@@ -216,7 +247,7 @@ class MockTransactionRepository: TransactionRepositoryProtocol {
     // MARK: - Basic CRUD Operations
     
     func getTransactions() async throws -> [Transaction] {
-        try await Task.sleep(nanoseconds: 300_000_000)
+        try await performDelay()
         return transactions.sorted { $0.date > $1.date }
     }
     
@@ -306,11 +337,17 @@ class MockTransactionRepository: TransactionRepositoryProtocol {
     // MARK: - Statistics Operations
     
     func getTotalIncome(for period: TransactionPeriod) async throws -> Double {
+        if let mockValue = mockTotalIncome {
+            return mockValue
+        }
         let transactions = try await getTransactions(for: period)
         return transactions.filter { $0.type == .income }.reduce(0) { $0 + $1.amount }
     }
-    
+
     func getTotalExpenses(for period: TransactionPeriod) async throws -> Double {
+        if let mockValue = mockTotalExpenses {
+            return mockValue
+        }
         let transactions = try await getTransactions(for: period)
         return transactions.filter { $0.type == .expense }.reduce(0) { $0 + $1.amount }
     }

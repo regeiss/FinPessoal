@@ -49,7 +49,7 @@ struct BillsScreen: View {
             Image(systemName: "line.3.horizontal.decrease.circle")
             if viewModel.isFiltered {
               Circle()
-                .fill(Color.blue)
+                .fill(Color.oldMoney.accent)
                 .frame(width: 8, height: 8)
             }
           }
@@ -193,7 +193,7 @@ struct BillsScreen: View {
     VStack(spacing: 16) {
       Image(systemName: "doc.text.magnifyingglass")
         .font(.system(size: 60))
-        .foregroundColor(.gray)
+        .foregroundStyle(Color.oldMoney.textSecondary)
         .accessibilityHidden(true)
 
       Text(String(localized: "bills.empty.title"))
@@ -202,7 +202,7 @@ struct BillsScreen: View {
 
       Text(String(localized: "bills.empty.message"))
         .font(.body)
-        .foregroundColor(.secondary)
+        .foregroundStyle(Color.oldMoney.textSecondary)
         .multilineTextAlignment(.center)
         .padding(.horizontal, 40)
 
@@ -211,10 +211,10 @@ struct BillsScreen: View {
       }) {
         Label(String(localized: "bills.add.first"), systemImage: "plus.circle.fill")
           .font(.headline)
-          .foregroundColor(.white)
+          .foregroundStyle(Color.oldMoney.background)
           .padding(.horizontal, 24)
           .padding(.vertical, 12)
-          .background(Color.blue)
+          .background(Color.oldMoney.accent)
           .cornerRadius(10)
       }
       .padding(.top, 8)
@@ -231,7 +231,7 @@ struct BillsScreen: View {
     VStack(spacing: 16) {
       Image(systemName: "magnifyingglass")
         .font(.system(size: 50))
-        .foregroundColor(.gray)
+        .foregroundStyle(Color.oldMoney.textSecondary)
         .accessibilityHidden(true)
 
       Text(String(localized: "bills.no.results"))
@@ -242,7 +242,7 @@ struct BillsScreen: View {
         viewModel.clearFilters()
       }
       .font(.subheadline)
-      .foregroundColor(.blue)
+      .foregroundStyle(Color.oldMoney.accent)
       .accessibilityLabel("Clear Filters")
       .accessibilityHint("Removes all applied filters to show all bills")
     }
@@ -310,7 +310,7 @@ struct SearchBar: View {
   var body: some View {
     HStack {
       Image(systemName: "magnifyingglass")
-        .foregroundColor(.secondary)
+        .foregroundStyle(Color.oldMoney.textSecondary)
         .accessibilityHidden(true)
 
       TextField(placeholder, text: $text)
@@ -324,14 +324,14 @@ struct SearchBar: View {
           text = ""
         }) {
           Image(systemName: "xmark.circle.fill")
-            .foregroundColor(.secondary)
+            .foregroundStyle(Color.oldMoney.textSecondary)
         }
         .accessibilityLabel("Clear Search")
         .accessibilityHint("Clears the search text")
       }
     }
     .padding(8)
-    .background(Color(.secondarySystemGroupedBackground))
+    .background(Color.oldMoney.surface)
     .cornerRadius(10)
   }
 }

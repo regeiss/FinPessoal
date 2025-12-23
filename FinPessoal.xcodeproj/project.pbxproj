@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E11447702EAE8AFC00060A67 /* Roadmap.md in Resources */ = {isa = PBXBuildFile; fileRef = E11447672EAE8AFC00060A67 /* Roadmap.md */; };
 		E11447732EAE8AFC00060A67 /* Help.md in Resources */ = {isa = PBXBuildFile; fileRef = E114476C2EAE8AFC00060A67 /* Help.md */; };
 		E114481D2EAE8AFC00060A67 /* TESTS.md in Resources */ = {isa = PBXBuildFile; fileRef = E114481B2EAE8AFC00060A67 /* TESTS.md */; };
 		E11448572EB03E6300060A67 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = E11448562EB03E6300060A67 /* README.md */; };
@@ -116,7 +115,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		E11447672EAE8AFC00060A67 /* Roadmap.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Roadmap.md; sourceTree = "<group>"; };
 		E114476C2EAE8AFC00060A67 /* Help.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Help.md; sourceTree = "<group>"; };
 		E114481B2EAE8AFC00060A67 /* TESTS.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = TESTS.md; sourceTree = "<group>"; };
 		E11448562EB03E6300060A67 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -345,7 +343,6 @@
 				E1E8F1CF2E4D609B00FFD30F /* MockLogin.md */,
 				E177697E2E3E4AFF0028E21B /* Products */,
 				E11448562EB03E6300060A67 /* README.md */,
-				E11447672EAE8AFC00060A67 /* Roadmap.md */,
 				E15E49A12EF22B9E004A2129 /* Shared */,
 				E114481B2EAE8AFC00060A67 /* TESTS.md */,
 				E15E49F52EF4CF9C004A2129 /* Docs */,
@@ -491,7 +488,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 2620;
-				LastUpgradeCheck = 2600;
+				LastUpgradeCheck = 2620;
 				TargetAttributes = {
 					E15E497B2EF1A329004A2129 = {
 						CreatedOnToolsVersion = 26.2;
@@ -551,7 +548,6 @@
 				E1776A212E3E51BE0028E21B /* .swiftlint.yml in Resources */,
 				E191F5132E9C65D2002DB0A9 /* CHANGELOG.md in Resources */,
 				E11448572EB03E6300060A67 /* README.md in Resources */,
-				E11447702EAE8AFC00060A67 /* Roadmap.md in Resources */,
 				E11447732EAE8AFC00060A67 /* Help.md in Resources */,
 				E1E8F1D02E4D609B00FFD30F /* MockLogin.md in Resources */,
 				E15E49F62EF4CF9C004A2129 /* Roadmap.md in Resources */,
@@ -731,6 +727,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -760,6 +757,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 4DLN7FPJ74;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -783,6 +781,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -794,6 +793,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -823,6 +823,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 4DLN7FPJ74;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -839,6 +840,7 @@
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 			};
@@ -852,6 +854,7 @@
 				CODE_SIGN_ENTITLEMENTS = FinPessoal/FinPessoal.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 4DLN7FPJ74;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -902,6 +905,7 @@
 				CODE_SIGN_ENTITLEMENTS = FinPessoal/FinPessoal.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 4DLN7FPJ74;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;

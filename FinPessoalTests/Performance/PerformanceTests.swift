@@ -17,7 +17,7 @@ final class PerformanceTests: XCTestCase {
         
         measure {
             for account in accounts {
-                _ = account.toDictionary()
+                _ = try! account.toDictionary()
             }
         }
     }
@@ -27,27 +27,27 @@ final class PerformanceTests: XCTestCase {
         
         measure {
             for transaction in transactions {
-                _ = transaction.toDictionary()
+                _ = try! transaction.toDictionary()
             }
         }
     }
     
     func testAccountFromDictionaryPerformance() throws {
-        let accountDictionaries = createLargeAccountDataset(count: 1000).map { $0.toDictionary() }
-        
+        let accountDictionaries = try createLargeAccountDataset(count: 1000).map { try $0.toDictionary() }
+
         measure {
             for dictionary in accountDictionaries {
-                _ = Account.fromDictionary(dictionary)
+                _ = try! Account.fromDictionary(dictionary)
             }
         }
     }
     
     func testTransactionFromDictionaryPerformance() throws {
-        let transactionDictionaries = createLargeTransactionDataset(count: 1000).map { $0.toDictionary() }
-        
+        let transactionDictionaries = try createLargeTransactionDataset(count: 1000).map { try $0.toDictionary() }
+
         measure {
             for dictionary in transactionDictionaries {
-                _ = Transaction.fromDictionary(dictionary)
+                _ = try! Transaction.fromDictionary(dictionary)
             }
         }
     }
@@ -156,22 +156,22 @@ final class PerformanceTests: XCTestCase {
     // MARK: - Memory Performance Tests
     
     func testLargeDatasetMemoryUsage() throws {
-        measureMetrics([.memoryPhysical]) {
+        measure(metrics: [XCTMemoryMetric()]) {
             let accounts = createLargeAccountDataset(count: 10000)
             let transactions = createLargeTransactionDataset(count: 50000)
-            
+
             // Simulate processing the data
             var totalBalance: Double = 0
             var totalTransactionAmount: Double = 0
-            
+
             for account in accounts {
                 totalBalance += account.balance
             }
-            
+
             for transaction in transactions {
                 totalTransactionAmount += transaction.amount
             }
-            
+
             XCTAssertTrue(totalBalance > 0)
             XCTAssertTrue(totalTransactionAmount > 0)
         }
@@ -268,17 +268,23 @@ final class PerformanceTests: XCTestCase {
     
     private func createLargeTransactionDataset(count: Int) -> [Transaction] {
         return (0..<count).map { index in
-            Transaction(
+            let randomType: TransactionType = TransactionType.allCases.randomElement() ?? .expense
+            let randomCategory: TransactionCategory = TransactionCategory.allCases.randomElement() ?? .other
+            let timeOffset = Double(-index * 3600)
+            let transactionDate = Date().addingTimeInterval(timeOffset)
+            let createdDate = Date().addingTimeInterval(timeOffset)
+
+            return Transaction(
                 id: "transaction-\(index)",
                 accountId: "account-\(index % 100)",
                 amount: Double.random(in: 1...1000),
-                type: TransactionType.allCases.randomElement() ?? .expense,
-                category: TransactionCategory.allCases.randomElement() ?? .other,
                 description: "Test Transaction \(index)",
-                date: Date().addingTimeInterval(Double(-index * 3600)),
-                userId: "user-\(index % 100)",
+                category: randomCategory,
+                type: randomType,
+                date: transactionDate,
                 isRecurring: Bool.random(),
-                createdAt: Date().addingTimeInterval(Double(-index * 3600)),
+                userId: "user-\(index % 100)",
+                createdAt: createdDate,
                 updatedAt: Date()
             )
         }

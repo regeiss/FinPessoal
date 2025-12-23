@@ -75,7 +75,7 @@ struct CreditCardsScreen: View {
         VStack(spacing: 20) {
             Image(systemName: "creditcard")
                 .font(.system(size: 60))
-                .foregroundColor(.blue)
+                .foregroundStyle(Color.oldMoney.accent)
             
             Text(String(localized: "creditcard.empty.title"))
                 .font(.title2)
@@ -83,7 +83,7 @@ struct CreditCardsScreen: View {
             
             Text(String(localized: "creditcard.empty.description"))
                 .multilineTextAlignment(.center)
-                .foregroundColor(.secondary)
+                .foregroundStyle(Color.oldMoney.textSecondary)
                 .padding(.horizontal)
             
             Button(String(localized: "creditcard.add.button")) {
@@ -118,12 +118,12 @@ struct CreditCardsScreen: View {
                         Spacer()
                         Text("\(creditCardService.creditCards.count)")
                             .font(.caption)
-                            .foregroundColor(.secondary)
+                            .foregroundStyle(Color.oldMoney.textSecondary)
                     }
                 } footer: {
                     Text(String(localized: "creditcard.cards.footer"))
                         .font(.caption)
-                        .foregroundColor(.secondary)
+                        .foregroundStyle(Color.oldMoney.textSecondary)
                 }
                 
                 // Due Soon Section
@@ -135,7 +135,7 @@ struct CreditCardsScreen: View {
                     } header: {
                         HStack {
                             Image(systemName: "exclamationmark.triangle")
-                                .foregroundColor(.orange)
+                                .foregroundStyle(Color.oldMoney.warning)
                             Text(String(localized: "creditcard.due_soon.header"))
                                 .font(.headline)
                         }
@@ -153,28 +153,28 @@ struct CreditCardsScreen: View {
                     title: String(localized: "creditcard.summary.total_limit"),
                     value: formatCurrency(creditCardService.getTotalCreditLimit()),
                     icon: "creditcard",
-                    color: .blue
+                    color: Color.oldMoney.accent
                 )
-                
+
                 CreditCardSummaryCard(
                     title: String(localized: "creditcard.summary.available"),
                     value: formatCurrency(creditCardService.getTotalAvailableCredit()),
                     icon: "checkmark.circle",
-                    color: .green
+                    color: Color.oldMoney.income
                 )
-                
+
                 CreditCardSummaryCard(
                     title: String(localized: "creditcard.summary.current_balance"),
                     value: formatCurrency(creditCardService.getTotalCurrentBalance()),
                     icon: "exclamationmark.circle",
-                    color: .orange
+                    color: Color.oldMoney.warning
                 )
-                
+
                 CreditCardSummaryCard(
                     title: String(localized: "creditcard.summary.minimum_payment"),
                     value: formatCurrency(creditCardService.getTotalMinimumPayment()),
                     icon: "calendar",
-                    color: .red
+                    color: Color.oldMoney.expense
                 )
             }
             .padding(.horizontal)
@@ -202,7 +202,7 @@ struct CreditCardSummaryCard: View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
                 Image(systemName: icon)
-                    .foregroundColor(color)
+                    .foregroundStyle(color)
                 Spacer()
             }
             
@@ -212,11 +212,11 @@ struct CreditCardSummaryCard: View {
             
             Text(title)
                 .font(.caption)
-                .foregroundColor(.secondary)
+                .foregroundStyle(Color.oldMoney.textSecondary)
                 .lineLimit(2)
         }
         .padding()
-        .background(Color(.systemGray6))
+        .background(Color.oldMoney.surface)
         .cornerRadius(12)
         .frame(width: 150)
     }
@@ -251,19 +251,19 @@ struct CreditCardRow: View {
                         
                         Text("•••• \(creditCard.lastFourDigits)")
                             .font(.caption)
-                            .foregroundColor(.secondary)
+                            .foregroundStyle(Color.oldMoney.textSecondary)
                     }
                     
                     Text(creditCard.brand.displayName)
                         .font(.caption)
-                        .foregroundColor(.secondary)
+                        .foregroundStyle(Color.oldMoney.textSecondary)
                     
                     // Utilization Bar
                     VStack(alignment: .leading, spacing: 2) {
                         HStack {
                             Text(String(localized: "creditcard.utilization"))
                                 .font(.caption2)
-                                .foregroundColor(.secondary)
+                                .foregroundStyle(Color.oldMoney.textSecondary)
                             
                             Spacer()
                             
@@ -306,7 +306,7 @@ struct DueSoonCardRow: View {
     var body: some View {
         HStack {
             Image(systemName: "exclamationmark.triangle.fill")
-                .foregroundColor(.orange)
+                .foregroundStyle(Color.oldMoney.warning)
             
             VStack(alignment: .leading, spacing: 2) {
                 Text(creditCard.name)
@@ -314,7 +314,7 @@ struct DueSoonCardRow: View {
                 
                 Text(String(localized: "creditcard.due_date_format", defaultValue: "Due: \(formatDate(creditCard.nextDueDate))"))
                     .font(.caption)
-                    .foregroundColor(.secondary)
+                    .foregroundStyle(Color.oldMoney.textSecondary)
             }
             
             Spacer()
@@ -326,7 +326,7 @@ struct DueSoonCardRow: View {
                 
                 Text(String(localized: "creditcard.minimum_payment"))
                     .font(.caption2)
-                    .foregroundColor(.secondary)
+                    .foregroundStyle(Color.oldMoney.textSecondary)
             }
         }
         .padding(.vertical, 4)

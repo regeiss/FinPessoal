@@ -12,7 +12,7 @@ import SwiftUI
 
 /// Old Money color palette for widgets
 /// Lightweight version that works in widget extension without main app dependencies
-struct WidgetColors {
+struct WidgetColors: Equatable {
 
   // MARK: - Singleton
 
@@ -21,19 +21,19 @@ struct WidgetColors {
 
   // MARK: - Base Colors (Light Mode)
 
-  /// Primary background - Ivory #FAF8F5
+  /// Primary background - #E8E4DD (darker for card contrast)
   var backgroundLight: Color {
+    Color(red: 232/255, green: 228/255, blue: 221/255)
+  }
+
+  /// Card/surface backgrounds - #FAF8F5 (lighter for cards to pop)
+  var surfaceLight: Color {
     Color(red: 250/255, green: 248/255, blue: 245/255)
   }
 
-  /// Card/surface backgrounds - Cream #F5F2EC
-  var surfaceLight: Color {
-    Color(red: 245/255, green: 242/255, blue: 236/255)
-  }
-
-  /// Dividers, borders - Warm Gray #E8E4DD
+  /// Dividers, borders - #D8D4CC
   var dividerLight: Color {
-    Color(red: 232/255, green: 228/255, blue: 221/255)
+    Color(red: 216/255, green: 212/255, blue: 204/255)
   }
 
   /// Secondary text - Stone #9C9589

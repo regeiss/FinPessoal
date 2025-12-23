@@ -8,7 +8,7 @@
 import Foundation
 import FirebaseAuth
 
-enum AuthError: LocalizedError {
+enum AuthError: LocalizedError, Equatable {
   case noPresentingViewController
   case noClientID
   case noIDToken

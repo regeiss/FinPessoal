@@ -16,7 +16,7 @@ struct ReportSummaryCard: View {
       HStack {
         Text(String(localized: "reports.overview"))
           .font(.headline)
-          .foregroundColor(.primary)
+          .foregroundStyle(Color.oldMoney.text)
         Spacer()
       }
       
@@ -25,21 +25,21 @@ struct ReportSummaryCard: View {
         MetricView(
           title: String(localized: "reports.total.income"),
           value: summary.totalIncome,
-          color: .green,
+          color: Color.oldMoney.income,
           icon: "arrow.up.circle.fill"
         )
-        
+
         MetricView(
           title: String(localized: "reports.total.expenses"),
           value: summary.totalExpenses,
-          color: .red,
+          color: Color.oldMoney.expense,
           icon: "arrow.down.circle.fill"
         )
-        
+
         MetricView(
           title: String(localized: "reports.net.income"),
           value: summary.netIncome,
-          color: summary.netIncome >= 0 ? .green : .red,
+          color: summary.netIncome >= 0 ? Color.oldMoney.income : Color.oldMoney.expense,
           icon: summary.netIncome >= 0 ? "plus.circle.fill" : "minus.circle.fill"
         )
         
@@ -53,7 +53,7 @@ struct ReportSummaryCard: View {
         VStack(alignment: .leading, spacing: 4) {
           Text(String(localized: "reports.transaction.count"))
             .font(.caption)
-            .foregroundColor(.secondary)
+            .foregroundStyle(Color.oldMoney.textSecondary)
           Text("\(summary.transactionCount)")
             .font(.subheadline)
             .fontWeight(.medium)
@@ -64,7 +64,7 @@ struct ReportSummaryCard: View {
         VStack(alignment: .trailing, spacing: 4) {
           Text(String(localized: "reports.average.daily.spending"))
             .font(.caption)
-            .foregroundColor(.secondary)
+            .foregroundStyle(Color.oldMoney.textSecondary)
           Text(NumberFormatter.currency.string(from: NSNumber(value: summary.averageDailySpending)) ?? "R$ 0")
             .font(.subheadline)
             .fontWeight(.medium)
@@ -72,7 +72,7 @@ struct ReportSummaryCard: View {
       }
     }
     .padding()
-    .background(Color(.systemBackground))
+    .background(Color.oldMoney.background)
     .clipShape(RoundedRectangle(cornerRadius: 12))
     .shadow(color: .gray.opacity(0.2), radius: 4, x: 0, y: 2)
   }
@@ -83,24 +83,24 @@ struct MetricView: View {
   let value: Double
   let color: Color
   let icon: String
-  
+
   var body: some View {
     VStack(alignment: .leading, spacing: 8) {
       HStack {
         Image(systemName: icon)
-          .foregroundColor(color)
+          .foregroundStyle(color)
           .font(.system(size: 16, weight: .medium))
         
         Text(title)
           .font(.caption)
-          .foregroundColor(.secondary)
+          .foregroundStyle(Color.oldMoney.textSecondary)
           .lineLimit(1)
           .minimumScaleFactor(0.8)
       }
       
       Text(NumberFormatter.currency.string(from: NSNumber(value: value)) ?? "R$ 0")
         .font(.system(size: 18, weight: .semibold, design: .rounded))
-        .foregroundColor(.primary)
+        .foregroundStyle(Color.oldMoney.text)
         .lineLimit(1)
         .minimumScaleFactor(0.7)
     }
@@ -118,12 +118,12 @@ struct SavingsRateView: View {
     VStack(alignment: .leading, spacing: 8) {
       HStack {
         Image(systemName: rate >= 0 ? "chart.line.uptrend.xyaxis" : "chart.line.downtrend.xyaxis")
-          .foregroundColor(rate >= 20 ? .green : rate >= 0 ? .orange : .red)
+          .foregroundStyle(rate >= 20 ? Color.oldMoney.income : rate >= 0 ? Color.oldMoney.warning : Color.oldMoney.expense)
           .font(.system(size: 16, weight: .medium))
         
         Text(String(localized: "reports.savings.rate"))
           .font(.caption)
-          .foregroundColor(.secondary)
+          .foregroundStyle(Color.oldMoney.textSecondary)
           .lineLimit(1)
           .minimumScaleFactor(0.8)
       }
@@ -131,15 +131,15 @@ struct SavingsRateView: View {
       HStack(spacing: 4) {
         Text("\(Int(rate.rounded()))")
           .font(.system(size: 18, weight: .semibold, design: .rounded))
-          .foregroundColor(.primary)
+          .foregroundStyle(Color.oldMoney.text)
         Text("%")
           .font(.system(size: 14, weight: .medium))
-          .foregroundColor(.secondary)
+          .foregroundStyle(Color.oldMoney.textSecondary)
       }
     }
     .frame(maxWidth: .infinity, alignment: .leading)
     .padding(12)
-    .background((rate >= 20 ? Color.green : rate >= 0 ? Color.orange : Color.red).opacity(0.1))
+    .background((rate >= 20 ? Color.oldMoney.income : rate >= 0 ? Color.oldMoney.warning : Color.oldMoney.expense).opacity(0.1))
     .clipShape(RoundedRectangle(cornerRadius: 8))
   }
 }

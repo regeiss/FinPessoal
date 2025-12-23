@@ -9,7 +9,7 @@ import Foundation
 import XCTest
 
 @testable import FinPessoal
-
+@MainActor
 /// Configuration and utilities for testing
 struct TestConfiguration {
 
