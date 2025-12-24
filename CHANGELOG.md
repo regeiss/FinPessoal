@@ -7,6 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added - December 2025
+- **Architecture Diagram** (2025-12-23)
+  - Generated comprehensive Excalidraw architecture diagram for FinPessoal iOS app
+  - Visual representation of all architectural layers:
+    - Presentation Layer: SwiftUI Views for all 20+ features
+    - Business Logic Layer: ViewModels with MVVM pattern
+    - Repository Pattern: Protocols, Mock repositories, and Firebase repositories
+    - Core Services: FirebaseService, AI, Analytics, Notifications, Widget Sync, Deep Links, Live Activities
+    - Firebase Backend: Authentication, Realtime Database, Analytics, Crashlytics
+  - Shows data flow from users through all layers to Firebase backend
+  - Includes external authentication providers (Google Auth, Apple Auth)
+  - Color-coded components by type (Frontend: Blue, Backend: Purple, Database: Green, etc.)
+  - Elbow-style arrows showing relationships and dependencies
+  - Complete with all 20+ app features: Auth, Dashboard, Transactions, Budget, Goals, Reports, Accounts, Bills, CreditCards, Loans, Categories, Profile, Settings, Onboarding, Help, Insights
+  - Saved to: docs/architecture/finpessoal-architecture.excalidraw
+  - Can be opened in Excalidraw.com or VS Code Excalidraw extension
+
 ### Fixed - December 2025
 - **MockRepository runtime crash** (2025-12-21)
   - Added `@MainActor` annotation to `MockTransactionRepository` and `MockAccountRepository`
