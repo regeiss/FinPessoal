@@ -72,6 +72,7 @@ struct QuickActionsView: View {
     .accessibilityElement(children: .contain)
     .sheet(isPresented: $showingAddTransaction) {
       AddTransactionView(transactionViewModel: TransactionViewModel(repository: AppConfiguration.shared.createTransactionRepository()))
+        .environmentObject(AccountViewModel(repository: AppConfiguration.shared.createAccountRepository()))
     }
     .sheet(isPresented: $showingAddBudget) {
       AddBudgetScreen()
@@ -80,6 +81,7 @@ struct QuickActionsView: View {
     }
     .sheet(isPresented: $showingGoalScreen) {
       GoalScreen()
+        .environmentObject(FinanceViewModel(financeRepository: AppConfiguration.shared.createFinanceRepository()))
     }
   }
 }

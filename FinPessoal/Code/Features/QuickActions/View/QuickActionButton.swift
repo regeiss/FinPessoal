@@ -32,8 +32,9 @@ struct QuickActionButton: View {
       .cornerRadius(8)
     }
     .accessibilityElement(children: .combine)
-    .accessibilityLabel(String(localized: LocalizedStringKey(title)))
-    .accessibilityHint(String(localized: "quickaction.hint", defaultValue: "Double tap to \(title)"))
+    .accessibilityLabel(Text(LocalizedStringKey(title)))
+    .accessibilityHint("Double tap to \(title)")
     .accessibilityAddTraits(.isButton)
   }
 }
+

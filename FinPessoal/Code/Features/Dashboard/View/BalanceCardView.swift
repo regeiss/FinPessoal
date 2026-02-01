@@ -16,32 +16,33 @@ struct BalanceCardView: View {
       HStack {
         Text("dashboard.total.balance")
           .font(.headline)
-          .foregroundColor(.secondary)
+          .foregroundStyle(Color.oldMoney.textSecondary)
         Spacer()
         Image(systemName: "eye")
-          .foregroundColor(.secondary)
+          .foregroundStyle(Color.oldMoney.textSecondary)
           .accessibilityHidden(true)
       }
-      
+
       Text(totalBalance.formatted(.currency(code: "BRL")))
-        .font(.largeTitle)
-        .fontWeight(.bold)
-      
+        .font(OldMoneyTheme.Typography.moneyLarge)
+        .foregroundStyle(Color.oldMoney.text)
+
       HStack {
         VStack(alignment: .leading) {
           Text("dashboard.monthly.expenses")
             .font(.caption)
-            .foregroundColor(.secondary)
+            .foregroundStyle(Color.oldMoney.textSecondary)
           Text(monthlyExpenses.formatted(.currency(code: "BRL")))
-            .font(.headline)
-            .foregroundColor(.red)
+            .font(OldMoneyTheme.Typography.moneyMedium)
+            .foregroundStyle(Color.oldMoney.expense)
         }
         Spacer()
       }
     }
     .padding()
-    .background(Color(.systemGray6))
-    .cornerRadius(12)
+    .background(Color.oldMoney.surface)
+    .clipShape(RoundedRectangle(cornerRadius: OldMoneyTheme.Radius.medium))
+    .oldMoneyCardShadow()
     .accessibilityElement(children: .combine)
     .accessibilityLabel("Balance Overview")
     .accessibilityValue("Total balance: \(totalBalance.formatted(.currency(code: "BRL"))), Monthly expenses: \(monthlyExpenses.formatted(.currency(code: "BRL")))")

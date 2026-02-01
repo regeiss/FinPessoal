@@ -7,6 +7,89 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added - December 2025
+- **Old Money Color Palette** (2025-12-18)
+  - Implemented sophisticated "Old Money" color theme with understated elegance aesthetic
+  - **Core Files**:
+    - OldMoneyColors.swift - Raw color definitions with Light/Dark mode support
+    - Color+OldMoney.swift - SwiftUI extension for easy palette access (`Color.oldMoney.background`)
+    - OldMoneyTheme.swift - Typography, shadows, spacing, and animation configurations
+    - WidgetColors.swift (Shared/) - Lightweight colors for widget extension
+  - **Light Mode Base Colors**:
+    - Ivory (#FAF8F5) - Primary background
+    - Cream (#F5F2EC) - Card/surface backgrounds
+    - Warm Gray (#E8E4DD) - Dividers, subtle borders
+    - Stone (#9C9589) - Secondary text, icons
+    - Charcoal (#3D3A36) - Primary text
+  - **Dark Mode Base Colors**:
+    - Charcoal Dark (#1C1B19) - Primary background
+    - Slate (#2A2826) - Card/surface backgrounds
+    - Dark Stone (#3D3A36) - Dividers, subtle borders
+    - Muted Ivory (#A8A49C) - Secondary text
+    - Ivory (#FAF8F5) - Primary text
+  - **Accent Colors**:
+    - Antique Gold (#B8965C) - Primary accent, CTAs, highlights
+    - Soft Gold (#D4BA8A) - Secondary accent, hover states
+  - **Semantic Colors** (with Light/Dark variants):
+    - Income Green, Expense Rose, Warning Amber, Error Burgundy
+    - Success Sage, Neutral Steel, Attention Terracotta
+  - **10 Muted Category Colors** for transaction categories
+  - **Typography System**:
+    - Headlines: System Serif (New York) - Medium weight
+    - Body: SF Pro - Regular weight
+    - Money: SF Pro Rounded - Medium weight
+    - Captions: SF Pro - Light weight
+  - **Polish Details**:
+    - Shadows: Subtle 5-8% opacity charcoal shadows
+    - Border Radius: 8pt (small), 12pt (medium), 16pt (large)
+    - Animations: 200-300ms easeInOut, no bouncing
+  - **View Modifiers**: oldMoneyCard(), oldMoneyButton(), oldMoneyBackground()
+  - **WCAG AA Compliant** contrast ratios for accessibility
+  - Design document: Docs/plans/2025-12-18-old-money-color-palette-design.md
+
+- **Widget Suite Implementation** (2025-12-17)
+  - Implemented complete widget suite as designed in the widget design document
+  - **Home Screen Widgets (6 widgets)**:
+    - Balance Widget (Small/Medium/Large) - Total balance with account breakdown
+    - Budget Widget (Medium/Large) - Budget progress with visual indicators
+    - Bills Widget (Small/Medium) - Upcoming bills with due date countdown
+    - Goals Widget (Small/Medium/Large) - Goal progress with circular gauges
+    - Credit Card Widget (Small/Medium) - Card utilization overview
+    - Transactions Widget (Medium/Large) - Recent transactions list
+  - **Lock Screen Widgets (4 widgets)**:
+    - Balance Lock Widget (Circular/Rectangular/Inline) - Quick balance view
+    - Bills Lock Widget (Circular/Rectangular/Inline) - Next bill reminder
+    - Budget Lock Widget (Circular/Rectangular/Inline) - Budget gauge
+    - Goals Lock Widget (Circular/Rectangular/Inline) - Goal progress
+  - **Live Activities (4 types)**:
+    - Bill Reminder Live Activity - Dynamic Island with payment countdown
+    - Budget Alert Live Activity - Real-time budget progress tracking
+    - Goal Milestone Live Activity - Goal contribution tracking
+    - Credit Card Reminder Live Activity - Payment due reminders
+  - **Data Layer**:
+    - SharedDataManager - App Groups data sync between app and widgets
+    - WidgetDataProvider - Model conversion for lightweight widget data
+    - WidgetSyncService - Centralized sync orchestration
+  - **Deep Linking**:
+    - URL scheme: finpessoal://
+    - Supports navigation to all app sections from widgets
+    - DeepLinkHandler with destination parsing
+  - **LiveActivityManager** - Start/Update/End lifecycle management
+  - Full accessibility with VoiceOver labels on all widgets
+  - Unit tests for widget data models and deep link handling
+  - Updated Info.plist with URL scheme and NSSupportsLiveActivities
+
+- **Widget Suite Design Document** (2025-12-16)
+  - Comprehensive design for iOS widgets including Home Screen, Lock Screen, and Live Activities
+  - Home Screen widgets: Balance, Monthly Summary, Budget, Bills, Goals, Credit Card, Recent Transactions
+  - Lock Screen widgets: Balance, Bills Due, Budget, Goals, Quick Expense
+  - Live Activities: Bill Reminders, Budget Alerts, Goal Milestones, Credit Card Reminders
+  - Smart refresh strategy with different intervals per widget type
+  - Hybrid data architecture with App Groups cache + Firebase background refresh
+  - Deep links for quick actions (add transaction, pay bill, view details)
+  - Full accessibility support (VoiceOver, Dynamic Type, High Contrast)
+  - Design document: Docs/plans/2025-12-16-widgets-design.md
+
 ### Added - October 2025
 - **Comprehensive Accessibility Implementation Across Entire App** (2025-10-31)
   - Implemented WCAG 2.1 Level AA accessibility standards throughout the entire FinPessoal iOS app

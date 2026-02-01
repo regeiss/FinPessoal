@@ -16,6 +16,7 @@ import GoogleSignIn
 @main
 struct MoneyManagerApp: App {
   @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+  @Environment(\.scenePhase) private var scenePhase
 
   @StateObject private var authViewModel: AuthViewModel
   @StateObject private var financeViewModel: FinanceViewModel
@@ -24,6 +25,7 @@ struct MoneyManagerApp: App {
   @StateObject private var appState = AppState()
   @StateObject private var onboardingManager = OnboardingManager()
   @StateObject private var notificationManager = NotificationManager.shared
+  @StateObject private var deepLinkHandler = DeepLinkHandler.shared
   
   init() {
     // Always configure Firebase to prevent initialization warnings
@@ -64,15 +66,50 @@ struct MoneyManagerApp: App {
         .environmentObject(appState)
         .environmentObject(onboardingManager)
         .environmentObject(notificationManager)
+        .environmentObject(deepLinkHandler)
         .onAppear {
           authViewModel.checkAuthenticationState()
           requestNotificationPermissions()
         }
         .onOpenURL { url in
-          if !AppConfiguration.shared.useMockData {
-            GIDSignIn.sharedInstance.handle(url)
-          }
+          handleOpenURL(url)
         }
+        .onChange(of: scenePhase) { oldPhase, newPhase in
+          handleScenePhaseChange(from: oldPhase, to: newPhase)
+        }
+    }
+  }
+
+  // MARK: - Scene Phase Handling
+
+  private func handleScenePhaseChange(from oldPhase: ScenePhase, to newPhase: ScenePhase) {
+    switch newPhase {
+    case .background:
+      // Sync widget data when app goes to background
+      financeViewModel.syncWidgetData()
+      print("App entering background - widget data synced")
+    case .active:
+      // Could trigger data refresh when app becomes active
+      break
+    case .inactive:
+      break
+    @unknown default:
+      break
+    }
+  }
+
+  // MARK: - URL Handling
+
+  private func handleOpenURL(_ url: URL) {
+    // Try to handle as widget deep link first
+    if url.scheme == DeepLinkHandler.urlScheme {
+      deepLinkHandler.handleURL(url)
+      return
+    }
+
+    // Handle Google Sign-In URL
+    if !AppConfiguration.shared.useMockData {
+      GIDSignIn.sharedInstance.handle(url)
     }
   }
 

@@ -87,33 +87,52 @@ class FinanceViewModel: ObservableObject {
   func loadData() async {
     isLoading = true
     errorMessage = nil
-    
+
     do {
       async let accountsData = financeRepository.getAccounts()
       async let transactionsData = financeRepository.getTransactions()
       async let budgetsData = financeRepository.getBudgets()
       async let goalsData = financeRepository.getGoals()
-      
+
       let loadedAccounts = try await accountsData
       let loadedTransactions = try await transactionsData
       let loadedBudgets = try await budgetsData
       let loadedGoals = try await goalsData
-      
+
       await MainActor.run {
         self.accounts = loadedAccounts
         self.transactions = loadedTransactions.sorted { $0.date > $1.date }
         self.budgets = loadedBudgets
         self.goals = loadedGoals
       }
+
+      // Sync data to widgets
+      await MainActor.run {
+        syncWidgetData()
+      }
     } catch {
       await MainActor.run {
         self.errorMessage = "Erro ao carregar dados: \(error.localizedDescription)"
       }
     }
-    
+
     await MainActor.run {
       self.isLoading = false
     }
+  }
+
+  // MARK: - Widget Data Sync
+
+  /// Syncs current data to widgets via App Groups
+  func syncWidgetData() {
+    WidgetSyncService.shared.syncAllData(
+      accounts: accounts,
+      transactions: transactions,
+      budgets: budgets,
+      goals: goals,
+      bills: [],
+      creditCards: []
+    )
   }
   
   func refreshData() async {

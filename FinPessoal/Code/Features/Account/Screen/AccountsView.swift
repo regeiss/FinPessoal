@@ -51,6 +51,7 @@ struct AccountsView: View {
       if UIDevice.current.userInterfaceIdiom != .pad {
         if let selectedAccount = accountViewModel.selectedAccount {
           AccountDetailView(account: selectedAccount, accountViewModel: accountViewModel)
+            .environmentObject(financeViewModel)
         }
       }
     }

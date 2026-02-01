@@ -37,7 +37,7 @@ struct DashboardScreen: View {
       }
       .padding()
     }
-    .background(Color(.systemBackground))
+    .background(Color.oldMoney.background)
     .navigationTitle(String(localized: "tab.dashboard"))
     .toolbar {
       if UIDevice.current.userInterfaceIdiom != .pad {
@@ -64,7 +64,7 @@ struct DashboardScreen: View {
       if viewModel.isLoading && viewModel.recentTransactions.isEmpty {
         ProgressView(String(localized: "dashboard.loading", defaultValue: "Carregando..."))
           .frame(maxWidth: .infinity, maxHeight: .infinity)
-          .background(Color(.systemBackground))
+          .background(Color.oldMoney.background)
           .accessibilityLabel("Loading dashboard data, please wait")
       }
     }

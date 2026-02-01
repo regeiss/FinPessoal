@@ -221,7 +221,7 @@ struct DetailView: View {
           }
         }
       }
-      .background(Color(.systemGroupedBackground))
+      .background(Color.oldMoney.background)
       .navigationTitle(navigationState.selectedSidebarItem?.displayName ?? String(localized: "navigation.dashboard.title", defaultValue: "Dashboard"))
       .navigationBarTitleDisplayMode(.large)
     }
@@ -233,7 +233,7 @@ struct DetailView: View {
       VStack(spacing: 24) {
         Image(systemName: "chart.line.uptrend.xyaxis")
           .font(.system(size: 64))
-          .foregroundColor(.blue)
+          .foregroundStyle(Color.oldMoney.accent)
         
         Text("Dashboard Overview")
           .font(.title2)
@@ -241,7 +241,7 @@ struct DetailView: View {
         
         Text("Your financial overview and key metrics will be displayed here.")
           .multilineTextAlignment(.center)
-          .foregroundColor(.secondary)
+          .foregroundStyle(Color.oldMoney.textSecondary)
           .padding(.horizontal, 32)
         
         // TODO: Add finance stats when data is available
@@ -256,7 +256,7 @@ struct DetailView: View {
       VStack(spacing: 24) {
         Image(systemName: "creditcard")
           .font(.system(size: 64))
-          .foregroundColor(.green)
+          .foregroundStyle(Color.oldMoney.income)
         
         Text("Accounts")
           .font(.title2)
@@ -264,7 +264,7 @@ struct DetailView: View {
         
         Text("Select an account from the list to view its details and transactions.")
           .multilineTextAlignment(.center)
-          .foregroundColor(.secondary)
+          .foregroundStyle(Color.oldMoney.textSecondary)
           .padding(.horizontal, 32)
       }
       .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -277,7 +277,7 @@ struct DetailView: View {
       VStack(spacing: 24) {
         Image(systemName: "list.bullet.rectangle")
           .font(.system(size: 64))
-          .foregroundColor(.orange)
+          .foregroundStyle(Color.oldMoney.warning)
         
         Text("Transactions")
           .font(.title2)
@@ -285,7 +285,7 @@ struct DetailView: View {
         
         Text("Select a transaction from the list to view its details.")
           .multilineTextAlignment(.center)
-          .foregroundColor(.secondary)
+          .foregroundStyle(Color.oldMoney.textSecondary)
           .padding(.horizontal, 32)
       }
       .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -298,7 +298,7 @@ struct DetailView: View {
       VStack(spacing: 24) {
         Image(systemName: "chart.bar.doc.horizontal")
           .font(.system(size: 64))
-          .foregroundColor(.purple)
+          .foregroundStyle(Color.oldMoney.accent)
         
         Text("Reports")
           .font(.title2)
@@ -306,7 +306,7 @@ struct DetailView: View {
         
         Text("Financial reports and analytics will be displayed here.")
           .multilineTextAlignment(.center)
-          .foregroundColor(.secondary)
+          .foregroundStyle(Color.oldMoney.textSecondary)
           .padding(.horizontal, 32)
       }
       .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -319,7 +319,7 @@ struct DetailView: View {
       VStack(spacing: 24) {
         Image(systemName: "target")
           .font(.system(size: 64))
-          .foregroundColor(.red)
+          .foregroundStyle(Color.oldMoney.expense)
         
         Text("Budgets")
           .font(.title2)
@@ -327,7 +327,7 @@ struct DetailView: View {
         
         Text("Create and manage your budgets to track your spending.")
           .multilineTextAlignment(.center)
-          .foregroundColor(.secondary)
+          .foregroundStyle(Color.oldMoney.textSecondary)
           .padding(.horizontal, 32)
       }
       .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -340,7 +340,7 @@ struct DetailView: View {
       VStack(spacing: 24) {
         Image(systemName: "flag.checkered")
           .font(.system(size: 64))
-          .foregroundColor(.indigo)
+          .foregroundStyle(Color.oldMoney.accent)
 
         Text("Goals")
           .font(.title2)
@@ -348,7 +348,7 @@ struct DetailView: View {
 
         Text("Set and track your financial goals.")
           .multilineTextAlignment(.center)
-          .foregroundColor(.secondary)
+          .foregroundStyle(Color.oldMoney.textSecondary)
           .padding(.horizontal, 32)
       }
       .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -361,7 +361,7 @@ struct DetailView: View {
       VStack(spacing: 24) {
         Image(systemName: "doc.text")
           .font(.system(size: 64))
-          .foregroundColor(.teal)
+          .foregroundStyle(Color.oldMoney.accent)
 
         Text("Bills")
           .font(.title2)
@@ -369,7 +369,7 @@ struct DetailView: View {
 
         Text("Manage your recurring bills and payment reminders.")
           .multilineTextAlignment(.center)
-          .foregroundColor(.secondary)
+          .foregroundStyle(Color.oldMoney.textSecondary)
           .padding(.horizontal, 32)
       }
       .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -382,7 +382,7 @@ struct SettingsDetailView: View {
     VStack(spacing: 24) {
       Image(systemName: "gear")
         .font(.system(size: 64))
-        .foregroundColor(.gray)
+        .foregroundStyle(Color.oldMoney.textSecondary)
       
       Text("Settings")
         .font(.title2)
@@ -390,7 +390,7 @@ struct SettingsDetailView: View {
       
       Text("Configure your app preferences and account settings.")
         .multilineTextAlignment(.center)
-        .foregroundColor(.secondary)
+        .foregroundStyle(Color.oldMoney.textSecondary)
         .padding(.horizontal, 32)
     }
     .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -500,7 +500,7 @@ struct SettingsDetailView: View {
         .padding(.top)
       }
       .frame(maxWidth: .infinity, maxHeight: .infinity)
-      .background(Color(.systemGroupedBackground))
+      .background(Color.oldMoney.background)
       .toolbar {
         ToolbarItem(placement: .navigationBarLeading) {
           Button(String(localized: "common.back", defaultValue: "Back")) {
@@ -567,7 +567,7 @@ struct SettingsDetailView: View {
         VStack(spacing: 6) {
           Text(LocalizedStringKey(account.type.rawValue))
             .font(.title3)
-            .foregroundColor(.secondary)
+            .foregroundStyle(Color.oldMoney.textSecondary)
           
           Text(account.formattedBalance)
             .font(.system(size: 42, weight: .bold, design: .rounded))
@@ -576,7 +576,7 @@ struct SettingsDetailView: View {
       }
       .frame(maxWidth: .infinity)
       .padding(.vertical, 30)
-      .background(Color(.systemGray6))
+      .background(Color.oldMoney.surface)
       .cornerRadius(20)
     }
     
@@ -619,7 +619,7 @@ struct SettingsDetailView: View {
           if !accountTransactions.isEmpty {
             Text(String(localized: "transactions.total.count", defaultValue: "\(accountTransactions.count) total"))
               .font(.caption)
-              .foregroundColor(.secondary)
+              .foregroundStyle(Color.oldMoney.textSecondary)
           }
         }
         
@@ -627,16 +627,16 @@ struct SettingsDetailView: View {
           VStack(spacing: 16) {
             Image(systemName: "tray")
               .font(.system(size: 50))
-              .foregroundColor(.secondary)
+              .foregroundStyle(Color.oldMoney.textSecondary)
             
             Text(String(localized: "transactions.empty.title", defaultValue: "No Transactions"))
               .font(.title3)
               .fontWeight(.medium)
-              .foregroundColor(.secondary)
+              .foregroundStyle(Color.oldMoney.textSecondary)
             
             Text(String(localized: "transactions.empty.account.description", defaultValue: "This account has no transactions yet."))
               .font(.body)
-              .foregroundColor(.secondary)
+              .foregroundStyle(Color.oldMoney.textSecondary)
               .multilineTextAlignment(.center)
           }
           .frame(maxWidth: .infinity)
@@ -653,7 +653,7 @@ struct SettingsDetailView: View {
               // Navigate to full transactions list
             }
             .font(.body)
-            .foregroundColor(.blue)
+            .foregroundStyle(Color.oldMoney.accent)
             .padding(.top, 16)
             .frame(maxWidth: .infinity)
           }
@@ -676,17 +676,17 @@ struct DetailStatCard: View {
       
       Text(title)
         .font(.caption)
-        .foregroundColor(.secondary)
+        .foregroundStyle(Color.oldMoney.textSecondary)
       
       Text(value)
         .font(.headline)
         .fontWeight(.semibold)
-        .foregroundColor(.primary)
+        .foregroundStyle(Color.oldMoney.text)
         .multilineTextAlignment(.center)
     }
     .frame(maxWidth: .infinity, minHeight: 100)
     .padding()
-    .background(Color(.systemBackground))
+    .background(Color.oldMoney.background)
     .cornerRadius(16)
     .shadow(color: Color.black.opacity(0.05), radius: 2, x: 0, y: 1)
   }
@@ -708,18 +708,18 @@ struct EnhancedTransactionRow: View {
         Text(transaction.description)
           .font(.headline)
           .fontWeight(.medium)
-          .foregroundColor(.primary)
+          .foregroundStyle(Color.oldMoney.text)
         
         HStack {
           Text(transaction.category.displayName)
             .font(.caption)
-            .foregroundColor(.secondary)
+            .foregroundStyle(Color.oldMoney.textSecondary)
           
           Spacer()
           
           Text(transaction.date.formatted(date: .abbreviated, time: .omitted))
             .font(.caption)
-            .foregroundColor(.secondary)
+            .foregroundStyle(Color.oldMoney.textSecondary)
         }
       }
       
@@ -731,7 +731,7 @@ struct EnhancedTransactionRow: View {
         .foregroundColor(transaction.type == .expense ? .red : .green)
     }
     .padding(16)
-    .background(Color(.systemBackground))
+    .background(Color.oldMoney.background)
     .cornerRadius(16)
     .shadow(color: Color.black.opacity(0.05), radius: 2, x: 0, y: 1)
   }
@@ -748,6 +748,7 @@ struct EnhancedTransactionRow: View {
     
     var body: some View {
       AddTransactionView(transactionViewModel: transactionViewModel)
+        .environmentObject(AccountViewModel(repository: AppConfiguration.shared.createAccountRepository()))
         .toolbar {
           ToolbarItem(placement: .navigationBarLeading) {
             Button(String(localized: "common.cancel", defaultValue: "Cancel")) {
@@ -786,7 +787,7 @@ struct EnhancedTransactionRow: View {
       VStack(spacing: 12) {
         Image(systemName: "person.circle.fill")
           .font(.system(size: 50))
-          .foregroundColor(.blue)
+          .foregroundStyle(Color.oldMoney.accent)
           .accessibilityHidden(true)
 
         VStack(spacing: 4) {
@@ -797,7 +798,7 @@ struct EnhancedTransactionRow: View {
 
           Text(user.email)
             .font(.caption)
-            .foregroundColor(.secondary)
+            .foregroundStyle(Color.oldMoney.textSecondary)
             .accessibilityLabel(String(localized: "profile.email.label", defaultValue: "Email: \(user.email)"))
         }
 
@@ -822,7 +823,7 @@ struct CategoriesDetailView: View {
       VStack(spacing: 24) {
         Image(systemName: "tag.circle.fill")
           .font(.system(size: 64))
-          .foregroundColor(.gray)
+          .foregroundStyle(Color.oldMoney.textSecondary)
         
         Text("Categories")
           .font(.title2)
@@ -830,7 +831,7 @@ struct CategoriesDetailView: View {
         
         Text("Manage your transaction categories and subcategories")
           .font(.body)
-          .foregroundColor(.secondary)
+          .foregroundStyle(Color.oldMoney.textSecondary)
           .multilineTextAlignment(.center)
           .padding(.horizontal, 32)
       }
@@ -876,7 +877,7 @@ struct CategoriesDetailView: View {
         .padding(20)
       }
       .frame(maxWidth: .infinity, maxHeight: .infinity)
-      .background(Color(.systemBackground))
+      .background(Color.oldMoney.background)
       .refreshable {
         await MainActor.run {
           viewModel.loadDashboardData()
@@ -886,7 +887,7 @@ struct CategoriesDetailView: View {
         if viewModel.isLoading && viewModel.recentTransactions.isEmpty {
           ProgressView(String(localized: "dashboard.loading", defaultValue: "Carregando..."))
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Color(.systemBackground))
+            .background(Color.oldMoney.background)
         }
       }
       .alert("Erro", isPresented: .constant(viewModel.error != nil)) {

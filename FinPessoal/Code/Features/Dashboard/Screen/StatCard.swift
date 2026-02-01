@@ -27,17 +27,18 @@ struct StatCard: View {
       VStack(alignment: .leading, spacing: 4) {
         Text(title)
           .font(.caption)
-          .foregroundColor(.secondary)
+          .foregroundStyle(Color.oldMoney.textSecondary)
 
         Text(value)
           .font(.title3)
           .fontWeight(.semibold)
-          .foregroundColor(.primary)
+          .foregroundStyle(Color.oldMoney.text)
       }
     }
     .padding()
-    .background(Color(.systemGray6))
-    .cornerRadius(12)
+    .background(Color.oldMoney.surface)
+    .clipShape(RoundedRectangle(cornerRadius: OldMoneyTheme.Radius.medium))
+    .oldMoneyCardShadow()
     .accessibilityElement(children: .combine)
     .accessibilityLabel("\(title): \(value)")
     .accessibilityAddTraits(.isStaticText)

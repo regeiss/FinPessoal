@@ -33,6 +33,132 @@
         }
       }
     },
+    "%@ budget" : {
+
+    },
+    "%@ category" : {
+
+    },
+    "%@ of %@" : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ of %2$@"
+          }
+        }
+      }
+    },
+    "%@ spent of %@" : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ spent of %2$@"
+          }
+        }
+      }
+    },
+    "%@ spent of %@%@" : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ spent of %2$@%3$@"
+          }
+        }
+      }
+    },
+    "%@ to %@" : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ to %2$@"
+          }
+        }
+      }
+    },
+    "%@, %@" : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@, %2$@"
+          }
+        }
+      }
+    },
+    "%@, %@ category%@" : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@, %2$@ category%3$@"
+          }
+        }
+      }
+    },
+    "%@, %lld percent of total spending, %lld transactions" : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@, %2$lld percent of total spending, %3$lld transactions"
+          }
+        }
+      }
+    },
+    "%@, %lld percent, %lld transactions" : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@, %2$lld percent, %3$lld transactions"
+          }
+        }
+      }
+    },
+    "%@: %@" : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@: %2$@"
+          }
+        }
+      }
+    },
+    "%@: %@, %@, %@, %@%@" : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@: %2$@, %3$@, %4$@, %5$@%6$@"
+          }
+        }
+      }
+    },
+    "%@. %lld %@ available" : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@. %2$lld %3$@ available"
+          }
+        }
+      }
+    },
+    "%@. %lld%% complete. %@ of %@" : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@. %2$lld%% complete. %3$@ of %4$@"
+          }
+        }
+      }
+    },
     "%lld" : {
 
     },
@@ -46,10 +172,58 @@
         }
       }
     },
+    "%lld %@ available" : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld %2$@ available"
+          }
+        }
+      }
+    },
+    "%lld accounts" : {
+
+    },
+    "%lld days" : {
+
+    },
+    "%lld days before" : {
+
+    },
     "%lld dias" : {
 
     },
+    "%lld percent" : {
+
+    },
+    "%lld percent complete" : {
+
+    },
+    "%lld percent used, %@ spent of %@ budget, %@" : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld percent used, %2$@ spent of %3$@ budget, %4$@"
+          }
+        }
+      }
+    },
+    "%lld percent, budget %@, spent %@, %@" : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld percent, budget %2$@, spent %3$@, %4$@"
+          }
+        }
+      }
+    },
     "%lld subcategorias" : {
+
+    },
+    "%lld total transactions" : {
 
     },
     "%lld transações" : {
@@ -70,6 +244,52 @@
     },
     "%lld%%" : {
 
+    },
+    "%lld%% threshold reached" : {
+
+    },
+    "%lld%% used" : {
+
+    },
+    "%lld%% used, %@ of %@" : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld%% used, %2$@ of %3$@"
+          }
+        }
+      }
+    },
+    "%lld%% used, %@ spent" : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld%% used, %2$@ spent"
+          }
+        }
+      }
+    },
+    "%lld%% used, %@ spent of %@ total" : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld%% used, %2$@ spent of %3$@ total"
+          }
+        }
+      }
+    },
+    "%lld%%, %@ of %@" : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld%%, %2$@ of %3$@"
+          }
+        }
+      }
     },
     "•" : {
 
@@ -99,6 +319,27 @@
 
     },
     "7 dias antes" : {
+
+    },
+    "Account Active" : {
+
+    },
+    "Account Balance" : {
+
+    },
+    "Account Information" : {
+
+    },
+    "Account Name" : {
+
+    },
+    "Account Options" : {
+
+    },
+    "Account Status" : {
+
+    },
+    "Account Type" : {
 
     },
     "account.add.title" : {
@@ -815,6 +1056,48 @@
     "Active" : {
 
     },
+    "Active goals grid" : {
+
+    },
+    "Active goals list" : {
+
+    },
+    "Add Account" : {
+
+    },
+    "Add Bill" : {
+
+    },
+    "Add Budget" : {
+
+    },
+    "Add Contribution" : {
+
+    },
+    "Add First Bill" : {
+
+    },
+    "Add Goal" : {
+
+    },
+    "Add Transaction" : {
+
+    },
+    "Add transactions to see category spending breakdown" : {
+
+    },
+    "Add transactions to see monthly income and expense trends" : {
+
+    },
+    "Add Your First Account" : {
+
+    },
+    "Adds %@ to the goal" : {
+
+    },
+    "Adjust the percentage at which you'll be notified about budget usage. Current value is %lld%%" : {
+
+    },
     "ai.advice.budget.underutilized.message" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -1294,6 +1577,24 @@
         }
       }
     },
+    "Alert Threshold" : {
+
+    },
+    "Alert Threshold Slider" : {
+
+    },
+    "Alert: %@ is over budget" : {
+
+    },
+    "Amount Remaining" : {
+
+    },
+    "Amount Spent" : {
+
+    },
+    "Amount Spent (Over Budget)" : {
+
+    },
     "app.name" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1368,6 +1669,62 @@
           }
         }
       }
+    },
+    "auth.signout.hint" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Sign out of your account"
+          }
+        }
+      }
+    },
+    "auth.signout.label" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Sign out"
+          }
+        }
+      }
+    },
+    "Balance Overview" : {
+
+    },
+    "Balance: %@" : {
+
+    },
+    "Balance: %@, Status: %@" : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Balance: %1$@, Status: %2$@"
+          }
+        }
+      }
+    },
+    "Bill Active Status" : {
+
+    },
+    "Bill Amount" : {
+
+    },
+    "Bill Category" : {
+
+    },
+    "Bill Details" : {
+
+    },
+    "Bill Name" : {
+
+    },
+    "Bill Subcategory" : {
+
     },
     "bill.day.number" : {
       "extractionState" : "stale",
@@ -1784,6 +2141,12 @@
     "Bills" : {
 
     },
+    "Bills List" : {
+
+    },
+    "Bills Statistics" : {
+
+    },
     "bills.add.first" : {
       "localizations" : {
         "pt-BR" : {
@@ -1933,6 +2296,48 @@
           }
         }
       }
+    },
+    "Budget Alert: %@" : {
+
+    },
+    "Budget Alerts" : {
+
+    },
+    "Budget Amount in Brazilian Reais" : {
+
+    },
+    "Budget Category" : {
+
+    },
+    "Budget End Date" : {
+
+    },
+    "Budget Name" : {
+
+    },
+    "Budget performance indicator" : {
+
+    },
+    "Budget performance table: category, budget, spent, usage percentage" : {
+
+    },
+    "Budget Period" : {
+
+    },
+    "Budget Period Dates" : {
+
+    },
+    "Budget Progress" : {
+
+    },
+    "Budget Start Date" : {
+
+    },
+    "Budget Summary" : {
+
+    },
+    "Budget Usage" : {
+
     },
     "budget.add.title" : {
       "extractionState" : "manual",
@@ -3092,6 +3497,18 @@
         }
       }
     },
+    "Button is disabled. Please enter an amount first" : {
+
+    },
+    "Button is disabled. Please fill in all required fields" : {
+
+    },
+    "Cancel" : {
+
+    },
+    "Cancel and close this form" : {
+
+    },
     "Categorias" : {
 
     },
@@ -3743,6 +4160,12 @@
           }
         }
       }
+    },
+    "Category spending chart" : {
+
+    },
+    "Category spending table: category, amount, percentage" : {
+
     },
     "category.active" : {
       "extractionState" : "manual",
@@ -4651,6 +5074,51 @@
         }
       }
     },
+    "Chart legend: green for income, red for expenses, blue for net income" : {
+
+    },
+    "Clear Filters" : {
+
+    },
+    "Clear Search" : {
+
+    },
+    "Clears the search text" : {
+
+    },
+    "Close" : {
+
+    },
+    "Close account details" : {
+
+    },
+    "Close this form without saving" : {
+
+    },
+    "Closes bill details" : {
+
+    },
+    "Closes category view" : {
+
+    },
+    "Closes filter options and applies selected filters" : {
+
+    },
+    "Closes help topic detail" : {
+
+    },
+    "Closes the budget detail view" : {
+
+    },
+    "Closes the budget form without saving" : {
+
+    },
+    "Closes the form without saving" : {
+
+    },
+    "Closes the goal details" : {
+
+    },
     "color.blue" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -5248,14 +5716,54 @@
     "common.yes" : {
 
     },
-    "Configurações" : {
+    "Complete all required fields to save" : {
+
+    },
+    "Complete onboarding and start using the app" : {
+
+    },
+    "Completed" : {
+
+    },
+    "Completed goals list" : {
 
     },
     "Configure your app preferences and account settings." : {
 
     },
+    "Contact support" : {
+
+    },
+    "Continue using your Apple account" : {
+
+    },
+    "Continue using your Google account" : {
+
+    },
+    "Contribution Amount" : {
+
+    },
+    "Create a new transaction" : {
+
+    },
     "Create and manage your budgets to track your spending." : {
 
+    },
+    "Create budgets to see budget performance tracking" : {
+
+    },
+    "Create Your First Budget" : {
+
+    },
+    "Created at %@, Last updated at %@" : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Created at %1$@, Last updated at %2$@"
+          }
+        }
+      }
     },
     "creditcard.active_status.footer" : {
       "extractionState" : "manual",
@@ -6719,6 +7227,18 @@
         }
       }
     },
+    "Currency" : {
+
+    },
+    "Current Amount" : {
+
+    },
+    "Current Balance" : {
+
+    },
+    "Daily Available Budget" : {
+
+    },
     "Dashboard Overview" : {
 
     },
@@ -6732,9 +7252,6 @@
           }
         }
       }
-    },
-    "dashboard.balance.card.accessibility" : {
-
     },
     "dashboard.budget_alerts" : {
 
@@ -7016,6 +7533,17 @@
         }
       }
     },
+    "dashboard.view.reports.hint" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Navigate to reports screen"
+          }
+        }
+      }
+    },
     "dashboard.your.accounts" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -7033,7 +7561,46 @@
         }
       }
     },
+    "Day %lld" : {
+
+    },
+    "Days Left" : {
+
+    },
+    "Days Remaining" : {
+
+    },
     "de" : {
+
+    },
+    "Delete %@" : {
+
+    },
+    "Delete Account" : {
+
+    },
+    "Delete Bill" : {
+
+    },
+    "Delete Budget" : {
+
+    },
+    "Delete Goal" : {
+
+    },
+    "Delete this account permanently" : {
+
+    },
+    "Deletes this bill permanently" : {
+
+    },
+    "Deletes this budget permanently" : {
+
+    },
+    "Deletes this goal permanently" : {
+
+    },
+    "Destination Account" : {
 
     },
     "detail.empty.select.message" : {
@@ -7073,13 +7640,121 @@
     "Dia %lld" : {
 
     },
+    "Disabled" : {
+
+    },
+    "Discards changes and closes the form" : {
+
+    },
     "Dólar (USD)" : {
+
+    },
+    "Done" : {
+
+    },
+    "Double tap to %@" : {
+
+    },
+    "Double tap to edit account" : {
+
+    },
+    "Double tap to view bill details" : {
+
+    },
+    "Double tap to view budget details" : {
+
+    },
+    "Double tap to view goal details and add contributions" : {
+
+    },
+    "Double tap to view transaction details" : {
+
+    },
+    "Due Day of Month" : {
+
+    },
+    "Edit the current balance for this account" : {
+
+    },
+    "Edit the name for your account" : {
+
+    },
+    "Email Address" : {
+
+    },
+    "Empty" : {
+
+    },
+    "Enabled" : {
+
+    },
+    "Enter a description for this transaction" : {
+
+    },
+    "Enter a descriptive name for this budget" : {
+
+    },
+    "Enter a name for your goal" : {
+
+    },
+    "Enter an optional description for your goal" : {
+
+    },
+    "Enter any additional notes or details about this bill" : {
+
+    },
+    "Enter bill name to search" : {
+
+    },
+    "Enter how much you have already saved in Brazilian Reais" : {
+
+    },
+    "Enter keywords to search for help topics" : {
+
+    },
+    "Enter the amount for this transaction" : {
+
+    },
+    "Enter the amount to contribute to this goal" : {
+
+    },
+    "Enter the bill amount in currency format" : {
+
+    },
+    "Enter the name for your account" : {
+
+    },
+    "Enter the name of the bill" : {
+
+    },
+    "Enter the starting balance for this account" : {
+
+    },
+    "Enter the total amount you want to save in Brazilian Reais" : {
+
+    },
+    "Enter the total budget amount" : {
+
+    },
+    "Enter your email address to sign in" : {
+
+    },
+    "Enter your password. Input is secured and hidden" : {
+
+    },
+    "Entered" : {
 
     },
     "Erro" : {
 
     },
     "Error" : {
+
+    },
+    "Error loading reports" : {
+
+    },
+    "Error: %@" : {
 
     },
     "error.adding.budget" : {
@@ -7291,10 +7966,47 @@
     "Euro (EUR)" : {
 
     },
-    "Ferramentas" : {
+    "Export reports" : {
+
+    },
+    "Filter Bills" : {
+
+    },
+    "Filters active" : {
 
     },
     "Financial reports and analytics will be displayed here." : {
+
+    },
+    "Frequently asked question" : {
+
+    },
+    "Frequently asked questions section" : {
+
+    },
+    "Get Started" : {
+
+    },
+    "Go to page %lld of %lld" : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Go to page %1$lld of %2$lld"
+          }
+        }
+      }
+    },
+    "Goal Category" : {
+
+    },
+    "Goal Description" : {
+
+    },
+    "Goal Name" : {
+
+    },
+    "Goal Progress" : {
 
     },
     "goal.add.amount" : {
@@ -8115,6 +8827,9 @@
           }
         }
       }
+    },
+    "Help categories section" : {
+
     },
     "help.account.security.content" : {
       "extractionState" : "manual",
@@ -11337,6 +12052,12 @@
         }
       }
     },
+    "Import Transactions" : {
+
+    },
+    "Import transactions from an OFX file" : {
+
+    },
     "import.result.and.more" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -11448,6 +12169,19 @@
       }
     },
     "Inactive" : {
+
+    },
+    "Income %@, Expenses %@, Net income %@" : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Income %1$@, Expenses %2$@, Net income %3$@"
+          }
+        }
+      }
+    },
+    "Initial Balance" : {
 
     },
     "insights.actionable" : {
@@ -11913,6 +12647,21 @@
           }
         }
       }
+    },
+    "Last Paid" : {
+
+    },
+    "Loading accounts" : {
+
+    },
+    "Loading Bills" : {
+
+    },
+    "Loading dashboard data, please wait" : {
+
+    },
+    "Loading transactions, please wait" : {
+
     },
     "loan.active_status.footer" : {
       "extractionState" : "manual",
@@ -13980,10 +14729,31 @@
     "Manage your transaction categories and subcategories" : {
 
     },
-    "Menu Principal" : {
+    "Mark %@ as paid" : {
+
+    },
+    "Mark as Paid" : {
+
+    },
+    "Mark Bill as Paid" : {
+
+    },
+    "Marks %@ as paid for the current period" : {
+
+    },
+    "Marks this bill as paid for the current period" : {
 
     },
     "Money Manager" : {
+
+    },
+    "Monthly Contribution Needed" : {
+
+    },
+    "Monthly trends bar chart" : {
+
+    },
+    "Monthly trends table: month, income, expenses, net income" : {
 
     },
     "more.features.header" : {
@@ -14020,6 +14790,9 @@
         }
       }
     },
+    "Navigate to view all %lld transactions" : {
+
+    },
     "navigation.dashboard.title" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -14036,6 +14809,45 @@
           }
         }
       }
+    },
+    "Next" : {
+
+    },
+    "Next Due Date" : {
+
+    },
+    "No Bills Yet" : {
+
+    },
+    "No budget performance data" : {
+
+    },
+    "No Budgets" : {
+
+    },
+    "No category spending data" : {
+
+    },
+    "No filters active" : {
+
+    },
+    "No monthly trends data" : {
+
+    },
+    "No Results Found" : {
+
+    },
+    "No search results found for %@" : {
+
+    },
+    "No topics available in %@ category" : {
+
+    },
+    "No Transactions" : {
+
+    },
+    "Notes" : {
+
     },
     "notification.action.dismiss" : {
       "localizations" : {
@@ -14523,6 +15335,81 @@
         }
       }
     },
+    "Open application settings" : {
+
+    },
+    "Open menu to edit, view statement, or change account status" : {
+
+    },
+    "Opens %@ category" : {
+
+    },
+    "Opens contact support information" : {
+
+    },
+    "Opens export options for PDF, CSV, or sharing" : {
+
+    },
+    "Opens filter options for bills" : {
+
+    },
+    "Opens form to add a new account" : {
+
+    },
+    "Opens form to add a new bill" : {
+
+    },
+    "Opens form to create a new budget" : {
+
+    },
+    "Opens form to create a new goal" : {
+
+    },
+    "Opens form to create your first account" : {
+
+    },
+    "Opens form to create your first bill" : {
+
+    },
+    "Opens form to create your first budget" : {
+
+    },
+    "Opens form to create your first transaction" : {
+
+    },
+    "Opens full FAQ list" : {
+
+    },
+    "Opens help topic about %@" : {
+
+    },
+    "Opens help topics for %@" : {
+
+    },
+    "Opens period selection dialog" : {
+
+    },
+    "Opens share options for this help topic" : {
+
+    },
+    "Over budget" : {
+
+    },
+    "Over budget: %lld%% used" : {
+
+    },
+    "Overall Budget Progress" : {
+
+    },
+    "Password" : {
+
+    },
+    "Payment Account" : {
+
+    },
+    "Please wait while bills are being loaded" : {
+
+    },
     "profile.default.user" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -14625,6 +15512,28 @@
         }
       }
     },
+    "profile.email.accessibility" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Email: %@"
+          }
+        }
+      }
+    },
+    "profile.email.label" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Email: %@"
+          }
+        }
+      }
+    },
     "profile.export.data" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -14638,6 +15547,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Exportar Dados"
+          }
+        }
+      }
+    },
+    "profile.export.data.hint" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Export your financial data"
+          }
+        }
+      }
+    },
+    "profile.export.data.label" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Export Data"
           }
         }
       }
@@ -14659,6 +15590,39 @@
         }
       }
     },
+    "profile.member.since.accessibility" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Member since %@"
+          }
+        }
+      }
+    },
+    "profile.name.accessibility" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Name: %@"
+          }
+        }
+      }
+    },
+    "profile.name.label" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "User name: %@"
+          }
+        }
+      }
+    },
     "profile.privacy.policy" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -14672,6 +15636,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Política de Privacidade"
+          }
+        }
+      }
+    },
+    "profile.privacy.policy.hint" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "View privacy policy"
+          }
+        }
+      }
+    },
+    "profile.privacy.policy.label" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Privacy Policy"
           }
         }
       }
@@ -14693,6 +15679,17 @@
         }
       }
     },
+    "profile.setting.hint" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Navigate to %@ settings"
+          }
+        }
+      }
+    },
     "profile.sign.out" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -14706,6 +15703,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sair da Conta"
+          }
+        }
+      }
+    },
+    "profile.sign.out.hint" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Sign out of your account"
+          }
+        }
+      }
+    },
+    "profile.sign.out.label" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Sign Out"
           }
         }
       }
@@ -14778,6 +15797,28 @@
         }
       }
     },
+    "profile.terms.of.use.hint" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "View terms of use"
+          }
+        }
+      }
+    },
+    "profile.terms.of.use.label" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Terms of Use"
+          }
+        }
+      }
+    },
     "profile.title" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -14794,6 +15835,15 @@
           }
         }
       }
+    },
+    "Progress" : {
+
+    },
+    "Quick access section" : {
+
+    },
+    "Quick amount %@" : {
+
     },
     "quickaction.create.budget" : {
       "extractionState" : "manual",
@@ -14866,7 +15916,53 @@
     "R$" : {
 
     },
+    "R$ %@" : {
+
+    },
     "Real (BRL)" : {
+
+    },
+    "Recurring" : {
+
+    },
+    "Recurring Transaction" : {
+
+    },
+    "Refresh Dashboard" : {
+
+    },
+    "Related categories" : {
+
+    },
+    "Reloads the reports data" : {
+
+    },
+    "Remaining" : {
+
+    },
+    "Remaining Amount" : {
+
+    },
+    "Remaining: %@, %lld%% used" : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Remaining: %1$@, %2$lld%% used"
+          }
+        }
+      }
+    },
+    "Reminder Notice Period" : {
+
+    },
+    "Remove all active filters" : {
+
+    },
+    "Removes all applied filters" : {
+
+    },
+    "Removes all applied filters to show all bills" : {
 
     },
     "Reports" : {
@@ -15711,7 +16807,61 @@
         }
       }
     },
+    "Same day" : {
+
+    },
+    "Save Account" : {
+
+    },
+    "Save Bill" : {
+
+    },
+    "Save Budget" : {
+
+    },
+    "Save Changes" : {
+
+    },
+    "Save changes to this account" : {
+
+    },
+    "Save Goal" : {
+
+    },
+    "Save this new account" : {
+
+    },
+    "Save this transaction" : {
+
+    },
+    "Save Transaction" : {
+
+    },
+    "Saves the goal and closes the form" : {
+
+    },
+    "Saves the new bill" : {
+
+    },
+    "Saves the new budget" : {
+
+    },
+    "Search Bills" : {
+
+    },
+    "Search help topics" : {
+
+    },
+    "Search results section" : {
+
+    },
     "Selecione uma categoria para gerenciar suas subcategorias" : {
+
+    },
+    "Select a category for this goal" : {
+
+    },
+    "Select a subcategory for more specific classification" : {
 
     },
     "Select a transaction from the list to view its details." : {
@@ -15720,7 +16870,52 @@
     "Select an account from the list to view its details and transactions." : {
 
     },
+    "Select how many days before the due date you want to be reminded" : {
+
+    },
+    "Select how often this budget repeats" : {
+
+    },
+    "Select report period" : {
+
+    },
+    "Select the account for this transaction" : {
+
+    },
+    "Select the account from which this bill will be paid" : {
+
+    },
+    "Select the category for this bill" : {
+
+    },
+    "Select the category for this budget" : {
+
+    },
+    "Select the currency for this account" : {
+
+    },
+    "Select the date by which you want to achieve this goal" : {
+
+    },
+    "Select the date for this transaction" : {
+
+    },
+    "Select the day of the month when this bill is due" : {
+
+    },
+    "Select the destination account for this transfer" : {
+
+    },
+    "Select the type of account" : {
+
+    },
+    "Select when this budget period begins" : {
+
+    },
     "Set and track your financial goals." : {
+
+    },
+    "Sets contribution amount to %@" : {
 
     },
     "Settings" : {
@@ -15873,6 +17068,28 @@
         }
       }
     },
+    "settings.currency.hint" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Change your preferred currency"
+          }
+        }
+      }
+    },
+    "settings.currency.label" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Currency: %@"
+          }
+        }
+      }
+    },
     "settings.currency.note" : {
       "extractionState" : "extracted_with_value",
       "localizations" : {
@@ -15880,6 +17097,17 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "A mudança de moeda será aplicada imediatamente em todo o aplicativo."
+          }
+        }
+      }
+    },
+    "settings.currency.select.hint" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Select %@ as your currency"
           }
         }
       }
@@ -15980,6 +17208,28 @@
         }
       }
     },
+    "settings.language.hint" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Change your preferred language"
+          }
+        }
+      }
+    },
+    "settings.language.label" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Language: %@"
+          }
+        }
+      }
+    },
     "settings.language.note" : {
       "extractionState" : "extracted_with_value",
       "localizations" : {
@@ -15987,6 +17237,17 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Algumas mudanças de idioma podem exigir o reinício do aplicativo."
+          }
+        }
+      }
+    },
+    "settings.language.select.hint" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Select %@ as your language"
           }
         }
       }
@@ -16053,6 +17314,28 @@
         }
       }
     },
+    "settings.profile.button.hint" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "View and edit your profile"
+          }
+        }
+      }
+    },
+    "settings.profile.button.label" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Profile: %1$@, %2$@"
+          }
+        }
+      }
+    },
     "settings.rate.app" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -16087,6 +17370,39 @@
         }
       }
     },
+    "settings.reset.onboarding.hint" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Reset the app to show onboarding screens again"
+          }
+        }
+      }
+    },
+    "settings.reset.onboarding.label" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Reset onboarding"
+          }
+        }
+      }
+    },
+    "settings.row.hint" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Open %@"
+          }
+        }
+      }
+    },
     "settings.signout.button" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -16100,6 +17416,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sair"
+          }
+        }
+      }
+    },
+    "settings.signout.hint" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Sign out of your account"
+          }
+        }
+      }
+    },
+    "settings.signout.label" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Sign out"
           }
         }
       }
@@ -16184,6 +17522,15 @@
           }
         }
       }
+    },
+    "Share topic" : {
+
+    },
+    "Shows income, expenses, and net income for each month" : {
+
+    },
+    "Shows spending breakdown by category" : {
+
     },
     "sidebar.accounts" : {
       "extractionState" : "manual",
@@ -16375,6 +17722,39 @@
         }
       }
     },
+    "sidebar.item.hint" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Navigate to %@"
+          }
+        }
+      }
+    },
+    "sidebar.profile.hint" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "View profile and sign out"
+          }
+        }
+      }
+    },
+    "sidebar.profile.label" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "User Profile: %@"
+          }
+        }
+      }
+    },
     "sidebar.reports" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -16405,6 +17785,50 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Relatórios financeiros"
+          }
+        }
+      }
+    },
+    "sidebar.section.configuration" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Configurações"
+          }
+        }
+      }
+    },
+    "sidebar.section.main" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Menu Principal"
+          }
+        }
+      }
+    },
+    "sidebar.section.profile" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Profile Section"
+          }
+        }
+      }
+    },
+    "sidebar.section.tools" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Ferramentas"
           }
         }
       }
@@ -16443,6 +17867,17 @@
         }
       }
     },
+    "sidebar.title" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Navigation Sidebar"
+          }
+        }
+      }
+    },
     "sidebar.transactions" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -16476,6 +17911,36 @@
           }
         }
       }
+    },
+    "Sign In" : {
+
+    },
+    "Sign in with Apple" : {
+
+    },
+    "Sign in with Google" : {
+
+    },
+    "Sign in with your email and password" : {
+
+    },
+    "Signing in" : {
+
+    },
+    "Signing in, please wait" : {
+
+    },
+    "Skip Onboarding" : {
+
+    },
+    "Skip onboarding and go directly to the app" : {
+
+    },
+    "Spent" : {
+
+    },
+    "Step by step guide, %lld steps" : {
+
     },
     "subcategory.error.duplicate" : {
       "extractionState" : "manual",
@@ -16521,6 +17986,15 @@
 
     },
     "subcategory.error.subcategory_not_found" : {
+
+    },
+    "Switch between cards and list view for goals" : {
+
+    },
+    "Switch to chart view" : {
+
+    },
+    "Switch to table view" : {
 
     },
     "tab.accounts" : {
@@ -16611,6 +18085,17 @@
         }
       }
     },
+    "tab.budgets.hint" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "View and manage your budgets"
+          }
+        }
+      }
+    },
     "tab.categories" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -16624,6 +18109,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Categorias"
+          }
+        }
+      }
+    },
+    "tab.categories.hint" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Manage transaction categories"
           }
         }
       }
@@ -16662,6 +18158,17 @@
         }
       }
     },
+    "tab.dashboard.hint" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "View your financial dashboard and overview"
+          }
+        }
+      }
+    },
     "tab.goals" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -16692,6 +18199,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Defina e acompanhe suas metas financeiras"
+          }
+        }
+      }
+    },
+    "tab.goals.hint" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "View and track your financial goals"
           }
         }
       }
@@ -16764,6 +18282,17 @@
         }
       }
     },
+    "tab.reports.hint" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "View financial reports and analytics"
+          }
+        }
+      }
+    },
     "tab.settings" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -16794,6 +18323,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Configurações do app"
+          }
+        }
+      }
+    },
+    "tab.settings.hint" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Access application settings"
           }
         }
       }
@@ -16831,6 +18371,81 @@
           }
         }
       }
+    },
+    "tab.transactions.hint" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "View and manage your transactions"
+          }
+        }
+      }
+    },
+    "Target Amount" : {
+
+    },
+    "Target Date" : {
+
+    },
+    "This account has no transactions yet" : {
+
+    },
+    "This budget needs attention" : {
+
+    },
+    "This category currently has no help topics" : {
+
+    },
+    "Toggle to activate or deactivate this account" : {
+
+    },
+    "Toggle to enable or disable this bill" : {
+
+    },
+    "Toggle to mark this as a recurring transaction" : {
+
+    },
+    "Toggles between chart and table visualization" : {
+
+    },
+    "Topic content: %@" : {
+
+    },
+    "Topics in %@ category" : {
+
+    },
+    "Total balance: %@, Monthly expenses: %@" : {
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Total balance: %1$@, Monthly expenses: %2$@"
+          }
+        }
+      }
+    },
+    "Total Budgeted" : {
+
+    },
+    "Total Spent" : {
+
+    },
+    "Transaction Account" : {
+
+    },
+    "Transaction Amount" : {
+
+    },
+    "Transaction Date" : {
+
+    },
+    "Transaction Description" : {
+
+    },
+    "Transaction Type" : {
+
     },
     "transaction.account.title" : {
       "extractionState" : "manual",
@@ -18711,6 +20326,9 @@
         }
       }
     },
+    "Try different search terms to find help topics" : {
+
+    },
     "validation.amount.positive" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -18850,7 +20468,25 @@
     "Valor: %@" : {
 
     },
+    "View all frequently asked questions" : {
+
+    },
+    "View All Transactions" : {
+
+    },
     "View Mode" : {
+
+    },
+    "Warning: %@ is near budget limit" : {
+
+    },
+    "Warning: Near Budget Limit" : {
+
+    },
+    "Warning: Over Budget" : {
+
+    },
+    "You haven't created any budgets yet. Tap the button to create your first budget" : {
 
     },
     "Your financial overview and key metrics will be displayed here." : {

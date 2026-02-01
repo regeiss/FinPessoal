@@ -16,24 +16,25 @@ struct EmptyStateView: View {
     VStack(spacing: 16) {
       Image(systemName: icon)
         .font(.system(size: 40))
-        .foregroundColor(.secondary)
+        .foregroundStyle(Color.oldMoney.textSecondary)
         .accessibilityHidden(true)
 
       VStack(spacing: 8) {
         Text(LocalizedStringKey(title))
           .font(.headline)
           .fontWeight(.medium)
+          .foregroundStyle(Color.oldMoney.text)
 
         Text(LocalizedStringKey(subtitle))
           .font(.subheadline)
-          .foregroundColor(.secondary)
+          .foregroundStyle(Color.oldMoney.textSecondary)
           .multilineTextAlignment(.center)
       }
     }
     .padding(40)
     .accessibilityElement(children: .combine)
-    .accessibilityLabel(String(localized: LocalizedStringKey(title)))
-    .accessibilityValue(String(localized: LocalizedStringKey(subtitle)))
+    .accessibilityLabel(Text(LocalizedStringKey(title)))
+    .accessibilityValue(Text(LocalizedStringKey(subtitle)))
     .accessibilityAddTraits(.isStaticText)
   }
 }
