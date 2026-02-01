@@ -40,10 +40,25 @@ struct ProfileView: View {
   private var profileHeaderSection: some View {
     VStack(spacing: 16) {
       // Avatar
-      Image(systemName: "person.circle.fill")
-        .font(.system(size: 80))
-        .foregroundColor(.blue)
+      if let user = authViewModel.currentUser {
+        AsyncImage(url: URL(string: user.profileImageURL ?? "")) { image in
+          image
+            .resizable()
+            .aspectRatio(contentMode: .fill)
+        } placeholder: {
+          Image(systemName: "person.circle.fill")
+            .font(.system(size: 80))
+            .foregroundColor(.blue)
+        }
+        .frame(width: 100, height: 100)
+        .clipShape(Circle())
         .accessibilityHidden(true)
+      } else {
+        Image(systemName: "person.circle.fill")
+          .font(.system(size: 80))
+          .foregroundColor(.blue)
+          .accessibilityHidden(true)
+      }
 
       // Informações básicas
       VStack(spacing: 4) {

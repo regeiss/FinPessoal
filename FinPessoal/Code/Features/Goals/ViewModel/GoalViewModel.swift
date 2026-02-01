@@ -18,7 +18,9 @@ class GoalViewModel: ObservableObject {
   @Published var targetDate = Calendar.current.date(byAdding: .year, value: 1, to: Date()) ?? Date()
   @Published var isLoading = false
   @Published var errorMessage: String?
-  
+
+  private let crashlytics = CrashlyticsManager.shared
+
   // User ID should be provided by authentication system
   private var currentUserId: String = "current-user-id" // This should come from AuthViewModel
   

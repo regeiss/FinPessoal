@@ -3,45 +3,67 @@
 //  FinPessoal
 //
 //  Created by Claude on 28/09/25.
+//  Converted to Realtime Database on 24/12/25
 //
 
 import FirebaseAuth
-import FirebaseFirestore
+import FirebaseDatabase
 import Foundation
 
 class FirebaseLoanRepository: LoanRepositoryProtocol {
-  private let db = Firestore.firestore()
-  private let loansCollection = "loans"
-  private let paymentsCollection = "loanPayments"
-  
+  private let database = Database.database().reference()
+  private let loansPath = "loans"
+
   // MARK: - Loans
-  
+
   func getLoans() async throws -> [Loan] {
     guard let userId = Auth.auth().currentUser?.uid else {
       throw LoanError.userNotAuthenticated
     }
-    
-    let snapshot = try await db.collection(loansCollection)
-      .whereField("userId", isEqualTo: userId)
-      .order(by: "createdAt", descending: false)
-      .getDocuments()
-    
-    return snapshot.documents.compactMap { document in
-      try? document.data(as: Loan.self)
+
+    let snapshot = try await database
+      .child(loansPath)
+      .child(userId)
+      .getData()
+
+    guard let data = snapshot.value as? [String: [String: Any]] else {
+      return []
     }
+
+    let loans = try data.compactMap { (loanId, loanData) -> Loan? in
+      var mutableData = loanData
+      mutableData["id"] = loanId
+      return try Loan.fromDictionary(mutableData)
+    }
+
+    return loans.sorted { $0.createdAt < $1.createdAt }
   }
-  
+
   func getLoan(by id: String) async throws -> Loan? {
-    let document = try await db.collection(loansCollection).document(id)
-      .getDocument()
-    return try document.data(as: Loan.self)
+    guard let userId = Auth.auth().currentUser?.uid else {
+      throw LoanError.userNotAuthenticated
+    }
+
+    let snapshot = try await database
+      .child(loansPath)
+      .child(userId)
+      .child(id)
+      .getData()
+
+    guard let data = snapshot.value as? [String: Any] else {
+      return nil
+    }
+
+    var mutableData = data
+    mutableData["id"] = id
+    return try Loan.fromDictionary(mutableData)
   }
-  
+
   func createLoan(_ loan: Loan) async throws -> Loan {
     guard let userId = Auth.auth().currentUser?.uid else {
       throw LoanError.userNotAuthenticated
     }
-    
+
     let updatedLoan = Loan(
       id: loan.id,
       name: loan.name,
@@ -59,15 +81,23 @@ class FirebaseLoanRepository: LoanRepositoryProtocol {
       createdAt: Date(),
       updatedAt: Date()
     )
-    
-    try db.collection(loansCollection)
-      .document(updatedLoan.id)
-      .setData(from: updatedLoan)
-    
+
+    let loanData = try updatedLoan.toDictionary()
+
+    try await database
+      .child(loansPath)
+      .child(userId)
+      .child(updatedLoan.id)
+      .setValue(loanData)
+
     return updatedLoan
   }
-  
+
   func updateLoan(_ loan: Loan) async throws -> Loan {
+    guard let userId = Auth.auth().currentUser?.uid else {
+      throw LoanError.userNotAuthenticated
+    }
+
     let updatedLoan = Loan(
       id: loan.id,
       name: loan.name,
@@ -85,162 +115,145 @@ class FirebaseLoanRepository: LoanRepositoryProtocol {
       createdAt: loan.createdAt,
       updatedAt: Date()
     )
-    
-    try db.collection(loansCollection)
-      .document(updatedLoan.id)
-      .setData(from: updatedLoan, merge: true)
-    
+
+    let loanData = try updatedLoan.toDictionary()
+
+    try await database
+      .child(loansPath)
+      .child(userId)
+      .child(updatedLoan.id)
+      .updateChildValues(loanData)
+
     return updatedLoan
   }
-  
+
   func deleteLoan(id: String) async throws {
-    // Delete associated payments first
-    let paymentsBatch = db.batch()
-    let paymentsSnapshot = try await db.collection(paymentsCollection)
-      .whereField("loanId", isEqualTo: id)
-      .getDocuments()
-    
-    for document in paymentsSnapshot.documents {
-      paymentsBatch.deleteDocument(document.reference)
+    guard let userId = Auth.auth().currentUser?.uid else {
+      throw LoanError.userNotAuthenticated
     }
-    
-    try await paymentsBatch.commit()
-    
-    // Delete the loan
-    try await db.collection(loansCollection).document(id).delete()
+
+    try await database
+      .child(loansPath)
+      .child(userId)
+      .child(id)
+      .removeValue()
   }
-  
-  // MARK: - Payments
-  
+
+  // MARK: - Loan Payments
+
   func getLoanPayments(for loanId: String) async throws -> [LoanPayment] {
-    let snapshot = try await db.collection(paymentsCollection)
-      .whereField("loanId", isEqualTo: loanId)
-      .order(by: "paymentDate", descending: true)
-      .getDocuments()
-    
-    return snapshot.documents.compactMap { document in
-      try? document.data(as: LoanPayment.self)
+    guard let userId = Auth.auth().currentUser?.uid else {
+      throw LoanError.userNotAuthenticated
     }
+
+    let snapshot = try await database
+      .child("loanPayments")
+      .child(userId)
+      .child(loanId)
+      .getData()
+
+    guard let data = snapshot.value as? [String: [String: Any]] else {
+      return []
+    }
+
+    let payments = try data.compactMap { (paymentId, paymentData) -> LoanPayment? in
+      var mutableData = paymentData
+      mutableData["id"] = paymentId
+      return try LoanPayment.fromDictionary(mutableData)
+    }
+
+    return payments.sorted { $0.paymentDate < $1.paymentDate }
   }
-  
+
   func createLoanPayment(_ payment: LoanPayment) async throws -> LoanPayment {
     guard let userId = Auth.auth().currentUser?.uid else {
       throw LoanError.userNotAuthenticated
     }
-    
-    let updatedPayment = LoanPayment(
-      id: payment.id,
-      loanId: payment.loanId,
-      amount: payment.amount,
-      principalAmount: payment.principalAmount,
-      interestAmount: payment.interestAmount,
-      paymentDate: payment.paymentDate,
-      paymentMethod: payment.paymentMethod,
-      notes: payment.notes,
-      userId: userId,
-      createdAt: Date()
-    )
-    
-    // Add the payment document
-    try db.collection(paymentsCollection)
-      .document(updatedPayment.id)
-      .setData(from: updatedPayment)
-    
-    // Update loan balance
-    try await updateLoanBalance(loanId: updatedPayment.loanId, principalPayment: updatedPayment.principalAmount)
-    
-    return updatedPayment
+
+    let paymentData = try payment.toDictionary()
+
+    try await database
+      .child("loanPayments")
+      .child(userId)
+      .child(payment.loanId)
+      .child(payment.id)
+      .setValue(paymentData)
+
+    return payment
   }
-  
+
   func updateLoanPayment(_ payment: LoanPayment) async throws -> LoanPayment {
-    let updatedPayment = LoanPayment(
-      id: payment.id,
-      loanId: payment.loanId,
-      amount: payment.amount,
-      principalAmount: payment.principalAmount,
-      interestAmount: payment.interestAmount,
-      paymentDate: payment.paymentDate,
-      paymentMethod: payment.paymentMethod,
-      notes: payment.notes,
-      userId: payment.userId,
-      createdAt: payment.createdAt
-    )
-    
-    try db.collection(paymentsCollection)
-      .document(updatedPayment.id)
-      .setData(from: updatedPayment, merge: true)
-    
-    return updatedPayment
+    guard let userId = Auth.auth().currentUser?.uid else {
+      throw LoanError.userNotAuthenticated
+    }
+
+    let paymentData = try payment.toDictionary()
+
+    try await database
+      .child("loanPayments")
+      .child(userId)
+      .child(payment.loanId)
+      .child(payment.id)
+      .updateChildValues(paymentData)
+
+    return payment
   }
-  
+
   func deleteLoanPayment(id: String) async throws {
-    try await db.collection(paymentsCollection).document(id).delete()
+    guard let userId = Auth.auth().currentUser?.uid else {
+      throw LoanError.userNotAuthenticated
+    }
+
+    // Find and delete the payment across all loans
+    let snapshot = try await database
+      .child("loanPayments")
+      .child(userId)
+      .getData()
+
+    guard let loansData = snapshot.value as? [String: [String: Any]] else {
+      return
+    }
+
+    for (loanId, _) in loansData {
+      _ = try? await database
+        .child("loanPayments")
+        .child(userId)
+        .child(loanId)
+        .child(id)
+        .removeValue()
+    }
   }
-  
+
   // MARK: - Amortization
-  
+
   func generateAmortizationSchedule(for loan: Loan) -> [LoanAmortizationEntry] {
     var schedule: [LoanAmortizationEntry] = []
     var remainingBalance = loan.principalAmount
     let monthlyRate = loan.interestRate / 100 / 12
+    let monthlyPayment = loan.monthlyPayment
     let calendar = Calendar.current
-    
-    for paymentNumber in 1...loan.term {
-      let paymentDate = calendar.date(byAdding: .month, value: paymentNumber - 1, to: loan.startDate) ?? loan.startDate
-      
+
+    for month in 1...loan.term {
       let interestPayment = remainingBalance * monthlyRate
-      let principalPayment = loan.monthlyPayment - interestPayment
-      remainingBalance = max(0, remainingBalance - principalPayment)
-      
+      let principalPayment = monthlyPayment - interestPayment
+      remainingBalance -= principalPayment
+
+      // Calculate payment date for this month
+      let paymentDate = calendar.date(byAdding: .month, value: month - 1, to: loan.startDate) ?? loan.startDate
+
       let entry = LoanAmortizationEntry(
-        paymentNumber: paymentNumber,
+        paymentNumber: month,
         paymentDate: paymentDate,
-        totalPayment: loan.monthlyPayment,
+        totalPayment: monthlyPayment,
         principalPayment: principalPayment,
         interestPayment: interestPayment,
-        remainingBalance: remainingBalance
+        remainingBalance: max(0, remainingBalance),
+        isPaid: false
       )
-      
       schedule.append(entry)
-      
-      if remainingBalance <= 0 {
-        break
-      }
     }
-    
+
     return schedule
-  }
-  
-  // MARK: - Helper Methods
-  
-  private func updateLoanBalance(loanId: String, principalPayment: Double) async throws {
-    guard let loan = try await getLoan(by: loanId) else {
-      throw LoanError.loanNotFound
-    }
-    
-    let newBalance = max(0, loan.currentBalance - principalPayment)
-    
-    let updatedLoan = Loan(
-      id: loan.id,
-      name: loan.name,
-      loanType: loan.loanType,
-      principalAmount: loan.principalAmount,
-      currentBalance: newBalance,
-      interestRate: loan.interestRate,
-      term: loan.term,
-      startDate: loan.startDate,
-      paymentDay: loan.paymentDay,
-      bankName: loan.bankName,
-      purpose: loan.purpose,
-      isActive: newBalance > 0,
-      userId: loan.userId,
-      createdAt: loan.createdAt,
-      updatedAt: Date()
-    )
-    
-    try db.collection(loansCollection)
-      .document(updatedLoan.id)
-      .setData(from: updatedLoan, merge: true)
   }
 }
 
@@ -248,20 +261,15 @@ enum LoanError: LocalizedError {
   case userNotAuthenticated
   case loanNotFound
   case invalidData
-  case networkError(Error)
-  
+
   var errorDescription: String? {
     switch self {
     case .userNotAuthenticated:
-      return String(localized: "loan.error.not_authenticated")
+      return "User not authenticated"
     case .loanNotFound:
-      return String(localized: "loan.error.not_found")
+      return "Loan not found"
     case .invalidData:
-      return String(localized: "loan.error.invalid_data")
-    case .networkError(let error):
-      return String(localized: "loan.error.network")
-        + ": \(error.localizedDescription)"
+      return "Invalid loan data"
     }
   }
 }
-

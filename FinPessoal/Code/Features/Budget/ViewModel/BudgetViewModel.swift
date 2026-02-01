@@ -18,7 +18,9 @@ class BudgetViewModel: ObservableObject {
   @Published var startDate = Date()
   @Published var isLoading = false
   @Published var errorMessage: String?
-  
+
+  private let crashlytics = CrashlyticsManager.shared
+
   // User ID should be provided by authentication system
   private var currentUserId: String = "current-user-id" // This should come from AuthViewModel
   
@@ -63,6 +65,7 @@ class BudgetViewModel: ObservableObject {
       }
     }
 
+    crashlytics.logEvent("budget_created", parameters: ["category": selectedCategory.rawValue, "period": selectedPeriod.rawValue, "amount": amount])
     return budget
   }
 
@@ -71,6 +74,7 @@ class BudgetViewModel: ObservableObject {
     Task {
       await NotificationManager.shared.updateBudgetAlert(budget: budget)
     }
+    crashlytics.logEvent("budget_updated", parameters: ["budgetId": budget.id])
   }
 
   func deleteBudget(_ budgetId: String) {
@@ -78,6 +82,7 @@ class BudgetViewModel: ObservableObject {
     Task {
       await NotificationManager.shared.cancelNotification(identifier: "budget-\(budgetId)")
     }
+    crashlytics.logEvent("budget_deleted", parameters: ["budgetId": budgetId])
   }
   
   func setCurrentUserId(_ userId: String) {

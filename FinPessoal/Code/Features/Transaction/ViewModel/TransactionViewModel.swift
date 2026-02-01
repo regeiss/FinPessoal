@@ -42,6 +42,7 @@ class TransactionViewModel: ObservableObject {
 
   private let repository: TransactionRepositoryProtocol
   private let importService: TransactionImportService
+  private let crashlytics = CrashlyticsManager.shared
   private var cancellables = Set<AnyCancellable>()
 
   init(repository: TransactionRepositoryProtocol) {
@@ -139,9 +140,11 @@ class TransactionViewModel: ObservableObject {
     } catch let authError as AuthError {
       errorMessage = authError.errorDescription ?? "Authentication error"
       print("Auth error fetching transactions: \(authError)")
+      crashlytics.logAuthError(authError, authType: "Transaction fetch")
     } catch let firebaseError as FirebaseError {
       errorMessage = firebaseError.errorDescription ?? "Database error"
       print("Firebase error fetching transactions: \(firebaseError)")
+      crashlytics.logFirebaseError(firebaseError, operation: "fetch transactions")
     } catch {
       print("Unexpected error fetching transactions: \(error)")
       print("Error type: \(type(of: error))")
@@ -158,6 +161,7 @@ class TransactionViewModel: ObservableObject {
       } else {
         // For other errors, show to user
         errorMessage = error.localizedDescription
+        crashlytics.logError(error, context: "fetch transactions")
       }
     }
 
@@ -187,14 +191,17 @@ class TransactionViewModel: ObservableObject {
       }
 
       await fetchTransactions()
+      crashlytics.logEvent("transaction_added", parameters: ["type": transaction.type.rawValue, "amount": transaction.amount])
       return true
     } catch let authError as AuthError {
       errorMessage = authError.errorDescription ?? "Authentication error"
       print("Auth error adding transaction: \(authError)")
+      crashlytics.logAuthError(authError, authType: "Add transaction")
       return false
     } catch let firebaseError as FirebaseError {
       errorMessage = firebaseError.errorDescription ?? "Database error"
       print("Firebase error adding transaction: \(firebaseError)")
+      crashlytics.logFirebaseError(firebaseError, operation: "add transaction")
       return false
     } catch {
       errorMessage = error.localizedDescription

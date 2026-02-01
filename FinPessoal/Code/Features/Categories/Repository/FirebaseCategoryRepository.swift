@@ -3,15 +3,16 @@
 //  FinPessoal
 //
 //  Created by Claude on 29/09/25.
+//  Converted to Realtime Database on 24/12/25
 //
 
 import FirebaseAuth
-import FirebaseFirestore
+import FirebaseDatabase
 import Foundation
 
 class FirebaseCategoryRepository: CategoryRepositoryProtocol {
-  private let db = Firestore.firestore()
-  private let categoriesCollection = "categories"
+  private let database = Database.database().reference()
+  private let categoriesPath = "categories"
 
   // MARK: - Category Operations
 
@@ -20,40 +21,51 @@ class FirebaseCategoryRepository: CategoryRepositoryProtocol {
       throw CategoryError.userNotAuthenticated
     }
 
-    let snapshot = try await db.collection(categoriesCollection)
-      .whereField("userId", isEqualTo: userId)
-      .whereField("isActive", isEqualTo: true)
-      .order(by: "sortOrder")
-      .getDocuments()
+    let snapshot = try await database
+      .child(categoriesPath)
+      .child(userId)
+      .getData()
 
-    return snapshot.documents.compactMap { document in
-      try? document.data(as: Category.self)
+    guard let data = snapshot.value as? [String: [String: Any]] else {
+      return []
     }
+
+    let categories = try data.compactMap { (categoryId, categoryData) -> Category? in
+      var mutableData = categoryData
+      mutableData["id"] = categoryId
+      return try Category.fromDictionary(mutableData)
+    }
+
+    return categories
+      .filter { $0.isActive }
+      .sorted { $0.sortOrder < $1.sortOrder }
   }
 
-  func getCategories(for transactionType: TransactionType) async throws
-    -> [Category]
-  {
+  func getCategories(for transactionType: TransactionType) async throws -> [Category] {
+    let allCategories = try await getCategories()
+    return allCategories
+      .filter { $0.transactionType == transactionType }
+      .sorted { $0.sortOrder < $1.sortOrder }
+  }
+
+  func getCategory(by id: String) async throws -> Category? {
     guard let userId = Auth.auth().currentUser?.uid else {
       throw CategoryError.userNotAuthenticated
     }
 
-    let snapshot = try await db.collection(categoriesCollection)
-      .whereField("userId", isEqualTo: userId)
-      .whereField("transactionType", isEqualTo: transactionType.rawValue)
-      .whereField("isActive", isEqualTo: true)
-      .order(by: "sortOrder")
-      .getDocuments()
+    let snapshot = try await database
+      .child(categoriesPath)
+      .child(userId)
+      .child(id)
+      .getData()
 
-    return snapshot.documents.compactMap { document in
-      try? document.data(as: Category.self)
+    guard let data = snapshot.value as? [String: Any] else {
+      return nil
     }
-  }
 
-  func getCategory(by id: String) async throws -> Category? {
-    let document = try await db.collection(categoriesCollection).document(id)
-      .getDocument()
-    return try document.data(as: Category.self)
+    var mutableData = data
+    mutableData["id"] = id
+    return try Category.fromDictionary(mutableData)
   }
 
   func createCategory(_ category: Category) async throws -> Category {
@@ -62,7 +74,6 @@ class FirebaseCategoryRepository: CategoryRepositoryProtocol {
     }
 
     let updatedCategory = Category(
-
       id: category.id,
       name: category.name,
       description: category.description,
@@ -76,14 +87,22 @@ class FirebaseCategoryRepository: CategoryRepositoryProtocol {
       updatedAt: Date()
     )
 
-    try db.collection(categoriesCollection)
-      .document(updatedCategory.id)
-      .setData(from: updatedCategory)
+    let categoryData = try updatedCategory.toDictionary()
+
+    try await database
+      .child(categoriesPath)
+      .child(userId)
+      .child(updatedCategory.id)
+      .setValue(categoryData)
 
     return updatedCategory
   }
 
   func updateCategory(_ category: Category) async throws -> Category {
+    guard let userId = Auth.auth().currentUser?.uid else {
+      throw CategoryError.userNotAuthenticated
+    }
+
     let updatedCategory = Category(
       id: category.id,
       name: category.name,
@@ -98,15 +117,27 @@ class FirebaseCategoryRepository: CategoryRepositoryProtocol {
       updatedAt: Date()
     )
 
-    try db.collection(categoriesCollection)
-      .document(updatedCategory.id)
-      .setData(from: updatedCategory, merge: true)
+    let categoryData = try updatedCategory.toDictionary()
+
+    try await database
+      .child(categoriesPath)
+      .child(userId)
+      .child(updatedCategory.id)
+      .updateChildValues(categoryData)
 
     return updatedCategory
   }
 
   func deleteCategory(id: String) async throws {
-    try await db.collection(categoriesCollection).document(id).delete()
+    guard let userId = Auth.auth().currentUser?.uid else {
+      throw CategoryError.userNotAuthenticated
+    }
+
+    try await database
+      .child(categoriesPath)
+      .child(userId)
+      .child(id)
+      .removeValue()
   }
 
   func initializeDefaultCategories() async throws -> [Category] {
@@ -121,9 +152,7 @@ class FirebaseCategoryRepository: CategoryRepositoryProtocol {
     }
 
     // Create default categories
-    let defaultCategories = DefaultCategoriesData.getDefaultCategories(
-      for: userId
-    )
+    let defaultCategories = DefaultCategoriesData.getDefaultCategories(for: userId)
     var createdCategories: [Category] = []
 
     for category in defaultCategories {
@@ -150,8 +179,7 @@ enum CategoryError: LocalizedError {
     case .invalidData:
       return String(localized: "category.error.invalid_data")
     case .networkError(let error):
-      return String(localized: "category.error.network")
-        + ": \(error.localizedDescription)"
+      return String(localized: "category.error.network") + ": \(error.localizedDescription)"
     }
   }
 }

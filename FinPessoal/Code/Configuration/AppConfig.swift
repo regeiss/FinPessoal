@@ -107,30 +107,6 @@ class AppConfiguration {
       return FirebaseCategoryRepository()
     }
   }
-  
-  func createSubcategoryRepository() -> SubcategoryRepositoryProtocol {
-    if useMockData {
-      return MockSubcategoryRepository()
-    } else {
-      return FirebaseSubcategoryRepository()
-    }
-  }
-  
-  func createDynamicTransactionRepository() -> DynamicTransactionRepositoryProtocol {
-    if useMockData {
-      return MockDynamicTransactionRepository()
-    } else {
-      return FirebaseDynamicTransactionRepository()
-    }
-  }
-  
-  func createDynamicCreditCardRepository() -> DynamicCreditCardRepositoryProtocol {
-    if useMockData {
-      return MockDynamicCreditCardRepository()
-    } else {
-      return FirebaseDynamicCreditCardRepository()
-    }
-  }
 
   func createBillRepository() -> BillRepositoryProtocol {
     if useMockData {

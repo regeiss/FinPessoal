@@ -7,7 +7,83 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed - December 2025
+- **Migrated All Repositories to Firebase Realtime Database** (2025-12-24)
+  - Removed Firestore dependency completely
+  - Converted all Firestore repositories to use Realtime Database:
+    - **FirebaseCategoryRepository**: Categories management with full CRUD
+    - **FirebaseBillRepository**: Bills tracking with payment status, due dates, overdue detection
+    - **FirebaseLoanRepository**: Loans management with payments and amortization schedules
+    - **FirebaseCreditCardRepository**: Credit cards with transactions and statement generation
+  - Removed unused Firestore repositories:
+    - FirebaseSubcategoryRepository (deprecated)
+    - FirebaseDynamicTransactionRepository (deprecated)
+    - FirebaseDynamicCreditCardRepository (deprecated)
+  - Database structure:
+    - Main collections: `{collection}/{userId}/{itemId}`
+    - Subcollections: `loanPayments/{userId}/{loanId}/{paymentId}`
+    - Subcollections: `creditCardTransactions/{userId}/{cardId}/{transactionId}`
+    - Subcollections: `creditCardStatements/{userId}/{cardId}/{statementId}`
+  - Updated FirebaseConstants with new collection names:
+    - categoriesCollection, billsCollection, loansCollection, creditCardsCollection
+  - All repositories implement full protocol compliance:
+    - Bills: Calculate total unpaid amounts, filter by status
+    - Loans: Payment tracking, amortization schedule generation
+    - Credit Cards: Transaction management, statement generation and payment
+  - Simplified architecture - single database solution
+  - Improved performance with Realtime Database's faster reads
+  - Better offline support with Realtime Database persistence
+  - Reduced Firebase costs - only one database to maintain
+  - No Firestore setup required - eliminates "database does not exist" error
+  - Added Firebase helper extensions:
+    - `Loan+Firebase.swift`: toDictionary/fromDictionary for Loan and LoanPayment models
+    - `CreditCard+Firebase.swift`: toDictionary/fromDictionary for CreditCard, CreditCardTransaction, and CreditCardStatement models
+    - `Category+Firebase.swift`: toDictionary/fromDictionary for Category model
+  - Removed deprecated factory methods from AppConfiguration
+  - Removed all Mock repository files for deprecated features
+  - Fixed all compilation errors and warnings:
+    - Updated CreditCardStatement model conversion to include paidAmount, paidDate, and createdAt properties
+    - Fixed Loan model conversion to handle endDate properly
+    - Cleaned up unused variable warnings in FinancialAIService
+  - **Build Status**: ✅ All compilation errors resolved, project builds successfully
+
 ### Added - December 2025
+- **Firebase Crashlytics Integration** (2025-12-24)
+  - Added Firebase Crashlytics for crash reporting and error tracking
+  - Created CrashlyticsManager service for centralized crash logging
+  - Features:
+    - Automatic crash reporting with stack traces
+    - User identification in crash reports (user ID, email, name)
+    - Custom error logging for Firebase and authentication errors
+    - Event logging for user actions (login, logout, CRUD operations)
+    - Breadcrumb logging for navigation tracking
+    - Environment tracking (development, staging, production)
+    - Convenience methods for transaction, budget, goal, and account errors
+  - Integrated into all ViewModels:
+    - **AuthViewModel**: User authentication, login/logout tracking, auth errors
+    - **TransactionViewModel**: Transaction CRUD operations, fetch errors, event tracking
+    - **BudgetViewModel**: Budget creation/update/deletion events
+    - **AccountViewModel**: Account fetch errors with context
+    - **GoalViewModel**: Goal operations tracking
+    - **BillsViewModel**: Bills management error logging
+    - **FinanceViewModel**: Finance data aggregation errors
+  - Error logging with context:
+    - All Firebase errors logged with operation details
+    - All authentication errors logged with auth type
+    - All CRUD operations tracked as events
+  - Initialized in AppDelegate with collection enabled
+  - Environment automatically set based on build configuration
+  - File: `Code/Core/Services/CrashlyticsManager.swift`
+  - Full accessibility support maintained
+
+- **Profile Photo in ProfileView** (2025-12-24)
+  - Added AsyncImage to display user's profile photo in ProfileView screen
+  - Profile photo now loads from user's profileImageURL (Google/Apple sign-in photo)
+  - Displays circular profile image (100x100 points) in profile header
+  - Falls back to system icon placeholder if no photo available
+  - Matches implementation from SettingsScreen for consistency
+  - Maintains full accessibility support
+
 - **Architecture Diagram** (2025-12-23)
   - Generated comprehensive Excalidraw architecture diagram for FinPessoal iOS app
   - Visual representation of all architectural layers:

@@ -16,8 +16,9 @@ class FinanceViewModel: ObservableObject {
   @Published var goals: [Goal] = []
   @Published var isLoading = false
   @Published var errorMessage: String?
-  
+
   private let financeRepository: FinanceRepositoryProtocol
+  private let crashlytics = CrashlyticsManager.shared
   private var cancellables = Set<AnyCancellable>()
   
   // MARK: - Computed Properties

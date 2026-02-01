@@ -1,10 +1,11 @@
-## 🔧 **Melhores MCPs para FinPessoal**
+# 🔧 **Melhores MCPs para FinPessoal**
 
 Para o app **FinPessoal**, sugiro os seguintes MCPs (Model Context Protocols) baseados nas funcionalidades do projeto:
 
-### 💳 **Integração Financeira**
+## 💳 **Integração Financeira**
 
-#### **1. Banking & Payment MCPs**
+### **1. Banking & Payment MCPs**
+
 ```swift
 // Plaid MCP - Conexão bancária
 PlaidMCP()
@@ -19,6 +20,7 @@ OpenPixMCP()
 ```
 
 #### **2. Currency & Exchange MCPs**
+
 ```swift
 // Fixer.io MCP - Câmbio
 CurrencyMCP()
@@ -30,6 +32,7 @@ CurrencyMCP()
 ### 📊 **Analytics & Intelligence**
 
 #### **3. Financial Analytics MCP**
+
 ```swift
 // MCP para análise financeira
 FinancialAnalyticsMCP()
@@ -40,6 +43,7 @@ FinancialAnalyticsMCP()
 ```
 
 #### **4. ML/AI Insights MCP**
+
 ```swift
 // Machine Learning para finanças
 FinancialAIMCP()
@@ -52,6 +56,7 @@ FinancialAIMCP()
 ### 🔔 **Notifications & Alerts**
 
 #### **5. Smart Notifications MCP**
+
 ```swift
 // Notificações inteligentes
 NotificationMCP()
@@ -64,6 +69,7 @@ NotificationMCP()
 ### 📈 **Market Data**
 
 #### **6. Investment Tracking MCP**
+
 ```swift
 // Alpha Vantage MCP - Dados de mercado
 MarketDataMCP()
@@ -75,6 +81,7 @@ MarketDataMCP()
 ### 🛡️ **Security & Compliance**
 
 #### **7. Security MCP**
+
 ```swift
 // Segurança financeira
 SecurityMCP()
@@ -87,6 +94,7 @@ SecurityMCP()
 ### 🏦 **Brazilian Financial Services**
 
 #### **8. Brazilian Banks MCP**
+
 ```swift
 // Específico para bancos brasileiros
 BrazilianBanksMCP()
@@ -100,6 +108,7 @@ BrazilianBanksMCP()
 ### 📱 **Mobile Integration**
 
 #### **9. Device Integration MCP**
+
 ```swift
 // Integração com dispositivos
 DeviceMCP()
@@ -112,6 +121,7 @@ DeviceMCP()
 ### 📊 **Reporting & Export**
 
 #### **10. Export & Sharing MCP**
+
 ```swift
 // Relatórios e exportação
 ReportingMCP()
@@ -124,20 +134,23 @@ ReportingMCP()
 ## 🎯 **MCPs Prioritários para FinPessoal**
 
 ### **Fase 1 - Essenciais:**
+
 1. **Banking Integration MCP** - Conexão com bancos
 2. **Financial Analytics MCP** - Categorização automática
 3. **Notification MCP** - Alertas de orçamento
 4. **Security MCP** - Proteção de dados
 
 ### **Fase 2 - Melhorias:**2
-5. **Brazilian Banks MCP** - Bancos locais
-6. **Currency MCP** - Conversão de moedas
-7. **Device Integration MCP** - Recursos nativos
+
+1. **Brazilian Banks MCP** - Bancos locais
+2. **Currency MCP** - Conversão de moedas
+3. **Device Integration MCP** - Recursos nativos
 
 ### **Fase 3 - Avançado:**
-8. **AI Insights MCP** - Previsões e sugestões
-9. **Market Data MCP** - Investimentos
-10. **Reporting MCP** - Relatórios avançados
+
+1. **AI Insights MCP** - Previsões e sugestões
+2. **Market Data MCP** - Investimentos
+3. **Reporting MCP** - Relatórios avançados
 
 ## ⚙️ **Implementação Sugerida**
 
