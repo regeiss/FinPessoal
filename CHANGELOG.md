@@ -8,6 +8,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added - February 2026
+- **BalanceCardView with Animations** (2026-02-02)
+  - Updated existing BalanceCardView to use animated components
+  - Replaced static text with PhysicsNumberCounter for smooth value transitions
+  - Added AnimatedCard press interactions with scale and shadow effects
+  - Backward compatible initializers:
+    - Convenience init with constant values for existing code
+    - Binding init for animated live updates
+  - Optional tap action support for interactive cards
+  - Maintains all accessibility features from original implementation
+  - Comprehensive test coverage with BalanceCardViewTests (2 test cases)
+  - Ready for integration in dashboard with live balance updates
+
 - **AnimatedCard Component** (2026-02-02)
   - Added AnimatedCard struct for interactive card UI with press states
   - Scale animation (0.98x) on press for tactile feedback
