@@ -8,6 +8,39 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added - February 2026
+- **AnimatedCard Component** (2026-02-02)
+  - Added AnimatedCard struct for interactive card UI with press states
+  - Scale animation (0.98x) on press for tactile feedback
+  - Dynamic shadow system:
+    - Light mode: Black with 15% opacity
+    - Dark mode: Black with 40% opacity
+    - Shadow radius transitions: 12pt → 8pt on press
+    - Shadow Y offset transitions: 4pt → 2pt on press
+  - Press gesture handling with DragGesture(minimumDistance: 0)
+  - Haptic feedback integration:
+    - Light haptic on press down
+    - Gesture-driven interaction feedback
+  - Mode-aware animations:
+    - Full mode: Snappy spring on press, gentle spring on release
+    - Reduced mode: Quick fade animations
+    - Minimal mode: No animation
+  - Optional hero transition support with matchedGeometryEffect
+  - AnimatedCardModifier for easy application to any view
+  - View extension: .animatedCard(onTap:) modifier
+  - Conditional view modifiers with .if() helper
+  - Comprehensive test coverage with AnimatedCardTests (2 test cases)
+  - Ready for integration with dashboard cards and interactive UI elements
+
+- **PhysicsNumberCounter Component** (2026-02-02)
+  - Added animated number counter with spring physics for smooth value transitions
+  - Spring-based animations using AnimationEngine presets
+  - Mode-aware animation behavior
+  - Haptic feedback for significant value changes (>100)
+  - Currency formatting support
+  - Customizable font styling
+  - Binding-based and constant value initializers
+  - Comprehensive test coverage with PhysicsNumberCounterTests (2 test cases)
+
 - **Haptic Engine** (2026-02-01)
   - Added HapticEngine singleton for centralized haptic feedback
   - Impact haptics:
