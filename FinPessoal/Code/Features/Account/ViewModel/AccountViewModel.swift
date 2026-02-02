@@ -18,10 +18,11 @@ class AccountViewModel: ObservableObject {
     @Published var selectedAccount: Account?
     @Published var showingAccountDetail: Bool = false
     @Published var totalBalance: Double = 0.0
-    
+
     private let repository: AccountRepositoryProtocol
+    private let crashlytics = CrashlyticsManager.shared
     private var cancellables = Set<AnyCancellable>()
-    
+
     init(repository: AccountRepositoryProtocol) {
         self.repository = repository
         setupBindings()
@@ -53,10 +54,12 @@ class AccountViewModel: ObservableObject {
             // Handle authentication errors specifically
             errorMessage = authError.errorDescription ?? "Authentication error"
             print("Auth error fetching accounts: \(authError)")
+            crashlytics.logAuthError(authError, authType: "Account fetch")
         } catch let firebaseError as FirebaseError {
-            // Handle Firebase errors specifically  
+            // Handle Firebase errors specifically
             errorMessage = firebaseError.errorDescription ?? "Database error"
             print("Firebase error fetching accounts: \(firebaseError)")
+            crashlytics.logFirebaseError(firebaseError, operation: "fetch accounts")
         } catch {
             // Handle other errors
             errorMessage = error.localizedDescription

@@ -1582,3 +1582,780 @@
 [debug] [2025-10-28T21:46:05.675Z] > authorizing via signed-in user (roberto.geiss.nh@gmail.com)
 [debug] [2025-10-28T21:46:05.676Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
 [debug] [2025-10-28T21:46:05.676Z] > authorizing via signed-in user (roberto.geiss.nh@gmail.com)
+[debug] [2025-12-21T18:34:36.206Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-21T18:34:36.208Z] > authorizing via signed-in user (roberto.geiss.nh@gmail.com)
+[debug] [2025-12-21T18:34:36.208Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-21T18:34:36.208Z] > authorizing via signed-in user (roberto.geiss.nh@gmail.com)
+[debug] [2025-12-21T18:34:36.208Z] Checked if tokens are valid: false, expires at: 1761691562526
+[debug] [2025-12-21T18:34:36.209Z] Checked if tokens are valid: false, expires at: 1761691562526
+[debug] [2025-12-21T18:34:36.209Z] > refreshing access token with scopes: []
+[debug] [2025-12-21T18:34:36.209Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-12-21T18:34:36.209Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-12-21T18:34:36.210Z] Checked if tokens are valid: false, expires at: 1761691562526
+[debug] [2025-12-21T18:34:36.210Z] Checked if tokens are valid: false, expires at: 1761691562526
+[debug] [2025-12-21T18:34:36.210Z] > refreshing access token with scopes: []
+[debug] [2025-12-21T18:34:36.211Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-12-21T18:34:36.211Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-12-21T18:34:36.211Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-21T18:34:36.211Z] > authorizing via signed-in user (roberto.geiss.nh@gmail.com)
+[debug] [2025-12-21T18:34:36.211Z] Checked if tokens are valid: false, expires at: 1761691562526
+[debug] [2025-12-21T18:34:36.211Z] Checked if tokens are valid: false, expires at: 1761691562526
+[debug] [2025-12-21T18:34:36.211Z] > refreshing access token with scopes: []
+[debug] [2025-12-21T18:34:36.211Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-12-21T18:34:36.211Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-12-21T18:34:36.474Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-12-21T18:34:36.474Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-12-21T18:34:36.486Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo [none]
+[debug] [2025-12-21T18:34:36.490Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-12-21T18:34:36.490Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-12-21T18:34:36.498Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo [none]
+[debug] [2025-12-21T18:34:36.499Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-12-21T18:34:36.499Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-12-21T18:34:36.508Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo [none]
+[debug] [2025-12-21T18:34:38.128Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo 200
+[debug] [2025-12-21T18:34:38.128Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo {"name":"projects/finpessoal/billingInfo","projectId":"finpessoal","billingAccountName":"","billingEnabled":false}
+[debug] [2025-12-21T18:34:38.133Z] Checked if tokens are valid: true, expires at: 1766345675499
+[debug] [2025-12-21T18:34:38.133Z] Checked if tokens are valid: true, expires at: 1766345675499
+[debug] [2025-12-21T18:34:38.134Z] Checked if tokens are valid: true, expires at: 1766345675499
+[debug] [2025-12-21T18:34:38.134Z] Checked if tokens are valid: true, expires at: 1766345675499
+[debug] [2025-12-21T18:34:38.147Z] Checked if tokens are valid: true, expires at: 1766345675499
+[debug] [2025-12-21T18:34:38.147Z] Checked if tokens are valid: true, expires at: 1766345675499
+[debug] [2025-12-21T18:34:38.147Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com [none]
+[debug] [2025-12-21T18:34:38.147Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-21T18:34:38.150Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com [none]
+[debug] [2025-12-21T18:34:38.150Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-21T18:34:38.151Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com [none]
+[debug] [2025-12-21T18:34:38.151Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-21T18:34:38.180Z] Checked if tokens are valid: true, expires at: 1766345675499
+[debug] [2025-12-21T18:34:38.180Z] Checked if tokens are valid: true, expires at: 1766345675499
+[debug] [2025-12-21T18:34:38.180Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseappdistribution.googleapis.com [none]
+[debug] [2025-12-21T18:34:38.180Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseappdistribution.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-21T18:34:50.402Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-21T18:34:50.404Z] > authorizing via signed-in user (roberto.geiss.nh@gmail.com)
+[debug] [2025-12-21T18:34:50.404Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-21T18:34:50.404Z] > authorizing via signed-in user (roberto.geiss.nh@gmail.com)
+[debug] [2025-12-21T18:34:50.404Z] Checked if tokens are valid: true, expires at: 1766345675499
+[debug] [2025-12-21T18:34:50.405Z] Checked if tokens are valid: true, expires at: 1766345675499
+[debug] [2025-12-21T18:34:50.405Z] Checked if tokens are valid: true, expires at: 1766345675499
+[debug] [2025-12-21T18:34:50.405Z] Checked if tokens are valid: true, expires at: 1766345675499
+[debug] [2025-12-21T18:34:50.405Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-21T18:34:50.405Z] > authorizing via signed-in user (roberto.geiss.nh@gmail.com)
+[debug] [2025-12-21T18:34:50.405Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo [none]
+[debug] [2025-12-21T18:34:50.406Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo [none]
+[debug] [2025-12-21T18:34:50.406Z] Checked if tokens are valid: true, expires at: 1766345675499
+[debug] [2025-12-21T18:34:50.406Z] Checked if tokens are valid: true, expires at: 1766345675499
+[debug] [2025-12-21T18:34:50.406Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo [none]
+[debug] [2025-12-21T18:34:51.795Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo 200
+[debug] [2025-12-21T18:34:51.796Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo {"name":"projects/finpessoal/billingInfo","projectId":"finpessoal","billingAccountName":"","billingEnabled":false}
+[debug] [2025-12-21T18:34:51.802Z] Checked if tokens are valid: true, expires at: 1766345675499
+[debug] [2025-12-21T18:34:51.802Z] Checked if tokens are valid: true, expires at: 1766345675499
+[debug] [2025-12-21T18:34:51.802Z] Checked if tokens are valid: true, expires at: 1766345675499
+[debug] [2025-12-21T18:34:51.802Z] Checked if tokens are valid: true, expires at: 1766345675499
+[debug] [2025-12-21T18:34:51.815Z] Checked if tokens are valid: true, expires at: 1766345675499
+[debug] [2025-12-21T18:34:51.815Z] Checked if tokens are valid: true, expires at: 1766345675499
+[debug] [2025-12-21T18:34:51.815Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com [none]
+[debug] [2025-12-21T18:34:51.815Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-21T18:34:51.817Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com [none]
+[debug] [2025-12-21T18:34:51.817Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-21T18:34:51.818Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com [none]
+[debug] [2025-12-21T18:34:51.818Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-21T18:34:51.846Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo 200
+[debug] [2025-12-21T18:34:51.846Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo {"name":"projects/finpessoal/billingInfo","projectId":"finpessoal","billingAccountName":"","billingEnabled":false}
+[debug] [2025-12-21T18:34:51.852Z] Checked if tokens are valid: true, expires at: 1766345675499
+[debug] [2025-12-21T18:34:51.853Z] Checked if tokens are valid: true, expires at: 1766345675499
+[debug] [2025-12-21T18:34:51.853Z] Checked if tokens are valid: true, expires at: 1766345675499
+[debug] [2025-12-21T18:34:51.853Z] Checked if tokens are valid: true, expires at: 1766345675499
+[debug] [2025-12-21T18:34:51.854Z] Checked if tokens are valid: true, expires at: 1766345675499
+[debug] [2025-12-21T18:34:51.854Z] Checked if tokens are valid: true, expires at: 1766345675499
+[debug] [2025-12-21T18:34:51.854Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com [none]
+[debug] [2025-12-21T18:34:51.854Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-21T18:34:51.855Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com [none]
+[debug] [2025-12-21T18:34:51.856Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-21T18:34:51.856Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com [none]
+[debug] [2025-12-21T18:34:51.856Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-21T18:34:51.872Z] Checked if tokens are valid: true, expires at: 1766345675499
+[debug] [2025-12-21T18:34:51.872Z] Checked if tokens are valid: true, expires at: 1766345675499
+[debug] [2025-12-21T18:34:51.872Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseappdistribution.googleapis.com [none]
+[debug] [2025-12-21T18:34:51.872Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseappdistribution.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-21T18:34:51.881Z] Checked if tokens are valid: true, expires at: 1766345675499
+[debug] [2025-12-21T18:34:51.881Z] Checked if tokens are valid: true, expires at: 1766345675499
+[debug] [2025-12-21T18:34:51.881Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseappdistribution.googleapis.com [none]
+[debug] [2025-12-21T18:34:51.881Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseappdistribution.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-21T18:34:51.926Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo 200
+[debug] [2025-12-21T18:34:51.926Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo {"name":"projects/finpessoal/billingInfo","projectId":"finpessoal","billingAccountName":"","billingEnabled":false}
+[debug] [2025-12-21T18:34:51.926Z] Checked if tokens are valid: true, expires at: 1766345675499
+[debug] [2025-12-21T18:34:51.926Z] Checked if tokens are valid: true, expires at: 1766345675499
+[debug] [2025-12-21T18:34:51.926Z] Checked if tokens are valid: true, expires at: 1766345675499
+[debug] [2025-12-21T18:34:51.926Z] Checked if tokens are valid: true, expires at: 1766345675499
+[debug] [2025-12-21T18:34:51.928Z] Checked if tokens are valid: true, expires at: 1766345675499
+[debug] [2025-12-21T18:34:51.928Z] Checked if tokens are valid: true, expires at: 1766345675499
+[debug] [2025-12-21T18:34:51.928Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com [none]
+[debug] [2025-12-21T18:34:51.928Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-21T18:34:51.928Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com [none]
+[debug] [2025-12-21T18:34:51.928Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-21T18:34:51.928Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com [none]
+[debug] [2025-12-21T18:34:51.928Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-21T18:34:51.941Z] Checked if tokens are valid: true, expires at: 1766345675499
+[debug] [2025-12-21T18:34:51.941Z] Checked if tokens are valid: true, expires at: 1766345675499
+[debug] [2025-12-21T18:34:51.941Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseappdistribution.googleapis.com [none]
+[debug] [2025-12-21T18:34:51.941Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseappdistribution.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-21T18:34:52.893Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com 200
+[debug] [2025-12-21T18:34:52.893Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com [omitted]
+[debug] [2025-12-21T18:34:52.895Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com 200
+[debug] [2025-12-21T18:34:52.895Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com [omitted]
+[debug] [2025-12-21T18:34:52.896Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com 200
+[debug] [2025-12-21T18:34:52.896Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com [omitted]
+[debug] [2025-12-21T18:34:52.900Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com 200
+[debug] [2025-12-21T18:34:52.900Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com [omitted]
+[debug] [2025-12-21T18:34:52.925Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseappdistribution.googleapis.com 200
+[debug] [2025-12-21T18:34:52.926Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseappdistribution.googleapis.com [omitted]
+[debug] [2025-12-21T18:34:52.932Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseappdistribution.googleapis.com 200
+[debug] [2025-12-21T18:34:52.932Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseappdistribution.googleapis.com [omitted]
+[debug] [2025-12-21T18:34:52.937Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com 200
+[debug] [2025-12-21T18:34:52.937Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com [omitted]
+[debug] [2025-12-21T18:34:52.937Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com 200
+[debug] [2025-12-21T18:34:52.937Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com [omitted]
+[debug] [2025-12-21T18:34:52.961Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseappdistribution.googleapis.com 200
+[debug] [2025-12-21T18:34:52.961Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseappdistribution.googleapis.com [omitted]
+[debug] [2025-12-21T18:34:52.966Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com 200
+[debug] [2025-12-21T18:34:52.967Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com [omitted]
+[debug] [2025-12-21T18:34:52.973Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com 200
+[debug] [2025-12-21T18:34:52.973Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com [omitted]
+[debug] [2025-12-21T18:34:52.974Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com 200
+[debug] [2025-12-21T18:34:52.974Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com [omitted]
+[debug] [2025-12-21T18:34:53.032Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-21T18:34:53.032Z] > authorizing via signed-in user (roberto.geiss.nh@gmail.com)
+[debug] [2025-12-21T18:34:53.032Z] Checked if tokens are valid: true, expires at: 1766345675499
+[debug] [2025-12-21T18:34:53.033Z] Checked if tokens are valid: true, expires at: 1766345675499
+[debug] [2025-12-21T18:34:53.033Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo [none]
+[debug] [2025-12-21T18:34:53.060Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-21T18:34:53.060Z] > authorizing via signed-in user (roberto.geiss.nh@gmail.com)
+[debug] [2025-12-21T18:34:53.060Z] Checked if tokens are valid: true, expires at: 1766345675499
+[debug] [2025-12-21T18:34:53.060Z] Checked if tokens are valid: true, expires at: 1766345675499
+[debug] [2025-12-21T18:34:53.060Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo [none]
+[debug] [2025-12-21T18:34:54.056Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo 200
+[debug] [2025-12-21T18:34:54.056Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo {"name":"projects/finpessoal/billingInfo","projectId":"finpessoal","billingAccountName":"","billingEnabled":false}
+[debug] [2025-12-21T18:34:54.059Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-21T18:34:54.059Z] > authorizing via signed-in user (roberto.geiss.nh@gmail.com)
+[debug] [2025-12-21T18:34:54.286Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo 200
+[debug] [2025-12-21T18:34:54.286Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo {"name":"projects/finpessoal/billingInfo","projectId":"finpessoal","billingAccountName":"","billingEnabled":false}
+[debug] [2025-12-21T18:34:54.288Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-21T18:34:54.288Z] > authorizing via signed-in user (roberto.geiss.nh@gmail.com)
+[debug] [2025-12-22T01:22:43.618Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-22T01:22:43.620Z] > authorizing via signed-in user (roberto.geiss.nh@gmail.com)
+[debug] [2025-12-22T01:22:43.620Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-22T01:22:43.620Z] > authorizing via signed-in user (roberto.geiss.nh@gmail.com)
+[debug] [2025-12-22T01:22:43.620Z] Checked if tokens are valid: false, expires at: 1766345675499
+[debug] [2025-12-22T01:22:43.620Z] Checked if tokens are valid: false, expires at: 1766345675499
+[debug] [2025-12-22T01:22:43.620Z] > refreshing access token with scopes: []
+[debug] [2025-12-22T01:22:43.621Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-12-22T01:22:43.621Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-12-22T01:22:43.622Z] Checked if tokens are valid: false, expires at: 1766345675499
+[debug] [2025-12-22T01:22:43.622Z] Checked if tokens are valid: false, expires at: 1766345675499
+[debug] [2025-12-22T01:22:43.622Z] > refreshing access token with scopes: []
+[debug] [2025-12-22T01:22:43.622Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-12-22T01:22:43.622Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-12-22T01:22:43.623Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-22T01:22:43.623Z] > authorizing via signed-in user (roberto.geiss.nh@gmail.com)
+[debug] [2025-12-22T01:22:43.623Z] Checked if tokens are valid: false, expires at: 1766345675499
+[debug] [2025-12-22T01:22:43.623Z] Checked if tokens are valid: false, expires at: 1766345675499
+[debug] [2025-12-22T01:22:43.623Z] > refreshing access token with scopes: []
+[debug] [2025-12-22T01:22:43.623Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-12-22T01:22:43.623Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-12-22T01:22:43.871Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-12-22T01:22:43.871Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-12-22T01:22:43.891Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo [none]
+[debug] [2025-12-22T01:22:43.895Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-12-22T01:22:43.895Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-12-22T01:22:43.910Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo [none]
+[debug] [2025-12-22T01:22:43.913Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-12-22T01:22:43.913Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-12-22T01:22:43.920Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo [none]
+[debug] [2025-12-22T01:22:45.135Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo 200
+[debug] [2025-12-22T01:22:45.135Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo {"name":"projects/finpessoal/billingInfo","projectId":"finpessoal","billingAccountName":"","billingEnabled":false}
+[debug] [2025-12-22T01:22:45.141Z] Checked if tokens are valid: true, expires at: 1766370162913
+[debug] [2025-12-22T01:22:45.141Z] Checked if tokens are valid: true, expires at: 1766370162913
+[debug] [2025-12-22T01:22:45.141Z] Checked if tokens are valid: true, expires at: 1766370162913
+[debug] [2025-12-22T01:22:45.142Z] Checked if tokens are valid: true, expires at: 1766370162913
+[debug] [2025-12-22T01:22:45.154Z] Checked if tokens are valid: true, expires at: 1766370162913
+[debug] [2025-12-22T01:22:45.154Z] Checked if tokens are valid: true, expires at: 1766370162913
+[debug] [2025-12-22T01:22:45.154Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com [none]
+[debug] [2025-12-22T01:22:45.154Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-22T01:22:45.156Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com [none]
+[debug] [2025-12-22T01:22:45.156Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-22T01:22:45.157Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com [none]
+[debug] [2025-12-22T01:22:45.157Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-22T01:22:46.107Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo 200
+[debug] [2025-12-22T01:22:46.107Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo {"name":"projects/finpessoal/billingInfo","projectId":"finpessoal","billingAccountName":"","billingEnabled":false}
+[debug] [2025-12-22T01:22:46.122Z] Checked if tokens are valid: true, expires at: 1766370162913
+[debug] [2025-12-22T01:22:46.122Z] Checked if tokens are valid: true, expires at: 1766370162913
+[debug] [2025-12-22T01:22:46.122Z] Checked if tokens are valid: true, expires at: 1766370162913
+[debug] [2025-12-22T01:22:46.122Z] Checked if tokens are valid: true, expires at: 1766370162913
+[debug] [2025-12-22T01:22:46.124Z] Checked if tokens are valid: true, expires at: 1766370162913
+[debug] [2025-12-22T01:22:46.124Z] Checked if tokens are valid: true, expires at: 1766370162913
+[debug] [2025-12-22T01:22:46.124Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com [none]
+[debug] [2025-12-22T01:22:46.124Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-22T01:22:46.125Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com [none]
+[debug] [2025-12-22T01:22:46.125Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-22T01:22:46.126Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com [none]
+[debug] [2025-12-22T01:22:46.126Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-22T01:22:46.280Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo 200
+[debug] [2025-12-22T01:22:46.280Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo {"name":"projects/finpessoal/billingInfo","projectId":"finpessoal","billingAccountName":"","billingEnabled":false}
+[debug] [2025-12-22T01:22:46.281Z] Checked if tokens are valid: true, expires at: 1766370162913
+[debug] [2025-12-22T01:22:46.281Z] Checked if tokens are valid: true, expires at: 1766370162913
+[debug] [2025-12-22T01:22:46.281Z] Checked if tokens are valid: true, expires at: 1766370162913
+[debug] [2025-12-22T01:22:46.281Z] Checked if tokens are valid: true, expires at: 1766370162913
+[debug] [2025-12-22T01:22:46.283Z] Checked if tokens are valid: true, expires at: 1766370162913
+[debug] [2025-12-22T01:22:46.283Z] Checked if tokens are valid: true, expires at: 1766370162913
+[debug] [2025-12-22T01:22:46.283Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com [none]
+[debug] [2025-12-22T01:22:46.283Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-22T01:22:46.284Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com [none]
+[debug] [2025-12-22T01:22:46.284Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-22T01:22:46.284Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com [none]
+[debug] [2025-12-22T01:22:46.284Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-22T01:22:46.338Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com 200
+[debug] [2025-12-22T01:22:46.338Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com [omitted]
+[debug] [2025-12-22T01:22:46.342Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com 200
+[debug] [2025-12-22T01:22:46.342Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com [omitted]
+[debug] [2025-12-22T01:22:46.351Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com 200
+[debug] [2025-12-22T01:22:46.351Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com [omitted]
+[debug] [2025-12-22T01:22:47.149Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com 200
+[debug] [2025-12-22T01:22:47.149Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com [omitted]
+[debug] [2025-12-22T01:22:47.150Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com 200
+[debug] [2025-12-22T01:22:47.150Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com [omitted]
+[debug] [2025-12-22T01:22:47.150Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com 200
+[debug] [2025-12-22T01:22:47.150Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com [omitted]
+[debug] [2025-12-22T01:22:47.243Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-22T01:22:47.244Z] > authorizing via signed-in user (roberto.geiss.nh@gmail.com)
+[debug] [2025-12-22T01:22:47.244Z] Checked if tokens are valid: true, expires at: 1766370162913
+[debug] [2025-12-22T01:22:47.244Z] Checked if tokens are valid: true, expires at: 1766370162913
+[debug] [2025-12-22T01:22:47.244Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo [none]
+[debug] [2025-12-22T01:22:47.308Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com 200
+[debug] [2025-12-22T01:22:47.308Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com [omitted]
+[debug] [2025-12-22T01:22:47.321Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com 200
+[debug] [2025-12-22T01:22:47.322Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com [omitted]
+[debug] [2025-12-22T01:22:47.328Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com 200
+[debug] [2025-12-22T01:22:47.328Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com [omitted]
+[debug] [2025-12-22T01:22:47.421Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-22T01:22:47.421Z] > authorizing via signed-in user (roberto.geiss.nh@gmail.com)
+[debug] [2025-12-22T01:22:47.421Z] Checked if tokens are valid: true, expires at: 1766370162913
+[debug] [2025-12-22T01:22:47.421Z] Checked if tokens are valid: true, expires at: 1766370162913
+[debug] [2025-12-22T01:22:47.421Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo [none]
+[debug] [2025-12-22T01:22:47.548Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo 200
+[debug] [2025-12-22T01:22:47.549Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo {"name":"projects/finpessoal/billingInfo","projectId":"finpessoal","billingAccountName":"","billingEnabled":false}
+[debug] [2025-12-22T01:22:47.552Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-22T01:22:47.552Z] > authorizing via signed-in user (roberto.geiss.nh@gmail.com)
+[debug] [2025-12-22T01:22:48.688Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo 200
+[debug] [2025-12-22T01:22:48.688Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo {"name":"projects/finpessoal/billingInfo","projectId":"finpessoal","billingAccountName":"","billingEnabled":false}
+[debug] [2025-12-22T01:22:48.690Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-22T01:22:48.690Z] > authorizing via signed-in user (roberto.geiss.nh@gmail.com)
+[debug] [2025-12-22T13:44:06.545Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-22T13:44:06.547Z] > authorizing via signed-in user (roberto.geiss.nh@gmail.com)
+[debug] [2025-12-22T13:44:06.547Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-22T13:44:06.547Z] > authorizing via signed-in user (roberto.geiss.nh@gmail.com)
+[debug] [2025-12-22T13:44:06.547Z] Checked if tokens are valid: false, expires at: 1766370162913
+[debug] [2025-12-22T13:44:06.547Z] Checked if tokens are valid: false, expires at: 1766370162913
+[debug] [2025-12-22T13:44:06.548Z] > refreshing access token with scopes: []
+[debug] [2025-12-22T13:44:06.548Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-12-22T13:44:06.548Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-12-22T13:44:06.549Z] Checked if tokens are valid: false, expires at: 1766370162913
+[debug] [2025-12-22T13:44:06.549Z] Checked if tokens are valid: false, expires at: 1766370162913
+[debug] [2025-12-22T13:44:06.549Z] > refreshing access token with scopes: []
+[debug] [2025-12-22T13:44:06.550Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-12-22T13:44:06.550Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-12-22T13:44:06.550Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-22T13:44:06.550Z] > authorizing via signed-in user (roberto.geiss.nh@gmail.com)
+[debug] [2025-12-22T13:44:06.550Z] Checked if tokens are valid: false, expires at: 1766370162913
+[debug] [2025-12-22T13:44:06.550Z] Checked if tokens are valid: false, expires at: 1766370162913
+[debug] [2025-12-22T13:44:06.550Z] > refreshing access token with scopes: []
+[debug] [2025-12-22T13:44:06.550Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-12-22T13:44:06.550Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-12-22T13:44:06.794Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-12-22T13:44:06.794Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-12-22T13:44:06.816Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo [none]
+[debug] [2025-12-22T13:44:06.821Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-12-22T13:44:06.822Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-12-22T13:44:06.835Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo [none]
+[debug] [2025-12-22T13:44:06.838Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-12-22T13:44:06.838Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-12-22T13:44:06.845Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo [none]
+[debug] [2025-12-22T13:44:08.278Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo 200
+[debug] [2025-12-22T13:44:08.279Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo {"name":"projects/finpessoal/billingInfo","projectId":"finpessoal","billingAccountName":"","billingEnabled":false}
+[debug] [2025-12-22T13:44:08.285Z] Checked if tokens are valid: true, expires at: 1766414645838
+[debug] [2025-12-22T13:44:08.285Z] Checked if tokens are valid: true, expires at: 1766414645838
+[debug] [2025-12-22T13:44:08.286Z] Checked if tokens are valid: true, expires at: 1766414645838
+[debug] [2025-12-22T13:44:08.286Z] Checked if tokens are valid: true, expires at: 1766414645838
+[debug] [2025-12-22T13:44:08.297Z] Checked if tokens are valid: true, expires at: 1766414645838
+[debug] [2025-12-22T13:44:08.297Z] Checked if tokens are valid: true, expires at: 1766414645838
+[debug] [2025-12-22T13:44:08.297Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com [none]
+[debug] [2025-12-22T13:44:08.297Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-22T13:44:08.300Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com [none]
+[debug] [2025-12-22T13:44:08.300Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-22T13:44:08.301Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com [none]
+[debug] [2025-12-22T13:44:08.301Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-22T13:44:08.348Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo 200
+[debug] [2025-12-22T13:44:08.348Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo {"name":"projects/finpessoal/billingInfo","projectId":"finpessoal","billingAccountName":"","billingEnabled":false}
+[debug] [2025-12-22T13:44:08.355Z] Checked if tokens are valid: true, expires at: 1766414645838
+[debug] [2025-12-22T13:44:08.355Z] Checked if tokens are valid: true, expires at: 1766414645838
+[debug] [2025-12-22T13:44:08.355Z] Checked if tokens are valid: true, expires at: 1766414645838
+[debug] [2025-12-22T13:44:08.355Z] Checked if tokens are valid: true, expires at: 1766414645838
+[debug] [2025-12-22T13:44:08.356Z] Checked if tokens are valid: true, expires at: 1766414645838
+[debug] [2025-12-22T13:44:08.356Z] Checked if tokens are valid: true, expires at: 1766414645838
+[debug] [2025-12-22T13:44:08.356Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com [none]
+[debug] [2025-12-22T13:44:08.356Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-22T13:44:08.357Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com [none]
+[debug] [2025-12-22T13:44:08.357Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-22T13:44:08.357Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com [none]
+[debug] [2025-12-22T13:44:08.357Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-22T13:44:08.367Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo 200
+[debug] [2025-12-22T13:44:08.367Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo {"name":"projects/finpessoal/billingInfo","projectId":"finpessoal","billingAccountName":"","billingEnabled":false}
+[debug] [2025-12-22T13:44:08.368Z] Checked if tokens are valid: true, expires at: 1766414645838
+[debug] [2025-12-22T13:44:08.368Z] Checked if tokens are valid: true, expires at: 1766414645838
+[debug] [2025-12-22T13:44:08.368Z] Checked if tokens are valid: true, expires at: 1766414645838
+[debug] [2025-12-22T13:44:08.368Z] Checked if tokens are valid: true, expires at: 1766414645838
+[debug] [2025-12-22T13:44:08.369Z] Checked if tokens are valid: true, expires at: 1766414645838
+[debug] [2025-12-22T13:44:08.369Z] Checked if tokens are valid: true, expires at: 1766414645838
+[debug] [2025-12-22T13:44:08.369Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com [none]
+[debug] [2025-12-22T13:44:08.369Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-22T13:44:08.370Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com [none]
+[debug] [2025-12-22T13:44:08.370Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-22T13:44:08.370Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com [none]
+[debug] [2025-12-22T13:44:08.370Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-22T13:44:09.494Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com 200
+[debug] [2025-12-22T13:44:09.494Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com [omitted]
+[debug] [2025-12-22T13:44:09.495Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com 200
+[debug] [2025-12-22T13:44:09.495Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com [omitted]
+[debug] [2025-12-22T13:44:09.496Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com 200
+[debug] [2025-12-22T13:44:09.497Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com [omitted]
+[debug] [2025-12-22T13:44:09.499Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com 200
+[debug] [2025-12-22T13:44:09.499Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com [omitted]
+[debug] [2025-12-22T13:44:09.500Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com 200
+[debug] [2025-12-22T13:44:09.500Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com [omitted]
+[debug] [2025-12-22T13:44:09.500Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com 200
+[debug] [2025-12-22T13:44:09.500Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com [omitted]
+[debug] [2025-12-22T13:44:09.501Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com 200
+[debug] [2025-12-22T13:44:09.501Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com [omitted]
+[debug] [2025-12-22T13:44:09.504Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com 200
+[debug] [2025-12-22T13:44:09.504Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com [omitted]
+[debug] [2025-12-22T13:44:09.505Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com 200
+[debug] [2025-12-22T13:44:09.505Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com [omitted]
+[debug] [2025-12-22T13:44:09.597Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-22T13:44:09.598Z] > authorizing via signed-in user (roberto.geiss.nh@gmail.com)
+[debug] [2025-12-22T13:44:09.598Z] Checked if tokens are valid: true, expires at: 1766414645838
+[debug] [2025-12-22T13:44:09.598Z] Checked if tokens are valid: true, expires at: 1766414645838
+[debug] [2025-12-22T13:44:09.598Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo [none]
+[debug] [2025-12-22T13:44:09.600Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-22T13:44:09.601Z] > authorizing via signed-in user (roberto.geiss.nh@gmail.com)
+[debug] [2025-12-22T13:44:09.601Z] Checked if tokens are valid: true, expires at: 1766414645838
+[debug] [2025-12-22T13:44:09.601Z] Checked if tokens are valid: true, expires at: 1766414645838
+[debug] [2025-12-22T13:44:09.601Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo [none]
+[debug] [2025-12-22T13:44:10.599Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo 200
+[debug] [2025-12-22T13:44:10.600Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo {"name":"projects/finpessoal/billingInfo","projectId":"finpessoal","billingAccountName":"","billingEnabled":false}
+[debug] [2025-12-22T13:44:10.603Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-22T13:44:10.603Z] > authorizing via signed-in user (roberto.geiss.nh@gmail.com)
+[debug] [2025-12-22T13:44:10.722Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo 200
+[debug] [2025-12-22T13:44:10.722Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo {"name":"projects/finpessoal/billingInfo","projectId":"finpessoal","billingAccountName":"","billingEnabled":false}
+[debug] [2025-12-22T13:44:10.725Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-22T13:44:10.725Z] > authorizing via signed-in user (roberto.geiss.nh@gmail.com)
+[debug] [2025-12-22T13:58:01.083Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-22T13:58:01.084Z] > authorizing via signed-in user (roberto.geiss.nh@gmail.com)
+[debug] [2025-12-22T13:58:01.085Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-22T13:58:01.085Z] > authorizing via signed-in user (roberto.geiss.nh@gmail.com)
+[debug] [2025-12-22T13:58:01.085Z] Checked if tokens are valid: true, expires at: 1766414645838
+[debug] [2025-12-22T13:58:01.085Z] Checked if tokens are valid: true, expires at: 1766414645838
+[debug] [2025-12-22T13:58:01.085Z] Checked if tokens are valid: true, expires at: 1766414645838
+[debug] [2025-12-22T13:58:01.085Z] Checked if tokens are valid: true, expires at: 1766414645838
+[debug] [2025-12-22T13:58:01.086Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-22T13:58:01.086Z] > authorizing via signed-in user (roberto.geiss.nh@gmail.com)
+[debug] [2025-12-22T13:58:01.086Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo [none]
+[debug] [2025-12-22T13:58:01.087Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo [none]
+[debug] [2025-12-22T13:58:01.087Z] Checked if tokens are valid: true, expires at: 1766414645838
+[debug] [2025-12-22T13:58:01.087Z] Checked if tokens are valid: true, expires at: 1766414645838
+[debug] [2025-12-22T13:58:01.087Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo [none]
+[debug] [2025-12-22T13:58:01.614Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo 200
+[debug] [2025-12-22T13:58:01.615Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo {"name":"projects/finpessoal/billingInfo","projectId":"finpessoal","billingAccountName":"","billingEnabled":false}
+[debug] [2025-12-22T13:58:01.621Z] Checked if tokens are valid: true, expires at: 1766414645838
+[debug] [2025-12-22T13:58:01.621Z] Checked if tokens are valid: true, expires at: 1766414645838
+[debug] [2025-12-22T13:58:01.621Z] Checked if tokens are valid: true, expires at: 1766414645838
+[debug] [2025-12-22T13:58:01.621Z] Checked if tokens are valid: true, expires at: 1766414645838
+[debug] [2025-12-22T13:58:01.633Z] Checked if tokens are valid: true, expires at: 1766414645838
+[debug] [2025-12-22T13:58:01.633Z] Checked if tokens are valid: true, expires at: 1766414645838
+[debug] [2025-12-22T13:58:01.633Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com [none]
+[debug] [2025-12-22T13:58:01.633Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-22T13:58:01.635Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com [none]
+[debug] [2025-12-22T13:58:01.635Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-22T13:58:01.636Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com [none]
+[debug] [2025-12-22T13:58:01.636Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-22T13:58:02.323Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo 200
+[debug] [2025-12-22T13:58:02.323Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo {"name":"projects/finpessoal/billingInfo","projectId":"finpessoal","billingAccountName":"","billingEnabled":false}
+[debug] [2025-12-22T13:58:02.335Z] Checked if tokens are valid: true, expires at: 1766414645838
+[debug] [2025-12-22T13:58:02.336Z] Checked if tokens are valid: true, expires at: 1766414645838
+[debug] [2025-12-22T13:58:02.336Z] Checked if tokens are valid: true, expires at: 1766414645838
+[debug] [2025-12-22T13:58:02.336Z] Checked if tokens are valid: true, expires at: 1766414645838
+[debug] [2025-12-22T13:58:02.338Z] Checked if tokens are valid: true, expires at: 1766414645838
+[debug] [2025-12-22T13:58:02.338Z] Checked if tokens are valid: true, expires at: 1766414645838
+[debug] [2025-12-22T13:58:02.338Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com [none]
+[debug] [2025-12-22T13:58:02.339Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-22T13:58:02.341Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com [none]
+[debug] [2025-12-22T13:58:02.341Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-22T13:58:02.342Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com [none]
+[debug] [2025-12-22T13:58:02.342Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-22T13:58:02.472Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo 200
+[debug] [2025-12-22T13:58:02.472Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo {"name":"projects/finpessoal/billingInfo","projectId":"finpessoal","billingAccountName":"","billingEnabled":false}
+[debug] [2025-12-22T13:58:02.473Z] Checked if tokens are valid: true, expires at: 1766414645838
+[debug] [2025-12-22T13:58:02.473Z] Checked if tokens are valid: true, expires at: 1766414645838
+[debug] [2025-12-22T13:58:02.473Z] Checked if tokens are valid: true, expires at: 1766414645838
+[debug] [2025-12-22T13:58:02.473Z] Checked if tokens are valid: true, expires at: 1766414645838
+[debug] [2025-12-22T13:58:02.475Z] Checked if tokens are valid: true, expires at: 1766414645838
+[debug] [2025-12-22T13:58:02.475Z] Checked if tokens are valid: true, expires at: 1766414645838
+[debug] [2025-12-22T13:58:02.476Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com [none]
+[debug] [2025-12-22T13:58:02.476Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-22T13:58:02.476Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com [none]
+[debug] [2025-12-22T13:58:02.476Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-22T13:58:02.477Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com [none]
+[debug] [2025-12-22T13:58:02.477Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-22T13:58:02.797Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com 200
+[debug] [2025-12-22T13:58:02.797Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com [omitted]
+[debug] [2025-12-22T13:58:02.804Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com 200
+[debug] [2025-12-22T13:58:02.804Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com [omitted]
+[debug] [2025-12-22T13:58:02.807Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com 200
+[debug] [2025-12-22T13:58:02.807Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com [omitted]
+[debug] [2025-12-22T13:58:02.906Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-22T13:58:02.907Z] > authorizing via signed-in user (roberto.geiss.nh@gmail.com)
+[debug] [2025-12-22T13:58:02.907Z] Checked if tokens are valid: true, expires at: 1766414645838
+[debug] [2025-12-22T13:58:02.907Z] Checked if tokens are valid: true, expires at: 1766414645838
+[debug] [2025-12-22T13:58:02.907Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo [none]
+[debug] [2025-12-22T13:58:03.406Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com 200
+[debug] [2025-12-22T13:58:03.407Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com [omitted]
+[debug] [2025-12-22T13:58:03.408Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com 200
+[debug] [2025-12-22T13:58:03.408Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com [omitted]
+[debug] [2025-12-22T13:58:03.421Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com 200
+[debug] [2025-12-22T13:58:03.421Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com [omitted]
+[debug] [2025-12-22T13:58:03.516Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-22T13:58:03.516Z] > authorizing via signed-in user (roberto.geiss.nh@gmail.com)
+[debug] [2025-12-22T13:58:03.516Z] Checked if tokens are valid: true, expires at: 1766414645838
+[debug] [2025-12-22T13:58:03.516Z] Checked if tokens are valid: true, expires at: 1766414645838
+[debug] [2025-12-22T13:58:03.517Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo [none]
+[debug] [2025-12-22T13:58:03.566Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com 200
+[debug] [2025-12-22T13:58:03.566Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com [omitted]
+[debug] [2025-12-22T13:58:03.567Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com 200
+[debug] [2025-12-22T13:58:03.567Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com [omitted]
+[debug] [2025-12-22T13:58:03.568Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com 200
+[debug] [2025-12-22T13:58:03.568Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com [omitted]
+[debug] [2025-12-22T13:58:04.034Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo 200
+[debug] [2025-12-22T13:58:04.035Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo {"name":"projects/finpessoal/billingInfo","projectId":"finpessoal","billingAccountName":"","billingEnabled":false}
+[debug] [2025-12-22T13:58:04.037Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-22T13:58:04.037Z] > authorizing via signed-in user (roberto.geiss.nh@gmail.com)
+[debug] [2025-12-22T13:58:04.807Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo 200
+[debug] [2025-12-22T13:58:04.807Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo {"name":"projects/finpessoal/billingInfo","projectId":"finpessoal","billingAccountName":"","billingEnabled":false}
+[debug] [2025-12-22T13:58:04.807Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-22T13:58:04.807Z] > authorizing via signed-in user (roberto.geiss.nh@gmail.com)
+[debug] [2025-12-23T00:22:52.587Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-23T00:22:52.589Z] > authorizing via signed-in user (roberto.geiss.nh@gmail.com)
+[debug] [2025-12-23T00:22:52.589Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-23T00:22:52.589Z] > authorizing via signed-in user (roberto.geiss.nh@gmail.com)
+[debug] [2025-12-23T00:22:52.589Z] Checked if tokens are valid: false, expires at: 1766414645838
+[debug] [2025-12-23T00:22:52.590Z] Checked if tokens are valid: false, expires at: 1766414645838
+[debug] [2025-12-23T00:22:52.590Z] > refreshing access token with scopes: []
+[debug] [2025-12-23T00:22:52.590Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-12-23T00:22:52.590Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-12-23T00:22:52.591Z] Checked if tokens are valid: false, expires at: 1766414645838
+[debug] [2025-12-23T00:22:52.591Z] Checked if tokens are valid: false, expires at: 1766414645838
+[debug] [2025-12-23T00:22:52.591Z] > refreshing access token with scopes: []
+[debug] [2025-12-23T00:22:52.592Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-12-23T00:22:52.592Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-12-23T00:22:52.592Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-23T00:22:52.592Z] > authorizing via signed-in user (roberto.geiss.nh@gmail.com)
+[debug] [2025-12-23T00:22:52.592Z] Checked if tokens are valid: false, expires at: 1766414645838
+[debug] [2025-12-23T00:22:52.592Z] Checked if tokens are valid: false, expires at: 1766414645838
+[debug] [2025-12-23T00:22:52.592Z] > refreshing access token with scopes: []
+[debug] [2025-12-23T00:22:52.592Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-12-23T00:22:52.592Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-12-23T00:22:52.842Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-12-23T00:22:52.842Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-12-23T00:22:52.856Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo [none]
+[debug] [2025-12-23T00:22:52.860Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-12-23T00:22:52.860Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-12-23T00:22:52.870Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo [none]
+[debug] [2025-12-23T00:22:52.872Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-12-23T00:22:52.872Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-12-23T00:22:52.879Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo [none]
+[debug] [2025-12-23T00:22:54.125Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo 200
+[debug] [2025-12-23T00:22:54.125Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo {"name":"projects/finpessoal/billingInfo","projectId":"finpessoal","billingAccountName":"","billingEnabled":false}
+[debug] [2025-12-23T00:22:54.132Z] Checked if tokens are valid: true, expires at: 1766452971872
+[debug] [2025-12-23T00:22:54.132Z] Checked if tokens are valid: true, expires at: 1766452971872
+[debug] [2025-12-23T00:22:54.133Z] Checked if tokens are valid: true, expires at: 1766452971872
+[debug] [2025-12-23T00:22:54.133Z] Checked if tokens are valid: true, expires at: 1766452971872
+[debug] [2025-12-23T00:22:54.146Z] Checked if tokens are valid: true, expires at: 1766452971872
+[debug] [2025-12-23T00:22:54.146Z] Checked if tokens are valid: true, expires at: 1766452971872
+[debug] [2025-12-23T00:22:54.146Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com [none]
+[debug] [2025-12-23T00:22:54.147Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-23T00:22:54.149Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com [none]
+[debug] [2025-12-23T00:22:54.149Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-23T00:22:54.150Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com [none]
+[debug] [2025-12-23T00:22:54.150Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-23T00:22:54.241Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo 200
+[debug] [2025-12-23T00:22:54.241Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo {"name":"projects/finpessoal/billingInfo","projectId":"finpessoal","billingAccountName":"","billingEnabled":false}
+[debug] [2025-12-23T00:22:54.247Z] Checked if tokens are valid: true, expires at: 1766452971872
+[debug] [2025-12-23T00:22:54.247Z] Checked if tokens are valid: true, expires at: 1766452971872
+[debug] [2025-12-23T00:22:54.247Z] Checked if tokens are valid: true, expires at: 1766452971872
+[debug] [2025-12-23T00:22:54.247Z] Checked if tokens are valid: true, expires at: 1766452971872
+[debug] [2025-12-23T00:22:54.249Z] Checked if tokens are valid: true, expires at: 1766452971872
+[debug] [2025-12-23T00:22:54.249Z] Checked if tokens are valid: true, expires at: 1766452971872
+[debug] [2025-12-23T00:22:54.249Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com [none]
+[debug] [2025-12-23T00:22:54.249Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-23T00:22:54.249Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com [none]
+[debug] [2025-12-23T00:22:54.249Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-23T00:22:54.250Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com [none]
+[debug] [2025-12-23T00:22:54.250Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-23T00:22:54.370Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo 200
+[debug] [2025-12-23T00:22:54.371Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo {"name":"projects/finpessoal/billingInfo","projectId":"finpessoal","billingAccountName":"","billingEnabled":false}
+[debug] [2025-12-23T00:22:54.371Z] Checked if tokens are valid: true, expires at: 1766452971872
+[debug] [2025-12-23T00:22:54.371Z] Checked if tokens are valid: true, expires at: 1766452971872
+[debug] [2025-12-23T00:22:54.371Z] Checked if tokens are valid: true, expires at: 1766452971872
+[debug] [2025-12-23T00:22:54.371Z] Checked if tokens are valid: true, expires at: 1766452971872
+[debug] [2025-12-23T00:22:54.373Z] Checked if tokens are valid: true, expires at: 1766452971872
+[debug] [2025-12-23T00:22:54.373Z] Checked if tokens are valid: true, expires at: 1766452971872
+[debug] [2025-12-23T00:22:54.373Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com [none]
+[debug] [2025-12-23T00:22:54.373Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-23T00:22:54.373Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com [none]
+[debug] [2025-12-23T00:22:54.373Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-23T00:22:54.374Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com [none]
+[debug] [2025-12-23T00:22:54.374Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-23T00:22:54.973Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com 200
+[debug] [2025-12-23T00:22:54.973Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com [omitted]
+[debug] [2025-12-23T00:22:55.302Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com 200
+[debug] [2025-12-23T00:22:55.302Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com [omitted]
+[debug] [2025-12-23T00:22:55.303Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com 200
+[debug] [2025-12-23T00:22:55.303Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com [omitted]
+[debug] [2025-12-23T00:22:55.308Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com 200
+[debug] [2025-12-23T00:22:55.308Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com [omitted]
+[debug] [2025-12-23T00:22:55.312Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com 200
+[debug] [2025-12-23T00:22:55.312Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com [omitted]
+[debug] [2025-12-23T00:22:55.314Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com 200
+[debug] [2025-12-23T00:22:55.314Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com [omitted]
+[debug] [2025-12-23T00:22:55.315Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com 200
+[debug] [2025-12-23T00:22:55.315Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com [omitted]
+[debug] [2025-12-23T00:22:55.399Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-23T00:22:55.400Z] > authorizing via signed-in user (roberto.geiss.nh@gmail.com)
+[debug] [2025-12-23T00:22:55.400Z] Checked if tokens are valid: true, expires at: 1766452971872
+[debug] [2025-12-23T00:22:55.400Z] Checked if tokens are valid: true, expires at: 1766452971872
+[debug] [2025-12-23T00:22:55.400Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo [none]
+[debug] [2025-12-23T00:22:55.408Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com 200
+[debug] [2025-12-23T00:22:55.408Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com [omitted]
+[debug] [2025-12-23T00:22:55.409Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com 200
+[debug] [2025-12-23T00:22:55.409Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com [omitted]
+[debug] [2025-12-23T00:22:55.498Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-23T00:22:55.498Z] > authorizing via signed-in user (roberto.geiss.nh@gmail.com)
+[debug] [2025-12-23T00:22:55.498Z] Checked if tokens are valid: true, expires at: 1766452971872
+[debug] [2025-12-23T00:22:55.498Z] Checked if tokens are valid: true, expires at: 1766452971872
+[debug] [2025-12-23T00:22:55.498Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo [none]
+[debug] [2025-12-23T00:22:56.408Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo 200
+[debug] [2025-12-23T00:22:56.408Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo {"name":"projects/finpessoal/billingInfo","projectId":"finpessoal","billingAccountName":"","billingEnabled":false}
+[debug] [2025-12-23T00:22:56.410Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-23T00:22:56.410Z] > authorizing via signed-in user (roberto.geiss.nh@gmail.com)
+[debug] [2025-12-23T00:22:56.825Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo 200
+[debug] [2025-12-23T00:22:56.825Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo {"name":"projects/finpessoal/billingInfo","projectId":"finpessoal","billingAccountName":"","billingEnabled":false}
+[debug] [2025-12-23T00:22:56.827Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-23T00:22:56.827Z] > authorizing via signed-in user (roberto.geiss.nh@gmail.com)
+[debug] [2025-12-24T02:27:02.062Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-24T02:27:02.063Z] > authorizing via signed-in user (roberto.geiss.nh@gmail.com)
+[debug] [2025-12-24T02:27:02.063Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-24T02:27:02.063Z] > authorizing via signed-in user (roberto.geiss.nh@gmail.com)
+[debug] [2025-12-24T02:27:02.063Z] Checked if tokens are valid: false, expires at: 1766452971872
+[debug] [2025-12-24T02:27:02.064Z] Checked if tokens are valid: false, expires at: 1766452971872
+[debug] [2025-12-24T02:27:02.064Z] > refreshing access token with scopes: []
+[debug] [2025-12-24T02:27:02.064Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-12-24T02:27:02.065Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-12-24T02:27:02.066Z] Checked if tokens are valid: false, expires at: 1766452971872
+[debug] [2025-12-24T02:27:02.066Z] Checked if tokens are valid: false, expires at: 1766452971872
+[debug] [2025-12-24T02:27:02.066Z] > refreshing access token with scopes: []
+[debug] [2025-12-24T02:27:02.066Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-12-24T02:27:02.066Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-12-24T02:27:02.066Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-24T02:27:02.066Z] > authorizing via signed-in user (roberto.geiss.nh@gmail.com)
+[debug] [2025-12-24T02:27:02.066Z] Checked if tokens are valid: false, expires at: 1766452971872
+[debug] [2025-12-24T02:27:02.066Z] Checked if tokens are valid: false, expires at: 1766452971872
+[debug] [2025-12-24T02:27:02.066Z] > refreshing access token with scopes: []
+[debug] [2025-12-24T02:27:02.066Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-12-24T02:27:02.066Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-12-24T02:27:02.310Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-12-24T02:27:02.310Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-12-24T02:27:02.351Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo [none]
+[debug] [2025-12-24T02:27:02.357Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-12-24T02:27:02.357Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-12-24T02:27:02.375Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo [none]
+[debug] [2025-12-24T02:27:02.378Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-12-24T02:27:02.378Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-12-24T02:27:02.387Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo [none]
+[debug] [2025-12-24T02:27:03.699Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo 200
+[debug] [2025-12-24T02:27:03.700Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo {"name":"projects/finpessoal/billingInfo","projectId":"finpessoal","billingAccountName":"","billingEnabled":false}
+[debug] [2025-12-24T02:27:03.706Z] Checked if tokens are valid: true, expires at: 1766546821378
+[debug] [2025-12-24T02:27:03.706Z] Checked if tokens are valid: true, expires at: 1766546821378
+[debug] [2025-12-24T02:27:03.706Z] Checked if tokens are valid: true, expires at: 1766546821378
+[debug] [2025-12-24T02:27:03.706Z] Checked if tokens are valid: true, expires at: 1766546821378
+[debug] [2025-12-24T02:27:03.719Z] Checked if tokens are valid: true, expires at: 1766546821378
+[debug] [2025-12-24T02:27:03.719Z] Checked if tokens are valid: true, expires at: 1766546821378
+[debug] [2025-12-24T02:27:03.719Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com [none]
+[debug] [2025-12-24T02:27:03.719Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-24T02:27:03.722Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com [none]
+[debug] [2025-12-24T02:27:03.722Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-24T02:27:03.723Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com [none]
+[debug] [2025-12-24T02:27:03.723Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-24T02:27:04.673Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo 200
+[debug] [2025-12-24T02:27:04.673Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo {"name":"projects/finpessoal/billingInfo","projectId":"finpessoal","billingAccountName":"","billingEnabled":false}
+[debug] [2025-12-24T02:27:04.689Z] Checked if tokens are valid: true, expires at: 1766546821378
+[debug] [2025-12-24T02:27:04.689Z] Checked if tokens are valid: true, expires at: 1766546821378
+[debug] [2025-12-24T02:27:04.690Z] Checked if tokens are valid: true, expires at: 1766546821378
+[debug] [2025-12-24T02:27:04.690Z] Checked if tokens are valid: true, expires at: 1766546821378
+[debug] [2025-12-24T02:27:04.693Z] Checked if tokens are valid: true, expires at: 1766546821378
+[debug] [2025-12-24T02:27:04.693Z] Checked if tokens are valid: true, expires at: 1766546821378
+[debug] [2025-12-24T02:27:04.693Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com [none]
+[debug] [2025-12-24T02:27:04.693Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-24T02:27:04.694Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com [none]
+[debug] [2025-12-24T02:27:04.694Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-24T02:27:04.694Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com [none]
+[debug] [2025-12-24T02:27:04.694Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-24T02:27:04.846Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo 200
+[debug] [2025-12-24T02:27:04.846Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo {"name":"projects/finpessoal/billingInfo","projectId":"finpessoal","billingAccountName":"","billingEnabled":false}
+[debug] [2025-12-24T02:27:04.847Z] Checked if tokens are valid: true, expires at: 1766546821378
+[debug] [2025-12-24T02:27:04.847Z] Checked if tokens are valid: true, expires at: 1766546821378
+[debug] [2025-12-24T02:27:04.848Z] Checked if tokens are valid: true, expires at: 1766546821378
+[debug] [2025-12-24T02:27:04.848Z] Checked if tokens are valid: true, expires at: 1766546821378
+[debug] [2025-12-24T02:27:04.850Z] Checked if tokens are valid: true, expires at: 1766546821378
+[debug] [2025-12-24T02:27:04.850Z] Checked if tokens are valid: true, expires at: 1766546821378
+[debug] [2025-12-24T02:27:04.850Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com [none]
+[debug] [2025-12-24T02:27:04.850Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-24T02:27:04.851Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com [none]
+[debug] [2025-12-24T02:27:04.851Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-24T02:27:04.852Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com [none]
+[debug] [2025-12-24T02:27:04.852Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-24T02:27:04.873Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com 200
+[debug] [2025-12-24T02:27:04.873Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com [omitted]
+[debug] [2025-12-24T02:27:04.873Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com 200
+[debug] [2025-12-24T02:27:04.873Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com [omitted]
+[debug] [2025-12-24T02:27:04.880Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com 200
+[debug] [2025-12-24T02:27:04.880Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com [omitted]
+[debug] [2025-12-24T02:27:05.729Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com 200
+[debug] [2025-12-24T02:27:05.729Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com [omitted]
+[debug] [2025-12-24T02:27:05.736Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com 200
+[debug] [2025-12-24T02:27:05.736Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com [omitted]
+[debug] [2025-12-24T02:27:05.744Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com 200
+[debug] [2025-12-24T02:27:05.744Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com [omitted]
+[debug] [2025-12-24T02:27:05.832Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-24T02:27:05.832Z] > authorizing via signed-in user (roberto.geiss.nh@gmail.com)
+[debug] [2025-12-24T02:27:05.832Z] Checked if tokens are valid: true, expires at: 1766546821378
+[debug] [2025-12-24T02:27:05.832Z] Checked if tokens are valid: true, expires at: 1766546821378
+[debug] [2025-12-24T02:27:05.832Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo [none]
+[debug] [2025-12-24T02:27:05.914Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com 200
+[debug] [2025-12-24T02:27:05.914Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com [omitted]
+[debug] [2025-12-24T02:27:05.917Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com 200
+[debug] [2025-12-24T02:27:05.917Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com [omitted]
+[debug] [2025-12-24T02:27:05.920Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com 200
+[debug] [2025-12-24T02:27:05.920Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com [omitted]
+[debug] [2025-12-24T02:27:06.003Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-24T02:27:06.003Z] > authorizing via signed-in user (roberto.geiss.nh@gmail.com)
+[debug] [2025-12-24T02:27:06.003Z] Checked if tokens are valid: true, expires at: 1766546821378
+[debug] [2025-12-24T02:27:06.003Z] Checked if tokens are valid: true, expires at: 1766546821378
+[debug] [2025-12-24T02:27:06.003Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo [none]
+[debug] [2025-12-24T02:27:06.982Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo 200
+[debug] [2025-12-24T02:27:06.982Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo {"name":"projects/finpessoal/billingInfo","projectId":"finpessoal","billingAccountName":"","billingEnabled":false}
+[debug] [2025-12-24T02:27:06.982Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-24T02:27:06.982Z] > authorizing via signed-in user (roberto.geiss.nh@gmail.com)
+[debug] [2025-12-24T02:27:07.332Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo 200
+[debug] [2025-12-24T02:27:07.333Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo {"name":"projects/finpessoal/billingInfo","projectId":"finpessoal","billingAccountName":"","billingEnabled":false}
+[debug] [2025-12-24T02:27:07.333Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-24T02:27:07.333Z] > authorizing via signed-in user (roberto.geiss.nh@gmail.com)
+[debug] [2025-12-24T02:27:13.735Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-24T02:27:13.737Z] > authorizing via signed-in user (roberto.geiss.nh@gmail.com)
+[debug] [2025-12-24T02:27:13.737Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-24T02:27:13.737Z] > authorizing via signed-in user (roberto.geiss.nh@gmail.com)
+[debug] [2025-12-24T02:27:13.737Z] Checked if tokens are valid: true, expires at: 1766546821378
+[debug] [2025-12-24T02:27:13.738Z] Checked if tokens are valid: true, expires at: 1766546821378
+[debug] [2025-12-24T02:27:13.738Z] Checked if tokens are valid: true, expires at: 1766546821378
+[debug] [2025-12-24T02:27:13.738Z] Checked if tokens are valid: true, expires at: 1766546821378
+[debug] [2025-12-24T02:27:13.738Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-24T02:27:13.738Z] > authorizing via signed-in user (roberto.geiss.nh@gmail.com)
+[debug] [2025-12-24T02:27:13.739Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo [none]
+[debug] [2025-12-24T02:27:13.739Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo [none]
+[debug] [2025-12-24T02:27:13.739Z] Checked if tokens are valid: true, expires at: 1766546821378
+[debug] [2025-12-24T02:27:13.740Z] Checked if tokens are valid: true, expires at: 1766546821378
+[debug] [2025-12-24T02:27:13.740Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo [none]
+[debug] [2025-12-24T02:27:14.984Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo 200
+[debug] [2025-12-24T02:27:14.985Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo {"name":"projects/finpessoal/billingInfo","projectId":"finpessoal","billingAccountName":"","billingEnabled":false}
+[debug] [2025-12-24T02:27:14.989Z] Checked if tokens are valid: true, expires at: 1766546821378
+[debug] [2025-12-24T02:27:14.989Z] Checked if tokens are valid: true, expires at: 1766546821378
+[debug] [2025-12-24T02:27:14.990Z] Checked if tokens are valid: true, expires at: 1766546821378
+[debug] [2025-12-24T02:27:14.990Z] Checked if tokens are valid: true, expires at: 1766546821378
+[debug] [2025-12-24T02:27:15.001Z] Checked if tokens are valid: true, expires at: 1766546821378
+[debug] [2025-12-24T02:27:15.001Z] Checked if tokens are valid: true, expires at: 1766546821378
+[debug] [2025-12-24T02:27:15.001Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com [none]
+[debug] [2025-12-24T02:27:15.001Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-24T02:27:15.003Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com [none]
+[debug] [2025-12-24T02:27:15.003Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-24T02:27:15.004Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com [none]
+[debug] [2025-12-24T02:27:15.004Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-24T02:27:15.038Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo 200
+[debug] [2025-12-24T02:27:15.038Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo {"name":"projects/finpessoal/billingInfo","projectId":"finpessoal","billingAccountName":"","billingEnabled":false}
+[debug] [2025-12-24T02:27:15.045Z] Checked if tokens are valid: true, expires at: 1766546821378
+[debug] [2025-12-24T02:27:15.045Z] Checked if tokens are valid: true, expires at: 1766546821378
+[debug] [2025-12-24T02:27:15.045Z] Checked if tokens are valid: true, expires at: 1766546821378
+[debug] [2025-12-24T02:27:15.045Z] Checked if tokens are valid: true, expires at: 1766546821378
+[debug] [2025-12-24T02:27:15.046Z] Checked if tokens are valid: true, expires at: 1766546821378
+[debug] [2025-12-24T02:27:15.046Z] Checked if tokens are valid: true, expires at: 1766546821378
+[debug] [2025-12-24T02:27:15.047Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com [none]
+[debug] [2025-12-24T02:27:15.047Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-24T02:27:15.048Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com [none]
+[debug] [2025-12-24T02:27:15.048Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-24T02:27:15.048Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com [none]
+[debug] [2025-12-24T02:27:15.048Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-24T02:27:15.064Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo 200
+[debug] [2025-12-24T02:27:15.064Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo {"name":"projects/finpessoal/billingInfo","projectId":"finpessoal","billingAccountName":"","billingEnabled":false}
+[debug] [2025-12-24T02:27:15.064Z] Checked if tokens are valid: true, expires at: 1766546821378
+[debug] [2025-12-24T02:27:15.064Z] Checked if tokens are valid: true, expires at: 1766546821378
+[debug] [2025-12-24T02:27:15.064Z] Checked if tokens are valid: true, expires at: 1766546821378
+[debug] [2025-12-24T02:27:15.064Z] Checked if tokens are valid: true, expires at: 1766546821378
+[debug] [2025-12-24T02:27:15.066Z] Checked if tokens are valid: true, expires at: 1766546821378
+[debug] [2025-12-24T02:27:15.066Z] Checked if tokens are valid: true, expires at: 1766546821378
+[debug] [2025-12-24T02:27:15.066Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com [none]
+[debug] [2025-12-24T02:27:15.066Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-24T02:27:15.066Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com [none]
+[debug] [2025-12-24T02:27:15.066Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-24T02:27:15.066Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com [none]
+[debug] [2025-12-24T02:27:15.066Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com x-goog-quota-user=projects/finpessoal
+[debug] [2025-12-24T02:27:16.093Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com 200
+[debug] [2025-12-24T02:27:16.094Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com [omitted]
+[debug] [2025-12-24T02:27:16.094Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com 200
+[debug] [2025-12-24T02:27:16.095Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com [omitted]
+[debug] [2025-12-24T02:27:16.096Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com 200
+[debug] [2025-12-24T02:27:16.096Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com [omitted]
+[debug] [2025-12-24T02:27:16.096Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com 200
+[debug] [2025-12-24T02:27:16.097Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com [omitted]
+[debug] [2025-12-24T02:27:16.097Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com 200
+[debug] [2025-12-24T02:27:16.097Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebaseapphosting.googleapis.com [omitted]
+[debug] [2025-12-24T02:27:16.097Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com 200
+[debug] [2025-12-24T02:27:16.097Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/firebasedataconnect.googleapis.com [omitted]
+[debug] [2025-12-24T02:27:16.098Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com 200
+[debug] [2025-12-24T02:27:16.099Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com [omitted]
+[debug] [2025-12-24T02:27:16.099Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com 200
+[debug] [2025-12-24T02:27:16.099Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com [omitted]
+[debug] [2025-12-24T02:27:16.102Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com 200
+[debug] [2025-12-24T02:27:16.102Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/finpessoal/services/cloudfunctions.googleapis.com [omitted]
+[debug] [2025-12-24T02:27:16.190Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-24T02:27:16.190Z] > authorizing via signed-in user (roberto.geiss.nh@gmail.com)
+[debug] [2025-12-24T02:27:16.190Z] Checked if tokens are valid: true, expires at: 1766546821378
+[debug] [2025-12-24T02:27:16.190Z] Checked if tokens are valid: true, expires at: 1766546821378
+[debug] [2025-12-24T02:27:16.191Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo [none]
+[debug] [2025-12-24T02:27:16.193Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-24T02:27:16.193Z] > authorizing via signed-in user (roberto.geiss.nh@gmail.com)
+[debug] [2025-12-24T02:27:16.193Z] Checked if tokens are valid: true, expires at: 1766546821378
+[debug] [2025-12-24T02:27:16.193Z] Checked if tokens are valid: true, expires at: 1766546821378
+[debug] [2025-12-24T02:27:16.193Z] >>> [apiv2][query] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo [none]
+[debug] [2025-12-24T02:27:17.204Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo 200
+[debug] [2025-12-24T02:27:17.205Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo {"name":"projects/finpessoal/billingInfo","projectId":"finpessoal","billingAccountName":"","billingEnabled":false}
+[debug] [2025-12-24T02:27:17.208Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-24T02:27:17.208Z] > authorizing via signed-in user (roberto.geiss.nh@gmail.com)
+[debug] [2025-12-24T02:27:17.210Z] <<< [apiv2][status] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo 200
+[debug] [2025-12-24T02:27:17.210Z] <<< [apiv2][body] GET https://cloudbilling.googleapis.com/v1/projects/finpessoal/billingInfo {"name":"projects/finpessoal/billingInfo","projectId":"finpessoal","billingAccountName":"","billingEnabled":false}
+[debug] [2025-12-24T02:27:17.212Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-24T02:27:17.212Z] > authorizing via signed-in user (roberto.geiss.nh@gmail.com)

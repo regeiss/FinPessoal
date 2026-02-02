@@ -32,13 +32,14 @@ import XCTest
 /// - AuthenticationUITests: Login/logout flows
 /// - iPadNavigationUITests: Three-column layout functionality
 /// - FinPessoalUITests: Main app UI flows
+@MainActor
 struct FinPessoalTests {
 
   // MARK: - Swift Testing Framework Tests
 
   @Test("Basic app configuration should be valid")
   func testAppConfiguration() async throws {
-    let config = await AppConfiguration.shared
+    let config = AppConfiguration.shared
     #expect(type(of: config) == AppConfiguration.self, "AppConfiguration should be of correct type")
   }
 
@@ -119,6 +120,7 @@ struct FinPessoalTests {
 // MARK: - XCTest Compatibility
 
 /// XCTest-based tests for compatibility with existing test infrastructure
+@MainActor
 final class FinPessoalXCTests: XCTestCase {
 
   override func setUp() {

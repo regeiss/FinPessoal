@@ -26,12 +26,12 @@ struct GoalCard: View {
           VStack(alignment: .leading, spacing: 2) {
             Text(goal.name)
               .font(.headline)
-              .foregroundColor(.primary)
+              .foregroundStyle(Color.oldMoney.text)
 
             if let description = goal.description {
               Text(description)
                 .font(.caption)
-                .foregroundColor(.secondary)
+                .foregroundStyle(Color.oldMoney.textSecondary)
                 .lineLimit(1)
             }
           }
@@ -41,7 +41,7 @@ struct GoalCard: View {
 
         if goal.isCompleted {
           Image(systemName: "checkmark.circle.fill")
-            .foregroundColor(.green)
+            .foregroundStyle(Color.oldMoney.income)
             .font(.title2)
             .accessibilityLabel("Completed")
         }
@@ -54,17 +54,17 @@ struct GoalCard: View {
             Text(CurrencyFormatter.shared.string(from: goal.currentAmount))
               .font(.headline)
               .fontWeight(.semibold)
-              .foregroundColor(.primary)
+              .foregroundStyle(Color.oldMoney.text)
               .lineLimit(1)
               .minimumScaleFactor(0.7)
 
             HStack(spacing: 2) {
               Text("de")
                 .font(.caption)
-                .foregroundColor(.secondary)
+                .foregroundStyle(Color.oldMoney.textSecondary)
               Text(CurrencyFormatter.shared.string(from: goal.targetAmount))
                 .font(.caption)
-                .foregroundColor(.secondary)
+                .foregroundStyle(Color.oldMoney.textSecondary)
                 .lineLimit(1)
                 .minimumScaleFactor(0.8)
             }
@@ -92,7 +92,7 @@ struct GoalCard: View {
         VStack(alignment: .leading, spacing: 2) {
           Text(String(localized: "goal.remaining"))
             .font(.caption2)
-            .foregroundColor(.secondary)
+            .foregroundStyle(Color.oldMoney.textSecondary)
           Text(CurrencyFormatter.shared.string(from: goal.remainingAmount))
             .font(.caption)
             .fontWeight(.medium)
@@ -107,7 +107,7 @@ struct GoalCard: View {
         VStack(alignment: .trailing, spacing: 2) {
           Text(String(localized: "goal.days.left"))
             .font(.caption2)
-            .foregroundColor(.secondary)
+            .foregroundStyle(Color.oldMoney.textSecondary)
           Text("\(goal.daysRemaining) dias")
             .font(.caption)
             .fontWeight(.medium)
@@ -122,23 +122,23 @@ struct GoalCard: View {
       if !goal.isCompleted {
         HStack(spacing: 4) {
           Image(systemName: "calendar")
-            .foregroundColor(.blue)
+            .foregroundStyle(Color.oldMoney.accent)
             .font(.caption2)
             .accessibilityHidden(true)
           Text(String(localized: "goal.monthly.needed"))
             .font(.caption2)
-            .foregroundColor(.secondary)
+            .foregroundStyle(Color.oldMoney.textSecondary)
           Spacer()
           Text(CurrencyFormatter.shared.string(from: goal.monthlyContributionNeeded))
             .font(.caption)
             .fontWeight(.medium)
-            .foregroundColor(.blue)
+            .foregroundStyle(Color.oldMoney.accent)
             .lineLimit(1)
             .minimumScaleFactor(0.7)
         }
         .padding(.horizontal, 6)
         .padding(.vertical, 4)
-        .background(Color.blue.opacity(0.1))
+        .background(Color.oldMoney.accentBackground)
         .clipShape(RoundedRectangle(cornerRadius: 4))
         .accessibilityElement(children: .combine)
         .accessibilityLabel("Monthly Contribution Needed")
@@ -146,7 +146,7 @@ struct GoalCard: View {
       }
     }
     .padding()
-    .background(Color(.systemBackground))
+    .background(Color.oldMoney.background)
     .clipShape(RoundedRectangle(cornerRadius: 12))
     .shadow(color: .black.opacity(0.1), radius: 2, x: 0, y: 1)
     .onTapGesture {
@@ -212,7 +212,7 @@ struct GoalProgressSheet: View {
               if let description = goal.description {
                 Text(description)
                   .font(.subheadline)
-                  .foregroundColor(.secondary)
+                  .foregroundStyle(Color.oldMoney.textSecondary)
                   .multilineTextAlignment(.center)
                   .padding(.horizontal)
               }
@@ -228,7 +228,7 @@ struct GoalProgressSheet: View {
             // Progress circle
             ZStack {
               Circle()
-                .stroke(Color.gray.opacity(0.15), lineWidth: 12)
+                .stroke(Color.oldMoney.divider, lineWidth: 12)
                 .frame(width: 160, height: 160)
                 .accessibilityHidden(true)
 
@@ -249,13 +249,13 @@ struct GoalProgressSheet: View {
                 if goal.isCompleted {
                   Image(systemName: "checkmark.circle.fill")
                     .font(.system(size: 48))
-                    .foregroundColor(.green)
+                    .foregroundStyle(Color.oldMoney.income)
                     .accessibilityHidden(true)
 
                   Text(String(localized: "goal.completed"))
                     .font(.caption)
                     .fontWeight(.semibold)
-                    .foregroundColor(.green)
+                    .foregroundStyle(Color.oldMoney.income)
                 } else {
                   Text("\(Int(min(goal.progressPercentage, 100)))%")
                     .font(.system(size: 32, weight: .bold, design: .rounded))
@@ -263,7 +263,7 @@ struct GoalProgressSheet: View {
 
                   Text(String(localized: "goal.progress"))
                     .font(.caption)
-                    .foregroundColor(.secondary)
+                    .foregroundStyle(Color.oldMoney.textSecondary)
                 }
               }
             }
@@ -276,11 +276,11 @@ struct GoalProgressSheet: View {
               HStack {
                 Text(String(localized: "goal.current"))
                   .font(.subheadline)
-                  .foregroundColor(.secondary)
+                  .foregroundStyle(Color.oldMoney.textSecondary)
                 Spacer()
                 Text(CurrencyHelper.format(goal.currentAmount))
                   .font(.headline)
-                  .foregroundColor(.primary)
+                  .foregroundStyle(Color.oldMoney.text)
               }
               .accessibilityElement(children: .combine)
               .accessibilityLabel("Current Amount")
@@ -292,11 +292,11 @@ struct GoalProgressSheet: View {
               HStack {
                 Text(String(localized: "goal.target"))
                   .font(.subheadline)
-                  .foregroundColor(.secondary)
+                  .foregroundStyle(Color.oldMoney.textSecondary)
                 Spacer()
                 Text(CurrencyHelper.format(goal.targetAmount))
                   .font(.headline)
-                  .foregroundColor(.primary)
+                  .foregroundStyle(Color.oldMoney.text)
               }
               .accessibilityElement(children: .combine)
               .accessibilityLabel("Target Amount")
@@ -308,7 +308,7 @@ struct GoalProgressSheet: View {
               HStack {
                 Text(String(localized: "goal.remaining"))
                   .font(.subheadline)
-                  .foregroundColor(.secondary)
+                  .foregroundStyle(Color.oldMoney.textSecondary)
                 Spacer()
                 Text(CurrencyHelper.format(max(remainingAmount, 0)))
                   .font(.headline)
@@ -320,7 +320,7 @@ struct GoalProgressSheet: View {
               .accessibilityValue(CurrencyHelper.format(max(remainingAmount, 0)))
             }
             .padding()
-            .background(Color(.secondarySystemGroupedBackground))
+            .background(Color.oldMoney.surface)
             .cornerRadius(12)
             .accessibilityElement(children: .contain)
           }
@@ -339,7 +339,7 @@ struct GoalProgressSheet: View {
                 Text(CurrencyHelper.getCurrentCurrency().symbol)
                   .font(.title3)
                   .fontWeight(.medium)
-                  .foregroundColor(.secondary)
+                  .foregroundStyle(Color.oldMoney.textSecondary)
                   .frame(width: 30)
                   .accessibilityHidden(true)
 
@@ -355,7 +355,7 @@ struct GoalProgressSheet: View {
                   .accessibilityValue(contributionAmount > 0 ? formattedContribution : "Empty")
               }
               .padding()
-              .background(Color(.secondarySystemGroupedBackground))
+              .background(Color.oldMoney.surface)
               .cornerRadius(12)
               .overlay(
                 RoundedRectangle(cornerRadius: 12)
@@ -365,7 +365,7 @@ struct GoalProgressSheet: View {
               if contributionAmount > 0 {
                 Text("Valor: \(formattedContribution)")
                   .font(.caption)
-                  .foregroundColor(.secondary)
+                  .foregroundStyle(Color.oldMoney.textSecondary)
                   .padding(.leading, 4)
                   .accessibilityHidden(true)
               }
@@ -376,7 +376,7 @@ struct GoalProgressSheet: View {
               VStack(alignment: .leading, spacing: 8) {
                 Text("Atalhos rápidos")
                   .font(.caption)
-                  .foregroundColor(.secondary)
+                  .foregroundStyle(Color.oldMoney.textSecondary)
                   .padding(.leading, 4)
                   .accessibilityAddTraits(.isHeader)
 
@@ -424,7 +424,7 @@ struct GoalProgressSheet: View {
               .padding(.vertical, 16)
               .padding(.horizontal, 24)
               .background(contributionAmount > 0 ? Color.blue : Color.gray.opacity(0.3))
-              .foregroundColor(.white)
+              .foregroundStyle(Color.oldMoney.background)
               .cornerRadius(12)
               .shadow(color: contributionAmount > 0 ? Color.blue.opacity(0.3) : Color.clear, radius: 8, x: 0, y: 4)
             }
@@ -434,7 +434,7 @@ struct GoalProgressSheet: View {
             .accessibilityHint(contributionAmount > 0 ? "Adds \(formattedContribution) to the goal" : "Button is disabled. Please enter an amount first")
           }
           .padding()
-          .background(Color(.systemGroupedBackground))
+          .background(Color.oldMoney.background)
           .cornerRadius(16)
           .padding(.horizontal)
           .accessibilityElement(children: .contain)
@@ -442,7 +442,7 @@ struct GoalProgressSheet: View {
           Spacer(minLength: 20)
         }
       }
-      .background(Color(.systemGroupedBackground))
+      .background(Color.oldMoney.background)
       .navigationTitle(String(localized: "goal.progress"))
       .navigationBarTitleDisplayMode(.inline)
       .toolbar {
@@ -451,7 +451,7 @@ struct GoalProgressSheet: View {
             showingDeleteConfirmation = true
           } label: {
             Image(systemName: "trash")
-              .foregroundColor(.red)
+              .foregroundStyle(Color.oldMoney.expense)
           }
           .accessibilityLabel("Delete Goal")
           .accessibilityHint("Deletes this goal permanently")

@@ -25,13 +25,13 @@ struct BudgetCategoriesScreen: View {
         // Search bar
         HStack {
           Image(systemName: "magnifyingglass")
-            .foregroundColor(.secondary)
+            .foregroundStyle(Color.oldMoney.textSecondary)
           TextField(String(localized: "categories.search.placeholder"), text: $searchText)
             .textFieldStyle(PlainTextFieldStyle())
         }
         .padding(.horizontal, 12)
         .padding(.vertical, 8)
-        .background(Color(.systemGray6))
+        .background(Color.oldMoney.surface)
         .clipShape(RoundedRectangle(cornerRadius: 10))
         .padding(.horizontal)
         .padding(.bottom, 16)
@@ -61,12 +61,12 @@ struct BudgetCategoriesScreen: View {
               Spacer()
               Text("\(categoryViewModel.selectedCategories.count)/\(categoryViewModel.getAllCategories().count)")
                 .font(.caption)
-                .foregroundColor(.secondary)
+                .foregroundStyle(Color.oldMoney.textSecondary)
             }
           } footer: {
             Text(String(localized: "categories.available.footer"))
               .font(.caption)
-              .foregroundColor(.secondary)
+              .foregroundStyle(Color.oldMoney.textSecondary)
           }
           
           Section {
@@ -75,9 +75,9 @@ struct BudgetCategoriesScreen: View {
             } label: {
               HStack {
                 Image(systemName: "plus.circle")
-                  .foregroundColor(.green)
+                  .foregroundStyle(Color.oldMoney.income)
                 Text(String(localized: "category.add.new"))
-                  .foregroundColor(.green)
+                  .foregroundStyle(Color.oldMoney.income)
               }
             }
             
@@ -86,9 +86,9 @@ struct BudgetCategoriesScreen: View {
             } label: {
               HStack {
                 Image(systemName: "arrow.clockwise")
-                  .foregroundColor(.blue)
+                  .foregroundStyle(Color.oldMoney.accent)
                 Text(String(localized: "categories.reset.defaults"))
-                  .foregroundColor(.blue)
+                  .foregroundStyle(Color.oldMoney.accent)
               }
             }
             
@@ -97,9 +97,9 @@ struct BudgetCategoriesScreen: View {
             } label: {
               HStack {
                 Image(systemName: "checkmark.circle")
-                  .foregroundColor(.green)
+                  .foregroundStyle(Color.oldMoney.income)
                 Text(String(localized: "categories.select.all"))
-                  .foregroundColor(.green)
+                  .foregroundStyle(Color.oldMoney.income)
               }
             }
             
@@ -108,9 +108,9 @@ struct BudgetCategoriesScreen: View {
             } label: {
               HStack {
                 Image(systemName: "xmark.circle")
-                  .foregroundColor(.red)
+                  .foregroundStyle(Color.oldMoney.expense)
                 Text(String(localized: "categories.deselect.all"))
-                  .foregroundColor(.red)
+                  .foregroundStyle(Color.oldMoney.expense)
               }
             }
           } header: {
@@ -176,7 +176,7 @@ struct EnhancedCategoryRowView: View {
         HStack {
           Text(category.displayName)
             .font(.headline)
-            .foregroundColor(.primary)
+            .foregroundStyle(Color.oldMoney.text)
           
           if category.isCustom {
             Text(String(localized: "category.custom.badge"))
@@ -184,7 +184,7 @@ struct EnhancedCategoryRowView: View {
               .padding(.horizontal, 6)
               .padding(.vertical, 2)
               .background(Color.orange.opacity(0.2))
-              .foregroundColor(.orange)
+              .foregroundStyle(Color.oldMoney.warning)
               .clipShape(Capsule())
           }
           
@@ -193,7 +193,7 @@ struct EnhancedCategoryRowView: View {
         
         Text(category.description)
           .font(.caption)
-          .foregroundColor(.secondary)
+          .foregroundStyle(Color.oldMoney.textSecondary)
           .lineLimit(2)
       }
       
@@ -205,7 +205,7 @@ struct EnhancedCategoryRowView: View {
           } label: {
             Image(systemName: "pencil")
               .font(.system(size: 16))
-              .foregroundColor(.blue)
+              .foregroundStyle(Color.oldMoney.accent)
           }
           .buttonStyle(PlainButtonStyle())
         }

@@ -7,6 +7,7 @@
 
 import UIKit
 import UserNotifications
+import FirebaseCrashlytics
 
 class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
@@ -15,8 +16,13 @@ class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCenterDele
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
   ) -> Bool {
 
+    // Initialize Crashlytics
+    Crashlytics.crashlytics().setCrashlyticsCollectionEnabled(true)
+
     // Set notification delegate
     UNUserNotificationCenter.current().delegate = self
+
+    print("✅ Firebase Crashlytics initialized")
 
     return true
   }

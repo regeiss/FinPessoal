@@ -31,7 +31,7 @@ struct GoalsWidgetView: View {
     VStack(alignment: .leading, spacing: 4) {
       Label("Meta", systemImage: "target")
         .font(.caption)
-        .foregroundStyle(.secondary)
+        .foregroundStyle(Color.widget.textSecondary)
 
       if let topGoal = data.goals.first {
         Spacer()
@@ -43,7 +43,7 @@ struct GoalsWidgetView: View {
         // Circular progress
         ZStack {
           Circle()
-            .stroke(Color.gray.opacity(0.2), lineWidth: 6)
+            .stroke(Color.widget.divider, lineWidth: 6)
 
           Circle()
             .trim(from: 0, to: topGoal.percentage / 100)
@@ -61,7 +61,7 @@ struct GoalsWidgetView: View {
 
         Text("Faltam \(topGoal.formattedRemaining)")
           .font(.caption2)
-          .foregroundStyle(.secondary)
+          .foregroundStyle(Color.widget.textSecondary)
           .lineLimit(1)
       } else {
         Spacer()
@@ -80,7 +80,7 @@ struct GoalsWidgetView: View {
     VStack(alignment: .leading, spacing: 8) {
       Label("Metas", systemImage: "target")
         .font(.caption)
-        .foregroundStyle(.secondary)
+        .foregroundStyle(Color.widget.textSecondary)
 
       if data.goals.isEmpty {
         emptyState
@@ -106,7 +106,7 @@ struct GoalsWidgetView: View {
         if !data.goals.isEmpty {
           Text("\(data.goals.count) ativas")
             .font(.caption)
-            .foregroundStyle(.secondary)
+            .foregroundStyle(Color.widget.textSecondary)
         }
       }
 
@@ -130,10 +130,10 @@ struct GoalsWidgetView: View {
       Spacer()
       Image(systemName: "target")
         .font(.largeTitle)
-        .foregroundStyle(.secondary)
+        .foregroundStyle(Color.widget.textSecondary)
       Text("Nenhuma meta")
         .font(.caption)
-        .foregroundStyle(.secondary)
+        .foregroundStyle(Color.widget.textSecondary)
       Spacer()
     }
     .frame(maxWidth: .infinity)
@@ -145,7 +145,7 @@ struct GoalsWidgetView: View {
       // Progress ring
       ZStack {
         Circle()
-          .stroke(Color.gray.opacity(0.2), lineWidth: 4)
+          .stroke(Color.widget.divider, lineWidth: 4)
 
         Circle()
           .trim(from: 0, to: goal.percentage / 100)
@@ -169,10 +169,10 @@ struct GoalsWidgetView: View {
             .font(.caption)
           Text("/")
             .font(.caption)
-            .foregroundStyle(.secondary)
+            .foregroundStyle(Color.widget.textSecondary)
           Text(goal.formattedTargetAmount)
             .font(.caption)
-            .foregroundStyle(.secondary)
+            .foregroundStyle(Color.widget.textSecondary)
         }
       }
 
@@ -185,7 +185,7 @@ struct GoalsWidgetView: View {
             .fontWeight(.bold)
           Text("dias")
             .font(.caption2)
-            .foregroundStyle(.secondary)
+            .foregroundStyle(Color.widget.textSecondary)
         }
       }
     }
@@ -217,7 +217,7 @@ struct GoalsWidgetView: View {
       GeometryReader { geometry in
         ZStack(alignment: .leading) {
           RoundedRectangle(cornerRadius: 3)
-            .fill(Color.gray.opacity(0.2))
+            .fill(Color.widget.divider)
 
           RoundedRectangle(cornerRadius: 3)
             .fill(progressColor(goal.percentage))
@@ -231,17 +231,17 @@ struct GoalsWidgetView: View {
           .font(.caption)
         Text("de")
           .font(.caption)
-          .foregroundStyle(.secondary)
+          .foregroundStyle(Color.widget.textSecondary)
         Text(goal.formattedTargetAmount)
           .font(.caption)
-          .foregroundStyle(.secondary)
+          .foregroundStyle(Color.widget.textSecondary)
 
         Spacer()
 
         if let contribution = goal.formattedMonthlyContribution {
           Text("\(contribution)/mês")
             .font(.caption)
-            .foregroundStyle(.secondary)
+            .foregroundStyle(Color.widget.textSecondary)
         }
       }
     }
@@ -255,15 +255,15 @@ struct GoalsWidgetView: View {
   private func progressColor(_ percentage: Double) -> Color {
     switch percentage {
     case 0..<25:
-      return .red
+      return Color.widget.expense
     case 25..<50:
-      return .orange
+      return Color.widget.warning
     case 50..<75:
-      return .yellow
+      return Color.widget.warning.opacity(0.8)
     case 75..<100:
-      return .blue
+      return Color.widget.accent
     default:
-      return .green
+      return Color.widget.income
     }
   }
 

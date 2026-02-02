@@ -134,12 +134,12 @@ final class TransactionViewModelTests: XCTestCase {
     
     func testAddTransactionFailure() async throws {
         mockRepository.shouldFail = true
-        mockRepository.mockError = AuthError.userNotAuthenticated
-        
+        mockRepository.mockError = AuthError.noCurrentUser
+
         let newTransaction = createTestTransaction(id: "new-trans", amount: 200.0, type: .expense, category: .shopping)
-        
+
         let success = await viewModel.addTransaction(newTransaction)
-        
+
         XCTAssertFalse(success)
         XCTAssertTrue(viewModel.transactions.isEmpty)
         XCTAssertNotNil(viewModel.errorMessage)
@@ -284,16 +284,16 @@ final class TransactionViewModelTests: XCTestCase {
     func testStatisticsCalculation() async throws {
         let transactions = [
             createTestTransaction(id: "trans1", amount: 500.0, type: .income, category: .salary),
-            createTestTransaction(id: "trans2", amount: 1000.0, type: .income, category: .freelance),
+            createTestTransaction(id: "trans2", amount: 1000.0, type: .income, category: .investment),
             createTestTransaction(id: "trans3", amount: 200.0, type: .expense, category: .food),
             createTestTransaction(id: "trans4", amount: 100.0, type: .expense, category: .transport)
         ]
         mockRepository.mockTransactions = transactions
         mockRepository.mockTotalIncome = 1500.0
         mockRepository.mockTotalExpenses = 300.0
-        
+
         await viewModel.fetchTransactions()
-        
+
         XCTAssertEqual(viewModel.totalIncome, 1500.0)
         XCTAssertEqual(viewModel.totalExpenses, 300.0)
         XCTAssertEqual(viewModel.balance, 1200.0)
@@ -401,7 +401,7 @@ final class TransactionViewModelTests: XCTestCase {
     }
     
     // MARK: - Helper Methods
-    
+
     private func createTestTransaction(
         id: String,
         amount: Double,
@@ -415,12 +415,12 @@ final class TransactionViewModelTests: XCTestCase {
             id: id,
             accountId: accountId,
             amount: amount,
-            type: type,
-            category: category,
             description: description,
+            category: category,
+            type: type,
             date: date,
-            userId: "test-user-id",
             isRecurring: false,
+            userId: "test-user-id",
             createdAt: Date(),
             updatedAt: Date()
         )

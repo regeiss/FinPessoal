@@ -50,7 +50,7 @@ struct BudgetDetailSheet: View {
 
               Text(budget.category.displayName)
                 .font(.subheadline)
-                .foregroundColor(.secondary)
+                .foregroundStyle(Color.oldMoney.textSecondary)
             }
             .accessibilityElement(children: .combine)
             .accessibilityLabel("\(budget.name), \(budget.category.displayName)")
@@ -62,7 +62,7 @@ struct BudgetDetailSheet: View {
           VStack(spacing: 20) {
             ZStack {
               Circle()
-                .stroke(Color.gray.opacity(0.15), lineWidth: 12)
+                .stroke(Color.oldMoney.divider, lineWidth: 12)
                 .frame(width: 160, height: 160)
 
               Circle()
@@ -79,13 +79,13 @@ struct BudgetDetailSheet: View {
                 if budget.isOverBudget {
                   Image(systemName: "exclamationmark.triangle.fill")
                     .font(.system(size: 48))
-                    .foregroundColor(.red)
+                    .foregroundStyle(Color.oldMoney.expense)
                     .accessibilityHidden(true)
 
                   Text(String(localized: "budget.over.budget"))
                     .font(.caption)
                     .fontWeight(.semibold)
-                    .foregroundColor(.red)
+                    .foregroundStyle(Color.oldMoney.expense)
                 } else {
                   Text("\(Int(budget.percentageUsed * 100))%")
                     .font(.system(size: 32, weight: .bold, design: .rounded))
@@ -93,7 +93,7 @@ struct BudgetDetailSheet: View {
 
                   Text(String(localized: "budget.used"))
                     .font(.caption)
-                    .foregroundColor(.secondary)
+                    .foregroundStyle(Color.oldMoney.textSecondary)
                 }
               }
             }
@@ -107,11 +107,11 @@ struct BudgetDetailSheet: View {
               HStack {
                 Text(String(localized: "budget.budgeted"))
                   .font(.subheadline)
-                  .foregroundColor(.secondary)
+                  .foregroundStyle(Color.oldMoney.textSecondary)
                 Spacer()
                 Text(budget.formattedBudgetAmount)
                   .font(.headline)
-                  .foregroundColor(.primary)
+                  .foregroundStyle(Color.oldMoney.text)
               }
               .accessibilityElement(children: .combine)
               .accessibilityLabel("Total Budgeted")
@@ -122,7 +122,7 @@ struct BudgetDetailSheet: View {
               HStack {
                 Text(String(localized: "budget.spent"))
                   .font(.subheadline)
-                  .foregroundColor(.secondary)
+                  .foregroundStyle(Color.oldMoney.textSecondary)
                 Spacer()
                 Text(budget.formattedSpent)
                   .font(.headline)
@@ -137,7 +137,7 @@ struct BudgetDetailSheet: View {
               HStack {
                 Text(String(localized: "budget.remaining"))
                   .font(.subheadline)
-                  .foregroundColor(.secondary)
+                  .foregroundStyle(Color.oldMoney.textSecondary)
                 Spacer()
                 Text(budget.formattedRemaining)
                   .font(.headline)
@@ -149,7 +149,7 @@ struct BudgetDetailSheet: View {
               .accessibilityValue(budget.formattedRemaining)
             }
             .padding()
-            .background(Color(.secondarySystemGroupedBackground))
+            .background(Color.oldMoney.surface)
             .cornerRadius(12)
             .accessibilityElement(children: .contain)
           }
@@ -161,7 +161,7 @@ struct BudgetDetailSheet: View {
               VStack(alignment: .leading, spacing: 4) {
                 Text(String(localized: "budget.period"))
                   .font(.caption)
-                  .foregroundColor(.secondary)
+                  .foregroundStyle(Color.oldMoney.textSecondary)
                 Text(budget.period.displayName)
                   .font(.subheadline)
                   .fontWeight(.medium)
@@ -175,7 +175,7 @@ struct BudgetDetailSheet: View {
               VStack(alignment: .trailing, spacing: 4) {
                 Text(String(localized: "budget.days.remaining"))
                   .font(.caption)
-                  .foregroundColor(.secondary)
+                  .foregroundStyle(Color.oldMoney.textSecondary)
                 Text("\(daysRemaining) dias")
                   .font(.subheadline)
                   .fontWeight(.medium)
@@ -188,21 +188,21 @@ struct BudgetDetailSheet: View {
             if !budget.isOverBudget && daysRemaining > 0 {
               HStack(spacing: 4) {
                 Image(systemName: "calendar")
-                  .foregroundColor(.blue)
+                  .foregroundStyle(Color.oldMoney.accent)
                   .font(.caption2)
                   .accessibilityHidden(true)
                 Text(String(localized: "budget.daily.available"))
                   .font(.caption2)
-                  .foregroundColor(.secondary)
+                  .foregroundStyle(Color.oldMoney.textSecondary)
                 Spacer()
                 Text(formatCurrency(dailyBudget))
                   .font(.caption)
                   .fontWeight(.medium)
-                  .foregroundColor(.blue)
+                  .foregroundStyle(Color.oldMoney.accent)
               }
               .padding(.horizontal, 8)
               .padding(.vertical, 6)
-              .background(Color.blue.opacity(0.1))
+              .background(Color.oldMoney.accentBackground)
               .clipShape(RoundedRectangle(cornerRadius: 6))
               .accessibilityElement(children: .combine)
               .accessibilityLabel("Daily Available Budget")
@@ -211,20 +211,20 @@ struct BudgetDetailSheet: View {
 
             HStack(spacing: 4) {
               Image(systemName: "calendar.badge.clock")
-                .foregroundColor(.secondary)
+                .foregroundStyle(Color.oldMoney.textSecondary)
                 .font(.caption2)
                 .accessibilityHidden(true)
               Text(String(localized: "budget.period.dates"))
                 .font(.caption2)
-                .foregroundColor(.secondary)
+                .foregroundStyle(Color.oldMoney.textSecondary)
               Spacer()
               Text("\(budget.startDate.formatted(date: .abbreviated, time: .omitted)) - \(budget.endDate.formatted(date: .abbreviated, time: .omitted))")
                 .font(.caption)
-                .foregroundColor(.secondary)
+                .foregroundStyle(Color.oldMoney.textSecondary)
             }
             .padding(.horizontal, 8)
             .padding(.vertical, 6)
-            .background(Color(.secondarySystemGroupedBackground))
+            .background(Color.oldMoney.surface)
             .clipShape(RoundedRectangle(cornerRadius: 6))
             .accessibilityElement(children: .combine)
             .accessibilityLabel("Budget Period Dates")
@@ -235,7 +235,7 @@ struct BudgetDetailSheet: View {
           Spacer(minLength: 20)
         }
       }
-      .background(Color(.systemGroupedBackground))
+      .background(Color.oldMoney.background)
       .navigationTitle(String(localized: "budget.details"))
       .navigationBarTitleDisplayMode(.inline)
       .toolbar {
@@ -244,7 +244,7 @@ struct BudgetDetailSheet: View {
             showingDeleteConfirmation = true
           } label: {
             Image(systemName: "trash")
-              .foregroundColor(.red)
+              .foregroundStyle(Color.oldMoney.expense)
           }
           .accessibilityLabel("Delete Budget")
           .accessibilityHint("Deletes this budget permanently")

@@ -113,7 +113,7 @@ struct CategoriesManagementScreen: View {
                                 showingAddSubcategory = true
                             } label: {
                                 Image(systemName: "plus")
-                                    .foregroundColor(.blue)
+                                    .foregroundStyle(Color.oldMoney.accent)
                             }
                         }
                     } footer: {
@@ -179,7 +179,7 @@ struct CategoriesManagementScreen: View {
                 
                 Text("Selecione uma categoria para gerenciar suas subcategorias")
                     .font(.subheadline)
-                    .foregroundColor(.secondary)
+                    .foregroundStyle(Color.oldMoney.textSecondary)
                     .padding(.horizontal)
                     .padding(.bottom)
                 
@@ -201,18 +201,18 @@ struct CategoriesManagementScreen: View {
                             VStack(alignment: .leading, spacing: 2) {
                                 Text(category.displayName)
                                     .font(.headline)
-                                    .foregroundColor(.primary)
+                                    .foregroundStyle(Color.oldMoney.text)
                                 
                                 Text("\(subcategoryService.getAllSubcategories(for: category).count) subcategorias")
                                     .font(.caption)
-                                    .foregroundColor(.secondary)
+                                    .foregroundStyle(Color.oldMoney.textSecondary)
                             }
                             
                             Spacer()
                             
                             if selectedCategory == category {
                                 Image(systemName: "checkmark")
-                                    .foregroundColor(.blue)
+                                    .foregroundStyle(Color.oldMoney.accent)
                                     .fontWeight(.semibold)
                             }
                         }
@@ -235,7 +235,7 @@ struct CategoriesManagementScreen: View {
                 HStack {
                     Image(systemName: selectedCategory.icon)
                         .font(.system(size: 24))
-                        .foregroundColor(.white)
+                        .foregroundStyle(.white)
                         .frame(width: 48, height: 48)
                         .background(.blue)
                         .clipShape(Circle())
@@ -247,7 +247,7 @@ struct CategoriesManagementScreen: View {
                         
                         Text("\(subcategoryService.getAllSubcategories(for: selectedCategory).count) subcategorias")
                             .font(.subheadline)
-                            .foregroundColor(.secondary)
+                            .foregroundStyle(Color.oldMoney.textSecondary)
                     }
                     
                     Spacer()
@@ -262,12 +262,12 @@ struct CategoriesManagementScreen: View {
                         .padding(.horizontal, 16)
                         .padding(.vertical, 8)
                         .background(.blue)
-                        .foregroundColor(.white)
+                        .foregroundStyle(.white)
                         .clipShape(Capsule())
                     }
                 }
                 .padding()
-                .background(Color(.systemGroupedBackground))
+                .background(Color.oldMoney.background)
                 
                 // Subcategories list
                 List {
@@ -523,7 +523,7 @@ struct CategoryManagementRow: View {
             // Icon
             Image(systemName: category.icon)
                 .font(.system(size: 20))
-                .foregroundColor(.white)
+                .foregroundStyle(.white)
                 .frame(width: 40, height: 40)
                 .background(category.displayColor)
                 .clipShape(Circle())
@@ -536,7 +536,7 @@ struct CategoryManagementRow: View {
                 if let description = category.description, !description.isEmpty {
                     Text(description)
                         .font(.caption)
-                        .foregroundColor(.secondary)
+                        .foregroundStyle(Color.oldMoney.textSecondary)
                         .lineLimit(1)
                 }
 
@@ -555,7 +555,7 @@ struct CategoryManagementRow: View {
                             .padding(.horizontal, 6)
                             .padding(.vertical, 2)
                             .background(Color.green.opacity(0.2))
-                            .foregroundColor(.green)
+                            .foregroundStyle(Color.oldMoney.income)
                             .cornerRadius(4)
                     }
                 }
@@ -567,14 +567,14 @@ struct CategoryManagementRow: View {
             HStack(spacing: 16) {
                 Button(action: onEdit) {
                     Image(systemName: "pencil")
-                        .foregroundColor(.blue)
+                        .foregroundStyle(Color.oldMoney.accent)
                         .font(.system(size: 16))
                 }
                 .buttonStyle(PlainButtonStyle())
 
                 Button(action: { showDeleteConfirmation = true }) {
                     Image(systemName: "trash")
-                        .foregroundColor(.red)
+                        .foregroundStyle(Color.oldMoney.expense)
                         .font(.system(size: 16))
                 }
                 .buttonStyle(PlainButtonStyle())
@@ -715,7 +715,7 @@ struct SubcategoryRow: View {
                             .padding(.horizontal, 6)
                             .padding(.vertical, 2)
                             .background(Color.blue.opacity(0.1))
-                            .foregroundColor(.blue)
+                            .foregroundStyle(Color.oldMoney.accent)
                             .cornerRadius(4)
                     }
                 }
@@ -723,11 +723,11 @@ struct SubcategoryRow: View {
                 if usage > 0 {
                     Text(String(localized: "categories.usage.count", defaultValue: "\(usage) transactions"))
                         .font(.caption)
-                        .foregroundColor(.secondary)
+                        .foregroundStyle(Color.oldMoney.textSecondary)
                 } else {
                     Text(String(localized: "categories.usage.unused"))
                         .font(.caption)
-                        .foregroundColor(.secondary)
+                        .foregroundStyle(Color.oldMoney.textSecondary)
                 }
             }
             
@@ -736,13 +736,13 @@ struct SubcategoryRow: View {
             if canDelete && usage == 0 {
                 Button(action: onDelete) {
                     Image(systemName: "trash")
-                        .foregroundColor(.red)
+                        .foregroundStyle(Color.oldMoney.expense)
                         .font(.system(size: 16))
                 }
                 .buttonStyle(PlainButtonStyle())
             } else if usage > 0 {
                 Image(systemName: "lock")
-                    .foregroundColor(.secondary)
+                    .foregroundStyle(Color.oldMoney.textSecondary)
                     .font(.system(size: 14))
             }
         }

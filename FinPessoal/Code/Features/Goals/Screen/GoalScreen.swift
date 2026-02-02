@@ -51,7 +51,7 @@ struct GoalScreen: View {
                 VStack(alignment: .leading, spacing: 12) {
                   Text(String(localized: "goals.active"))
                     .font(.headline)
-                    .foregroundColor(.primary)
+                    .foregroundStyle(Color.oldMoney.text)
                     .padding(.horizontal, 20)
                     .padding(.top, 20)
                     .accessibilityAddTraits(.isHeader)
@@ -73,7 +73,7 @@ struct GoalScreen: View {
                     LazyVStack(spacing: 8) {
                       ForEach(activeGoals) { goal in
                         GoalRowView(goal: goal)
-                          .background(Color(.systemBackground))
+                          .background(Color.oldMoney.background)
                           .clipShape(RoundedRectangle(cornerRadius: 8))
                           .shadow(color: .black.opacity(0.05), radius: 1, x: 0, y: 1)
                       }
@@ -90,7 +90,7 @@ struct GoalScreen: View {
                 VStack(alignment: .leading, spacing: 12) {
                   Text(String(localized: "goals.completed"))
                     .font(.headline)
-                    .foregroundColor(.primary)
+                    .foregroundStyle(Color.oldMoney.text)
                     .padding(.horizontal, 20)
                     .padding(.top, 20)
                     .accessibilityAddTraits(.isHeader)
@@ -98,7 +98,7 @@ struct GoalScreen: View {
                   LazyVStack(spacing: 8) {
                     ForEach(completedGoals) { goal in
                       GoalRowView(goal: goal)
-                        .background(Color(.systemBackground))
+                        .background(Color.oldMoney.background)
                         .clipShape(RoundedRectangle(cornerRadius: 8))
                         .shadow(color: .black.opacity(0.05), radius: 1, x: 0, y: 1)
                         .opacity(0.7)
@@ -112,7 +112,7 @@ struct GoalScreen: View {
               }
             }
           }
-          .background(Color(.systemBackground))
+          .background(Color.oldMoney.background)
       }
     }
     .environmentObject(goalViewModel)

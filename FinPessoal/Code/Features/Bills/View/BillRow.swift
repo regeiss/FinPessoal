@@ -34,7 +34,7 @@ struct BillRow: View {
       VStack(alignment: .leading, spacing: 4) {
         Text(bill.name)
           .font(.headline)
-          .foregroundColor(.primary)
+          .foregroundStyle(Color.oldMoney.text)
 
         HStack(spacing: 8) {
           // Status badge
@@ -46,38 +46,38 @@ struct BillRow: View {
 
             Text(bill.statusText)
               .font(.caption)
-              .foregroundColor(.secondary)
+              .foregroundStyle(Color.oldMoney.textSecondary)
           }
 
           // Due date info
           if !bill.isPaid {
             Text("•")
               .font(.caption)
-              .foregroundColor(.secondary)
+              .foregroundStyle(Color.oldMoney.textSecondary)
               .accessibilityHidden(true)
 
             if bill.isOverdue {
               Text(String(localized: "bill.overdue.days", defaultValue: "\(-bill.daysUntilDue) days overdue"))
                 .font(.caption)
-                .foregroundColor(.red)
+                .foregroundStyle(Color.oldMoney.expense)
             } else {
               Text(String(localized: "bill.due.in", defaultValue: "Due in \(bill.daysUntilDue) days"))
                 .font(.caption)
-                .foregroundColor(.secondary)
+                .foregroundStyle(Color.oldMoney.textSecondary)
             }
           } else {
             Text("•")
               .font(.caption)
-              .foregroundColor(.secondary)
+              .foregroundStyle(Color.oldMoney.textSecondary)
               .accessibilityHidden(true)
 
             Text(String(localized: "bill.next.due"))
               .font(.caption)
-              .foregroundColor(.secondary)
+              .foregroundStyle(Color.oldMoney.textSecondary)
 
             Text(bill.nextDueDate.formatted(date: .abbreviated, time: .omitted))
               .font(.caption)
-              .foregroundColor(.secondary)
+              .foregroundStyle(Color.oldMoney.textSecondary)
           }
         }
       }
@@ -88,7 +88,7 @@ struct BillRow: View {
       VStack(alignment: .trailing, spacing: 4) {
         Text(bill.formattedAmount)
           .font(.headline)
-          .foregroundColor(.primary)
+          .foregroundStyle(Color.oldMoney.text)
 
         if !bill.isPaid && onMarkAsPaid != nil {
           Button(action: {
@@ -100,7 +100,7 @@ struct BillRow: View {
               Text(String(localized: "bill.mark.paid"))
                 .font(.caption)
             }
-            .foregroundColor(.green)
+            .foregroundStyle(Color.oldMoney.income)
           }
           .buttonStyle(.plain)
           .accessibilityLabel("Mark as Paid")
@@ -136,13 +136,13 @@ struct BillRow: View {
   private var statusColor: Color {
     switch bill.status {
     case .paid:
-      return .green
+      return Color.oldMoney.income
     case .overdue:
-      return .red
+      return Color.oldMoney.expense
     case .dueSoon:
-      return .orange
+      return Color.oldMoney.warning
     case .upcoming:
-      return .blue
+      return Color.oldMoney.accent
     }
   }
 }

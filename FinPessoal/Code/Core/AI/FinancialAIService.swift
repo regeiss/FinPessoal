@@ -159,7 +159,7 @@ class FinancialAIService {
     // Group by category
     let categoryGroups = Dictionary(grouping: transactions) { $0.category }
 
-    for (category, categoryTransactions) in categoryGroups {
+    for (_, categoryTransactions) in categoryGroups {
       let amounts = categoryTransactions.map { $0.amount }
 
       // Calculate statistical measures
@@ -219,7 +219,7 @@ class FinancialAIService {
     let variance = counts.map { pow(Double($0) - avgCount, 2) }.reduce(0, +) / Double(counts.count)
     let stdDev = sqrt(variance)
 
-    for (month, monthTransactions) in monthlyGroups {
+    for (_, monthTransactions) in monthlyGroups {
       let count = Double(monthTransactions.count)
       let zScore = stdDev > 0 ? abs(count - avgCount) / stdDev : 0
 
@@ -313,7 +313,7 @@ class FinancialAIService {
       guard !recentTransactions.isEmpty else { continue }
 
       // Calculate statistics
-      let amounts = recentTransactions.map { $0.amount }
+      let _ = recentTransactions.map { $0.amount }
       let monthlyTotals = calculateMonthlyTotals(transactions: recentTransactions)
 
       let mean = monthlyTotals.reduce(0, +) / Double(monthlyTotals.count)

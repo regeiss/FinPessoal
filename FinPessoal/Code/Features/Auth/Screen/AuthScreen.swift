@@ -20,7 +20,7 @@ struct AuthView: View {
         VStack(spacing: 16) {
           Image(systemName: "dollarsign.circle.fill")
             .font(.system(size: 60))
-            .foregroundColor(.blue)
+            .foregroundStyle(Color.oldMoney.accent)
             .accessibilityHidden(true)
 
           Text("app.name")
@@ -63,9 +63,9 @@ struct AuthView: View {
           }
           .frame(maxWidth: .infinity)
           .padding()
-          .background(Color.blue)
-          .foregroundColor(.white)
-          .cornerRadius(12)
+          .background(Color.oldMoney.accent)
+          .foregroundStyle(Color.oldMoney.background)
+          .clipShape(RoundedRectangle(cornerRadius: OldMoneyTheme.Radius.medium))
           .disabled(authViewModel.isLoading)
           .accessibilityLabel("Sign In")
           .accessibilityHint("Sign in with your email and password")

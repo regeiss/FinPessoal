@@ -29,7 +29,7 @@ struct OnboardingPageView: View {
 
         Text(LocalizedStringKey(page.subtitle))
           .font(.body)
-          .foregroundColor(.secondary)
+          .foregroundStyle(Color.oldMoney.textSecondary)
           .multilineTextAlignment(.center)
           .padding(.horizontal)
       }

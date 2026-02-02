@@ -299,18 +299,18 @@ final class NavigationStateTests: XCTestCase {
     func testResetNavigation() throws {
         let testTransaction = createTestTransaction()
         let testAccount = createTestAccount()
-        
+
         // Set up non-default state
-        navigationState.selectedTab = .reports
+        navigationState.selectedTab = .more
         navigationState.selectedSidebarItem = .budgets
         navigationState.selectedTransaction = testTransaction
         navigationState.selectedAccount = testAccount
         navigationState.isShowingAddTransaction = true
         navigationState.isShowingAddAccount = true
-        
+
         // Reset navigation
         navigationState.resetNavigation()
-        
+
         // Verify everything is reset to defaults
         XCTAssertEqual(navigationState.selectedTab, .dashboard)
         XCTAssertEqual(navigationState.selectedSidebarItem, .dashboard)
@@ -396,12 +396,12 @@ final class NavigationStateTests: XCTestCase {
             id: id,
             accountId: "test-account-id",
             amount: amount,
-            type: .expense,
-            category: .food,
             description: "Test Transaction",
+            category: .food,
+            type: .expense,
             date: Date(),
-            userId: "test-user-id",
             isRecurring: false,
+            userId: "test-user-id",
             createdAt: Date(),
             updatedAt: Date()
         )

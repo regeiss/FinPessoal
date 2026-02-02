@@ -30,7 +30,7 @@ struct TransactionsWidgetView: View {
       HStack {
         Label("Transações Recentes", systemImage: "arrow.left.arrow.right")
           .font(.caption)
-          .foregroundStyle(.secondary)
+          .foregroundStyle(Color.widget.textSecondary)
 
         Spacer()
 
@@ -76,7 +76,7 @@ struct TransactionsWidgetView: View {
       // Last updated
       Text("Atualizado: \(formattedLastUpdate)")
         .font(.caption2)
-        .foregroundStyle(.tertiary)
+        .foregroundStyle(Color.widget.textSecondary.opacity(0.7))
     }
     .padding()
   }
@@ -88,10 +88,10 @@ struct TransactionsWidgetView: View {
       Spacer()
       Image(systemName: "tray")
         .font(.largeTitle)
-        .foregroundStyle(.secondary)
+        .foregroundStyle(Color.widget.textSecondary)
       Text("Nenhuma transação")
         .font(.caption)
-        .foregroundStyle(.secondary)
+        .foregroundStyle(Color.widget.textSecondary)
       Spacer()
     }
     .frame(maxWidth: .infinity)
@@ -106,7 +106,7 @@ struct TransactionsWidgetView: View {
         Text(formatCompact(data.monthlyIncome))
           .font(.caption2)
       }
-      .foregroundStyle(.green)
+      .foregroundStyle(Color.widget.income)
 
       HStack(spacing: 2) {
         Image(systemName: "arrow.down")
@@ -114,7 +114,7 @@ struct TransactionsWidgetView: View {
         Text(formatCompact(data.monthlyExpenses))
           .font(.caption2)
       }
-      .foregroundStyle(.red)
+      .foregroundStyle(Color.widget.expense)
     }
   }
 
@@ -123,21 +123,21 @@ struct TransactionsWidgetView: View {
       VStack(alignment: .trailing, spacing: 0) {
         Text("Receitas")
           .font(.caption2)
-          .foregroundStyle(.secondary)
+          .foregroundStyle(Color.widget.textSecondary)
         Text(formatCurrency(data.monthlyIncome))
           .font(.caption)
           .fontWeight(.medium)
-          .foregroundStyle(.green)
+          .foregroundStyle(Color.widget.income)
       }
 
       VStack(alignment: .trailing, spacing: 0) {
         Text("Despesas")
           .font(.caption2)
-          .foregroundStyle(.secondary)
+          .foregroundStyle(Color.widget.textSecondary)
         Text(formatCurrency(data.monthlyExpenses))
           .font(.caption)
           .fontWeight(.medium)
-          .foregroundStyle(.red)
+          .foregroundStyle(Color.widget.expense)
       }
     }
   }
@@ -146,7 +146,7 @@ struct TransactionsWidgetView: View {
     HStack {
       Image(systemName: transaction.categoryIcon)
         .font(.caption)
-        .foregroundStyle(transaction.isExpense ? .red : .green)
+        .foregroundStyle(transaction.isExpense ? Color.widget.expense : Color.widget.income)
         .frame(width: 20)
 
       Text(transaction.description)
@@ -159,11 +159,11 @@ struct TransactionsWidgetView: View {
         Text(transaction.formattedAmount)
           .font(.caption)
           .fontWeight(.medium)
-          .foregroundStyle(transaction.isExpense ? .red : .green)
+          .foregroundStyle(transaction.isExpense ? Color.widget.expense : Color.widget.income)
 
         Text(transaction.formattedDate)
           .font(.caption2)
-          .foregroundStyle(.secondary)
+          .foregroundStyle(Color.widget.textSecondary)
       }
     }
     .accessibilityElement(children: .combine)
@@ -174,12 +174,12 @@ struct TransactionsWidgetView: View {
     HStack {
       ZStack {
         Circle()
-          .fill(transaction.isExpense ? Color.red.opacity(0.1) : Color.green.opacity(0.1))
+          .fill(transaction.isExpense ? Color.widget.expense.opacity(0.1) : Color.widget.income.opacity(0.1))
           .frame(width: 32, height: 32)
 
         Image(systemName: transaction.categoryIcon)
           .font(.caption)
-          .foregroundStyle(transaction.isExpense ? .red : .green)
+          .foregroundStyle(transaction.isExpense ? Color.widget.expense : Color.widget.income)
       }
 
       VStack(alignment: .leading, spacing: 0) {
@@ -189,7 +189,7 @@ struct TransactionsWidgetView: View {
 
         Text(transaction.category.capitalized)
           .font(.caption2)
-          .foregroundStyle(.secondary)
+          .foregroundStyle(Color.widget.textSecondary)
       }
 
       Spacer()
@@ -198,11 +198,11 @@ struct TransactionsWidgetView: View {
         Text(transaction.formattedAmount)
           .font(.subheadline)
           .fontWeight(.medium)
-          .foregroundStyle(transaction.isExpense ? .red : .green)
+          .foregroundStyle(transaction.isExpense ? Color.widget.expense : Color.widget.income)
 
         Text(transaction.formattedDate)
           .font(.caption2)
-          .foregroundStyle(.secondary)
+          .foregroundStyle(Color.widget.textSecondary)
       }
     }
     .padding(.vertical, 2)

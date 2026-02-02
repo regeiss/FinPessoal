@@ -15,9 +15,9 @@ struct TransactionRow: View {
       // Ícone da categoria ou tipo (para transferências)
       Image(systemName: transaction.type == .transfer ? transaction.type.icon : (transaction.subcategory?.icon ?? transaction.category.icon))
         .font(.title2)
-        .foregroundColor(transaction.type == .income ? Color.green : transaction.type == .expense ? Color.red : Color.blue)
+        .foregroundStyle(transaction.type == .income ? Color.oldMoney.income : transaction.type == .expense ? Color.oldMoney.expense : Color.oldMoney.accent)
         .frame(width: 40, height: 40)
-        .background((transaction.type == .income ? Color.green : transaction.type == .expense ? Color.red : Color.blue).opacity(0.1))
+        .background((transaction.type == .income ? Color.oldMoney.income : transaction.type == .expense ? Color.oldMoney.expense : Color.oldMoney.accent).opacity(0.1))
         .cornerRadius(8)
         .accessibilityHidden(true)
 
@@ -32,17 +32,17 @@ struct TransactionRow: View {
           if let subcategory = transaction.subcategory {
             Text(LocalizedStringKey(subcategory.displayName))
               .font(.caption)
-              .foregroundColor(.secondary)
+              .foregroundStyle(Color.oldMoney.textSecondary)
           } else {
             Text(LocalizedStringKey(transaction.category.displayName))
               .font(.caption)
-              .foregroundColor(.secondary)
+              .foregroundStyle(Color.oldMoney.textSecondary)
           }
 
           if transaction.isRecurring {
             Image(systemName: "repeat")
               .font(.caption2)
-              .foregroundColor(.blue)
+              .foregroundStyle(Color.oldMoney.accent)
               .accessibilityLabel("Recurring")
           }
         }
@@ -55,15 +55,15 @@ struct TransactionRow: View {
         Text(transaction.formattedAmount)
           .font(.headline)
           .fontWeight(.semibold)
-          .foregroundColor(transaction.type == .income ? .green : transaction.type == .expense ? .red : .blue)
+          .foregroundStyle(transaction.type == .income ? Color.oldMoney.income : transaction.type == .expense ? Color.oldMoney.expense : Color.oldMoney.accent)
 
         Text(transaction.date, format: .dateTime.hour().minute())
           .font(.caption2)
-          .foregroundColor(.secondary)
+          .foregroundStyle(Color.oldMoney.textSecondary)
       }
     }
     .padding()
-    .background(Color(.systemGray6))
+    .background(Color.oldMoney.surface)
     .cornerRadius(12)
     .accessibilityElement(children: .combine)
     .accessibilityLabel("\(transaction.type.displayName): \(transaction.description), \(transaction.subcategory?.displayName ?? transaction.category.displayName), \(transaction.formattedAmount), \(transaction.date.formatted())\(transaction.isRecurring ? ", Recurring" : "")")

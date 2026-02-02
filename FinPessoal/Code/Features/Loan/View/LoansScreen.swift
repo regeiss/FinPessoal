@@ -75,7 +75,7 @@ struct LoansScreen: View {
     VStack(spacing: 20) {
       Image(systemName: "building.columns")
         .font(.system(size: 60))
-        .foregroundColor(.blue)
+        .foregroundStyle(Color.oldMoney.accent)
       
       Text(String(localized: "loan.empty.title"))
         .font(.title2)
@@ -83,7 +83,7 @@ struct LoansScreen: View {
       
       Text(String(localized: "loan.empty.description"))
         .multilineTextAlignment(.center)
-        .foregroundColor(.secondary)
+        .foregroundStyle(Color.oldMoney.textSecondary)
         .padding(.horizontal)
       
       Button(String(localized: "loan.add.button")) {
@@ -118,12 +118,12 @@ struct LoansScreen: View {
             Spacer()
             Text("\(loanService.getActiveLoans().count)")
               .font(.caption)
-              .foregroundColor(.secondary)
+              .foregroundStyle(Color.oldMoney.textSecondary)
           }
         } footer: {
           Text(String(localized: "loan.active.footer"))
             .font(.caption)
-            .foregroundColor(.secondary)
+            .foregroundStyle(Color.oldMoney.textSecondary)
         }
         
         // Due Soon Section
@@ -135,7 +135,7 @@ struct LoansScreen: View {
           } header: {
             HStack {
               Image(systemName: "exclamationmark.triangle")
-                .foregroundColor(.orange)
+                .foregroundStyle(Color.oldMoney.warning)
               Text(String(localized: "loan.due_soon.header"))
                 .font(.headline)
             }
@@ -171,28 +171,28 @@ struct LoansScreen: View {
           title: String(localized: "loan.summary.total_amount"),
           value: loanService.formatCurrency(loanService.getTotalLoanAmount()),
           icon: "banknote",
-          color: .blue
+          color: Color.oldMoney.accent
         )
-        
+
         LoanSummaryCard(
           title: String(localized: "loan.summary.current_balance"),
           value: loanService.formatCurrency(loanService.getTotalCurrentBalance()),
           icon: "scale.3d",
-          color: .orange
+          color: Color.oldMoney.warning
         )
-        
+
         LoanSummaryCard(
           title: String(localized: "loan.summary.monthly_payments"),
           value: loanService.formatCurrency(loanService.getTotalMonthlyPayments()),
           icon: "calendar",
-          color: .red
+          color: Color.oldMoney.expense
         )
-        
+
         LoanSummaryCard(
           title: String(localized: "loan.summary.total_interest"),
           value: loanService.formatCurrency(loanService.getTotalInterestPaid()),
           icon: "percent",
-          color: .green
+          color: Color.oldMoney.income
         )
       }
       .padding(.horizontal)
@@ -212,7 +212,7 @@ struct LoanSummaryCard: View {
     VStack(alignment: .leading, spacing: 8) {
       HStack {
         Image(systemName: icon)
-          .foregroundColor(color)
+          .foregroundStyle(color)
         Spacer()
       }
       
@@ -222,11 +222,11 @@ struct LoanSummaryCard: View {
       
       Text(title)
         .font(.caption)
-        .foregroundColor(.secondary)
+        .foregroundStyle(Color.oldMoney.textSecondary)
         .lineLimit(2)
     }
     .padding()
-    .background(Color(.systemGray6))
+    .background(Color.oldMoney.surface)
     .cornerRadius(12)
     .frame(width: 150)
   }
@@ -261,19 +261,19 @@ struct LoanRow: View {
             
             Text(loan.bankName)
               .font(.caption)
-              .foregroundColor(.secondary)
+              .foregroundStyle(Color.oldMoney.textSecondary)
           }
           
           Text(loan.loanType.displayName)
             .font(.caption)
-            .foregroundColor(.secondary)
+            .foregroundStyle(Color.oldMoney.textSecondary)
           
           // Progress Bar
           VStack(alignment: .leading, spacing: 2) {
             HStack {
               Text(String(localized: "loan.progress"))
                 .font(.caption2)
-                .foregroundColor(.secondary)
+                .foregroundStyle(Color.oldMoney.textSecondary)
               
               Spacer()
               
@@ -316,7 +316,7 @@ struct DueSoonLoanRow: View {
   var body: some View {
     HStack {
       Image(systemName: "exclamationmark.triangle.fill")
-        .foregroundColor(.orange)
+        .foregroundStyle(Color.oldMoney.warning)
       
       VStack(alignment: .leading, spacing: 2) {
         Text(loan.name)
@@ -324,7 +324,7 @@ struct DueSoonLoanRow: View {
         
         Text(String(localized: "loan.next_payment_format", defaultValue: "Next payment: \(formatDate(loan.nextPaymentDate))"))
           .font(.caption)
-          .foregroundColor(.secondary)
+          .foregroundStyle(Color.oldMoney.textSecondary)
       }
       
       Spacer()
@@ -336,7 +336,7 @@ struct DueSoonLoanRow: View {
         
         Text(String(localized: "loan.monthly_payment"))
           .font(.caption2)
-          .foregroundColor(.secondary)
+          .foregroundStyle(Color.oldMoney.textSecondary)
       }
     }
     .padding(.vertical, 4)

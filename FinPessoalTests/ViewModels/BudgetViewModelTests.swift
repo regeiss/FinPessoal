@@ -381,9 +381,11 @@ final class BudgetViewModelTests: XCTestCase {
     let afterCreation = Date()
 
     XCTAssertNotNil(budget)
-    XCTAssertGreaterThanOrEqual(budget!.createdAt, beforeCreation)
-    XCTAssertLessThanOrEqual(budget!.createdAt, afterCreation)
-    XCTAssertGreaterThanOrEqual(budget!.updatedAt, beforeCreation)
-    XCTAssertLessThanOrEqual(budget!.updatedAt, afterCreation)
+    XCTAssertNotNil(budget!.createdAt)
+    XCTAssertNotNil(budget!.updatedAt)
+    XCTAssertGreaterThanOrEqual(budget!.createdAt!, beforeCreation)
+    XCTAssertLessThanOrEqual(budget!.createdAt!, afterCreation)
+    XCTAssertGreaterThanOrEqual(budget!.updatedAt!, beforeCreation)
+    XCTAssertLessThanOrEqual(budget!.updatedAt!, afterCreation)
   }
 }

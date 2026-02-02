@@ -3,20 +3,21 @@
 //  FinPessoal
 //
 //  Created by Claude Code on 26/10/25.
+//  Converted to Realtime Database on 24/12/25
 //
 
 import Foundation
 import Firebase
 import FirebaseAuth
-import FirebaseFirestore
+import FirebaseDatabase
 
-/// Firebase implementation of BillRepositoryProtocol
+/// Firebase Realtime Database implementation of BillRepositoryProtocol
 class FirebaseBillRepository: BillRepositoryProtocol {
 
   // MARK: - Properties
 
-  private let db = Firestore.firestore()
-  private let collectionName = "bills"
+  private let database = Database.database().reference()
+  private let billsPath = "bills"
 
   // MARK: - Private Methods
 
@@ -27,59 +28,81 @@ class FirebaseBillRepository: BillRepositoryProtocol {
     return userId
   }
 
-  private func billsCollection() throws -> CollectionReference {
-    let userId = try getCurrentUserId()
-    return db.collection("users").document(userId).collection(collectionName)
-  }
-
   // MARK: - BillRepositoryProtocol
 
   func fetchBills() async throws -> [Bill] {
-    let collection = try billsCollection()
+    let userId = try getCurrentUserId()
 
-    let snapshot = try await collection
-      .order(by: "nextDueDate", descending: false)
-      .getDocuments()
+    let snapshot = try await database
+      .child(billsPath)
+      .child(userId)
+      .getData()
 
-    return try snapshot.documents.compactMap { document in
-      try Bill.fromDictionary(document.data())
+    guard let data = snapshot.value as? [String: [String: Any]] else {
+      return []
     }
+
+    let bills = try data.compactMap { (billId, billData) -> Bill? in
+      var mutableData = billData
+      mutableData["id"] = billId
+      return try Bill.fromDictionary(mutableData)
+    }
+
+    return bills.sorted { $0.nextDueDate < $1.nextDueDate }
   }
 
   func fetchBill(id: String) async throws -> Bill {
-    let collection = try billsCollection()
+    let userId = try getCurrentUserId()
 
-    let document = try await collection.document(id).getDocument()
+    let snapshot = try await database
+      .child(billsPath)
+      .child(userId)
+      .child(id)
+      .getData()
 
-    guard let data = document.data() else {
+    guard let data = snapshot.value as? [String: Any] else {
       throw FirebaseError.documentNotFound
     }
 
-    return try Bill.fromDictionary(data)
+    var mutableData = data
+    mutableData["id"] = id
+    return try Bill.fromDictionary(mutableData)
   }
 
   func addBill(_ bill: Bill) async throws {
-    let collection = try billsCollection()
+    let userId = try getCurrentUserId()
     let billData = try bill.toDictionary()
 
-    try await collection.document(bill.id).setData(billData)
+    try await database
+      .child(billsPath)
+      .child(userId)
+      .child(bill.id)
+      .setValue(billData)
   }
 
   func updateBill(_ bill: Bill) async throws {
-    let collection = try billsCollection()
+    let userId = try getCurrentUserId()
 
     var updatedBill = bill
     updatedBill.updatedAt = Date()
 
     let billData = try updatedBill.toDictionary()
 
-    try await collection.document(bill.id).updateData(billData)
+    try await database
+      .child(billsPath)
+      .child(userId)
+      .child(bill.id)
+      .updateChildValues(billData)
   }
 
   func deleteBill(_ billId: String) async throws {
-    let collection = try billsCollection()
+    let userId = try getCurrentUserId()
 
-    try await collection.document(billId).delete()
+    try await database
+      .child(billsPath)
+      .child(userId)
+      .child(billId)
+      .removeValue()
   }
 
   func markBillAsPaid(_ billId: String) async throws {
@@ -104,10 +127,13 @@ class FirebaseBillRepository: BillRepositoryProtocol {
     return allBills.filter { $0.isOverdue && $0.isActive }
   }
 
-  func calculateTotalUnpaidAmount() async throws -> Double {
+  func fetchUnpaidBills() async throws -> [Bill] {
     let allBills = try await fetchBills()
-    return allBills
-      .filter { !$0.isPaid && $0.isActive }
-      .reduce(0) { $0 + $1.amount }
+    return allBills.filter { !$0.isPaid && $0.isActive }
+  }
+
+  func calculateTotalUnpaidAmount() async throws -> Double {
+    let unpaidBills = try await fetchUnpaidBills()
+    return unpaidBills.reduce(0) { $0 + $1.amount }
   }
 }

@@ -16,6 +16,10 @@ enum FirebaseConstants {
   static let transactionsCollection = "transactions"
   static let budgetsCollection = "budgets"
   static let goalsCollection = "goals"
+  static let categoriesCollection = "categories"
+  static let billsCollection = "bills"
+  static let loansCollection = "loans"
+  static let creditCardsCollection = "creditCards"
 }
 
 // MARK: - App Constants

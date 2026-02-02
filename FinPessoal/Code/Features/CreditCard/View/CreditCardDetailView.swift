@@ -104,13 +104,13 @@ struct CreditCardDetailView: View {
                 HStack {
                     Text(creditCard.brand.displayName)
                         .font(.headline)
-                        .foregroundColor(.white)
+                        .foregroundStyle(.white)
                     
                     Spacer()
                     
                     Image(systemName: creditCard.brand.icon)
                         .font(.title)
-                        .foregroundColor(.white)
+                        .foregroundStyle(.white)
                 }
                 
                 Spacer()
@@ -118,7 +118,7 @@ struct CreditCardDetailView: View {
                 Text("•••• •••• •••• \(creditCard.lastFourDigits)")
                     .font(.title2)
                     .fontWeight(.medium)
-                    .foregroundColor(.white)
+                    .foregroundStyle(.white)
                 
                 HStack {
                     Text(creditCard.name)
@@ -134,7 +134,7 @@ struct CreditCardDetailView: View {
                         
                         Text("\(creditCard.dueDate)")
                             .font(.caption)
-                            .foregroundColor(.white)
+                            .foregroundStyle(.white)
                     }
                 }
             }
@@ -163,7 +163,7 @@ struct CreditCardDetailView: View {
                     HStack {
                         Text(String(localized: "creditcard.credit_utilization"))
                             .font(.caption)
-                            .foregroundColor(.secondary)
+                            .foregroundStyle(Color.oldMoney.textSecondary)
                         
                         Spacer()
                         
@@ -177,7 +177,7 @@ struct CreditCardDetailView: View {
                 }
             }
             .padding()
-            .background(Color(.systemGray6))
+            .background(Color.oldMoney.surface)
             .cornerRadius(12)
             
             // Stats Grid
@@ -186,21 +186,21 @@ struct CreditCardDetailView: View {
                     title: String(localized: "creditcard.available_credit"),
                     value: creditCard.formattedAvailableCredit,
                     icon: "checkmark.circle",
-                    color: .green
+                    color: Color.oldMoney.income
                 )
-                
+
                 CreditCardStatCard(
                     title: String(localized: "creditcard.credit_limit"),
                     value: creditCard.formattedCreditLimit,
                     icon: "creditcard",
-                    color: .blue
+                    color: Color.oldMoney.accent
                 )
-                
+
                 CreditCardStatCard(
                     title: String(localized: "creditcard.minimum_payment"),
                     value: creditCard.formattedMinimumPayment,
                     icon: "calendar",
-                    color: .orange
+                    color: Color.oldMoney.warning
                 )
                 
                 CreditCardStatCard(
@@ -224,8 +224,8 @@ struct CreditCardDetailView: View {
                 }
                 .frame(maxWidth: .infinity)
                 .padding()
-                .background(Color.blue)
-                .foregroundColor(.white)
+                .background(Color.oldMoney.accent)
+                .foregroundStyle(.white)
                 .cornerRadius(12)
             }
             
@@ -238,8 +238,8 @@ struct CreditCardDetailView: View {
                 }
                 .frame(maxWidth: .infinity)
                 .padding()
-                .background(Color.green)
-                .foregroundColor(.white)
+                .background(Color.oldMoney.income)
+                .foregroundStyle(.white)
                 .cornerRadius(12)
             }
         }
@@ -263,11 +263,11 @@ struct CreditCardDetailView: View {
                 VStack(spacing: 12) {
                     Image(systemName: "list.bullet.clipboard")
                         .font(.title2)
-                        .foregroundColor(.secondary)
+                        .foregroundStyle(Color.oldMoney.textSecondary)
                     
                     Text(String(localized: "creditcard.no_transactions"))
                         .font(.subheadline)
-                        .foregroundColor(.secondary)
+                        .foregroundStyle(Color.oldMoney.textSecondary)
                 }
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 20)
@@ -282,7 +282,7 @@ struct CreditCardDetailView: View {
                     Button(String(localized: "creditcard.view_all_transactions")) {
                         // TODO: Navigate to full transactions list
                     }
-                    .foregroundColor(.blue)
+                    .foregroundStyle(Color.oldMoney.accent)
                     .padding(.top, 8)
                 }
             }
@@ -314,7 +314,7 @@ struct CreditCardStatCard: View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
                 Image(systemName: icon)
-                    .foregroundColor(color)
+                    .foregroundStyle(color)
                 Spacer()
             }
             
@@ -324,11 +324,11 @@ struct CreditCardStatCard: View {
             
             Text(title)
                 .font(.caption)
-                .foregroundColor(.secondary)
+                .foregroundStyle(Color.oldMoney.textSecondary)
                 .lineLimit(2)
         }
         .padding()
-        .background(Color(.systemGray6))
+        .background(Color.oldMoney.surface)
         .cornerRadius(12)
     }
 }
@@ -347,12 +347,12 @@ struct TransactionRowView: View {
                 HStack {
                     Text(transaction.category.displayName)
                         .font(.caption)
-                        .foregroundColor(.secondary)
+                        .foregroundStyle(Color.oldMoney.textSecondary)
                     
                     if transaction.installments > 1 {
                         Text("• \(transaction.installmentText)")
                             .font(.caption)
-                            .foregroundColor(.secondary)
+                            .foregroundStyle(Color.oldMoney.textSecondary)
                     }
                 }
             }
@@ -366,7 +366,7 @@ struct TransactionRowView: View {
                 
                 Text(formatDate(transaction.date))
                     .font(.caption)
-                    .foregroundColor(.secondary)
+                    .foregroundStyle(Color.oldMoney.textSecondary)
             }
         }
         .padding(.vertical, 8)

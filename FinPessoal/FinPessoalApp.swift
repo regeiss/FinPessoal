@@ -30,7 +30,11 @@ struct MoneyManagerApp: App {
   init() {
     // Always configure Firebase to prevent initialization warnings
     FirebaseApp.configure()
-    
+
+    // Set Crashlytics environment
+    let environment = AppEnvironment.current
+    CrashlyticsManager.shared.setEnvironment("\(environment)")
+
     // Only configure additional Firebase features if not using mocks
     if !AppConfiguration.shared.useMockData {
       // Configure Google Sign-In
@@ -38,7 +42,7 @@ struct MoneyManagerApp: App {
         fatalError("No client ID found in Firebase configuration")
       }
       GIDSignIn.sharedInstance.configuration = GIDConfiguration(clientID: clientID)
-      
+
       // Configure offline persistence
       if AppConfiguration.shared.shouldUsePersistence {
         Database.database().isPersistenceEnabled = true

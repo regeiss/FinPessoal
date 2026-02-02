@@ -7067,24 +7067,6 @@
         }
       }
     },
-    "creditcard.transaction.error.creditcard_not_found" : {
-
-    },
-    "creditcard.transaction.error.invalid_data" : {
-
-    },
-    "creditcard.transaction.error.migration_failed" : {
-
-    },
-    "creditcard.transaction.error.network" : {
-
-    },
-    "creditcard.transaction.error.not_authenticated" : {
-
-    },
-    "creditcard.transaction.error.not_found" : {
-
-    },
     "creditcard.transaction.exceeds_limit" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -17976,18 +17958,6 @@
         }
       }
     },
-    "subcategory.error.invalid_data" : {
-
-    },
-    "subcategory.error.network" : {
-
-    },
-    "subcategory.error.not_authenticated" : {
-
-    },
-    "subcategory.error.subcategory_not_found" : {
-
-    },
     "Switch between cards and list view for goals" : {
 
     },
@@ -18784,24 +18754,6 @@
           }
         }
       }
-    },
-    "transaction.error.account_not_found" : {
-
-    },
-    "transaction.error.invalid_data" : {
-
-    },
-    "transaction.error.migration_failed" : {
-
-    },
-    "transaction.error.network" : {
-
-    },
-    "transaction.error.not_authenticated" : {
-
-    },
-    "transaction.error.not_found" : {
-
     },
     "transaction.info.amount" : {
       "extractionState" : "manual",

@@ -59,12 +59,14 @@ final class NotificationManagerTests: XCTestCase {
 
     testGoal = Goal(
       id: "test-goal-id",
+      userId: "test-user-id",
       name: "Vacation Fund",
+      description: "Saving for vacation trip",
       targetAmount: 5000.0,
       currentAmount: 2500.0, // 50% achieved
+      targetDate: Calendar.current.date(byAdding: .month, value: 6, to: Date())!,
       category: .other,
-      deadline: Calendar.current.date(byAdding: .month, value: 6, to: Date())!,
-      userId: "test-user-id",
+      isActive: true,
       createdAt: Date(),
       updatedAt: Date()
     )
@@ -196,7 +198,7 @@ final class NotificationManagerTests: XCTestCase {
 
   func testNotifyGoalProgress() async throws {
     // Test goal is at 50% (2500/5000)
-    XCTAssertEqual(testGoal.percentageAchieved, 0.5)
+    XCTAssertEqual(testGoal.progressPercentage, 50.0)
 
     await notificationManager.notifyGoalProgress(goal: testGoal)
 
@@ -208,17 +210,19 @@ final class NotificationManagerTests: XCTestCase {
   func testNotifyGoalProgressForCompletedGoal() async throws {
     let completedGoal = Goal(
       id: "completed-goal-id",
+      userId: "test-user-id",
       name: "Completed Goal",
+      description: "Goal that has been completed",
       targetAmount: 1000.0,
       currentAmount: 1000.0, // 100% achieved
+      targetDate: Date(),
       category: .other,
-      deadline: Date(),
-      userId: "test-user-id",
+      isActive: true,
       createdAt: Date(),
       updatedAt: Date()
     )
 
-    XCTAssertEqual(completedGoal.percentageAchieved, 1.0)
+    XCTAssertEqual(completedGoal.progressPercentage, 100.0)
 
     await notificationManager.notifyGoalProgress(goal: completedGoal)
 
@@ -315,7 +319,7 @@ final class NotificationManagerTests: XCTestCase {
   func testCancelAllNotifications() async throws {
     // Schedule various notifications
     await notificationManager.scheduleBudgetAlert(budget: testBudget)
-    await notificationManager.scheduleBillReminder(transaction: testTransaction)
+    await notificationManager.scheduleBillReminder(transaction: testTransaction, daysBeforeDue: 3)
 
     let beforeCount = await notificationManager.getPendingNotificationsCount()
 

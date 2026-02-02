@@ -24,9 +24,9 @@ A sophisticated color palette for FinPessoal that conveys trust, stability, and 
 
 | Name | Hex | RGB | Usage |
 |------|-----|-----|-------|
-| Ivory | `#FAF8F5` | 250, 248, 245 | Primary background |
-| Cream | `#F5F2EC` | 245, 242, 236 | Card/surface backgrounds |
-| Warm Gray | `#E8E4DD` | 232, 228, 221 | Dividers, subtle borders |
+| Ivory | `#E8E4DD` | 232, 228, 221 | Primary background (darker for card contrast) |
+| Cream | `#FAF8F5` | 250, 248, 245 | Card/surface backgrounds (lighter to pop) |
+| Warm Gray | `#D8D4CC` | 216, 212, 204 | Dividers, subtle borders |
 | Stone | `#9C9589` | 156, 149, 137 | Secondary text, icons |
 | Charcoal | `#3D3A36` | 61, 58, 54 | Primary text |
 

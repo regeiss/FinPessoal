@@ -90,7 +90,7 @@ struct AccountsView: View {
     VStack(spacing: 24) {
       Image(systemName: "creditcard")
         .font(.system(size: 60))
-        .foregroundColor(.blue)
+        .foregroundStyle(Color.oldMoney.accent)
         .accessibilityHidden(true)
 
       Text(String(localized: "accounts.empty.title"))
@@ -99,7 +99,7 @@ struct AccountsView: View {
 
       Text(String(localized: "accounts.empty.description"))
         .multilineTextAlignment(.center)
-        .foregroundColor(.secondary)
+        .foregroundStyle(Color.oldMoney.textSecondary)
         .padding(.horizontal, 24)
 
       Button(String(localized: "accounts.add.first.button")) {
@@ -143,7 +143,7 @@ struct AccountsView: View {
       }
     }
     .padding(20)
-    .background(Color(.systemGray6))
+    .background(Color.oldMoney.surface)
     .cornerRadius(16)
   }
   
@@ -157,7 +157,7 @@ struct AccountsView: View {
         Spacer()
         Text(String(localized: "accounts.count.label", defaultValue: "\(accountViewModel.accounts.count) conta(s)"))
           .font(.caption)
-          .foregroundColor(.secondary)
+          .foregroundStyle(Color.oldMoney.textSecondary)
           .accessibilityLabel("\(accountViewModel.accounts.count) accounts")
       }
 
@@ -192,17 +192,17 @@ struct EnhancedAccountCard: View {
           Text(account.name)
             .font(.headline)
             .fontWeight(.semibold)
-            .foregroundColor(.primary)
+            .foregroundStyle(Color.oldMoney.text)
 
           HStack {
             Text(LocalizedStringKey(account.type.rawValue))
               .font(.caption)
-              .foregroundColor(.secondary)
+              .foregroundStyle(Color.oldMoney.textSecondary)
 
             if account.isActive {
               Image(systemName: "checkmark.circle.fill")
                 .font(.caption)
-                .foregroundColor(.green)
+                .foregroundStyle(Color.oldMoney.income)
                 .accessibilityHidden(true)
             }
           }
@@ -219,20 +219,20 @@ struct EnhancedAccountCard: View {
 
           Text(String(localized: "accounts.balance.label"))
             .font(.caption2)
-            .foregroundColor(.secondary)
+            .foregroundStyle(Color.oldMoney.textSecondary)
         }
 
         Image(systemName: "chevron.right")
           .font(.caption)
-          .foregroundColor(.secondary)
+          .foregroundStyle(Color.oldMoney.textSecondary)
           .accessibilityHidden(true)
       }
       .padding(16)
-      .background(Color(.systemBackground))
+      .background(Color.oldMoney.background)
       .cornerRadius(16)
       .overlay(
         RoundedRectangle(cornerRadius: 16)
-          .stroke(Color(.systemGray5), lineWidth: 1)
+          .stroke(Color.oldMoney.divider, lineWidth: 1)
       )
       .shadow(color: Color.black.opacity(0.05), radius: 2, x: 0, y: 1)
     }
@@ -263,15 +263,15 @@ struct SummaryCard: View {
 
       Text(title)
         .font(.caption)
-        .foregroundColor(.secondary)
+        .foregroundStyle(Color.oldMoney.textSecondary)
 
       Text(value)
         .font(.headline)
         .fontWeight(.semibold)
-        .foregroundColor(.primary)
+        .foregroundStyle(Color.oldMoney.text)
     }
     .padding(16)
-    .background(Color(.systemBackground))
+    .background(Color.oldMoney.background)
     .cornerRadius(12)
     .shadow(color: Color.black.opacity(0.05), radius: 2, x: 0, y: 1)
     .accessibilityElement(children: .combine)

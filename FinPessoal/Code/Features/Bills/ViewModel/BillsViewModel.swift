@@ -37,6 +37,7 @@ class BillsViewModel: ObservableObject {
   // MARK: - Private Properties
 
   private let repository: BillRepositoryProtocol
+  private let crashlytics = CrashlyticsManager.shared
   private var cancellables = Set<AnyCancellable>()
 
   // MARK: - Initialization

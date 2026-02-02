@@ -7,7 +7,335 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added - February 2026
+- **ParticleEmitter Foundation** (2026-02-02)
+  - Added ParticleEmitter SwiftUI component for visual effects
+  - Metal shader foundation (ParticleShaders.metal) for future GPU rendering
+  - Preset configurations:
+    - Gold shimmer (20 particles) for subtle elegance
+    - Celebration (50 particles) for achievements
+    - Warning (15 particles) for alerts
+  - Canvas-based particle rendering with TimelineView
+  - Particle physics system:
+    - Position and velocity tracking
+    - Life cycle management (opacity fade)
+    - Randomized particle generation (size: 2-6pt)
+  - Mode-aware rendering:
+    - Full mode: Particles visible with smooth animation
+    - Reduced/Minimal modes: Particles hidden (performance optimization)
+  - Old Money color palette integration:
+    - Gold: RGB(184, 150, 92)
+    - Light gold: RGB(212, 186, 138)
+    - Amber: RGB(232, 177, 92)
+  - Comprehensive test coverage with ParticleEmitterTests (2 test cases)
+  - Ready for integration with celebration moments and visual feedback
+
+- **BalanceCardView with Animations** (2026-02-02)
+  - Updated existing BalanceCardView to use animated components
+  - Replaced static text with PhysicsNumberCounter for smooth value transitions
+  - Added AnimatedCard press interactions with scale and shadow effects
+  - Backward compatible initializers:
+    - Convenience init with constant values for existing code
+    - Binding init for animated live updates
+  - Optional tap action support for interactive cards
+  - Maintains all accessibility features from original implementation
+  - Comprehensive test coverage with BalanceCardViewTests (2 test cases)
+  - Ready for integration in dashboard with live balance updates
+
+- **AnimatedCard Component** (2026-02-02)
+  - Added AnimatedCard struct for interactive card UI with press states
+  - Scale animation (0.98x) on press for tactile feedback
+  - Dynamic shadow system:
+    - Light mode: Black with 15% opacity
+    - Dark mode: Black with 40% opacity
+    - Shadow radius transitions: 12pt → 8pt on press
+    - Shadow Y offset transitions: 4pt → 2pt on press
+  - Press gesture handling with DragGesture(minimumDistance: 0)
+  - Haptic feedback integration:
+    - Light haptic on press down
+    - Gesture-driven interaction feedback
+  - Mode-aware animations:
+    - Full mode: Snappy spring on press, gentle spring on release
+    - Reduced mode: Quick fade animations
+    - Minimal mode: No animation
+  - Optional hero transition support with matchedGeometryEffect
+  - AnimatedCardModifier for easy application to any view
+  - View extension: .animatedCard(onTap:) modifier
+  - Conditional view modifiers with .if() helper
+  - Comprehensive test coverage with AnimatedCardTests (2 test cases)
+  - Ready for integration with dashboard cards and interactive UI elements
+
+- **PhysicsNumberCounter Component** (2026-02-02)
+  - Added animated number counter with spring physics for smooth value transitions
+  - Spring-based animations using AnimationEngine presets
+  - Mode-aware animation behavior
+  - Haptic feedback for significant value changes (>100)
+  - Currency formatting support
+  - Customizable font styling
+  - Binding-based and constant value initializers
+  - Comprehensive test coverage with PhysicsNumberCounterTests (2 test cases)
+
+- **Haptic Engine** (2026-02-01)
+  - Added HapticEngine singleton for centralized haptic feedback
+  - Impact haptics:
+    - Light impact for subtle feedback
+    - Medium impact for standard interactions
+    - Heavy impact for significant events
+    - Selection feedback for picker changes
+  - Notification haptics:
+    - Success feedback for completed actions
+    - Warning feedback for alerts
+    - Error feedback for failures
+  - Custom haptic patterns using CoreHaptics:
+    - Gentle success (tap-tap-tap) for subtle confirmations
+    - Crescendo (light → medium → heavy) for celebrations
+    - Warning pattern (tap-pause-tap) for alerts
+  - CoreHaptics integration for complex custom patterns
+  - Graceful fallback when haptics unavailable (simulator, unsupported devices)
+  - Device capability detection (CHHapticEngine.capabilitiesForHardware)
+  - Automatic fallback to notification haptics for custom patterns
+  - Comprehensive test coverage with HapticEngineTests (3 test cases)
+  - Ready for integration with animation system and UI interactions
+
+- **Animation Engine Core** (2026-02-01)
+  - Added AnimationEngine struct with reusable animation presets and configurations
+  - Spring animation presets:
+    - Gentle spring (response: 0.6, damping: 0.8) for subtle interactions
+    - Bouncy spring (response: 0.5, damping: 0.6) for playful interactions
+    - Snappy spring (response: 0.3, damping: 0.9) for quick feedback
+    - Overdamped spring (response: 0.8, damping: 1.0) for smooth momentum
+  - Timing curve presets:
+    - Standard ease in-out (0.3s)
+    - Quick fade (0.2s)
+    - Slow ease (0.5s)
+  - Mode-aware animation selection:
+    - Full mode: Returns base animation unchanged
+    - Reduced mode: Simplified easeInOut (0.2s)
+    - Minimal mode: Returns nil (no animation)
+  - Stagger delay constants:
+    - Standard stagger (50ms) for list items
+    - Quick stagger (30ms) for fast reveals
+    - Slow stagger (100ms) for dramatic effect
+  - Comprehensive test coverage with AnimationEngineTests (3 test cases)
+  - Centralized animation configuration for consistent app-wide animations
+
+- **Animation Mode System** (2026-02-01)
+  - Added AnimationMode enum with three complexity levels:
+    - Full: All animations including particles, complex transitions, parallax
+    - Reduced: Simplified animations without decorative effects
+    - Minimal: Instant transitions, fade-only effects
+  - Added AnimationSettings singleton for global animation configuration:
+    - Respects system Reduce Motion accessibility setting
+    - User override option for accessibility preferences
+    - Helper properties for particles, hero transitions, and parallax effects
+  - Comprehensive test coverage with AnimationModeTests
+  - Foundation for dashboard animation system
+
+### Changed - December 2025
+- **Migrated All Repositories to Firebase Realtime Database** (2025-12-24)
+  - Removed Firestore dependency completely
+  - Converted all Firestore repositories to use Realtime Database:
+    - **FirebaseCategoryRepository**: Categories management with full CRUD
+    - **FirebaseBillRepository**: Bills tracking with payment status, due dates, overdue detection
+    - **FirebaseLoanRepository**: Loans management with payments and amortization schedules
+    - **FirebaseCreditCardRepository**: Credit cards with transactions and statement generation
+  - Removed unused Firestore repositories:
+    - FirebaseSubcategoryRepository (deprecated)
+    - FirebaseDynamicTransactionRepository (deprecated)
+    - FirebaseDynamicCreditCardRepository (deprecated)
+  - Database structure:
+    - Main collections: `{collection}/{userId}/{itemId}`
+    - Subcollections: `loanPayments/{userId}/{loanId}/{paymentId}`
+    - Subcollections: `creditCardTransactions/{userId}/{cardId}/{transactionId}`
+    - Subcollections: `creditCardStatements/{userId}/{cardId}/{statementId}`
+  - Updated FirebaseConstants with new collection names:
+    - categoriesCollection, billsCollection, loansCollection, creditCardsCollection
+  - All repositories implement full protocol compliance:
+    - Bills: Calculate total unpaid amounts, filter by status
+    - Loans: Payment tracking, amortization schedule generation
+    - Credit Cards: Transaction management, statement generation and payment
+  - Simplified architecture - single database solution
+  - Improved performance with Realtime Database's faster reads
+  - Better offline support with Realtime Database persistence
+  - Reduced Firebase costs - only one database to maintain
+  - No Firestore setup required - eliminates "database does not exist" error
+  - Added Firebase helper extensions:
+    - `Loan+Firebase.swift`: toDictionary/fromDictionary for Loan and LoanPayment models
+    - `CreditCard+Firebase.swift`: toDictionary/fromDictionary for CreditCard, CreditCardTransaction, and CreditCardStatement models
+    - `Category+Firebase.swift`: toDictionary/fromDictionary for Category model
+  - Removed deprecated factory methods from AppConfiguration
+  - Removed all Mock repository files for deprecated features
+  - Fixed all compilation errors and warnings:
+    - Updated CreditCardStatement model conversion to include paidAmount, paidDate, and createdAt properties
+    - Fixed Loan model conversion to handle endDate properly
+    - Cleaned up unused variable warnings in FinancialAIService
+  - **Build Status**: ✅ All compilation errors resolved, project builds successfully
+
 ### Added - December 2025
+- **Firebase Crashlytics Integration** (2025-12-24)
+  - Added Firebase Crashlytics for crash reporting and error tracking
+  - Created CrashlyticsManager service for centralized crash logging
+  - Features:
+    - Automatic crash reporting with stack traces
+    - User identification in crash reports (user ID, email, name)
+    - Custom error logging for Firebase and authentication errors
+    - Event logging for user actions (login, logout, CRUD operations)
+    - Breadcrumb logging for navigation tracking
+    - Environment tracking (development, staging, production)
+    - Convenience methods for transaction, budget, goal, and account errors
+  - Integrated into all ViewModels:
+    - **AuthViewModel**: User authentication, login/logout tracking, auth errors
+    - **TransactionViewModel**: Transaction CRUD operations, fetch errors, event tracking
+    - **BudgetViewModel**: Budget creation/update/deletion events
+    - **AccountViewModel**: Account fetch errors with context
+    - **GoalViewModel**: Goal operations tracking
+    - **BillsViewModel**: Bills management error logging
+    - **FinanceViewModel**: Finance data aggregation errors
+  - Error logging with context:
+    - All Firebase errors logged with operation details
+    - All authentication errors logged with auth type
+    - All CRUD operations tracked as events
+  - Initialized in AppDelegate with collection enabled
+  - Environment automatically set based on build configuration
+  - File: `Code/Core/Services/CrashlyticsManager.swift`
+  - Full accessibility support maintained
+
+- **Profile Photo in ProfileView** (2025-12-24)
+  - Added AsyncImage to display user's profile photo in ProfileView screen
+  - Profile photo now loads from user's profileImageURL (Google/Apple sign-in photo)
+  - Displays circular profile image (100x100 points) in profile header
+  - Falls back to system icon placeholder if no photo available
+  - Matches implementation from SettingsScreen for consistency
+  - Maintains full accessibility support
+
+- **Architecture Diagram** (2025-12-23)
+  - Generated comprehensive Excalidraw architecture diagram for FinPessoal iOS app
+  - Visual representation of all architectural layers:
+    - Presentation Layer: SwiftUI Views for all 20+ features
+    - Business Logic Layer: ViewModels with MVVM pattern
+    - Repository Pattern: Protocols, Mock repositories, and Firebase repositories
+    - Core Services: FirebaseService, AI, Analytics, Notifications, Widget Sync, Deep Links, Live Activities
+    - Firebase Backend: Authentication, Realtime Database, Analytics, Crashlytics
+  - Shows data flow from users through all layers to Firebase backend
+  - Includes external authentication providers (Google Auth, Apple Auth)
+  - Color-coded components by type (Frontend: Blue, Backend: Purple, Database: Green, etc.)
+  - Elbow-style arrows showing relationships and dependencies
+  - Complete with all 20+ app features: Auth, Dashboard, Transactions, Budget, Goals, Reports, Accounts, Bills, CreditCards, Loans, Categories, Profile, Settings, Onboarding, Help, Insights
+  - Saved to: docs/architecture/finpessoal-architecture.excalidraw
+  - Can be opened in Excalidraw.com or VS Code Excalidraw extension
+
+### Fixed - December 2025
+- **MockRepository runtime crash** (2025-12-21)
+  - Added `@MainActor` annotation to `MockTransactionRepository` and `MockAccountRepository`
+  - Fixed memory corruption during deinitialization when used with SwiftUI views
+  - Root cause: Async Task.sleep operations still running during object deallocation
+  - Solution: `@MainActor` ensures proper actor isolation and prevents concurrent access during cleanup
+  - Error: `___BUG_IN_CLIENT_OF_LIBMALLOC_POINTER_BEING_FREED_WAS_NOT_ALLOCATED`
+
+- **PerformanceTests.swift compilation errors** (2025-12-21)
+  - Fixed throwing function calls in non-throwing measure blocks:
+    - Used `try!` for controlled test data inside `measure` closures (lines 20, 30, 40, 50)
+    - Added `try` in map closures for dictionary conversions outside measure blocks (lines 36, 46)
+  - Updated deprecated XCTest performance metrics API:
+    - `measureMetrics([.memoryPhysical])` → `measure(metrics: [XCTMemoryMetric()])` (line 159)
+  - Root cause: `measure` blocks expect non-throwing closures `() -> Void`
+  - Solution: Used `try!` (force try) for controlled test data, which is safe and appropriate for performance tests
+  - All compilation errors resolved successfully
+- **ViewModel Tests fixes** (2025-12-20)
+  - **AccountViewModelTests.swift**:
+    - Changed `FirebaseError.authenticationError` to `FirebaseError.databaseError`
+    - Replaced `activeAccounts` test with `accountsByType` test
+  - **TransactionViewModelTests.swift**:
+    - Changed `AuthError.userNotAuthenticated` to `AuthError.noCurrentUser`
+    - Changed `TransactionCategory.freelance` to `.investment`
+    - Fixed Transaction initializer argument order in helper method
+  - **BudgetViewModelTests.swift**:
+    - Fixed optional `Date?` comparisons for `createdAt` and `updatedAt`
+  - **NavigationStateTests.swift**:
+    - Changed `MainTab.reports` to `.more` (reports tab doesn't exist)
+    - Fixed Transaction initializer argument order in helper method
+
+- **MockRepositoryTests fixes** (2025-12-20)
+  - Fixed `Transaction` initializer argument order (description before category/type)
+  - Changed `AuthError.userNotAuthenticated` to `AuthError.noCurrentUser`
+  - Added `Equatable` conformance to `FirebaseError` and `AuthError`
+  - Added testable properties to `MockAccountRepository`:
+    - `mockAccounts` - settable accounts array
+    - `shouldFail` - flag to trigger errors
+    - `mockError` - customizable error to throw
+    - `delay` - configurable operation delay
+  - Added testable properties to `MockTransactionRepository`:
+    - `mockTransactions` - settable transactions array
+    - `shouldFail` - flag to trigger errors
+    - `mockError` - customizable error to throw
+    - `mockTotalIncome` - override for statistics
+    - `mockTotalExpenses` - override for statistics
+    - `delay` - configurable operation delay
+
+### Added - December 2025
+- **Old Money Color Palette Tests** (2025-12-20)
+  - Comprehensive test suite for Old Money theme implementation
+  - **OldMoneyColorsTests.swift** - Tests for color values:
+    - Light mode base colors (ivory, cream, warmGray, stone, charcoal)
+    - Dark mode base colors (charcoal, slate, darkStone, mutedIvory, ivory)
+    - Accent colors (antiqueGold, softGold)
+    - Semantic colors (income, expense, warning, error, success)
+    - Category colors (food, transport, entertainment, etc.)
+    - Contrast tests (background vs surface)
+    - Color extension tests (Color.oldMoney accessors)
+  - **WidgetColorsTests.swift** - Tests for widget colors:
+    - Singleton pattern verification
+    - Light/dark mode base colors
+    - Accent and semantic colors
+    - Adaptive color existence
+    - Gradient tests
+    - Color extension tests (Color.widget)
+    - Consistency tests (widget colors match app colors)
+  - **OldMoneyThemeTests.swift** - Tests for theme configuration:
+    - Typography fonts (headline, title, body, caption, money)
+    - Shadow configurations (card, button, elevated, none)
+    - Border radius values (small, medium, large, extraLarge, circular)
+    - Border width values
+    - Spacing values (xs, sm, md, base, lg, xl, xxl)
+    - Animation durations (fast, standard, slow)
+    - View modifier existence tests
+    - Consistency tests (values increase progressively)
+    - Accessibility tests (minimum sizes)
+
+- **Old Money Color Palette Migration** (2025-12-19)
+  - Applied Old Money color palette across the app and widget views
+  - **Updated App Screens**:
+    - Dashboard (DashboardScreen, StatCard, BalanceCardView)
+    - Main/Navigation (iPadMainView, MoreScreen, LoginView, EmptyStateView)
+    - Auth and Onboarding screens
+    - Account feature (AccountsView, AccountDetailView, AccountCard, etc.)
+    - Transaction feature (TransactionsScreen, TransactionRow, etc.)
+    - Budget feature (BudgetScreen, BudgetCard, BudgetDetailSheet, BudgetCategoriesScreen)
+    - Bills feature (BillsScreen, BillRow, BillDetailView)
+    - Goals feature (GoalScreen, GoalCard, GoalProgressSheet)
+    - Reports feature (ReportsScreen, ReportSummaryCard, MetricView, SavingsRateView)
+    - CreditCard feature (CreditCardsScreen, CreditCardDetailView, summary cards)
+    - Loan feature (LoansScreen, summary cards, loan rows)
+    - Categories feature (CategoriesManagementScreen, category chips, subcategory rows)
+    - QuickActions feature (QuickActionsView, QuickActionButton)
+  - **Updated Widget Views**:
+    - BalanceWidgetView - Income/expense colors, text hierarchy
+    - BudgetWidgetView - Progress indicators, budget status colors
+    - BillsWidgetView - Due date urgency colors, status indicators
+    - GoalsWidgetView - Progress rings, milestone colors
+    - CreditCardWidgetView - Utilization gauges, brand colors
+    - TransactionsWidgetView - Income/expense styling
+  - Color mappings:
+    - `.primary` -> `Color.oldMoney.text`
+    - `.secondary` -> `Color.oldMoney.textSecondary`
+    - `.green` -> `Color.oldMoney.income`
+    - `.red` -> `Color.oldMoney.expense`
+    - `.blue` -> `Color.oldMoney.accent`
+    - `.orange` -> `Color.oldMoney.warning`
+    - `.systemBackground` -> `Color.oldMoney.background`
+    - `.systemGray6` -> `Color.oldMoney.surface`
+  - Widgets use `Color.widget.x` for lightweight palette access
+
 - **Old Money Color Palette** (2025-12-18)
   - Implemented sophisticated "Old Money" color theme with understated elegance aesthetic
   - **Core Files**:

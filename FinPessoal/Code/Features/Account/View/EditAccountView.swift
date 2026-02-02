@@ -103,14 +103,14 @@ struct EditAccountView: View {
           VStack(alignment: .leading, spacing: 8) {
             Text(String(localized: "accounts.created.at"))
               .font(.caption)
-              .foregroundColor(.secondary)
+              .foregroundStyle(Color.oldMoney.textSecondary)
 
             Text(account.createdAt.formatted(date: .abbreviated, time: .shortened))
               .font(.subheadline)
 
             Text(String(localized: "accounts.updated.at"))
               .font(.caption)
-              .foregroundColor(.secondary)
+              .foregroundStyle(Color.oldMoney.textSecondary)
 
             Text(account.updatedAt.formatted(date: .abbreviated, time: .shortened))
               .font(.subheadline)
@@ -128,7 +128,7 @@ struct EditAccountView: View {
             showingDeleteConfirmation = true
           } label: {
             Image(systemName: "trash")
-              .foregroundColor(.red)
+              .foregroundStyle(Color.oldMoney.expense)
           }
           .accessibilityLabel("Delete Account")
           .accessibilityHint("Delete this account permanently")

@@ -15,18 +15,18 @@ struct BudgetCard: View {
       HStack {
         Image(systemName: budget.category.icon)
           .font(.title2)
-          .foregroundColor(.blue)
+          .foregroundStyle(Color.oldMoney.accent)
           .frame(width: 32, height: 32)
           .accessibilityHidden(true)
 
         VStack(alignment: .leading, spacing: 2) {
           Text(budget.name)
             .font(.headline)
-            .foregroundColor(.primary)
+            .foregroundStyle(Color.oldMoney.text)
 
           Text(budget.category.displayName)
             .font(.caption)
-            .foregroundColor(.secondary)
+            .foregroundStyle(Color.oldMoney.textSecondary)
         }
         .accessibilityElement(children: .combine)
         .accessibilityLabel("\(budget.name), \(budget.category.displayName)")
@@ -37,11 +37,11 @@ struct BudgetCard: View {
           Text(budget.formattedSpent)
             .font(.headline)
             .fontWeight(.semibold)
-            .foregroundColor(budget.isOverBudget ? .red : .primary)
+            .foregroundStyle(budget.isOverBudget ? Color.oldMoney.expense : Color.oldMoney.text)
 
           Text(String(localized: "budget.card.of.amount", defaultValue: "de \(budget.formattedBudgetAmount)"))
             .font(.caption)
-            .foregroundColor(.secondary)
+            .foregroundStyle(Color.oldMoney.textSecondary)
         }
         .accessibilityElement(children: .combine)
         .accessibilityLabel(budget.isOverBudget ? "Over budget" : "Spent")
@@ -50,23 +50,23 @@ struct BudgetCard: View {
       
       VStack(spacing: 8) {
         ProgressView(value: budget.percentageUsed, total: 1.0)
-          .tint(budget.isOverBudget ? .red :
-                  budget.shouldAlert ? .orange : .green)
+          .tint(budget.isOverBudget ? Color.oldMoney.expense :
+                  budget.shouldAlert ? Color.oldMoney.warning : Color.oldMoney.income)
           .accessibilityLabel("Budget Progress")
           .accessibilityValue("\(Int(budget.percentageUsed * 100))% used, \(budget.formattedSpent) spent of \(budget.formattedBudgetAmount) total")
 
         HStack {
           Text(String(localized: "budget.card.remaining", defaultValue: "Restante: \(budget.formattedRemaining)"))
             .font(.caption)
-            .foregroundColor(.secondary)
+            .foregroundStyle(Color.oldMoney.textSecondary)
 
           Spacer()
 
           Text("\(Int(budget.percentageUsed * 100))%")
             .font(.caption)
             .fontWeight(.medium)
-            .foregroundColor(budget.isOverBudget ? .red :
-                              budget.shouldAlert ? .orange : .green)
+            .foregroundStyle(budget.isOverBudget ? Color.oldMoney.expense :
+                              budget.shouldAlert ? Color.oldMoney.warning : Color.oldMoney.income)
         }
         .accessibilityElement(children: .combine)
         .accessibilityLabel("Budget Summary")
@@ -76,13 +76,13 @@ struct BudgetCard: View {
       if budget.isOverBudget {
         HStack {
           Image(systemName: "exclamationmark.triangle.fill")
-            .foregroundColor(.red)
+            .foregroundStyle(Color.oldMoney.expense)
             .font(.caption)
             .accessibilityHidden(true)
 
           Text(String(localized: "budget.alert.over.budget"))
             .font(.caption)
-            .foregroundColor(.red)
+            .foregroundStyle(Color.oldMoney.expense)
             .fontWeight(.medium)
 
           Spacer()
@@ -93,13 +93,13 @@ struct BudgetCard: View {
       } else if budget.shouldAlert {
         HStack {
           Image(systemName: "exclamationmark.triangle.fill")
-            .foregroundColor(.orange)
+            .foregroundStyle(Color.oldMoney.warning)
             .font(.caption)
             .accessibilityHidden(true)
 
           Text(String(localized: "budget.alert.near.limit.percent", defaultValue: "Próximo ao limite (\(Int(budget.alertThreshold * 100))%)"))
             .font(.caption)
-            .foregroundColor(.orange)
+            .foregroundStyle(Color.oldMoney.warning)
             .fontWeight(.medium)
 
           Spacer()
@@ -111,7 +111,7 @@ struct BudgetCard: View {
       }
     }
     .padding()
-    .background(Color(.systemGray6))
+    .background(Color.oldMoney.surface)
     .cornerRadius(12)
     .accessibilityElement(children: .contain)
   }

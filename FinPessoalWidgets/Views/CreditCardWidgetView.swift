@@ -29,7 +29,7 @@ struct CreditCardWidgetView: View {
     VStack(alignment: .leading, spacing: 4) {
       Label("Cartões", systemImage: "creditcard")
         .font(.caption)
-        .foregroundStyle(.secondary)
+        .foregroundStyle(Color.widget.textSecondary)
 
       if data.creditCards.isEmpty {
         Spacer()
@@ -41,7 +41,7 @@ struct CreditCardWidgetView: View {
         // Utilization gauge
         ZStack {
           Circle()
-            .stroke(Color.gray.opacity(0.2), lineWidth: 8)
+            .stroke(Color.widget.divider, lineWidth: 8)
 
           Circle()
             .trim(from: 0, to: totalUtilization / 100)
@@ -54,7 +54,7 @@ struct CreditCardWidgetView: View {
               .fontWeight(.bold)
             Text("usado")
               .font(.caption2)
-              .foregroundStyle(.secondary)
+              .foregroundStyle(Color.widget.textSecondary)
           }
         }
         .frame(width: 70, height: 70)
@@ -64,7 +64,7 @@ struct CreditCardWidgetView: View {
 
         Text(formattedTotalBalance)
           .font(.caption)
-          .foregroundStyle(.secondary)
+          .foregroundStyle(Color.widget.textSecondary)
           .lineLimit(1)
       }
     }
@@ -80,7 +80,7 @@ struct CreditCardWidgetView: View {
       HStack {
         Label("Cartões de Crédito", systemImage: "creditcard")
           .font(.caption)
-          .foregroundStyle(.secondary)
+          .foregroundStyle(Color.widget.textSecondary)
 
         Spacer()
 
@@ -108,10 +108,10 @@ struct CreditCardWidgetView: View {
     VStack {
       Image(systemName: "creditcard")
         .font(.title)
-        .foregroundStyle(.secondary)
+        .foregroundStyle(Color.widget.textSecondary)
       Text("Sem cartões")
         .font(.caption2)
-        .foregroundStyle(.secondary)
+        .foregroundStyle(Color.widget.textSecondary)
     }
     .frame(maxWidth: .infinity)
   }
@@ -121,10 +121,10 @@ struct CreditCardWidgetView: View {
       Spacer()
       Image(systemName: "creditcard")
         .font(.title)
-        .foregroundStyle(.secondary)
+        .foregroundStyle(Color.widget.textSecondary)
       Text("Nenhum cartão cadastrado")
         .font(.caption)
-        .foregroundStyle(.secondary)
+        .foregroundStyle(Color.widget.textSecondary)
       Spacer()
     }
     .frame(maxWidth: .infinity)
@@ -147,7 +147,7 @@ struct CreditCardWidgetView: View {
         if let dueDate = card.formattedDueDate {
           Text("Vence \(dueDate)")
             .font(.caption2)
-            .foregroundStyle(.secondary)
+            .foregroundStyle(Color.widget.textSecondary)
         }
       }
 
@@ -162,7 +162,7 @@ struct CreditCardWidgetView: View {
         GeometryReader { geometry in
           ZStack(alignment: .leading) {
             RoundedRectangle(cornerRadius: 1)
-              .fill(Color.gray.opacity(0.2))
+              .fill(Color.widget.divider)
 
             RoundedRectangle(cornerRadius: 1)
               .fill(utilizationColor(card.utilizationPercentage))
@@ -195,28 +195,28 @@ struct CreditCardWidgetView: View {
   private func utilizationColor(_ percentage: Double) -> Color {
     switch percentage {
     case 0..<30:
-      return .green
+      return Color.widget.income
     case 30..<70:
-      return .yellow
+      return Color.widget.warning
     case 70..<90:
-      return .orange
+      return Color.widget.warning.opacity(0.8)
     default:
-      return .red
+      return Color.widget.expense
     }
   }
 
   private func brandColor(_ brand: String) -> Color {
     switch brand.lowercased() {
     case "visa":
-      return .blue
+      return Color.widget.accent
     case "mastercard":
-      return .red
+      return Color.widget.expense
     case "amex":
-      return .green
+      return Color.widget.income
     case "elo":
-      return .yellow
+      return Color.widget.warning
     default:
-      return .gray
+      return Color.widget.textSecondary
     }
   }
 

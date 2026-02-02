@@ -56,7 +56,7 @@ struct BudgetsScreen: View {
     VStack(spacing: 20) {
       Image(systemName: "chart.pie")
         .font(.system(size: 60))
-        .foregroundColor(.blue)
+        .foregroundStyle(Color.oldMoney.accent)
         .accessibilityHidden(true)
 
       Text(String(localized: "budgets.empty.title"))
@@ -65,7 +65,7 @@ struct BudgetsScreen: View {
 
       Text(String(localized: "budgets.empty.description"))
         .multilineTextAlignment(.center)
-        .foregroundColor(.secondary)
+        .foregroundStyle(Color.oldMoney.textSecondary)
         .padding(.horizontal)
 
       Button(String(localized: "budgets.create.first")) {
@@ -87,7 +87,7 @@ struct BudgetsScreen: View {
         VStack(alignment: .leading) {
           Text(String(localized: "budgets.total.budgeted"))
             .font(.caption)
-            .foregroundColor(.secondary)
+            .foregroundStyle(Color.oldMoney.textSecondary)
           Text(formatCurrency(financeViewModel.totalBudgetAmount))
             .font(.title2)
             .fontWeight(.bold)
@@ -101,11 +101,11 @@ struct BudgetsScreen: View {
         VStack(alignment: .trailing) {
           Text(String(localized: "budgets.total.spent"))
             .font(.caption)
-            .foregroundColor(.secondary)
+            .foregroundStyle(Color.oldMoney.textSecondary)
           Text(formatCurrency(financeViewModel.totalBudgetSpent))
             .font(.title2)
             .fontWeight(.bold)
-            .foregroundColor(.red)
+            .foregroundStyle(Color.oldMoney.expense)
         }
         .accessibilityElement(children: .combine)
         .accessibilityLabel("Total Spent")
@@ -113,25 +113,25 @@ struct BudgetsScreen: View {
       }
 
       ProgressView(value: financeViewModel.totalBudgetSpent, total: financeViewModel.totalBudgetAmount)
-        .tint(.blue)
+        .tint(Color.oldMoney.accent)
         .accessibilityLabel("Overall Budget Progress")
         .accessibilityValue("\(Int((financeViewModel.totalBudgetSpent / max(financeViewModel.totalBudgetAmount, 1)) * 100))% used, \(formatCurrency(financeViewModel.totalBudgetSpent)) of \(formatCurrency(financeViewModel.totalBudgetAmount))")
 
       HStack {
         Text(String(localized: "budgets.remaining", defaultValue: "Restante: \(formatCurrency(financeViewModel.totalBudgetAmount - financeViewModel.totalBudgetSpent))"))
           .font(.caption)
-          .foregroundColor(.secondary)
+          .foregroundStyle(Color.oldMoney.textSecondary)
         Spacer()
         Text(String(localized: "budgets.used.percentage", defaultValue: "\(Int((financeViewModel.totalBudgetSpent / financeViewModel.totalBudgetAmount) * 100))% usado"))
           .font(.caption)
-          .foregroundColor(.secondary)
+          .foregroundStyle(Color.oldMoney.textSecondary)
       }
       .accessibilityElement(children: .combine)
       .accessibilityLabel("Budget Summary")
       .accessibilityValue("Remaining: \(formatCurrency(financeViewModel.totalBudgetAmount - financeViewModel.totalBudgetSpent)), \(Int((financeViewModel.totalBudgetSpent / max(financeViewModel.totalBudgetAmount, 1)) * 100))% used")
     }
     .padding()
-    .background(Color(.systemGray6))
+    .background(Color.oldMoney.surface)
     .cornerRadius(12)
     .accessibilityElement(children: .contain)
   }
@@ -142,7 +142,7 @@ struct BudgetsScreen: View {
         VStack(alignment: .leading, spacing: 12) {
           HStack {
             Image(systemName: "exclamationmark.triangle.fill")
-              .foregroundColor(.orange)
+              .foregroundStyle(Color.oldMoney.warning)
               .accessibilityHidden(true)
             Text(String(localized: "budgets.alerts.title"))
               .font(.headline)

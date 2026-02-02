@@ -7,12 +7,37 @@
 
 import Foundation
 
+@MainActor
 class MockAccountRepository: AccountRepositoryProtocol {
     private let mockUserId = "mock-user-123"
     private var accounts: [Account] = []
-    
+
+    // MARK: - Test Configuration
+    /// Set mock accounts for testing
+    var mockAccounts: [Account] {
+        get { accounts }
+        set { accounts = newValue }
+    }
+
+    /// When true, operations will throw mockError
+    var shouldFail: Bool = false
+
+    /// Error to throw when shouldFail is true
+    var mockError: Error = FirebaseError.networkError
+
+    /// Delay in seconds before operations complete (0 = use default)
+    var delay: TimeInterval = 0
+
     init() {
         setupMockData()
+    }
+
+    private func performDelay() async throws {
+        if shouldFail {
+            throw mockError
+        }
+        let nanoseconds = delay > 0 ? UInt64(delay * 1_000_000_000) : 300_000_000
+        try await Task.sleep(nanoseconds: nanoseconds)
     }
     
     private func setupMockData() {
@@ -77,7 +102,7 @@ class MockAccountRepository: AccountRepositoryProtocol {
     }
     
     func getAccounts() async throws -> [Account] {
-        try await Task.sleep(nanoseconds: 300_000_000)
+        try await performDelay()
         return accounts.filter { $0.isActive }.sorted { $0.createdAt < $1.createdAt }
     }
     

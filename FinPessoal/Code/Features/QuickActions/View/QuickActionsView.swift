@@ -47,17 +47,17 @@ struct QuickActionsView: View {
           VStack(spacing: 8) {
             Image(systemName: "chart.bar.fill")
               .font(.title2)
-              .foregroundColor(.orange)
+              .foregroundStyle(Color.oldMoney.warning)
               .accessibilityHidden(true)
 
             Text(LocalizedStringKey("dashboard.view.reports"))
               .font(.caption)
               .multilineTextAlignment(.center)
-              .foregroundColor(.primary)
+              .foregroundStyle(Color.oldMoney.text)
           }
           .frame(maxWidth: .infinity)
           .padding()
-          .background(Color(.systemBackground))
+          .background(Color.oldMoney.background)
           .cornerRadius(8)
         }
         .accessibilityElement(children: .combine)
@@ -67,7 +67,7 @@ struct QuickActionsView: View {
       }
     }
     .padding()
-    .background(Color(.systemGray6))
+    .background(Color.oldMoney.surface)
     .cornerRadius(12)
     .accessibilityElement(children: .contain)
     .sheet(isPresented: $showingAddTransaction) {
