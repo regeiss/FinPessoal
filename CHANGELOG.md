@@ -8,6 +8,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added - February 2026
+- **Animation Engine Core** (2026-02-01)
+  - Added AnimationEngine struct with reusable animation presets and configurations
+  - Spring animation presets:
+    - Gentle spring (response: 0.6, damping: 0.8) for subtle interactions
+    - Bouncy spring (response: 0.5, damping: 0.6) for playful interactions
+    - Snappy spring (response: 0.3, damping: 0.9) for quick feedback
+    - Overdamped spring (response: 0.8, damping: 1.0) for smooth momentum
+  - Timing curve presets:
+    - Standard ease in-out (0.3s)
+    - Quick fade (0.2s)
+    - Slow ease (0.5s)
+  - Mode-aware animation selection:
+    - Full mode: Returns base animation unchanged
+    - Reduced mode: Simplified easeInOut (0.2s)
+    - Minimal mode: Returns nil (no animation)
+  - Stagger delay constants:
+    - Standard stagger (50ms) for list items
+    - Quick stagger (30ms) for fast reveals
+    - Slow stagger (100ms) for dramatic effect
+  - Comprehensive test coverage with AnimationEngineTests (3 test cases)
+  - Centralized animation configuration for consistent app-wide animations
+
 - **Animation Mode System** (2026-02-01)
   - Added AnimationMode enum with three complexity levels:
     - Full: All animations including particles, complex transitions, parallax
