@@ -8,6 +8,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added - February 2026
+- **Haptic Engine** (2026-02-01)
+  - Added HapticEngine singleton for centralized haptic feedback
+  - Impact haptics:
+    - Light impact for subtle feedback
+    - Medium impact for standard interactions
+    - Heavy impact for significant events
+    - Selection feedback for picker changes
+  - Notification haptics:
+    - Success feedback for completed actions
+    - Warning feedback for alerts
+    - Error feedback for failures
+  - Custom haptic patterns using CoreHaptics:
+    - Gentle success (tap-tap-tap) for subtle confirmations
+    - Crescendo (light → medium → heavy) for celebrations
+    - Warning pattern (tap-pause-tap) for alerts
+  - CoreHaptics integration for complex custom patterns
+  - Graceful fallback when haptics unavailable (simulator, unsupported devices)
+  - Device capability detection (CHHapticEngine.capabilitiesForHardware)
+  - Automatic fallback to notification haptics for custom patterns
+  - Comprehensive test coverage with HapticEngineTests (3 test cases)
+  - Ready for integration with animation system and UI interactions
+
 - **Animation Engine Core** (2026-02-01)
   - Added AnimationEngine struct with reusable animation presets and configurations
   - Spring animation presets:
