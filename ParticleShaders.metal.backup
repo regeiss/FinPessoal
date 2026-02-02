@@ -1,0 +1,28 @@
+#include <metal_stdlib>
+using namespace metal;
+
+struct Particle {
+  float2 position;
+  float2 velocity;
+  float life;
+  float size;
+  float4 color;
+};
+
+// Simple particle rendering shader
+vertex float4 particle_vertex(
+  const device Particle* particles [[buffer(0)]],
+  uint vid [[vertex_id]]
+) {
+  Particle p = particles[vid];
+  return float4(p.position.x, p.position.y, 0.0, 1.0);
+}
+
+fragment float4 particle_fragment(
+  float4 position [[stage_in]],
+  const device Particle* particles [[buffer(0)]],
+  uint fid [[fragment_id]]
+) {
+  Particle p = particles[fid];
+  return p.color * p.life;
+}

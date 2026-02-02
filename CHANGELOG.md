@@ -8,6 +8,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added - February 2026
+- **ParticleEmitter Foundation** (2026-02-02)
+  - Added ParticleEmitter SwiftUI component for visual effects
+  - Metal shader foundation (ParticleShaders.metal) for future GPU rendering
+  - Preset configurations:
+    - Gold shimmer (20 particles) for subtle elegance
+    - Celebration (50 particles) for achievements
+    - Warning (15 particles) for alerts
+  - Canvas-based particle rendering with TimelineView
+  - Particle physics system:
+    - Position and velocity tracking
+    - Life cycle management (opacity fade)
+    - Randomized particle generation (size: 2-6pt)
+  - Mode-aware rendering:
+    - Full mode: Particles visible with smooth animation
+    - Reduced/Minimal modes: Particles hidden (performance optimization)
+  - Old Money color palette integration:
+    - Gold: RGB(184, 150, 92)
+    - Light gold: RGB(212, 186, 138)
+    - Amber: RGB(232, 177, 92)
+  - Comprehensive test coverage with ParticleEmitterTests (2 test cases)
+  - Ready for integration with celebration moments and visual feedback
+
 - **BalanceCardView with Animations** (2026-02-02)
   - Updated existing BalanceCardView to use animated components
   - Replaced static text with PhysicsNumberCounter for smooth value transitions

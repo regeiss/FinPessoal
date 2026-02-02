@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1940B8AEC1AB4FEFB0502BB1 /* ParticleEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8F587CBBE40A7AE326E59 /* ParticleEmitter.swift */; };
+		A950EEE6F51C48D69EDBD756 /* ParticleEmitterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364968FAFDEE41039BB7E012 /* ParticleEmitterTests.swift */; };
 		4A4000E39BCC402087E114EA /* AnimatedCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC79BDF991D94790B2B4E706 /* AnimatedCard.swift */; };
 		2A12A45929A24A8285DD972B /* AnimatedCardModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7847D0E2FCF64E41A58899BE /* AnimatedCardModifier.swift */; };
 		35D8BCD3923844CB95B77A9A /* AnimatedCardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997EB40838CB4BB2907E1175 /* AnimatedCardTests.swift */; };
@@ -120,6 +122,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4BA8F587CBBE40A7AE326E59 /* ParticleEmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ParticleEmitter.swift; path = FinPessoal/Code/Animation/Components/ParticleEmitter.swift; sourceTree = SOURCE_ROOT; };
+		364968FAFDEE41039BB7E012 /* ParticleEmitterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ParticleEmitterTests.swift; path = FinPessoalTests/Animation/ParticleEmitterTests.swift; sourceTree = SOURCE_ROOT; };
 		DC79BDF991D94790B2B4E706 /* AnimatedCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AnimatedCard.swift; path = FinPessoal/Code/Animation/Components/AnimatedCard.swift; sourceTree = SOURCE_ROOT; };
 		7847D0E2FCF64E41A58899BE /* AnimatedCardModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AnimatedCardModifier.swift; path = FinPessoal/Code/Animation/Components/AnimatedCardModifier.swift; sourceTree = SOURCE_ROOT; };
 		997EB40838CB4BB2907E1175 /* AnimatedCardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedCardTests.swift; sourceTree = "<group>"; };
@@ -624,14 +628,16 @@
 				E15E49A92EF22B9E004A2129 /* GoalSummary.swift in Sources */,
 				E15E49AA2EF22B9E004A2129 /* BillSummary.swift in Sources */,
 				E15E4A0A2EF4DB3B004A2129 /* WidgetColors.swift in Sources */,
-				20E245BE5EAE484491F49B91 /* PhysicsNumberCounter.swift in Sources */,);
+				20E245BE5EAE484491F49B91 /* PhysicsNumberCounter.swift in Sources */,
+				1940B8AEC1AB4FEFB0502BB1 /* ParticleEmitter.swift in Sources */,);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		E1C2B6A72E66550900972780 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5D5258EEEB314574BEF819C1 /* PhysicsNumberCounterTests.swift in Sources */,);
+				5D5258EEEB314574BEF819C1 /* PhysicsNumberCounterTests.swift in Sources */,
+				A950EEE6F51C48D69EDBD756 /* ParticleEmitterTests.swift in Sources */,);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		E1C2B6B42E66553100972780 /* Sources */ = {
