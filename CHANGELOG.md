@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added - February 2026
+- **Animation Mode System** (2026-02-01)
+  - Added AnimationMode enum with three complexity levels:
+    - Full: All animations including particles, complex transitions, parallax
+    - Reduced: Simplified animations without decorative effects
+    - Minimal: Instant transitions, fade-only effects
+  - Added AnimationSettings singleton for global animation configuration:
+    - Respects system Reduce Motion accessibility setting
+    - User override option for accessibility preferences
+    - Helper properties for particles, hero transitions, and parallax effects
+  - Comprehensive test coverage with AnimationModeTests
+  - Foundation for dashboard animation system
+
 ### Changed - December 2025
 - **Migrated All Repositories to Firebase Realtime Database** (2025-12-24)
   - Removed Firestore dependency completely
