@@ -11,29 +11,78 @@ import Firebase
 
 struct DashboardScreen: View {
   @StateObject private var viewModel = DashboardViewModel()
+  @StateObject private var refreshCoordinator = RefreshCoordinator()
+  @StateObject private var transitionCoordinator = LoadingTransitionCoordinator()
   @State private var showingSettings = false
-  
+
   var body: some View {
-    ScrollView {
+    PullToRefreshView(
+      isRefreshing: $refreshCoordinator.isRefreshing,
+      onRefresh: handleRefresh
+    ) {
       LazyVStack(spacing: 20) {
-        // Balance Card
-        BalanceCardView(
-          totalBalance: viewModel.totalBalance,
-          monthlyExpenses: viewModel.monthlyExpenses
-        )
-        .redacted(reason: viewModel.isLoading ? .placeholder : [])
+        // Balance Card with skeleton
+        StaggeredRevealCard(
+          coordinator: transitionCoordinator,
+          staggerIndex: 0
+        ) {
+          BalanceCardView(
+            totalBalance: viewModel.totalBalance,
+            monthlyExpenses: viewModel.monthlyExpenses
+          )
+        } skeleton: {
+          BalanceCardSkeleton()
+        }
+
+        // Spending Trends Chart
+        if let chartData = viewModel.spendingTrendsData {
+          StaggeredRevealCard(
+            coordinator: transitionCoordinator,
+            staggerIndex: 1
+          ) {
+            AnimatedCard {
+              VStack(alignment: .leading, spacing: 16) {
+                HStack {
+                  Text("Spending Trends")
+                    .font(.headline)
+                  Spacer()
+                  chartRangePicker
+                }
+
+                SpendingTrendsChart(data: chartData)
+              }
+              .padding()
+            }
+          } skeleton: {
+            SpendingTrendsChartSkeleton()
+          }
+        }
 
         // Budget Alerts (only show if there are alerts)
         if !viewModel.budgetAlerts.isEmpty {
-          BudgetAlertsView(budgets: viewModel.budgetAlerts)
+          StaggeredRevealCard(
+            coordinator: transitionCoordinator,
+            staggerIndex: 2
+          ) {
+            BudgetAlertsView(budgets: viewModel.budgetAlerts)
+          } skeleton: {
+            BalanceCardSkeleton()
+          }
         }
 
-        // Recent Transactions
-        RecentTransactionScreen(transactions: viewModel.recentTransactions)
-          .redacted(reason: viewModel.isLoading ? .placeholder : [])
+        // Recent Transactions with skeleton
+        StaggeredRevealCard(
+          coordinator: transitionCoordinator,
+          staggerIndex: 3
+        ) {
+          RecentTransactionScreen(transactions: viewModel.recentTransactions)
+        } skeleton: {
+          RecentTransactionsSkeleton(rowCount: 5)
+        }
 
         // Quick Actions
         QuickActionsView()
+          .padding(.bottom, 20)
       }
       .padding()
     }
@@ -52,21 +101,8 @@ struct DashboardScreen: View {
         }
       }
     }
-    .refreshable {
-      await MainActor.run {
-        viewModel.loadDashboardData()
-      }
-    }
     .accessibilityAction(named: "Refresh Dashboard") {
       viewModel.loadDashboardData()
-    }
-    .overlay {
-      if viewModel.isLoading && viewModel.recentTransactions.isEmpty {
-        ProgressView(String(localized: "dashboard.loading", defaultValue: "Carregando..."))
-          .frame(maxWidth: .infinity, maxHeight: .infinity)
-          .background(Color.oldMoney.background)
-          .accessibilityLabel("Loading dashboard data, please wait")
-      }
     }
     .alert("Erro", isPresented: .constant(viewModel.error != nil)) {
       Button("OK") {
@@ -86,12 +122,47 @@ struct DashboardScreen: View {
     }
     .onAppear {
       print("DashboardScreen: onAppear called")
-      viewModel.loadDashboardData()
+
+      if viewModel.recentTransactions.isEmpty {
+        // First load - show skeleton
+        transitionCoordinator.reset()
+        viewModel.loadDashboardData()
+
+        // Trigger transition after data loads
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+          transitionCoordinator.transitionToContent(staggerIndex: 0)
+        }
+      } else {
+        // Subsequent loads - skip skeleton
+        transitionCoordinator.transitionToContent(staggerIndex: 0)
+      }
 
       // Only log analytics if not using mock data
       if !AppConfiguration.shared.useMockData {
         Analytics.logEvent("dashboard_viewed", parameters: nil)
       }
+    }
+  }
+
+  // MARK: - Helper Views
+
+  private var chartRangePicker: some View {
+    Picker("Range", selection: $viewModel.chartDateRange) {
+      Text("7 Days").tag(ChartDateRange.sevenDays)
+      Text("30 Days").tag(ChartDateRange.thirtyDays)
+    }
+    .pickerStyle(.segmented)
+    .frame(width: 150)
+    .onChange(of: viewModel.chartDateRange) { _, newValue in
+      viewModel.updateChartRange(newValue)
+    }
+  }
+
+  // MARK: - Actions
+
+  private func handleRefresh() async {
+    await refreshCoordinator.executeRefresh {
+      try await viewModel.loadDashboardData()
     }
   }
 }
