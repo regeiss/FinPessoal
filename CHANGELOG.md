@@ -8,6 +8,85 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added - February 2026
+
+- **Phase 1 Week 2: Dashboard Completion** (2026-02-02)
+  - **Chart Animation System**
+    - AnimatedChart protocol for extensible chart types
+    - ChartDataPoint and SpendingTrendsData models
+    - SpendingTrendsChart component with line drawing animation
+    - Shape.trim() animation for smooth line reveal (0.0 → 1.0)
+    - Gradient fill beneath line with animated reveal
+    - Interactive data points with tap and drag gestures
+    - Callout view with PhysicsNumberCounter for values
+    - ChartAnimationCoordinator for timing and sequencing
+    - 7-day and 30-day date range support
+    - Background thread data aggregation
+    - Comprehensive test coverage (20+ test cases)
+
+  - **Loading States & Skeleton Views**
+    - SkeletonView component with shimmer animation
+    - Mode-aware rendering (Full=shimmer, Reduced=pulse, Minimal=static)
+    - Color scheme adaptation (light/dark mode)
+    - StaggeredSkeletonGroup for staggered reveals
+    - SkeletonModifier for easy application
+    - SkeletonLoadingContainer for transition management
+    - Dashboard skeleton states:
+      - BalanceCardSkeleton
+      - SpendingTrendsChartSkeleton with grid pattern
+      - RecentTransactionsSkeleton with configurable rows
+      - QuickStatsSkeleton
+      - DashboardSkeleton (complete dashboard)
+    - LoadingTransitionCoordinator for skeleton → content transitions
+    - Fade out skeleton (200ms)
+    - Staggered content reveal (100ms delay per card)
+    - Slide-in animation from below (20pt offset)
+    - NumberCountUpTransition for animated value display
+    - Comprehensive test coverage (24 test cases)
+
+  - **Pull-to-Refresh System**
+    - PullToRefreshView with custom ScrollView tracking
+    - RefreshCoordinator state machine
+    - PullToRefreshState enum (idle, pulling, ready, loading, complete)
+    - ScrollOffsetPreferenceKey for offset monitoring
+    - Elastic resistance feel (50% resistance factor)
+    - Haptic feedback:
+      - Light haptic at halfway threshold (30pt)
+      - Medium haptic at ready threshold (60pt)
+      - Success notification on complete
+      - Error notification on failure
+    - RefreshIndicator with state-based animations:
+      - Pulling: Rotating arrow (0° → 180°), scaling (0.5x → 1.0x)
+      - Ready: Pulsing icon (1.0x → 1.1x), accent color
+      - Loading: Spinning icon (continuous 360°)
+      - Complete: Checkmark with pop animation, particle burst
+    - Progress text updates ("Pull to refresh" → "Release to refresh")
+    - Async/await refresh action support
+    - Minimum refresh duration (500ms) for UX
+    - Refresh metrics tracking (success rate, duration)
+    - Comprehensive test coverage (38 test cases)
+
+  - **Dashboard Integration**
+    - Updated DashboardViewModel with chart data methods
+    - Chart data aggregation by day
+    - Support for 7-day and 30-day ranges
+    - Min/max value calculation with padding
+    - Previous points tracking for smooth transitions
+    - ChartDateRange enum with picker
+    - Updated DashboardScreen with all new components
+    - Pull-to-refresh integration
+    - Staggered card reveals on load
+    - Skeleton states for all dashboard cards
+    - Chart range picker (7/30 days)
+
+  - **Animation Infrastructure**
+    - All components respect AnimationSettings.effectiveMode
+    - Mode-aware rendering (Full/Reduced/Minimal)
+    - 120 FPS performance with TimelineView
+    - Metal acceleration with .drawingGroup()
+    - Accessibility support throughout
+    - Comprehensive test coverage (82+ total test cases)
+
+### Added - February 2026
 - **ParticleEmitter Foundation** (2026-02-02)
   - Added ParticleEmitter SwiftUI component for visual effects
   - Metal shader foundation (ParticleShaders.metal) for future GPU rendering
