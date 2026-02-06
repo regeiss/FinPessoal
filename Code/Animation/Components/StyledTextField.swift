@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UIKit
 
 /// Styled text field with inner shadow, focus animation, and error states
 struct StyledTextField: View {
@@ -153,9 +154,9 @@ struct StyledTextField: View {
   private var focusAnimation: Animation? {
     switch animationMode {
     case .full:
-      return AnimationEngine.Spring.snappy
+      return AnimationEngine.snappySpring
     case .reduced:
-      return AnimationEngine.Timing.quickFade
+      return AnimationEngine.quickFade
     case .minimal:
       return nil
     }

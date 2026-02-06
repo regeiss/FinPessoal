@@ -7,12 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed - February 2026
+
+- **StyledTextField Compilation Fixes** (2026-02-06)
+  - Added UIKit import to resolve UIKeyboardType scope error
+  - Fixed AnimationEngine property references:
+    - Changed AnimationEngine.Spring.snappy to AnimationEngine.snappySpring
+    - Changed AnimationEngine.Timing.quickFade to AnimationEngine.quickFade
+  - All compilation errors resolved, build successful
+
 ### Changed - February 2026
 
 - **Phase 2: Styled Input Components** (2026-02-06)
   - Added StyledTextField component with inner shadows and focus animations
     - Inner shadow effect for recessed appearance
-    - Focus state animation (300ms spring with AnimationEngine.Spring.snappy)
+    - Focus state animation (snappy spring from AnimationEngine)
     - Error state with red border and message
     - Layered background adapts to light/dark mode
     - Integration with AnimationSettings.effectiveMode
