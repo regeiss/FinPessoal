@@ -7,23 +7,6 @@
 
 import SwiftUI
 
-/// Depth levels for visual hierarchy
-public enum DepthLevel {
-  case subtle     // Minimal depth (2dp)
-  case moderate   // Medium depth (8dp)
-  case elevated   // Standard depth (12dp)
-  case floating   // Maximum depth (16dp)
-
-  var shadowRadius: CGFloat {
-    switch self {
-    case .subtle:    return 4
-    case .moderate:  return 8
-    case .elevated:  return 12
-    case .floating:  return 16
-    }
-  }
-}
-
 /// Visual style variants for AnimatedCard
 public enum CardStyle {
   case standard   // Layered background + elevated depth (default)
@@ -140,7 +123,7 @@ public struct AnimatedCard<Content: View>: View {
     if style.usesLayeredBackground {
       RoundedRectangle(cornerRadius: cornerRadius)
         .fill(Color.clear)
-        .layeredBackground(cornerRadius: cornerRadius, animated: true)
+        .layeredBackground(cornerRadius: cornerRadius)
     } else if style.usesFrostedGlass {
       RoundedRectangle(cornerRadius: cornerRadius)
         .fill(Color.clear)
