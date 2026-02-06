@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		63839ADEEEF04A51A1C5F6F3 /* DepthModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9EB4E81BAE432A90D568C8 /* DepthModifier.swift */; };
 		1940B8AEC1AB4FEFB0502BB1 /* ParticleEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8F587CBBE40A7AE326E59 /* ParticleEmitter.swift */; };
 		A950EEE6F51C48D69EDBD756 /* ParticleEmitterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364968FAFDEE41039BB7E012 /* ParticleEmitterTests.swift */; };
 		4A4000E39BCC402087E114EA /* AnimatedCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC79BDF991D94790B2B4E706 /* AnimatedCard.swift */; };
@@ -125,6 +126,7 @@
 		4BA8F587CBBE40A7AE326E59 /* ParticleEmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ParticleEmitter.swift; path = FinPessoal/Code/Animation/Components/ParticleEmitter.swift; sourceTree = SOURCE_ROOT; };
 		364968FAFDEE41039BB7E012 /* ParticleEmitterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ParticleEmitterTests.swift; path = FinPessoalTests/Animation/ParticleEmitterTests.swift; sourceTree = SOURCE_ROOT; };
 		DC79BDF991D94790B2B4E706 /* AnimatedCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AnimatedCard.swift; path = FinPessoal/Code/Animation/Components/AnimatedCard.swift; sourceTree = SOURCE_ROOT; };
+		7D9EB4E81BAE432A90D568C8 /* DepthModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DepthModifier.swift; path = FinPessoal/Code/Animation/Components/DepthModifier.swift; sourceTree = SOURCE_ROOT; };
 		7847D0E2FCF64E41A58899BE /* AnimatedCardModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AnimatedCardModifier.swift; path = FinPessoal/Code/Animation/Components/AnimatedCardModifier.swift; sourceTree = SOURCE_ROOT; };
 		997EB40838CB4BB2907E1175 /* AnimatedCardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedCardTests.swift; sourceTree = "<group>"; };
 		E114476C2EAE8AFC00060A67 /* Help.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Help.md; sourceTree = "<group>"; };

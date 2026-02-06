@@ -9,10 +9,19 @@ import SwiftUI
 
 /// Depth levels for visual hierarchy
 public enum DepthLevel {
-  case subtle
-  case moderate
-  case elevated
-  case floating
+  case subtle     // Minimal depth (2dp)
+  case moderate   // Medium depth (8dp)
+  case elevated   // Standard depth (12dp)
+  case floating   // Maximum depth (16dp)
+
+  var shadowRadius: CGFloat {
+    switch self {
+    case .subtle:    return 4
+    case .moderate:  return 8
+    case .elevated:  return 12
+    case .floating:  return 16
+    }
+  }
 }
 
 /// Visual style variants for AnimatedCard
@@ -88,6 +97,8 @@ public struct AnimatedCard<Content: View>: View {
 
   public var body: some View {
     content
+      .background(backgroundView)
+      .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
       .scaleEffect(isPressed ? 0.98 : 1.0)
       .shadow(
         color: shadowColor,
@@ -95,6 +106,12 @@ public struct AnimatedCard<Content: View>: View {
         x: 0,
         y: isPressed ? 2 : 4
       )
+      .opacity(opacity)
+      .onAppear {
+        withAnimation(.easeInOut(duration: 0.2)) {
+          opacity = 1.0
+        }
+      }
       .gesture(
         DragGesture(minimumDistance: 0)
           .onChanged { _ in
@@ -118,12 +135,36 @@ public struct AnimatedCard<Content: View>: View {
 
   @Namespace private var namespace
 
+  @ViewBuilder
+  private var backgroundView: some View {
+    if style.usesLayeredBackground {
+      RoundedRectangle(cornerRadius: cornerRadius)
+        .fill(Color.clear)
+        .layeredBackground(cornerRadius: cornerRadius, animated: true)
+    } else if style.usesFrostedGlass {
+      RoundedRectangle(cornerRadius: cornerRadius)
+        .fill(Color.clear)
+        .frostedGlass(intensity: 1.0)
+    } else if style.usesInnerShadow {
+      RoundedRectangle(cornerRadius: cornerRadius)
+        .fill(surfaceColor)
+        .innerShadow(cornerRadius: cornerRadius, intensity: 1.0)
+    } else {
+      Color.clear
+    }
+  }
+
+  private var surfaceColor: Color {
+    Color(light: OldMoneyColors.Light.cream, dark: OldMoneyColors.Dark.slate)
+  }
+
   private var shadowColor: Color {
     Color.black.opacity(colorScheme == .dark ? 0.4 : 0.15)
   }
 
   private var shadowRadius: CGFloat {
-    isPressed ? 8 : 12
+    let baseRadius = style.depthLevel.shadowRadius
+    return isPressed ? baseRadius * 0.67 : baseRadius
   }
 }
 

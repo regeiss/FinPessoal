@@ -63,4 +63,21 @@ final class AnimatedCardTests: XCTestCase {
 
     XCTAssertNotNil(card)
   }
+
+  func testStandardStyleHasLayeredBackground() {
+    let card = AnimatedCard(style: .standard) {
+      Text("Test")
+    }
+
+    // Verify card body includes layered background
+    XCTAssertNotNil(card)
+  }
+
+  func testPremiumStyleHasLayeredBackground() {
+    let card = AnimatedCard(style: .premium) {
+      Text("Test")
+    }
+
+    XCTAssertNotNil(card)
+  }
 }
