@@ -14,31 +14,30 @@ struct StatCard: View {
   let color: Color
   
   var body: some View {
-    VStack(alignment: .leading, spacing: 12) {
-      HStack {
-        Image(systemName: icon)
-          .font(.title2)
-          .foregroundColor(color)
-          .accessibilityHidden(true)
+    AnimatedCard(style: .standard) {
+      VStack(alignment: .leading, spacing: 12) {
+        HStack {
+          Image(systemName: icon)
+            .font(.title2)
+            .foregroundColor(color)
+            .accessibilityHidden(true)
 
-        Spacer()
+          Spacer()
+        }
+
+        VStack(alignment: .leading, spacing: 4) {
+          Text(title)
+            .font(.caption)
+            .foregroundStyle(Color.oldMoney.textSecondary)
+
+          Text(value)
+            .font(.title3)
+            .fontWeight(.semibold)
+            .foregroundStyle(Color.oldMoney.text)
+        }
       }
-
-      VStack(alignment: .leading, spacing: 4) {
-        Text(title)
-          .font(.caption)
-          .foregroundStyle(Color.oldMoney.textSecondary)
-
-        Text(value)
-          .font(.title3)
-          .fontWeight(.semibold)
-          .foregroundStyle(Color.oldMoney.text)
-      }
+      .padding()
     }
-    .padding()
-    .background(Color.oldMoney.surface)
-    .clipShape(RoundedRectangle(cornerRadius: OldMoneyTheme.Radius.medium))
-    .oldMoneyCardShadow()
     .accessibilityElement(children: .combine)
     .accessibilityLabel("\(title): \(value)")
     .accessibilityAddTraits(.isStaticText)

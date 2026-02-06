@@ -31,46 +31,45 @@ struct BalanceCardView: View {
   }
 
   var body: some View {
-    VStack(alignment: .leading, spacing: 16) {
-      HStack {
-        Text("dashboard.total.balance")
-          .font(.headline)
-          .foregroundStyle(Color.oldMoney.textSecondary)
-        Spacer()
-        Image(systemName: "eye")
-          .foregroundStyle(Color.oldMoney.textSecondary)
-          .accessibilityHidden(true)
-      }
-
-      PhysicsNumberCounter(
-        value: $totalBalance,
-        format: .currency(code: "BRL"),
-        font: OldMoneyTheme.Typography.moneyLarge
-      )
-      .foregroundStyle(Color.oldMoney.text)
-
-      HStack {
-        VStack(alignment: .leading) {
-          Text("dashboard.monthly.expenses")
-            .font(.caption)
+    AnimatedCard(style: .standard, onTap: onTap) {
+      VStack(alignment: .leading, spacing: 16) {
+        HStack {
+          Text("dashboard.total.balance")
+            .font(.headline)
             .foregroundStyle(Color.oldMoney.textSecondary)
-
-          PhysicsNumberCounter(
-            value: $monthlyExpenses,
-            format: .currency(code: "BRL"),
-            font: OldMoneyTheme.Typography.moneyMedium
-          )
-          .foregroundStyle(Color.oldMoney.expense)
+          Spacer()
+          Image(systemName: "eye")
+            .foregroundStyle(Color.oldMoney.textSecondary)
+            .accessibilityHidden(true)
         }
-        Spacer()
+
+        PhysicsNumberCounter(
+          value: $totalBalance,
+          format: .currency(code: "BRL"),
+          font: OldMoneyTheme.Typography.moneyLarge
+        )
+        .foregroundStyle(Color.oldMoney.text)
+
+        HStack {
+          VStack(alignment: .leading) {
+            Text("dashboard.monthly.expenses")
+              .font(.caption)
+              .foregroundStyle(Color.oldMoney.textSecondary)
+
+            PhysicsNumberCounter(
+              value: $monthlyExpenses,
+              format: .currency(code: "BRL"),
+              font: OldMoneyTheme.Typography.moneyMedium
+            )
+            .foregroundStyle(Color.oldMoney.expense)
+          }
+          Spacer()
+        }
       }
+      .padding()
+      .accessibilityElement(children: .combine)
+      .accessibilityLabel("Balance Overview")
+      .accessibilityValue("Total balance: \(totalBalance.formatted(.currency(code: "BRL"))), Monthly expenses: \(monthlyExpenses.formatted(.currency(code: "BRL")))")
     }
-    .padding()
-    .background(Color.oldMoney.surface)
-    .clipShape(RoundedRectangle(cornerRadius: OldMoneyTheme.Radius.medium))
-    .animatedCard(onTap: onTap)
-    .accessibilityElement(children: .combine)
-    .accessibilityLabel("Balance Overview")
-    .accessibilityValue("Total balance: \(totalBalance.formatted(.currency(code: "BRL"))), Monthly expenses: \(monthlyExpenses.formatted(.currency(code: "BRL")))")
   }
 }

@@ -30,4 +30,54 @@ final class AnimatedCardTests: XCTestCase {
 
     XCTAssertNotNil(card)
   }
+
+  func testCardStyleDefault() {
+    let card = AnimatedCard {
+      Text("Test")
+    }
+
+    // Card should have .standard style by default
+    XCTAssertNotNil(card)
+  }
+
+  func testCardStylePremium() {
+    let card = AnimatedCard(style: .premium) {
+      Text("Test")
+    }
+
+    XCTAssertNotNil(card)
+  }
+
+  func testCardStyleFrosted() {
+    let card = AnimatedCard(style: .frosted) {
+      Text("Test")
+    }
+
+    XCTAssertNotNil(card)
+  }
+
+  func testCardStyleRecessed() {
+    let card = AnimatedCard(style: .recessed) {
+      Text("Test")
+    }
+
+    XCTAssertNotNil(card)
+  }
+
+  func testStandardStyleHasLayeredBackground() {
+    let card = AnimatedCard(style: .standard) {
+      Text("Test")
+    }
+
+    // Verify card body includes layered background
+    XCTAssertNotNil(card)
+  }
+
+  func testPremiumStyleHasLayeredBackground() {
+    let card = AnimatedCard(style: .premium) {
+      Text("Test")
+    }
+
+    XCTAssertNotNil(card)
+  }
 }

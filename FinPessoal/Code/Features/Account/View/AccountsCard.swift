@@ -11,34 +11,34 @@ struct AccountCard: View {
   let account: Account
 
   var body: some View {
-    HStack {
-      Image(systemName: account.type.icon)
-        .font(.title2)
-        .foregroundColor(account.type.color)
-        .frame(width: 40, height: 40)
-        .background(account.type.color.opacity(0.1))
-        .cornerRadius(8)
-        .accessibilityHidden(true)
+    AnimatedCard(style: .standard) {
+      HStack {
+        Image(systemName: account.type.icon)
+          .font(.title2)
+          .foregroundColor(account.type.color)
+          .frame(width: 40, height: 40)
+          .background(account.type.color.opacity(0.1))
+          .cornerRadius(8)
+          .accessibilityHidden(true)
 
-      VStack(alignment: .leading, spacing: 4) {
-        Text(account.name)
+        VStack(alignment: .leading, spacing: 4) {
+          Text(account.name)
+            .font(.headline)
+
+          Text(account.type.rawValue)
+            .font(.caption)
+            .foregroundStyle(Color.oldMoney.textSecondary)
+        }
+
+        Spacer()
+
+        Text(account.formattedBalance)
           .font(.headline)
-
-        Text(account.type.rawValue)
-          .font(.caption)
-          .foregroundStyle(Color.oldMoney.textSecondary)
+          .fontWeight(.semibold)
+          .foregroundStyle(account.balance >= 0 ? Color.oldMoney.income : Color.oldMoney.expense)
       }
-
-      Spacer()
-
-      Text(account.formattedBalance)
-        .font(.headline)
-        .fontWeight(.semibold)
-        .foregroundStyle(account.balance >= 0 ? Color.oldMoney.income : Color.oldMoney.expense)
+      .padding()
     }
-    .padding()
-    .background(Color.oldMoney.surface)
-    .cornerRadius(12)
     .accessibilityElement(children: .combine)
     .accessibilityLabel("\(account.name), \(account.type.rawValue)")
     .accessibilityValue("Balance: \(account.formattedBalance)")
