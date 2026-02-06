@@ -11,70 +11,69 @@ struct ReportSummaryCard: View {
   let summary: ReportSummary
   
   var body: some View {
-    VStack(spacing: 16) {
-      // Header
-      HStack {
-        Text(String(localized: "reports.overview"))
-          .font(.headline)
-          .foregroundStyle(Color.oldMoney.text)
-        Spacer()
-      }
-      
-      // Main metrics
-      LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 2), spacing: 16) {
-        MetricView(
-          title: String(localized: "reports.total.income"),
-          value: summary.totalIncome,
-          color: Color.oldMoney.income,
-          icon: "arrow.up.circle.fill"
-        )
-
-        MetricView(
-          title: String(localized: "reports.total.expenses"),
-          value: summary.totalExpenses,
-          color: Color.oldMoney.expense,
-          icon: "arrow.down.circle.fill"
-        )
-
-        MetricView(
-          title: String(localized: "reports.net.income"),
-          value: summary.netIncome,
-          color: summary.netIncome >= 0 ? Color.oldMoney.income : Color.oldMoney.expense,
-          icon: summary.netIncome >= 0 ? "plus.circle.fill" : "minus.circle.fill"
-        )
-        
-        SavingsRateView(rate: summary.savingsRate)
-      }
-      
-      Divider()
-      
-      // Additional metrics
-      HStack {
-        VStack(alignment: .leading, spacing: 4) {
-          Text(String(localized: "reports.transaction.count"))
-            .font(.caption)
-            .foregroundStyle(Color.oldMoney.textSecondary)
-          Text("\(summary.transactionCount)")
-            .font(.subheadline)
-            .fontWeight(.medium)
+    AnimatedCard(style: .standard) {
+      VStack(spacing: 16) {
+        // Header
+        HStack {
+          Text(String(localized: "reports.overview"))
+            .font(.headline)
+            .foregroundStyle(Color.oldMoney.text)
+          Spacer()
         }
-        
-        Spacer()
-        
-        VStack(alignment: .trailing, spacing: 4) {
-          Text(String(localized: "reports.average.daily.spending"))
-            .font(.caption)
-            .foregroundStyle(Color.oldMoney.textSecondary)
-          Text(NumberFormatter.currency.string(from: NSNumber(value: summary.averageDailySpending)) ?? "R$ 0")
-            .font(.subheadline)
-            .fontWeight(.medium)
+
+        // Main metrics
+        LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 2), spacing: 16) {
+          MetricView(
+            title: String(localized: "reports.total.income"),
+            value: summary.totalIncome,
+            color: Color.oldMoney.income,
+            icon: "arrow.up.circle.fill"
+          )
+
+          MetricView(
+            title: String(localized: "reports.total.expenses"),
+            value: summary.totalExpenses,
+            color: Color.oldMoney.expense,
+            icon: "arrow.down.circle.fill"
+          )
+
+          MetricView(
+            title: String(localized: "reports.net.income"),
+            value: summary.netIncome,
+            color: summary.netIncome >= 0 ? Color.oldMoney.income : Color.oldMoney.expense,
+            icon: summary.netIncome >= 0 ? "plus.circle.fill" : "minus.circle.fill"
+          )
+
+          SavingsRateView(rate: summary.savingsRate)
+        }
+
+        Divider()
+
+        // Additional metrics
+        HStack {
+          VStack(alignment: .leading, spacing: 4) {
+            Text(String(localized: "reports.transaction.count"))
+              .font(.caption)
+              .foregroundStyle(Color.oldMoney.textSecondary)
+            Text("\(summary.transactionCount)")
+              .font(.subheadline)
+              .fontWeight(.medium)
+          }
+
+          Spacer()
+
+          VStack(alignment: .trailing, spacing: 4) {
+            Text(String(localized: "reports.average.daily.spending"))
+              .font(.caption)
+              .foregroundStyle(Color.oldMoney.textSecondary)
+            Text(NumberFormatter.currency.string(from: NSNumber(value: summary.averageDailySpending)) ?? "R$ 0")
+              .font(.subheadline)
+              .fontWeight(.medium)
+          }
         }
       }
+      .padding()
     }
-    .padding()
-    .background(Color.oldMoney.background)
-    .clipShape(RoundedRectangle(cornerRadius: 12))
-    .shadow(color: .gray.opacity(0.2), radius: 4, x: 0, y: 2)
   }
 }
 
