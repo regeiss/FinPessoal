@@ -7,33 +7,72 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed - February 2026
+
+- **Phase 2: Styled Input Components** (2026-02-06)
+  - Added StyledTextField component with inner shadows and focus animations
+    - Inner shadow effect for recessed appearance
+    - Focus state animation (300ms spring with AnimationEngine.Spring.snappy)
+    - Error state with red border and message
+    - Layered background adapts to light/dark mode
+    - Integration with AnimationSettings.effectiveMode
+    - Full accessibility with VoiceOver labels, hints, and value announcements
+    - Keyboard type and autocapitalization support
+    - Haptic feedback on focus (light)
+    - Border color animations (accent on focus, error on validation fail)
+    - Inner shadow intensity varies by state (normal: 0.06, focus: 0.04, error: 0.08)
+    - Preview providers for light and dark modes
+
+- **Consolidated Depth System** (2026-02-05)
+  - Merged duplicate DepthModifier.swift and DepthModifiers.swift files
+  - Unified DepthLevel enum with all depth levels (flat, subtle, raised, moderate, elevated, floating, modal)
+  - Combined all depth modifiers into single file:
+    - Basic depth modifiers (DepthModifier, LayeredDepthModifier, DepthCardModifier)
+    - Interactive modifiers (InteractiveDepthModifier, PressedDepthModifier)
+    - Surface effects (FrostedGlassModifier, InnerShadowModifier, LayeredBackgroundModifier)
+    - Premium components (PremiumCard, FloatingActionButton)
+  - Eliminated duplicate enum definitions and overlapping functionality
+  - Maintained all features from both files in unified system
+  - Added accessibility labels to FloatingActionButton
+  - Fixed HapticEngine method calls (changed .impact(style:) to .light())
+  - Fixed Color.oldMoney usage in static contexts with environment-aware wrappers
+  - Removed duplicate preview helper structs
+  - Enhanced preview with comprehensive surface effects showcase:
+    - Inner shadow effect (recessed appearance)
+    - Layered background with gradients
+    - Pressed state comparison (normal vs pressed)
+  - All compilation errors resolved, build successful
+
 ### Added - February 2026
 
-- **Phase 1: Layered Backgrounds on All Cards - COMPLETED** (2026-02-06)
-  - **Task 1: CardStyle Enum**
-    - Added DepthLevel enum with subtle, moderate, elevated, floating variants
-    - Added CardStyle enum with standard, premium, frosted, recessed variants
-    - Updated AnimatedCard to accept optional style parameter
-    - Default style is .standard for backward compatibility
-    - Added computed properties for depth level, layered background, frosted glass, inner shadow
-    - Comprehensive test coverage (4 new test cases)
-  - **Task 2: Layered Background Integration**
-    - Integrated layered background system into AnimatedCard body
-    - Added fade-in animation on card appearance (200ms)
-    - Depth-based shadow system using CardStyle depth levels
-    - Support for frosted glass and inner shadow styles
-  - **Tasks 3-9: Card Component Updates**
-    - Updated BalanceCardView (Dashboard)
-    - Updated StatCard (Dashboard)
-    - Updated BudgetCard (Budget feature)
-    - Updated GoalCard (Goals feature)
-    - Updated AccountsCard (Account feature)
-    - Updated BudgetAlertCard (Budget feature)
-    - Updated ReportSummaryCard (Reports feature)
-  - All cards now have layered backgrounds with fade-in animation
-  - Backward compatible - existing AnimatedCard usage works unchanged
-  - Build status: ✅ BUILD SUCCEEDED
-  - All 7+ card components updated successfully
+- **Depth and Visual Enhancement System** (2026-02-03)
+  - Premium depth effects with layered shadows
+  - Five depth levels: Flat, Subtle, Moderate, Elevated, Floating
+  - Frosted glass blur effects with material backgrounds
+  - Inner shadow effects for recessed appearance
+  - Layered backgrounds with subtle gradients
+  - Pressed state depth animations
+  - PremiumCard component with interactive depth
+  - FloatingActionButton with gradient and glow
+  - Enhanced AnimatedCard with:
+    - Dual-layer shadows for realistic depth
+    - Subtle border highlights (light-aware)
+    - Brightness dimming on press
+    - Smooth spring animations
+  - View modifiers for easy application:
+    - `.depthCard()` - Premium card depth
+    - `.frostedGlass()` - Blur background
+    - `.innerShadow()` - Recessed effect
+    - `.pressedDepth()` - Interactive press
+    - `.layeredBackground()` - Gradient layers
+
+- **Dark Mode Toggle** (2026-02-03)
+  - Added appearance mode selection in Settings
+  - Three modes available: System (automatic), Light, Dark
+  - User preference persisted across app launches
+  - Applied globally using SwiftUI's preferredColorScheme
+  - Accessible picker interface with icons for each mode
+  - Localized strings for all appearance options
 
 - **Phase 1 Week 2: Dashboard Completion** (2026-02-02)
   - **Chart Animation System**
