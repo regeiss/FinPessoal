@@ -21,7 +21,7 @@ struct StyledTextField: View {
 
   @FocusState private var isFocused: Bool
   @Environment(\.colorScheme) private var colorScheme
-  @State private var animationMode: AnimationMode = .full
+  @State private var animationMode: AnimationMode = AnimationSettings.shared.effectiveMode
 
   // MARK: - Initialization
 
@@ -98,7 +98,7 @@ struct StyledTextField: View {
         .focused($isFocused)
         .accessibilityLabel(title)
         .accessibilityValue(text.isEmpty ? "Empty" : text)
-        .accessibilityHint(error != nil ? "Error: \(error!)" : "")
+        .accessibilityHint(error.map { "Error: \($0)" } ?? "")
         .onChange(of: isFocused) { _, newValue in
           if newValue && animationMode == .full {
             HapticEngine.shared.light()
@@ -113,10 +113,8 @@ struct StyledTextField: View {
           .accessibilityHidden(true)
       }
     }
-    .onAppear {
-      animationMode = AnimationSettings.shared.effectiveMode
-    }
     .animation(focusAnimation, value: isFocused)
+    .animation(focusAnimation, value: error)
   }
 
   // MARK: - Computed Properties
