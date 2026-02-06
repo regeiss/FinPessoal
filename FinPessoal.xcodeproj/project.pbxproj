@@ -8,10 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		1940B8AEC1AB4FEFB0502BB1 /* ParticleEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8F587CBBE40A7AE326E59 /* ParticleEmitter.swift */; };
+		20E245BE5EAE484491F49B91 /* PhysicsNumberCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EAC25CEE64C4491888399CC /* PhysicsNumberCounter.swift */; };
+		5D5258EEEB314574BEF819C1 /* PhysicsNumberCounterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084FD9D1317A4DC4ADB27F76 /* PhysicsNumberCounterTests.swift */; };
 		A950EEE6F51C48D69EDBD756 /* ParticleEmitterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364968FAFDEE41039BB7E012 /* ParticleEmitterTests.swift */; };
-		4A4000E39BCC402087E114EA /* AnimatedCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC79BDF991D94790B2B4E706 /* AnimatedCard.swift */; };
-		2A12A45929A24A8285DD972B /* AnimatedCardModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7847D0E2FCF64E41A58899BE /* AnimatedCardModifier.swift */; };
-		35D8BCD3923844CB95B77A9A /* AnimatedCardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 997EB40838CB4BB2907E1175 /* AnimatedCardTests.swift */; };
 		E11447732EAE8AFC00060A67 /* Help.md in Resources */ = {isa = PBXBuildFile; fileRef = E114476C2EAE8AFC00060A67 /* Help.md */; };
 		E114481D2EAE8AFC00060A67 /* TESTS 2.md in Resources */ = {isa = PBXBuildFile; fileRef = E114481B2EAE8AFC00060A67 /* TESTS 2.md */; };
 		E11448572EB03E6300060A67 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = E11448562EB03E6300060A67 /* README.md */; };
@@ -79,9 +78,7 @@
 		E17E729B2E3EE128003A7FF0 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E17E729A2E3EE128003A7FF0 /* GoogleSignInSwift */; };
 		E191F5132E9C65D2002DB0A9 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = E191F5122E9C65D2002DB0A9 /* CHANGELOG.md */; };
 		E1E8F1D02E4D609B00FFD30F /* MockLogin.md in Resources */ = {isa = PBXBuildFile; fileRef = E1E8F1CF2E4D609B00FFD30F /* MockLogin.md */; };
-		20E245BE5EAE484491F49B91 /* PhysicsNumberCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EAC25CEE64C4491888399CC /* PhysicsNumberCounter.swift */; };
-				5D5258EEEB314574BEF819C1 /* PhysicsNumberCounterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084FD9D1317A4DC4ADB27F76 /* PhysicsNumberCounterTests.swift */; };
-		/* End PBXBuildFile section */
+/* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		E15E498C2EF1A32B004A2129 /* PBXContainerItemProxy */ = {
@@ -122,11 +119,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		4BA8F587CBBE40A7AE326E59 /* ParticleEmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ParticleEmitter.swift; path = FinPessoal/Code/Animation/Components/ParticleEmitter.swift; sourceTree = SOURCE_ROOT; };
+		084FD9D1317A4DC4ADB27F76 /* PhysicsNumberCounterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PhysicsNumberCounterTests.swift; path = FinPessoalTests/Animation/PhysicsNumberCounterTests.swift; sourceTree = SOURCE_ROOT; };
 		364968FAFDEE41039BB7E012 /* ParticleEmitterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ParticleEmitterTests.swift; path = FinPessoalTests/Animation/ParticleEmitterTests.swift; sourceTree = SOURCE_ROOT; };
-		DC79BDF991D94790B2B4E706 /* AnimatedCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AnimatedCard.swift; path = FinPessoal/Code/Animation/Components/AnimatedCard.swift; sourceTree = SOURCE_ROOT; };
-		7847D0E2FCF64E41A58899BE /* AnimatedCardModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AnimatedCardModifier.swift; path = FinPessoal/Code/Animation/Components/AnimatedCardModifier.swift; sourceTree = SOURCE_ROOT; };
-		997EB40838CB4BB2907E1175 /* AnimatedCardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedCardTests.swift; sourceTree = "<group>"; };
+		4BA8F587CBBE40A7AE326E59 /* ParticleEmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ParticleEmitter.swift; path = FinPessoal/Code/Animation/Components/ParticleEmitter.swift; sourceTree = SOURCE_ROOT; };
+		8EAC25CEE64C4491888399CC /* PhysicsNumberCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PhysicsNumberCounter.swift; path = FinPessoal/Code/Animation/Components/PhysicsNumberCounter.swift; sourceTree = SOURCE_ROOT; };
 		E114476C2EAE8AFC00060A67 /* Help.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Help.md; sourceTree = "<group>"; };
 		E114481B2EAE8AFC00060A67 /* TESTS 2.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "TESTS 2.md"; sourceTree = "<group>"; };
 		E11448562EB03E6300060A67 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -163,9 +159,7 @@
 		E1C2B6AB2E66550900972780 /* FinPessoalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FinPessoalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1C2B6B82E66553100972780 /* FinPessoalUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FinPessoalUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1E8F1CF2E4D609B00FFD30F /* MockLogin.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = MockLogin.md; sourceTree = "<group>"; };
-		8EAC25CEE64C4491888399CC /* PhysicsNumberCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PhysicsNumberCounter.swift; path = FinPessoal/Code/Animation/Components/PhysicsNumberCounter.swift; sourceTree = SOURCE_ROOT; };
-		084FD9D1317A4DC4ADB27F76 /* PhysicsNumberCounterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PhysicsNumberCounterTests.swift; path = FinPessoalTests/Animation/PhysicsNumberCounterTests.swift; sourceTree = SOURCE_ROOT; };
-		/* End PBXFileReference section */
+/* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
 		E15E49932EF1A32B004A2129 /* Exceptions for "FinPessoalWidgets" folder in "FinPessoalWidgetsExtension" target */ = {
@@ -272,6 +266,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E131FC652F3160E300EE28A1 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				8EAC25CEE64C4491888399CC /* PhysicsNumberCounter.swift */,
+				4BA8F587CBBE40A7AE326E59 /* ParticleEmitter.swift */,
+				084FD9D1317A4DC4ADB27F76 /* PhysicsNumberCounterTests.swift */,
+				364968FAFDEE41039BB7E012 /* ParticleEmitterTests.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		E15E497D2EF1A329004A2129 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -360,6 +365,7 @@
 				E11448562EB03E6300060A67 /* README.md */,
 				E15E49A12EF22B9E004A2129 /* Shared */,
 				E15E49F52EF4CF9C004A2129 /* Docs */,
+				E131FC652F3160E300EE28A1 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -610,7 +616,8 @@
 				E15E49B02EF22B9E004A2129 /* CardSummary.swift in Sources */,
 				E15E49B12EF22B9E004A2129 /* WidgetData.swift in Sources */,
 				E15E49B22EF22B9E004A2129 /* GoalSummary.swift in Sources */,
-				E15E49B32EF22B9E004A2129 /* BillSummary.swift in Sources */,);
+				E15E49B32EF22B9E004A2129 /* BillSummary.swift in Sources */,
+			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		E17769792E3E4AFF0028E21B /* Sources */ = {
@@ -629,7 +636,8 @@
 				E15E49AA2EF22B9E004A2129 /* BillSummary.swift in Sources */,
 				E15E4A0A2EF4DB3B004A2129 /* WidgetColors.swift in Sources */,
 				20E245BE5EAE484491F49B91 /* PhysicsNumberCounter.swift in Sources */,
-				1940B8AEC1AB4FEFB0502BB1 /* ParticleEmitter.swift in Sources */,);
+				1940B8AEC1AB4FEFB0502BB1 /* ParticleEmitter.swift in Sources */,
+			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		E1C2B6A72E66550900972780 /* Sources */ = {
@@ -637,7 +645,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D5258EEEB314574BEF819C1 /* PhysicsNumberCounterTests.swift in Sources */,
-				A950EEE6F51C48D69EDBD756 /* ParticleEmitterTests.swift in Sources */,);
+				A950EEE6F51C48D69EDBD756 /* ParticleEmitterTests.swift in Sources */,
+			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		E1C2B6B42E66553100972780 /* Sources */ = {

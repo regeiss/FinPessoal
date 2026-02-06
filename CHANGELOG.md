@@ -7,7 +7,58 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed - February 2026
+
+- **Consolidated Depth System** (2026-02-05)
+  - Merged duplicate DepthModifier.swift and DepthModifiers.swift files
+  - Unified DepthLevel enum with all depth levels (flat, subtle, raised, moderate, elevated, floating, modal)
+  - Combined all depth modifiers into single file:
+    - Basic depth modifiers (DepthModifier, LayeredDepthModifier, DepthCardModifier)
+    - Interactive modifiers (InteractiveDepthModifier, PressedDepthModifier)
+    - Surface effects (FrostedGlassModifier, InnerShadowModifier, LayeredBackgroundModifier)
+    - Premium components (PremiumCard, FloatingActionButton)
+  - Eliminated duplicate enum definitions and overlapping functionality
+  - Maintained all features from both files in unified system
+  - Added accessibility labels to FloatingActionButton
+  - Fixed HapticEngine method calls (changed .impact(style:) to .light())
+  - Fixed Color.oldMoney usage in static contexts with environment-aware wrappers
+  - Removed duplicate preview helper structs
+  - Enhanced preview with comprehensive surface effects showcase:
+    - Inner shadow effect (recessed appearance)
+    - Layered background with gradients
+    - Pressed state comparison (normal vs pressed)
+  - All compilation errors resolved, build successful
+
 ### Added - February 2026
+
+- **Depth and Visual Enhancement System** (2026-02-03)
+  - Premium depth effects with layered shadows
+  - Five depth levels: Flat, Subtle, Moderate, Elevated, Floating
+  - Frosted glass blur effects with material backgrounds
+  - Inner shadow effects for recessed appearance
+  - Layered backgrounds with subtle gradients
+  - Pressed state depth animations
+  - PremiumCard component with interactive depth
+  - FloatingActionButton with gradient and glow
+  - Enhanced AnimatedCard with:
+    - Dual-layer shadows for realistic depth
+    - Subtle border highlights (light-aware)
+    - Brightness dimming on press
+    - Smooth spring animations
+  - View modifiers for easy application:
+    - `.depthCard()` - Premium card depth
+    - `.frostedGlass()` - Blur background
+    - `.innerShadow()` - Recessed effect
+    - `.pressedDepth()` - Interactive press
+    - `.layeredBackground()` - Gradient layers
+
+- **Dark Mode Toggle** (2026-02-03)
+  - Added appearance mode selection in Settings
+  - Three modes available: System (automatic), Light, Dark
+  - User preference persisted across app launches
+  - Applied globally using SwiftUI's preferredColorScheme
+  - Accessible picker interface with icons for each mode
+  - Localized strings for all appearance options
 
 - **Phase 1 Week 2: Dashboard Completion** (2026-02-02)
   - **Chart Animation System**

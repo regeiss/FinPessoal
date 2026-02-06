@@ -318,7 +318,13 @@
     "5 dias antes" : {
 
     },
+    "7 Days" : {
+
+    },
     "7 dias antes" : {
+
+    },
+    "30 Days" : {
 
     },
     "Account Active" : {
@@ -1625,6 +1631,39 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Gerencie suas finanças de forma inteligente"
+          }
+        }
+      }
+    },
+    "appearance.dark" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Escuro"
+          }
+        }
+      }
+    },
+    "appearance.light" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Claro"
+          }
+        }
+      }
+    },
+    "appearance.system" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Automático"
           }
         }
       }
@@ -7637,6 +7676,9 @@
     "Double tap to %@" : {
 
     },
+    "Double tap to activate" : {
+
+    },
     "Double tap to edit account" : {
 
     },
@@ -7958,6 +8000,9 @@
 
     },
     "Financial reports and analytics will be displayed here." : {
+
+    },
+    "Floating action button" : {
 
     },
     "Frequently asked question" : {
@@ -12639,9 +12684,6 @@
     "Loading Bills" : {
 
     },
-    "Loading dashboard data, please wait" : {
-
-    },
     "Loading transactions, please wait" : {
 
     },
@@ -15821,6 +15863,9 @@
     "Progress" : {
 
     },
+    "Pull to refresh" : {
+
+    },
     "Quick access section" : {
 
     },
@@ -15901,6 +15946,9 @@
     "R$ %@" : {
 
     },
+    "Range" : {
+
+    },
     "Real (BRL)" : {
 
     },
@@ -15913,7 +15961,13 @@
     "Refresh Dashboard" : {
 
     },
+    "Refreshing..." : {
+
+    },
     "Related categories" : {
+
+    },
+    "Release to refresh" : {
 
     },
     "Reloads the reports data" : {
@@ -16920,6 +16974,39 @@
         }
       }
     },
+    "settings.appearance" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Aparência"
+          }
+        }
+      }
+    },
+    "settings.appearance.hint" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Change the app's appearance"
+          }
+        }
+      }
+    },
+    "settings.appearance.label" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Appearance: %@"
+          }
+        }
+      }
+    },
     "settings.backup" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -17916,6 +18003,9 @@
 
     },
     "Skip onboarding and go directly to the app" : {
+
+    },
+    "Spending Trends" : {
 
     },
     "Spent" : {
@@ -20279,6 +20369,9 @@
       }
     },
     "Try different search terms to find help topics" : {
+
+    },
+    "Updated" : {
 
     },
     "validation.amount.positive" : {

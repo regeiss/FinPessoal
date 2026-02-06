@@ -29,11 +29,34 @@ public struct AnimatedCard<Content: View>: View {
   public var body: some View {
     content
       .scaleEffect(isPressed ? 0.98 : 1.0)
+      .brightness(isPressed ? -0.02 : 0)
+      // Layered shadows for depth
       .shadow(
         color: shadowColor,
         radius: shadowRadius,
         x: 0,
         y: isPressed ? 2 : 4
+      )
+      .shadow(
+        color: shadowColor.opacity(0.5),
+        radius: shadowRadius * 0.5,
+        x: 0,
+        y: isPressed ? 1 : 2
+      )
+      // Subtle border highlight
+      .overlay(
+        RoundedRectangle(cornerRadius: 16)
+          .strokeBorder(
+            LinearGradient(
+              colors: [
+                Color.white.opacity(colorScheme == .dark ? 0.1 : 0.3),
+                Color.clear
+              ],
+              startPoint: .top,
+              endPoint: .bottom
+            ),
+            lineWidth: 0.5
+          )
       )
       .gesture(
         DragGesture(minimumDistance: 0)

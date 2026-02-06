@@ -14,6 +14,7 @@ struct SettingsScreen: View {
   @State private var showingCurrencySettings = false
   @State private var showingLanguageSettings = false
   @State private var showingHelp = false
+  @AppStorage("userAppearance") private var userAppearance: AppearanceMode = .system
   
   private var currentCurrencyDescription: String {
     let savedCurrency = UserDefaults.standard.string(forKey: "selectedCurrency") ?? "BRL"
@@ -53,6 +54,7 @@ struct SettingsScreen: View {
               }
               .frame(width: 40, height: 40)
               .clipShape(Circle())
+              .depth(.subtle)
               .accessibilityHidden(true)
 
               VStack(alignment: .leading, spacing: 4) {
@@ -82,6 +84,35 @@ struct SettingsScreen: View {
       }
 
       Section(String(localized: "settings.preferences.section")) {
+          // Dark Mode Toggle
+          HStack {
+            Image(systemName: userAppearance.iconName)
+              .foregroundColor(.blue)
+              .frame(width: 24)
+              .accessibilityHidden(true)
+
+            VStack(alignment: .leading, spacing: 2) {
+              Text(String(localized: "settings.appearance", defaultValue: "Aparência"))
+                .foregroundColor(.primary)
+              Text(userAppearance.displayName)
+                .font(.caption)
+                .foregroundColor(.secondary)
+            }
+
+            Spacer()
+
+            Picker("", selection: $userAppearance) {
+              ForEach(AppearanceMode.allCases, id: \.self) { mode in
+                Text(mode.displayName).tag(mode)
+              }
+            }
+            .pickerStyle(.menu)
+            .labelsHidden()
+          }
+          .accessibilityElement(children: .combine)
+          .accessibilityLabel(String(localized: "settings.appearance.label", defaultValue: "Appearance: \(userAppearance.displayName)"))
+          .accessibilityHint(String(localized: "settings.appearance.hint", defaultValue: "Change the app's appearance"))
+
           SettingsRow(title: String(localized: "settings.notifications"), icon: "bell", action: {})
 
           // Currency settings row with current currency indicator
@@ -182,18 +213,22 @@ struct SettingsScreen: View {
           .accessibilityAddTraits(.isButton)
         }
     }
+    .preferredColorScheme(userAppearance.colorScheme)
     .sheet(isPresented: $showingProfile) {
       ProfileView()
         .environmentObject(authViewModel)
     }
     .sheet(isPresented: $showingCurrencySettings) {
       CurrencySettingsView()
+        .preferredColorScheme(userAppearance.colorScheme)
     }
     .sheet(isPresented: $showingLanguageSettings) {
       LanguageSettingsView()
+        .preferredColorScheme(userAppearance.colorScheme)
     }
     .sheet(isPresented: $showingHelp) {
       HelpScreen()
+        .preferredColorScheme(userAppearance.colorScheme)
     }
   }
 }
@@ -266,6 +301,7 @@ extension CurrencyHelper {
 struct CurrencySettingsView: View {
   @Environment(\.dismiss) private var dismiss
   @State private var selectedCurrency = CurrencyHelper.getCurrentCurrency().code
+  @AppStorage("userAppearance") private var userAppearance: AppearanceMode = .system
 
   var body: some View {
     NavigationView {
@@ -329,6 +365,7 @@ struct CurrencySettingsView: View {
 struct LanguageSettingsView: View {
   @Environment(\.dismiss) private var dismiss
   @State private var selectedLanguage = UserDefaults.standard.string(forKey: "selectedLanguage") ?? "system"
+  @AppStorage("userAppearance") private var userAppearance: AppearanceMode = .system
 
   private let languages = [
     (code: "system", name: String(localized: "language.system", defaultValue: "Automático"), flag: "🌍"),

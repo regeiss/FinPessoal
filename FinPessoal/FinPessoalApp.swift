@@ -17,6 +17,7 @@ import GoogleSignIn
 struct MoneyManagerApp: App {
   @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
   @Environment(\.scenePhase) private var scenePhase
+  @AppStorage("userAppearance") private var userAppearance: AppearanceMode = .system
 
   @StateObject private var authViewModel: AuthViewModel
   @StateObject private var financeViewModel: FinanceViewModel
@@ -71,6 +72,7 @@ struct MoneyManagerApp: App {
         .environmentObject(onboardingManager)
         .environmentObject(notificationManager)
         .environmentObject(deepLinkHandler)
+        .preferredColorScheme(userAppearance.colorScheme)
         .onAppear {
           authViewModel.checkAuthenticationState()
           requestNotificationPermissions()

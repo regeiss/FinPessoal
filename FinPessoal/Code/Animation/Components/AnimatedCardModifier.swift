@@ -22,11 +22,19 @@ public struct AnimatedCardModifier: ViewModifier {
   public func body(content: Content) -> some View {
     content
       .scaleEffect(isPressed ? 0.98 : 1.0)
+      // Close shadow (definition)
       .shadow(
-        color: shadowColor,
+        color: shadowColor.opacity(0.6),
+        radius: closeShadowRadius,
+        x: 0,
+        y: isPressed ? 1 : 2
+      )
+      // Far shadow (ambient depth)
+      .shadow(
+        color: shadowColor.opacity(0.4),
         radius: shadowRadius,
         x: 0,
-        y: isPressed ? 2 : 4
+        y: isPressed ? 4 : 8
       )
       .gesture(pressGesture)
   }
@@ -58,11 +66,15 @@ public struct AnimatedCardModifier: ViewModifier {
   }
 
   private var shadowColor: Color {
-    Color.black.opacity(colorScheme == .dark ? 0.4 : 0.15)
+    Color.black.opacity(colorScheme == .dark ? 0.5 : 0.15)
   }
 
   private var shadowRadius: CGFloat {
-    isPressed ? 8 : 12
+    isPressed ? 10 : 16
+  }
+
+  private var closeShadowRadius: CGFloat {
+    isPressed ? 4 : 6
   }
 }
 

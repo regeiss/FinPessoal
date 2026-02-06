@@ -37,13 +37,13 @@ class NavigationState: ObservableObject {
   }
   
   func selectAccount(_ account: Account) {
-    print("NavigationState: selectAccount called with account: \(account.name)")
+    // print("NavigationState: selectAccount called with account: \(account.name)")
     selectedAccount = account
     // Clear other detail selections when selecting an account
     selectedTransaction = nil
     isShowingAddTransaction = false
     isShowingAddAccount = false
-    print("NavigationState: selectedAccount set to: \(selectedAccount?.name ?? "nil")")
+    // print("NavigationState: selectedAccount set to: \(selectedAccount?.name ?? "nil")")
   }
   
   func showAddTransaction() {
