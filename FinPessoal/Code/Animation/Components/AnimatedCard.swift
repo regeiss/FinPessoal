@@ -7,20 +7,80 @@
 
 import SwiftUI
 
+/// Depth levels for visual hierarchy
+public enum DepthLevel {
+  case subtle
+  case moderate
+  case elevated
+  case floating
+}
+
+/// Visual style variants for AnimatedCard
+public enum CardStyle {
+  case standard   // Layered background + elevated depth (default)
+  case premium    // Layered background + floating depth + accent glow
+  case frosted    // Frosted glass + moderate depth
+  case recessed   // Inner shadow + subtle depth
+
+  var depthLevel: DepthLevel {
+    switch self {
+    case .standard:  return .elevated
+    case .premium:   return .floating
+    case .frosted:   return .moderate
+    case .recessed:  return .subtle
+    }
+  }
+
+  var usesLayeredBackground: Bool {
+    switch self {
+    case .standard, .premium:  return true
+    case .frosted, .recessed:  return false
+    }
+  }
+
+  var usesFrostedGlass: Bool {
+    self == .frosted
+  }
+
+  var usesInnerShadow: Bool {
+    self == .recessed
+  }
+}
+
 /// Animated card with press states, shadows, and optional hero transitions
 public struct AnimatedCard<Content: View>: View {
   @Environment(\.colorScheme) private var colorScheme
   @State private var isPressed = false
+  @State private var opacity: Double = 0  // For fade-in animation
 
+  public let style: CardStyle
+  public let cornerRadius: CGFloat
   public let content: Content
   public let onTap: (() -> Void)?
   public let heroID: String?
 
   public init(
+    style: CardStyle = .standard,
+    cornerRadius: CGFloat = 16,
     heroID: String? = nil,
     onTap: (() -> Void)? = nil,
     @ViewBuilder content: () -> Content
   ) {
+    self.style = style
+    self.cornerRadius = cornerRadius
+    self.heroID = heroID
+    self.onTap = onTap
+    self.content = content()
+  }
+
+  // Keep old initializer for backward compatibility
+  public init(
+    heroID: String? = nil,
+    onTap: (() -> Void)? = nil,
+    @ViewBuilder content: () -> Content
+  ) {
+    self.style = .standard
+    self.cornerRadius = 16
     self.heroID = heroID
     self.onTap = onTap
     self.content = content()
