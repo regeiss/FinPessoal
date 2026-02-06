@@ -14,143 +14,141 @@ struct GoalCard: View {
   @EnvironmentObject var goalViewModel: GoalViewModel
 
   var body: some View {
-    VStack(alignment: .leading, spacing: 12) {
-      // Header
-      HStack {
-        HStack(spacing: 8) {
-          Image(systemName: goal.category.icon)
-            .foregroundColor(Color(goal.category.color))
-            .frame(width: 24, height: 24)
-            .accessibilityHidden(true)
+    AnimatedCard(style: .standard, onTap: {
+      showingProgressSheet = true
+    }) {
+      VStack(alignment: .leading, spacing: 12) {
+        // Header
+        HStack {
+          HStack(spacing: 8) {
+            Image(systemName: goal.category.icon)
+              .foregroundColor(Color(goal.category.color))
+              .frame(width: 24, height: 24)
+              .accessibilityHidden(true)
 
-          VStack(alignment: .leading, spacing: 2) {
-            Text(goal.name)
-              .font(.headline)
-              .foregroundStyle(Color.oldMoney.text)
+            VStack(alignment: .leading, spacing: 2) {
+              Text(goal.name)
+                .font(.headline)
+                .foregroundStyle(Color.oldMoney.text)
 
-            if let description = goal.description {
-              Text(description)
-                .font(.caption)
-                .foregroundStyle(Color.oldMoney.textSecondary)
-                .lineLimit(1)
+              if let description = goal.description {
+                Text(description)
+                  .font(.caption)
+                  .foregroundStyle(Color.oldMoney.textSecondary)
+                  .lineLimit(1)
+              }
             }
+          }
+
+          Spacer()
+
+          if goal.isCompleted {
+            Image(systemName: "checkmark.circle.fill")
+              .foregroundStyle(Color.oldMoney.income)
+              .font(.title2)
+              .accessibilityLabel("Completed")
           }
         }
 
-        Spacer()
+        // Progress
+        VStack(alignment: .leading, spacing: 8) {
+          HStack(spacing: 4) {
+            VStack(alignment: .leading, spacing: 2) {
+              Text(CurrencyFormatter.shared.string(from: goal.currentAmount))
+                .font(.headline)
+                .fontWeight(.semibold)
+                .foregroundStyle(Color.oldMoney.text)
+                .lineLimit(1)
+                .minimumScaleFactor(0.7)
 
-        if goal.isCompleted {
-          Image(systemName: "checkmark.circle.fill")
-            .foregroundStyle(Color.oldMoney.income)
-            .font(.title2)
-            .accessibilityLabel("Completed")
+              HStack(spacing: 2) {
+                Text("de")
+                  .font(.caption)
+                  .foregroundStyle(Color.oldMoney.textSecondary)
+                Text(CurrencyFormatter.shared.string(from: goal.targetAmount))
+                  .font(.caption)
+                  .foregroundStyle(Color.oldMoney.textSecondary)
+                  .lineLimit(1)
+                  .minimumScaleFactor(0.8)
+              }
+            }
+
+            Spacer()
+
+            Text("\(Int(goal.progressPercentage))%")
+              .font(.caption)
+              .fontWeight(.medium)
+              .foregroundColor(Color(goal.category.color))
+          }
+          .accessibilityElement(children: .combine)
+          .accessibilityLabel("Progress")
+          .accessibilityValue("\(Int(goal.progressPercentage))%, \(CurrencyFormatter.shared.string(from: goal.currentAmount)) of \(CurrencyFormatter.shared.string(from: goal.targetAmount))")
+
+          ProgressView(value: goal.progressPercentage / 100.0)
+            .progressViewStyle(LinearProgressViewStyle(tint: Color(goal.category.color)))
+            .scaleEffect(x: 1, y: 1.5, anchor: .center)
+            .accessibilityHidden(true)
         }
-      }
 
-      // Progress
-      VStack(alignment: .leading, spacing: 8) {
-        HStack(spacing: 4) {
+        // Stats
+        HStack(spacing: 8) {
           VStack(alignment: .leading, spacing: 2) {
-            Text(CurrencyFormatter.shared.string(from: goal.currentAmount))
-              .font(.headline)
-              .fontWeight(.semibold)
-              .foregroundStyle(Color.oldMoney.text)
+            Text(String(localized: "goal.remaining"))
+              .font(.caption2)
+              .foregroundStyle(Color.oldMoney.textSecondary)
+            Text(CurrencyFormatter.shared.string(from: goal.remainingAmount))
+              .font(.caption)
+              .fontWeight(.medium)
+              .lineLimit(1)
+              .minimumScaleFactor(0.8)
+          }
+          .frame(maxWidth: .infinity, alignment: .leading)
+          .accessibilityElement(children: .combine)
+          .accessibilityLabel("Remaining")
+          .accessibilityValue(CurrencyFormatter.shared.string(from: goal.remainingAmount))
+
+          VStack(alignment: .trailing, spacing: 2) {
+            Text(String(localized: "goal.days.left"))
+              .font(.caption2)
+              .foregroundStyle(Color.oldMoney.textSecondary)
+            Text("\(goal.daysRemaining) dias")
+              .font(.caption)
+              .fontWeight(.medium)
+          }
+          .frame(maxWidth: .infinity, alignment: .trailing)
+          .accessibilityElement(children: .combine)
+          .accessibilityLabel("Days Left")
+          .accessibilityValue("\(goal.daysRemaining) days")
+        }
+
+        // Monthly contribution needed
+        if !goal.isCompleted {
+          HStack(spacing: 4) {
+            Image(systemName: "calendar")
+              .foregroundStyle(Color.oldMoney.accent)
+              .font(.caption2)
+              .accessibilityHidden(true)
+            Text(String(localized: "goal.monthly.needed"))
+              .font(.caption2)
+              .foregroundStyle(Color.oldMoney.textSecondary)
+            Spacer()
+            Text(CurrencyFormatter.shared.string(from: goal.monthlyContributionNeeded))
+              .font(.caption)
+              .fontWeight(.medium)
+              .foregroundStyle(Color.oldMoney.accent)
               .lineLimit(1)
               .minimumScaleFactor(0.7)
-
-            HStack(spacing: 2) {
-              Text("de")
-                .font(.caption)
-                .foregroundStyle(Color.oldMoney.textSecondary)
-              Text(CurrencyFormatter.shared.string(from: goal.targetAmount))
-                .font(.caption)
-                .foregroundStyle(Color.oldMoney.textSecondary)
-                .lineLimit(1)
-                .minimumScaleFactor(0.8)
-            }
           }
-
-          Spacer()
-
-          Text("\(Int(goal.progressPercentage))%")
-            .font(.caption)
-            .fontWeight(.medium)
-            .foregroundColor(Color(goal.category.color))
+          .padding(.horizontal, 6)
+          .padding(.vertical, 4)
+          .background(Color.oldMoney.accentBackground)
+          .clipShape(RoundedRectangle(cornerRadius: 4))
+          .accessibilityElement(children: .combine)
+          .accessibilityLabel("Monthly Contribution Needed")
+          .accessibilityValue(CurrencyFormatter.shared.string(from: goal.monthlyContributionNeeded))
         }
-        .accessibilityElement(children: .combine)
-        .accessibilityLabel("Progress")
-        .accessibilityValue("\(Int(goal.progressPercentage))%, \(CurrencyFormatter.shared.string(from: goal.currentAmount)) of \(CurrencyFormatter.shared.string(from: goal.targetAmount))")
-
-        ProgressView(value: goal.progressPercentage / 100.0)
-          .progressViewStyle(LinearProgressViewStyle(tint: Color(goal.category.color)))
-          .scaleEffect(x: 1, y: 1.5, anchor: .center)
-          .accessibilityHidden(true)
       }
-
-      // Stats
-      HStack(spacing: 8) {
-        VStack(alignment: .leading, spacing: 2) {
-          Text(String(localized: "goal.remaining"))
-            .font(.caption2)
-            .foregroundStyle(Color.oldMoney.textSecondary)
-          Text(CurrencyFormatter.shared.string(from: goal.remainingAmount))
-            .font(.caption)
-            .fontWeight(.medium)
-            .lineLimit(1)
-            .minimumScaleFactor(0.8)
-        }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .accessibilityElement(children: .combine)
-        .accessibilityLabel("Remaining")
-        .accessibilityValue(CurrencyFormatter.shared.string(from: goal.remainingAmount))
-
-        VStack(alignment: .trailing, spacing: 2) {
-          Text(String(localized: "goal.days.left"))
-            .font(.caption2)
-            .foregroundStyle(Color.oldMoney.textSecondary)
-          Text("\(goal.daysRemaining) dias")
-            .font(.caption)
-            .fontWeight(.medium)
-        }
-        .frame(maxWidth: .infinity, alignment: .trailing)
-        .accessibilityElement(children: .combine)
-        .accessibilityLabel("Days Left")
-        .accessibilityValue("\(goal.daysRemaining) days")
-      }
-
-      // Monthly contribution needed
-      if !goal.isCompleted {
-        HStack(spacing: 4) {
-          Image(systemName: "calendar")
-            .foregroundStyle(Color.oldMoney.accent)
-            .font(.caption2)
-            .accessibilityHidden(true)
-          Text(String(localized: "goal.monthly.needed"))
-            .font(.caption2)
-            .foregroundStyle(Color.oldMoney.textSecondary)
-          Spacer()
-          Text(CurrencyFormatter.shared.string(from: goal.monthlyContributionNeeded))
-            .font(.caption)
-            .fontWeight(.medium)
-            .foregroundStyle(Color.oldMoney.accent)
-            .lineLimit(1)
-            .minimumScaleFactor(0.7)
-        }
-        .padding(.horizontal, 6)
-        .padding(.vertical, 4)
-        .background(Color.oldMoney.accentBackground)
-        .clipShape(RoundedRectangle(cornerRadius: 4))
-        .accessibilityElement(children: .combine)
-        .accessibilityLabel("Monthly Contribution Needed")
-        .accessibilityValue(CurrencyFormatter.shared.string(from: goal.monthlyContributionNeeded))
-      }
-    }
-    .padding()
-    .background(Color.oldMoney.background)
-    .clipShape(RoundedRectangle(cornerRadius: 12))
-    .shadow(color: .black.opacity(0.1), radius: 2, x: 0, y: 1)
-    .onTapGesture {
-      showingProgressSheet = true
+      .padding()
     }
     .accessibilityElement(children: .combine)
     .accessibilityLabel(goal.isCompleted ? "\(goal.name), Completed" : goal.name)
