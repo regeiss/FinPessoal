@@ -9,6 +9,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added - February 2026
 
+- **Phase 1: Layered Backgrounds & Surface Effects** (2026-02-05)
+  - **CardStyle Enum** (Task 1)
+    - Added DepthLevel enum with subtle, moderate, elevated, floating variants
+    - Added CardStyle enum with standard, premium, frosted, recessed variants
+    - Updated AnimatedCard to accept optional style parameter
+    - Default style is .standard for backward compatibility
+    - Added computed properties for depth level, layered background, frosted glass, inner shadow
+    - Comprehensive test coverage (4 new test cases)
+    - VoiceOver accessibility support included
+
 - **Phase 1 Week 2: Dashboard Completion** (2026-02-02)
   - **Chart Animation System**
     - AnimatedChart protocol for extensible chart types
