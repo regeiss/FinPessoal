@@ -9,6 +9,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed - February 2026
 
+- **StyledTextEditor Placeholder Padding Alignment - Final Fix** (2026-02-07)
+  - Corrected placeholder padding to match TextEditor exactly
+  - Changed placeholder padding from .padding(.horizontal, 16) + .padding(.vertical, 16) to .padding(12)
+  - TextEditor uses .padding(12), now placeholder matches perfectly
+  - Ensures placeholder appears exactly where typed text will appear
+  - Resolves misalignment issue where placeholder was offset by 4pt from actual text position
+
 - **StyledTextEditor Placeholder Padding Alignment** (2026-02-07)
   - Fixed placeholder text alignment to match TextEditor text position
   - Changed TextEditor padding from 8pt to 12pt (matching StyledTextField)

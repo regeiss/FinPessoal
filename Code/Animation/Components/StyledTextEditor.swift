@@ -54,8 +54,7 @@ struct StyledTextEditor: View {
         if text.isEmpty {
           Text(placeholder)
             .foregroundColor(Color.oldMoney.textSecondary.opacity(0.5))
-            .padding(.horizontal, 16)
-            .padding(.vertical, 16)
+            .padding(12)
             .accessibilityHidden(true)
         }
 
