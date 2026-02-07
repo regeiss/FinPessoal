@@ -39,6 +39,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed - February 2026
 
 - **Phase 2: Styled Input Components** (2026-02-06)
+  - Added StyledTextEditor component for multi-line text input
+    - TextEditor wrapper with inner shadow effect
+    - Custom placeholder implementation (TextEditor has no native placeholder)
+    - Uses .scrollContentBackground(.hidden) for custom background
+    - Configurable minimum height (default: 100pt)
+    - Focus state animation with border glow
+    - Full accessibility with "Multi-line text input" hint
+    - Error state with validation feedback
+    - Adjusted padding (8pt vs 12pt for single-line fields)
+    - Preview providers for light and dark modes
   - Added StyledSecureField component for password inputs
     - SecureField wrapper with inner shadow effect
     - Focus state animation matching StyledTextField
