@@ -51,19 +51,19 @@ struct LoginView: View {
   
   private var loginForm: some View {
     VStack(spacing: 16) {
-      TextField(String(localized: "login.email.placeholder"), text: $email)
-        .textFieldStyle(.roundedBorder)
-        .keyboardType(.emailAddress)
-        .autocapitalization(.none)
-        .accessibilityLabel("Email Address")
-        .accessibilityHint("Enter your email address to sign in")
-        .accessibilityValue(email.isEmpty ? "Empty" : email)
+      StyledTextField(
+        title: "Email Address",
+        text: $email,
+        placeholder: String(localized: "login.email.placeholder"),
+        keyboardType: .emailAddress,
+        autocapitalization: .never
+      )
 
-      SecureField(String(localized: "login.password.placeholder"), text: $password)
-        .textFieldStyle(.roundedBorder)
-        .accessibilityLabel("Password")
-        .accessibilityHint("Enter your password. Input is secured and hidden")
-        .accessibilityValue(password.isEmpty ? "Empty" : "Entered")
+      StyledSecureField(
+        title: "Password",
+        text: $password,
+        placeholder: String(localized: "login.password.placeholder")
+      )
 
       Button(action: {
         Task {

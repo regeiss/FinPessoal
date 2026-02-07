@@ -31,19 +31,19 @@ struct AuthView: View {
         
         // Form
         VStack(spacing: 16) {
-          TextField("auth.email.placeholder", text: $email)
-            .textFieldStyle(RoundedBorderTextFieldStyle())
-            .keyboardType(.emailAddress)
-            .autocapitalization(.none)
-            .accessibilityLabel("auth.email.label")
-            .accessibilityHint("Enter your email address to sign in")
-            .accessibilityValue(email.isEmpty ? "Empty" : email)
+          StyledTextField(
+            title: String(localized: "auth.email.label"),
+            text: $email,
+            placeholder: String(localized: "auth.email.placeholder"),
+            keyboardType: .emailAddress,
+            autocapitalization: .never
+          )
 
-          SecureField("auth.password.placeholder", text: $password)
-            .textFieldStyle(RoundedBorderTextFieldStyle())
-            .accessibilityLabel("auth.password.label")
-            .accessibilityHint("Enter your password. Input is secured and hidden")
-            .accessibilityValue(password.isEmpty ? "Empty" : "Entered")
+          StyledSecureField(
+            title: String(localized: "auth.password.label"),
+            text: $password,
+            placeholder: String(localized: "auth.password.placeholder")
+          )
         }
         
         // Buttons

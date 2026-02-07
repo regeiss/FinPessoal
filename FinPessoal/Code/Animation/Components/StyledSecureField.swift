@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UIKit
 
 /// Styled secure field with inner shadow, focus animation, and error states
 struct StyledSecureField: View {

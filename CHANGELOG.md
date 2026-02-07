@@ -7,6 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added - February 2026
+
+- **Auth Screens Migration to Styled Components** (2026-02-07)
+  - Migrated AuthScreen.swift to use StyledTextField and StyledSecureField
+  - Migrated LoginView.swift to use StyledTextField and StyledSecureField
+  - Replaced standard TextField with StyledTextField for email input
+  - Replaced standard SecureField with StyledSecureField for password input
+  - Removed redundant accessibility code (styled components handle automatically)
+  - Focus animations now work on all auth input fields
+  - Maintains all existing accessibility labels and hints
+  - Improved visual consistency across authentication forms
+  - Files modified:
+    - FinPessoal/Code/Features/Auth/Screen/AuthScreen.swift
+    - FinPessoal/Code/Features/Main/View/LoginView.swift
+  - Moved styled components to correct Xcode project directory:
+    - StyledTextField.swift
+    - StyledSecureField.swift
+    - StyledTextEditor.swift
+
 ### Fixed - February 2026
 
 - **StyledTextEditor Placeholder Padding Alignment - Final Fix** (2026-02-07)
