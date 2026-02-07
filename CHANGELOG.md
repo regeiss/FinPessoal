@@ -9,6 +9,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added - February 2026
 
+- **Budget Screens Migration to Styled Components** (2026-02-07)
+  - Migrated AddBudgetScreen.swift to use StyledTextField
+  - Migrated AddEditCategorySheet.swift to use StyledTextField and StyledTextEditor
+  - Replaced standard TextField with StyledTextField for budget name input
+  - Replaced standard TextField with StyledTextField for budget amount input (with R$ prefix)
+  - Replaced standard TextField with StyledTextField for category name input
+  - Replaced multiline TextField with StyledTextEditor for category description input
+  - Focus animations now work on all budget and category input fields
+  - Maintains all existing accessibility labels, hints, and values
+  - Improved visual consistency across budget forms
+  - Files modified:
+    - FinPessoal/Code/Features/Budget/Screen/AddBudgetScreen.swift
+    - FinPessoal/Code/Features/Budget/View/AddEditCategorySheet.swift
+
 - **Transaction Screens Migration to Styled Components** (2026-02-07)
   - Migrated AddTransactionView.swift to use StyledTextField
   - Migrated TransactionDetailView.swift (EditTransactionView) to use StyledTextField
