@@ -55,12 +55,12 @@ struct StyledTextEditor: View {
           Text(placeholder)
             .foregroundColor(Color.oldMoney.textSecondary.opacity(0.5))
             .padding(.horizontal, 16)
-            .padding(.vertical, 12)
+            .padding(.vertical, 16)
             .accessibilityHidden(true)
         }
 
         TextEditor(text: $text)
-          .padding(8)
+          .padding(12)
           .frame(minHeight: minHeight)
           .scrollContentBackground(.hidden)
           .focused($isFocused)

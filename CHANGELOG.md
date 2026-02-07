@@ -9,6 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed - February 2026
 
+- **StyledTextEditor Placeholder Padding Alignment** (2026-02-07)
+  - Fixed placeholder text alignment to match TextEditor text position
+  - Changed TextEditor padding from 8pt to 12pt (matching StyledTextField)
+  - Changed placeholder vertical padding from 12pt to 16pt to account for TextEditor's text container insets
+  - Placeholder horizontal padding remains at 16pt
+  - Ensures placeholder appears exactly where typed text will appear
+  - Maintains visual consistency with StyledTextField design system
+
 - **StyledTextEditor UIKit Import Removed** (2026-02-07)
   - Removed unnecessary UIKit import from StyledTextEditor.swift
   - Component only uses SwiftUI TextEditor, does not need UIKit types
