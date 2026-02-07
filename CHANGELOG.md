@@ -9,6 +9,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added - February 2026
 
+- **Phase 3: Interactive List Rows - InteractiveListRow Component** (2026-02-07)
+  - Created InteractiveListRow wrapper component for list rows with interactive effects
+  - Features:
+    - Pressed depth feedback (0.98x scale, shadow reduction, brightness -0.03, opacity 0.97)
+    - Swipe action support (leading/trailing via RowAction arrays)
+    - Loading state with RowShimmerView (shimmer/pulse/static based on AnimationMode)
+    - Optional dividers (1px hairline with 16pt leading inset)
+    - Haptic feedback on press (light impact, Full mode only)
+    - Animation mode aware (Full/Reduced/Minimal)
+    - Background customization with optional Color parameter
+    - Optional onTap handler for tap gestures
+  - RowShimmerView (private):
+    - Three placeholders: circle (icon), bars (content/value)
+    - Shimmer gradient (Full mode: 1.5s linear loop)
+    - Pulse animation (Reduced mode: 1.0s ease)
+    - Static (Minimal mode)
+  - Preview providers:
+    - "InteractiveListRow - Normal" with sample content and swipe actions
+    - "InteractiveListRow - Loading" with three loading states
+  - File: FinPessoal/Code/Animation/Components/InteractiveListRow.swift
+  - Accessibility: .isButton trait for proper VoiceOver announcements
+  - Build verified: Compiles successfully with no errors
+  - Uses Old Money color scheme for dividers and shimmer base
+
 - **Phase 3: Interactive List Rows - RowAction Model** (2026-02-07)
   - Created RowAction model for swipe actions on InteractiveListRow component
   - Features:
