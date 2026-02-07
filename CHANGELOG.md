@@ -9,6 +9,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added - February 2026
 
+- **Phase 3: Interactive List Rows - RowAction Model** (2026-02-07)
+  - Created RowAction model for swipe actions on InteractiveListRow component
+  - Features:
+    - RowAction struct with title, icon, tint color, button role, and async action
+    - Identifiable protocol conformance with UUID
+    - Async action support for Firebase operations
+    - ButtonRole support for destructive actions
+  - Preset action factory methods:
+    - delete() - Red destructive action with trash icon
+    - edit() - Blue action with pencil icon
+    - complete() - Green action with checkmark icon (using Color.oldMoney.income)
+    - markPaid() - Green action with checkmark icon for bills
+    - archive() - Orange action with archivebox icon
+  - All presets use localized strings:
+    - common.delete, common.edit, common.complete, common.archive
+    - bill.mark.paid
+  - All presets use SF Symbols icons for consistency
+  - File: FinPessoal/Code/Animation/Components/RowAction.swift
+  - Accessibility: All actions use system ButtonRole for proper VoiceOver announcements
+  - Build verified: Compiles successfully with no errors
+
+### Added - February 2026
+
 - **Remaining Screens Migration to Styled Components (Phase 2 Complete)** (2026-02-07)
   - Migrated all remaining screens (Bills, Goals, Categories, CreditCard, Loan, Profile) to styled components
   - Added convenience initializers to StyledTextField and StyledTextEditor for inline usage
