@@ -18,13 +18,14 @@ struct AddBudgetScreen: View {
     NavigationView {
       Form {
         Section {
-          TextField(String(localized: "budget.name.placeholder"), text: $budgetViewModel.name)
-            .textFieldStyle(RoundedBorderTextFieldStyle())
-            .accessibilityLabel("Budget Name")
-            .accessibilityHint("Enter a descriptive name for this budget")
-            .accessibilityValue(budgetViewModel.name.isEmpty ? "Empty" : budgetViewModel.name)
-        } header: {
-          Text(String(localized: "budget.name.section"))
+          StyledTextField(
+            title: String(localized: "budget.name.section"),
+            text: $budgetViewModel.name,
+            placeholder: String(localized: "budget.name.placeholder")
+          )
+          .accessibilityLabel("Budget Name")
+          .accessibilityHint("Enter a descriptive name for this budget")
+          .accessibilityValue(budgetViewModel.name.isEmpty ? "Empty" : budgetViewModel.name)
         }
         
         Section {
@@ -49,19 +50,22 @@ struct AddBudgetScreen: View {
         }
         
         Section {
-          HStack {
+          HStack(spacing: 8) {
             Text("R$")
-              .foregroundColor(.secondary)
+              .font(.body)
+              .foregroundColor(Color.oldMoney.textSecondary)
               .accessibilityHidden(true)
-            TextField(String(localized: "budget.amount.placeholder"), text: $budgetViewModel.budgetAmount)
-              .keyboardType(.decimalPad)
-              .textFieldStyle(RoundedBorderTextFieldStyle())
-              .accessibilityLabel("Budget Amount in Brazilian Reais")
-              .accessibilityHint("Enter the total budget amount")
-              .accessibilityValue(budgetViewModel.budgetAmount.isEmpty ? "Empty" : "R$ \(budgetViewModel.budgetAmount)")
+
+            StyledTextField(
+              title: String(localized: "budget.amount.section"),
+              text: $budgetViewModel.budgetAmount,
+              placeholder: String(localized: "budget.amount.placeholder"),
+              keyboardType: .decimalPad
+            )
+            .accessibilityLabel("Budget Amount in Brazilian Reais")
+            .accessibilityHint("Enter the total budget amount")
+            .accessibilityValue(budgetViewModel.budgetAmount.isEmpty ? "Empty" : "R$ \(budgetViewModel.budgetAmount)")
           }
-        } header: {
-          Text(String(localized: "budget.amount.section"))
         } footer: {
           Text(String(localized: "budget.amount.footer"))
             .font(.caption)

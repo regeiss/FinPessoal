@@ -27,14 +27,18 @@ struct AddEditCategorySheet: View {
     NavigationView {
       Form {
         Section {
-          TextField(String(localized: "category.name.placeholder"), text: $categoryViewModel.name)
-            .textFieldStyle(RoundedBorderTextFieldStyle())
-          
-          TextField(String(localized: "category.description.placeholder"), text: $categoryViewModel.description, axis: .vertical)
-            .lineLimit(2...4)
-            .textFieldStyle(RoundedBorderTextFieldStyle())
-        } header: {
-          Text(String(localized: "category.basic.info"))
+          StyledTextField(
+            title: String(localized: "category.basic.info"),
+            text: $categoryViewModel.name,
+            placeholder: String(localized: "category.name.placeholder")
+          )
+
+          StyledTextEditor(
+            title: String(localized: "category.description.placeholder"),
+            text: $categoryViewModel.description,
+            placeholder: String(localized: "category.description.placeholder"),
+            minHeight: 80
+          )
         } footer: {
           Text(String(localized: "category.basic.info.footer"))
             .font(.caption)
