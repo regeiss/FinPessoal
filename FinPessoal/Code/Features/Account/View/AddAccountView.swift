@@ -23,10 +23,14 @@ struct AddAccountView: View {
       Form {
         Section(header: Text(String(localized: "accounts.basic.info"))
           .accessibilityAddTraits(.isHeader)) {
-          TextField(String(localized: "accounts.name.placeholder"), text: $accountName)
-            .accessibilityLabel("Account Name")
-            .accessibilityHint("Enter the name for your account")
-            .accessibilityValue(accountName.isEmpty ? "Empty" : accountName)
+          StyledTextField(
+            title: String(localized: "accounts.name"),
+            text: $accountName,
+            placeholder: String(localized: "accounts.name.placeholder")
+          )
+          .accessibilityLabel("Account Name")
+          .accessibilityHint("Enter the name for your account")
+          .accessibilityValue(accountName.isEmpty ? "Empty" : accountName)
 
           Picker(String(localized: "accounts.type"), selection: $selectedAccountType) {
             ForEach(AccountType.allCases, id: \.self) { type in
@@ -46,11 +50,15 @@ struct AddAccountView: View {
 
         Section(header: Text(String(localized: "accounts.balance.info"))
           .accessibilityAddTraits(.isHeader)) {
-          TextField(String(localized: "accounts.initial.balance"), text: $initialBalance)
-            .keyboardType(.decimalPad)
-            .accessibilityLabel("Initial Balance")
-            .accessibilityHint("Enter the starting balance for this account")
-            .accessibilityValue(initialBalance.isEmpty ? "Empty" : initialBalance)
+          StyledTextField(
+            title: String(localized: "accounts.initial.balance"),
+            text: $initialBalance,
+            placeholder: "0.00",
+            keyboardType: .decimalPad
+          )
+          .accessibilityLabel("Initial Balance")
+          .accessibilityHint("Enter the starting balance for this account")
+          .accessibilityValue(initialBalance.isEmpty ? "Empty" : initialBalance)
 
           Picker(String(localized: "accounts.currency"), selection: $currency) {
             Text("Real (BRL)").tag("BRL")

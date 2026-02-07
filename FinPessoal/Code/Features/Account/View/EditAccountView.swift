@@ -47,10 +47,14 @@ struct EditAccountView: View {
       Form {
         Section(header: Text(String(localized: "accounts.basic.info"))
           .accessibilityAddTraits(.isHeader)) {
-          TextField(String(localized: "accounts.name.placeholder"), text: $accountName)
-            .accessibilityLabel("Account Name")
-            .accessibilityHint("Edit the name for your account")
-            .accessibilityValue(accountName.isEmpty ? "Empty" : accountName)
+          StyledTextField(
+            title: String(localized: "accounts.name"),
+            text: $accountName,
+            placeholder: String(localized: "accounts.name.placeholder")
+          )
+          .accessibilityLabel("Account Name")
+          .accessibilityHint("Edit the name for your account")
+          .accessibilityValue(accountName.isEmpty ? "Empty" : accountName)
 
           Picker(String(localized: "accounts.type"), selection: $selectedAccountType) {
             ForEach(AccountType.allCases, id: \.self) { type in
@@ -70,14 +74,18 @@ struct EditAccountView: View {
 
         Section(header: Text(String(localized: "accounts.balance.info"))
           .accessibilityAddTraits(.isHeader)) {
-          TextField(String(localized: "accounts.current.balance"), text: $balance)
-            .keyboardType(.decimalPad)
-            .onChange(of: balance) { _, newValue in
-              formatBalanceInput(newValue)
-            }
-            .accessibilityLabel("Current Balance")
-            .accessibilityHint("Edit the current balance for this account")
-            .accessibilityValue(balance.isEmpty ? "Empty" : balance)
+          StyledTextField(
+            title: String(localized: "accounts.current.balance"),
+            text: $balance,
+            placeholder: "0.00",
+            keyboardType: .decimalPad
+          )
+          .onChange(of: balance) { _, newValue in
+            formatBalanceInput(newValue)
+          }
+          .accessibilityLabel("Current Balance")
+          .accessibilityHint("Edit the current balance for this account")
+          .accessibilityValue(balance.isEmpty ? "Empty" : balance)
 
           Picker(String(localized: "accounts.currency"), selection: $currency) {
             Text("Real (BRL)").tag("BRL")
