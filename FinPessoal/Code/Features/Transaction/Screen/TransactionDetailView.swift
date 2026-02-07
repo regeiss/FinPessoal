@@ -312,13 +312,21 @@ struct EditTransactionView: View {
             .pickerStyle(SegmentedPickerStyle())
           }
 
-          TextField(String(localized: "transactions.amount.placeholder"), text: $amount)
-            .keyboardType(.decimalPad)
-            .onChange(of: amount) { _, newValue in
-              formatAmountInput(newValue)
-            }
+          StyledTextField(
+            title: String(localized: "transactions.amount"),
+            text: $amount,
+            placeholder: String(localized: "transactions.amount.placeholder"),
+            keyboardType: .decimalPad
+          )
+          .onChange(of: amount) { _, newValue in
+            formatAmountInput(newValue)
+          }
 
-          TextField(String(localized: "transactions.description.placeholder"), text: $description)
+          StyledTextField(
+            title: String(localized: "transactions.description"),
+            text: $description,
+            placeholder: String(localized: "transactions.description.placeholder")
+          )
         }
 
         Section(header: Text(String(localized: "transactions.details"))) {

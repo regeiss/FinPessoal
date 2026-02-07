@@ -47,16 +47,24 @@ struct AddTransactionView: View {
             }
           }
           
-          TextField(String(localized: "transactions.amount.placeholder"), text: $amount)
-            .keyboardType(.decimalPad)
-            .accessibilityLabel("Transaction Amount")
-            .accessibilityHint("Enter the amount for this transaction")
-            .accessibilityValue(amount.isEmpty ? "Empty" : amount)
+          StyledTextField(
+            title: String(localized: "transactions.amount"),
+            text: $amount,
+            placeholder: String(localized: "transactions.amount.placeholder"),
+            keyboardType: .decimalPad
+          )
+          .accessibilityLabel("Transaction Amount")
+          .accessibilityHint("Enter the amount for this transaction")
+          .accessibilityValue(amount.isEmpty ? "Empty" : amount)
 
-          TextField(String(localized: "transactions.description.placeholder"), text: $description)
-            .accessibilityLabel("Transaction Description")
-            .accessibilityHint("Enter a description for this transaction")
-            .accessibilityValue(description.isEmpty ? "Empty" : description)
+          StyledTextField(
+            title: String(localized: "transactions.description"),
+            text: $description,
+            placeholder: String(localized: "transactions.description.placeholder")
+          )
+          .accessibilityLabel("Transaction Description")
+          .accessibilityHint("Enter a description for this transaction")
+          .accessibilityValue(description.isEmpty ? "Empty" : description)
         }
         
         Section(header: Text(String(localized: "transactions.details"))) {
