@@ -5478,6 +5478,23 @@
         }
       }
     },
+    "common.archive" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Archive"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arquivar"
+          }
+        }
+      }
+    },
     "common.coming.soon" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -5508,6 +5525,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Em breve"
+          }
+        }
+      }
+    },
+    "common.complete" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Complete"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Concluir"
           }
         }
       }
