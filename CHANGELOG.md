@@ -9,6 +9,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added - February 2026
 
+- **Transaction Screens Migration to Styled Components** (2026-02-07)
+  - Migrated AddTransactionView.swift to use StyledTextField
+  - Migrated TransactionDetailView.swift (EditTransactionView) to use StyledTextField
+  - Replaced standard TextField with StyledTextField for amount input (decimal keyboard)
+  - Replaced standard TextField with StyledTextField for description input
+  - Focus animations now work on all transaction input fields
+  - Maintains all existing accessibility labels, hints, and values
+  - Improved visual consistency across transaction forms
+  - Files modified:
+    - FinPessoal/Code/Features/Transaction/Screen/AddTransactionView.swift
+    - FinPessoal/Code/Features/Transaction/Screen/TransactionDetailView.swift
+
 - **Auth Screens Migration to Styled Components** (2026-02-07)
   - Migrated AuthScreen.swift to use StyledTextField and StyledSecureField
   - Migrated LoginView.swift to use StyledTextField and StyledSecureField
