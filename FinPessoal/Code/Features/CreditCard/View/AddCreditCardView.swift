@@ -31,18 +31,24 @@ struct AddCreditCardView: View {
         NavigationView {
             Form {
                 Section {
-                    TextField(String(localized: "creditcard.name.placeholder"), text: $name)
-                        .focused($focusedField, equals: .name)
-                    
-                    TextField(String(localized: "creditcard.last_four.placeholder"), text: $lastFourDigits)
-                        .focused($focusedField, equals: .lastFourDigits)
-                        .keyboardType(.numberPad)
-                        .onChange(of: lastFourDigits) { _, newValue in
-                            // Limit to 4 digits
-                            if newValue.count > 4 {
-                                lastFourDigits = String(newValue.prefix(4))
-                            }
-                        }
+                    StyledTextField(
+                      text: $name,
+                      placeholder: String(localized: "creditcard.name.placeholder")
+                    )
+                    .focused($focusedField, equals: .name)
+
+                    StyledTextField(
+                      text: $lastFourDigits,
+                      placeholder: String(localized: "creditcard.last_four.placeholder"),
+                      keyboardType: .numberPad
+                    )
+                    .focused($focusedField, equals: .lastFourDigits)
+                    .onChange(of: lastFourDigits) { _, newValue in
+                      // Limit to 4 digits
+                      if newValue.count > 4 {
+                        lastFourDigits = String(newValue.prefix(4))
+                      }
+                    }
                     
                     Picker(String(localized: "creditcard.brand"), selection: $selectedBrand) {
                         ForEach(CreditCardBrand.allCases, id: \.self) { brand in
@@ -65,28 +71,37 @@ struct AddCreditCardView: View {
                     HStack {
                         Text(String(localized: "creditcard.credit_limit"))
                         Spacer()
-                        TextField(String(localized: "creditcard.amount.placeholder"), text: $creditLimit)
-                            .focused($focusedField, equals: .creditLimit)
-                            .keyboardType(.decimalPad)
-                            .multilineTextAlignment(.trailing)
+                        StyledTextField(
+                          text: $creditLimit,
+                          placeholder: String(localized: "creditcard.amount.placeholder"),
+                          keyboardType: .decimalPad
+                        )
+                        .focused($focusedField, equals: .creditLimit)
+                        .multilineTextAlignment(.trailing)
                     }
-                    
+
                     HStack {
                         Text(String(localized: "creditcard.annual_fee"))
                         Spacer()
-                        TextField(String(localized: "creditcard.amount.placeholder"), text: $annualFee)
-                            .focused($focusedField, equals: .annualFee)
-                            .keyboardType(.decimalPad)
-                            .multilineTextAlignment(.trailing)
+                        StyledTextField(
+                          text: $annualFee,
+                          placeholder: String(localized: "creditcard.amount.placeholder"),
+                          keyboardType: .decimalPad
+                        )
+                        .focused($focusedField, equals: .annualFee)
+                        .multilineTextAlignment(.trailing)
                     }
-                    
+
                     HStack {
                         Text(String(localized: "creditcard.interest_rate"))
                         Spacer()
-                        TextField(String(localized: "creditcard.percentage.placeholder"), text: $interestRate)
-                            .focused($focusedField, equals: .interestRate)
-                            .keyboardType(.decimalPad)
-                            .multilineTextAlignment(.trailing)
+                        StyledTextField(
+                          text: $interestRate,
+                          placeholder: String(localized: "creditcard.percentage.placeholder"),
+                          keyboardType: .decimalPad
+                        )
+                        .focused($focusedField, equals: .interestRate)
+                        .multilineTextAlignment(.trailing)
                     }
                 } header: {
                     Text(String(localized: "creditcard.financial_info.header"))

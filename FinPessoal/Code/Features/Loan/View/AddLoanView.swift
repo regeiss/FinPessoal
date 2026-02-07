@@ -30,8 +30,11 @@ struct AddLoanView: View {
     NavigationView {
       Form {
         Section {
-          TextField(String(localized: "loan.name.placeholder"), text: $name)
-          
+          StyledTextField(
+            text: $name,
+            placeholder: String(localized: "loan.name.placeholder")
+          )
+
           Picker(String(localized: "loan.type"), selection: $loanType) {
             ForEach(LoanType.allCases, id: \.self) { type in
               HStack {
@@ -42,11 +45,16 @@ struct AddLoanView: View {
               .tag(type)
             }
           }
-          
-          TextField(String(localized: "loan.bank_name.placeholder"), text: $bankName)
-          
-          TextField(String(localized: "loan.purpose.placeholder"), text: $purpose)
-            .lineLimit(2...4)
+
+          StyledTextField(
+            text: $bankName,
+            placeholder: String(localized: "loan.bank_name.placeholder")
+          )
+
+          StyledTextField(
+            text: $purpose,
+            placeholder: String(localized: "loan.purpose.placeholder")
+          )
         } header: {
           Text(String(localized: "loan.basic_info.header"))
         } footer: {
@@ -57,25 +65,34 @@ struct AddLoanView: View {
           HStack {
             Text(String(localized: "loan.principal_amount"))
             Spacer()
-            TextField(String(localized: "loan.amount.placeholder"), text: $principalAmount)
-              .keyboardType(.decimalPad)
-              .multilineTextAlignment(.trailing)
+            StyledTextField(
+              text: $principalAmount,
+              placeholder: String(localized: "loan.amount.placeholder"),
+              keyboardType: .decimalPad
+            )
+            .multilineTextAlignment(.trailing)
           }
-          
+
           HStack {
             Text(String(localized: "loan.interest_rate"))
             Spacer()
-            TextField(String(localized: "loan.percentage.placeholder"), text: $interestRate)
-              .keyboardType(.decimalPad)
-              .multilineTextAlignment(.trailing)
+            StyledTextField(
+              text: $interestRate,
+              placeholder: String(localized: "loan.percentage.placeholder"),
+              keyboardType: .decimalPad
+            )
+            .multilineTextAlignment(.trailing)
           }
-          
+
           HStack {
             Text(String(localized: "loan.term_months"))
             Spacer()
-            TextField(String(localized: "loan.term.placeholder"), text: $term)
-              .keyboardType(.numberPad)
-              .multilineTextAlignment(.trailing)
+            StyledTextField(
+              text: $term,
+              placeholder: String(localized: "loan.term.placeholder"),
+              keyboardType: .numberPad
+            )
+            .multilineTextAlignment(.trailing)
           }
           
           DatePicker(

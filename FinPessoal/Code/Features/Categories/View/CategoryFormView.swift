@@ -79,9 +79,15 @@ struct CategoryFormView: View {
             Form {
                 // Basic Information
                 Section {
-                    TextField(String(localized: "category.name.placeholder"), text: $name)
+                    StyledTextField(
+                      text: $name,
+                      placeholder: String(localized: "category.name.placeholder")
+                    )
 
-                    TextField(String(localized: "category.description.placeholder"), text: $description)
+                    StyledTextField(
+                      text: $description,
+                      placeholder: String(localized: "category.description.placeholder")
+                    )
                 } header: {
                     Text(String(localized: "category.basic.info"))
                 }

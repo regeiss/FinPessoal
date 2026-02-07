@@ -9,6 +9,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added - February 2026
 
+- **Remaining Screens Migration to Styled Components (Phase 2 Complete)** (2026-02-07)
+  - Migrated all remaining screens (Bills, Goals, Categories, CreditCard, Loan, Profile) to styled components
+  - Added convenience initializers to StyledTextField and StyledTextEditor for inline usage
+  - Refactored AddBillScreen into smaller sections to resolve compiler complexity issues
+  - All 10 files now use StyledTextField for standard inputs
+  - StyledTextEditor used for multi-line notes fields (Bills)
+  - All fields maintain decimal keyboard for amounts, proper capitalization
+  - Focus animations now work consistently across all app screens
+  - Maintains all existing accessibility features
+  - Files modified (10 total):
+    - FinPessoal/Code/Features/Bills/Screen/AddBillScreen.swift (refactored with sections)
+    - FinPessoal/Code/Features/Goals/Screen/AddGoalScreen.swift
+    - FinPessoal/Code/Features/Goals/View/GoalCard.swift
+    - FinPessoal/Code/Features/Categories/View/CategoryFormView.swift
+    - FinPessoal/Code/Features/CreditCard/View/AddCreditCardView.swift
+    - FinPessoal/Code/Features/CreditCard/View/AddCreditCardTransactionView.swift
+    - FinPessoal/Code/Features/CreditCard/View/PayCreditCardView.swift
+    - FinPessoal/Code/Features/Loan/View/AddLoanView.swift
+    - FinPessoal/Code/Features/Loan/View/MakeLoanPaymentView.swift
+    - FinPessoal/Code/Features/Profile/ProfileEditView.swift
+  - Component enhancements:
+    - FinPessoal/Code/Animation/Components/StyledTextField.swift (added convenience init)
+    - FinPessoal/Code/Animation/Components/StyledTextEditor.swift (added convenience init)
+
 - **Budget Screens Migration to Styled Components** (2026-02-07)
   - Migrated AddBudgetScreen.swift to use StyledTextField
   - Migrated AddEditCategorySheet.swift to use StyledTextField and StyledTextEditor

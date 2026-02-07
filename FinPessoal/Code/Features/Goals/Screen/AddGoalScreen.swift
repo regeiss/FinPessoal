@@ -18,18 +18,15 @@ struct AddGoalScreen: View {
     NavigationView {
       Form {
         Section {
-          TextField(String(localized: "goal.name.placeholder"), text: $goalViewModel.name)
-            .textFieldStyle(RoundedBorderTextFieldStyle())
-            .accessibilityLabel("Goal Name")
-            .accessibilityHint("Enter a name for your goal")
-            .accessibilityValue(goalViewModel.name.isEmpty ? "Empty" : goalViewModel.name)
+          StyledTextField(
+            text: $goalViewModel.name,
+            placeholder: String(localized: "goal.name.placeholder")
+          )
 
-          TextField(String(localized: "goal.description.placeholder"), text: $goalViewModel.description, axis: .vertical)
-            .lineLimit(2...4)
-            .textFieldStyle(RoundedBorderTextFieldStyle())
-            .accessibilityLabel("Goal Description")
-            .accessibilityHint("Enter an optional description for your goal")
-            .accessibilityValue(goalViewModel.description.isEmpty ? "Empty" : goalViewModel.description)
+          StyledTextField(
+            text: $goalViewModel.description,
+            placeholder: String(localized: "goal.description.placeholder")
+          )
         } header: {
           Text(String(localized: "goal.basic.info"))
         }
@@ -62,24 +59,22 @@ struct AddGoalScreen: View {
             Text("R$")
               .foregroundColor(.secondary)
               .accessibilityHidden(true)
-            TextField(String(localized: "goal.target.amount.placeholder"), text: $goalViewModel.targetAmount)
-              .keyboardType(.decimalPad)
-              .textFieldStyle(RoundedBorderTextFieldStyle())
-              .accessibilityLabel("Target Amount")
-              .accessibilityHint("Enter the total amount you want to save in Brazilian Reais")
-              .accessibilityValue(goalViewModel.targetAmount.isEmpty ? "Empty" : "R$ \(goalViewModel.targetAmount)")
+            StyledTextField(
+              text: $goalViewModel.targetAmount,
+              placeholder: String(localized: "goal.target.amount.placeholder"),
+              keyboardType: .decimalPad
+            )
           }
 
           HStack {
             Text("R$")
               .foregroundColor(.secondary)
               .accessibilityHidden(true)
-            TextField(String(localized: "goal.current.amount.placeholder"), text: $goalViewModel.currentAmount)
-              .keyboardType(.decimalPad)
-              .textFieldStyle(RoundedBorderTextFieldStyle())
-              .accessibilityLabel("Current Amount")
-              .accessibilityHint("Enter how much you have already saved in Brazilian Reais")
-              .accessibilityValue(goalViewModel.currentAmount.isEmpty ? "Empty" : "R$ \(goalViewModel.currentAmount)")
+            StyledTextField(
+              text: $goalViewModel.currentAmount,
+              placeholder: String(localized: "goal.current.amount.placeholder"),
+              keyboardType: .decimalPad
+            )
           }
         } header: {
           Text(String(localized: "goal.amount.section"))

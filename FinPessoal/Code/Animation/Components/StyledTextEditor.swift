@@ -37,16 +37,32 @@ struct StyledTextEditor: View {
     self.error = error
   }
 
+  // Convenience initializer for inline usage without explicit title label
+  init(
+    text: Binding<String>,
+    placeholder: String,
+    minHeight: CGFloat = 100,
+    error: String? = nil
+  ) {
+    self.title = ""
+    self._text = text
+    self.placeholder = placeholder
+    self.minHeight = minHeight
+    self.error = error
+  }
+
   // MARK: - Body
 
   var body: some View {
     VStack(alignment: .leading, spacing: 6) {
-      // Label
-      Text(title)
-        .font(.subheadline)
-        .fontWeight(.medium)
-        .foregroundColor(Color.oldMoney.textSecondary)
-        .accessibilityHidden(true)
+      // Label (only show if title is not empty)
+      if !title.isEmpty {
+        Text(title)
+          .font(.subheadline)
+          .fontWeight(.medium)
+          .foregroundColor(Color.oldMoney.textSecondary)
+          .accessibilityHidden(true)
+      }
 
       // Text editor with styled background
       ZStack(alignment: .topLeading) {
@@ -102,7 +118,7 @@ struct StyledTextEditor: View {
         RoundedRectangle(cornerRadius: 8)
           .strokeBorder(borderColor, lineWidth: borderWidth)
       )
-      .accessibilityLabel(title)
+      .accessibilityLabel(title.isEmpty ? placeholder : title)
       .accessibilityValue(text.isEmpty ? "Empty" : text)
       .accessibilityHint(error.map { "Error: \($0). Multi-line text input" } ?? "Multi-line text input")
       .onChange(of: isFocused) { _, newValue in

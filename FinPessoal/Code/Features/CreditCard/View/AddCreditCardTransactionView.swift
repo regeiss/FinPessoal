@@ -66,18 +66,18 @@ struct AddCreditCardTransactionView: View {
                     HStack {
                         Text(String(localized: "transaction.amount"))
                         Spacer()
-                        TextField(
-                            String(localized: "creditcard.amount.placeholder"),
-                            text: $amount
+                        StyledTextField(
+                          text: $amount,
+                          placeholder: String(localized: "creditcard.amount.placeholder"),
+                          keyboardType: .decimalPad
                         )
                         .focused($focusedField, equals: .amount)
-                        .keyboardType(.decimalPad)
                         .multilineTextAlignment(.trailing)
                     }
-                    
-                    TextField(
-                        String(localized: "transaction.description.placeholder"),
-                        text: $description
+
+                    StyledTextField(
+                      text: $description,
+                      placeholder: String(localized: "transaction.description.placeholder")
                     )
                     .focused($focusedField, equals: .description)
                     

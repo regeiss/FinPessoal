@@ -91,16 +91,16 @@ struct PayCreditCardView: View {
                     
                     HStack {
                         Text(String(localized: "creditcard.payment.amount"))
-                        
+
                         Spacer()
-                        
+
                         if selectedPaymentType == .customAmount {
-                            TextField(
-                                String(localized: "creditcard.amount.placeholder"),
-                                text: $paymentAmount
+                            StyledTextField(
+                              text: $paymentAmount,
+                              placeholder: String(localized: "creditcard.amount.placeholder"),
+                              keyboardType: .decimalPad
                             )
                             .focused($isAmountFieldFocused)
-                            .keyboardType(.decimalPad)
                             .multilineTextAlignment(.trailing)
                         } else {
                             Text(formatCurrency(calculatedAmount))

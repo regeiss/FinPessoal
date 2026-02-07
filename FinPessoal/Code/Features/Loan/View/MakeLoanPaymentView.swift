@@ -188,31 +188,35 @@ struct MakeLoanPaymentView: View {
       HStack {
         Text(String(localized: "loan.payment.extra_amount"))
         Spacer()
-        TextField(String(localized: "loan.amount.placeholder"), text: $customAmount)
-          .keyboardType(.decimalPad)
-          .multilineTextAlignment(.trailing)
-          .textFieldStyle(RoundedBorderTextFieldStyle())
-          .frame(width: 120)
+        StyledTextField(
+          text: $customAmount,
+          placeholder: String(localized: "loan.amount.placeholder"),
+          keyboardType: .decimalPad
+        )
+        .multilineTextAlignment(.trailing)
+        .frame(width: 120)
       }
-      
+
       Text(String(localized: "loan.payment.extra_principal_info"))
         .font(.caption)
         .foregroundColor(.secondary)
     }
   }
-  
+
   private var customPaymentInfo: some View {
     VStack(alignment: .leading, spacing: 8) {
       HStack {
         Text(String(localized: "loan.payment.custom_amount"))
         Spacer()
-        TextField(String(localized: "loan.amount.placeholder"), text: $customAmount)
-          .keyboardType(.decimalPad)
-          .multilineTextAlignment(.trailing)
-          .textFieldStyle(RoundedBorderTextFieldStyle())
-          .frame(width: 120)
+        StyledTextField(
+          text: $customAmount,
+          placeholder: String(localized: "loan.amount.placeholder"),
+          keyboardType: .decimalPad
+        )
+        .multilineTextAlignment(.trailing)
+        .frame(width: 120)
       }
-      
+
       Text(String(localized: "loan.payment.custom_info"))
         .font(.caption)
         .foregroundColor(.secondary)

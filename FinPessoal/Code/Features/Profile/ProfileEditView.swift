@@ -26,10 +26,13 @@ struct ProfileEditView: View {
           HStack {
             Text(String(localized: "profile.edit.name", defaultValue: "Nome"))
             Spacer()
-            TextField(String(localized: "profile.edit.name", defaultValue: "Nome"), text: $name)
-              .multilineTextAlignment(.trailing)
+            StyledTextField(
+              text: $name,
+              placeholder: String(localized: "profile.edit.name", defaultValue: "Nome")
+            )
+            .multilineTextAlignment(.trailing)
           }
-          
+
           HStack {
             Text(String(localized: "profile.edit.email", defaultValue: "Email"))
             Spacer()

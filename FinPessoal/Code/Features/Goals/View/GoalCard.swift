@@ -341,16 +341,16 @@ struct GoalProgressSheet: View {
                   .frame(width: 30)
                   .accessibilityHidden(true)
 
-                TextField("0,00", text: $newContribution)
-                  .keyboardType(.decimalPad)
-                  .font(.title2)
-                  .fontWeight(.semibold)
-                  .onChange(of: newContribution) { _, newValue in
-                    formatMoneyInput(newValue)
-                  }
-                  .accessibilityLabel("Contribution Amount")
-                  .accessibilityHint("Enter the amount to contribute to this goal")
-                  .accessibilityValue(contributionAmount > 0 ? formattedContribution : "Empty")
+                StyledTextField(
+                  text: $newContribution,
+                  placeholder: "0,00",
+                  keyboardType: .decimalPad
+                )
+                .font(.title2)
+                .fontWeight(.semibold)
+                .onChange(of: newContribution) { _, newValue in
+                  formatMoneyInput(newValue)
+                }
               }
               .padding()
               .background(Color.oldMoney.surface)

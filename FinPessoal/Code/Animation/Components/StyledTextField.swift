@@ -41,16 +41,34 @@ struct StyledTextField: View {
     self.error = error
   }
 
+  // Convenience initializer for inline usage without explicit title label
+  init(
+    text: Binding<String>,
+    placeholder: String,
+    keyboardType: UIKeyboardType = .default,
+    autocapitalization: TextInputAutocapitalization = .sentences,
+    error: String? = nil
+  ) {
+    self.title = ""
+    self._text = text
+    self.placeholder = placeholder
+    self.keyboardType = keyboardType
+    self.autocapitalization = autocapitalization
+    self.error = error
+  }
+
   // MARK: - Body
 
   var body: some View {
     VStack(alignment: .leading, spacing: 6) {
-      // Label
-      Text(title)
-        .font(.subheadline)
-        .fontWeight(.medium)
-        .foregroundColor(Color.oldMoney.textSecondary)
-        .accessibilityHidden(true)
+      // Label (only show if title is not empty)
+      if !title.isEmpty {
+        Text(title)
+          .font(.subheadline)
+          .fontWeight(.medium)
+          .foregroundColor(Color.oldMoney.textSecondary)
+          .accessibilityHidden(true)
+      }
 
       // Text field with styled background
       TextField(placeholder, text: $text)
@@ -96,7 +114,7 @@ struct StyledTextField: View {
             .strokeBorder(borderColor, lineWidth: borderWidth)
         )
         .focused($isFocused)
-        .accessibilityLabel(title)
+        .accessibilityLabel(title.isEmpty ? placeholder : title)
         .accessibilityValue(text.isEmpty ? "Empty" : text)
         .accessibilityHint(error.map { "Error: \($0)" } ?? "")
         .onChange(of: isFocused) { _, newValue in
