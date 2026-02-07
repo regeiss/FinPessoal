@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import UIKit
 
 /// Styled multi-line text editor with inner shadow, focus animation, and error states
 struct StyledTextEditor: View {

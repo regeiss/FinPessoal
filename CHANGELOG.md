@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed - February 2026
 
+- **StyledTextEditor UIKit Import Removed** (2026-02-07)
+  - Removed unnecessary UIKit import from StyledTextEditor.swift
+  - Component only uses SwiftUI TextEditor, does not need UIKit types
+  - Resolves "No such module 'UIKit'" compilation error
+  - Build verified successful
+
 - **StyledTextField Code Quality Improvements** (2026-02-06)
   - Removed force unwrap in accessibility hint (now uses error.map)
   - Fixed animationMode initialization to use AnimationSettings.shared.effectiveMode directly
