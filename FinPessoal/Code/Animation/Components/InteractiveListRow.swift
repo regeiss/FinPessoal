@@ -12,7 +12,7 @@ public struct InteractiveListRow<Content: View>: View {
   // MARK: - State
   @State private var isPressed = false
   @Environment(\.colorScheme) private var colorScheme
-  @State private var animationMode: AnimationMode = .full
+  @State private var animationMode: AnimationMode = AnimationMode.full
 
   // MARK: - Properties
   private let content: Content
@@ -106,11 +106,11 @@ public struct InteractiveListRow<Content: View>: View {
 
   private var pressAnimation: Animation? {
     switch animationMode {
-    case .full:
+    case AnimationMode.full:
       return isPressed ? AnimationEngine.snappySpring : AnimationEngine.gentleSpring
-    case .reduced:
-      return .easeInOut(duration: 0.2)
-    case .minimal:
+    case AnimationMode.reduced:
+      return Animation.easeInOut(duration: 0.2)
+    case AnimationMode.minimal:
       return nil
     }
   }
@@ -120,7 +120,7 @@ public struct InteractiveListRow<Content: View>: View {
       .onChanged { _ in
         guard !isPressed else { return }
         isPressed = true
-        if animationMode == .full {
+        if animationMode == AnimationMode.full {
           HapticEngine.shared.light()
         }
       }
@@ -156,7 +156,7 @@ public struct InteractiveListRow<Content: View>: View {
 private struct RowShimmerView: View {
   @State private var offset: CGFloat = -300
   @Environment(\.colorScheme) private var colorScheme
-  @State private var animationMode: AnimationMode = .full
+  @State private var animationMode: AnimationMode = AnimationMode.full
 
   var body: some View {
     HStack(spacing: 16) {
@@ -186,13 +186,13 @@ private struct RowShimmerView: View {
     .padding()
     .onAppear {
       animationMode = AnimationSettings.shared.effectiveMode
-      if animationMode == .full {
-        withAnimation(.linear(duration: 1.5).repeatForever(autoreverses: false)) {
+      if animationMode == AnimationMode.full {
+        withAnimation(Animation.linear(duration: 1.5).repeatForever(autoreverses: false)) {
           offset = 300
         }
-      } else if animationMode == .reduced {
+      } else if animationMode == AnimationMode.reduced {
         // Pulse animation for reduced mode
-        withAnimation(.easeInOut(duration: 1.0).repeatForever(autoreverses: true)) {
+        withAnimation(Animation.easeInOut(duration: 1.0).repeatForever(autoreverses: true)) {
           offset = 100
         }
       }
@@ -205,7 +205,7 @@ private struct RowShimmerView: View {
 
   @ViewBuilder
   private var shimmerGradient: some View {
-    if animationMode == .full {
+    if animationMode == AnimationMode.full {
       LinearGradient(
         colors: [
           Color.clear,
@@ -217,7 +217,7 @@ private struct RowShimmerView: View {
       )
       .offset(x: offset)
       .mask(RoundedRectangle(cornerRadius: 4))
-    } else if animationMode == .reduced {
+    } else if animationMode == AnimationMode.reduced {
       shimmerBase.opacity(abs(offset) / 100.0)
     }
   }
