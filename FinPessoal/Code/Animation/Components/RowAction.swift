@@ -39,8 +39,8 @@ extension RowAction {
     RowAction(
       title: String(localized: "common.delete"),
       icon: "trash",
-      tint: .red,
-      role: .destructive,
+      tint: Color.red,
+      role: ButtonRole.destructive,
       action: action
     )
   }
@@ -50,7 +50,7 @@ extension RowAction {
     RowAction(
       title: String(localized: "common.edit"),
       icon: "pencil",
-      tint: .blue,
+      tint: Color.blue,
       action: action
     )
   }
@@ -80,7 +80,7 @@ extension RowAction {
     RowAction(
       title: String(localized: "common.archive"),
       icon: "archivebox",
-      tint: .orange,
+      tint: Color.orange,
       action: action
     )
   }

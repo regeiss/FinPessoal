@@ -229,8 +229,8 @@ private struct RowShimmerView: View {
   List {
     InteractiveListRow(
       onTap: { print("Tapped") },
-      leadingActions: [.edit { print("Edit") }],
-      trailingActions: [.delete { print("Delete") }]
+      leadingActions: [RowAction.edit { print("Edit") }],
+      trailingActions: [RowAction.delete { print("Delete") }]
     ) {
       HStack {
         Image(systemName: "dollarsign.circle.fill")
