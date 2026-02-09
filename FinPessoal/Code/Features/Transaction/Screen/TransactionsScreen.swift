@@ -228,10 +228,23 @@ struct TransactionsScreen: View {
       ForEach(groupedTransactions, id: \.0) { date, transactions in
         Section {
           ForEach(transactions) { transaction in
-            TransactionRow(transaction: transaction)
-              .onTapGesture {
+            InteractiveListRow(
+              onTap: {
                 transactionToEdit = transaction
-              }
+              },
+              leadingActions: [
+                .edit {
+                  transactionToEdit = transaction
+                }
+              ],
+              trailingActions: [
+                .delete {
+                  deleteTransaction(transaction)
+                }
+              ]
+            ) {
+              TransactionRow(transaction: transaction)
+            }
           }
         } header: {
           HStack {

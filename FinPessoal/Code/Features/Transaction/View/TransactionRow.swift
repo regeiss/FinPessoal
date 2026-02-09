@@ -63,8 +63,6 @@ struct TransactionRow: View {
       }
     }
     .padding()
-    .background(Color.oldMoney.surface)
-    .cornerRadius(12)
     .accessibilityElement(children: .combine)
     .accessibilityLabel("\(transaction.type.displayName): \(transaction.description), \(transaction.subcategory?.displayName ?? transaction.category.displayName), \(transaction.formattedAmount), \(transaction.date.formatted())\(transaction.isRecurring ? ", Recurring" : "")")
     .accessibilityHint("Double tap to view transaction details")
