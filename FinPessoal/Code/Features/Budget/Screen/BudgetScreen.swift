@@ -168,10 +168,21 @@ struct BudgetsScreen: View {
         .accessibilityAddTraits(.isHeader)
 
       ForEach(financeViewModel.budgets) { budget in
-        BudgetCard(budget: budget)
-          .onTapGesture { selectedBudget = budget }
-          .accessibilityAddTraits(.isButton)
-          .accessibilityHint("Double tap to view budget details")
+        InteractiveListRow(
+          onTap: {
+            selectedBudget = budget
+          },
+          trailingActions: [
+            .delete {
+              // Delete budget action
+              if let index = financeViewModel.budgets.firstIndex(where: { $0.id == budget.id }) {
+                financeViewModel.budgets.remove(at: index)
+              }
+            }
+          ]
+        ) {
+          BudgetCard(budget: budget)
+        }
       }
     }
   }
