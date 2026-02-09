@@ -72,10 +72,17 @@ struct GoalScreen: View {
                   } else {
                     LazyVStack(spacing: 8) {
                       ForEach(activeGoals) { goal in
-                        GoalRowView(goal: goal)
-                          .background(Color.oldMoney.background)
-                          .clipShape(RoundedRectangle(cornerRadius: 8))
-                          .shadow(color: .black.opacity(0.05), radius: 1, x: 0, y: 1)
+                        InteractiveListRow(
+                          trailingActions: [
+                            .delete {
+                              if let index = financeViewModel.goals.firstIndex(where: { $0.id == goal.id }) {
+                                financeViewModel.goals.remove(at: index)
+                              }
+                            }
+                          ]
+                        ) {
+                          GoalRowView(goal: goal)
+                        }
                       }
                     }
                     .padding(.horizontal, 20)
@@ -97,11 +104,18 @@ struct GoalScreen: View {
 
                   LazyVStack(spacing: 8) {
                     ForEach(completedGoals) { goal in
-                      GoalRowView(goal: goal)
-                        .background(Color.oldMoney.background)
-                        .clipShape(RoundedRectangle(cornerRadius: 8))
-                        .shadow(color: .black.opacity(0.05), radius: 1, x: 0, y: 1)
-                        .opacity(0.7)
+                      InteractiveListRow(
+                        trailingActions: [
+                          .delete {
+                            if let index = financeViewModel.goals.firstIndex(where: { $0.id == goal.id }) {
+                              financeViewModel.goals.remove(at: index)
+                            }
+                          }
+                        ]
+                      ) {
+                        GoalRowView(goal: goal)
+                      }
+                      .opacity(0.7)
                     }
                   }
                   .padding(.horizontal, 20)
