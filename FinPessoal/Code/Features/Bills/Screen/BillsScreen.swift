@@ -147,39 +147,22 @@ struct BillsScreen: View {
   private var billsList: some View {
     List {
       ForEach(viewModel.filteredBills) { bill in
-        BillRow(bill: bill) {
-          Task {
-            await viewModel.markBillAsPaid(bill.id)
-          }
-        }
-        .onTapGesture {
-          viewModel.selectBill(bill)
-        }
-        .accessibilityHint("Double tap to view bill details")
-        .swipeActions(edge: .trailing, allowsFullSwipe: false) {
-          Button(role: .destructive) {
-            Task {
+        InteractiveListRow(
+          onTap: {
+            viewModel.selectBill(bill)
+          },
+          leadingActions: bill.isPaid ? [] : [
+            .markPaid {
+              await viewModel.markBillAsPaid(bill.id)
+            }
+          ],
+          trailingActions: [
+            .delete {
               await viewModel.deleteBill(bill.id)
             }
-          } label: {
-            Label(String(localized: "common.delete"), systemImage: "trash")
-          }
-          .accessibilityLabel("Delete \(bill.name)")
-          .accessibilityHint("Deletes this bill permanently")
-        }
-        .swipeActions(edge: .leading, allowsFullSwipe: true) {
-          if !bill.isPaid {
-            Button {
-              Task {
-                await viewModel.markBillAsPaid(bill.id)
-              }
-            } label: {
-              Label(String(localized: "bill.mark.paid"), systemImage: "checkmark.circle")
-            }
-            .tint(.green)
-            .accessibilityLabel("Mark \(bill.name) as paid")
-            .accessibilityHint("Marks this bill as paid for the current period")
-          }
+          ]
+        ) {
+          BillRow(bill: bill, onMarkAsPaid: nil)
         }
       }
     }
