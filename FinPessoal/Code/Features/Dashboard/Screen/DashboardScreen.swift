@@ -86,8 +86,10 @@ struct DashboardScreen: View {
       }
       .padding()
     }
+    .coordinateSpace(name: "scroll")
     .background(Color.oldMoney.background)
     .navigationTitle(String(localized: "tab.dashboard"))
+    .blurredNavigationBar()
     .toolbar {
       if UIDevice.current.userInterfaceIdiom != .pad {
         ToolbarItem(placement: .navigationBarTrailing) {

@@ -93,7 +93,9 @@ struct ReportsScreen: View {
           .accessibilityLabel("Error loading reports")
         }
     }
+    .coordinateSpace(name: "scroll")
     .navigationTitle(String(localized: "sidebar.reports"))
+    .blurredNavigationBar()
     .toolbar {
       ToolbarItemGroup(placement: .navigationBarTrailing) {
         // Period selector

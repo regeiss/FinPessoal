@@ -34,7 +34,9 @@ struct CreditCardsScreen: View {
                     creditCardsContent
                 }
             }
+            .coordinateSpace(name: "scroll")
             .navigationTitle(String(localized: "creditcard.title"))
+            .blurredNavigationBar()
             .navigationBarTitleDisplayMode(.large)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -45,10 +47,10 @@ struct CreditCardsScreen: View {
                     }
                 }
             }
-            .sheet(isPresented: $showingAddCard) {
+            .frostedSheet(isPresented: $showingAddCard) {
                 AddCreditCardView(creditCardService: creditCardService)
             }
-            .sheet(isPresented: $showingCardDetail) {
+            .frostedSheet(isPresented: $showingCardDetail) {
                 if let selectedCard = selectedCard {
                     CreditCardDetailView(creditCard: selectedCard, creditCardService: creditCardService)
                 }

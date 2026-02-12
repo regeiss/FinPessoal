@@ -26,7 +26,9 @@ struct BudgetsScreen: View {
       }
       .padding(.horizontal)
     }
+    .coordinateSpace(name: "scroll")
     .navigationTitle(String(localized: "sidebar.budgets"))
+    .blurredNavigationBar()
     .toolbar {
       ToolbarItem(placement: .navigationBarTrailing) {
         Button {
@@ -38,12 +40,12 @@ struct BudgetsScreen: View {
         .accessibilityHint("Opens form to create a new budget")
       }
     }
-    .sheet(isPresented: $showingAddBudget) {
+    .frostedSheet(isPresented: $showingAddBudget) {
       AddBudgetScreen()
         .environmentObject(budgetViewModel)
         .environmentObject(financeViewModel)
     }
-    .sheet(item: $selectedBudget) { budget in
+    .frostedSheet(item: $selectedBudget) { budget in
       BudgetDetailSheet(budget: budget)
         .environmentObject(financeViewModel)
     }

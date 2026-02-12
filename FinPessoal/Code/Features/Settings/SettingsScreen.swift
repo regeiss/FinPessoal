@@ -214,19 +214,19 @@ struct SettingsScreen: View {
         }
     }
     .preferredColorScheme(userAppearance.colorScheme)
-    .sheet(isPresented: $showingProfile) {
+    .frostedSheet(isPresented: $showingProfile) {
       ProfileView()
         .environmentObject(authViewModel)
     }
-    .sheet(isPresented: $showingCurrencySettings) {
+    .frostedSheet(isPresented: $showingCurrencySettings) {
       CurrencySettingsView()
         .preferredColorScheme(userAppearance.colorScheme)
     }
-    .sheet(isPresented: $showingLanguageSettings) {
+    .frostedSheet(isPresented: $showingLanguageSettings) {
       LanguageSettingsView()
         .preferredColorScheme(userAppearance.colorScheme)
     }
-    .sheet(isPresented: $showingHelp) {
+    .frostedSheet(isPresented: $showingHelp) {
       HelpScreen()
         .preferredColorScheme(userAppearance.colorScheme)
     }

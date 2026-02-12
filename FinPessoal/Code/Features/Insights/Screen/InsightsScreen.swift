@@ -39,7 +39,9 @@ struct InsightsScreen: View {
       }
       .padding()
     }
+    .coordinateSpace(name: "scroll")
     .navigationTitle(String(localized: "insights.title"))
+    .blurredNavigationBar()
     .toolbar {
       ToolbarItem(placement: .navigationBarTrailing) {
         Button {

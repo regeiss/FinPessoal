@@ -22,7 +22,9 @@ struct ProfileView: View {
         }
         .padding()
       }
+      .coordinateSpace(name: "scroll")
       .navigationTitle(String(localized: "profile.title", defaultValue: "Perfil"))
+      .blurredNavigationBar()
       .toolbar {
         ToolbarItem(placement: .navigationBarTrailing) {
           Button(String(localized: "common.edit")) {
@@ -30,7 +32,7 @@ struct ProfileView: View {
           }
         }
       }
-      .sheet(isPresented: $showingEditProfile) {
+      .frostedSheet(isPresented: $showingEditProfile) {
         ProfileEditView()
           .environmentObject(authViewModel)
       }

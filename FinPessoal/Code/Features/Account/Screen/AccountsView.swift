@@ -42,12 +42,12 @@ struct AccountsView: View {
         .accessibilityHint("Opens form to add a new account")
       }
     }
-    .sheet(isPresented: $accountViewModel.showingAddAccount) {
+    .frostedSheet(isPresented: $accountViewModel.showingAddAccount) {
       if UIDevice.current.userInterfaceIdiom != .pad {
         AddAccountView(accountViewModel: accountViewModel)
       }
     }
-    .sheet(isPresented: $accountViewModel.showingAccountDetail) {
+    .frostedSheet(isPresented: $accountViewModel.showingAccountDetail) {
       if UIDevice.current.userInterfaceIdiom != .pad {
         if let selectedAccount = accountViewModel.selectedAccount {
           AccountDetailView(account: selectedAccount, accountViewModel: accountViewModel)
@@ -55,7 +55,7 @@ struct AccountsView: View {
         }
       }
     }
-    .sheet(item: $accountToEdit) { account in
+    .frostedSheet(item: $accountToEdit) { account in
       EditAccountView(account: account, accountViewModel: accountViewModel)
     }
     .refreshable {

@@ -34,7 +34,9 @@ struct LoansScreen: View {
           loansContent
         }
       }
+      .coordinateSpace(name: "scroll")
       .navigationTitle(String(localized: "loan.title"))
+      .blurredNavigationBar()
       .navigationBarTitleDisplayMode(.large)
       .toolbar {
         ToolbarItem(placement: .navigationBarTrailing) {
@@ -45,10 +47,10 @@ struct LoansScreen: View {
           }
         }
       }
-      .sheet(isPresented: $showingAddLoan) {
+      .frostedSheet(isPresented: $showingAddLoan) {
         AddLoanView(loanService: loanService)
       }
-      .sheet(isPresented: $showingLoanDetail) {
+      .frostedSheet(isPresented: $showingLoanDetail) {
         if let selectedLoan = selectedLoan {
           LoanDetailView(loan: selectedLoan, loanService: loanService)
         }

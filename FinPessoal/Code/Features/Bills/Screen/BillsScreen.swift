@@ -28,8 +28,10 @@ struct BillsScreen: View {
         contentView
       }
     }
+    .coordinateSpace(name: "scroll")
     .frame(maxWidth: .infinity, maxHeight: .infinity)
     .navigationTitle(String(localized: "bills.title"))
+    .blurredNavigationBar()
     .toolbar {
       ToolbarItem(placement: .navigationBarTrailing) {
         Button(action: {
@@ -59,15 +61,15 @@ struct BillsScreen: View {
         .accessibilityValue(viewModel.isFiltered ? "Filters active" : "No filters active")
       }
     }
-    .sheet(isPresented: $viewModel.showingAddBill) {
+    .frostedSheet(isPresented: $viewModel.showingAddBill) {
       AddBillScreen(viewModel: viewModel)
     }
-    .sheet(isPresented: $viewModel.showingBillDetail) {
+    .frostedSheet(isPresented: $viewModel.showingBillDetail) {
       if let bill = viewModel.selectedBill {
         BillDetailView(bill: bill, viewModel: viewModel)
       }
     }
-    .sheet(isPresented: $showingFilterSheet) {
+    .frostedSheet(isPresented: $showingFilterSheet) {
       filterSheet
     }
     .refreshable {

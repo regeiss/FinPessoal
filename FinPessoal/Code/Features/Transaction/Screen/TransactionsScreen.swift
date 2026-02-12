@@ -50,7 +50,9 @@ struct TransactionsScreen: View {
         transactionsList
       }
     }
+    .coordinateSpace(name: "scroll")
     .navigationTitle(String(localized: "tab.transactions"))
+    .blurredNavigationBar()
     .searchable(text: $transactionViewModel.searchQuery, prompt: String(localized: "transactions.search.prompt"))
     .toolbar {
       ToolbarItemGroup(placement: .navigationBarTrailing) {
@@ -71,13 +73,13 @@ struct TransactionsScreen: View {
         .accessibilityHint("Create a new transaction")
       }
     }
-    .sheet(isPresented: $transactionViewModel.showingAddTransaction) {
+    .frostedSheet(isPresented: $transactionViewModel.showingAddTransaction) {
       if UIDevice.current.userInterfaceIdiom != .pad {
         AddTransactionView(transactionViewModel: transactionViewModel)
           .environmentObject(AccountViewModel(repository: AppConfiguration.shared.createAccountRepository()))
       }
     }
-    .sheet(isPresented: $transactionViewModel.showingTransactionDetail) {
+    .frostedSheet(isPresented: $transactionViewModel.showingTransactionDetail) {
       if UIDevice.current.userInterfaceIdiom != .pad {
         if let selectedTransaction = transactionViewModel.selectedTransaction {
           TransactionDetailView(transaction: selectedTransaction)
@@ -85,7 +87,7 @@ struct TransactionsScreen: View {
         }
       }
     }
-    .sheet(item: $transactionToEdit) { transaction in
+    .frostedSheet(item: $transactionToEdit) { transaction in
       EditTransactionView(transaction: transaction)
         .environmentObject(financeViewModel)
     }
@@ -96,7 +98,7 @@ struct TransactionsScreen: View {
     ) { result in
       transactionViewModel.handleFileImport(result)
     }
-    .sheet(isPresented: $transactionViewModel.showingImportResult) {
+    .frostedSheet(isPresented: $transactionViewModel.showingImportResult) {
       ImportResultView(result: transactionViewModel.importResult)
     }
     .refreshable {

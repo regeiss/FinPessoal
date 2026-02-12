@@ -129,8 +129,10 @@ struct GoalScreen: View {
           .background(Color.oldMoney.background)
       }
     }
+    .coordinateSpace(name: "scroll")
     .environmentObject(goalViewModel)
     .navigationTitle(String(localized: "sidebar.goals"))
+    .blurredNavigationBar()
     .toolbar {
       ToolbarItem(placement: .navigationBarLeading) {
         if !financeViewModel.goals.isEmpty {
@@ -160,7 +162,7 @@ struct GoalScreen: View {
         .accessibilityHint("Opens form to create a new goal")
       }
     }
-    .sheet(isPresented: $showingAddGoal) {
+    .frostedSheet(isPresented: $showingAddGoal) {
       AddGoalScreen()
         .environmentObject(goalViewModel)
         .environmentObject(financeViewModel)
