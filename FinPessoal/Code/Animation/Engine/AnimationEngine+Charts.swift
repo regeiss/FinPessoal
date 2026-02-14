@@ -3,6 +3,16 @@ import SwiftUI
 
 extension AnimationEngine {
 
+  // MARK: - Chart Animation Constants
+
+  /// Initial delay before chart reveal starts
+  public static let chartInitialDelay: Double = 0.3
+
+  /// Fade duration for chart data morphing
+  public static let chartFadeDuration: Double = 0.15
+
+  // MARK: - Chart Animations
+
   /// Chart reveal animation (300ms with stagger support)
   static func chartReveal(delay: Double = 0) -> Animation? {
     switch AnimationSettings.shared.effectiveMode {

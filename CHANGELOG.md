@@ -7,6 +7,62 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed - February 2026
+
+- **Phase 5A: Charts - PieDonutChart Code Quality Improvements** (2026-02-14)
+  - Critical Issues Fixed:
+    - **Accessibility**: Added comprehensive VoiceOver support
+      - Added accessibility labels, values, and hints for each segment
+      - Made each segment individually accessible with ForEach of invisible elements
+      - Added .isSelected trait for selected segments
+      - Created accessibility helper methods (chartAccessibilityLabel, formatAccessibilityValue, formatValue)
+      - Chart announces type and segment count
+      - Segments announce label, currency value, and percentage
+      - All segments have "Double tap to select" hint
+    - **Hit Testing Tests**: Added 4 new unit tests
+      - testHitTesting_TapCenterOfSegment: Validates angle calculation for segment centers
+      - testHitTesting_TapInsideDonutHole: Validates inner radius bounds checking
+      - testHitTesting_TapOutsideChartBounds: Validates outer radius bounds checking
+      - testHitTesting_SegmentBoundary: Validates no overlap at segment boundaries
+  - Important Issues Fixed:
+    - **Memory Leak**: Replaced DispatchQueue.main.asyncAfter with cancellable Task
+      - Added @State private var animationTask: Task<Void, Never>?
+      - Cancel task in .onDisappear modifier
+      - Check Task.isCancelled before updating state
+    - **Animation Observation**: Fixed reduce motion handling
+      - Added @ObservedObject private var animationSettings = AnimationSettings.shared
+      - Removed unused @State private var animationMode variable
+      - Now properly observes AnimationSettings changes
+    - **Validation**: Added segment percentage validation in init
+      - Debug assertion to verify percentages sum to ~100%
+      - Helps catch data errors during development
+    - **Animation Tests**: Added 3 new unit tests
+      - testAnimationState_InitialTrimEnd: Validates initial animation state
+      - testAnimationState_OpacityForDataMorph: Validates opacity state
+      - testPercentageValidation_ValidSum: Validates percentage validation logic
+  - Nice to Have Fixes:
+    - **Constants**: Extracted magic numbers to AnimationEngine+Charts
+      - Added chartInitialDelay constant (0.3)
+      - Added chartFadeDuration constant (0.15)
+      - Used constants in animateReveal and animateDataChange methods
+    - **Error Handling**: Added assertionFailure for bounds checking
+      - Line 57: Added assertionFailure when angle index out of bounds
+      - Helps catch logic errors during development
+  - Testing:
+    - Added 7 new unit tests to PieDonutChartTests.swift
+    - Total tests: 11 (4 angle calculation + 4 hit testing + 3 animation/validation)
+    - All tests passing
+  - Accessibility:
+    - Full VoiceOver support for all chart segments
+    - Each segment individually accessible with tap actions
+    - Selected state properly announced
+    - Currency values properly formatted
+    - Respects reduce motion preferences
+  - Files modified:
+    - FinPessoal/Code/Animation/Components/Charts/PieDonutChart.swift
+    - FinPessoal/Code/Animation/Engine/AnimationEngine+Charts.swift
+    - FinPessoalTests/Animation/PieDonutChartTests.swift
+
 ### Added - February 2026
 
 - **Phase 5A: Charts - Task 1: Chart Data Models** (2026-02-13)

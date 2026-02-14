@@ -24,8 +24,9 @@ struct PieDonutChart: View {
   let style: PieChartStyle
 
   @StateObject private var gestureHandler = ChartGestureHandler()
+  @ObservedObject private var animationSettings = AnimationSettings.shared
   @State private var animatedSegments: [ChartSegment] = []
-  @State private var animationMode: AnimationMode = AnimationSettings.shared.effectiveMode
+  @State private var animationTask: Task<Void, Never>?
 
   // MARK: - Init
 
@@ -39,6 +40,15 @@ struct PieDonutChart: View {
       s.opacity = 1.0
       return s
     })
+
+    // Validate segment percentages sum to ~100%
+    #if DEBUG
+    let totalPercentage = segments.reduce(0.0) { $0 + $1.percentage }
+    assert(
+      abs(totalPercentage - 100.0) < 0.1,
+      "Segment percentages should sum to 100%, got \(totalPercentage)%"
+    )
+    #endif
   }
 
   // MARK: - Body
@@ -54,7 +64,10 @@ struct PieDonutChart: View {
         // Canvas for pie/donut chart
         Canvas { context, canvasSize in
           for (index, segment) in animatedSegments.enumerated() {
-            guard index < angles.count else { continue }
+            guard index < angles.count else {
+              assertionFailure("Angle index out of bounds: \(index) >= \(angles.count)")
+              continue
+            }
 
             let angle = angles[index]
             let isSelected = gestureHandler.selectedID == segment.id
@@ -114,6 +127,22 @@ struct PieDonutChart: View {
             )
           }
         }
+        .accessibilityElement(children: .contain)
+        .accessibilityLabel(chartAccessibilityLabel)
+
+        // Invisible accessibility elements for each segment
+        ForEach(Array(animatedSegments.enumerated()), id: \.element.id) { index, segment in
+          Color.clear
+            .frame(width: 1, height: 1)
+            .accessibilityElement()
+            .accessibilityLabel(segment.label)
+            .accessibilityValue(formatAccessibilityValue(for: segment))
+            .accessibilityHint("Double tap to select")
+            .accessibilityAddTraits(gestureHandler.selectedID == segment.id ? .isSelected : [])
+            .accessibilityAction {
+              gestureHandler.handleTap(segmentID: segment.id)
+            }
+        }
 
         // Callout for selected segment
         if let selectedID = gestureHandler.selectedID,
@@ -132,6 +161,10 @@ struct PieDonutChart: View {
     }
     .onAppear {
       animateReveal()
+    }
+    .onDisappear {
+      animationTask?.cancel()
+      animationTask = nil
     }
     .onChange(of: segments) { oldValue, newValue in
       animateDataChange()
@@ -220,7 +253,7 @@ struct PieDonutChart: View {
 
   private func animateReveal() {
     for (index, _) in segments.enumerated() {
-      let delay = 0.3 + (Double(index) * AnimationEngine.standardStagger)
+      let delay = AnimationEngine.chartInitialDelay + (Double(index) * AnimationEngine.standardStagger)
 
       withAnimation(AnimationEngine.chartReveal(delay: delay)) {
         animatedSegments[index].trimEnd = 1.0
@@ -229,15 +262,22 @@ struct PieDonutChart: View {
   }
 
   private func animateDataChange() {
+    // Cancel any existing animation task
+    animationTask?.cancel()
+
     // Fade out
-    withAnimation(.easeOut(duration: 0.15)) {
+    withAnimation(.easeOut(duration: AnimationEngine.chartFadeDuration)) {
       for index in animatedSegments.indices {
         animatedSegments[index].opacity = 0
       }
     }
 
-    // Update segments after fade
-    DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+    // Update segments after fade using Task
+    animationTask = Task { @MainActor in
+      try? await Task.sleep(nanoseconds: UInt64(AnimationEngine.chartFadeDuration * 1_000_000_000))
+
+      guard !Task.isCancelled else { return }
+
       animatedSegments = segments.map { seg in
         var s = seg
         s.trimEnd = 1.0
@@ -271,6 +311,27 @@ struct PieDonutChart: View {
         animatedSegments[newIndex].scale = 1.0 // Scale is applied in rendering
       }
     }
+  }
+
+  // MARK: - Accessibility
+
+  private var chartAccessibilityLabel: String {
+    let chartType = style == .pie ? "Pie chart" : "Donut chart"
+    return "\(chartType) with \(segments.count) segments"
+  }
+
+  private func formatAccessibilityValue(for segment: ChartSegment) -> String {
+    let percentageText = String(format: "%.1f%%", segment.percentage)
+    let valueText = formatValue(segment.value)
+    return "\(valueText), \(percentageText) of total"
+  }
+
+  private func formatValue(_ value: Double) -> String {
+    let formatter = NumberFormatter()
+    formatter.numberStyle = .currency
+    formatter.currencySymbol = "$"
+    formatter.maximumFractionDigits = 0
+    return formatter.string(from: NSNumber(value: value)) ?? "$\(Int(value))"
   }
 }
 
