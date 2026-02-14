@@ -45,6 +45,31 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - FinPessoal/Code/Animation/Components/Charts/ChartGestureHandler.swift
     - FinPessoalTests/Animation/ChartGestureHandlerTests.swift
 
+- **Phase 5A: Charts - Task 3: ChartCalloutView** (2026-02-14)
+  - New Component:
+    - **ChartCalloutView**: Floating callout for selected chart elements
+      - Two initializers: `init(segment: ChartSegment)` and `init(bar: ChartBar)`
+      - Optional properties: segment and bar (only one is populated per instance)
+      - Material background: .ultraThinMaterial with Color.oldMoney.accent border
+      - Shadow: black 10% opacity with 8pt radius
+      - Animated appearance: asymmetric transition (insertion: opacity + slide up, removal: fade)
+      - Mode-aware animation timing (Full: AnimationEngine.quickFade, Reduced/Minimal: 0.1s linear)
+      - Displays label, percentage (segments only), and formatted currency value
+      - Typography: .caption semibold for labels, .caption2 for values
+      - Padding: 12pt horizontal, 8pt vertical
+      - Spacing: 4pt between label and value, 8pt between percentage and amount
+  - Visual Design:
+    - Segment callout: Shows "Food & Dining", "25.0%", "$500.00"
+    - Bar callout: Shows "January", "$1,500.00"
+  - SwiftUI Previews:
+    - "Segment Callout": Example with Food & Dining segment
+    - "Bar Callout": Example with January bar
+  - Testing:
+    - Manual visual testing via SwiftUI previews (UI component)
+  - Files created:
+    - FinPessoal/Code/Animation/Components/Charts/ChartCalloutView.swift
+  - Build Status: Compiles successfully
+
 - **Phase 4: Frosted Glass Design** (2026-02-10)
   - Created frosted glass effects for all modal sheets and navigation bars
   - New Components:
