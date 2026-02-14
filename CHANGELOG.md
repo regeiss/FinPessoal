@@ -29,6 +29,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - FinPessoal/Code/Animation/Components/Charts/Models/ChartBar.swift
     - FinPessoalTests/Animation/ChartModelsTests.swift
 
+- **Phase 5A: Charts - Task 2: ChartGestureHandler** (2026-02-14)
+  - New Component:
+    - **ChartGestureHandler**: Centralized gesture coordination for chart interactions
+      - Published properties: selectedID, isDragging, zoomScale
+      - Tap selection/deselection with toggle behavior
+      - Drag scrubbing with continuous selection updates
+      - Long press support (reserved for future detail sheets)
+      - Reset functionality for state cleanup
+      - HapticEngine integration (selection haptic for taps/scrubbing, medium haptic for long press)
+      - Thread-safe via @MainActor annotation
+  - Testing:
+    - Added ChartGestureHandlerTests.swift with 3 unit tests (all passing)
+  - Files created:
+    - FinPessoal/Code/Animation/Components/Charts/ChartGestureHandler.swift
+    - FinPessoalTests/Animation/ChartGestureHandlerTests.swift
+
 - **Phase 4: Frosted Glass Design** (2026-02-10)
   - Created frosted glass effects for all modal sheets and navigation bars
   - New Components:
