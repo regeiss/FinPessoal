@@ -97,6 +97,57 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - FinPessoal/Code/Animation/Engine/AnimationEngine+Charts.swift
   - Build Status: Compiles successfully
   - Accessibility:
+    - Respects system accessibility settings through AnimationSettings.effectiveMode
+    - Provides instant visual feedback in minimal animation mode
+
+- **Phase 5A: Charts - Task 5: PieDonutChart Component** (2026-02-14)
+  - New Component:
+    - **PieDonutChart**: Canvas-based pie and donut chart with animations
+      - **PieChartStyle enum**: .pie or .donut(innerRadius: CGFloat)
+      - **SegmentAngles struct**: Stores start and end angles for segments
+      - **Canvas rendering**: Native graphics for optimal performance
+      - **Angle calculation**: Static method calculateAngles(for:) starts at -90° (top), calculates sweep angles based on percentages
+      - **Animated reveal**: Staggered animation (300ms base + 50ms per segment) using trimEnd animation state
+      - **Tap selection**: Hit testing with ChartGestureHandler integration and haptic feedback
+      - **ChartCalloutView integration**: Shows selected segment details
+      - **Data morphing**: Smooth transitions on segment changes (fade out, update, fade in)
+      - **Mode-aware animations**: Respects AnimationSettings.effectiveMode
+        - Full mode: chartReveal, chartMorph, chartSelection animations
+        - Reduced mode: Faster linear animations
+        - Minimal mode: No animations or minimal timing
+      - **Selection scaling**: Uses AnimationEngine.selectionScale (5% in full, 2% in reduced, none in minimal)
+      - **Properties**:
+        - segments: [ChartSegment] - data to display
+        - style: PieChartStyle - pie or donut appearance
+        - gestureHandler: ChartGestureHandler - manages selection state
+        - animatedSegments: [ChartSegment] - segments with animation state
+      - **Rendering details**:
+        - GeometryReader for responsive sizing
+        - Canvas with arc drawing for each segment
+        - Applies trimEnd for reveal animation
+        - Applies scale for selected segments
+        - Handles both pie (line to center) and donut (inner arc) styles
+        - Opacity control for fade in/out
+      - **Hit testing**: Calculates angle from tap location, checks distance bounds, finds tapped segment
+  - SwiftUI Previews:
+    - "Donut Chart - 4 Segments": Food, Transport, Entertainment, Other (40%, 30%, 20%, 10%)
+    - "Pie Chart - 2 Segments": Income vs Expenses (50% each)
+  - Testing:
+    - Added PieDonutChartTests.swift with 4 unit tests (all passing, TDD approach)
+    - testCalculateAngles_TwoSegmentsEqual: Validates 50/50 split starting at -90°
+    - testCalculateAngles_FourSegmentsUnequal: Validates 40/30/20/10 split with correct sweep angles
+    - testCalculateAngles_EmptySegments: Validates empty array returns empty angles
+    - testCalculateAngles_SingleSegment: Validates 100% segment covers full circle
+  - Files created:
+    - FinPessoal/Code/Animation/Components/Charts/PieDonutChart.swift
+    - FinPessoalTests/Animation/PieDonutChartTests.swift
+  - Build Status: Compiles successfully
+  - Test Status: All 4 unit tests passing
+  - Accessibility:
+    - Respects system accessibility settings via AnimationSettings.effectiveMode
+    - Haptic feedback for selection (via ChartGestureHandler)
+    - Visual feedback through selection scaling (mode-aware)
+    - Smooth animations respect reduce motion preferences
     - Full compliance with Reduce Motion preference
     - Progressive degradation: Full → Reduced → Minimal
     - Instant visual feedback in minimal mode
