@@ -70,6 +70,37 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - FinPessoal/Code/Animation/Components/Charts/ChartCalloutView.swift
   - Build Status: Compiles successfully
 
+- **Phase 5A: Charts - Task 4: AnimationEngine Chart Extensions** (2026-02-14)
+  - New Component:
+    - **AnimationEngine+Charts**: Chart-specific animation helpers extension
+      - **chartReveal(delay:)**: 300ms reveal animation with stagger support
+        - Full mode: easeInOut with delay
+        - Reduced mode: 0.15s linear with delay
+        - Minimal mode: nil (no animation)
+      - **chartMorph**: Smooth data transition animation
+        - Full mode: gentleSpring
+        - Reduced mode: 0.15s linear
+        - Minimal mode: nil
+      - **chartSelection**: Subtle scale animation
+        - Full mode: snappySpring
+        - Reduced mode: 0.15s linear
+        - Minimal mode: 0.05s linear (instant feedback)
+      - **selectionScale**: Mode-aware scale factors
+        - Full mode: 1.05 (5% larger)
+        - Reduced mode: 1.02 (2% larger)
+        - Minimal mode: 1.0 (no scale)
+      - All methods respect AnimationSettings.shared.effectiveMode
+      - Reuses existing AnimationEngine properties (easeInOut, gentleSpring, snappySpring)
+  - Testing:
+    - Integration tests scheduled for Week 2 (with PieDonutChart and BarChart)
+  - Files created:
+    - FinPessoal/Code/Animation/Engine/AnimationEngine+Charts.swift
+  - Build Status: Compiles successfully
+  - Accessibility:
+    - Full compliance with Reduce Motion preference
+    - Progressive degradation: Full → Reduced → Minimal
+    - Instant visual feedback in minimal mode
+
 - **Phase 4: Frosted Glass Design** (2026-02-10)
   - Created frosted glass effects for all modal sheets and navigation bars
   - New Components:
