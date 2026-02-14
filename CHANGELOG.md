@@ -9,6 +9,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added - February 2026
 
+- **Phase 5A: Charts - Task 1: Chart Data Models** (2026-02-13)
+  - New Components:
+    - **ChartSegment**: Data model for pie/donut chart segments
+      - Properties: id, value, percentage, label, color, category
+      - Animation state: trimEnd, scale, opacity
+      - Identifiable and Equatable protocols
+    - **ChartBar**: Data model for bar chart bars
+      - Properties: id, value, maxValue, label, color, date
+      - Animation state: height, opacity
+      - Identifiable and Equatable protocols
+  - Testing:
+    - Added ChartModelsTests.swift with 2 unit tests
+    - testChartSegmentInitialization: Validates ChartSegment initialization and default animation state
+    - testChartBarInitialization: Validates ChartBar initialization and default animation state
+    - All tests passing (TDD approach: tests written first, then implementation)
+  - Files created:
+    - FinPessoal/Code/Animation/Components/Charts/Models/ChartSegment.swift
+    - FinPessoal/Code/Animation/Components/Charts/Models/ChartBar.swift
+    - FinPessoalTests/Animation/ChartModelsTests.swift
+
 - **Phase 4: Frosted Glass Design** (2026-02-10)
   - Created frosted glass effects for all modal sheets and navigation bars
   - New Components:
