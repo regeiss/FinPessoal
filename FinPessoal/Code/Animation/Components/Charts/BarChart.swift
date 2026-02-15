@@ -10,6 +10,7 @@ struct BarChart: View {
   @State private var animatedBars: [ChartBar]
   @State private var animationTask: Task<Void, Never>?
   @ObservedObject private var animationSettings = AnimationSettings.shared
+  @Environment(\.accessibilityDifferentiateWithoutColor) private var differentiateWithoutColor
 
   init(bars: [ChartBar], maxHeight: CGFloat = 200) {
     self.bars = bars
@@ -55,6 +56,10 @@ struct BarChart: View {
         .fill(bar.color)
         .frame(width: 40, height: bar.height)
         .opacity(bar.opacity)
+        .overlay(
+          RoundedRectangle(cornerRadius: 8)
+            .stroke(.primary, lineWidth: differentiateWithoutColor ? 3.0 : 0)
+        )
         .scaleEffect(
           x: 1.0,
           y: isSelected ? AnimationEngine.selectionScale : 1.0,
@@ -75,8 +80,10 @@ struct BarChart: View {
         .font(.caption2)
         .foregroundStyle(.secondary)
         .lineLimit(1)
+        .minimumScaleFactor(0.8)
         .frame(width: 40)
     }
+    .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
   }
 
   // MARK: - Animations

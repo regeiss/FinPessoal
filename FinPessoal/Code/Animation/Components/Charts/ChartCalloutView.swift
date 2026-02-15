@@ -24,23 +24,28 @@ struct ChartCalloutView: View {
         Text(segment.label)
           .font(.caption)
           .fontWeight(.semibold)
+          .minimumScaleFactor(0.8)
 
         HStack(spacing: 8) {
           Text("\(segment.percentage, specifier: "%.1f")%")
             .font(.caption2)
+            .minimumScaleFactor(0.8)
 
           Text(segment.value.formatted(.currency(code: "USD")))
             .font(.caption2)
             .foregroundStyle(.secondary)
+            .minimumScaleFactor(0.8)
         }
       } else if let bar = bar {
         Text(bar.label)
           .font(.caption)
           .fontWeight(.semibold)
+          .minimumScaleFactor(0.8)
 
         Text(bar.value.formatted(.currency(code: "USD")))
           .font(.caption2)
           .foregroundStyle(.secondary)
+          .minimumScaleFactor(0.8)
       }
     }
     .padding(.horizontal, 12)
@@ -62,6 +67,8 @@ struct ChartCalloutView: View {
       animationMode == .full ? AnimationEngine.quickFade : .linear(duration: 0.1),
       value: segment != nil || bar != nil
     )
+    .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
+    .accessibilityHidden(true)
   }
 }
 

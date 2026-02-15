@@ -16,6 +16,13 @@ public class HapticEngine {
   private var hapticEngine: CHHapticEngine?
   private var supportsHaptics: Bool = false
 
+  // MARK: - Accessibility Support
+
+  /// Returns true if haptics should be suppressed (Reduce Motion enabled)
+  public var shouldSuppressHaptics: Bool {
+    return AnimationSettings.shared.effectiveMode == .minimal
+  }
+
   private init() {
     setupHapticEngine()
   }
@@ -45,25 +52,25 @@ public class HapticEngine {
   // MARK: - Impact Haptics
 
   public func light() {
-    guard supportsHaptics else { return }
+    guard supportsHaptics && !shouldSuppressHaptics else { return }
     impactLight?.prepare()
     impactLight?.impactOccurred()
   }
 
   public func medium() {
-    guard supportsHaptics else { return }
+    guard supportsHaptics && !shouldSuppressHaptics else { return }
     impactMedium?.prepare()
     impactMedium?.impactOccurred()
   }
 
   public func heavy() {
-    guard supportsHaptics else { return }
+    guard supportsHaptics && !shouldSuppressHaptics else { return }
     impactHeavy?.prepare()
     impactHeavy?.impactOccurred()
   }
 
   public func selection() {
-    guard supportsHaptics else { return }
+    guard supportsHaptics && !shouldSuppressHaptics else { return }
     selectionGenerator?.prepare()
     selectionGenerator?.selectionChanged()
   }
@@ -71,19 +78,19 @@ public class HapticEngine {
   // MARK: - Notification Haptics
 
   public func success() {
-    guard supportsHaptics else { return }
+    guard supportsHaptics && !shouldSuppressHaptics else { return }
     notification?.prepare()
     notification?.notificationOccurred(.success)
   }
 
   public func warning() {
-    guard supportsHaptics else { return }
+    guard supportsHaptics && !shouldSuppressHaptics else { return }
     notification?.prepare()
     notification?.notificationOccurred(.warning)
   }
 
   public func error() {
-    guard supportsHaptics else { return }
+    guard supportsHaptics && !shouldSuppressHaptics else { return }
     notification?.prepare()
     notification?.notificationOccurred(.error)
   }
@@ -92,7 +99,7 @@ public class HapticEngine {
 
   /// Gentle success pattern (tap-tap-tap)
   public func gentleSuccess() {
-    guard supportsHaptics, let engine = hapticEngine else {
+    guard supportsHaptics && !shouldSuppressHaptics, let engine = hapticEngine else {
       // Fallback to simple haptic
       success()
       return
@@ -118,7 +125,7 @@ public class HapticEngine {
 
   /// Crescendo pattern for celebrations (light → medium → heavy)
   public func crescendo() {
-    guard supportsHaptics else { return }
+    guard supportsHaptics && !shouldSuppressHaptics else { return }
 
     light()
     DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
@@ -131,7 +138,7 @@ public class HapticEngine {
 
   /// Warning pattern (tap-pause-tap)
   public func warningPattern() {
-    guard supportsHaptics else { return }
+    guard supportsHaptics && !shouldSuppressHaptics else { return }
 
     medium()
     DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { [weak self] in

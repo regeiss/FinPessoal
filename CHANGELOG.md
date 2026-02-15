@@ -9,6 +9,50 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added - February 2026
 
+- **Phase 5A: Charts - Task 11: Accessibility Enhancements** (2026-02-15)
+  - Haptic Feedback Accessibility:
+    - **HapticEngine.shouldSuppressHaptics** property added
+    - Respects AnimationSettings.effectiveMode (.minimal suppresses haptics)
+    - All haptic methods (light, medium, heavy, selection, success, warning, error) check shouldSuppressHaptics
+    - Custom patterns (gentleSuccess, crescendo, warningPattern) also respect Reduce Motion
+    - Haptics disabled when user has Reduce Motion enabled (accessibility feature)
+  - Dynamic Type Support:
+    - **ChartCalloutView** capped at .xxxLarge to prevent layout breakage
+    - All text in callouts uses .minimumScaleFactor(0.8)
+    - Bar chart labels use .minimumScaleFactor(0.8)
+    - BarChart applies .dynamicTypeSize(...DynamicTypeSize.xxxLarge)
+    - Text scales with user preferences while maintaining chart integrity
+  - High Contrast Mode:
+    - **PieDonutChart** detects @Environment(\.accessibilityDifferentiateWithoutColor)
+    - Adds 3px stroke around segments in High Contrast mode
+    - **BarChart** detects accessibilityDifferentiateWithoutColor
+    - Adds 3px stroke around bars in High Contrast mode
+    - Improves visibility for users with color blindness
+  - ChartCalloutView Accessibility:
+    - Added .accessibilityHidden(true) to ChartCalloutView
+    - Prevents VoiceOver duplication (callout info already in chart elements)
+    - Cleaner VoiceOver navigation experience
+  - Testing:
+    - Created ChartsAccessibilityTests.swift with 5 test cases
+    - testHapticEngineRespectsReduceMotion - Verifies haptics disabled in Minimal mode
+    - testHapticEngineAllowsHapticsInFullMode - Verifies haptics enabled in Full mode
+    - testHapticEngineAllowsHapticsInReducedMode - Verifies haptics enabled in Reduced mode
+    - testChartSegmentAccessibilityDescription - Validates segment formatting
+    - testChartBarAccessibilityDescription - Validates bar formatting
+  - Files Modified:
+    - HapticEngine.swift: Added shouldSuppressHaptics, updated all haptic methods
+    - ChartCalloutView.swift: Added Dynamic Type cap, minimumScaleFactor, accessibilityHidden
+    - PieDonutChart.swift: Added High Contrast stroke support
+    - BarChart.swift: Added Dynamic Type support, High Contrast stroke
+  - Build Status: **BUILD SUCCEEDED**
+  - Test Results: **ALL TESTS PASSED (5/5)**
+  - Accessibility Coverage:
+    - ✅ Reduce Motion (haptic suppression)
+    - ✅ Dynamic Type (text scaling with caps)
+    - ✅ High Contrast (increased borders)
+    - ✅ VoiceOver (existing support maintained)
+    - ✅ WCAG AA compliance (4.5:1 contrast maintained)
+
 - **Phase 5A: Charts - Task 9: BarChart Integration into MonthlyTrendsView** (2026-02-15)
   - MonthlyTrendsView Integration:
     - **MonthlyTrendsChartView** now uses BarChart instead of custom bar components

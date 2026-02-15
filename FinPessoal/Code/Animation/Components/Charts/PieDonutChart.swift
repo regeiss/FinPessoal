@@ -27,6 +27,7 @@ struct PieDonutChart: View {
   @ObservedObject private var animationSettings = AnimationSettings.shared
   @State private var animatedSegments: [ChartSegment] = []
   @State private var animationTask: Task<Void, Never>?
+  @Environment(\.accessibilityDifferentiateWithoutColor) private var differentiateWithoutColor
 
   // MARK: - Init
 
@@ -125,6 +126,15 @@ struct PieDonutChart: View {
               path,
               with: .color(segment.color.opacity(segment.opacity))
             )
+
+            // Add stroke in High Contrast mode
+            if differentiateWithoutColor {
+              context.stroke(
+                path,
+                with: .color(.primary),
+                lineWidth: 3.0
+              )
+            }
           }
         }
         .accessibilityElement(children: .contain)
