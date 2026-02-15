@@ -45,10 +45,11 @@ struct ReportsScreen: View {
               }
               
               // Budget Performance
-              if !viewModel.budgetPerformance.isEmpty {
+              if viewModel.isLoading || !viewModel.budgetPerformance.isEmpty {
                 BudgetPerformanceView(
                   budgetPerformance: viewModel.budgetPerformance,
-                  showingChart: viewModel.showingChartView
+                  showingChart: viewModel.showingChartView,
+                  isLoading: viewModel.isLoading
                 )
               }
               

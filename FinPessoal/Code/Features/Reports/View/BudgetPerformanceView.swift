@@ -10,7 +10,8 @@ import SwiftUI
 struct BudgetPerformanceView: View {
   let budgetPerformance: [BudgetPerformance]
   let showingChart: Bool
-  
+  let isLoading: Bool
+
   var body: some View {
     VStack(alignment: .leading, spacing: 16) {
       Text(String(localized: "reports.budget.performance"))
@@ -18,7 +19,17 @@ struct BudgetPerformanceView: View {
         .foregroundColor(.primary)
         .accessibilityAddTraits(.isHeader)
 
-      if budgetPerformance.isEmpty {
+      if isLoading {
+        HStack(alignment: .bottom, spacing: 12) {
+          ForEach(0..<4, id: \.self) { _ in
+            SkeletonView()
+              .frame(width: 40, height: CGFloat.random(in: 60...200))
+              .cornerRadius(8)
+          }
+        }
+        .frame(height: 200)
+        .accessibilityLabel("Loading budget performance chart")
+      } else if budgetPerformance.isEmpty {
         EmptyStateView(
           icon: "chart.bar",
           title: "reports.empty.title",
@@ -42,11 +53,58 @@ struct BudgetPerformanceView: View {
 
 struct BudgetPerformanceChartView: View {
   let budgetPerformance: [BudgetPerformance]
-  
+
+  private var budgetBars: [ChartBar] {
+    guard !budgetPerformance.isEmpty else { return [] }
+
+    let maxAmount = budgetPerformance.map { $0.spentAmount }.max() ?? 0
+    return budgetPerformance.map { budget in
+      ChartBar(
+        id: budget.category.rawValue,
+        value: budget.spentAmount,
+        maxValue: maxAmount,
+        label: budget.category.displayName,
+        color: budget.category.swiftUIColor,
+        date: nil
+      )
+    }
+  }
+
+  private var chartDescription: String {
+    budgetPerformance.map { budget in
+      let spentStr = NumberFormatter.currency.string(from: NSNumber(value: budget.spentAmount)) ?? "R$ 0"
+      let budgetStr = NumberFormatter.currency.string(from: NSNumber(value: budget.budgetAmount)) ?? "R$ 0"
+      return "\(budget.category.displayName): \(spentStr) of \(budgetStr)"
+    }.joined(separator: ". ")
+  }
+
   var body: some View {
     VStack(spacing: 16) {
-      ForEach(budgetPerformance, id: \.category) { performance in
-        BudgetPerformanceBar(performance: performance)
+      if !budgetBars.isEmpty {
+        BarChart(
+          bars: budgetBars,
+          maxHeight: 200
+        )
+        .frame(height: 250)
+        .transition(.opacity.combined(with: .scale(scale: 0.95)))
+        .animation(AnimationEngine.easeInOut, value: budgetPerformance.count)
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("Budget performance bar chart")
+        .accessibilityValue(chartDescription)
+        .accessibilityHint("Shows spending for each budget category")
+      } else {
+        VStack(spacing: 16) {
+          Image(systemName: "chart.bar.fill")
+            .font(.system(size: 48))
+            .foregroundStyle(.secondary)
+          Text("No budget data")
+            .font(.headline)
+          Text("Create budgets to track spending performance")
+            .font(.subheadline)
+            .foregroundStyle(.secondary)
+            .multilineTextAlignment(.center)
+        }
+        .frame(height: 250)
       }
     }
   }
@@ -301,7 +359,8 @@ struct BudgetPerformanceRow: View {
       BudgetPerformance(category: .shopping, budgetAmount: 800, spentAmount: 600, remainingAmount: 200, percentage: 75),
       BudgetPerformance(category: .bills, budgetAmount: 1200, spentAmount: 800, remainingAmount: 400, percentage: 67)
     ],
-    showingChart: true
+    showingChart: true,
+    isLoading: false
   )
   .padding()
 }
