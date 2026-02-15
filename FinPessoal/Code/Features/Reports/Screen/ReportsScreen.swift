@@ -27,10 +27,11 @@ struct ReportsScreen: View {
               }
               
               // Category Spending
-              if !viewModel.categorySpending.isEmpty {
+              if viewModel.isLoading || !viewModel.categorySpending.isEmpty {
                 CategorySpendingView(
                   categorySpending: viewModel.categorySpending,
-                  showingChart: viewModel.showingChartView
+                  showingChart: viewModel.showingChartView,
+                  isLoading: viewModel.isLoading
                 )
               }
               
