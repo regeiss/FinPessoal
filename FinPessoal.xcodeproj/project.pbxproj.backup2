@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1940B8AEC1AB4FEFB0502BB1 /* ParticleEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8F587CBBE40A7AE326E59 /* ParticleEmitter.swift */; };
-		30A5E99F9949408FAC9DE9E4 /* AnimationEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE45C63D12CF4058B0B35372 /* AnimationEngine.swift */; };
-		9780243AD6DE4109B58295D1 /* AnimationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FCC6E1307542AF8A44EA58 /* AnimationSettings.swift */; };
 		20E245BE5EAE484491F49B91 /* PhysicsNumberCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EAC25CEE64C4491888399CC /* PhysicsNumberCounter.swift */; };
 		5D5258EEEB314574BEF819C1 /* PhysicsNumberCounterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084FD9D1317A4DC4ADB27F76 /* PhysicsNumberCounterTests.swift */; };
 		A950EEE6F51C48D69EDBD756 /* ParticleEmitterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364968FAFDEE41039BB7E012 /* ParticleEmitterTests.swift */; };
@@ -124,8 +122,6 @@
 		084FD9D1317A4DC4ADB27F76 /* PhysicsNumberCounterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PhysicsNumberCounterTests.swift; path = FinPessoalTests/Animation/PhysicsNumberCounterTests.swift; sourceTree = SOURCE_ROOT; };
 		364968FAFDEE41039BB7E012 /* ParticleEmitterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ParticleEmitterTests.swift; path = FinPessoalTests/Animation/ParticleEmitterTests.swift; sourceTree = SOURCE_ROOT; };
 		4BA8F587CBBE40A7AE326E59 /* ParticleEmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ParticleEmitter.swift; path = FinPessoal/Code/Animation/Components/ParticleEmitter.swift; sourceTree = SOURCE_ROOT; };
-		CE45C63D12CF4058B0B35372 /* AnimationEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AnimationEngine.swift; path = FinPessoal/Code/Animation/Engine/AnimationEngine.swift; sourceTree = SOURCE_ROOT; };
-		65FCC6E1307542AF8A44EA58 /* AnimationSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AnimationSettings.swift; path = FinPessoal/Code/Animation/Engine/AnimationSettings.swift; sourceTree = SOURCE_ROOT; };
 		8EAC25CEE64C4491888399CC /* PhysicsNumberCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PhysicsNumberCounter.swift; path = FinPessoal/Code/Animation/Components/PhysicsNumberCounter.swift; sourceTree = SOURCE_ROOT; };
 		E114476C2EAE8AFC00060A67 /* Help.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Help.md; sourceTree = "<group>"; };
 		E114481B2EAE8AFC00060A67 /* TESTS 2.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "TESTS 2.md"; sourceTree = "<group>"; };
@@ -378,8 +374,6 @@
 			children = (
 				8EAC25CEE64C4491888399CC /* PhysicsNumberCounter.swift */,
 				4BA8F587CBBE40A7AE326E59 /* ParticleEmitter.swift */,
-				CE45C63D12CF4058B0B35372 /* AnimationEngine.swift */,
-				65FCC6E1307542AF8A44EA58 /* AnimationSettings.swift */,
 				084FD9D1317A4DC4ADB27F76 /* PhysicsNumberCounterTests.swift */,
 				364968FAFDEE41039BB7E012 /* ParticleEmitterTests.swift */,
 			);
@@ -643,8 +637,6 @@
 				E15E4A0A2EF4DB3B004A2129 /* WidgetColors.swift in Sources */,
 				20E245BE5EAE484491F49B91 /* PhysicsNumberCounter.swift in Sources */,
 				1940B8AEC1AB4FEFB0502BB1 /* ParticleEmitter.swift in Sources */,
-				30A5E99F9949408FAC9DE9E4 /* AnimationEngine.swift in Sources */,
-				9780243AD6DE4109B58295D1 /* AnimationSettings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

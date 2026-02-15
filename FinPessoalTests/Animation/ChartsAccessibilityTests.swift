@@ -1,5 +1,6 @@
 // FinPessoalTests/Animation/ChartsAccessibilityTests.swift
 import XCTest
+import SwiftUI
 @testable import FinPessoal
 
 @MainActor
