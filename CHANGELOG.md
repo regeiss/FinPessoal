@@ -9,6 +9,104 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added - February 2026
 
+- **Phase 5A: Charts - Task 9: BarChart Integration into MonthlyTrendsView** (2026-02-15)
+  - MonthlyTrendsView Integration:
+    - **MonthlyTrendsChartView** now uses BarChart instead of custom bar components
+    - Replaced custom MonthlyTrendBar and LegendItem structs with BarChart
+    - Chart displays monthly expense trends with animated bars
+    - Uses monthlyBars computed property from ReportsViewModel
+    - Fixed frame: maxHeight 200 for chart, total height 250 for layout
+    - Data conversion via toChartBar extension (Task 7)
+  - Loading State:
+    - Added isLoading parameter to MonthlyTrendsView
+    - Shows 6 SkeletonView bars with random heights (60-200px) during load
+    - Each skeleton bar: 40px width, 8px corner radius (matches BarChart)
+    - Updated ReportsScreen to pass isLoading state from viewModel
+    - Changed condition to show view during loading: `viewModel.isLoading || !viewModel.monthlyTrends.isEmpty`
+  - Animations:
+    - Smooth transition using `.opacity.combined(with: .scale(scale: 0.95))`
+    - AnimationEngine.easeInOut for consistent animation timing
+    - Animates on data changes (value: monthlyTrends.count)
+  - Empty State:
+    - Shows when monthlyBars is empty
+    - Chart bar icon with "No trend data" message
+    - Helpful subtitle: "Track expenses over time to see monthly trends"
+    - Same 250px height for consistent layout
+  - Accessibility:
+    - Loading skeleton has "Loading monthly trends chart" label
+    - Chart maintains "Monthly trends bar chart" label
+    - Chart value describes expenses per month
+    - Hint explains "Shows expenses for each month"
+  - Files Modified:
+    - MonthlyTrendsView.swift: Added isLoading, replaced chart with BarChart
+    - ReportsScreen.swift: Updated to pass isLoading to MonthlyTrendsView
+  - Code Cleanup:
+    - Removed MonthlyTrendBar struct (replaced by BarChart)
+    - Removed LegendItem struct (no longer needed)
+    - Simplified chart rendering logic
+  - Build Status: **BUILD SUCCEEDED**
+  - Testing: All animations and transitions verified
+
+- **Phase 5A: Charts - Task 8: PieDonutChart Integration** (2026-02-15)
+  - CategorySpendingView Integration:
+    - **CategoryChartView** now uses PieDonutChart instead of progress circles
+    - Replaced LazyVGrid with PieDonutChart for better visual representation
+    - Chart displays donut style with 60% inner radius (.donut(innerRadius: 0.6))
+    - Fixed frame size: 250x250 for consistent sizing
+    - Data conversion via chartSegments computed property using toChartSegment extension
+  - Loading State:
+    - Added isLoading parameter to CategorySpendingView
+    - Shows SkeletonView with circular clip shape during data load
+    - Updated ReportsScreen to pass isLoading state from viewModel
+    - Changed condition to show view during loading: `viewModel.isLoading || !viewModel.categorySpending.isEmpty`
+  - Animations:
+    - Smooth transition using `.opacity.combined(with: .scale(scale: 0.95))`
+    - AnimationEngine.easeInOut for consistent animation timing
+    - Animates on data changes (value: categorySpending.count)
+  - Empty State:
+    - Shows when chartSegments is empty
+    - Chart pie icon with "No spending data" message
+    - Helpful subtitle: "Start tracking expenses to see your spending breakdown"
+    - Same 250x250 frame for consistent layout
+  - Accessibility:
+    - SkeletonView has "Loading category spending chart" label
+    - Chart maintains existing accessibility from CategoryChartView
+    - Empty state has proper accessibility labels and hints
+  - Files Modified:
+    - CategorySpendingView.swift: Added isLoading parameter, updated CategoryChartView
+    - ReportsScreen.swift: Updated to pass isLoading to CategorySpendingView
+  - Build Status: **BUILD SUCCEEDED**
+  - Testing: All animations and transitions verified
+
+- **Phase 5A: Charts - Build Fix: Data Transformation Implementation** (2026-02-15)
+  - Build Status:
+    - **BUILD SUCCEEDED**: All reported errors were false positives
+    - Main target compiles without errors
+    - Test target compiles and runs successfully
+  - Root Cause Analysis:
+    - ReportsViewModel.swift code was CORRECT from the start
+    - TransactionCategory exists in TransactionEnum.swift
+    - Transaction.type property exists with correct enum values (.income, .expense)
+    - Budget model exists with correct properties
+    - ChartDataTransformationTests.swift was already in FinPessoalTests target
+  - Verification:
+    - Build command: `xcodebuild -project FinPessoal.xcodeproj -scheme FinPessoal build`
+    - Result: **BUILD SUCCEEDED** (with only duplicate file warnings)
+    - Test execution: `xcodebuild test -only-testing:FinPessoalTests/ChartDataTransformationTests`
+    - Results: 2/2 tests passed
+      - testCategorySpendingToChartSegment: 0.002s ✓
+      - testMonthlyTrendToChartBar: 0.001s ✓
+  - Implementation Verified:
+    - CategorySpending.toChartSegment(totalSpent:) working correctly
+    - MonthlyTrend.toChartBar(maxAmount:) working correctly
+    - Date.from(monthString:) date parsing utility working
+    - ReportsViewModel computed properties (categorySegments, monthlyBars, budgetBars) all functional
+  - Technical Details:
+    - All model files properly located and imported
+    - Extensions use correct property names from existing models
+    - Type system properly resolved all references
+    - No missing imports or dependencies
+
 - **Phase 5A: Charts - Task 7: Data Transformation Extensions** (2026-02-15)
   - Data Transformation Extensions:
     - **CategorySpending.toChartSegment(totalSpent:)**: Converts CategorySpending to ChartSegment
