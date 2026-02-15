@@ -10,7 +10,8 @@ import SwiftUI
 struct MonthlyTrendsView: View {
   let monthlyTrends: [MonthlyTrend]
   let showingChart: Bool
-  
+  let isLoading: Bool
+
   var body: some View {
     VStack(alignment: .leading, spacing: 16) {
       Text(String(localized: "reports.monthly.trends"))
@@ -18,7 +19,17 @@ struct MonthlyTrendsView: View {
         .foregroundColor(.primary)
         .accessibilityAddTraits(.isHeader)
 
-      if monthlyTrends.isEmpty {
+      if isLoading {
+        HStack(alignment: .bottom, spacing: 12) {
+          ForEach(0..<6, id: \.self) { _ in
+            SkeletonView()
+              .frame(width: 40, height: CGFloat.random(in: 60...200))
+              .cornerRadius(8)
+          }
+        }
+        .frame(height: 200)
+        .accessibilityLabel("Loading monthly trends chart")
+      } else if monthlyTrends.isEmpty {
         EmptyStateView(
           icon: "chart.line.uptrend.xyaxis",
           title: "reports.empty.title",
@@ -43,129 +54,52 @@ struct MonthlyTrendsView: View {
 struct MonthlyTrendsChartView: View {
   let monthlyTrends: [MonthlyTrend]
 
-  private let maxValue: Double
+  private var monthlyBars: [ChartBar] {
+    guard !monthlyTrends.isEmpty else { return [] }
 
-  init(monthlyTrends: [MonthlyTrend]) {
-    self.monthlyTrends = monthlyTrends
-
-    let allValues = monthlyTrends.flatMap { [abs($0.income), abs($0.expenses), abs($0.netIncome)] }
-    self.maxValue = allValues.max() ?? 1000
+    let maxAmount = monthlyTrends.map { $0.expenses }.max() ?? 0
+    return monthlyTrends.map { $0.toChartBar(maxAmount: maxAmount) }
   }
 
   private var chartDescription: String {
     monthlyTrends.map { trend in
-      let incomeStr = NumberFormatter.currency.string(from: NSNumber(value: trend.income)) ?? "R$ 0"
       let expensesStr = NumberFormatter.currency.string(from: NSNumber(value: trend.expenses)) ?? "R$ 0"
-      let netStr = NumberFormatter.currency.string(from: NSNumber(value: trend.netIncome)) ?? "R$ 0"
-      return "\(trend.month): Income \(incomeStr), Expenses \(expensesStr), Net \(netStr)"
+      return "\(trend.month): \(expensesStr)"
     }.joined(separator: ". ")
   }
 
   var body: some View {
     VStack(spacing: 16) {
-      // Legend
-      HStack(spacing: 20) {
-        LegendItem(color: .green, title: String(localized: "reports.income"))
-        LegendItem(color: .red, title: String(localized: "reports.expenses"))
-        LegendItem(color: .blue, title: String(localized: "reports.net.income"))
-      }
-      .font(.caption)
-      .accessibilityElement(children: .combine)
-      .accessibilityLabel("Chart legend: green for income, red for expenses, blue for net income")
-      .accessibilityAddTraits(.isStaticText)
-      
-      // Chart
-      ScrollView(.horizontal, showsIndicators: false) {
-        HStack(alignment: .bottom, spacing: 12) {
-          ForEach(monthlyTrends, id: \.month) { trend in
-            MonthlyTrendBar(
-              trend: trend,
-              maxValue: maxValue
-            )
-          }
+      if !monthlyBars.isEmpty {
+        BarChart(
+          bars: monthlyBars,
+          maxHeight: 200
+        )
+        .frame(height: 250)
+        .transition(.opacity.combined(with: .scale(scale: 0.95)))
+        .animation(AnimationEngine.easeInOut, value: monthlyTrends.count)
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("Monthly trends bar chart")
+        .accessibilityValue(chartDescription)
+        .accessibilityHint("Shows expenses for each month")
+      } else {
+        VStack(spacing: 16) {
+          Image(systemName: "chart.bar")
+            .font(.system(size: 48))
+            .foregroundStyle(.secondary)
+          Text("No trend data")
+            .font(.headline)
+          Text("Track expenses over time to see monthly trends")
+            .font(.subheadline)
+            .foregroundStyle(.secondary)
+            .multilineTextAlignment(.center)
         }
-        .padding(.horizontal)
+        .frame(height: 250)
       }
-      .frame(height: 200)
-      .accessibilityElement(children: .combine)
-      .accessibilityLabel("Monthly trends bar chart")
-      .accessibilityValue(chartDescription)
-      .accessibilityHint("Shows income, expenses, and net income for each month")
     }
   }
 }
 
-struct LegendItem: View {
-  let color: Color
-  let title: String
-
-  var body: some View {
-    HStack(spacing: 4) {
-      Circle()
-        .fill(color)
-        .frame(width: 8, height: 8)
-        .accessibilityHidden(true)
-
-      Text(title)
-        .foregroundColor(.secondary)
-    }
-  }
-}
-
-struct MonthlyTrendBar: View {
-  let trend: MonthlyTrend
-  let maxValue: Double
-  
-  private var incomeHeight: CGFloat {
-    CGFloat(trend.income / maxValue) * 160
-  }
-  
-  private var expensesHeight: CGFloat {
-    CGFloat(trend.expenses / maxValue) * 160
-  }
-  
-  private var netIncomeHeight: CGFloat {
-    CGFloat(abs(trend.netIncome) / maxValue) * 160
-  }
-  
-  var body: some View {
-    VStack(spacing: 8) {
-      // Bars
-      HStack(alignment: .bottom, spacing: 4) {
-        // Income bar
-        Rectangle()
-          .fill(Color.green)
-          .frame(width: 16, height: max(incomeHeight, 4))
-          .clipShape(RoundedRectangle(cornerRadius: 2))
-          .animation(.easeInOut(duration: 0.8), value: incomeHeight)
-        
-        // Expenses bar
-        Rectangle()
-          .fill(Color.red)
-          .frame(width: 16, height: max(expensesHeight, 4))
-          .clipShape(RoundedRectangle(cornerRadius: 2))
-          .animation(.easeInOut(duration: 0.8), value: expensesHeight)
-        
-        // Net income bar
-        Rectangle()
-          .fill(trend.netIncome >= 0 ? Color.blue : Color.orange)
-          .frame(width: 16, height: max(netIncomeHeight, 4))
-          .clipShape(RoundedRectangle(cornerRadius: 2))
-          .animation(.easeInOut(duration: 0.8), value: netIncomeHeight)
-      }
-      .frame(height: 160)
-      
-      // Month label
-      Text(trend.month)
-        .font(.caption2)
-        .fontWeight(.medium)
-        .foregroundColor(.secondary)
-        .lineLimit(1)
-        .minimumScaleFactor(0.7)
-        .frame(width: 60)
-    }
-  }
-}
 
 struct MonthlyTrendsTableView: View {
   let monthlyTrends: [MonthlyTrend]
@@ -277,7 +211,8 @@ struct MonthlyTrendRow: View {
       MonthlyTrend(month: "Apr 2024", income: 5500, expenses: 3200, netIncome: 2300),
       MonthlyTrend(month: "May 2024", income: 5000, expenses: 3600, netIncome: 1400)
     ],
-    showingChart: true
+    showingChart: true,
+    isLoading: false
   )
   .padding()
 }

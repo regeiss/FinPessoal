@@ -36,10 +36,11 @@ struct ReportsScreen: View {
               }
               
               // Monthly Trends
-              if !viewModel.monthlyTrends.isEmpty {
+              if viewModel.isLoading || !viewModel.monthlyTrends.isEmpty {
                 MonthlyTrendsView(
                   monthlyTrends: viewModel.monthlyTrends,
-                  showingChart: viewModel.showingChartView
+                  showingChart: viewModel.showingChartView,
+                  isLoading: viewModel.isLoading
                 )
               }
               
