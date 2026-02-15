@@ -85,7 +85,39 @@ class ReportsViewModel: ObservableObject {
   @Published var showingPeriodPicker = false
   @Published var showingFilterSheet = false
   @Published var showingExportOptions = false
-  
+
+  // MARK: - Chart Data Computed Properties
+
+  var categorySegments: [ChartSegment] {
+    guard !categorySpending.isEmpty else { return [] }
+
+    let total = categorySpending.reduce(0) { $0 + $1.amount }
+    return categorySpending.map { $0.toChartSegment(totalSpent: total) }
+  }
+
+  var monthlyBars: [ChartBar] {
+    guard !monthlyTrends.isEmpty else { return [] }
+
+    let maxAmount = monthlyTrends.map { $0.expenses }.max() ?? 0
+    return monthlyTrends.map { $0.toChartBar(maxAmount: maxAmount) }
+  }
+
+  var budgetBars: [ChartBar] {
+    guard !budgetPerformance.isEmpty else { return [] }
+
+    let maxAmount = budgetPerformance.map { $0.spentAmount }.max() ?? 0
+    return budgetPerformance.map { budget in
+      ChartBar(
+        id: budget.category.rawValue,
+        value: budget.spentAmount,
+        maxValue: maxAmount,
+        label: budget.category.displayName,
+        color: budget.category.swiftUIColor,
+        date: nil
+      )
+    }
+  }
+
   private var cancellables = Set<AnyCancellable>()
   
   init() {
@@ -353,5 +385,51 @@ class ReportsViewModel: ObservableObject {
       Budget(id: "3", name: "Shopping", category: .shopping, budgetAmount: 800, spent: 920, period: .monthly, startDate: Date(), endDate: Date(), isActive: true, alertThreshold: 0.8, userId: "user1", createdAt: Date(), updatedAt: Date()),
       Budget(id: "4", name: "Bills", category: .bills, budgetAmount: 1200, spent: 1100, period: .monthly, startDate: Date(), endDate: Date(), isActive: true, alertThreshold: 0.8, userId: "user1", createdAt: Date(), updatedAt: Date())
     ]
+  }
+}
+
+// MARK: - Data Transformation Extensions
+
+extension CategorySpending {
+  func toChartSegment(totalSpent: Double) -> ChartSegment {
+    ChartSegment(
+      id: category.rawValue,
+      value: amount,
+      percentage: percentage,
+      label: category.displayName,
+      color: category.swiftUIColor,
+      category: nil
+    )
+  }
+}
+
+extension MonthlyTrend {
+  func toChartBar(maxAmount: Double) -> ChartBar {
+    ChartBar(
+      id: month,
+      value: expenses,
+      maxValue: maxAmount,
+      label: monthLabel,
+      color: .blue,
+      date: Date.from(monthString: month)
+    )
+  }
+
+  private var monthLabel: String {
+    // Format "Jan 2026" -> "Jan"
+    let components = month.split(separator: " ")
+    guard !components.isEmpty else {
+      return month
+    }
+    return String(components[0])
+  }
+}
+
+extension Date {
+  static func from(monthString: String) -> Date? {
+    // Handle "Jan 2026" or "MMM yyyy" format
+    let formatter = DateFormatter()
+    formatter.dateFormat = "MMM yyyy"
+    return formatter.date(from: monthString)
   }
 }

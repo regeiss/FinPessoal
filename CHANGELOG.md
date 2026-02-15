@@ -7,6 +7,118 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added - February 2026
+
+- **Phase 5A: Charts - Task 7: Data Transformation Extensions** (2026-02-15)
+  - Data Transformation Extensions:
+    - **CategorySpending.toChartSegment(totalSpent:)**: Converts CategorySpending to ChartSegment
+      - Maps TransactionCategory enum properties to ChartSegment fields
+      - Uses category.rawValue for id
+      - Uses category.displayName for label
+      - Uses category.swiftUIColor for color
+      - Passes nil for category (ChartSegment expects Category struct, not enum)
+    - **MonthlyTrend.toChartBar(maxAmount:)**: Converts MonthlyTrend to ChartBar
+      - Uses expenses value for bar height
+      - Formats month label ("Jan 2026" → "Jan")
+      - Parses date from "MMM yyyy" format
+      - Uses blue color for expense bars
+    - **Date.from(monthString:)**: Utility for parsing "MMM yyyy" month format
+  - ReportsViewModel Computed Properties:
+    - **categorySegments**: Transforms categorySpending array to ChartSegment array
+      - Calculates total spending for percentage calculations
+      - Returns empty array if categorySpending is empty
+    - **monthlyBars**: Transforms monthlyTrends array to ChartBar array
+      - Finds max expenses for bar height scaling
+      - Returns empty array if monthlyTrends is empty
+    - **budgetBars**: Transforms budgetPerformance array to ChartBar array
+      - Uses spentAmount for bar values
+      - Maps TransactionCategory color and displayName
+      - Finds max spentAmount for scaling
+      - Returns empty array if budgetPerformance is empty
+  - Unit Tests:
+    - **ChartDataTransformationTests**: 2 tests passing
+      - testCategorySpendingToChartSegment: Verifies CategorySpending transformation
+      - testMonthlyTrendToChartBar: Verifies MonthlyTrend transformation with date parsing
+  - Accessibility:
+    - All transformations preserve semantic information for VoiceOver
+    - Color choices from TransactionCategory.swiftUIColor ensure sufficient contrast
+
+- **Phase 5A: Charts - Xcode Project Status** (2026-02-14)
+  - Project Configuration:
+    - Xcode project uses fileSystemSynchronizedGroups (Xcode 15+ feature)
+    - BarChart.swift automatically included via filesystem synchronization
+    - BarChartTests.swift automatically included via filesystem synchronization
+    - Files compile successfully as part of the FinPessoal target
+    - No manual project file editing required
+  - Build Status:
+    - BarChart.swift compiles without errors (only minor warnings)
+    - File located at: FinPessoal/Code/Animation/Components/Charts/BarChart.swift
+    - Test file at: FinPessoalTests/Animation/BarChartTests.swift
+    - Both files properly integrated into build system
+  - Accessibility:
+    - VoiceOver labels for bar charts
+    - Dynamic Type support for text
+    - High Contrast mode support
+  - Note: Some Animation files (AnimationEngine, AnimationSettings, ParticleEmitter, PhysicsNumberCounter) are duplicated in both fileSystemSynchronizedGroups and manual PBXBuildFile entries, causing "Skipping duplicate build file" warnings. This does not affect BarChart files which are only in fileSystemSynchronizedGroups.
+
+- **Phase 5A: Charts - Task 6: BarChart Component** (2026-02-14)
+  - New Component:
+    - **BarChart**: Vertical bar chart with animated heights and selection support
+      - Properties: bars (ChartBar array), maxHeight (default 200pt)
+      - Animated height reveal with stagger (300ms base + 50ms per bar)
+      - Tap selection with haptic feedback via ChartGestureHandler
+      - ChartCalloutView integration for selected bars
+      - Mode-aware animations (Full/Reduced/Minimal)
+      - Smooth data morphing on bar changes (fade out/in)
+      - Selection scaling anchored at bottom (1.05x in full, 1.02x in reduced, 1.0x in minimal)
+      - Memory-safe animations with Task cancellation
+      - Bar rendering:
+        - Width: 40pt (fixed)
+        - Height: animated from 0 to calculated height
+        - Corner radius: 8pt
+        - Bar spacing: 12pt
+        - Opacity animated from 0 to 1
+      - Static method: calculateHeight(for:maxHeight:) - proportional height calculation
+      - Handles edge cases: zero maxValue, zero value, empty bars array
+      - Animation timing:
+        - Initial delay: AnimationEngine.chartInitialDelay (0.3s)
+        - Stagger delay: AnimationEngine.standardStagger (0.05s per bar)
+        - Reveal animation: AnimationEngine.chartReveal
+        - Data morph: AnimationEngine.chartMorph
+        - Selection: AnimationEngine.chartSelection
+      - Data morphing sequence:
+        - Fade out current bars (chartFadeDuration)
+        - Update bar data
+        - Fade in with chartMorph animation
+      - Memory management:
+        - @State animationTask for cancellable animations
+        - Cancel task in .onDisappear
+        - Check Task.isCancelled before state updates
+      - Accessibility:
+        - Each bar individually accessible
+        - Label: Bar's label property (e.g., "Jan", "Feb")
+        - Value: Formatted currency amount
+        - Hint: "Double tap to select"
+        - Trait: .isSelected when bar is selected
+        - Full VoiceOver support
+  - SwiftUI Preview:
+    - "Bar Chart": 6 bars showing monthly data (Jan-Jun)
+  - Testing:
+    - Added BarChartTests.swift with 6 unit tests (all passing, TDD approach)
+    - testCalculateHeight: Validates proportional height calculation (1500/2000 * 200 = 150)
+    - testCalculateHeightWithZeroMaxValue: Validates zero maxValue returns 0
+    - testCalculateHeightWithZeroValue: Validates zero value returns 0
+    - testCalculateHeightWithMaxValue: Validates value == maxValue returns maxHeight
+    - testEmptyBarsArray: Validates empty array doesn't crash
+    - testAnimationStateInitialization: Validates default animation state preserved
+  - Files created:
+    - FinPessoal/Code/Animation/Components/Charts/BarChart.swift
+    - FinPessoalTests/Animation/BarChartTests.swift
+  - Build Status: Compiles successfully
+  - Test Status: All 6 unit tests passing
+  - Accessibility: Full VoiceOver support with labels, values, hints, and selected state
+  - TDD Approach: Tests written first, implementation second (verified failing tests, then passing)
+
 ### Fixed - February 2026
 
 - **Phase 5A: Charts - PieDonutChart Code Quality Improvements** (2026-02-14)
