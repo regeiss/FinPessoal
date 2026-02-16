@@ -10,7 +10,8 @@ import SwiftUI
 struct CategorySpendingView: View {
   let categorySpending: [CategorySpending]
   let showingChart: Bool
-  
+  let isLoading: Bool
+
   var body: some View {
     VStack(alignment: .leading, spacing: 16) {
       Text(String(localized: "reports.spending.by.category"))
@@ -18,7 +19,13 @@ struct CategorySpendingView: View {
         .foregroundColor(.primary)
         .accessibilityAddTraits(.isHeader)
 
-      if categorySpending.isEmpty {
+      if isLoading {
+        SkeletonView()
+          .frame(width: 250, height: 250)
+          .frame(maxWidth: .infinity)
+          .clipShape(Circle())
+          .accessibilityLabel("Loading category spending chart")
+      } else if categorySpending.isEmpty {
         EmptyStateView(
           icon: "chart.pie",
           title: "reports.empty.title",
@@ -49,21 +56,43 @@ struct CategoryChartView: View {
     }.joined(separator: ", ")
   }
 
+  private var chartSegments: [ChartSegment] {
+    let total = categorySpending.reduce(0) { $0 + $1.amount }
+    return categorySpending.map { $0.toChartSegment(totalSpent: total) }
+  }
+
   var body: some View {
     VStack(spacing: 16) {
-      // Simple pie chart representation using progress circles
-      LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 2), spacing: 16) {
-        ForEach(Array(categorySpending.prefix(6).enumerated()), id: \.offset) { index, spending in
-          CategoryChartItem(
-            spending: spending,
-            color: categoryColor(for: index)
-          )
+      // Animated pie/donut chart
+      if !chartSegments.isEmpty {
+        PieDonutChart(
+          segments: chartSegments,
+          style: .donut(innerRadius: 0.6)
+        )
+        .frame(width: 250, height: 250)
+        .transition(.opacity.combined(with: .scale(scale: 0.95)))
+        .animation(AnimationEngine.easeInOut, value: categorySpending.count)
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel("Category spending chart")
+        .accessibilityValue(chartDescription)
+        .accessibilityHint("Shows spending breakdown by category")
+      } else {
+        // Empty state
+        VStack(spacing: 16) {
+          Image(systemName: "chart.pie")
+            .font(.system(size: 48))
+            .foregroundStyle(.secondary)
+          Text("No spending data")
+            .font(.headline)
+          Text("Start tracking expenses to see your spending breakdown")
+            .font(.subheadline)
+            .foregroundStyle(.secondary)
+            .multilineTextAlignment(.center)
         }
+        .frame(width: 250, height: 250)
+        .accessibilityLabel("No category spending data")
+        .accessibilityHint("Add transactions to see category spending breakdown")
       }
-      .accessibilityElement(children: .combine)
-      .accessibilityLabel("Category spending chart")
-      .accessibilityValue(chartDescription)
-      .accessibilityHint("Shows spending breakdown by category")
 
       if categorySpending.count > 6 {
         Text(String(localized: "reports.showing.top.categories").replacingOccurrences(of: "%d", with: "6"))
@@ -72,7 +101,7 @@ struct CategoryChartView: View {
       }
     }
   }
-  
+
   private func categoryColor(for index: Int) -> Color {
     let colors: [Color] = [.blue, .green, .orange, .red, .purple, .pink, .yellow, .teal]
     return colors[index % colors.count]
@@ -254,7 +283,8 @@ struct CategoryTableRow: View {
       CategorySpending(category: .bills, amount: 300, percentage: 8.8, transactionCount: 4),
       CategorySpending(category: .healthcare, amount: 100, percentage: 2.9, transactionCount: 2)
     ],
-    showingChart: true
+    showingChart: true,
+    isLoading: false
   )
   .padding()
 }

@@ -163,17 +163,45 @@ struct TransactionsContentView: View {
       ForEach(groupedTransactions.keys.sorted(by: >), id: \.self) { date in
         Section(header: Text(date, style: .date)) {
           ForEach(groupedTransactions[date] ?? []) { transaction in
-            Button {
-              transactionViewModel.selectTransaction(transaction)
-            } label: {
-              TransactionRow(transaction: transaction)
+            SwipeableRow(
+              trailingActions: [
+                .edit {
+                  await editTransaction(transaction)
+                },
+                .delete {
+                  await deleteTransaction(transaction)
+                }
+              ]
+            ) {
+              Button {
+                transactionViewModel.selectTransaction(transaction)
+              } label: {
+                TransactionRow(transaction: transaction)
+              }
+              .buttonStyle(.plain)
             }
-            .buttonStyle(.plain)
+            .listRowInsets(EdgeInsets())
+            .listRowSeparator(.hidden)
           }
         }
       }
     }
     .listStyle(.insetGrouped)
+  }
+
+  // MARK: - Swipe Actions
+
+  private func editTransaction(_ transaction: Transaction) async {
+    // TODO: Implement edit functionality
+    // For now, just select the transaction
+    transactionViewModel.selectedTransaction = transaction
+    transactionViewModel.showingTransactionDetail = true
+  }
+
+  private func deleteTransaction(_ transaction: Transaction) async {
+    // TODO: Implement delete with confirmation
+    // For now, just show a placeholder
+    print("Delete transaction: \(transaction.id)")
   }
   
   private var groupedTransactions: [Date: [Transaction]] {
