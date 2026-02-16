@@ -9,6 +9,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added - February 2026
 
+- **Phase 5C: Advanced Polish - Task 2 COMPLETE** (2026-02-16)
+  - AnimationEngine+AdvancedPolish Extension (~96 lines):
+    - Hero transition animations (400ms spring, damping: 0.8)
+    - Celebration animations (pulse, glow, fade sequences)
+    - Gradient animations (3s infinite loop)
+    - Adaptive methods respecting AnimationSettings:
+      - adaptiveHeroTransition(): Full(400ms) → Reduced(250ms) → Minimal(100ms)
+      - adaptiveCelebration(): Full(pulse) → Reduced(400ms) → Minimal(200ms)
+      - adaptiveGradient(): Full(3s loop) → Reduced(5s loop) → Minimal(none)
+
+  **Files Created**: 1 extension file
+  **Build Status**: ✅ BUILD SUCCEEDED
+  **Commit**: feat(phase5c): add AnimationEngine+AdvancedPolish extension
+
 - **Phase 5C: Advanced Polish - Task 1 COMPLETE** (2026-02-16)
   - HeroTransitionCoordinator (~50 lines):
     - Observable coordinator for managing hero transition state
