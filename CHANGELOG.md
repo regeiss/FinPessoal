@@ -9,6 +9,76 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added - February 2026
 
+- **Phase 5C: Advanced Polish - Tasks 4-8 COMPLETE** (2026-02-16)
+  - **Summary**: Week 2-3 components for celebrations, parallax, and gradients
+  - **Build Status**: ✅ BUILD SUCCEEDED
+  - **Total**: ~800 lines of production code, 4 unit tests
+
+  **Components Delivered**:
+
+  1. **CelebrationView** (~270 lines):
+     - Refined celebration: scale pulse (1.05x) + soft glow + haptic feedback
+     - Minimal style: check mark icon only
+     - Joyful style: enhanced refined with shimmer
+     - Triple haptic taps (light, light, medium) for success
+     - Crescendo haptic pattern for achievements
+     - 2s duration with auto-dismiss and completion callback
+     - Respects Reduce Motion (simple fade transition)
+     - High Contrast mode support (0.5x vs 0.3x glow multiplier)
+     - Dynamic Type support with @ScaledMetric icon sizing
+     - 2 unit tests passing
+
+  2. **ParallaxModifier** (~100 lines):
+     - ViewModifier for scroll-based parallax depth effect
+     - Configurable speed (0.7 = 30% slower than scroll)
+     - Vertical/horizontal axis support
+     - 60fps performance with throttling (16.67ms frame time)
+     - PreferenceKey-based scroll offset tracking
+     - Respects Reduce Motion (disabled when active)
+     - Minimal mode support (disabled)
+     - withParallax() view extension for easy application
+     - 2 unit tests passing
+
+  3. **GradientAnimationModifier** (~125 lines):
+     - ViewModifier for animated gradient overlays
+     - Three gradient styles: Linear, Radial, Angular
+     - 3s sophisticated animation duration
+     - 20% subtle movement interpolation for linear gradients
+     - Respects AnimationSettings (disabled in Minimal mode)
+     - withGradientAnimation() view extension
+     - GPU-accelerated rendering
+
+  4. **ParallaxScrollView** (~85 lines):
+     - Enhanced ScrollView with layered parallax effects
+     - Background layer moves at 50% of scroll speed (configurable)
+     - Foreground layer at normal scroll speed
+     - Smooth 60fps performance
+     - Respects Reduce Motion (no parallax effect)
+     - Use cases: Hero headers, detail views, onboarding screens
+     - Generic Background and Content view builders
+
+  5. **GradientAnimationView** (~94 lines):
+     - Standalone animated gradient component
+     - Linear, Radial, and Angular gradient styles
+     - GPU-accelerated with drawingGroup()
+     - 3s+ slow animation for sophisticated feel
+     - Respects AnimationSettings modes
+     - Angular gradient rotates 360° over duration
+     - Radial gradient with configurable center point
+
+  **Testing**:
+  - CelebrationViewTests: 2 tests (style compilation)
+  - ParallaxModifierTests: 2 tests (modifier existence, speed configuration)
+  - Total: 4 unit tests passing
+
+  **Files Created**: 7 files (5 components, 2 test suites)
+  **Commits**: 5 commits
+  - 01ec71e: feat(phase5c): add CelebrationView component
+  - 55f8ce4: feat(phase5c): add ParallaxModifier for depth effects
+  - 5fab213: feat(phase5c): add GradientAnimationModifier
+  - c61e173: feat(phase5c): add ParallaxScrollView component
+  - 1a48cb3: feat(phase5c): add GradientAnimationView component
+
 - **Phase 5C: Advanced Polish - Task 3 COMPLETE** (2026-02-16)
   - HeroTransitionLink Component (~105 lines):
     - Generic component for hero transitions using matchedGeometryEffect
