@@ -9,6 +9,38 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added - February 2026
 
+- **Phase 5B: Card Interactions - Task 3: SwipeableRow Component** (2026-02-16)
+  - SwipeGestureHandler (~130 lines):
+    - Physics-based drag tracking with resistance curve
+    - Threshold detection (50% of max distance)
+    - Haptic feedback coordination (light at start, medium at threshold, selection at commit)
+    - Bounce-back behavior for partial swipes
+    - Query methods: isRevealed, swipeProgress(), actionOpacity()
+  - SwipeableRow Component (~230 lines):
+    - Generic Content view with SwipeAction support
+    - Leading/trailing actions with fade-in reveal (30-60px)
+    - Frosted glass action backgrounds (.ultraThinMaterial)
+    - Dynamic shadow depth cues (increases with swipe distance)
+    - VoiceOver accessibility: Actions exposed as custom actions
+    - Reduce Motion support: Linear animations instead of springs
+  - AnimationEngine+CardInteractions Extension (~120 lines):
+    - swipeReveal: Spring animation (response: 0.3s, damping: 0.8)
+    - swipeBounce: Bouncy spring (response: 0.25s, damping: 0.6)
+    - swipeReset: Balanced spring (response: 0.35s, damping: 0.75)
+    - cardFlip: Dramatic spring (response: 0.4s, damping: 0.75)
+    - sectionExpand, chevronRotate: Ease curves
+    - Adaptive methods: adaptiveSwipe(), adaptiveFlip(), adaptiveExpand(), adaptiveBounce(), adaptiveReset()
+  - Accessibility Features:
+    - VoiceOver: All actions accessible via custom actions (no swipe needed)
+    - Reduce Motion: Linear animations replace springs
+    - Animation Modes: Full (springs), Reduced (linear 200ms), Minimal (instant)
+  - Files Created:
+    - FinPessoal/Code/Animation/Components/CardInteractions/SwipeGestureHandler.swift
+    - FinPessoal/Code/Animation/Components/CardInteractions/SwipeableRow.swift
+    - FinPessoal/Code/Animation/Engine/AnimationEngine+CardInteractions.swift
+  - Build Status: **FILES CREATED** (integration next)
+  - Phase 5B Week 1, Day 1-4: **COMPLETE** ✅
+
 - **Phase 5B: Card Interactions - Task 2: SwipeAction Model** (2026-02-15)
   - SwipeAction Model:
     - **SwipeAction struct** created with Identifiable protocol

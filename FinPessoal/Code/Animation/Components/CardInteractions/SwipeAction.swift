@@ -8,27 +8,27 @@
 import SwiftUI
 
 /// A swipe action that can be performed on a SwipeableRow
-struct SwipeAction: Identifiable {
+public struct SwipeAction: Identifiable {
 
   // MARK: - Properties
 
   /// Unique identifier
-  let id = UUID()
+  public let id = UUID()
 
   /// Action title displayed to user
-  let title: String
+  public let title: String
 
   /// SF Symbol icon name
-  let icon: String
+  public let icon: String
 
   /// Action color tint
-  let tint: Color
+  public let tint: Color
 
   /// Button role (e.g., .destructive)
-  let role: ButtonRole?
+  public let role: ButtonRole?
 
   /// Action to execute when triggered
-  let action: () async -> Void
+  public let action: () async -> Void
 
   // MARK: - Initialization
 
@@ -39,7 +39,7 @@ struct SwipeAction: Identifiable {
   ///   - tint: Action color
   ///   - role: Button role (optional)
   ///   - action: Action to execute
-  init(
+  public init(
     title: String,
     icon: String,
     tint: Color,
@@ -56,7 +56,7 @@ struct SwipeAction: Identifiable {
 
 // MARK: - Preset Factory Methods
 
-extension SwipeAction {
+public extension SwipeAction {
 
   /// Delete action preset (red, destructive, trash icon)
   /// - Parameter action: Action to execute when triggered
