@@ -9,6 +9,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added - February 2026
 
+- **Phase 5C: Advanced Polish - Task 1 COMPLETE** (2026-02-16)
+  - HeroTransitionCoordinator (~50 lines):
+    - Observable coordinator for managing hero transition state
+    - Prevents simultaneous transitions with activeTransition tracking
+    - Haptic feedback on transition start (light impact)
+    - Public API: beginTransition(id:), endTransition(), isActive(_:)
+    - 4 unit tests passing (initial state, begin, end, single transition)
+
+  **Files Created**: 2 files (1 coordinator, 1 test suite)
+  **Test Results**: 4/4 tests passed
+  **Build Status**: ✅ BUILD SUCCEEDED, ✅ TESTS PASSED
+  **Commit**: feat(phase5c): add HeroTransitionCoordinator with tests
+
 - **Phase 5B: Card Interactions - COMPLETE** (2026-02-16)
   - **Status**: ✅ READY FOR MERGE
   - **Summary**: All 10 tasks completed successfully
