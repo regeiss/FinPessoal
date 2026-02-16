@@ -9,6 +9,39 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added - February 2026
 
+- **Phase 5B: Card Interactions - Task 2: SwipeAction Model** (2026-02-15)
+  - SwipeAction Model:
+    - **SwipeAction struct** created with Identifiable protocol
+    - Properties: id (UUID), title, icon (SF Symbol), tint (Color), role (ButtonRole?), action (() async -> Void)
+    - Full documentation with parameter descriptions
+  - Preset Factory Methods:
+    - **delete(action:)** - Red tint, .destructive role, trash icon
+    - **edit(action:)** - Blue tint, no role, pencil icon
+    - **archive(action:)** - Orange tint, no role, archivebox icon
+    - **complete(action:)** - Color.oldMoney.income tint, no role, checkmark.circle.fill icon
+  - Localization Integration:
+    - Uses String(localized:) for all action titles
+    - Keys: "common.delete", "common.edit", "common.archive", "common.complete"
+    - Supports multi-language apps automatically
+  - Testing:
+    - Created SwipeActionTests.swift with comprehensive coverage
+    - testSwipeActionCreation - Validates struct initialization
+    - testDeletePreset - Verifies delete action configuration
+    - testEditPreset - Verifies edit action configuration
+    - testArchivePreset - Verifies archive action configuration
+    - testCompletePreset - Verifies complete action configuration
+    - testActionExecution - Validates async action execution
+  - Files Created:
+    - FinPessoal/Code/Animation/Components/CardInteractions/SwipeAction.swift
+    - FinPessoalTests/Animation/CardInteractions/SwipeActionTests.swift
+  - Build Status: **BUILD SUCCEEDED**
+  - Test Results: **ALL TESTS PASSED (6/6)**
+  - Code Quality:
+    - 2-space indentation throughout
+    - Comprehensive documentation
+    - Follows Swift naming conventions
+    - Full accessibility support via localization
+
 - **Phase 5A: Charts - COMPLETE** (2026-02-15)
   - **Summary**: All 13 tasks completed successfully
   - **Status**: ✅ READY FOR MERGE
