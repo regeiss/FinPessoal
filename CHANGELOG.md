@@ -9,6 +9,53 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added - February 2026
 
+- **Phase 5D: Animation Integration - COMPLETE** (2026-02-17)
+  - **Summary**: Integrated Phase 5C animations into 4 core screens following the user journey
+  - **Screens**: Dashboard, Transactions, Goals, Budget
+  - **Build Status**: ✅ BUILD SUCCEEDED (clean build, zero errors)
+  - **Test Status**: ✅ 16 new tests (10 passing, 6 skipped for platform limitation)
+
+  **Integrations Delivered**:
+
+  1. **Dashboard** (already complete from prior work):
+     - Parallax on balance card (speed: 0.7) via `.withParallax()`
+     - Animated gradient on Spending Trends card (accent, 3s)
+     - Milestone celebrations ($1k, $5k, $10k, $25k, $50k, $100k)
+     - Refined celebration style with achievement haptic, auto-dismiss 2s
+
+  2. **Transactions** (~15 lines added):
+     - Hero transitions from TransactionRow to TransactionDetailView
+     - `@Namespace heroNamespace` for matched geometry coordination
+     - Tap → view detail via hero transition, swipe → edit/delete
+     - Parallax on rows (speed: 0.8) already in place
+
+  3. **Goals** (celebration already complete, namespace added):
+     - `@Namespace heroNamespace` added to GoalScreen
+     - Goal completion celebration via `onChange(completedGoals.count)`
+     - Refined CelebrationView with achievement haptic, auto-dismiss 2s
+     - Gradient on progress bars > 80% (accent, 0.2 opacity, 3s)
+
+  4. **Budget** (~48 lines added):
+     - `showBudgetSuccessCelebration` state in BudgetViewModel
+     - `checkBudgetStatus(budgets:)` method for detecting under-budget
+     - Minimal CelebrationView overlay with success haptic (1.5s)
+     - `@Namespace heroNamespace` for hero transitions
+     - HeroTransitionLink wrapping BudgetCard → BudgetDetailSheet
+     - Warning gradient on cards > 90% used (amber, 0.15 opacity, 4s)
+
+  **Bug Fixes**:
+  - Fixed duplicate `if(_:transform:)` View extension in BudgetCard (redeclaration conflict)
+  - Fixed `SwipeGestureHandlerTests` compilation error (DragGesture.Value not constructible)
+
+  **Testing** (3 new test files):
+  - `DashboardViewModelAnimationTests`: 6 tests (milestone detection)
+  - `GoalViewModelAnimationTests`: 4 tests (goal progress updates)
+  - `BudgetViewModelAnimationTests`: 6 tests (budget celebration state)
+
+  **Files Created**: 3 test files
+  **Files Modified**: 6 files (2 screens, 1 ViewModel, 1 card, 1 test fix)
+  **Commits**: 4 feature commits + 1 test commit
+
 - **Phase 5C: Advanced Polish - Tasks 4-8 COMPLETE** (2026-02-16)
   - **Summary**: Week 2-3 components for celebrations, parallax, and gradients
   - **Build Status**: ✅ BUILD SUCCEEDED
