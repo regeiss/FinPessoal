@@ -18,6 +18,11 @@ class DashboardViewModel: ObservableObject {
   @Published var spendingTrendsData: SpendingTrendsData?
   @Published var chartDateRange: ChartDateRange = .sevenDays
 
+  // MARK: - Celebration State
+  @Published var showMilestoneCelebration = false
+  private var lastMilestone: Double = 0
+  private let milestones: [Double] = [1000, 5000, 10000, 25000, 50000, 100000]
+
   private let accountRepository: AccountRepositoryProtocol
   private let transactionRepository: TransactionRepositoryProtocol
   private var cancellables = Set<AnyCancellable>()
@@ -64,6 +69,7 @@ class DashboardViewModel: ObservableObject {
     await loadAccountsAndTransactions()
     await loadBudgets()
     await loadChartData()
+    checkMilestones()
   }
 
   func loadDashboardData() {
@@ -190,6 +196,20 @@ class DashboardViewModel: ObservableObject {
       minValue: paddedMin,
       dateRange: startDate...endDate
     )
+  }
+
+  // MARK: - Milestone Detection
+
+  /// Checks if total balance crossed a milestone threshold
+  func checkMilestones() {
+    let balance = totalBalance
+    for milestone in milestones {
+      if balance >= milestone && lastMilestone < milestone {
+        lastMilestone = milestone
+        showMilestoneCelebration = true
+        break
+      }
+    }
   }
 
   func updateChartRange(_ range: ChartDateRange) {

@@ -84,10 +84,23 @@ struct GoalCard: View {
           .accessibilityLabel("Progress")
           .accessibilityValue("\(Int(goal.progressPercentage))%, \(CurrencyFormatter.shared.string(from: goal.currentAmount)) of \(CurrencyFormatter.shared.string(from: goal.targetAmount))")
 
-          ProgressView(value: goal.progressPercentage / 100.0)
-            .progressViewStyle(LinearProgressViewStyle(tint: Color(goal.category.color)))
-            .scaleEffect(x: 1, y: 1.5, anchor: .center)
-            .accessibilityHidden(true)
+          Group {
+            if goal.progressPercentage > 80 {
+              ProgressView(value: goal.progressPercentage / 100.0)
+                .progressViewStyle(LinearProgressViewStyle(tint: Color(goal.category.color)))
+                .scaleEffect(x: 1, y: 1.5, anchor: .center)
+                .withGradientAnimation(
+                  colors: [Color.oldMoney.accent.opacity(0.2), .clear],
+                  duration: 3.0,
+                  style: .linear(.leading, .trailing)
+                )
+            } else {
+              ProgressView(value: goal.progressPercentage / 100.0)
+                .progressViewStyle(LinearProgressViewStyle(tint: Color(goal.category.color)))
+                .scaleEffect(x: 1, y: 1.5, anchor: .center)
+            }
+          }
+          .accessibilityHidden(true)
         }
 
         // Stats

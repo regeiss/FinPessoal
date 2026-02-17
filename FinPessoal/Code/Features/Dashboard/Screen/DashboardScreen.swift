@@ -14,6 +14,7 @@ struct DashboardScreen: View {
   @StateObject private var refreshCoordinator = RefreshCoordinator()
   @StateObject private var transitionCoordinator = LoadingTransitionCoordinator()
   @State private var showingSettings = false
+  @State private var previousCompletedCount = 0
 
   var body: some View {
     PullToRefreshView(
@@ -30,6 +31,7 @@ struct DashboardScreen: View {
             totalBalance: viewModel.totalBalance,
             monthlyExpenses: viewModel.monthlyExpenses
           )
+          .withParallax(speed: 0.7, axis: .vertical)
         } skeleton: {
           BalanceCardSkeleton()
         }
@@ -53,6 +55,11 @@ struct DashboardScreen: View {
               }
               .padding()
             }
+            .withGradientAnimation(
+              colors: [Color.oldMoney.accent.opacity(0.1), .clear],
+              duration: 3.0,
+              style: .linear(.topLeading, .bottomTrailing)
+            )
           } skeleton: {
             SpendingTrendsChartSkeleton()
           }
@@ -117,6 +124,18 @@ struct DashboardScreen: View {
     } message: {
       if let error = viewModel.error {
         Text(error.localizedDescription)
+      }
+    }
+    .overlay {
+      if viewModel.showMilestoneCelebration {
+        CelebrationView(
+          style: .refined,
+          duration: 2.0,
+          haptic: .achievement
+        ) {
+          viewModel.showMilestoneCelebration = false
+        }
+        .allowsHitTesting(false)
       }
     }
     .sheet(isPresented: $showingSettings) {
