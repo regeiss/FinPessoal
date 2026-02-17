@@ -12,6 +12,9 @@ struct GoalScreen: View {
   @StateObject private var goalViewModel = GoalViewModel()
   @State private var showingAddGoal = false
   @State private var selectedViewMode: ViewMode = .cards
+  @State private var showGoalCompleteCelebration = false
+  @State private var previousCompletedCount = 0
+  @Namespace private var heroNamespace
   
   enum ViewMode: String, CaseIterable {
     case cards = "Cards"
@@ -166,6 +169,27 @@ struct GoalScreen: View {
       AddGoalScreen()
         .environmentObject(goalViewModel)
         .environmentObject(financeViewModel)
+    }
+    .overlay {
+      if showGoalCompleteCelebration {
+        CelebrationView(
+          style: .refined,
+          duration: 2.0,
+          haptic: .achievement
+        ) {
+          showGoalCompleteCelebration = false
+        }
+        .allowsHitTesting(false)
+      }
+    }
+    .onChange(of: completedGoals.count) { oldCount, newCount in
+      if newCount > previousCompletedCount {
+        showGoalCompleteCelebration = true
+      }
+      previousCompletedCount = newCount
+    }
+    .onAppear {
+      previousCompletedCount = completedGoals.count
     }
   }
 }
