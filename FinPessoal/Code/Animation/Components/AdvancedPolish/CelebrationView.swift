@@ -36,6 +36,9 @@ public struct CelebrationView: View {
 
   // MARK: - Configuration
 
+  /// Optional themed configuration (overrides style/haptic/duration when set)
+  private let config: CelebrationConfig?
+
   /// Celebration style
   private let style: CelebrationStyle
 
@@ -68,6 +71,21 @@ public struct CelebrationView: View {
 
   // MARK: - Initialization
 
+  /// Creates a themed celebration view driven by a CelebrationConfig
+  /// - Parameters:
+  ///   - config: Themed configuration from CelebrationFactory
+  ///   - onComplete: Callback when celebration completes
+  init(
+    config: CelebrationConfig,
+    onComplete: (() -> Void)? = nil
+  ) {
+    self.config = config
+    self.style = config.style
+    self.duration = config.duration
+    self.haptic = config.haptic
+    self.onComplete = onComplete
+  }
+
   /// Creates a celebration view
   /// - Parameters:
   ///   - style: Celebration style (default: .refined)
@@ -80,6 +98,7 @@ public struct CelebrationView: View {
     haptic: CelebrationHaptic = .success,
     onComplete: (() -> Void)? = nil
   ) {
+    self.config = nil
     self.style = style
     self.duration = duration
     self.haptic = haptic
@@ -95,6 +114,25 @@ public struct CelebrationView: View {
           .scaleEffect(scale)
           .opacity(isVisible ? 1.0 : 0.0)
           .transition(.opacity)
+
+        // Themed particle overlay
+        if let preset = config?.particlePreset, !reduceMotion {
+          ParticleEmitter(preset: preset)
+            .allowsHitTesting(false)
+        }
+
+        // Themed message
+        if let message = config?.message {
+          VStack(spacing: 8) {
+            Spacer()
+            Text(message)
+              .font(.headline)
+              .foregroundStyle(config?.accentColor ?? Color.oldMoney.accent)
+              .padding(.bottom, 60)
+          }
+          .opacity(isVisible ? 1.0 : 0.0)
+          .transition(.opacity)
+        }
       }
     }
     .onAppear {
@@ -126,23 +164,23 @@ public struct CelebrationView: View {
       // Glow effect
       if !reduceMotion {
         Circle()
-          .fill(Color.oldMoney.accent.opacity(glowOpacity * glowMultiplier))
+          .fill(celebrationAccentColor.opacity(glowOpacity * glowMultiplier))
           .blur(radius: 20)
           .frame(width: 100, height: 100)
       }
 
-      // Check mark icon
-      Image(systemName: "checkmark.circle.fill")
+      // Celebration icon
+      Image(systemName: celebrationIcon)
         .font(.system(size: celebrationIconSize))
-        .foregroundStyle(Color.oldMoney.accent)
+        .foregroundStyle(celebrationAccentColor)
     }
   }
 
   /// Minimal celebration: Check mark only
   private var minimalCelebration: some View {
-    Image(systemName: "checkmark.circle.fill")
+    Image(systemName: celebrationIcon)
       .font(.system(size: celebrationIconSize))
-      .foregroundStyle(Color.oldMoney.accent)
+      .foregroundStyle(celebrationAccentColor)
   }
 
   // MARK: - Computed Properties
@@ -153,6 +191,16 @@ public struct CelebrationView: View {
   /// Glow opacity multiplier for high contrast
   private var glowMultiplier: Double {
     highContrast ? 0.5 : 0.3
+  }
+
+  /// Accent color from config when available, fallback to default
+  private var celebrationAccentColor: Color {
+    config?.accentColor ?? Color.oldMoney.accent
+  }
+
+  /// Icon name from config when available, fallback to checkmark
+  private var celebrationIcon: String {
+    config?.icon ?? "checkmark.circle.fill"
   }
 
   // MARK: - Actions
