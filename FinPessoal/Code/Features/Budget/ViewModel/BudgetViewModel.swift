@@ -19,6 +19,10 @@ class BudgetViewModel: ObservableObject {
   @Published var isLoading = false
   @Published var errorMessage: String?
 
+  // MARK: - Celebration State
+
+  @Published var showBudgetSuccessCelebration = false
+
   private let crashlytics = CrashlyticsManager.shared
 
   // User ID should be provided by authentication system
@@ -97,5 +101,15 @@ class BudgetViewModel: ObservableObject {
     alertThreshold = 0.8
     startDate = Date()
     errorMessage = nil
+  }
+
+  /// Checks if any budget is under its limit for the current period
+  func checkBudgetStatus(budgets: [Budget]) {
+    for budget in budgets where !budget.isOverBudget {
+      if budget.percentageUsed < 1.0 && budget.spent > 0 {
+        showBudgetSuccessCelebration = true
+        return
+      }
+    }
   }
 }

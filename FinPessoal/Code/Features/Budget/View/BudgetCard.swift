@@ -114,5 +114,13 @@ struct BudgetCard: View {
       .padding()
     }
     .accessibilityElement(children: .contain)
+    .if(budget.percentageUsed > 0.9) { view in
+      view.withGradientAnimation(
+        colors: [Color.oldMoney.warning.opacity(0.15), .clear],
+        duration: 4.0,
+        style: .linear(.topLeading, .bottomTrailing)
+      )
+    }
   }
 }
+

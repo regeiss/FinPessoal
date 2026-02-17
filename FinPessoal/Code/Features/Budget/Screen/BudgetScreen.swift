@@ -12,6 +12,7 @@ struct BudgetsScreen: View {
   @StateObject private var budgetViewModel = BudgetViewModel()
   @State private var showingAddBudget = false
   @State private var selectedBudget: Budget?
+  @Namespace private var heroNamespace
   
   var body: some View {
     ScrollView {
@@ -51,6 +52,22 @@ struct BudgetsScreen: View {
     }
     .refreshable {
       await financeViewModel.loadData()
+    }
+    .overlay {
+      if budgetViewModel.showBudgetSuccessCelebration {
+        CelebrationView(
+          style: .minimal,
+          duration: 1.5,
+          haptic: .success
+        ) {
+          budgetViewModel.showBudgetSuccessCelebration = false
+        }
+        .allowsHitTesting(false)
+        .accessibilityHidden(true)
+      }
+    }
+    .onAppear {
+      budgetViewModel.checkBudgetStatus(budgets: financeViewModel.budgets)
     }
   }
   
@@ -171,9 +188,6 @@ struct BudgetsScreen: View {
 
       ForEach(financeViewModel.budgets) { budget in
         InteractiveListRow(
-          onTap: {
-            selectedBudget = budget
-          },
           trailingActions: [
             .delete {
               // Delete budget action
@@ -183,7 +197,15 @@ struct BudgetsScreen: View {
             }
           ]
         ) {
-          BudgetCard(budget: budget)
+          HeroTransitionLink(
+            item: budget,
+            namespace: heroNamespace
+          ) {
+            BudgetCard(budget: budget)
+          } destination: { b in
+            BudgetDetailSheet(budget: b)
+              .environmentObject(financeViewModel)
+          }
         }
       }
     }
