@@ -13,6 +13,7 @@ struct TransactionsScreen: View {
   @EnvironmentObject var financeViewModel: FinanceViewModel
   @EnvironmentObject var authViewModel: AuthViewModel
   @State private var transactionToEdit: Transaction?
+  @Namespace private var heroNamespace
 
   init(transactionViewModel: TransactionViewModel? = nil) {
     if let existingViewModel = transactionViewModel {
@@ -231,9 +232,6 @@ struct TransactionsScreen: View {
         Section {
           ForEach(transactions) { transaction in
             InteractiveListRow(
-              onTap: {
-                transactionToEdit = transaction
-              },
               leadingActions: [
                 .edit {
                   transactionToEdit = transaction
@@ -245,7 +243,16 @@ struct TransactionsScreen: View {
                 }
               ]
             ) {
-              TransactionRow(transaction: transaction)
+              HeroTransitionLink(
+                item: transaction,
+                namespace: heroNamespace
+              ) {
+                TransactionRow(transaction: transaction)
+                  .withParallax(speed: 0.8, axis: .vertical)
+              } destination: { t in
+                TransactionDetailView(transaction: t)
+                  .environmentObject(financeViewModel)
+              }
             }
           }
         } header: {
