@@ -31,7 +31,9 @@ struct ChartCalloutView: View {
             .font(.caption2)
             .minimumScaleFactor(0.8)
 
-          Text(segment.value.formatted(.currency(code: "USD")))
+          Text(segment.value.formatted(.currency(
+            code: Locale.current.currency?.identifier ?? "BRL"
+          )))
             .font(.caption2)
             .foregroundStyle(.secondary)
             .minimumScaleFactor(0.8)
@@ -42,7 +44,9 @@ struct ChartCalloutView: View {
           .fontWeight(.semibold)
           .minimumScaleFactor(0.8)
 
-        Text(bar.value.formatted(.currency(code: "USD")))
+        Text(bar.value.formatted(.currency(
+          code: Locale.current.currency?.identifier ?? "BRL"
+        )))
           .font(.caption2)
           .foregroundStyle(.secondary)
           .minimumScaleFactor(0.8)
