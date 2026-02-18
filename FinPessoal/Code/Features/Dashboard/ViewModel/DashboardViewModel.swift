@@ -20,6 +20,7 @@ class DashboardViewModel: ObservableObject {
 
   // MARK: - Celebration State
   @Published var showMilestoneCelebration = false
+  @Published var milestoneCelebrationConfig: CelebrationConfig?
   private var lastMilestone: Double = 0
   private let milestones: [Double] = [1000, 5000, 10000, 25000, 50000, 100000]
 
@@ -206,6 +207,8 @@ class DashboardViewModel: ObservableObject {
     for milestone in milestones {
       if balance >= milestone && lastMilestone < milestone {
         lastMilestone = milestone
+        let tier = MilestoneTier.tier(for: milestone)
+        milestoneCelebrationConfig = CelebrationFactory.config(for: tier)
         showMilestoneCelebration = true
         break
       }

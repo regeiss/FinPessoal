@@ -127,13 +127,13 @@ struct DashboardScreen: View {
       }
     }
     .overlay {
-      if viewModel.showMilestoneCelebration {
+      if viewModel.showMilestoneCelebration,
+         let config = viewModel.milestoneCelebrationConfig {
         CelebrationView(
-          style: .refined,
-          duration: 2.0,
-          haptic: .achievement
+          config: config
         ) {
           viewModel.showMilestoneCelebration = false
+          viewModel.milestoneCelebrationConfig = nil
         }
         .allowsHitTesting(false)
       }
