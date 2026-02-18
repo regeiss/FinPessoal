@@ -9,6 +9,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added - February 2026
 
+- **Spending Trends Localization** (2026-02-17)
+  - **Summary**: Chart currency, dates, and UI labels now follow device locale
+  - **Build Status**: ✅ BUILD SUCCEEDED
+
+  **Fixed**:
+  - `DashboardScreen`: "Spending Trends", "Range", "7 Days", "30 Days" use xcstrings
+  - `SpendingTrendsChart`: `formatCurrency` and `formatDate` use `Locale.current`
+  - `SpendingTrendsChart`: Callout `PhysicsNumberCounter` uses `Locale.current.currency`
+  - `ChartCalloutView`: Segment and bar values use `Locale.current.currency` (was hardcoded USD)
+  - `BarChart`: Accessibility value uses `Locale.current.currency` (was hardcoded USD)
+
 - **Phase 5E: Emotional Delight - COMPLETE** (2026-02-17)
   - **Summary**: Category-aware goal celebrations and milestone-scaled particle effects
   - **Build Status**: ✅ BUILD SUCCEEDED (clean build, zero errors)
