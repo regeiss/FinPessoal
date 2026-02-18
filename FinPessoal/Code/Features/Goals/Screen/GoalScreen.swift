@@ -14,6 +14,7 @@ struct GoalScreen: View {
   @State private var selectedViewMode: ViewMode = .cards
   @State private var showGoalCompleteCelebration = false
   @State private var previousCompletedCount = 0
+  @State private var lastCompletedGoal: Goal?
   @Namespace private var heroNamespace
   
   enum ViewMode: String, CaseIterable {
@@ -173,17 +174,17 @@ struct GoalScreen: View {
     .overlay {
       if showGoalCompleteCelebration {
         CelebrationView(
-          style: .refined,
-          duration: 2.0,
-          haptic: .achievement
+          config: CelebrationFactory.config(for: lastCompletedGoal?.category ?? .other)
         ) {
           showGoalCompleteCelebration = false
+          lastCompletedGoal = nil
         }
         .allowsHitTesting(false)
       }
     }
     .onChange(of: completedGoals.count) { oldCount, newCount in
       if newCount > previousCompletedCount {
+        lastCompletedGoal = completedGoals.last
         showGoalCompleteCelebration = true
       }
       previousCompletedCount = newCount
