@@ -9,6 +9,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added - February 2026
 
+- **Phase 5E: Emotional Delight - COMPLETE** (2026-02-17)
+  - **Summary**: Category-aware goal celebrations and milestone-scaled particle effects
+  - **Build Status**: ✅ BUILD SUCCEEDED (clean build, zero errors)
+  - **Test Status**: ✅ 15 new unit tests passing
+
+  **Delivered**:
+  - `CelebrationConfig` + `CelebrationFactory` (data-driven theming)
+  - `MilestoneTier` ($1k/small → $100k/epic) with `tier(for:)` derivation
+  - 5 new `ParticlePreset` cases: `.confetti`, `.hearts`, `.stars`, `.sparkle`, `.coinsBurst`
+  - `GoalScreen` tracks completed goal category → themed celebration per category
+  - Dashboard milestones scale visually with amount (1.5s–3.0s, coin burst)
+  - Backwards-compatible `CelebrationView` update (new `init(config:)` overload)
+
 - **Phase 5D: Animation Integration - COMPLETE** (2026-02-17)
   - **Summary**: Integrated Phase 5C animations into 4 core screens following the user journey
   - **Screens**: Dashboard, Transactions, Goals, Budget
