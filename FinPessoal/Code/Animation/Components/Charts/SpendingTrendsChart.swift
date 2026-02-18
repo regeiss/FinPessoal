@@ -462,7 +462,7 @@ struct SpendingTrendsChart: View, AnimatedChart {
 
   private func formatDate(_ date: Date) -> String {
     let formatter = DateFormatter()
-    formatter.dateFormat = "MMM d"
+    formatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "MMMd", options: 0, locale: .current)
     formatter.locale = .current
     return formatter.string(from: date)
   }

@@ -72,7 +72,7 @@ struct BarChart: View {
         .accessibilityElement(children: .ignore)
         .accessibilityLabel(bar.label)
         .accessibilityValue(bar.value.formatted(.currency(code: Locale.current.currency?.identifier ?? "BRL")))
-        .accessibilityHint("Double tap to select")
+        .accessibilityHint(String(localized: "Double tap to select"))
         .accessibilityAddTraits(isSelected ? .isSelected : [])
 
       // Label

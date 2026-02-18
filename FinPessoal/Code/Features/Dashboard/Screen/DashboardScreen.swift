@@ -105,16 +105,16 @@ struct DashboardScreen: View {
           } label: {
             Image(systemName: "gearshape")
           }
-          .accessibilityLabel("Settings")
-          .accessibilityHint("Open application settings")
+          .accessibilityLabel(String(localized: "Settings"))
+          .accessibilityHint(String(localized: "Open application settings"))
         }
       }
     }
-    .accessibilityAction(named: "Refresh Dashboard") {
+    .accessibilityAction(named: String(localized: "Refresh Dashboard")) {
       viewModel.loadDashboardData()
     }
-    .alert("Erro", isPresented: .constant(viewModel.error != nil)) {
-      Button("OK") {
+    .alert(String(localized: "Erro"), isPresented: .constant(viewModel.error != nil)) {
+      Button(String(localized: "OK")) {
         viewModel.error = nil
       }
       Button(String(localized: "common.try.again", defaultValue: "Tentar Novamente")) {
