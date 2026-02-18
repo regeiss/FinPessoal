@@ -405,7 +405,7 @@ struct SpendingTrendsChart: View, AnimatedChart {
 
       PhysicsNumberCounter(
         value: point.value,
-        format: .currency(code: "BRL")
+        format: .currency(code: Locale.current.currency?.identifier ?? "BRL")
       )
       .font(.headline)
       .foregroundColor(.oldMoney.accent)
@@ -452,15 +452,18 @@ struct SpendingTrendsChart: View, AnimatedChart {
   private func formatCurrency(_ value: Double) -> String {
     let formatter = NumberFormatter()
     formatter.numberStyle = .currency
-    formatter.currencyCode = "BRL"
+    formatter.locale = .current
     formatter.maximumFractionDigits = 0
-    return formatter.string(from: NSNumber(value: value)) ?? "R$ 0"
+    let fallback = value.formatted(.currency(
+      code: Locale.current.currency?.identifier ?? "BRL"
+    ))
+    return formatter.string(from: NSNumber(value: value)) ?? fallback
   }
 
   private func formatDate(_ date: Date) -> String {
     let formatter = DateFormatter()
     formatter.dateFormat = "MMM d"
-    formatter.locale = Locale(identifier: "pt_BR")
+    formatter.locale = .current
     return formatter.string(from: date)
   }
 
