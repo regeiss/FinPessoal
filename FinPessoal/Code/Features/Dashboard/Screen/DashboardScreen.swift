@@ -45,7 +45,7 @@ struct DashboardScreen: View {
             AnimatedCard {
               VStack(alignment: .leading, spacing: 16) {
                 HStack {
-                  Text("Spending Trends")
+                  Text(String(localized: "Spending Trends"))
                     .font(.headline)
                   Spacer()
                   chartRangePicker
@@ -168,9 +168,9 @@ struct DashboardScreen: View {
   // MARK: - Helper Views
 
   private var chartRangePicker: some View {
-    Picker("Range", selection: $viewModel.chartDateRange) {
-      Text("7 Days").tag(ChartDateRange.sevenDays)
-      Text("30 Days").tag(ChartDateRange.thirtyDays)
+    Picker(String(localized: "Range"), selection: $viewModel.chartDateRange) {
+      Text(String(localized: "7 Days")).tag(ChartDateRange.sevenDays)
+      Text(String(localized: "30 Days")).tag(ChartDateRange.thirtyDays)
     }
     .pickerStyle(.segmented)
     .frame(width: 150)
