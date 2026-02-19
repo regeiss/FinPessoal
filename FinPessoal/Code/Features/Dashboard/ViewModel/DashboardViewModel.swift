@@ -111,26 +111,7 @@ class DashboardViewModel: ObservableObject {
   private func loadChartData() async {
     print("DashboardViewModel: Loading chart data for range: \(chartDateRange)")
 
-    // Use background thread for data aggregation
-    let chartData = await Task.detached(priority: .userInitiated) { [weak self] () -> SpendingTrendsData? in
-      guard let self = self else { return nil }
-      return await self.aggregateChartData(range: self.chartDateRange)
-    }.value
-
-    if let chartData = chartData {
-      // Store previous data for smooth transitions
-      previousChartData = spendingTrendsData
-
-      // Update with new data
-      var updatedData = chartData
-      updatedData.previousPoints = previousChartData?.points
-      spendingTrendsData = updatedData
-
-      print("DashboardViewModel: Chart data loaded with \(chartData.points.count) points")
-    }
-  }
-
-  private func aggregateChartData(range: ChartDateRange) async -> SpendingTrendsData {
+    let range = chartDateRange
     let calendar = Calendar.current
     let endDate = Date()
     let startDate: Date
@@ -145,10 +126,41 @@ class DashboardViewModel: ObservableObject {
       dayCount = 30
     }
 
+    // Fetch transactions for the specific date range (not limited to recent 10)
+    let rangeTransactions = (try? await transactionRepository.getTransactions(from: startDate, to: endDate)) ?? []
+
+    let chartData = await Task.detached(priority: .userInitiated) {
+      return DashboardViewModel.aggregateChartData(
+        transactions: rangeTransactions,
+        startDate: startDate,
+        endDate: endDate,
+        dayCount: dayCount
+      )
+    }.value
+
+    // Store previous data for smooth transitions
+    previousChartData = spendingTrendsData
+
+    // Update with new data
+    var updatedData = chartData
+    updatedData.previousPoints = previousChartData?.points
+    spendingTrendsData = updatedData
+
+    print("DashboardViewModel: Chart data loaded with \(chartData.points.count) points")
+  }
+
+  private nonisolated static func aggregateChartData(
+    transactions: [Transaction],
+    startDate: Date,
+    endDate: Date,
+    dayCount: Int
+  ) -> SpendingTrendsData {
+    let calendar = Calendar.current
+
     // Aggregate transactions by day
     var dailyTotals: [Date: (value: Double, transactions: [Transaction])] = [:]
 
-    for transaction in recentTransactions where transaction.type == .expense {
+    for transaction in transactions where transaction.type == .expense {
       guard transaction.date >= startDate && transaction.date <= endDate else { continue }
 
       let dayStart = calendar.startOfDay(for: transaction.date)
