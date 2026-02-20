@@ -8,11 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		1940B8AEC1AB4FEFB0502BB1 /* ParticleEmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8F587CBBE40A7AE326E59 /* ParticleEmitter.swift */; };
-		30A5E99F9949408FAC9DE9E4 /* AnimationEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE45C63D12CF4058B0B35372 /* AnimationEngine.swift */; };
-		9780243AD6DE4109B58295D1 /* AnimationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FCC6E1307542AF8A44EA58 /* AnimationSettings.swift */; };
+		1C34E18E32953F925CD8BD64 /* CelebrationConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = A246401135AE83D1CB2FCEB2 /* CelebrationConfig.swift */; };
 		20E245BE5EAE484491F49B91 /* PhysicsNumberCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EAC25CEE64C4491888399CC /* PhysicsNumberCounter.swift */; };
+		30A5E99F9949408FAC9DE9E4 /* AnimationEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE45C63D12CF4058B0B35372 /* AnimationEngine.swift */; };
 		5D5258EEEB314574BEF819C1 /* PhysicsNumberCounterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084FD9D1317A4DC4ADB27F76 /* PhysicsNumberCounterTests.swift */; };
+		9780243AD6DE4109B58295D1 /* AnimationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FCC6E1307542AF8A44EA58 /* AnimationSettings.swift */; };
+		9E7AE8A760431313CC0FB7DC /* CelebrationFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50475287748EFCF9BA502E2 /* CelebrationFactory.swift */; };
 		A950EEE6F51C48D69EDBD756 /* ParticleEmitterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364968FAFDEE41039BB7E012 /* ParticleEmitterTests.swift */; };
+		C27F9894AA4C3F28AD835D7A /* CelebrationFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A31B82854A9C83EE05FDA5 /* CelebrationFactoryTests.swift */; };
 		E11447732EAE8AFC00060A67 /* Help.md in Resources */ = {isa = PBXBuildFile; fileRef = E114476C2EAE8AFC00060A67 /* Help.md */; };
 		E114481D2EAE8AFC00060A67 /* TESTS 2.md in Resources */ = {isa = PBXBuildFile; fileRef = E114481B2EAE8AFC00060A67 /* TESTS 2.md */; };
 		E11448572EB03E6300060A67 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = E11448562EB03E6300060A67 /* README.md */; };
@@ -124,9 +127,11 @@
 		084FD9D1317A4DC4ADB27F76 /* PhysicsNumberCounterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PhysicsNumberCounterTests.swift; path = FinPessoalTests/Animation/PhysicsNumberCounterTests.swift; sourceTree = SOURCE_ROOT; };
 		364968FAFDEE41039BB7E012 /* ParticleEmitterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ParticleEmitterTests.swift; path = FinPessoalTests/Animation/ParticleEmitterTests.swift; sourceTree = SOURCE_ROOT; };
 		4BA8F587CBBE40A7AE326E59 /* ParticleEmitter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ParticleEmitter.swift; path = FinPessoal/Code/Animation/Components/ParticleEmitter.swift; sourceTree = SOURCE_ROOT; };
-		CE45C63D12CF4058B0B35372 /* AnimationEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AnimationEngine.swift; path = FinPessoal/Code/Animation/Engine/AnimationEngine.swift; sourceTree = SOURCE_ROOT; };
 		65FCC6E1307542AF8A44EA58 /* AnimationSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AnimationSettings.swift; path = FinPessoal/Code/Animation/Engine/AnimationSettings.swift; sourceTree = SOURCE_ROOT; };
 		8EAC25CEE64C4491888399CC /* PhysicsNumberCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PhysicsNumberCounter.swift; path = FinPessoal/Code/Animation/Components/PhysicsNumberCounter.swift; sourceTree = SOURCE_ROOT; };
+		A246401135AE83D1CB2FCEB2 /* CelebrationConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CelebrationConfig.swift; path = FinPessoal/Code/Animation/Components/AdvancedPolish/CelebrationConfig.swift; sourceTree = SOURCE_ROOT; };
+		A5A31B82854A9C83EE05FDA5 /* CelebrationFactoryTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CelebrationFactoryTests.swift; path = FinPessoalTests/Animation/AdvancedPolish/CelebrationFactoryTests.swift; sourceTree = SOURCE_ROOT; };
+		CE45C63D12CF4058B0B35372 /* AnimationEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AnimationEngine.swift; path = FinPessoal/Code/Animation/Engine/AnimationEngine.swift; sourceTree = SOURCE_ROOT; };
 		E114476C2EAE8AFC00060A67 /* Help.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Help.md; sourceTree = "<group>"; };
 		E114481B2EAE8AFC00060A67 /* TESTS 2.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "TESTS 2.md"; sourceTree = "<group>"; };
 		E11448562EB03E6300060A67 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -163,6 +168,7 @@
 		E1C2B6AB2E66550900972780 /* FinPessoalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FinPessoalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1C2B6B82E66553100972780 /* FinPessoalUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FinPessoalUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1E8F1CF2E4D609B00FFD30F /* MockLogin.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = MockLogin.md; sourceTree = "<group>"; };
+		F50475287748EFCF9BA502E2 /* CelebrationFactory.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CelebrationFactory.swift; path = FinPessoal/Code/Animation/Components/AdvancedPolish/CelebrationFactory.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -201,11 +207,15 @@
 		};
 		E1C2B6AC2E66550900972780 /* FinPessoalTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+			);
 			path = FinPessoalTests;
 			sourceTree = "<group>";
 		};
 		E1C2B6B92E66553100972780 /* FinPessoalUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+			);
 			path = FinPessoalUITests;
 			sourceTree = "<group>";
 		};
@@ -270,6 +280,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B6065F150EFE8D6AB7F92832 /* AdvancedPolish */ = {
+			isa = PBXGroup;
+			children = (
+				A246401135AE83D1CB2FCEB2 /* CelebrationConfig.swift */,
+				F50475287748EFCF9BA502E2 /* CelebrationFactory.swift */,
+				A5A31B82854A9C83EE05FDA5 /* CelebrationFactoryTests.swift */,
+			);
+			name = AdvancedPolish;
+			sourceTree = "<group>";
+		};
 		E15E497D2EF1A329004A2129 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -382,6 +402,7 @@
 				65FCC6E1307542AF8A44EA58 /* AnimationSettings.swift */,
 				084FD9D1317A4DC4ADB27F76 /* PhysicsNumberCounterTests.swift */,
 				364968FAFDEE41039BB7E012 /* ParticleEmitterTests.swift */,
+				B6065F150EFE8D6AB7F92832 /* AdvancedPolish */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -405,8 +426,6 @@
 				E15E49822EF1A329004A2129 /* FinPessoalWidgets */,
 			);
 			name = FinPessoalWidgetsExtension;
-			packageProductDependencies = (
-			);
 			productName = FinPessoalWidgetsExtension;
 			productReference = E15E497C2EF1A329004A2129 /* FinPessoalWidgetsExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -477,8 +496,6 @@
 				E1C2B6AC2E66550900972780 /* FinPessoalTests */,
 			);
 			name = FinPessoalTests;
-			packageProductDependencies = (
-			);
 			productName = FinPessoalTests;
 			productReference = E1C2B6AB2E66550900972780 /* FinPessoalTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -500,8 +517,6 @@
 				E1C2B6B92E66553100972780 /* FinPessoalUITests */,
 			);
 			name = FinPessoalUITests;
-			packageProductDependencies = (
-			);
 			productName = FinPessoalUITests;
 			productReference = E1C2B6B82E66553100972780 /* FinPessoalUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
@@ -645,6 +660,8 @@
 				1940B8AEC1AB4FEFB0502BB1 /* ParticleEmitter.swift in Sources */,
 				30A5E99F9949408FAC9DE9E4 /* AnimationEngine.swift in Sources */,
 				9780243AD6DE4109B58295D1 /* AnimationSettings.swift in Sources */,
+				1C34E18E32953F925CD8BD64 /* CelebrationConfig.swift in Sources */,
+				9E7AE8A760431313CC0FB7DC /* CelebrationFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -654,6 +671,7 @@
 			files = (
 				5D5258EEEB314574BEF819C1 /* PhysicsNumberCounterTests.swift in Sources */,
 				A950EEE6F51C48D69EDBD756 /* ParticleEmitterTests.swift in Sources */,
+				C27F9894AA4C3F28AD835D7A /* CelebrationFactoryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
