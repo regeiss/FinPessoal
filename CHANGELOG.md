@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed - February 2026
+
+- **Recent Transactions Visual Update** (2026-02-20)
+  - Updated Recent Transactions card to match dashboard visual style
+  - Replaced plain background with `AnimatedCard(style: .standard)` for layered background effect
+  - Updated color scheme to use Old Money theme colors (`.oldMoney.accent`, `.oldMoney.text`, `.oldMoney.textSecondary`)
+  - Now visually consistent with Balance Card and Spending Trends chart
+  - **Files**: `RecentTransactionScreen.swift`
+
 ### Fixed - February 2026
 
 - **Dashboard Segmented Picker Unresponsive** (2026-02-18)
