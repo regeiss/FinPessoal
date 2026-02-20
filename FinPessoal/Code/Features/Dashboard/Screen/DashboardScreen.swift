@@ -37,11 +37,14 @@ struct DashboardScreen: View {
         }
 
         // Spending Trends Chart
-        if let chartData = viewModel.spendingTrendsData {
-          StaggeredRevealCard(
-            coordinator: transitionCoordinator,
-            staggerIndex: 1
-          ) {
+        // Not wrapped in StaggeredRevealCard: the card is conditionally rendered
+        // (gated on spendingTrendsData != nil). StaggeredRevealCard observes
+        // coordinator.isLoading via onChange, but if the coordinator transitions
+        // before the card enters the hierarchy, that signal is missed. The
+        // SpendingTrendsChart has its own animateEntry() on onAppear, so the
+        // card animates in via SwiftUI's transition system when data arrives.
+        Group {
+          if let chartData = viewModel.spendingTrendsData {
             AnimatedCard {
               VStack(alignment: .leading, spacing: 16) {
                 HStack {
@@ -60,10 +63,10 @@ struct DashboardScreen: View {
               duration: 3.0,
               style: .linear(.topLeading, .bottomTrailing)
             )
-          } skeleton: {
-            SpendingTrendsChartSkeleton()
+            .transition(.opacity.combined(with: .move(edge: .bottom)))
           }
         }
+        .animation(.easeInOut(duration: 0.35), value: viewModel.spendingTrendsData != nil)
 
         // Budget Alerts (only show if there are alerts)
         if !viewModel.budgetAlerts.isEmpty {

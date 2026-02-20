@@ -89,8 +89,8 @@ struct PullToRefreshView<Content: View>: View {
       .onPreferenceChange(ScrollOffsetPreferenceKey.self) { offset in
         handleScrollOffsetChange(offset)
       }
-      .gesture(
-        DragGesture(minimumDistance: 0)
+      .simultaneousGesture(
+        DragGesture(minimumDistance: 10)
           .onChanged { _ in
             isDragging = true
           }

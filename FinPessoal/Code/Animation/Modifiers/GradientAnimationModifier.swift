@@ -45,6 +45,7 @@ struct GradientAnimationModifier: ViewModifier {
       .overlay(
         gradientView
           .opacity(AnimationSettings.shared.effectiveMode == .minimal ? 0 : 1)
+          .allowsHitTesting(false)
       )
       .onAppear {
         startAnimation()

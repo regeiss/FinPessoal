@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed - February 2026
+
+- **Dashboard Segmented Picker Unresponsive** (2026-02-18)
+  - **Root Cause**: `GradientAnimationModifier` placed a `LinearGradient` overlay on top of card content without `.allowsHitTesting(false)`. SwiftUI views intercept touches regardless of transparency, so the decorative gradient was swallowing all taps before they reached the segmented `Picker`.
+  - **Secondary Cause**: `AnimatedCard` used `.gesture()` (instead of `.simultaneousGesture()`) for its press animation, which competed with UIKit-backed segmented controls.
+  - **Fix**: Added `.allowsHitTesting(false)` to gradient overlay in `GradientAnimationModifier`; changed `AnimatedCard` to use `.simultaneousGesture()` so inner controls receive touches concurrently.
+  - **Files**: `GradientAnimationModifier.swift`, `AnimatedCard.swift`, `PullToRefreshView.swift`
+
+- **Spending Trends Chart Invisible on First Launch** (2026-02-18)
+  - **Root Cause**: The chart card is conditionally rendered (`if let chartData = spendingTrendsData`). `StaggeredRevealCard` reveals content by observing `coordinator.isLoading` changing to false. But if the coordinator's transition fires while the chart card is NOT yet in the hierarchy (data loads slowly), the `onChange` fires on other cards but never on the chart card. The `onAppear` fallback was supposed to catch this, but the timing of `coordinator.isLoading` state vs SwiftUI's `onAppear` dispatch was unreliable.
+  - **Fix**: Removed `StaggeredRevealCard` from the chart card. The `SpendingTrendsChart` already has its own `animateEntry()` spring animation. The card now appears directly via `.transition(.opacity.combined(with: .move(edge: .bottom)))` driven by `.animation(.easeInOut(duration: 0.35), value: spendingTrendsData != nil)` in the view layer.
+  - **Files**: `DashboardScreen.swift`, `DashboardViewModel.swift`
+
 ### Added - February 2026
 
 - **Spending Trends Localization** (2026-02-17)

@@ -95,22 +95,24 @@ public struct AnimatedCard<Content: View>: View {
           opacity = 1.0
         }
       }
-      .gesture(
-        DragGesture(minimumDistance: 0)
-          .onChanged { _ in
-            guard !isPressed else { return }
-            withAnimation(AnimationEngine.snappySpring) {
-              isPressed = true
+      .if(onTap != nil) { view in
+        view.simultaneousGesture(
+          DragGesture(minimumDistance: 0)
+            .onChanged { _ in
+              guard !isPressed else { return }
+              withAnimation(AnimationEngine.snappySpring) {
+                isPressed = true
+              }
+              HapticEngine.shared.light()
             }
-            HapticEngine.shared.light()
-          }
-          .onEnded { _ in
-            withAnimation(AnimationEngine.gentleSpring) {
-              isPressed = false
+            .onEnded { _ in
+              withAnimation(AnimationEngine.gentleSpring) {
+                isPressed = false
+              }
+              onTap?()
             }
-            onTap?()
-          }
-      )
+        )
+      }
       .if(heroID != nil) { view in
         view.matchedGeometryEffect(id: heroID!, in: namespace)
       }
