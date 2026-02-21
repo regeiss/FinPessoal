@@ -12,6 +12,7 @@ struct AccountsView: View {
   @EnvironmentObject var financeViewModel: FinanceViewModel
   @EnvironmentObject var authViewModel: AuthViewModel
   @State private var accountToEdit: Account?
+  @State private var showingSettings = false
 
   var body: some View {
     ScrollView {
@@ -33,7 +34,17 @@ struct AccountsView: View {
     .background(Color.oldMoney.background)
     .navigationTitle(String(localized: "tab.accounts"))
     .toolbar {
-      ToolbarItem(placement: .navigationBarTrailing) {
+      ToolbarItemGroup(placement: .navigationBarTrailing) {
+        if UIDevice.current.userInterfaceIdiom != .pad {
+          Button {
+            showingSettings = true
+          } label: {
+            Image(systemName: "gearshape")
+          }
+          .accessibilityLabel(String(localized: "Settings"))
+          .accessibilityHint(String(localized: "Open application settings"))
+        }
+
         Button {
           accountViewModel.showAddAccount()
         } label: {
@@ -84,6 +95,9 @@ struct AccountsView: View {
       if let errorMessage = accountViewModel.errorMessage {
         Text(errorMessage)
       }
+    }
+    .sheet(isPresented: $showingSettings) {
+      SettingsScreen()
     }
   }
   

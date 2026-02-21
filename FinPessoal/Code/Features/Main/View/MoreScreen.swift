@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct MoreScreen: View {
-  
+  @State private var showingSettings = false
+
   var body: some View {
     List {
         Section {
@@ -194,5 +195,21 @@ struct MoreScreen: View {
         }
       }
       .navigationTitle(String(localized: "tab.more"))
+      .toolbar {
+        if UIDevice.current.userInterfaceIdiom != .pad {
+          ToolbarItem(placement: .navigationBarTrailing) {
+            Button {
+              showingSettings = true
+            } label: {
+              Image(systemName: "gearshape")
+            }
+            .accessibilityLabel(String(localized: "Settings"))
+            .accessibilityHint(String(localized: "Open application settings"))
+          }
+        }
+      }
+      .sheet(isPresented: $showingSettings) {
+        SettingsScreen()
+      }
   }
 }

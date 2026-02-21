@@ -13,6 +13,7 @@ struct TransactionsScreen: View {
   @EnvironmentObject var financeViewModel: FinanceViewModel
   @EnvironmentObject var authViewModel: AuthViewModel
   @State private var transactionToEdit: Transaction?
+  @State private var showingSettings = false
   @Namespace private var heroNamespace
 
   init(transactionViewModel: TransactionViewModel? = nil) {
@@ -58,6 +59,16 @@ struct TransactionsScreen: View {
     .searchable(text: $transactionViewModel.searchQuery, prompt: String(localized: "transactions.search.prompt"))
     .toolbar {
       ToolbarItemGroup(placement: .navigationBarTrailing) {
+        if UIDevice.current.userInterfaceIdiom != .pad {
+          Button {
+            showingSettings = true
+          } label: {
+            Image(systemName: "gearshape")
+          }
+          .accessibilityLabel(String(localized: "Settings"))
+          .accessibilityHint(String(localized: "Open application settings"))
+        }
+
         Button {
           transactionViewModel.showImportPicker()
         } label: {
@@ -132,6 +143,9 @@ struct TransactionsScreen: View {
       if let errorMessage = transactionViewModel.errorMessage {
         Text(errorMessage)
       }
+    }
+    .sheet(isPresented: $showingSettings) {
+      SettingsScreen()
     }
   }
   

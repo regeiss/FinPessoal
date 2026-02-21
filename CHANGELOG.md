@@ -9,6 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed - February 2026
 
+- **Settings Icon Added to All Main Screens** (2026-02-20)
+  - Added settings (gearshape) icon to the toolbar of Accounts, Transactions, Bills, and More screens
+  - Consistent settings access across the entire app
+  - Only shown on iPhone (hidden on iPad using `UIDevice.current.userInterfaceIdiom != .pad`)
+  - Opens SettingsScreen when tapped
+  - Includes accessibility labels and hints for screen readers
+  - **Files**: `AccountsView.swift`, `TransactionsScreen.swift`, `BillsScreen.swift`, `MoreScreen.swift`
+
 - **Bills Grouped by Status with Totals** (2026-02-20)
   - Bills are now organized into sections: Overdue, Due Today, Upcoming, and Paid
   - Each section header displays the total amount for that group

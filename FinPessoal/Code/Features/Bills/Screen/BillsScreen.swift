@@ -10,6 +10,7 @@ import SwiftUI
 struct BillsScreen: View {
   @StateObject private var viewModel: BillsViewModel
   @State private var showingFilterSheet = false
+  @State private var showingSettings = false
 
   init(repository: BillRepositoryProtocol) {
     _viewModel = StateObject(wrappedValue: BillsViewModel(repository: repository))
@@ -34,7 +35,17 @@ struct BillsScreen: View {
     .navigationTitle(String(localized: "bills.title"))
     .blurredNavigationBar()
     .toolbar {
-      ToolbarItem(placement: .navigationBarTrailing) {
+      ToolbarItemGroup(placement: .navigationBarTrailing) {
+        if UIDevice.current.userInterfaceIdiom != .pad {
+          Button {
+            showingSettings = true
+          } label: {
+            Image(systemName: "gearshape")
+          }
+          .accessibilityLabel(String(localized: "Settings"))
+          .accessibilityHint(String(localized: "Open application settings"))
+        }
+
         Button(action: {
           viewModel.showAddBill()
         }) {
@@ -72,6 +83,9 @@ struct BillsScreen: View {
     }
     .frostedSheet(isPresented: $showingFilterSheet) {
       filterSheet
+    }
+    .sheet(isPresented: $showingSettings) {
+      SettingsScreen()
     }
     .refreshable {
       await viewModel.fetchBills()
