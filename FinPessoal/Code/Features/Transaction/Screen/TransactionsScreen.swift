@@ -52,6 +52,7 @@ struct TransactionsScreen: View {
       }
     }
     .coordinateSpace(name: "scroll")
+    .background(Color.oldMoney.background)
     .navigationTitle(String(localized: "tab.transactions"))
     .blurredNavigationBar()
     .searchable(text: $transactionViewModel.searchQuery, prompt: String(localized: "transactions.search.prompt"))

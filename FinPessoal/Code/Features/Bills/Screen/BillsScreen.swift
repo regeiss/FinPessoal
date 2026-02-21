@@ -30,6 +30,7 @@ struct BillsScreen: View {
     }
     .coordinateSpace(name: "scroll")
     .frame(maxWidth: .infinity, maxHeight: .infinity)
+    .background(Color.oldMoney.background)
     .navigationTitle(String(localized: "bills.title"))
     .blurredNavigationBar()
     .toolbar {
@@ -146,25 +147,91 @@ struct BillsScreen: View {
 
   // MARK: - Bills List
 
+  private var groupedBills: [(String, [Bill], Double)] {
+    let unpaidBills = viewModel.filteredBills.filter { !$0.isPaid }
+
+    var groups: [(String, [Bill], Double)] = []
+
+    // Overdue bills
+    let overdueBills = unpaidBills.filter { $0.isOverdue }
+    if !overdueBills.isEmpty {
+      let total = overdueBills.reduce(0) { $0 + $1.amount }
+      groups.append((String(localized: "bills.section.overdue", defaultValue: "Atrasadas"), overdueBills, total))
+    }
+
+    // Due today
+    let todayBills = unpaidBills.filter { $0.daysUntilDue == 0 && !$0.isOverdue }
+    if !todayBills.isEmpty {
+      let total = todayBills.reduce(0) { $0 + $1.amount }
+      groups.append((String(localized: "bills.section.today", defaultValue: "Vencendo Hoje"), todayBills, total))
+    }
+
+    // Upcoming bills
+    let upcomingBills = unpaidBills.filter { $0.daysUntilDue > 0 }
+    if !upcomingBills.isEmpty {
+      let total = upcomingBills.reduce(0) { $0 + $1.amount }
+      groups.append((String(localized: "bills.section.upcoming", defaultValue: "Próximas"), upcomingBills, total))
+    }
+
+    // Paid bills (optional, can be shown at the end)
+    let paidBills = viewModel.filteredBills.filter { $0.isPaid }
+    if !paidBills.isEmpty {
+      let total = paidBills.reduce(0) { $0 + $1.amount }
+      groups.append((String(localized: "bills.section.paid", defaultValue: "Pagas"), paidBills, total))
+    }
+
+    return groups
+  }
+
+  private func formatCurrency(_ amount: Double) -> String {
+    let formatter = NumberFormatter()
+    formatter.numberStyle = .currency
+    formatter.currencyCode = "BRL"
+    formatter.locale = Locale(identifier: "pt_BR")
+    return formatter.string(from: NSNumber(value: amount)) ?? "R$ 0,00"
+  }
+
   private var billsList: some View {
     List {
-      ForEach(viewModel.filteredBills) { bill in
-        InteractiveListRow(
-          onTap: {
-            viewModel.selectBill(bill)
-          },
-          leadingActions: bill.isPaid ? [] : [
-            .markPaid {
-              await viewModel.markBillAsPaid(bill.id)
+      ForEach(groupedBills, id: \.0) { section, bills, total in
+        Section {
+          ForEach(bills) { bill in
+            InteractiveListRow(
+              onTap: {
+                viewModel.selectBill(bill)
+              },
+              leadingActions: bill.isPaid ? [] : [
+                .markPaid {
+                  await viewModel.markBillAsPaid(bill.id)
+                }
+              ],
+              trailingActions: [
+                .delete {
+                  await viewModel.deleteBill(bill.id)
+                }
+              ]
+            ) {
+              BillRow(bill: bill, onMarkAsPaid: nil)
             }
-          ],
-          trailingActions: [
-            .delete {
-              await viewModel.deleteBill(bill.id)
-            }
-          ]
-        ) {
-          BillRow(bill: bill, onMarkAsPaid: nil)
+            .listRowSeparator(.hidden)
+          }
+        } header: {
+          HStack {
+            Text(section)
+              .font(.title3)
+              .fontWeight(.semibold)
+              .foregroundStyle(Color.oldMoney.text)
+
+            Spacer()
+
+            Text(formatCurrency(total))
+              .font(.title3)
+              .fontWeight(.bold)
+              .foregroundStyle(Color.oldMoney.accent)
+          }
+          .textCase(nil)
+          .padding(.horizontal, 16)
+          .padding(.vertical, 8)
         }
       }
     }

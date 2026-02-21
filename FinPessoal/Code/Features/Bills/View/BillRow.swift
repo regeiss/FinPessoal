@@ -17,23 +17,24 @@ struct BillRow: View {
   }
 
   var body: some View {
-    HStack(spacing: 12) {
+    HStack(spacing: 16) {
       // Category icon
       ZStack {
         Circle()
           .fill(bill.category.swiftUIColor.opacity(0.15))
-          .frame(width: 50, height: 50)
+          .frame(width: 56, height: 56)
 
         Image(systemName: bill.subcategory?.icon ?? bill.category.icon)
-          .font(.system(size: 20))
+          .font(.system(size: 24))
           .foregroundColor(bill.category.swiftUIColor)
       }
       .accessibilityHidden(true)
 
       // Bill info
-      VStack(alignment: .leading, spacing: 4) {
+      VStack(alignment: .leading, spacing: 6) {
         Text(bill.name)
           .font(.headline)
+          .fontWeight(.semibold)
           .foregroundStyle(Color.oldMoney.text)
 
         HStack(spacing: 8) {
@@ -41,42 +42,42 @@ struct BillRow: View {
           HStack(spacing: 4) {
             Circle()
               .fill(statusColor)
-              .frame(width: 8, height: 8)
+              .frame(width: 10, height: 10)
               .accessibilityHidden(true)
 
             Text(bill.statusText)
-              .font(.caption)
+              .font(.subheadline)
               .foregroundStyle(Color.oldMoney.textSecondary)
           }
 
           // Due date info
           if !bill.isPaid {
             Text("•")
-              .font(.caption)
+              .font(.subheadline)
               .foregroundStyle(Color.oldMoney.textSecondary)
               .accessibilityHidden(true)
 
             if bill.isOverdue {
               Text(String(localized: "bill.overdue.days", defaultValue: "\(-bill.daysUntilDue) days overdue"))
-                .font(.caption)
+                .font(.subheadline)
                 .foregroundStyle(Color.oldMoney.expense)
             } else {
               Text(String(localized: "bill.due.in", defaultValue: "Due in \(bill.daysUntilDue) days"))
-                .font(.caption)
+                .font(.subheadline)
                 .foregroundStyle(Color.oldMoney.textSecondary)
             }
           } else {
             Text("•")
-              .font(.caption)
+              .font(.subheadline)
               .foregroundStyle(Color.oldMoney.textSecondary)
               .accessibilityHidden(true)
 
             Text(String(localized: "bill.next.due"))
-              .font(.caption)
+              .font(.subheadline)
               .foregroundStyle(Color.oldMoney.textSecondary)
 
             Text(bill.nextDueDate.formatted(date: .abbreviated, time: .omitted))
-              .font(.caption)
+              .font(.subheadline)
               .foregroundStyle(Color.oldMoney.textSecondary)
           }
         }
@@ -85,9 +86,10 @@ struct BillRow: View {
       Spacer()
 
       // Amount and action
-      VStack(alignment: .trailing, spacing: 4) {
+      VStack(alignment: .trailing, spacing: 6) {
         Text(bill.formattedAmount)
-          .font(.headline)
+          .font(.title3)
+          .fontWeight(.semibold)
           .foregroundStyle(Color.oldMoney.text)
 
         if !bill.isPaid && onMarkAsPaid != nil {
@@ -96,9 +98,9 @@ struct BillRow: View {
           }) {
             HStack(spacing: 4) {
               Image(systemName: "checkmark.circle.fill")
-                .font(.caption)
+                .font(.subheadline)
               Text(String(localized: "bill.mark.paid"))
-                .font(.caption)
+                .font(.subheadline)
             }
             .foregroundStyle(Color.oldMoney.income)
           }
@@ -109,6 +111,7 @@ struct BillRow: View {
       }
     }
     .padding(.vertical, 8)
+    .padding(.horizontal, 16)
     .contentShape(Rectangle())
     .accessibilityElement(children: .combine)
     .accessibilityLabel(accessibilityDescription)

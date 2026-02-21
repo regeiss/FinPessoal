@@ -30,6 +30,7 @@ struct AccountsView: View {
       .padding(.horizontal, 20)
       .padding(.top, 8)
     }
+    .background(Color.oldMoney.background)
     .navigationTitle(String(localized: "tab.accounts"))
     .toolbar {
       ToolbarItem(placement: .navigationBarTrailing) {

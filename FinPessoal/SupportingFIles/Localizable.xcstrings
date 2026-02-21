@@ -2317,6 +2317,50 @@
         }
       }
     },
+    "bills.section.overdue" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Atrasadas"
+          }
+        }
+      }
+    },
+    "bills.section.paid" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Pagas"
+          }
+        }
+      }
+    },
+    "bills.section.today" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Vencendo Hoje"
+          }
+        }
+      }
+    },
+    "bills.section.upcoming" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Próximas"
+          }
+        }
+      }
+    },
     "bills.stat.due.soon" : {
       "localizations" : {
         "pt-BR" : {

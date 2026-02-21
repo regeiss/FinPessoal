@@ -57,7 +57,15 @@ struct QuickActionsView: View {
           }
           .frame(maxWidth: .infinity)
           .padding()
-          .background(Color.oldMoney.background)
+          .background(
+            RoundedRectangle(cornerRadius: 8)
+              .fill(Color.oldMoney.background)
+              .overlay(
+                RoundedRectangle(cornerRadius: 8)
+                  .strokeBorder(Color.oldMoney.accent.opacity(0.2), lineWidth: 1)
+              )
+              .shadow(color: .black.opacity(0.15), radius: 4, x: 0, y: 2)
+          )
           .cornerRadius(8)
         }
         .accessibilityElement(children: .combine)

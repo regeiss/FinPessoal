@@ -9,6 +9,43 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed - February 2026
 
+- **Bills Grouped by Status with Totals** (2026-02-20)
+  - Bills are now organized into sections: Overdue, Due Today, Upcoming, and Paid
+  - Each section header displays the total amount for that group
+  - Section name shown on the left in title3 semibold font
+  - Total amount shown on the right in title3 bold font with accent color
+  - Overdue bills appear first for immediate attention
+  - Due today bills highlighted in their own section
+  - Upcoming bills grouped together for easy planning
+  - Paid bills shown at the end for reference
+  - Added currency formatting helper function
+  - **Files**: `BillsScreen.swift`
+
+- **Bill Row Details Enlarged** (2026-02-20)
+  - Increased icon size from 50x50 to 56x56 for better visibility
+  - Increased secondary text from `.caption` to `.subheadline` for improved readability
+  - Increased amount font from `.headline` to `.title3` with semibold weight
+  - Increased status badge circle from 8x8 to 10x10
+  - Increased internal spacing: HStack from 12 to 16, VStack from 4 to 6
+  - Adjusted vertical padding to 8 pixels for tighter row spacing
+  - Added horizontal padding of 16 pixels for better spacing from screen edges
+  - Added semibold font weight to bill name for better hierarchy
+  - Removed list dividers for cleaner appearance
+  - **Files**: `BillRow.swift`, `BillsScreen.swift`
+
+- **Consistent Background Across All Screens** (2026-02-20)
+  - Added `Color.oldMoney.background` to Bills, Transactions, and Accounts screens
+  - All main screens now have consistent visual styling matching the dashboard
+  - **Files**: `BillsScreen.swift`, `TransactionsScreen.swift`, `AccountsView.swift`
+
+- **Quick Actions Contrast Improvement** (2026-02-20)
+  - Replaced `Color(.systemBackground)` with `Color.oldMoney.background` to provide proper contrast against the `.oldMoney.surface` container
+  - Added subtle border with accent color (`.strokeBorder(Color.oldMoney.accent.opacity(0.2))`) for definition
+  - Enhanced shadow for better depth (`.shadow(color: .black.opacity(0.15), radius: 4)`)
+  - Updated text color from `.primary` to `.oldMoney.text` for consistency
+  - Applied to all quick action buttons and "View Reports" card
+  - **Files**: `QuickActionButton.swift`, `QuickActionsView.swift`
+
 - **Recent Transactions Visual Update** (2026-02-20)
   - Updated Recent Transactions card to match dashboard visual style
   - Replaced plain background with `AnimatedCard(style: .standard)` for layered background effect
