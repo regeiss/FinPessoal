@@ -40,6 +40,7 @@ struct InsightsScreen: View {
       .padding()
     }
     .coordinateSpace(name: "scroll")
+    .background(Color.oldMoney.background)
     .navigationTitle(String(localized: "insights.title"))
     .blurredNavigationBar()
     .toolbar {

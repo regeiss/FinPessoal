@@ -194,6 +194,7 @@ struct MoreScreen: View {
           Text(String(localized: "more.settings.header"))
         }
       }
+      .background(Color.oldMoney.background)
       .navigationTitle(String(localized: "tab.more"))
       .toolbar {
         if UIDevice.current.userInterfaceIdiom != .pad {

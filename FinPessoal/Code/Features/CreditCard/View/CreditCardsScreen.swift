@@ -35,6 +35,7 @@ struct CreditCardsScreen: View {
                 }
             }
             .coordinateSpace(name: "scroll")
+            .background(Color.oldMoney.background)
             .navigationTitle(String(localized: "creditcard.title"))
             .blurredNavigationBar()
             .navigationBarTitleDisplayMode(.large)

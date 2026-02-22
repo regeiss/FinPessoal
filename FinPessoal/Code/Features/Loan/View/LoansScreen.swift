@@ -35,6 +35,7 @@ struct LoansScreen: View {
         }
       }
       .coordinateSpace(name: "scroll")
+      .background(Color.oldMoney.background)
       .navigationTitle(String(localized: "loan.title"))
       .blurredNavigationBar()
       .navigationBarTitleDisplayMode(.large)

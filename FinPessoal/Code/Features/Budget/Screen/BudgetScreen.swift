@@ -28,6 +28,7 @@ struct BudgetsScreen: View {
       .padding(.horizontal)
     }
     .coordinateSpace(name: "scroll")
+    .background(Color.oldMoney.background)
     .navigationTitle(String(localized: "sidebar.budgets"))
     .blurredNavigationBar()
     .toolbar {

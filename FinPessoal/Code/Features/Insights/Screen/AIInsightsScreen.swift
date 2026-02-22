@@ -36,6 +36,7 @@ struct AIInsightsScreen: View {
       }
       .padding()
     }
+    .background(Color.oldMoney.background)
     .navigationTitle(String(localized: "ai.insights.title"))
     .toolbar {
       ToolbarItem(placement: .navigationBarTrailing) {
