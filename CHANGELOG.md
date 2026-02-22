@@ -9,6 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed - February 2026
 
+- **Consistent Background Color Across All Screens** (2026-02-21)
+  - Fixed inconsistent background colors across all main screens
+  - All screens now use `Color.oldMoney.background` for consistency
+  - Screens updated: MoreScreen, InsightsScreen, AIInsightsScreen, BudgetsScreen, LoansScreen, CreditCardsScreen
+  - Previously some screens had no background, others used `.systemGray6` or `.surface`
+  - Creates cohesive visual experience throughout the app
+  - **Files**: `MoreScreen.swift`, `InsightsScreen.swift`, `AIInsightsScreen.swift`, `BudgetScreen.swift`, `LoansScreen.swift`, `CreditCardsScreen.swift`
+
 - **Settings Icon Added to All Main Screens** (2026-02-20)
   - Added settings (gearshape) icon to the toolbar of Accounts, Transactions, Bills, and More screens
   - Consistent settings access across the entire app
