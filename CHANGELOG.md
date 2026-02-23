@@ -7,6 +7,35 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added - February 2026
+
+- **PDF Bank Statement Import Feature** (2026-02-22)
+  - Complete PDF import pipeline with Vision Framework and Core ML integration
+  - Extract text from PDF bank statements using Apple Vision Framework
+  - Parse transactions using on-device Core ML (Phi-3-mini model)
+  - Intelligent duplicate detection (date ±1 day, exact amount, 80% description similarity)
+  - Interactive review screen with transaction selection
+  - ML confidence indicators with color-coded badges (green ≥80%, orange ≥60%, red <60%)
+  - Category auto-suggestion based on merchant/description keywords
+  - Support for Portuguese (pt-BR) and English (en-US) text recognition
+  - Progress tracking through 4 phases: Extract → Parse → Check Duplicates → Review
+  - Comprehensive error handling with localized messages
+  - **Architecture**: MVVM pattern with Repository integration
+  - **New Files**:
+    - Models: `PDFImportModels.swift`
+    - Services: `PDFExtractor.swift`, `MLModelManager.swift`, `StatementMLProcessor.swift`, `PDFStatementImportService.swift`
+    - UI: `PDFImportReviewScreen.swift`, `PDFImportViewModel.swift`
+    - Tests: 6 test files with unit tests for all components
+  - **Features**:
+    - File size validation (max 50MB)
+    - Encrypted PDF detection
+    - Multi-page document support
+    - Neural Engine acceleration for ML inference
+    - Local model caching in Documents/MLModels/
+    - Batch transaction import with rollback on error
+    - Accessibility labels for screen readers
+  - **Note**: ML model inference placeholder - awaits Phi-3 Core ML conversion
+
 ### Changed - February 2026
 
 - **Consistent Background Color Across All Screens** (2026-02-21)
