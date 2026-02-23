@@ -10,21 +10,27 @@ import UniformTypeIdentifiers
 
 struct TransactionsScreen: View {
   @StateObject private var transactionViewModel: TransactionViewModel
+  @StateObject private var pdfImportViewModel: PDFImportViewModel
   @EnvironmentObject var financeViewModel: FinanceViewModel
   @EnvironmentObject var authViewModel: AuthViewModel
   @State private var transactionToEdit: Transaction?
   @State private var showingSettings = false
+  @State private var showingPDFFilePicker = false
   @Namespace private var heroNamespace
 
   init(transactionViewModel: TransactionViewModel? = nil) {
+    let repository = AppConfiguration.shared.createTransactionRepository()
+
     if let existingViewModel = transactionViewModel {
       self._transactionViewModel = StateObject(wrappedValue: existingViewModel)
     } else {
-      let repository = AppConfiguration.shared.createTransactionRepository()
       print("TransactionsScreen: Using repository type: \(type(of: repository))")
       print("TransactionsScreen: useMockData = \(AppConfiguration.shared.useMockData)")
       self._transactionViewModel = StateObject(wrappedValue: TransactionViewModel(repository: repository))
     }
+
+    // Initialize PDF import viewmodel
+    self._pdfImportViewModel = StateObject(wrappedValue: PDFImportViewModel(repository: repository))
   }
   
   private var groupedTransactions: [(String, [Transaction])] {
@@ -69,13 +75,23 @@ struct TransactionsScreen: View {
           .accessibilityHint(String(localized: "Open application settings"))
         }
 
-        Button {
-          transactionViewModel.showImportPicker()
+        Menu {
+          Button {
+            transactionViewModel.showImportPicker()
+          } label: {
+            Label("Import OFX", systemImage: "doc.text")
+          }
+
+          Button {
+            showingPDFFilePicker = true
+          } label: {
+            Label("Import PDF", systemImage: "doc.text.viewfinder")
+          }
         } label: {
           Image(systemName: "square.and.arrow.down")
         }
         .accessibilityLabel("Import Transactions")
-        .accessibilityHint("Import transactions from an OFX file")
+        .accessibilityHint("Import transactions from OFX or PDF files")
 
         Button {
           transactionViewModel.showAddTransaction()
@@ -111,8 +127,27 @@ struct TransactionsScreen: View {
     ) { result in
       transactionViewModel.handleFileImport(result)
     }
+    .fileImporter(
+      isPresented: $showingPDFFilePicker,
+      allowedContentTypes: [.pdf],
+      allowsMultipleSelection: false
+    ) { result in
+      handlePDFImport(result)
+    }
     .frostedSheet(isPresented: $transactionViewModel.showingImportResult) {
       ImportResultView(result: transactionViewModel.importResult)
+    }
+    .frostedSheet(isPresented: $pdfImportViewModel.showReviewSheet) {
+      PDFImportReviewScreen(viewModel: pdfImportViewModel)
+    }
+    .alert("PDF Import Error", isPresented: .constant(pdfImportViewModel.errorMessage != nil)) {
+      Button("OK") {
+        pdfImportViewModel.errorMessage = nil
+      }
+    } message: {
+      if let errorMessage = pdfImportViewModel.errorMessage {
+        Text(errorMessage)
+      }
     }
     .refreshable {
       await transactionViewModel.fetchTransactions()
@@ -148,7 +183,33 @@ struct TransactionsScreen: View {
       SettingsScreen()
     }
   }
-  
+
+  // MARK: - PDF Import Helper
+
+  private func handlePDFImport(_ result: Result<[URL], Error>) {
+    guard let url = try? result.get().first else {
+      pdfImportViewModel.errorMessage = "Could not access PDF file"
+      return
+    }
+
+    // Get account ID (use first account or create one)
+    guard let accountId = financeViewModel.accounts.first?.id else {
+      pdfImportViewModel.errorMessage = "Please create an account first"
+      return
+    }
+
+    // Get user ID
+    guard let userId = authViewModel.currentUser?.id else {
+      pdfImportViewModel.errorMessage = "User not authenticated"
+      return
+    }
+
+    // Start PDF import
+    Task {
+      await pdfImportViewModel.importPDF(from: url, accountId: accountId, userId: userId)
+    }
+  }
+
   private var emptyStateView: some View {
     VStack(spacing: 20) {
       Image(systemName: "list.bullet.clipboard")
