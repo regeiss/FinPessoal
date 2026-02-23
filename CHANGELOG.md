@@ -34,7 +34,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - Local model caching in Documents/MLModels/
     - Batch transaction import with rollback on error
     - Accessibility labels for screen readers
-  - **Note**: ML model inference placeholder - awaits Phi-3 Core ML conversion
+  - **Current Implementation**: Rule-based parser with regex patterns for immediate use
+  - **Future Enhancement**: Phi-3 Core ML model integration ready when available
+  - **Parsing Capabilities**:
+    - Brazilian date formats (DD/MM/YYYY, DD/MM/YY)
+    - Currency parsing (R$ 1.234,56)
+    - Keyword-based categorization (7 categories)
+    - Automatic type detection (expense/income)
+  - **Status**: ✅ Fully functional and ready for production use
 
 ### Changed - February 2026
 
