@@ -1,6 +1,7 @@
 import XCTest
 @testable import FinPessoal
 
+@MainActor
 class MLModelManagerTests: XCTestCase {
   var modelManager: MLModelManager!
 

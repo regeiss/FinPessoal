@@ -1,6 +1,7 @@
 import XCTest
 @testable import FinPessoal
 
+@MainActor
 class PDFImportViewModelTests: XCTestCase {
   var viewModel: PDFImportViewModel!
   var mockRepository: MockTransactionRepository!

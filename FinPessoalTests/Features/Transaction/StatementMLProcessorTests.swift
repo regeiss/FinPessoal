@@ -1,6 +1,7 @@
 import XCTest
 @testable import FinPessoal
 
+@MainActor
 class StatementMLProcessorTests: XCTestCase {
   var processor: StatementMLProcessor!
 

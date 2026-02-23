@@ -1,6 +1,7 @@
 import XCTest
 @testable import FinPessoal
 
+@MainActor
 class PDFStatementImportServiceTests: XCTestCase {
   var service: PDFStatementImportService!
   var mockRepository: MockTransactionRepository!

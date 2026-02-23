@@ -2,6 +2,7 @@ import XCTest
 import PDFKit
 @testable import FinPessoal
 
+@MainActor
 class PDFExtractorTests: XCTestCase {
   var extractor: PDFExtractor!
   var testPDFURL: URL!
