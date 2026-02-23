@@ -30,7 +30,7 @@ struct BillsScreen: View {
       }
     }
     .coordinateSpace(name: "scroll")
-    .frame(maxWidth: .infinity, maxHeight: .infinitay)
+    .frame(maxWidth: .infinity, maxHeight: .infinity)
     .background(Color.oldMoney.background)
     .navigationTitle(String(localized: "bills.title"))
     .blurredNavigationBar()
