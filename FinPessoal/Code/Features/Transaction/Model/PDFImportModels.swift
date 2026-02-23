@@ -49,7 +49,7 @@ struct ParsedTransaction: Identifiable, Equatable {
 
 // MARK: - Import Result
 
-struct PDFImportResult {
+struct PDFImportResult: Equatable {
   let extracted: [ParsedTransaction]
   let duplicates: [ParsedTransaction]
   let errors: [PDFImportError]
